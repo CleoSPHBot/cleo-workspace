@@ -68,7 +68,13 @@ _Source: FDB {database}_
 4. Show generic equivalent only for brand products (and vice versa)
 5. Show equivalent products (same GCN_SEQNO = same strength, different brand/generic)
 6. Show representative NDCs (one per labeler, matching the MEDID's brand/generic name)
-7. Attach pill image if available
+7. **Pill image:** Always run with `--img-dir ~/.openclaw/workspace`. If `image.saved_to` exists in the result, include `MEDIA:./FILENAME.jpg` on its own line at the end of your **direct text reply** (NOT inside a message tool card call). The MEDIA tag must be in your normal reply text to work. Do NOT use the message tool to send the image. Example:
+   ```
+   💊 **MEDID 170427**
+   ...drug info here...
+   
+   MEDIA:./00071015523.jpg
+   ```
 8. Omit empty sections
 9. If `found: false`, respond: "MEDID {id} not found in FDB."
 

@@ -10,7 +10,7 @@ description: Look up National Drug Codes (NDC) against FDB data. Triggered by qu
 Run the lookup script with `--img-dir` to save any pill image:
 
 ```bash
-node scripts/ndc_lookup.js <NDC> --img-dir /tmp
+node scripts/ndc_lookup.js <NDC> --img-dir ~/.openclaw/workspace
 ```
 
 Accepts any NDC format: `00069-3150-83`, `00069315083`, `0069-3150-83`. The script auto-detects the latest `fdb_YYYYMMDD` database.
@@ -52,7 +52,14 @@ _Source: FDB {database}_
 4. Omit sections with no data (don't show empty off-label section)
 5. DEA schedule: show "None" for 0, "Schedule II-V" for 2-5
 6. If `found: false`, respond: "NDC {ndc} not found in FDB. Check the format (11 digits, no dashes) or try a different NDC."
-7. **Pill image:** Always run with `--img-dir /tmp`. If `image.saved_to` exists in the result, copy the image to the workspace and send it via the `message` tool (`filePath`) along with the lookup response. Include it naturally after the text — users expect to see the pill when one is available.
+7. **Pill image:** Always run with `--img-dir ~/.openclaw/workspace`. If `image.saved_to` exists in the result, include `MEDIA:./FILENAME.jpg` on its own line at the end of your **direct text reply** (NOT inside a message tool card call). The MEDIA tag must be in your normal reply text to work. Do NOT use the message tool to send the image. Example:
+
+```
+💊 **NDC 00071-0155-23**
+...drug info here...
+
+MEDIA:./00071015523.jpg
+```
 
 ## Schema Reference
 

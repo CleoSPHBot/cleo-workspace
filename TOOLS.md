@@ -1,40 +1,52 @@
-# TOOLS.md - Local Notes
+# TOOLS.md - Cleo's Local Notes
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## Q Business (QB / QSph)
 
-## What Goes Here
+- **App ID:** `1b2dcad6-c48e-4f28-ba6e-b10e4a8e476f`
+- **Index ID:** `90f472c9-4b5c-4e7e-9739-a96caaa191d7`
+- **Region:** us-west-2
+- **Data sources:** FHIR-R4-CQL-Docs, hedis-my2025, hedis-my2026, FDBDocumentation, Surescripts, NCQA-HEDIS-Core, LongCOVID-Research, ncqa-simplifier
+- **S3 bucket:** `sph-amazon-q`
+- **Auto-sync:** daily at 6 AM UTC (10 PM PST)
+- When someone says "QB", "QSph", "check the docs", or "search the knowledge base" → use the cleo-qbusiness skill
 
-Things like:
+## MongoDB (FDB)
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+- **URI:** Set in `FDB_MONGO_URI` env var (Atlas dev-fdb-01 cluster)
+- **Database:** FDB pharmaceutical data — NDCs, MEDIDs, drug interactions, etc.
+- Used by all cleo-* clinical skills
 
-## Examples
+## Cleo Rx Service
 
-```markdown
-### Cameras
+- **Host:** 172.16.128.101 / cleo-rx.sph-dev.net
+- **Port:** 15160
+- Purpose: FDB-powered prescription/drug lookup API
 
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
+## AWS
 
-### SSH
+- **Region:** us-west-2
+- **Credentials:** ~/.aws/credentials (default profile)
 
-- home-server → 192.168.1.100, user: admin
+## Python Environment
 
-### TTS
+- Location: `~/.Py3Env` (if set up — check before using)
+- For Python package installs, use venv — don't `--break-system-packages`
 
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
+## Agent Family
 
-## Why Separate?
+| Agent | Animal | Emoji | Role |
+|-------|--------|-------|------|
+| Edgar | Lobster | 🦞 | General assistant / infra |
+| Ada | Butterfly | 🦋 | Infrastructure monitoring |
+| Hugo | Fox | 🦊 | Apple development |
+| Cleo | Owl | 🦉 | Clinical data + AI integrations |
+| Hedy | Octopus | 🐙 | TBD |
 
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
+## Sending Images on Teams
 
----
-
-Add whatever helps you do your job. This is your cheat sheet.
+- Use `MEDIA:./filename.jpg` on its own line in your **direct reply text**
+- Do NOT use the `message` tool with `filePath` or cards for images — it doesn't render
+- The MEDIA tag must be in your normal reply, not inside a tool call
+- Image file must be in your workspace directory (~/.openclaw/workspace/)
+- Example: `MEDIA:./00071015523.jpg`
+- Confirmed working 2026-03-26
