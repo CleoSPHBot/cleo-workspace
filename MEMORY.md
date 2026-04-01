@@ -30,12 +30,19 @@
 - **Dashboard:** SSH tunnel `ssh -L 18800:127.0.0.1:18800 100.70.3.21` → http://localhost:18800
 - **Edgar's gateway:** Port 18789 (same server)
 
-## Clinical Skills (13)
+## Clinical Skills (14)
 - **Drug lookups:** cleo-ndc-lookup, cleo-medid-lookup, cleo-drug-search, cleo-routed-med-lookup, cleo-route-search, cleo-upc-lookup
-- **Clinical decision support:** cleo-side-effects, cleo-reverse-indication, cleo-etc-lookup
+- **Clinical decision support:** cleo-side-effects, cleo-reverse-indication, cleo-etc-lookup, **cleo-ddi-check** (drug-drug interactions)
 - **Diagnosis/procedure:** cleo-icd-lookup, cleo-cpt-lookup
 - **Rx:** cleo-prescription-reader (photo → drug info)
 - **Knowledge base:** cleo-qbusiness (HEDIS, FHIR, Surescripts, FDB docs, NCQA, CQL)
+
+## DDI Skill Notes
+- **cleo-ddi-check** built 2026-03-31 — FDB DDI via `fdb_20260326`
+- 4,551 monographs, 712,650 GCN→DDI links
+- Drug name → HICL_SEQNO → GCN_SEQNOs → DDI_CODEXes → monographs
+- node_modules symlinked from cleo-medid-lookup (shared)
+- Supports: drug name, MEDID (--medids), GCN (--gcns), 2+ drugs at once
 
 ## FDB Data Notes
 - FDB source: Atlas cluster `dev-fdb-01.qpkxl.mongodb.net`, env var `FDB_MONGO_URI`
