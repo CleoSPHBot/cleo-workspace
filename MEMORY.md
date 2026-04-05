@@ -69,3 +69,5 @@
 - UPC → NDC isn't always reliable for OTC products (retail UPCs ≠ drug NDCs)
 - When OCR is available, prefer reading printed NDC over UPC barcode conversion
 - Git remote: github.com/CleoSPHBot/cleo-workspace.git, daily backup at 7 AM UTC
+- **Daily memory files are sparse** — only 2026-03-26 written. Habit not yet formed. Dream-mode cron active as of 2026-04-04 to compensate.
+- `dmPolicy: open` is a known security TODO — tighten when pairing flow is resolved
