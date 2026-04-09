@@ -69,5 +69,5 @@
 - UPC → NDC isn't always reliable for OTC products (retail UPCs ≠ drug NDCs)
 - When OCR is available, prefer reading printed NDC over UPC barcode conversion
 - Git remote: github.com/CleoSPHBot/cleo-workspace.git, daily backup at 7 AM UTC
-- **Daily memory files are sparse** — daily writing habit still not formed. Dream-mode cron running nightly at 13:00 UTC / 6 AM PST (established 2026-04-04). Now on 4th consecutive run (2026-04-07). No daily files exist for March 27–April 6 — if significant work happened, it's not recorded. Main session must write daily notes for dreams to be useful.
+- **Daily memory files are sparse** — daily writing habit still not formed. Dream-mode cron running nightly at 13:00 UTC / 6 AM PST (established 2026-04-04). Now on 5th consecutive run (2026-04-08). No daily files exist for March 27–April 7 — 13-day gap. If significant work happened, it's not recorded. Main session must write daily notes for dreams to be useful.
 - `dmPolicy: open` is a known security TODO — tighten when pairing flow is resolved
