@@ -30,12 +30,13 @@
 - **Dashboard:** SSH tunnel `ssh -L 18800:127.0.0.1:18800 100.70.3.21` → http://localhost:18800
 - **Edgar's gateway:** Port 18789 (same server)
 
-## Clinical Skills (14)
+## Clinical Skills (15)
 - **Drug lookups:** cleo-ndc-lookup, cleo-medid-lookup, cleo-drug-search, cleo-routed-med-lookup, cleo-route-search, cleo-upc-lookup
 - **Clinical decision support:** cleo-side-effects, cleo-reverse-indication, cleo-etc-lookup, **cleo-ddi-check** (drug-drug interactions)
 - **Diagnosis/procedure:** cleo-icd-lookup, cleo-cpt-lookup
 - **Rx:** cleo-prescription-reader (photo → drug info)
 - **Knowledge base:** cleo-qbusiness (HEDIS, FHIR, Surescripts, FDB docs, NCQA, CQL)
+- **Dermatology:** cleo-derm-consult (built 2026-04-05 — structured rash/skin consult, 5-step workflow, ICD-10 linkage, cyclist-specific conditions reference)
 
 ## DDI Skill Notes
 - **cleo-ddi-check** built 2026-03-31 — FDB DDI via `fdb_20260326`
@@ -63,11 +64,31 @@
 - Indexed: HEDIS MY2025/2026, FHIR R4, CQL, FDB docs, Surescripts, NCQA, Long COVID research
 - Auto-syncs daily 6 AM UTC
 - When people say "QB", "QSph", "check the docs" → use cleo-qbusiness skill
+- **Catalog:** `s3://sph-amazon-q/catalog.yaml` — 48 documents as of 2026-04-11
+- **Recent additions:** Lindberg 2026 (Long COVID → CV disease, MIRACLE-S), Trubetskoy 2026 (skin as SARS-CoV-2 entry point, Northwestern bioRxiv)
+- **LongCOVID-Research data source ID:** `89032f82-4ad1-4394-8258-47d8287ccf61` (S3 prefix: `lc-app/`)
 
 ## Key Decisions & Lessons
 - Always format NDCs with dashes: 5-4-2 (e.g., 00071-0155-23)
 - UPC → NDC isn't always reliable for OTC products (retail UPCs ≠ drug NDCs)
 - When OCR is available, prefer reading printed NDC over UPC barcode conversion
 - Git remote: github.com/CleoSPHBot/cleo-workspace.git, daily backup at 7 AM UTC
-- **Daily memory files are sparse** — daily writing habit still not formed. Dream-mode cron running nightly at 13:00 UTC / 6 AM PST (established 2026-04-04). Now on 6th consecutive run (2026-04-09). No daily files exist for March 27–April 8 — 14-day gap. If significant work happened, it's not recorded. Main session must write daily notes for dreams to be useful.
+- **daily-backup cron:** Created 2026-04-06, runs 13:00 UTC daily, script: `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout, model: claude-sonnet-4-20250514
+- **Daily memory writing is working** — dream cron (13:00 UTC nightly) established 2026-04-04. Main session now writing daily files consistently as of 2026-04-10.
 - `dmPolicy: open` is a known security TODO — tighten when pairing flow is resolved
+- **Tailnet rename:** David changed machine names in tailnet ~2026-04-10. New names unknown — ask next opportunity and update TOOLS.md.
+
+## FDB prescribableMed Naming Patterns (LTC)
+Common corrections when verifying medication names against FDB:
+- **metformin 1000mg** → `metformin 1,000 mg tablet` (comma in 4-digit strengths)
+- **omeprazole capsule** → `omeprazole 20 mg capsule,delayed release` (always delayed release)
+- **cholecalciferol 2000 unit** → `cholecalciferol (vitamin D3) 50 mcg (2,000 unit) tablet` (full name + dual units)
+- **hydroxyzine** → `hydroxyzine HCl 25 mg tablet` (always HCl salt form)
+- **insulin regular** → `insulin U-100 regular human 100 unit/mL injection solution` (U-100, human, injection solution)
+- **ipratropium nebulizer** → `ipratropium bromide 0.02 % solution for inhalation` (bromide, % not mg/mL)
+- **albuterol nebulizer** → `albuterol sulfate 2.5 mg/3 mL (0.083 %) solution for nebulization` (sulfate + %)
+- **tiotropium capsule** → `tiotropium bromide 18 mcg capsule with inhalation device` (bromide + device)
+- **potassium chloride tablet** → `potassium chloride ER 20 mEq tablet,extended release` (ER, confirm wax-matrix vs part/cryst)
+- **morphine injection** → `morphine 2 mg/mL injection solution` (add "solution")
+- **bisacodyl** — two forms: plain tablet vs `,delayed release` — confirm formulary
+- **PEG 3350** — two forms: `oral powder` (bulk canister) vs `oral powder packet` (unit-dose) — confirm formulary
