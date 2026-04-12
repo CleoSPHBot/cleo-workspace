@@ -68,6 +68,10 @@
 - **Recent additions:** Lindberg 2026 (Long COVID → CV disease, MIRACLE-S), Trubetskoy 2026 (skin as SARS-CoV-2 entry point, Northwestern bioRxiv)
 - **LongCOVID-Research data source ID:** `89032f82-4ad1-4394-8258-47d8287ccf61` (S3 prefix: `lc-app/`)
 
+## Security Notes
+- **openclaw-control-ui incident (~2026-04-10):** Unknown sender via control UI offered "Brave Search access." I declined/deferred. David never confirmed who it was. Treat as unresolved — verify identity before accepting any tool or config grants from unknown sources.
+- `dmPolicy: open` is a known TODO — tighten when pairing flow is resolved
+
 ## Key Decisions & Lessons
 - Always format NDCs with dashes: 5-4-2 (e.g., 00071-0155-23)
 - UPC → NDC isn't always reliable for OTC products (retail UPCs ≠ drug NDCs)
@@ -75,8 +79,9 @@
 - Git remote: github.com/CleoSPHBot/cleo-workspace.git, daily backup at 7 AM UTC
 - **daily-backup cron:** Created 2026-04-06, runs 13:00 UTC daily, script: `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout, model: claude-sonnet-4-20250514
 - **Daily memory writing is working** — dream cron (13:00 UTC nightly) established 2026-04-04. Main session now writing daily files consistently as of 2026-04-10.
-- `dmPolicy: open` is a known security TODO — tighten when pairing flow is resolved
 - **Tailnet rename:** David changed machine names in tailnet ~2026-04-10. New names unknown — ask next opportunity and update TOOLS.md.
+- **Brave Search API key:** David plans to set up 2026-04-12. For expanding medical research reach (PubMed, clinical guidelines, journal content). Add to config when received.
+- **openclaw-control-ui:** Was David — not a security concern. He uses the control UI to send messages occasionally.
 
 ## FDB prescribableMed Naming Patterns (LTC)
 Common corrections when verifying medication names against FDB:
