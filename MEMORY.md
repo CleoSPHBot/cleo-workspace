@@ -69,8 +69,8 @@
 - **LongCOVID-Research data source ID:** `89032f82-4ad1-4394-8258-47d8287ccf61` (S3 prefix: `lc-app/`)
 
 ## Security Notes
-- **openclaw-control-ui incident (~2026-04-10):** Unknown sender via control UI offered "Brave Search access." I declined/deferred. David never confirmed who it was. Treat as unresolved — verify identity before accepting any tool or config grants from unknown sources.
 - `dmPolicy: open` is a known TODO — tighten when pairing flow is resolved
+- David sometimes sends messages via openclaw-control-ui — not a security concern (confirmed Apr 12)
 
 ## Key Decisions & Lessons
 - Always format NDCs with dashes: 5-4-2 (e.g., 00071-0155-23)
@@ -80,8 +80,19 @@
 - **daily-backup cron:** Created 2026-04-06, runs 13:00 UTC daily, script: `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout, model: claude-sonnet-4-20250514
 - **Daily memory writing is working** — dream cron (13:00 UTC nightly) established 2026-04-04. Main session now writing daily files consistently as of 2026-04-10.
 - **Tailnet rename:** David changed machine names in tailnet ~2026-04-10. New names unknown — ask next opportunity and update TOOLS.md.
-- **Brave Search API key:** David plans to set up 2026-04-12. For expanding medical research reach (PubMed, clinical guidelines, journal content). Add to config when received.
-- **openclaw-control-ui:** Was David — not a security concern. He uses the control UI to send messages occasionally.
+- **Brave Search API key:** Set up 2026-04-12 (Edgar added the key, gateway restart required). Confirmed working — 587ms, clean results. Use for medical research, clinical guidelines, PubMed, patient advocacy orgs, and anything outside QB/FDB scope. Call it "Brave Search" in notes, "web search" in conversation.
+
+## Project Cadence
+- **Mission:** Identify biometric, dietary, and behavioral factors driving Hannah's symptomatic days. Find what makes the 5 bad days happen.
+- **Patient:** Hannah — Long COVID, PEM + dysautonomia. ~2 good days / 7.
+- **Data sources:** WHOOP (API live), Visible (CSV/HealthKit), iPhone app (Hugo, TBD)
+- **Stack:** AWS Lambda + API Gateway, MongoDB `cadence-dev` (dev-cluster-02.qpkxl.mongodb.net)
+- **Credentials:** stored in `projects/cadence/credentials.md` (not in MEMORY.md)
+- **Status:** Webhook live, OAuth done, events landing. Event processor Lambda next.
+- **Project files:** `projects/cadence/README.md`
+- **Icon:** Deep navy + gold waveform/heartbeat — approved
+- **WHOOP API:** v2 only (v1 removed). OAuth 2.0. Key metrics: HRV, recovery score, strain, sleep stages, SpO2, skin temp.
+- **David's WHOOP user_id:** 206067 (hdmunguia@gmail.com) — testing account
 
 ## FDB prescribableMed Naming Patterns (LTC)
 Common corrections when verifying medication names against FDB:
