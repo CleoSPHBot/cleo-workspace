@@ -64,8 +64,8 @@
 - Indexed: HEDIS MY2025/2026, FHIR R4, CQL, FDB docs, Surescripts, NCQA, Long COVID research
 - Auto-syncs daily 6 AM UTC
 - When people say "QB", "QSph", "check the docs" → use cleo-qbusiness skill
-- **Catalog:** `s3://sph-amazon-q/catalog.yaml` — 48 documents as of 2026-04-11
-- **Recent additions:** Lindberg 2026 (Long COVID → CV disease, MIRACLE-S), Trubetskoy 2026 (skin as SARS-CoV-2 entry point, Northwestern bioRxiv)
+- **Catalog:** `s3://sph-amazon-q/catalog.yaml` — **54 documents** as of 2026-04-14
+- **Recent additions (Apr 9–14):** Lindberg 2026 (MIRACLE-S CV risk), Trubetskoy 2026 (skin SARS-CoV-2 entry), Freire 2026 (persistent Spike gut biopsies), + 5 pacing papers (Meach 2024, Ghali 2023, Vink 2025/2022, Godfrey 2025 PACELOC)
 - **LongCOVID-Research data source ID:** `89032f82-4ad1-4394-8258-47d8287ccf61` (S3 prefix: `lc-app/`)
 
 ## Security Notes
@@ -88,11 +88,16 @@
 - **Data sources:** WHOOP (API live), Visible (CSV/HealthKit), iPhone app (Hugo, TBD)
 - **Stack:** AWS Lambda + API Gateway, MongoDB `cadence-dev` (dev-cluster-02.qpkxl.mongodb.net)
 - **Credentials:** stored in `projects/cadence/credentials.md` (not in MEMORY.md)
-- **Status:** Webhook live, OAuth done, events landing. Event processor Lambda next.
-- **Project files:** `projects/cadence/README.md`
+- **Status:** Webhook live + processor working. First real data in `whoop_daily` (David's walk 2026-04-13). Next: Python backfill script for Hannah's WHOOP history.
+- **Project files:** `projects/cadence/README.md`, `projects/cadence/credentials.md`
 - **Icon:** Deep navy + gold waveform/heartbeat — approved
-- **WHOOP API:** v2 only (v1 removed). OAuth 2.0. Key metrics: HRV, recovery score, strain, sleep stages, SpO2, skin temp.
-- **David's WHOOP user_id:** 206067 (hdmunguia@gmail.com) — testing account
+- **WHOOP REST API:** Base `https://api.prod.whoop.com/developer/v1/` ("v1" = current REST, unrelated to webhook v1/v2). Webhook model = v2 (UUID IDs).
+- **WHOOP endpoints:** Sleep `GET /activity/sleep/{uuid}` | Workout `GET /activity/workout/{uuid}` | Recovery: collection only, match on sleep_id | Cycle `GET /cycle/{id}`
+- **David WHOOP user_id:** 206067 (hdmunguia@gmail.com) | **Hannah WHOOP user_id:** 6729032 (hannah.munguia@gmail.com)
+- **MongoDB collections:** `user`, `webhook_event`, `whoop_daily` (renamed/cleaned Apr 14)
+- **Oura Ring:** v2 API at cloud.ouraring.com/v2/docs (OAuth 2.0). Adds skin temp deviation, resilience score. Hannah doesn't have one yet — TBD.
+- **Gemini / OpenAI:** Neither API configured currently. David may add for Cadence analysis.
+- **File transfer:** David drops files in `/home2/cleo/for-cleo/` — workaround for Teams desktop attachment issue
 
 ## FDB prescribableMed Naming Patterns (LTC)
 Common corrections when verifying medication names against FDB:

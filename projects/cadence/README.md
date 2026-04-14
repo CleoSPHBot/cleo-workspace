@@ -68,7 +68,12 @@ Hannah has Long COVID with PEM (post-exertional malaise) and dysautonomia. She a
 - [x] Data model designed
 - [x] MongoDB cluster identified (existing Atlas)
 - [ ] MongoDB connection details / cluster name
-- [ ] WHOOP API integration scoped + built
+- [x] WHOOP API integration scoped
+- [x] Webhook live and receiving events (API Gateway + Lambda)
+- [x] OAuth complete — David (206067) + Hannah (6729032) authorized
+- [x] First real data in whoop_daily (David's walk, 2026-04-13)
+- [ ] WHOOP historical backfill script (Python) — **next up**
+- [ ] Hannah sleep/recovery data flowing
 - [ ] Visible data access resolved
 - [ ] iPhone app spec (Hugo)
 - [ ] daily_summary rollup pipeline
