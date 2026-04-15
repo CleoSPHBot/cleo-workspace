@@ -58,6 +58,7 @@
 - **Known bug:** iPhone/mobile Teams inline images don't download (OpenClaw #28014). Plugin uses Bot Framework token instead of MSAL Graph token. Workaround: send images from desktop.
 - **Sending images:** Use `MEDIA:./filename.jpg` in direct reply text. Do NOT use message tool with filePath — it doesn't render on Teams.
 - Pill images save to workspace, then send with MEDIA: tag
+- **File transfer workaround:** Desktop Teams PDFs/files not downloading either. David drops files in `/home2/cleo/for-cleo/` → I copy to inbound/, process, upload to S3, catalog, sync QB (established Apr 13)
 
 ## Q Business (QB / QSph)
 - App ID: `1b2dcad6-c48e-4f28-ba6e-b10e4a8e476f`
@@ -89,6 +90,8 @@
 - **Stack:** AWS Lambda + API Gateway, MongoDB `cadence-dev` (dev-cluster-02.qpkxl.mongodb.net)
 - **Credentials:** stored in `projects/cadence/credentials.md` (not in MEMORY.md)
 - **Status:** Webhook live + processor working. First real data in `whoop_daily` (David's walk 2026-04-13). Next: Python backfill script for Hannah's WHOOP history.
+- **Pacing literature (key finding):** Ghali 2023 — pacing adherence is the single best predictor of recovery (OR 40.43). PACELOC 2025: 15% weekly reduction in PEM with structured pacing. GET is contraindicated (WHO, CDC, NICE). Heart rate monitoring is the tool (anaerobic threshold).
+- **Probiotics for Hannah:** SIM01/G-NiiB (B. adolescentis + B. bifidum + B. longum + GOS + XOS + resistant dextrin). RECOVERY trial: 10B CFU ×2/day × 6 months (Lancet ID 2023). Available as "G-NiiB Immunity Elite" on Amazon US. Rationale: Freire 2026 gut immune dysregulation → microbiome restoration. Take at night (slower motility, gut repair window).
 - **Project files:** `projects/cadence/README.md`, `projects/cadence/credentials.md`
 - **Icon:** Deep navy + gold waveform/heartbeat — approved
 - **WHOOP REST API:** Base `https://api.prod.whoop.com/developer/v1/` ("v1" = current REST, unrelated to webhook v1/v2). Webhook model = v2 (UUID IDs).
@@ -98,6 +101,14 @@
 - **Oura Ring:** v2 API at cloud.ouraring.com/v2/docs (OAuth 2.0). Adds skin temp deviation, resilience score. Hannah doesn't have one yet — TBD.
 - **Gemini / OpenAI:** Neither API configured currently. David may add for Cadence analysis.
 - **File transfer:** David drops files in `/home2/cleo/for-cleo/` — workaround for Teams desktop attachment issue
+
+## FDB NDC Validation
+- **NDC master collection:** `RNDC14_NDC_MSTR` in `fdb_YYYYMMDD` databases
+- **Key fields:** `NDC` (11-digit, no dashes), `NDCFI` (1 or 2 = active, 3 = obsolete), `REPNDC` (direct replacement NDC), `GCN_SEQNO`
+- **Obsolescence workflow:** Check NDCFI; if 3, use REPNDC first; if empty, find active sibling with same GCN_SEQNO
+- **When no active replacement exists:** Product is discontinued (e.g., Qbrelis — all GCN 76442 NDCs obsolete)
+- **NDC format in FDB:** 11-digit no dashes (e.g., `24979024007`), not 5-4-2 format
+- **Multiple FDB snapshots in Atlas:** `fdb_20260326` is main/latest; scripts auto-detect
 
 ## FDB prescribableMed Naming Patterns (LTC)
 Common corrections when verifying medication names against FDB:
