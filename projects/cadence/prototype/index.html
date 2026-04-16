@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Cadence — Daily Check-in</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f1923;
+      color: #f0f4f8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0 40px 0;
+    }
+
+    header {
+      width: 100%;
+      background: #0f1923;
+      padding: 20px 24px 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #1e2d3d;
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #1a3a5c, #0f1923);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #c9a84c;
+      font-size: 18px;
+    }
+
+    header h1 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f0f4f8;
+      letter-spacing: -0.3px;
+    }
+
+    header span {
+      font-size: 13px;
+      color: #7a9ab8;
+      margin-left: auto;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 3px;
+      background: #1e2d3d;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #c9a84c, #e8c96a);
+      transition: width 0.3s ease;
+    }
+
+    .screen {
+      display: none;
+      width: 100%;
+      max-width: 420px;
+      padding: 32px 24px 24px;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    .question-num {
+      font-size: 12px;
+      font-weight: 600;
+      color: #c9a84c;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .question-text {
+      font-size: 22px;
+      font-weight: 700;
+      color: #f0f4f8;
+      line-height: 1.3;
+      margin-bottom: 32px;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option-btn {
+      background: #1e2d3d;
+      border: 2px solid transparent;
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .option-btn:active {
+      transform: scale(0.97);
+    }
+
+    .option-btn.selected {
+      border-color: #c9a84c;
+      background: #1e2d3d;
+    }
+
+    .option-btn.green.selected { border-color: #4caf7d; background: rgba(76,175,125,0.1); }
+    .option-btn.yellow.selected { border-color: #f0c040; background: rgba(240,192,64,0.1); }
+    .option-btn.red.selected { border-color: #e05a5a; background: rgba(224,90,90,0.1); }
+    .option-btn.home.selected { border-color: #7a9ab8; background: rgba(122,154,184,0.1); }
+    .option-btn.car.selected { border-color: #c9a84c; background: rgba(201,168,76,0.1); }
+
+    .option-icon {
+      font-size: 28px;
+      width: 40px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .option-label {
+      font-size: 17px;
+      font-weight: 600;
+      color: #f0f4f8;
+    }
+
+    .option-sub {
+      font-size: 13px;
+      color: #7a9ab8;
+      margin-top: 2px;
+    }
+
+    .nav-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .btn-back {
+      flex: 0 0 52px;
+      height: 52px;
+      background: #1e2d3d;
+      border: none;
+      border-radius: 14px;
+      color: #7a9ab8;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .btn-next {
+      flex: 1;
+      height: 52px;
+      background: linear-gradient(135deg, #c9a84c, #e8c96a);
+      border: none;
+      border-radius: 14px;
+      color: #0f1923;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      transition: opacity 0.15s;
+    }
+
+    .btn-next:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .btn-skip {
+      flex: 1;
+      height: 52px;
+      background: transparent;
+      border: 2px solid #1e2d3d;
+      border-radius: 14px;
+      color: #7a9ab8;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Notes screen */
+    .notes-area {
+      background: #1e2d3d;
+      border: 2px solid transparent;
+      border-radius: 16px;
+      padding: 16px;
+      color: #f0f4f8;
+      font-size: 16px;
+      font-family: inherit;
+      width: 100%;
+      min-height: 120px;
+      resize: none;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .notes-area:focus {
+      border-color: #c9a84c;
+    }
+
+    .notes-area::placeholder {
+      color: #7a9ab8;
+    }
+
+    /* Summary screen */
+    .summary-card {
+      background: #1e2d3d;
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .summary-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #7a9ab8;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #0f1923;
+    }
+
+    .summary-row:last-child { border-bottom: none; }
+
+    .summary-label {
+      font-size: 15px;
+      color: #7a9ab8;
+    }
+
+    .summary-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: #f0f4f8;
+    }
+
+    .btn-submit {
+      width: 100%;
+      height: 56px;
+      background: linear-gradient(135deg, #c9a84c, #e8c96a);
+      border: none;
+      border-radius: 16px;
+      color: #0f1923;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    /* Done screen */
+    .done-icon {
+      font-size: 64px;
+      text-align: center;
+      margin: 40px 0 20px;
+    }
+
+    .done-title {
+      font-size: 26px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .done-sub {
+      font-size: 15px;
+      color: #7a9ab8;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .done-note {
+      background: #1e2d3d;
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin-top: 32px;
+      font-size: 14px;
+      color: #c9a84c;
+      text-align: center;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">〰</div>
+  <h1>Cadence</h1>
+  <span id="date-label"></span>
+</header>
+
+<div class="progress-bar">
+  <div class="progress-fill" id="progress" style="width: 0%"></div>
+</div>
+
+<!-- Screen 1: Overall feeling -->
+<div class="screen active" id="screen-1">
+  <div class="question-num">Question 1 of 7</div>
+  <div class="question-text">How do you feel today?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(1,'good','🟢 Good')">
+      <div class="option-icon">🟢</div>
+      <div><div class="option-label">Good</div><div class="option-sub">Energy up, manageable day</div></div>
+    </button>
+    <button class="option-btn yellow" onclick="select(1,'mixed','🟡 Mixed')">
+      <div class="option-icon">🟡</div>
+      <div><div class="option-label">Mixed</div><div class="option-sub">Some good, some hard moments</div></div>
+    </button>
+    <button class="option-btn red" onclick="select(1,'bad','🔴 Bad')">
+      <div class="option-icon">🔴</div>
+      <div><div class="option-label">Bad</div><div class="option-sub">Low energy, rough day</div></div>
+    </button>
+  </div>
+  <div class="nav-row">
+    <button class="btn-next" id="next-1" disabled onclick="goTo(2)">Next →</button>
+  </div>
+</div>
+
+<!-- Screen 2: PEM -->
+<div class="screen" id="screen-2">
+  <div class="question-num">Question 2 of 7</div>
+  <div class="question-text">Post-exertional malaise (PEM)?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(2,'none','🟢 None')">
+      <div class="option-icon">🟢</div>
+      <div><div class="option-label">None</div><div class="option-sub">Feeling okay after activity</div></div>
+    </button>
+    <button class="option-btn yellow" onclick="select(2,'mild','🟡 Mild')">
+      <div class="option-icon">🟡</div>
+      <div><div class="option-label">Mild</div><div class="option-sub">Some fatigue or heaviness</div></div>
+    </button>
+    <button class="option-btn red" onclick="select(2,'severe','🔴 Severe')">
+      <div class="option-icon">🔴</div>
+      <div><div class="option-label">Severe</div><div class="option-sub">Significant crash or collapse</div></div>
+    </button>
+  </div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="goTo(1)">←</button>
+    <button class="btn-next" id="next-2" disabled onclick="goTo(3)">Next →</button>
+  </div>
+</div>
+
+<!-- Screen 3: Brain fog -->
+<div class="screen" id="screen-3">
+  <div class="question-num">Question 3 of 7</div>
+  <div class="question-text">Brain fog today?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(3,'none','🟢 None')">
+      <div class="option-icon">🟢</div>
+      <div><div class="option-label">None</div><div class="option-sub">Thinking clearly</div></div>
+    </button>
+    <button class="option-btn yellow" onclick="select(3,'mild','🟡 Mild')">
+      <div class="option-icon">🟡</div>
+      <div><div class="option-label">Mild</div><div class="option-sub">A bit foggy, harder to concentrate</div></div>
+    </button>
+    <button class="option-btn red" onclick="select(3,'severe','🔴 Severe')">
+      <div class="option-icon">🔴</div>
+      <div><div class="option-label">Severe</div><div class="option-sub">Can't think straight, words hard</div></div>
+    </button>
+  </div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="goTo(2)">←</button>
+    <button class="btn-next" id="next-3" disabled onclick="goTo(4)">Next →</button>
+  </div>
+</div>
+
+<!-- Screen 4: Pain -->
+<div class="screen" id="screen-4">
+  <div class="question-num">Question 4 of 7</div>
+  <div class="question-text">Any pain today?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(4,'none','🟢 None')">
+      <div class="option-icon">🟢</div>
+      <div><div class="option-label">None</div><div class="option-sub">No notable pain</div></div>
+    </button>
+    <button class="option-btn yellow" onclick="select(4,'mild','🟡 Mild')">
+      <div class="option-icon">🟡</div>
+      <div><div class="option-label">Mild</div><div class="option-sub">Noticeable but manageable</div></div>
+    </button>
+    <button class="option-btn red" onclick="select(4,'severe','🔴 Severe')">
+      <div class="option-icon">🔴</div>
+      <div><div class="option-label">Severe</div><div class="option-sub">Significant pain affecting my day</div></div>
+    </button>
+  </div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="goTo(3)">←</button>
+    <button class="btn-next" id="next-4" disabled onclick="goTo(5)">Next →</button>
+  </div>
+</div>
+
+<!-- Screen 5: Activity -->
+<div class="screen" id="screen-5">
+  <div class="question-num">Question 5 of 7</div>
+  <div class="question-text">What kind of day was it?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(5,'rested','🟢 Rested')">
+      <div class="option-icon">🟢</div>
+      <div><div class="option-label">Rested</div><div class="option-sub">Mostly at home, low demands</div></div>
+    </button>
+    <button class="option-btn yellow" onclick="select(5,'light','🟡 Light activity')">
+      <div class="option-icon">🟡</div>
+      <div><div class="option-label">Light activity</div><div class="option-sub">Short walk, light tasks</div></div>
+    </button>
+    <button class="option-btn red" onclick="select(5,'demanding','🔴 Demanding')">
+      <div class="option-icon">🔴</div>
+      <div><div class="option-label">Demanding</div><div class="option-sub">Meeting, appointment, physical effort, stress</div></div>
+    </button>
+  </div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="goTo(4)">←</button>
+    <button class="btn-next" id="next-5" disabled onclick="goTo(6)">Next →</button>
+  </div>
+</div>
+
+<!-- Screen 6: Left home -->
+<div class="screen" id="screen-6">
+  <div class="question-num">Question 6 of 7</div>
+  <div class="question-text">Did you leave home today?</div>
+  <div class="options">
+    <button class="option-btn home" onclick="select(6,'no','🏠 No')">
+      <div class="option-icon">🏠</div>
+      <div><div class="option-label">No</div><div class="option-sub">Stayed home all day</div></div>
+    </button>
+    <button class="option-btn car" onclick="select(6,'yes','🚗 Yes')">
+      <div class="option-icon">🚗</div>
+      <div><div class="option-label">Yes</div><div class="option-sub">Left the house at least once</div></div>
+    </button>
+  </div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="goTo(5)">←</button>
+    <button class="btn-next" id="next-6" disabled onclick="goTo(7)">Next →</button>
+  </div>
+</div>
+
+<!-- Screen 7: Food -->
+<div class="screen" id="screen-7">
+  <div class="question-num">Question 7 of 7</div>
+  <div class="question-text">How did you eat today?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(7,'clean','🟢 Clean')">
+      <div class="option-icon">🟢</div>
+      <div><div class="option-label">Clean</div><div class="option-sub">Mostly whole foods, vegetables, home cooked</div></div>
+    </button>
+    <button class="option-btn yellow" onclick="select(7,'mixed','🟡 Mixed')">
+      <div class="option-icon">🟡</div>
+      <div><div class="option-label">Mixed</div><div class="option-sub">Combination of good and not-so-good</div></div>
+    </button>
+    <button class="option-btn red" onclick="select(7,'inflammatory','🔴 Inflammatory')">
+      <div class="option-icon">🔴</div>
+      <div><div class="option-label">Inflammatory</div><div class="option-sub">Sugar, processed, alcohol, junk food</div></div>
+    </button>
+  </div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="goTo(6)">←</button>
+    <button class="btn-next" id="next-7" disabled onclick="goTo(8)">Next →</button>
+  </div>
+</div>
+
+<!-- Screen 8: Probiotics -->
+<div class="screen" id="screen-8">
+  <div class="question-num">Question 8 of 8</div>
+  <div class="question-text">Did you take your probiotics today?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(8,'yes','✅ Yes')">
+      <div class="option-icon">✅</div>
+      <div><div class="option-label">Yes</div><div class="option-sub">Took probiotic supplement today</div></div>
+    </button>
+    <button class="option-btn red" onclick="select(8,'no','❌ No')">
+      <div class="option-icon">❌</div>
+      <div><div class="option-label">No</div><div class="option-sub">Skipped today</div></div>
+    </button>
+  </div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="goTo(7)">←</button>
+    <button class="btn-next" id="next-8" disabled onclick="goTo(9)">Next →</button>
+  </div>
+</div>
+
+<!-- Screen 9: Notes (optional) -->
+<div class="screen" id="screen-9">
+  <div class="question-num">Optional</div>
+  <div class="question-text">Anything else to note?</div>
+  <textarea class="notes-area" id="notes-field" placeholder="How are you feeling? Anything unusual today?&#10;&#10;(Skip if you don't feel up to it)"></textarea>
+  <div class="nav-row">
+    <button class="btn-back" onclick="goTo(8)">←</button>
+    <button class="btn-skip" onclick="goTo(10)">Skip</button>
+    <button class="btn-next" style="flex:1" onclick="saveNotes(); goTo(10)">Done →</button>
+  </div>
+</div>
+
+<!-- Screen 10: Summary -->
+<div class="screen" id="screen-10">
+  <div class="question-num">Review</div>
+  <div class="question-text">Today's check-in</div>
+  <div class="summary-card">
+    <div class="summary-title">Summary</div>
+    <div class="summary-row"><span class="summary-label">Overall feeling</span><span class="summary-value" id="sum-1">—</span></div>
+    <div class="summary-row"><span class="summary-label">PEM</span><span class="summary-value" id="sum-2">—</span></div>
+    <div class="summary-row"><span class="summary-label">Brain fog</span><span class="summary-value" id="sum-3">—</span></div>
+    <div class="summary-row"><span class="summary-label">Pain</span><span class="summary-value" id="sum-4">—</span></div>
+    <div class="summary-row"><span class="summary-label">Activity</span><span class="summary-value" id="sum-5">—</span></div>
+    <div class="summary-row"><span class="summary-label">Left home</span><span class="summary-value" id="sum-6">—</span></div>
+    <div class="summary-row"><span class="summary-label">Food</span><span class="summary-value" id="sum-7">—</span></div>
+    <div class="summary-row"><span class="summary-label">Probiotics</span><span class="summary-value" id="sum-8">—</span></div>
+  </div>
+  <button class="btn-submit" onclick="submit()">Submit Check-in ✓</button>
+  <div class="nav-row">
+    <button class="btn-back" style="flex:1;height:44px;font-size:14px" onclick="goTo(9)">← Edit</button>
+  </div>
+</div>
+
+<!-- Screen 11: Done -->
+<div class="screen" id="screen-11">
+  <div class="done-icon">✅</div>
+  <div class="done-title">All done, Hannah!</div>
+  <div class="done-sub">Your check-in has been recorded.<br>Thank you for taking the time — every entry helps.</div>
+  <div class="done-note">⚠️ This is a prototype — responses are not saved yet.<br>Your feedback helps us build the real app.</div>
+</div>
+
+<script>
+  const answers = {};
+
+  // Set today's date in header
+  const now = new Date();
+  document.getElementById('date-label').textContent = now.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
+
+  function select(q, val, label) {
+    answers[q] = { val, label };
+    // Update button states
+    const screen = document.getElementById('screen-' + q);
+    screen.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    event.currentTarget.classList.add('selected');
+    document.getElementById('next-' + q).disabled = false;
+  }
+
+  function saveNotes() {
+    answers[9] = document.getElementById('notes-field').value;
+  }
+
+  function goTo(n) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-' + n).classList.add('active');
+    // Update progress (screens 1-8 are questions)
+    const pct = Math.min(((n-1) / 9) * 100, 100);
+    document.getElementById('progress').style.width = pct + '%';
+    // Update summary
+    if (n === 10) updateSummary();
+    window.scrollTo(0,0);
+  }
+
+  function updateSummary() {
+    for (let i = 1; i <= 8; i++) {
+      const el = document.getElementById('sum-' + i);
+      if (answers[i]) el.textContent = answers[i].label;
+    }
+  }
+
+  function submit() {
+    goTo(11);
+    document.getElementById('progress').style.width = '100%';
+  }
+</script>
+</body>
+</html>

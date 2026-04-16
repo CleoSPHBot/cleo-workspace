@@ -89,7 +89,7 @@
 - **Data sources:** WHOOP (API live), Visible (CSV/HealthKit), iPhone app (Hugo, TBD)
 - **Stack:** AWS Lambda + API Gateway, MongoDB `cadence-dev` (dev-cluster-02.qpkxl.mongodb.net)
 - **Credentials:** stored in `projects/cadence/credentials.md` (not in MEMORY.md)
-- **Status:** Webhook live + processor working. First real data in `whoop_daily` (David's walk 2026-04-13). Next: Python backfill script for Hannah's WHOOP history.
+- **Status:** Webhook live. Lambda had v2→v1 API bug + wrong recovery lookup pattern — fixes generated via Claude Code (2026-04-14), pending David confirmation. Hannah authorized + sleep data landing (2026-04-14: 8.4h, 70% performance). Python backfill script generated — needs run after confirming Hannah's WHOOP start date.
 - **Pacing literature (key finding):** Ghali 2023 — pacing adherence is the single best predictor of recovery (OR 40.43). PACELOC 2025: 15% weekly reduction in PEM with structured pacing. GET is contraindicated (WHO, CDC, NICE). Heart rate monitoring is the tool (anaerobic threshold).
 - **Probiotics for Hannah:** SIM01/G-NiiB (B. adolescentis + B. bifidum + B. longum + GOS + XOS + resistant dextrin). RECOVERY trial: 10B CFU ×2/day × 6 months (Lancet ID 2023). Available as "G-NiiB Immunity Elite" on Amazon US. Rationale: Freire 2026 gut immune dysregulation → microbiome restoration. Take at night (slower motility, gut repair window).
 - **Project files:** `projects/cadence/README.md`, `projects/cadence/credentials.md`
