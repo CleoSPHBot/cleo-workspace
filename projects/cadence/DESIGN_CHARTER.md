@@ -199,3 +199,41 @@ Key papers supporting Cadence's design rationale (all indexed in QB):
 | Patient / primary user | Hannah |
 | Clinical data & research | Cleo 🦉 |
 | iOS development | Hugo 🦊 (when ready) |
+
+---
+
+## v2 Architecture: Dynamic Question Schema
+
+> Logged 2026-04-17 — David Munguia
+
+Questions should eventually be stored in a `questions` MongoDB collection rather than hardcoded in the app. This enables:
+
+- Adding/removing questions without code deploys
+- Tuning the question set based on what the data tells us (cause/effect discovery)
+- Versioning so old answers stay valid when questions change
+- Future A/B testing of question variants
+
+**Proposed question document schema:**
+```json
+{
+  "question_id": "sleep_quality",
+  "version": 1,
+  "active": true,
+  "order": 9,
+  "text": "How did you sleep?",
+  "type": "traffic_light",
+  "options": [
+    { "val": "good",  "label": "🟢 Good", "sub": "Rested, woke up refreshed" },
+    { "val": "mixed", "label": "🟡 Mixed", "sub": "Woke up during the night" },
+    { "val": "bad",   "label": "🔴 Poor",  "sub": "Very little or unrestful" }
+  ]
+}
+```
+
+**Question types to support:**
+- `traffic_light` — green/yellow/red (most symptom questions)
+- `yes_no` — binary (left home, probiotics)
+- `scale` — 1–10 slider (pain intensity, energy level)
+- `text` — free notes
+
+**Priority:** v2 — current hardcoded questions are sufficient for initial data collection.

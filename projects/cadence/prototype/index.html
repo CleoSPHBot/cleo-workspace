@@ -15,9 +15,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 0 0 40px 0;
     }
 
+    /* ── Header ── */
     header {
       width: 100%;
       background: #0f1923;
@@ -27,285 +27,229 @@
       gap: 12px;
       border-bottom: 1px solid #1e2d3d;
     }
-
     .logo {
-      width: 36px;
-      height: 36px;
+      width: 36px; height: 36px;
       background: linear-gradient(135deg, #1a3a5c, #0f1923);
       border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       border: 1px solid #c9a84c;
       font-size: 18px;
     }
+    header h1 { font-size: 20px; font-weight: 700; color: #f0f4f8; letter-spacing: -0.3px; }
+    #header-right { font-size: 13px; color: #7a9ab8; margin-left: auto; }
 
-    header h1 {
-      font-size: 20px;
-      font-weight: 700;
-      color: #f0f4f8;
-      letter-spacing: -0.3px;
-    }
-
-    header span {
-      font-size: 13px;
-      color: #7a9ab8;
-      margin-left: auto;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 3px;
-      background: #1e2d3d;
-    }
-
+    /* ── Progress bar ── */
+    .progress-bar { width: 100%; height: 3px; background: #1e2d3d; }
     .progress-fill {
       height: 100%;
       background: linear-gradient(90deg, #c9a84c, #e8c96a);
       transition: width 0.3s ease;
     }
 
+    /* ── Screens ── */
     .screen {
       display: none;
-      width: 100%;
-      max-width: 420px;
-      padding: 32px 24px 24px;
-      flex-direction: column;
-      gap: 0;
+      width: 100%; max-width: 420px;
+      padding: 28px 24px 24px;
+      flex-direction: column; gap: 0;
+    }
+    .screen.active { display: flex; }
+
+    /* ── Home screen ── */
+    .home-greeting {
+      font-size: 24px; font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .home-sub {
+      font-size: 14px; color: #7a9ab8;
+      margin-bottom: 28px; line-height: 1.5;
+    }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: #c9a84c;
+      margin-bottom: 12px;
     }
 
-    .screen.active {
-      display: flex;
-    }
-
-    .question-num {
-      font-size: 12px;
-      font-weight: 600;
-      color: #c9a84c;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .question-text {
-      font-size: 22px;
-      font-weight: 700;
-      color: #f0f4f8;
-      line-height: 1.3;
-      margin-bottom: 32px;
-    }
-
-    .options {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .option-btn {
-      background: #1e2d3d;
-      border: 2px solid transparent;
-      border-radius: 16px;
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
+    /* Today card */
+    .today-card {
+      background: linear-gradient(135deg, #1a3550, #1e2d3d);
+      border: 1.5px solid #c9a84c;
+      border-radius: 20px;
+      padding: 20px 22px;
+      margin-bottom: 24px;
       cursor: pointer;
       transition: all 0.15s ease;
       -webkit-tap-highlight-color: transparent;
     }
-
-    .option-btn:active {
-      transform: scale(0.97);
+    .today-card:active { transform: scale(0.98); }
+    .today-card .day-name { font-size: 13px; color: #c9a84c; font-weight: 600; margin-bottom: 4px; }
+    .today-card .day-date { font-size: 22px; font-weight: 700; margin-bottom: 14px; }
+    .today-card .cta-row {
+      display: flex; align-items: center; justify-content: space-between;
     }
-
-    .option-btn.selected {
-      border-color: #c9a84c;
-      background: #1e2d3d;
-    }
-
-    .option-btn.green.selected { border-color: #4caf7d; background: rgba(76,175,125,0.1); }
-    .option-btn.yellow.selected { border-color: #f0c040; background: rgba(240,192,64,0.1); }
-    .option-btn.red.selected { border-color: #e05a5a; background: rgba(224,90,90,0.1); }
-    .option-btn.home.selected { border-color: #7a9ab8; background: rgba(122,154,184,0.1); }
-    .option-btn.car.selected { border-color: #c9a84c; background: rgba(201,168,76,0.1); }
-
-    .option-icon {
-      font-size: 28px;
-      width: 40px;
-      text-align: center;
-      flex-shrink: 0;
-    }
-
-    .option-label {
-      font-size: 17px;
-      font-weight: 600;
-      color: #f0f4f8;
-    }
-
-    .option-sub {
-      font-size: 13px;
-      color: #7a9ab8;
-      margin-top: 2px;
-    }
-
-    .nav-row {
-      display: flex;
-      gap: 12px;
-      margin-top: 32px;
-    }
-
-    .btn-back {
-      flex: 0 0 52px;
-      height: 52px;
-      background: #1e2d3d;
-      border: none;
-      border-radius: 14px;
-      color: #7a9ab8;
-      font-size: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .btn-next {
-      flex: 1;
-      height: 52px;
+    .today-card .cta-label { font-size: 15px; color: #7a9ab8; }
+    .today-card .cta-btn {
       background: linear-gradient(135deg, #c9a84c, #e8c96a);
-      border: none;
+      color: #0f1923; font-size: 14px; font-weight: 700;
+      border: none; border-radius: 10px;
+      padding: 9px 18px; cursor: pointer;
+    }
+    .today-card.done .cta-label { color: #4caf7d; }
+    .today-card.done .cta-btn {
+      background: rgba(76,175,125,0.15);
+      color: #4caf7d;
+      border: 1.5px solid #4caf7d;
+    }
+
+    /* Past days list */
+    .past-days { display: flex; flex-direction: column; gap: 10px; }
+    .day-row {
+      background: #1e2d3d;
       border-radius: 14px;
-      color: #0f1923;
-      font-size: 16px;
-      font-weight: 700;
+      padding: 14px 18px;
+      display: flex; align-items: center;
       cursor: pointer;
+      transition: all 0.15s ease;
       -webkit-tap-highlight-color: transparent;
+      border: 1.5px solid transparent;
+    }
+    .day-row:active { transform: scale(0.98); }
+    .day-row.done { border-color: rgba(76,175,125,0.3); }
+    .day-row .dr-left { flex: 1; }
+    .day-row .dr-name { font-size: 15px; font-weight: 600; color: #f0f4f8; }
+    .day-row .dr-date { font-size: 12px; color: #7a9ab8; margin-top: 2px; }
+    .day-row .dr-status {
+      font-size: 13px; font-weight: 600;
+      padding: 5px 12px; border-radius: 8px;
+    }
+    .day-row .dr-status.done { background: rgba(76,175,125,0.15); color: #4caf7d; }
+    .day-row .dr-status.open { background: rgba(201,168,76,0.12); color: #c9a84c; }
+
+    /* ── Question screens ── */
+    .q-date-tag {
+      display: inline-block;
+      background: #1e2d3d;
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-size: 12px; color: #c9a84c; font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .question-num {
+      font-size: 12px; font-weight: 600; color: #7a9ab8;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .question-text {
+      font-size: 22px; font-weight: 700; color: #f0f4f8;
+      line-height: 1.3; margin-bottom: 28px;
+    }
+    .options { display: flex; flex-direction: column; gap: 12px; }
+    .option-btn {
+      background: #1e2d3d; border: 2px solid transparent;
+      border-radius: 16px; padding: 18px 20px;
+      display: flex; align-items: center; gap: 16px;
+      cursor: pointer; transition: all 0.15s ease;
+      -webkit-tap-highlight-color: transparent;
+      text-align: left;
+    }
+    .option-btn > div {
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .option-btn:active { transform: scale(0.97); }
+    .option-btn.selected { border-color: #c9a84c; }
+    .option-btn.green.selected  { border-color: #4caf7d; background: rgba(76,175,125,0.1); }
+    .option-btn.yellow.selected { border-color: #f0c040; background: rgba(240,192,64,0.1); }
+    .option-btn.red.selected    { border-color: #e05a5a; background: rgba(224,90,90,0.1); }
+    .option-btn.home.selected   { border-color: #7a9ab8; background: rgba(122,154,184,0.1); }
+    .option-btn.car.selected    { border-color: #c9a84c; background: rgba(201,168,76,0.1); }
+    .option-icon { font-size: 28px; width: 40px; text-align: center; flex-shrink: 0; }
+    .option-label { font-size: 17px; font-weight: 600; color: #f0f4f8; }
+    .option-sub { font-size: 13px; color: #7a9ab8; margin-top: 2px; }
+
+    .nav-row { display: flex; gap: 12px; margin-top: 28px; }
+    .btn-back {
+      flex: 0 0 52px; height: 52px;
+      background: #1e2d3d; border: none; border-radius: 14px;
+      color: #7a9ab8; font-size: 20px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .btn-next {
+      flex: 1; height: 52px;
+      background: linear-gradient(135deg, #c9a84c, #e8c96a);
+      border: none; border-radius: 14px;
+      color: #0f1923; font-size: 16px; font-weight: 700;
+      cursor: pointer; -webkit-tap-highlight-color: transparent;
       transition: opacity 0.15s;
     }
-
-    .btn-next:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
-
+    .btn-next:disabled { opacity: 0.3; cursor: not-allowed; }
     .btn-skip {
-      flex: 1;
-      height: 52px;
-      background: transparent;
-      border: 2px solid #1e2d3d;
-      border-radius: 14px;
-      color: #7a9ab8;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
+      flex: 1; height: 52px;
+      background: transparent; border: 2px solid #1e2d3d;
+      border-radius: 14px; color: #7a9ab8;
+      font-size: 15px; font-weight: 600; cursor: pointer;
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Notes screen */
+    /* Notes */
     .notes-area {
-      background: #1e2d3d;
-      border: 2px solid transparent;
-      border-radius: 16px;
-      padding: 16px;
-      color: #f0f4f8;
-      font-size: 16px;
-      font-family: inherit;
-      width: 100%;
-      min-height: 120px;
-      resize: none;
-      outline: none;
+      background: #1e2d3d; border: 2px solid transparent;
+      border-radius: 16px; padding: 16px;
+      color: #f0f4f8; font-size: 16px; font-family: inherit;
+      width: 100%; min-height: 120px; resize: none; outline: none;
       transition: border-color 0.15s;
     }
+    .notes-area:focus { border-color: #c9a84c; }
+    .notes-area::placeholder { color: #7a9ab8; }
 
-    .notes-area:focus {
-      border-color: #c9a84c;
-    }
-
-    .notes-area::placeholder {
-      color: #7a9ab8;
-    }
-
-    /* Summary screen */
+    /* Summary */
     .summary-card {
-      background: #1e2d3d;
-      border-radius: 20px;
-      padding: 24px;
-      margin-bottom: 16px;
+      background: #1e2d3d; border-radius: 20px;
+      padding: 24px; margin-bottom: 16px;
     }
-
     .summary-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: #7a9ab8;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
+      font-size: 13px; font-weight: 600; color: #7a9ab8;
+      letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .summary-for {
+      font-size: 14px; color: #c9a84c; font-weight: 600;
       margin-bottom: 16px;
     }
-
-    .summary-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .summary-table {
+      width: 100%; border-collapse: collapse;
+    }
+    .summary-table tr td {
       padding: 10px 0;
       border-bottom: 1px solid #0f1923;
-    }
-
-    .summary-row:last-child { border-bottom: none; }
-
-    .summary-label {
       font-size: 15px;
-      color: #7a9ab8;
+      vertical-align: middle;
     }
-
-    .summary-value {
-      font-size: 15px;
-      font-weight: 600;
-      color: #f0f4f8;
-    }
-
+    .summary-table tr:last-child td { border-bottom: none; }
+    .summary-table .summary-label { color: #7a9ab8; width: 100%; }
+    .summary-table .summary-icon { white-space: nowrap; font-size: 18px; padding-right: 6px; text-align: right; }
+    .summary-table .summary-value { color: #f0f4f8; font-weight: 600; white-space: nowrap; text-align: left; }
     .btn-submit {
-      width: 100%;
-      height: 56px;
+      width: 100%; height: 56px;
       background: linear-gradient(135deg, #c9a84c, #e8c96a);
-      border: none;
-      border-radius: 16px;
-      color: #0f1923;
-      font-size: 17px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 8px;
+      border: none; border-radius: 16px;
+      color: #0f1923; font-size: 17px; font-weight: 700;
+      cursor: pointer; margin-top: 8px;
     }
 
-    /* Done screen */
-    .done-icon {
-      font-size: 64px;
-      text-align: center;
-      margin: 40px 0 20px;
-    }
-
-    .done-title {
-      font-size: 26px;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 12px;
-    }
-
-    .done-sub {
-      font-size: 15px;
-      color: #7a9ab8;
-      text-align: center;
-      line-height: 1.6;
-    }
-
+    /* Done */
+    .done-icon { font-size: 64px; text-align: center; margin: 40px 0 20px; }
+    .done-title { font-size: 26px; font-weight: 700; text-align: center; margin-bottom: 12px; }
+    .done-sub { font-size: 15px; color: #7a9ab8; text-align: center; line-height: 1.6; }
     .done-note {
-      background: #1e2d3d;
-      border-radius: 16px;
-      padding: 16px 20px;
-      margin-top: 32px;
-      font-size: 14px;
-      color: #c9a84c;
-      text-align: center;
-      line-height: 1.5;
+      background: #1e2d3d; border-radius: 16px;
+      padding: 16px 20px; margin-top: 32px;
+      font-size: 14px; color: #c9a84c; text-align: center; line-height: 1.5;
+    }
+    .btn-home {
+      width: 100%; height: 52px; margin-top: 20px;
+      background: #1e2d3d; border: none; border-radius: 14px;
+      color: #f0f4f8; font-size: 16px; font-weight: 600;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -314,17 +258,40 @@
 <header>
   <div class="logo">〰</div>
   <h1>Cadence</h1>
-  <span id="date-label"></span>
+  <span id="header-right"></span>
 </header>
-
 <div class="progress-bar">
   <div class="progress-fill" id="progress" style="width: 0%"></div>
 </div>
 
-<!-- Screen 1: Overall feeling -->
-<div class="screen active" id="screen-1">
-  <div class="question-num">Question 1 of 7</div>
-  <div class="question-text">How do you feel today?</div>
+<!-- ══════════════════════════════════════════
+     SCREEN: Home
+══════════════════════════════════════════ -->
+<div class="screen active" id="screen-home">
+  <div class="home-greeting">Good <span id="greeting-time"></span>, Hannah 👋</div>
+  <div class="home-sub">Track your day — even if you're filling in yesterday.</div>
+
+  <div class="section-label">Today</div>
+  <div class="today-card" id="today-card" onclick="startCheckin(0)">
+    <div class="day-name" id="today-dayname"></div>
+    <div class="day-date" id="today-datestr"></div>
+    <div class="cta-row">
+      <div class="cta-label" id="today-cta-label">Not checked in yet</div>
+      <button class="cta-btn" id="today-cta-btn">Start →</button>
+    </div>
+  </div>
+
+  <div class="section-label">Previous days</div>
+  <div class="past-days" id="past-days-list"></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN: Q1 — Overall feeling
+══════════════════════════════════════════ -->
+<div class="screen" id="screen-1">
+  <div class="q-date-tag" id="q-date-tag-1"></div>
+  <div class="question-num">Question 1 of 8</div>
+  <div class="question-text">How did you feel today?</div>
   <div class="options">
     <button class="option-btn green" onclick="select(1,'good','🟢 Good')">
       <div class="option-icon">🟢</div>
@@ -340,13 +307,15 @@
     </button>
   </div>
   <div class="nav-row">
+    <button class="btn-back" onclick="goHome()">⌂</button>
     <button class="btn-next" id="next-1" disabled onclick="goTo(2)">Next →</button>
   </div>
 </div>
 
-<!-- Screen 2: PEM -->
+<!-- Q2 — PEM -->
 <div class="screen" id="screen-2">
-  <div class="question-num">Question 2 of 7</div>
+  <div class="q-date-tag" id="q-date-tag-2"></div>
+  <div class="question-num">Question 2 of 8</div>
   <div class="question-text">Post-exertional malaise (PEM)?</div>
   <div class="options">
     <button class="option-btn green" onclick="select(2,'none','🟢 None')">
@@ -368,9 +337,10 @@
   </div>
 </div>
 
-<!-- Screen 3: Brain fog -->
+<!-- Q3 — Brain fog -->
 <div class="screen" id="screen-3">
-  <div class="question-num">Question 3 of 7</div>
+  <div class="q-date-tag" id="q-date-tag-3"></div>
+  <div class="question-num">Question 3 of 8</div>
   <div class="question-text">Brain fog today?</div>
   <div class="options">
     <button class="option-btn green" onclick="select(3,'none','🟢 None')">
@@ -392,9 +362,10 @@
   </div>
 </div>
 
-<!-- Screen 4: Pain -->
+<!-- Q4 — Pain -->
 <div class="screen" id="screen-4">
-  <div class="question-num">Question 4 of 7</div>
+  <div class="q-date-tag" id="q-date-tag-4"></div>
+  <div class="question-num">Question 4 of 8</div>
   <div class="question-text">Any pain today?</div>
   <div class="options">
     <button class="option-btn green" onclick="select(4,'none','🟢 None')">
@@ -416,9 +387,10 @@
   </div>
 </div>
 
-<!-- Screen 5: Activity -->
+<!-- Q5 — Activity -->
 <div class="screen" id="screen-5">
-  <div class="question-num">Question 5 of 7</div>
+  <div class="q-date-tag" id="q-date-tag-5"></div>
+  <div class="question-num">Question 5 of 8</div>
   <div class="question-text">What kind of day was it?</div>
   <div class="options">
     <button class="option-btn green" onclick="select(5,'rested','🟢 Rested')">
@@ -440,9 +412,10 @@
   </div>
 </div>
 
-<!-- Screen 6: Left home -->
+<!-- Q6 — Left home -->
 <div class="screen" id="screen-6">
-  <div class="question-num">Question 6 of 7</div>
+  <div class="q-date-tag" id="q-date-tag-6"></div>
+  <div class="question-num">Question 6 of 8</div>
   <div class="question-text">Did you leave home today?</div>
   <div class="options">
     <button class="option-btn home" onclick="select(6,'no','🏠 No')">
@@ -460,14 +433,15 @@
   </div>
 </div>
 
-<!-- Screen 7: Food -->
+<!-- Q7 — Food -->
 <div class="screen" id="screen-7">
-  <div class="question-num">Question 7 of 7</div>
+  <div class="q-date-tag" id="q-date-tag-7"></div>
+  <div class="question-num">Question 7 of 8</div>
   <div class="question-text">How did you eat today?</div>
   <div class="options">
     <button class="option-btn green" onclick="select(7,'clean','🟢 Clean')">
       <div class="option-icon">🟢</div>
-      <div><div class="option-label">Clean</div><div class="option-sub">Mostly whole foods, vegetables, home cooked</div></div>
+      <div><div class="option-label">Clean</div><div class="option-sub">Whole foods, vegetables, home cooked</div></div>
     </button>
     <button class="option-btn yellow" onclick="select(7,'mixed','🟡 Mixed')">
       <div class="option-icon">🟡</div>
@@ -484,8 +458,9 @@
   </div>
 </div>
 
-<!-- Screen 8: Probiotics -->
+<!-- Q8 — Probiotics -->
 <div class="screen" id="screen-8">
+  <div class="q-date-tag" id="q-date-tag-8"></div>
   <div class="question-num">Question 8 of 8</div>
   <div class="question-text">Did you take your probiotics today?</div>
   <div class="options">
@@ -504,11 +479,13 @@
   </div>
 </div>
 
-<!-- Screen 9: Notes (optional) -->
+<!-- Notes (optional) -->
 <div class="screen" id="screen-9">
+  <div class="q-date-tag" id="q-date-tag-9"></div>
   <div class="question-num">Optional</div>
   <div class="question-text">Anything else to note?</div>
-  <textarea class="notes-area" id="notes-field" placeholder="How are you feeling? Anything unusual today?&#10;&#10;(Skip if you don't feel up to it)"></textarea>
+  <textarea class="notes-area" id="notes-field"
+    placeholder="How are you feeling? Anything unusual today?&#10;&#10;(Skip if you don't feel up to it)"></textarea>
   <div class="nav-row">
     <button class="btn-back" onclick="goTo(8)">←</button>
     <button class="btn-skip" onclick="goTo(10)">Skip</button>
@@ -516,45 +493,176 @@
   </div>
 </div>
 
-<!-- Screen 10: Summary -->
+<!-- Summary / Review -->
 <div class="screen" id="screen-10">
   <div class="question-num">Review</div>
-  <div class="question-text">Today's check-in</div>
+  <div class="question-text">Your check-in</div>
   <div class="summary-card">
+    <div class="summary-for" id="summary-for-date"></div>
     <div class="summary-title">Summary</div>
-    <div class="summary-row"><span class="summary-label">Overall feeling</span><span class="summary-value" id="sum-1">—</span></div>
-    <div class="summary-row"><span class="summary-label">PEM</span><span class="summary-value" id="sum-2">—</span></div>
-    <div class="summary-row"><span class="summary-label">Brain fog</span><span class="summary-value" id="sum-3">—</span></div>
-    <div class="summary-row"><span class="summary-label">Pain</span><span class="summary-value" id="sum-4">—</span></div>
-    <div class="summary-row"><span class="summary-label">Activity</span><span class="summary-value" id="sum-5">—</span></div>
-    <div class="summary-row"><span class="summary-label">Left home</span><span class="summary-value" id="sum-6">—</span></div>
-    <div class="summary-row"><span class="summary-label">Food</span><span class="summary-value" id="sum-7">—</span></div>
-    <div class="summary-row"><span class="summary-label">Probiotics</span><span class="summary-value" id="sum-8">—</span></div>
+    <table class="summary-table">
+      <tr><td class="summary-label">Overall feeling</td><td class="summary-icon" id="sum-icon-1">—</td><td class="summary-value" id="sum-1"></td></tr>
+      <tr><td class="summary-label">PEM</td><td class="summary-icon" id="sum-icon-2">—</td><td class="summary-value" id="sum-2"></td></tr>
+      <tr><td class="summary-label">Brain fog</td><td class="summary-icon" id="sum-icon-3">—</td><td class="summary-value" id="sum-3"></td></tr>
+      <tr><td class="summary-label">Pain</td><td class="summary-icon" id="sum-icon-4">—</td><td class="summary-value" id="sum-4"></td></tr>
+      <tr><td class="summary-label">Activity</td><td class="summary-icon" id="sum-icon-5">—</td><td class="summary-value" id="sum-5"></td></tr>
+      <tr><td class="summary-label">Left home</td><td class="summary-icon" id="sum-icon-6">—</td><td class="summary-value" id="sum-6"></td></tr>
+      <tr><td class="summary-label">Food</td><td class="summary-icon" id="sum-icon-7">—</td><td class="summary-value" id="sum-7"></td></tr>
+      <tr><td class="summary-label">Probiotics</td><td class="summary-icon" id="sum-icon-8">—</td><td class="summary-value" id="sum-8"></td></tr>
+    </table>
   </div>
-  <button class="btn-submit" onclick="submit()">Submit Check-in ✓</button>
+  <button class="btn-submit" onclick="submitCheckin()">Submit Check-in ✓</button>
   <div class="nav-row">
     <button class="btn-back" style="flex:1;height:44px;font-size:14px" onclick="goTo(9)">← Edit</button>
   </div>
 </div>
 
-<!-- Screen 11: Done -->
-<div class="screen" id="screen-11">
+<!-- Done -->
+<div class="screen" id="screen-done">
   <div class="done-icon">✅</div>
-  <div class="done-title">All done, Hannah!</div>
-  <div class="done-sub">Your check-in has been recorded.<br>Thank you for taking the time — every entry helps.</div>
-  <div class="done-note">⚠️ This is a prototype — responses are not saved yet.<br>Your feedback helps us build the real app.</div>
+  <div class="done-title">Check-in saved!</div>
+  <div class="done-sub" id="done-sub-text">Your entry has been recorded.<br>Thank you — every check-in helps.</div>
+
+  <button class="btn-home" onclick="goHome()">← Back to home</button>
 </div>
 
 <script>
+  // ── State ──────────────────────────────────────────
   const answers = {};
+  let activeDate = null;   // YYYY-MM-DD string of the day being filled
+  let activeDayOffset = 0; // 0 = today, 1 = yesterday, etc.
 
-  // Set today's date in header
-  const now = new Date();
-  document.getElementById('date-label').textContent = now.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
+  // Fake "completed" set (will come from API later)
+  const completedDays = new Set(); // e.g. Set(['2026-04-14'])
 
+  // ── Date helpers ───────────────────────────────────
+  function dateKey(offset = 0) {
+    const d = new Date();
+    d.setDate(d.getDate() - offset);
+    return d.toISOString().slice(0, 10); // YYYY-MM-DD
+  }
+
+  function formatDate(offset = 0) {
+    const d = new Date();
+    d.setDate(d.getDate() - offset);
+    return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  }
+
+  function formatDateShort(offset = 0) {
+    const d = new Date();
+    d.setDate(d.getDate() - offset);
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+
+  function dayName(offset = 0) {
+    if (offset === 0) return 'Today';
+    if (offset === 1) return 'Yesterday';
+    const d = new Date();
+    d.setDate(d.getDate() - offset);
+    return d.toLocaleDateString('en-US', { weekday: 'long' });
+  }
+
+  function greetingTime() {
+    const h = new Date().getHours();
+    if (h < 12) return 'morning';
+    if (h < 17) return 'afternoon';
+    return 'evening';
+  }
+
+  // ── Home screen ────────────────────────────────────
+  function buildHome() {
+    // Greeting
+    document.getElementById('greeting-time').textContent = greetingTime();
+
+    // Today card
+    const todayDone = completedDays.has(dateKey(0));
+    const todayCard = document.getElementById('today-card');
+    document.getElementById('today-dayname').textContent =
+      new Date().toLocaleDateString('en-US', { weekday: 'long' });
+    document.getElementById('today-datestr').textContent =
+      new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+
+    if (todayDone) {
+      todayCard.classList.add('done');
+      document.getElementById('today-cta-label').textContent = '✓ Check-in complete';
+      document.getElementById('today-cta-btn').textContent = 'Edit';
+    } else {
+      todayCard.classList.remove('done');
+      document.getElementById('today-cta-label').textContent = 'Not checked in yet';
+      document.getElementById('today-cta-btn').textContent = 'Start →';
+    }
+
+    // Past 6 days
+    const list = document.getElementById('past-days-list');
+    list.innerHTML = '';
+    for (let i = 1; i <= 6; i++) {
+      const key = dateKey(i);
+      const done = completedDays.has(key);
+      const row = document.createElement('div');
+      row.className = 'day-row' + (done ? ' done' : '');
+      row.onclick = () => startCheckin(i);
+      row.innerHTML = `
+        <div class="dr-left">
+          <div class="dr-name">${dayName(i)}</div>
+          <div class="dr-date">${formatDateShort(i)}</div>
+        </div>
+        <div class="dr-status ${done ? 'done' : 'open'}">${done ? '✓ Done' : '+ Fill in'}</div>
+      `;
+      list.appendChild(row);
+    }
+
+    document.getElementById('header-right').textContent = '';
+    document.getElementById('progress').style.width = '0%';
+  }
+
+  // ── Start a check-in for a given day offset ────────
+  function startCheckin(offset) {
+    activeDayOffset = offset;
+    activeDate = dateKey(offset);
+
+    // Clear previous answers & button states
+    Object.keys(answers).forEach(k => delete answers[k]);
+    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    for (let i = 1; i <= 8; i++) {
+      const btn = document.getElementById('next-' + i);
+      if (btn) btn.disabled = true;
+    }
+    document.getElementById('notes-field').value = '';
+
+    // Update date tags on all question screens
+    const label = offset === 0 ? 'Today · ' + formatDateShort(0)
+                : offset === 1 ? 'Yesterday · ' + formatDateShort(1)
+                : dayName(offset) + ' · ' + formatDateShort(offset);
+    document.querySelectorAll('[id^="q-date-tag-"]').forEach(el => el.textContent = label);
+
+    goTo(1);
+  }
+
+  // ── Navigation ─────────────────────────────────────
+  function goHome() {
+    buildHome();
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-home').classList.add('active');
+    document.getElementById('progress').style.width = '0%';
+    window.scrollTo(0, 0);
+  }
+
+  function goTo(n) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const id = (n === 'done') ? 'screen-done' : 'screen-' + n;
+    document.getElementById(id).classList.add('active');
+    // Progress: questions 1-8 = steps 1-8, notes = 9, summary = 10
+    if (typeof n === 'number') {
+      const pct = Math.min(((n - 1) / 9) * 100, 100);
+      document.getElementById('progress').style.width = pct + '%';
+      if (n === 10) updateSummary();
+    }
+    window.scrollTo(0, 0);
+  }
+
+  // ── Answer selection ───────────────────────────────
   function select(q, val, label) {
     answers[q] = { val, label };
-    // Update button states
     const screen = document.getElementById('screen-' + q);
     screen.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
     event.currentTarget.classList.add('selected');
@@ -562,31 +670,82 @@
   }
 
   function saveNotes() {
-    answers[9] = document.getElementById('notes-field').value;
+    answers['notes'] = document.getElementById('notes-field').value.trim();
   }
 
-  function goTo(n) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById('screen-' + n).classList.add('active');
-    // Update progress (screens 1-8 are questions)
-    const pct = Math.min(((n-1) / 9) * 100, 100);
-    document.getElementById('progress').style.width = pct + '%';
-    // Update summary
-    if (n === 10) updateSummary();
-    window.scrollTo(0,0);
-  }
-
+  // ── Summary ────────────────────────────────────────
   function updateSummary() {
     for (let i = 1; i <= 8; i++) {
-      const el = document.getElementById('sum-' + i);
-      if (answers[i]) el.textContent = answers[i].label;
+      const iconEl = document.getElementById('sum-icon-' + i);
+      const valEl  = document.getElementById('sum-' + i);
+      if (answers[i]) {
+        // Split "🟢 Good" into emoji + text
+        const parts = answers[i].label.match(/^(\S+)\s+(.+)$/);
+        if (parts) {
+          iconEl.textContent = parts[1];
+          valEl.textContent  = parts[2];
+        } else {
+          iconEl.textContent = '';
+          valEl.textContent  = answers[i].label;
+        }
+      } else {
+        iconEl.textContent = '—';
+        valEl.textContent  = '';
+      }
     }
-  }
-
-  function submit() {
-    goTo(11);
+    const offset = activeDayOffset;
+    const dateStr = offset === 0 ? 'Today, ' + formatDateShort(0)
+                  : offset === 1 ? 'Yesterday, ' + formatDateShort(1)
+                  : dayName(offset) + ', ' + formatDateShort(offset);
+    document.getElementById('summary-for-date').textContent = '📅 ' + dateStr;
     document.getElementById('progress').style.width = '100%';
   }
+
+  // ── Submit ─────────────────────────────────────────
+  async function submitCheckin() {
+    const payload = {
+      date: activeDate,
+      submitted_at: new Date().toISOString(),
+      answers: {
+        feeling:     answers[1]?.val,
+        pem:         answers[2]?.val,
+        brain_fog:   answers[3]?.val,
+        pain:        answers[4]?.val,
+        activity:    answers[5]?.val,
+        left_home:   answers[6]?.val,
+        food:        answers[7]?.val,
+        probiotics:  answers[8]?.val,
+        notes:       answers['notes'] || null,
+      }
+    };
+
+    try {
+      const res = await fetch('/api/checkin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Server error');
+    } catch (err) {
+      console.error('Failed to save:', err);
+    }
+
+    completedDays.add(activeDate);
+
+    const offset = activeDayOffset;
+    const dayStr = offset === 0 ? "today's" : offset === 1 ? "yesterday's" : dayName(offset) + "'s";
+    document.getElementById('done-sub-text').innerHTML =
+      `${dayStr.charAt(0).toUpperCase() + dayStr.slice(1)} check-in has been recorded.<br>Thank you — every entry helps.`;
+
+    goTo('done');
+  }
+
+  // ── Init ───────────────────────────────────────────
+  fetch('/api/checkin/status?days=7')
+    .then(r => r.json())
+    .then(data => { Object.keys(data.completed).forEach(d => completedDays.add(d)); })
+    .catch(() => {})
+    .finally(() => buildHome());
 </script>
 </body>
 </html>

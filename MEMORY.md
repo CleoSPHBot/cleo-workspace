@@ -73,32 +73,45 @@
 - `dmPolicy: open` is a known TODO — tighten when pairing flow is resolved
 - David sometimes sends messages via openclaw-control-ui — not a security concern (confirmed Apr 12)
 
+## Project Rounds (New — Apr 16)
+- **Mission:** Clinical companion app for EHR — patient status + e-prescribing for doctors/nurses/med-techs
+- **Platform:** Expo React Native (iOS + Android from one codebase)
+- **Strategy:** HTML prototypes (Cleo) → backend API (David) → RN build (Hugo?)
+- **Prescribing workflow:** Verbal order → Nurse stages (DRAFT) → Doctor signs → Surescripts transmits
+- **Order states:** DRAFT → STAGED → SIGNED → TRANSMITTED → CONFIRMED → ADMINISTERED
+- **Project file:** `projects/rounds/README.md`
+- **Figma:** David has EHR designs at figma.com/design/FF0O3AiVbjlIr6tuk2RavO (screenshots pending)
+- **Status:** Initial scoping done. Complexity: full stack (workflow, real-time sync, FHIR+Surescripts+FDB, event pipeline)
+
 ## Key Decisions & Lessons
 - Always format NDCs with dashes: 5-4-2 (e.g., 00071-0155-23)
 - UPC → NDC isn't always reliable for OTC products (retail UPCs ≠ drug NDCs)
 - When OCR is available, prefer reading printed NDC over UPC barcode conversion
 - Git remote: github.com/CleoSPHBot/cleo-workspace.git, daily backup at 7 AM UTC
 - **daily-backup cron:** Created 2026-04-06, runs 13:00 UTC daily, script: `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout, model: claude-sonnet-4-20250514
-- **Daily memory writing is working** — dream cron (13:00 UTC nightly) established 2026-04-04. Main session now writing daily files consistently as of 2026-04-10.
-- **Tailnet rename:** David changed machine names in tailnet ~2026-04-10. New names unknown — ask next opportunity and update TOOLS.md.
-- **Brave Search API key:** Set up 2026-04-12 (Edgar added the key, gateway restart required). Confirmed working — 587ms, clean results. Use for medical research, clinical guidelines, PubMed, patient advocacy orgs, and anything outside QB/FDB scope. Call it "Brave Search" in notes, "web search" in conversation.
+- **Daily memory writing is working** — dream cron (13:00 UTC nightly) established 2026-04-04. Main session writing daily files consistently since 2026-04-10.
+- **Tailnet rename:** David changed machine names ~2026-04-10. New names unknown — ask next opportunity and update TOOLS.md.
+- **OpenClaw updated to 2026.4.14** (323493f, ~Apr 15). Teams desktop image attachments now working (Edgar applied fix). Prototype server running on port 8765.
+- **Brave Search API key:** Set up 2026-04-12 (Edgar added the key). Use for medical research, clinical guidelines, PubMed, patient advocacy orgs, and anything outside QB/FDB scope. Call it "Brave Search" in notes, "web search" in conversation.
 
 ## Project Cadence
 - **Mission:** Identify biometric, dietary, and behavioral factors driving Hannah's symptomatic days. Find what makes the 5 bad days happen.
-- **Patient:** Hannah — Long COVID, PEM + dysautonomia. ~2 good days / 7.
-- **Data sources:** WHOOP (API live), Visible (CSV/HealthKit), iPhone app (Hugo, TBD)
+- **Patient:** Hannah — Long COVID, PEM + dysautonomia. ~2 good days / 7. MIT grad student on medical leave. East Coast timezone.
+- **Data sources:** WHOOP (live + backfilled), Visible (177 days ingested), iPhone check-in app (Hugo, prototype live)
 - **Stack:** AWS Lambda + API Gateway, MongoDB `cadence-dev` (dev-cluster-02.qpkxl.mongodb.net)
 - **Credentials:** stored in `projects/cadence/credentials.md` (not in MEMORY.md)
-- **Status:** Webhook live. Lambda had v2→v1 API bug + wrong recovery lookup pattern — fixes generated via Claude Code (2026-04-14), pending David confirmation. Hannah authorized + sleep data landing (2026-04-14: 8.4h, 70% performance). Python backfill script generated — needs run after confirming Hannah's WHOOP start date.
+- **Status (Apr 16):** Backfill complete — 2,272 `whoop_daily` docs (David + Hannah back to Dec 2022). Visible data in `visible_daily` (177 days). Lambda recovery fix generated (Claude Code, Apr 14) — pending deployment confirmation. iOS check-in prototype live at http://100.70.3.21:8765. Hannah invited to tailnet.
+- **iOS check-in app:** 7 questions, traffic light (🟢🟡🔴) UX. Brain fog = #1 constraint, under 60s on worst days. Fields: feeling, PEM, brain fog, pain, activity type, left home, food. iMessage questionnaire sent to Hannah — feedback pending.
+- **LC phenotype:** Hannah = Gut/Viral persistence + PEM/Dysautonomia hybrid. v2 vision: phenotype-adaptive app.
 - **Pacing literature (key finding):** Ghali 2023 — pacing adherence is the single best predictor of recovery (OR 40.43). PACELOC 2025: 15% weekly reduction in PEM with structured pacing. GET is contraindicated (WHO, CDC, NICE). Heart rate monitoring is the tool (anaerobic threshold).
-- **Probiotics for Hannah:** SIM01/G-NiiB (B. adolescentis + B. bifidum + B. longum + GOS + XOS + resistant dextrin). RECOVERY trial: 10B CFU ×2/day × 6 months (Lancet ID 2023). Available as "G-NiiB Immunity Elite" on Amazon US. Rationale: Freire 2026 gut immune dysregulation → microbiome restoration. Take at night (slower motility, gut repair window).
-- **Project files:** `projects/cadence/README.md`, `projects/cadence/credentials.md`
-- **Icon:** Deep navy + gold waveform/heartbeat — approved
-- **WHOOP REST API:** Base `https://api.prod.whoop.com/developer/v1/` ("v1" = current REST, unrelated to webhook v1/v2). Webhook model = v2 (UUID IDs).
-- **WHOOP endpoints:** Sleep `GET /activity/sleep/{uuid}` | Workout `GET /activity/workout/{uuid}` | Recovery: collection only, match on sleep_id | Cycle `GET /cycle/{id}`
+- **Probiotics for Hannah:** SIM01/G-NiiB (B. adolescentis + B. bifidum + B. longum + GOS + XOS + resistant dextrin). RECOVERY trial: 10B CFU ×2/day × 6 months (Lancet ID 2023). "G-NiiB Immunity Elite" on Amazon US. Take at night. Rationale: Freire 2026 gut immune dysregulation → microbiome restoration.
+- **Project files:** `projects/cadence/README.md`, `projects/cadence/credentials.md`, `projects/cadence/DESIGN_CHARTER.md`
+- **WHOOP REST API:** v1 (`/developer/v1/`) = cycle only (integer IDs). v2 (`/developer/v2/`) = sleep, recovery, workout (UUID IDs). Webhook model = v2.
+- **WHOOP endpoints:** Sleep `GET /v2/activity/sleep/{uuid}` | Workout `GET /v2/activity/workout/{uuid}` | Recovery: `GET /v2/recovery?limit=10` + match `sleep_id` | Cycle `GET /v1/cycle/{id}`
+- **Webhook URL:** `https://nldsq794q0.execute-api.us-west-2.amazonaws.com/webhook` | Login: `.../login` | Secret: `com.sph.dev.whoop`
 - **David WHOOP user_id:** 206067 (hdmunguia@gmail.com) | **Hannah WHOOP user_id:** 6729032 (hannah.munguia@gmail.com)
-- **MongoDB collections:** `user`, `webhook_event`, `whoop_daily` (renamed/cleaned Apr 14)
-- **Oura Ring:** v2 API at cloud.ouraring.com/v2/docs (OAuth 2.0). Adds skin temp deviation, resilience score. Hannah doesn't have one yet — TBD.
+- **MongoDB collections:** `user`, `webhook_event`, `whoop_daily`, `visible_daily`
+- **Oura Ring:** v2 API at cloud.ouraring.com/v2/docs. Adds skin temp deviation, resilience score. Hannah doesn't have one yet — TBD.
 - **Gemini / OpenAI:** Neither API configured currently. David may add for Cadence analysis.
 - **File transfer:** David drops files in `/home2/cleo/for-cleo/` — workaround for Teams desktop attachment issue
 
