@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadence — Hannah's Dashboard</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f1923;
+      color: #f0f4f8;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #0f1923;
+      padding: 20px 24px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #1e2d3d;
+    }
+    .logo {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, #1a3a5c, #0f1923);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid #c9a84c;
+      font-size: 18px;
+    }
+    header h1 { font-size: 20px; font-weight: 700; color: #f0f4f8; letter-spacing: -0.3px; }
+    .header-sub { font-size: 13px; color: #7a9ab8; margin-left: auto; }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px 20px 48px;
+    }
+
+    /* ── Section labels ── */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #7a9ab8;
+      margin: 28px 0 12px;
+    }
+
+    /* ── Day cards ── */
+    .day-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .day-card {
+      background: #131f2e;
+      border: 1px solid #1e2d3d;
+      border-radius: 16px;
+      padding: 18px 20px;
+    }
+
+    .day-card.today { border-color: #c9a84c44; }
+
+    .day-header {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .day-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f0f4f8;
+    }
+    .day-date {
+      font-size: 13px;
+      color: #7a9ab8;
+    }
+    .day-badge {
+      margin-left: auto;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: #1e2d3d;
+      color: #7a9ab8;
+    }
+    .day-badge.today { background: #2a1f0a; color: #c9a84c; }
+
+    /* ── Metric grid ── */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .metric {
+      background: #0f1923;
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+    .metric-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #5a7a98;
+      margin-bottom: 4px;
+    }
+    .metric-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #f0f4f8;
+      line-height: 1.1;
+    }
+    .metric-unit {
+      font-size: 11px;
+      font-weight: 400;
+      color: #7a9ab8;
+      margin-left: 2px;
+    }
+    .metric-sub {
+      font-size: 11px;
+      color: #5a7a98;
+      margin-top: 2px;
+    }
+
+    /* Recovery color coding */
+    .rec-green { color: #6fcf97; }
+    .rec-yellow { color: #f2c94c; }
+    .rec-red { color: #eb5757; }
+    .rec-none { color: #5a7a98; }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid #1e2d3d;
+      margin: 14px 0;
+    }
+
+    /* ── Check-in row ── */
+    .checkin-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .ci-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #0f1923;
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+    .ci-label { color: #5a7a98; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; font-size: 10px; }
+    .ci-val { color: #f0f4f8; font-weight: 600; }
+
+    .severity-none    { color: #6fcf97; }
+    .severity-mild    { color: #f2c94c; }
+    .severity-moderate{ color: #f2994a; }
+    .severity-severe  { color: #eb5757; }
+    .severity-good    { color: #6fcf97; }
+    .severity-bad     { color: #eb5757; }
+    .severity-mixed   { color: #f2c94c; }
+    .severity-yes     { color: #6fcf97; }
+    .severity-no      { color: #eb5757; }
+
+    /* ── Visible highlights ── */
+    .visible-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 8px;
+    }
+    .vis-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0f1923;
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 12px;
+    }
+    .vis-name { color: #b0c8e0; flex: 1; padding-right: 8px; line-height: 1.3; }
+    .vis-val {
+      font-weight: 700;
+      font-size: 14px;
+      min-width: 20px;
+      text-align: right;
+    }
+    .vis-0 { color: #5a7a98; }
+    .vis-1 { color: #7a9ab8; }
+    .vis-2 { color: #f2c94c; }
+    .vis-3 { color: #f2994a; }
+    .vis-4 { color: #eb8c57; }
+    .vis-5 { color: #eb5757; }
+
+    /* ── No data ── */
+    .no-data {
+      color: #3a5a78;
+      font-size: 13px;
+      font-style: italic;
+      padding: 4px 0;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: #3a5a78;
+      margin-top: 40px;
+    }
+
+    /* ── Loading ── */
+    #loading {
+      text-align: center;
+      color: #5a7a98;
+      padding: 60px 24px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🦉</div>
+  <h1>Cadence — Hannah</h1>
+  <div class="header-sub" id="last-updated">Loading…</div>
+</header>
+
+<div class="container">
+  <div id="loading">Loading dashboard…</div>
+  <div id="dashboard" style="display:none"></div>
+  <div class="footer" id="footer"></div>
+</div>
+
+<script>
+  // ── Helpers ────────────────────────────────────────────────────────────────
+  function dateKey(offset = 0) {
+    // Use Eastern time to match Hannah's timezone
+    const d = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    d.setDate(d.getDate() - offset);
+    return d.toISOString().slice(0, 10);
+  }
+
+  function fmtDate(iso) {
+    const d = new Date(iso + 'T12:00:00');
+    return d.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
+  }
+
+  // Label based on position in server-returned dates array, not client clock
+  function dayLabel(offset) {
+    if (offset === 0) return 'Today';
+    if (offset === 1) return 'Yesterday';
+    return 'Two Days Ago';
+  }
+
+  function dayLabelFromDate(dateStr, todayStr) {
+    if (dateStr === todayStr) return 'Today';
+    const d = new Date(dateStr + 'T12:00:00');
+    const yesterday = new Date(todayStr + 'T12:00:00');
+    yesterday.setDate(yesterday.getDate() - 1);
+    if (dateStr === yesterday.toISOString().slice(0, 10)) return 'Yesterday';
+    return d.toLocaleDateString('en-US', { weekday: 'long' });
+  }
+
+  function recClass(score) {
+    if (score == null) return 'rec-none';
+    if (score >= 67) return 'rec-green';
+    if (score >= 34) return 'rec-yellow';
+    return 'rec-red';
+  }
+
+  function recBar(score) {
+    if (score == null) return '—';
+    const cls = recClass(score);
+    return `<span class="${cls}">${score}</span>`;
+  }
+
+  function severityClass(val) {
+    if (!val) return '';
+    return 'severity-' + val.toLowerCase();
+  }
+
+  function capitalize(s) {
+    if (!s) return '—';
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  // ── Render ─────────────────────────────────────────────────────────────────
+  function trend(current, previous, higherIsBetter = true) {
+    if (current == null || previous == null) return '';
+    const diff = current - previous;
+    if (Math.abs(diff) < 0.5) return '<span style="color:#3a5a78;font-size:11px"> →</span>';
+    const up = diff > 0;
+    const good = higherIsBetter ? up : !up;
+    const arrow = up ? '↑' : '↓';
+    const color = good ? '#6fcf97' : '#eb5757';
+    return `<span style="color:${color};font-size:12px;margin-left:3px">${arrow}</span>`;
+  }
+
+  function renderMetric(label, value, unit = '', sub = '', trendHtml = '') {
+    return `
+      <div class="metric">
+        <div class="metric-label">${label}</div>
+        <div class="metric-value">${value ?? '<span style="color:#3a5a78">—</span>'}<span class="metric-unit">${value != null ? unit : ''}</span>${trendHtml}</div>
+        ${sub ? `<div class="metric-sub">${sub}</div>` : ''}
+      </div>`;
+  }
+
+  function renderCheckinPill(label, val) {
+    const cls = severityClass(val);
+    return `
+      <div class="ci-pill">
+        <span class="ci-label">${label}</span>
+        <span class="ci-val ${cls}">${capitalize(val)}</span>
+      </div>`;
+  }
+
+  let serverToday = null; // set after API response
+
+  function renderDayCard(offset, whoop, checkin, visible, dateStr, prevWhoop) {
+    const date = dateStr || dateKey(offset);
+    const isToday = (date === serverToday);
+
+    // WHOOP metrics
+    const rec   = whoop?.recovery?.score?.recovery_score;
+    const hrv   = whoop?.recovery?.score?.hrv_rmssd_milli;
+    const rhr   = whoop?.recovery?.score?.resting_heart_rate;
+    const spo2  = whoop?.recovery?.score?.spo2_percentage;
+    const sleep = whoop?.sleep?.score?.sleep_performance_percentage;
+    const strain= whoop?.cycle?.score?.strain;
+    const sleepH = whoop?.sleep?.score?.stage_summary
+      ? ((whoop.sleep.score.stage_summary.total_in_bed_time_milli - whoop.sleep.score.stage_summary.total_awake_time_milli) / 3600000).toFixed(1)
+      : null;
+
+    // Previous day values for trend arrows
+    const prevRec   = prevWhoop?.recovery?.score?.recovery_score;
+    const prevHrv   = prevWhoop?.recovery?.score?.hrv_rmssd_milli;
+    const prevRhr   = prevWhoop?.recovery?.score?.resting_heart_rate;
+    const prevSpo2  = prevWhoop?.recovery?.score?.spo2_percentage;
+    const prevSleep = prevWhoop?.sleep?.score?.sleep_performance_percentage;
+    const prevStrain= prevWhoop?.cycle?.score?.strain;
+
+    const recCls = recClass(rec);
+
+    // Visible — key categories to highlight
+    const visObs = visible?.observations || [];
+    const visHighlight = [
+      'Fatigue', 'Brain Fog', 'Muscle aches', 'Headache',
+      'Lightheadedness', 'Shortness of breath', 'Stomach pain',
+      'Pacing Budget', 'PacePoints', 'Crash'
+    ];
+    const visFiltered = visObs
+      .filter(o => visHighlight.includes(o.tracker_name))
+      .sort((a, b) => visHighlight.indexOf(a.tracker_name) - visHighlight.indexOf(b.tracker_name));
+
+    return `
+      <div class="day-card ${isToday ? 'today' : ''}">
+        <div class="day-header">
+          <div class="day-name">${dayLabelFromDate(date, serverToday)}</div>
+          <div class="day-date">${fmtDate(date)}</div>
+          <div class="day-badge ${isToday ? 'today' : ''}">${isToday ? 'Today' : ''}</div>
+        </div>
+
+        <div class="section-label" style="margin-top:0">WHOOP</div>
+        <div class="metrics">
+          ${renderMetric('Recovery', rec != null ? `<span class="${recCls}">${rec}</span>` : null, '%', '', trend(rec, prevRec))}
+          ${renderMetric('HRV', hrv != null ? hrv.toFixed(1) : null, ' ms', '', trend(hrv, prevHrv))}
+          ${renderMetric('RHR', rhr, ' bpm', '', trend(rhr, prevRhr, false))}
+          ${renderMetric('SpO₂', spo2 != null ? spo2.toFixed(1) : null, '%', '', trend(spo2, prevSpo2))}
+          ${renderMetric('Sleep', sleep, '%', sleepH ? sleepH + ' hrs' : '', trend(sleep, prevSleep))}
+          ${renderMetric('Strain', strain != null ? strain.toFixed(1) : null, '', '', trend(strain, prevStrain, false))}
+        </div>
+
+        ${checkin ? `
+        <hr class="divider">
+        <div class="section-label" style="margin-top:0">Check-in</div>
+        <div class="checkin-grid">
+          ${renderCheckinPill('Feeling', checkin.feeling)}
+          ${renderCheckinPill('PEM', checkin.pem)}
+          ${renderCheckinPill('Brain Fog', checkin.brain_fog)}
+          ${renderCheckinPill('Pain', checkin.pain)}
+          ${renderCheckinPill('Activity', checkin.activity)}
+          ${renderCheckinPill('Left Home', checkin.left_home)}
+          ${renderCheckinPill('Food', checkin.food)}
+          ${renderCheckinPill('Probiotics', checkin.probiotics)}
+          ${checkin.notes ? `<div class="ci-pill" style="flex:1 0 100%"><span class="ci-label">Notes</span><span class="ci-val" style="color:#b0c8e0;font-weight:400">${checkin.notes}</span></div>` : ''}
+        </div>` : `<hr class="divider"><div class="no-data">No check-in recorded</div>`}
+
+        ${visFiltered.length ? `
+        <hr class="divider">
+        <div class="section-label" style="margin-top:0">Visible</div>
+        <div class="visible-grid">
+          ${visFiltered.map(o => `
+            <div class="vis-row">
+              <div class="vis-name">${o.tracker_name}</div>
+              <div class="vis-val vis-${Math.min(Math.round(o.value), 5)}">${o.value}</div>
+            </div>`).join('')}
+        </div>` : ''}
+      </div>`;
+  }
+
+  // ── Data fetch ─────────────────────────────────────────────────────────────
+  async function loadDashboard() {
+    try {
+      const res = await fetch('/api/dashboard');
+      const data = await res.json();
+
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+
+      // Use dates returned by server (Eastern time) rather than client UTC
+      const allDates = data.dates || [0, 1, 2].map(i => dateKey(i));
+      serverToday = allDates[0]; // most recent date = "today" per server
+      // Render only first 3 days; 4th is used only for trend comparison on day 3
+      const html = allDates.slice(0, 3).map((date, offset) => {
+        const prevDate = allDates[offset + 1];
+        return renderDayCard(
+          offset,
+          data.whoop?.[date],
+          data.checkins?.[date],
+          data.visible?.[date],
+          date,
+          prevDate ? data.whoop?.[prevDate] : null
+        );
+      }).join('');
+
+      document.getElementById('dashboard').innerHTML =
+        `<div class="section-label" style="margin-top:4px">Past 3 Days</div><div class="day-cards">${html}</div>`;
+
+      const now = new Date().toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+      document.getElementById('last-updated').textContent = `Updated ${now}`;
+      document.getElementById('footer').textContent = `Cadence · Spectator Health · ${now}`;
+
+    } catch (err) {
+      document.getElementById('loading').textContent = 'Error loading dashboard: ' + err.message;
+    }
+  }
+
+  loadDashboard();
+
+  // Auto-refresh every 5 minutes
+  setInterval(loadDashboard, 5 * 60 * 1000);
+</script>
+</body>
+</html>

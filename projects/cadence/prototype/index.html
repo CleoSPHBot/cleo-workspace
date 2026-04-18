@@ -103,6 +103,14 @@
 
     /* Past days list */
     .past-days { display: flex; flex-direction: column; gap: 10px; }
+    .upload-card {
+      background: #1e1e2e; border-radius: 16px; padding: 16px 20px;
+      display: flex; align-items: center; gap: 16px; cursor: pointer;
+      border: 1px solid #333; transition: background 0.15s;
+    }
+    .upload-card:active { background: #2a2a3e; }
+    .upload-label { font-size: 16px; font-weight: 600; color: #e0e0e0; }
+    .upload-sub { font-size: 13px; color: #888; margin-top: 2px; }
     .day-row {
       background: #1e2d3d;
       border-radius: 14px;
@@ -283,6 +291,21 @@
 
   <div class="section-label">Previous days</div>
   <div class="past-days" id="past-days-list"></div>
+
+  <div style="margin-top:28px;text-align:center">
+    <a href="/dashboard" style="display:inline-block;padding:10px 24px;background:#1e2d3d;color:#7a9ab8;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;border:1px solid #2a3d54">📊 Dashboard</a>
+  </div>
+
+  <div class="section-label" style="margin-top:24px">Data</div>
+  <div class="upload-card" onclick="document.getElementById('visible-file-input').click()">
+    <div style="font-size:28px">📊</div>
+    <div>
+      <div class="upload-label">Upload Visible Export</div>
+      <div class="upload-sub">Tap to import a Visible CSV file</div>
+    </div>
+  </div>
+  <input type="file" id="visible-file-input" accept=".csv" style="display:none" onchange="uploadVisible(event)">
+  <div id="upload-result" style="display:none;margin-top:10px;padding:12px 16px;border-radius:12px;font-size:14px;text-align:center"></div>
 </div>
 
 <!-- ══════════════════════════════════════════
@@ -536,20 +559,28 @@
   const completedDays = new Set(); // e.g. Set(['2026-04-14'])
 
   // ── Date helpers ───────────────────────────────────
+  // Use Eastern time (Hannah's timezone) for all date calculations
+  function easternNow() {
+    return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+  }
+
   function dateKey(offset = 0) {
-    const d = new Date();
-    d.setDate(d.getDate() - offset);
-    return d.toISOString().slice(0, 10); // YYYY-MM-DD
+    // Prefer server-provided today to avoid browser UTC mismatch
+    const base = window._serverToday
+      ? new Date(window._serverToday + 'T12:00:00')
+      : easternNow();
+    base.setDate(base.getDate() - offset);
+    return base.toISOString().slice(0, 10);
   }
 
   function formatDate(offset = 0) {
-    const d = new Date();
+    const d = easternNow();
     d.setDate(d.getDate() - offset);
     return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
   }
 
   function formatDateShort(offset = 0) {
-    const d = new Date();
+    const d = easternNow();
     d.setDate(d.getDate() - offset);
     return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   }
@@ -557,7 +588,7 @@
   function dayName(offset = 0) {
     if (offset === 0) return 'Today';
     if (offset === 1) return 'Yesterday';
-    const d = new Date();
+    const d = easternNow();
     d.setDate(d.getDate() - offset);
     return d.toLocaleDateString('en-US', { weekday: 'long' });
   }
@@ -584,8 +615,8 @@
 
     if (todayDone) {
       todayCard.classList.add('done');
-      document.getElementById('today-cta-label').textContent = '✓ Check-in complete';
-      document.getElementById('today-cta-btn').textContent = 'Edit';
+      document.getElementById('today-cta-label').textContent = '✓ Check-in saved';
+      document.getElementById('today-cta-btn').textContent = 'Update →';
     } else {
       todayCard.classList.remove('done');
       document.getElementById('today-cta-label').textContent = 'Not checked in yet';
@@ -615,8 +646,20 @@
     document.getElementById('progress').style.width = '0%';
   }
 
+  // ── Question field mappings (question number → answer field name + options) ────
+  const Q_FIELDS = {
+    1: { field: 'feeling',    options: { good: '🟢 Good', mixed: '🟡 Mixed', bad: '🔴 Bad' } },
+    2: { field: 'pem',       options: { none: '✅ None', mild: '🟡 Mild', moderate: '🟠 Moderate', severe: '🔴 Severe' } },
+    3: { field: 'brain_fog', options: { none: '✅ None', mild: '🟡 Mild', moderate: '🟠 Moderate', severe: '🔴 Severe' } },
+    4: { field: 'pain',      options: { none: '✅ None', mild: '🟡 Mild', moderate: '🟠 Moderate', severe: '🔴 Severe' } },
+    5: { field: 'activity',  options: { rested: '🟢 Rested', light: '🟡 Light activity', demanding: '🔴 Demanding' } },
+    6: { field: 'left_home', options: { yes: '✅ Yes', no: '❌ No' } },
+    7: { field: 'food',      options: { clean: '🟢 Clean', mixed: '🟡 Mixed', inflammatory: '🔴 Inflammatory' } },
+    8: { field: 'probiotics',options: { yes: '✅ Yes', no: '❌ No' } },
+  };
+
   // ── Start a check-in for a given day offset ────────
-  function startCheckin(offset) {
+  async function startCheckin(offset) {
     activeDayOffset = offset;
     activeDate = dateKey(offset);
 
@@ -634,6 +677,37 @@
                 : offset === 1 ? 'Yesterday · ' + formatDateShort(1)
                 : dayName(offset) + ' · ' + formatDateShort(offset);
     document.querySelectorAll('[id^="q-date-tag-"]').forEach(el => el.textContent = label);
+
+    // Pre-populate from stored data if this day already has answers
+    try {
+      const resp = await fetch('/api/checkin/' + activeDate);
+      const result = await resp.json();
+      if (result.found && result.data) {
+        const d = result.data;
+        for (const [qNum, { field, options }] of Object.entries(Q_FIELDS)) {
+          const val = d[field];
+          if (!val) continue;
+          const label = options[val];
+          if (!label) continue;
+          answers[qNum] = { val, label };
+          // Highlight the matching button
+          const screen = document.getElementById('screen-' + qNum);
+          if (screen) {
+            screen.querySelectorAll('.option-btn').forEach(b => {
+              if (b.getAttribute('onclick')?.includes("'" + val + "'")) {
+                b.classList.add('selected');
+              }
+            });
+          }
+          const nextBtn = document.getElementById('next-' + qNum);
+          if (nextBtn) nextBtn.disabled = false;
+        }
+        if (d.notes) document.getElementById('notes-field').value = d.notes;
+      }
+    } catch (e) {
+      // Non-fatal — just start fresh if fetch fails
+      console.warn('Could not load prior answers:', e);
+    }
 
     goTo(1);
   }
@@ -702,6 +776,38 @@
   }
 
   // ── Submit ─────────────────────────────────────────
+  async function uploadVisible(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const resultEl = document.getElementById('upload-result');
+    resultEl.style.display = 'block';
+    resultEl.style.background = '#1e1e2e';
+    resultEl.style.color = '#aaa';
+    resultEl.textContent = '⏳ Uploading...';
+
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      const resp = await fetch('/api/visible/upload', { method: 'POST', body: formData });
+      const data = await resp.json();
+      if (data.ok) {
+        resultEl.style.background = '#1a2e1a';
+        resultEl.style.color = '#6fcf97';
+        resultEl.textContent = `✅ Imported ${data.days_imported} days (${data.rows} rows) · ${data.date_range}`;
+      } else {
+        resultEl.style.background = '#2e1a1a';
+        resultEl.style.color = '#eb5757';
+        resultEl.textContent = `❌ Error: ${data.error}`;
+      }
+    } catch (err) {
+      resultEl.style.background = '#2e1a1a';
+      resultEl.style.color = '#eb5757';
+      resultEl.textContent = `❌ Upload failed: ${err.message}`;
+    }
+    // Reset file input so same file can be re-uploaded
+    event.target.value = '';
+  }
+
   async function submitCheckin() {
     const payload = {
       date: activeDate,
@@ -741,9 +847,14 @@
   }
 
   // ── Init ───────────────────────────────────────────
+  // Get today's date from server (Eastern time) to avoid browser UTC mismatch
   fetch('/api/checkin/status?days=7')
     .then(r => r.json())
-    .then(data => { Object.keys(data.completed).forEach(d => completedDays.add(d)); })
+    .then(data => {
+      Object.keys(data.completed).forEach(d => completedDays.add(d));
+      // Override dateKey(0) with server's today
+      if (data.today) window._serverToday = data.today;
+    })
     .catch(() => {})
     .finally(() => buildHome());
 </script>

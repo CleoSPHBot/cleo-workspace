@@ -101,7 +101,7 @@
 - **Stack:** AWS Lambda + API Gateway, MongoDB `cadence-dev` (dev-cluster-02.qpkxl.mongodb.net)
 - **Credentials:** stored in `projects/cadence/credentials.md` (not in MEMORY.md)
 - **Status (Apr 16):** Backfill complete — 2,272 `whoop_daily` docs (David + Hannah back to Dec 2022). Visible data in `visible_daily` (177 days). Lambda recovery fix generated (Claude Code, Apr 14) — pending deployment confirmation. iOS check-in prototype live at http://100.70.3.21:8765. Hannah invited to tailnet.
-- **iOS check-in app:** 7 questions, traffic light (🟢🟡🔴) UX. Brain fog = #1 constraint, under 60s on worst days. Fields: feeling, PEM, brain fog, pain, activity type, left home, food. iMessage questionnaire sent to Hannah — feedback pending.
+- **iOS check-in app:** 8 questions (updated Apr 16), traffic light (🟢🟡🔴) UX. Brain fog = #1 constraint, under 60s on worst days. Fields: feeling, PEM, brain fog, pain, activity type, left home, food, probiotics. iMessage questionnaire sent to Hannah — feedback pending.
 - **LC phenotype:** Hannah = Gut/Viral persistence + PEM/Dysautonomia hybrid. v2 vision: phenotype-adaptive app.
 - **Pacing literature (key finding):** Ghali 2023 — pacing adherence is the single best predictor of recovery (OR 40.43). PACELOC 2025: 15% weekly reduction in PEM with structured pacing. GET is contraindicated (WHO, CDC, NICE). Heart rate monitoring is the tool (anaerobic threshold).
 - **Probiotics for Hannah:** SIM01/G-NiiB (B. adolescentis + B. bifidum + B. longum + GOS + XOS + resistant dextrin). RECOVERY trial: 10B CFU ×2/day × 6 months (Lancet ID 2023). "G-NiiB Immunity Elite" on Amazon US. Take at night. Rationale: Freire 2026 gut immune dysregulation → microbiome restoration.
@@ -110,7 +110,9 @@
 - **WHOOP endpoints:** Sleep `GET /v2/activity/sleep/{uuid}` | Workout `GET /v2/activity/workout/{uuid}` | Recovery: `GET /v2/recovery?limit=10` + match `sleep_id` | Cycle `GET /v1/cycle/{id}`
 - **Webhook URL:** `https://nldsq794q0.execute-api.us-west-2.amazonaws.com/webhook` | Login: `.../login` | Secret: `com.sph.dev.whoop`
 - **David WHOOP user_id:** 206067 (hdmunguia@gmail.com) | **Hannah WHOOP user_id:** 6729032 (hannah.munguia@gmail.com)
-- **MongoDB collections:** `user`, `webhook_event`, `whoop_daily`, `visible_daily`
+- **MongoDB collections:** `user`, `webhook_event`, `whoop_daily`, `visible_daily`, `self_report` (check-in data)
+- **v2 Design Decision (Apr 16):** Dynamic question schema — questions stored in MongoDB `questions` collection (not hardcoded). Enables add/remove without deploys, versioning, A/B testing. Schema: `question_id`, `version`, `active`, `order`, `text`, `type`, `options`. Types: `traffic_light`, `yes_no`, `scale`, `text`. Priority: v2.
+- **Server.js:** runs at port 8765, reads MongoDB URI from `/home2/cleo/mongo_uri`, saves to `self_report` collection keyed on `{user_id, date}`
 - **Oura Ring:** v2 API at cloud.ouraring.com/v2/docs. Adds skin temp deviation, resilience score. Hannah doesn't have one yet — TBD.
 - **Gemini / OpenAI:** Neither API configured currently. David may add for Cadence analysis.
 - **File transfer:** David drops files in `/home2/cleo/for-cleo/` — workaround for Teams desktop attachment issue
