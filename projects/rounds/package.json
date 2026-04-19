@@ -1,0 +1,17 @@
+{
+  "name": "rounds",
+  "version": "1.0.0",
+  "description": "Build a doctor and nurse-facing clinical companion app for the Spectator Health EHR — optimized for patient status visibility and collaborative e-prescribing in long-term care settings.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

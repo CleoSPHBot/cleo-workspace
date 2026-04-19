@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Rounds — Dashboard</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  :root {
+    --sph-blue: #1a5f8a;
+    --sph-blue-dark: #154d72;
+    --red: #e53935;
+    --yellow: #f59e0b;
+    --green: #22c55e;
+    --gray: #6b7280;
+    --gray-light: #f3f4f6;
+    --border: #e5e7eb;
+    --text: #111827;
+    --text-sec: #6b7280;
+    --surface: #ffffff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+    background: var(--gray-light);
+    color: var(--text);
+    max-width: 390px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  /* Status bar simulation */
+  .status-bar {
+    background: var(--surface);
+    padding: 14px 20px 8px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* Tab toggle */
+  .tab-toggle {
+    background: var(--surface);
+    padding: 8px 16px 0;
+    display: flex;
+    border-bottom: 1px solid var(--border);
+  }
+  .toggle-btn {
+    flex: 1;
+    text-align: center;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-sec);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+  }
+  .toggle-btn.active {
+    color: var(--sph-blue);
+    border-bottom-color: var(--sph-blue);
+    font-weight: 600;
+  }
+
+  /* Resident list */
+  .resident-list { padding: 0; }
+
+  .resident-row {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+  }
+  .resident-row:active { background: #f9fafb; }
+
+  .urgency-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    border-radius: 0;
+  }
+  .urgency-bar.red { background: var(--red); }
+  .urgency-bar.yellow { background: var(--yellow); }
+  .urgency-bar.none { background: transparent; }
+
+  .resident-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #d1d5db;
+    margin-left: 6px;
+    margin-right: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: white;
+  }
+  .resident-avatar.f { background: #9c85c0; }
+  .resident-avatar.m { background: #6b95c8; }
+
+  .resident-info { flex: 1; }
+  .resident-name { font-size: 15px; font-weight: 600; }
+  .resident-sub { font-size: 13px; color: var(--text-sec); margin-top: 2px; }
+
+  .resident-chevron { color: #d1d5db; font-size: 18px; }
+
+  /* Alert tab */
+  .alert-item {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 16px;
+    display: flex;
+    gap: 12px;
+    cursor: pointer;
+    align-items: flex-start;
+  }
+  .alert-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+  .alert-dot.red { background: var(--red); }
+  .alert-dot.yellow { background: var(--yellow); }
+  .alert-content { flex: 1; }
+  .alert-name { font-size: 14px; font-weight: 600; }
+  .alert-msg { font-size: 13px; color: var(--text-sec); margin-top: 2px; }
+  .alert-time { font-size: 11px; color: var(--text-sec); margin-top: 4px; }
+  .resolve-btn {
+    background: var(--sph-blue);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Bottom nav */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 390px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    display: flex;
+    padding: 10px 0 28px;
+  }
+  .nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+    color: var(--text-sec);
+  }
+  .nav-item.active { color: var(--sph-blue); }
+  .nav-icon { font-size: 22px; }
+
+  .spacer { height: 90px; }
+
+  /* Section header in list */
+  .list-section-hdr {
+    padding: 10px 16px 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-sec);
+    background: var(--gray-light);
+  }
+</style>
+</head>
+<body>
+
+<!-- Status bar -->
+<div class="status-bar">
+  <span>9:41</span>
+  <span>▶ 📶 🔋</span>
+</div>
+
+<!-- Toggle -->
+<div class="tab-toggle">
+  <div class="toggle-btn" onclick="showTab('alerts')" id="tab-alerts-btn">Alerts</div>
+  <div class="toggle-btn active" onclick="showTab('residents')" id="tab-residents-btn">Residents</div>
+</div>
+
+<!-- Alerts tab -->
+<div id="tab-alerts" style="display:none;">
+  <div class="alert-item">
+    <div class="alert-dot red"></div>
+    <div class="alert-content">
+      <div class="alert-name">Marion Johnson</div>
+      <div class="alert-msg">Meena is seeking help — Common Room</div>
+      <div class="alert-time">08/25/2023 12:35pm</div>
+    </div>
+    <button class="resolve-btn">Resolve</button>
+  </div>
+  <div class="alert-item">
+    <div class="alert-dot red"></div>
+    <div class="alert-content">
+      <div class="alert-name">Sally Fields</div>
+      <div class="alert-msg">BP 172/98 — Elevated, needs assessment</div>
+      <div class="alert-time">08/25/2023 11:48am</div>
+    </div>
+    <button class="resolve-btn">Resolve</button>
+  </div>
+  <div class="alert-item">
+    <div class="alert-dot yellow"></div>
+    <div class="alert-content">
+      <div class="alert-name">Soloman Bergamel</div>
+      <div class="alert-msg">Medication pass due — 2:00 PM</div>
+      <div class="alert-time">08/25/2023 10:20am</div>
+    </div>
+    <button class="resolve-btn">Resolve</button>
+  </div>
+</div>
+
+<!-- Residents tab -->
+<div id="tab-residents">
+  <div class="resident-list">
+
+    <a class="resident-row" href="patient.html">
+      <div class="urgency-bar red"></div>
+      <div class="resident-avatar f">MJ</div>
+      <div class="resident-info">
+        <div class="resident-name">Marion Johnson</div>
+        <div class="resident-sub">Room 101, Female, 72 yr</div>
+      </div>
+      <div class="resident-chevron">›</div>
+    </a>
+
+    <a class="resident-row" href="patient.html">
+      <div class="urgency-bar red"></div>
+      <div class="resident-avatar f">SF</div>
+      <div class="resident-info">
+        <div class="resident-name">Sally Fields</div>
+        <div class="resident-sub">Room 102, Female, 82 yr</div>
+      </div>
+      <div class="resident-chevron">›</div>
+    </a>
+
+    <a class="resident-row" href="patient.html?id=3">
+      <div class="urgency-bar yellow"></div>
+      <div class="resident-avatar m">SB</div>
+      <div class="resident-info">
+        <div class="resident-name">Soloman Bergamel</div>
+        <div class="resident-sub">Room 103, Male, 87 yr</div>
+      </div>
+      <div class="resident-chevron">›</div>
+    </a>
+
+    <a class="resident-row" href="patient.html?id=4">
+      <div class="urgency-bar none"></div>
+      <div class="resident-avatar f">IC</div>
+      <div class="resident-info">
+        <div class="resident-name">Imogene Coca</div>
+        <div class="resident-sub">Room 101, Female, 72 yr</div>
+      </div>
+      <div class="resident-chevron">›</div>
+    </a>
+
+    <a class="resident-row" href="patient.html?id=5">
+      <div class="urgency-bar none"></div>
+      <div class="resident-avatar f">CS</div>
+      <div class="resident-info">
+        <div class="resident-name">Cathy Simpson</div>
+        <div class="resident-sub">Room 104, Female, 91 yr</div>
+      </div>
+      <div class="resident-chevron">›</div>
+    </a>
+
+    <a class="resident-row" href="patient.html?id=6">
+      <div class="urgency-bar none"></div>
+      <div class="resident-avatar m">CJ</div>
+      <div class="resident-info">
+        <div class="resident-name">Craig Johnson</div>
+        <div class="resident-sub">Room 105, Male, 94 yr</div>
+      </div>
+      <div class="resident-chevron">›</div>
+    </a>
+
+  </div>
+</div>
+
+<div class="spacer"></div>
+
+<!-- Bottom nav -->
+<div class="bottom-nav">
+  <div class="nav-item active">
+    <div class="nav-icon">🏠</div>
+  </div>
+  <div class="nav-item">
+    <div class="nav-icon">✉️</div>
+  </div>
+  <div class="nav-item">
+    <div class="nav-icon">🔍</div>
+  </div>
+  <div class="nav-item">
+    <div class="nav-icon">⚙️</div>
+  </div>
+  <div class="nav-item">
+    <div class="nav-icon">👤</div>
+  </div>
+</div>
+
+<script>
+function showTab(name) {
+  document.getElementById('tab-alerts').style.display = name === 'alerts' ? 'block' : 'none';
+  document.getElementById('tab-residents').style.display = name === 'residents' ? 'block' : 'none';
+  document.getElementById('tab-alerts-btn').className = 'toggle-btn' + (name === 'alerts' ? ' active' : '');
+  document.getElementById('tab-residents-btn').className = 'toggle-btn' + (name === 'residents' ? ' active' : '');
+}
+</script>
+</body>
+</html>

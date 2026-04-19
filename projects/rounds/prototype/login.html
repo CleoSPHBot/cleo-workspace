@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Spectator Health — Rounds</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+    background: linear-gradient(160deg, #1a5f8a 0%, #0d3a56 100%);
+    min-height: 100vh;
+    max-width: 390px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 32px;
+  }
+
+  .logo-wrap {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .logo-icon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 16px;
+  }
+  /* SVG eye+cross logo inline */
+  .brand-name {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .brand-sub {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .form-group { width: 100%; margin-bottom: 12px; }
+  .input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .input-icon {
+    position: absolute;
+    left: 14px;
+    font-size: 16px;
+    opacity: 0.6;
+  }
+  input {
+    width: 100%;
+    padding: 14px 14px 14px 42px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  input::placeholder { color: rgba(255,255,255,0.5); }
+  input:focus { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.5); }
+
+  .login-btn {
+    width: 100%;
+    padding: 15px;
+    background: white;
+    color: #1a5f8a;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+  .login-btn:hover { background: #f0f4f8; }
+
+  .role-hint {
+    color: rgba(255,255,255,0.5);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .role-links { display: flex; gap: 12px; justify-content: center; margin-top: 8px; }
+  .role-link {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+
+<div class="logo-wrap">
+  <svg class="logo-icon" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="36" cy="36" rx="34" ry="34" fill="rgba(255,255,255,0.15)"/>
+    <!-- Eye shape -->
+    <path d="M8 36 C16 22, 56 22, 64 36 C56 50, 16 50, 8 36Z" fill="white" opacity="0.9"/>
+    <!-- Pupil circle -->
+    <circle cx="36" cy="36" r="13" fill="#1a5f8a"/>
+    <!-- Cross / plus -->
+    <rect x="33" y="28" width="6" height="16" rx="2" fill="white"/>
+    <rect x="28" y="33" width="16" height="6" rx="2" fill="white"/>
+  </svg>
+  <div class="brand-name">Spectator</div>
+  <div class="brand-sub">Health</div>
+</div>
+
+<div class="form-group">
+  <div class="input-wrap">
+    <span class="input-icon">👤</span>
+    <input type="text" placeholder="Username">
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="input-wrap">
+    <span class="input-icon">🔒</span>
+    <input type="password" placeholder="Password">
+  </div>
+</div>
+
+<button class="login-btn" onclick="window.location='index.html'">Login</button>
+
+<div class="role-hint">Continue as demo:</div>
+<div class="role-links">
+  <span class="role-link" onclick="window.location='index.html'">Nurse</span>
+  <span class="role-link" onclick="window.location='index.html'">Doctor</span>
+  <span class="role-link" onclick="window.location='index.html'">Med Tech</span>
+</div>
+
+</body>
+</html>

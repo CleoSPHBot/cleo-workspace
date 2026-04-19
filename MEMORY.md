@@ -80,7 +80,9 @@
 - **Prescribing workflow:** Verbal order → Nurse stages (DRAFT) → Doctor signs → Surescripts transmits
 - **Order states:** DRAFT → STAGED → SIGNED → TRANSMITTED → CONFIRMED → ADMINISTERED
 - **Project file:** `projects/rounds/README.md`
-- **Figma:** David has EHR designs at figma.com/design/FF0O3AiVbjlIr6tuk2RavO (screenshots pending)
+- **Figma EHR:** `FF0O3AiVbjlIr6tuk2RavO` — Responsive-UI, 36 sections (Screens - New), last modified 2026-04-16
+- **Figma Mobile:** `cr2l2yq0YFn6PGR3luD1tk` — Mobile App, 20 screens (Mobile Screens page)
+- **Figma token:** `/home2/cleo/figma-key` (personal access token, Figma REST API ready)
 - **Status:** Initial scoping done. Complexity: full stack (workflow, real-time sync, FHIR+Surescripts+FDB, event pipeline)
 
 ## Key Decisions & Lessons
@@ -112,8 +114,20 @@
 - **David WHOOP user_id:** 206067 (hdmunguia@gmail.com) | **Hannah WHOOP user_id:** 6729032 (hannah.munguia@gmail.com)
 - **MongoDB collections:** `user`, `webhook_event`, `whoop_daily`, `visible_daily`, `self_report` (check-in data)
 - **v2 Design Decision (Apr 16):** Dynamic question schema — questions stored in MongoDB `questions` collection (not hardcoded). Enables add/remove without deploys, versioning, A/B testing. Schema: `question_id`, `version`, `active`, `order`, `text`, `type`, `options`. Types: `traffic_light`, `yes_no`, `scale`, `text`. Priority: v2.
-- **Server.js:** runs at port 8765, reads MongoDB URI from `/home2/cleo/mongo_uri`, saves to `self_report` collection keyed on `{user_id, date}`
+- **Server.js:** runs at port 8765, reads MongoDB URI from `/home2/cleo/mongo_uri`, saves to `self_report` collection keyed on `{user_id, date}`. ⚠️ Not daemonized — needs pm2 or systemd.
+- **Cadence app features (as of Apr 17):** Visible CSV upload (`POST /api/visible/upload`, multer + csv-parse → `visible_daily`); pre-population (`GET /api/checkin/:date`); server drives Eastern time `today` to avoid UTC mismatch; "Update →" button when today has data
+- **Dashboard:** `/dashboard` → `dashboard.html`, `/api/dashboard` endpoint. 3-day view: WHOOP metrics + check-in pills + Visible highlights. Auto-refreshes every 5 min, Eastern time aware, no-cache headers.
 - **Oura Ring:** v2 API at cloud.ouraring.com/v2/docs. Adds skin temp deviation, resilience score. Hannah doesn't have one yet — TBD.
+
+## LC Wiki
+- Built Apr 17 using Karpathy's LLM wiki pattern — incremental, compounding knowledge base
+- Location: `projects/cadence/wiki/` — Obsidian-compatible wikilinks throughout
+- Schema: `AGENTS.md`, `index.md`, `log.md`, `raw/`, `sources/`, `entities/`, `concepts/`, `synthesis/`
+- **99 pages total:** 33 sources, 29 entities, 36 concepts, 1 synthesis overview
+- Built via 4 parallel Sonnet subagents + Opus synthesis pass
+- **Repo:** `github.com/CleoSPHBot/lc-wiki` (private, PAT at `/home2/cleo/.github_token`)
+- Key contradictions flagged in synthesis: metformin (prevention vs treatment), GET/CBT harm, spike persistence evidence
+- No PHI — papers only, no patient-specific data
 - **Gemini / OpenAI:** Neither API configured currently. David may add for Cadence analysis.
 - **File transfer:** David drops files in `/home2/cleo/for-cleo/` — workaround for Teams desktop attachment issue
 

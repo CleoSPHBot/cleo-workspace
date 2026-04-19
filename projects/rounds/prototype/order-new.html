@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Rounds — New Order</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --blue: #1a73e8; --blue-light: #e8f0fe;
+    --green: #34a853; --green-light: #e6f4ea;
+    --yellow: #f9ab00; --yellow-light: #fef7e0;
+    --red: #ea4335; --red-light: #fce8e6;
+    --border: #e0e0e0; --text: #202124;
+    --text-secondary: #5f6368; --surface: #ffffff; --bg: #f4f6f9;
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); max-width: 430px; margin: 0 auto; min-height: 100vh; }
+
+  .nav {
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 12px 16px; display: flex; align-items: center; gap: 12px;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .back-btn { font-size: 22px; text-decoration: none; color: var(--text); }
+  .nav-title { font-size: 16px; font-weight: 600; flex: 1; }
+  .nav-sub { font-size: 11px; color: var(--text-secondary); }
+
+  .patient-banner {
+    background: var(--blue-light); border-bottom: 1px solid #1a73e830;
+    padding: 10px 16px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .banner-name { font-size: 14px; font-weight: 600; color: var(--blue); }
+  .banner-allergy { font-size: 11px; color: var(--red); font-weight: 500; }
+
+  .form-section { background: var(--surface); margin: 10px 12px; border-radius: 12px; border: 1px solid var(--border); overflow: hidden; }
+  .form-section-title { padding: 12px 14px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-secondary); background: var(--bg); border-bottom: 1px solid var(--border); }
+  .form-field { padding: 12px 14px; border-bottom: 1px solid var(--border); }
+  .form-field:last-child { border-bottom: none; }
+  .field-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-secondary); margin-bottom: 6px; }
+  
+  .search-box {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 15px; outline: none; background: var(--bg);
+  }
+  .search-box:focus { border-color: var(--blue); background: white; }
+
+  select, input[type="text"], input[type="number"], textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 14px; outline: none; background: var(--bg);
+    -webkit-appearance: none;
+  }
+  select:focus, input:focus, textarea:focus { border-color: var(--blue); background: white; }
+  textarea { resize: none; height: 70px; }
+
+  /* Drug search results */
+  .drug-results { margin-top: 6px; }
+  .drug-result {
+    padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px;
+    margin-bottom: 6px; cursor: pointer; background: white;
+    transition: border-color 0.15s;
+  }
+  .drug-result:hover { border-color: var(--blue); }
+  .drug-result.selected { border-color: var(--blue); background: var(--blue-light); }
+  .drug-name { font-size: 14px; font-weight: 600; }
+  .drug-meta { font-size: 11px; color: var(--text-secondary); margin-top: 2px; }
+  .drug-class { font-size: 11px; color: var(--blue); }
+
+  /* DDI warning */
+  .ddi-warning {
+    background: var(--yellow-light); border: 1px solid #f9ab0050; border-radius: 10px;
+    padding: 12px 14px; margin: 0 12px 10px;
+  }
+  .ddi-title { font-size: 13px; font-weight: 600; color: #8a6000; }
+  .ddi-detail { font-size: 12px; color: #5a4000; margin-top: 4px; line-height: 1.4; }
+
+  /* Step indicators */
+  .steps { display: flex; padding: 12px 16px; gap: 0; }
+  .step { flex: 1; text-align: center; }
+  .step-dot {
+    width: 24px; height: 24px; border-radius: 50%; margin: 0 auto 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700;
+  }
+  .step-dot.done { background: var(--green); color: white; }
+  .step-dot.active { background: var(--blue); color: white; }
+  .step-dot.todo { background: var(--border); color: var(--text-secondary); }
+  .step-label { font-size: 9px; text-transform: uppercase; color: var(--text-secondary); }
+  .step-line { flex: 1; height: 2px; background: var(--border); margin: 11px -8px 0; }
+  .step-line.done { background: var(--green); }
+
+  /* Action buttons */
+  .action-row { padding: 12px; display: flex; gap: 8px; }
+  .btn-secondary {
+    flex: 1; padding: 12px; border: 1px solid var(--border); background: white;
+    border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; color: var(--text);
+  }
+  .btn-primary {
+    flex: 2; padding: 12px; background: var(--blue); color: white;
+    border: none; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer;
+  }
+  .btn-primary:hover { background: #1557b0; }
+  .btn-primary.stage { background: #f9ab00; color: #3a2000; }
+  .btn-primary.stage:hover { background: #e09b00; }
+
+  /* Sig builder */
+  .sig-row { display: flex; gap: 8px; }
+  .sig-row select { flex: 1; }
+
+  /* Confirm overlay */
+  .overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+    z-index: 200; align-items: flex-end; justify-content: center;
+  }
+  .overlay.show { display: flex; }
+  .overlay-card {
+    background: white; border-radius: 20px 20px 0 0; padding: 20px 20px 40px;
+    width: 100%; max-width: 430px;
+  }
+  .overlay-title { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+  .overlay-sub { font-size: 13px; color: var(--text-secondary); margin-bottom: 16px; }
+  .overlay-rx { background: var(--bg); border-radius: 10px; padding: 14px; margin-bottom: 16px; }
+  .overlay-rx-name { font-size: 16px; font-weight: 700; }
+  .overlay-rx-sig { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+  .overlay-rx-note { font-size: 12px; color: var(--text-secondary); margin-top: 8px; font-style: italic; }
+  .overlay-ddi { background: var(--yellow-light); border-radius: 10px; padding: 12px; margin-bottom: 12px; font-size: 12px; color: #5a4000; }
+  .stage-btn {
+    width: 100%; padding: 16px; background: #f9ab00; color: #3a2000;
+    border: none; border-radius: 12px; font-size: 16px; font-weight: 700; cursor: pointer;
+  }
+  .stage-btn:hover { background: #e09b00; }
+  .cancel-link { display: block; text-align: center; margin-top: 12px; color: var(--text-secondary); font-size: 14px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <a class="back-btn" href="patient.html">‹</a>
+  <div>
+    <div class="nav-title">New Prescription</div>
+    <div class="nav-sub">Margaret Thornton · Room 204-A</div>
+  </div>
+</div>
+
+<!-- Progress steps -->
+<div class="steps">
+  <div class="step">
+    <div class="step-dot active">1</div>
+    <div class="step-label">Drug</div>
+  </div>
+  <div class="step-line"></div>
+  <div class="step">
+    <div class="step-dot todo">2</div>
+    <div class="step-label">Sig</div>
+  </div>
+  <div class="step-line"></div>
+  <div class="step">
+    <div class="step-dot todo">3</div>
+    <div class="step-label">Review</div>
+  </div>
+  <div class="step-line"></div>
+  <div class="step">
+    <div class="step-dot todo">4</div>
+    <div class="step-label">Stage</div>
+  </div>
+</div>
+
+<!-- Allergy banner -->
+<div class="patient-banner">
+  <div class="banner-name">Margaret Thornton, 84F</div>
+  <div class="banner-allergy">⚠️ PCN · Sulfa</div>
+</div>
+
+<!-- Step 1: Drug search -->
+<div id="step1">
+  <div class="form-section">
+    <div class="form-section-title">🔍 Search Drug</div>
+    <div class="form-field">
+      <div class="field-label">Drug Name</div>
+      <input class="search-box" type="text" id="drugSearch" placeholder="e.g. furosemide, metoprolol..." oninput="onSearch(this.value)">
+      <div class="drug-results" id="drugResults"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Step 2: Sig builder (hidden initially) -->
+<div id="step2" style="display:none;">
+  <div class="form-section">
+    <div class="form-section-title">💊 Selected Drug</div>
+    <div class="form-field">
+      <div class="drug-result selected" id="selectedDrug">
+        <div class="drug-name" id="selectedDrugName">Furosemide 40 mg tablet</div>
+        <div class="drug-meta" id="selectedDrugMeta">Loop Diuretic · NDC 00781-1077-10</div>
+        <div class="drug-class" id="selectedDrugClass">Loop Diuretics (ETC)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="form-section-title">📝 Sig (Instructions)</div>
+    <div class="form-field">
+      <div class="field-label">Route</div>
+      <select id="route">
+        <option>By mouth (PO)</option>
+        <option>Sublingual (SL)</option>
+        <option>IV push</option>
+        <option>IV infusion</option>
+        <option>IM injection</option>
+        <option>Topical</option>
+        <option>Inhaled</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <div class="field-label">Frequency</div>
+      <select id="frequency">
+        <option>Once daily (QD)</option>
+        <option>Twice daily (BID)</option>
+        <option>Three times daily (TID)</option>
+        <option>Four times daily (QID)</option>
+        <option>Every 8 hours (Q8H)</option>
+        <option>Every 12 hours (Q12H)</option>
+        <option>Every 4-6 hours PRN</option>
+        <option>Once (STAT)</option>
+      </select>
+    </div>
+    <div class="form-field">
+      <div class="field-label">PRN Reason (optional)</div>
+      <input type="text" placeholder="e.g. pain, anxiety, nausea...">
+    </div>
+    <div class="form-field">
+      <div class="field-label">Indication / Notes for MD</div>
+      <textarea id="indication" placeholder="e.g. For fluid retention / bilateral ankle edema noted this AM, BP 158/94..."></textarea>
+    </div>
+  </div>
+
+  <!-- DDI warning (shown when relevant) -->
+  <div class="ddi-warning" id="ddiWarning">
+    <div class="ddi-title">⚠️ Drug Interaction Detected</div>
+    <div class="ddi-detail"><strong>Furosemide + Digoxin</strong> — Moderate interaction. Furosemide-induced hypokalemia may increase digoxin toxicity risk. Monitor potassium levels and signs of digoxin toxicity.</div>
+  </div>
+
+  <div class="action-row">
+    <button class="btn-secondary" onclick="goStep(1)">← Back</button>
+    <button class="btn-primary stage" onclick="showConfirm()">Stage for MD Review →</button>
+  </div>
+</div>
+
+<!-- Confirm overlay -->
+<div class="overlay" id="confirmOverlay">
+  <div class="overlay-card">
+    <div class="overlay-title">Stage Order</div>
+    <div class="overlay-sub">This will send the order to Dr. Patel for review and signature.</div>
+    <div class="overlay-rx">
+      <div class="overlay-rx-name">Furosemide 40 mg tablet</div>
+      <div class="overlay-rx-sig">PO · Once daily · For fluid retention</div>
+      <div class="overlay-rx-note">Margaret Thornton · Room 204-A · 84F</div>
+    </div>
+    <div class="overlay-ddi">
+      ⚠️ <strong>Interaction flagged:</strong> Furosemide + Digoxin (Moderate). Noted in order. MD will review.
+    </div>
+    <button class="stage-btn" onclick="stageOrder()">📋 Stage for MD Signature</button>
+    <div class="cancel-link" onclick="document.getElementById('confirmOverlay').classList.remove('show')">Cancel</div>
+  </div>
+</div>
+
+<!-- Success overlay -->
+<div class="overlay" id="successOverlay">
+  <div class="overlay-card" style="text-align:center;">
+    <div style="font-size:48px;margin-bottom:12px;">✅</div>
+    <div class="overlay-title">Order Staged</div>
+    <div class="overlay-sub" style="margin-bottom:20px;">Dr. Patel has been notified and will review the order shortly.</div>
+    <div class="overlay-rx" style="text-align:left;">
+      <div class="overlay-rx-name">Furosemide 40 mg</div>
+      <div class="overlay-rx-sig">PO · Once daily</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--blue);font-weight:600;">Status: STAGED — Awaiting MD Signature</div>
+    </div>
+    <button class="stage-btn" style="background:var(--blue);color:white;margin-top:16px;" onclick="window.location='patient.html'">Back to Patient →</button>
+  </div>
+</div>
+
+<script>
+const drugs = [
+  { name: 'Furosemide 40 mg tablet', meta: 'Loop Diuretic · NDC 00781-1077-10', cls: 'Loop Diuretics', ddi: true },
+  { name: 'Furosemide 20 mg tablet', meta: 'Loop Diuretic · NDC 00781-1076-10', cls: 'Loop Diuretics', ddi: true },
+  { name: 'Furosemide 80 mg tablet', meta: 'Loop Diuretic · NDC 00781-1078-10', cls: 'Loop Diuretics', ddi: true },
+  { name: 'Metoprolol succinate 25 mg ER tablet', meta: 'Beta Blocker · NDC 00186-1088-31', cls: 'Beta-Adrenergic Blockers', ddi: false },
+  { name: 'Metoprolol tartrate 25 mg tablet', meta: 'Beta Blocker · NDC 00378-0285-01', cls: 'Beta-Adrenergic Blockers', ddi: false },
+  { name: 'Lisinopril 5 mg tablet', meta: 'ACE Inhibitor · NDC 00093-1018-01', cls: 'ACE Inhibitors', ddi: false },
+  { name: 'Lisinopril 10 mg tablet', meta: 'ACE Inhibitor · NDC 00093-1019-01', cls: 'ACE Inhibitors', ddi: false },
+  { name: 'Amlodipine 5 mg tablet', meta: 'Calcium Channel Blocker · NDC 00069-1540-30', cls: 'Calcium Channel Blockers', ddi: false },
+];
+
+let selectedDrug = null;
+let currentStep = 1;
+
+function onSearch(val) {
+  const q = val.toLowerCase();
+  if (q.length < 2) { document.getElementById('drugResults').innerHTML = ''; return; }
+  const matches = drugs.filter(d => d.name.toLowerCase().includes(q));
+  document.getElementById('drugResults').innerHTML = matches.map((d, i) =>
+    `<div class="drug-result" onclick="selectDrug(${drugs.indexOf(d)})">
+      <div class="drug-name">${d.name}</div>
+      <div class="drug-meta">${d.meta}</div>
+      <div class="drug-class">${d.cls}</div>
+    </div>`
+  ).join('');
+}
+
+function selectDrug(idx) {
+  selectedDrug = drugs[idx];
+  document.getElementById('selectedDrugName').textContent = selectedDrug.name;
+  document.getElementById('selectedDrugMeta').textContent = selectedDrug.meta;
+  document.getElementById('selectedDrugClass').textContent = selectedDrug.cls;
+  document.getElementById('ddiWarning').style.display = selectedDrug.ddi ? 'block' : 'none';
+  goStep(2);
+}
+
+function goStep(n) {
+  currentStep = n;
+  document.getElementById('step1').style.display = n === 1 ? 'block' : 'none';
+  document.getElementById('step2').style.display = n === 2 ? 'block' : 'none';
+  
+  // Update step dots
+  const dots = document.querySelectorAll('.step-dot');
+  dots.forEach((d, i) => {
+    d.className = 'step-dot ' + (i+1 < n ? 'done' : i+1 === n ? 'active' : 'todo');
+    d.textContent = i+1 < n ? '✓' : i+1;
+  });
+  const lines = document.querySelectorAll('.step-line');
+  lines.forEach((l, i) => l.className = 'step-line ' + (i+1 < n ? 'done' : ''));
+}
+
+function showConfirm() {
+  document.getElementById('confirmOverlay').classList.add('show');
+}
+
+function stageOrder() {
+  document.getElementById('confirmOverlay').classList.remove('show');
+  document.getElementById('successOverlay').classList.add('show');
+}
+</script>
+</body>
+</html>

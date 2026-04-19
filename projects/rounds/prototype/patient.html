@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Rounds — Resident Detail</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  :root {
+    --sph-blue: #1a5f8a;
+    --red: #e53935;
+    --yellow: #f59e0b;
+    --green: #22c55e;
+    --gray: #6b7280;
+    --gray-light: #f3f4f6;
+    --border: #e5e7eb;
+    --text: #111827;
+    --text-sec: #6b7280;
+    --surface: #ffffff;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+    background: var(--gray-light);
+    color: var(--text);
+    max-width: 390px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+
+  .status-bar {
+    background: var(--surface);
+    padding: 14px 20px 8px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* Back nav */
+  .nav-bar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .back-btn {
+    font-size: 24px;
+    color: var(--sph-blue);
+    text-decoration: none;
+    line-height: 1;
+  }
+  .nav-title { font-size: 17px; font-weight: 600; }
+
+  /* Patient header */
+  .patient-header {
+    background: var(--surface);
+    text-align: center;
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .patient-avatar-lg {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    background: #9c85c0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+  }
+  .patient-full-name { font-size: 18px; font-weight: 700; }
+  .patient-sub { font-size: 13px; color: var(--text-sec); margin-top: 3px; }
+  .patient-location { font-size: 13px; color: var(--text-sec); }
+
+  /* Alert banner */
+  .alert-banner {
+    border-left: 4px solid var(--red);
+    margin: 10px 12px;
+    background: var(--surface);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .alert-banner-text { font-size: 13px; color: var(--red); font-weight: 500; }
+  .alert-banner-time { font-size: 11px; color: var(--text-sec); margin-top: 2px; }
+  .resolve-btn {
+    background: var(--sph-blue);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* Accordion sections */
+  .section-card {
+    background: var(--surface);
+    border-radius: 10px;
+    margin: 0 12px 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .accordion-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border);
+    user-select: none;
+  }
+  .accordion-row:last-child { border-bottom: none; }
+  .accordion-row.open { border-bottom: 1px solid var(--border); }
+
+  .accordion-title { font-size: 15px; font-weight: 500; }
+  .accordion-icon { color: var(--text-sec); font-size: 18px; transition: transform 0.2s; }
+  .accordion-icon.open { transform: rotate(90deg); }
+
+  .accordion-body {
+    display: none;
+    padding: 12px 16px;
+    background: #fafafa;
+    border-bottom: 1px solid var(--border);
+  }
+  .accordion-body.open { display: block; }
+  .accordion-body:last-child { border-bottom: none; }
+
+  /* Detail grid */
+  .detail-grid { display: grid; grid-template-columns: 140px 1fr; gap: 6px 8px; }
+  .detail-label { font-size: 13px; color: var(--text-sec); }
+  .detail-value { font-size: 13px; font-weight: 500; }
+
+  /* ICD row */
+  .icd-row { padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .icd-row:last-child { border-bottom: none; }
+  .icd-code { font-size: 12px; font-weight: 600; color: var(--sph-blue); }
+  .icd-desc { font-size: 13px; margin-top: 2px; }
+
+  /* Med row */
+  .med-row-item {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+  }
+  .med-row-item:last-child { border-bottom: none; }
+  .med-pill-img {
+    width: 52px;
+    height: 32px;
+    border-radius: 6px;
+    background: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .med-info { flex: 1; }
+  .med-name-row { font-size: 13px; font-weight: 600; }
+  .med-sig-row { font-size: 12px; color: var(--text-sec); margin-top: 2px; }
+  .med-dx-row { font-size: 11px; color: var(--sph-blue); margin-top: 2px; }
+  .rx-badge {
+    font-size: 11px;
+    color: var(--text-sec);
+    background: var(--gray-light);
+    border-radius: 8px;
+    padding: 2px 6px;
+    margin-top: 3px;
+    display: inline-block;
+  }
+
+  /* Allergy chip */
+  .allergy-chip {
+    display: inline-block;
+    background: #fee2e2;
+    color: var(--red);
+    border-radius: 10px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 3px 3px 3px 0;
+  }
+
+  /* New Rx button */
+  .new-rx-btn {
+    display: block;
+    margin: 0 12px 10px;
+    padding: 14px;
+    background: var(--sph-blue);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    width: calc(100% - 24px);
+    cursor: pointer;
+  }
+
+  /* Bottom nav */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 390px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    display: flex;
+    padding: 10px 0 28px;
+  }
+  .nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    color: var(--text-sec);
+  }
+  .nav-item.active { color: var(--sph-blue); }
+  .nav-icon { font-size: 22px; }
+
+  .spacer { height: 100px; }
+  .section-top-gap { height: 10px; }
+</style>
+</head>
+<body>
+
+<div class="status-bar">
+  <span>9:41</span>
+  <span>▶ 📶 🔋</span>
+</div>
+
+<div class="nav-bar">
+  <a class="back-btn" href="index.html">‹</a>
+  <div class="nav-title">Details</div>
+  <div style="margin-left:auto;width:28px;height:28px;background:#e53935;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:13px;font-weight:700;">E</div>
+</div>
+
+<!-- Patient header -->
+<div class="patient-header">
+  <div class="patient-avatar-lg">MJ</div>
+  <div class="patient-full-name">Marion Johnson</div>
+  <div class="patient-sub">Female, 98 yr</div>
+  <div class="patient-location">The Oaks · Room 101, Bed 2B</div>
+</div>
+
+<!-- Alert banner -->
+<div class="section-top-gap"></div>
+<div class="alert-banner">
+  <div>
+    <div class="alert-banner-text">Meena is seeking help — Common Room</div>
+    <div class="alert-banner-time">08/25/2023 12:35pm</div>
+  </div>
+  <button class="resolve-btn">Resolve</button>
+</div>
+
+<!-- Resident Details accordion -->
+<div class="section-card">
+  <div class="accordion-row open" onclick="toggleAccordion('details')">
+    <span class="accordion-title">Resident Details</span>
+    <span class="accordion-icon open" id="icon-details">›</span>
+  </div>
+  <div class="accordion-body open" id="body-details">
+    <div class="detail-grid">
+      <div class="detail-label">Date of Birth:</div>
+      <div class="detail-value">11/14/1925</div>
+      <div class="detail-label">Diet:</div>
+      <div class="detail-value">Regular</div>
+      <div class="detail-label">Med Administration:</div>
+      <div class="detail-value">Whole</div>
+      <div class="detail-label">Ambulatory Status:</div>
+      <div class="detail-value">Ambulatory</div>
+      <div class="detail-label">Code Status:</div>
+      <div class="detail-value">Full Code</div>
+      <div class="detail-label">Morse Risk Level:</div>
+      <div class="detail-value">Moderate</div>
+    </div>
+  </div>
+
+  <div class="accordion-row" onclick="toggleAccordion('conditions')">
+    <span class="accordion-title">Conditions</span>
+    <span class="accordion-icon" id="icon-conditions">›</span>
+  </div>
+  <div class="accordion-body" id="body-conditions">
+    <div class="icd-row">
+      <div class="icd-code">I15</div>
+      <div class="icd-desc">Secondary hypertension</div>
+    </div>
+    <div class="icd-row">
+      <div class="icd-code">E08</div>
+      <div class="icd-desc">Diabetes mellitus due to underlying condition</div>
+    </div>
+    <div class="icd-row">
+      <div class="icd-code">F02.8</div>
+      <div class="icd-desc">Dementia in other diseases classified elsewhere, unspecified severity</div>
+    </div>
+    <div class="icd-row">
+      <div class="icd-code">I48.0</div>
+      <div class="icd-desc">Paroxysmal atrial fibrillation</div>
+    </div>
+  </div>
+
+  <div class="accordion-row" onclick="toggleAccordion('medications')">
+    <span class="accordion-title">Medications</span>
+    <span class="accordion-icon" id="icon-medications">›</span>
+  </div>
+  <div class="accordion-body" id="body-medications">
+    <div class="med-row-item">
+      <div class="med-pill-img">💊</div>
+      <div class="med-info">
+        <div class="med-name-row">lisinopril 10 mg tablet</div>
+        <div class="med-sig-row">Take one tablet by mouth once daily</div>
+        <div class="med-dx-row">Dx: hypertension</div>
+        <div class="rx-badge">Rx. 00002</div>
+      </div>
+    </div>
+    <div class="med-row-item">
+      <div class="med-pill-img">🔴</div>
+      <div class="med-info">
+        <div class="med-name-row">acetaminophen 500 mg tablet</div>
+        <div class="med-sig-row">Take two tablets by mouth three times daily as needed for pain</div>
+        <div class="med-dx-row">Dx: Unspecified osteoarthritis, unspecified site</div>
+        <div class="rx-badge">Rx. 00003</div>
+      </div>
+    </div>
+    <div class="med-row-item">
+      <div class="med-pill-img">💊</div>
+      <div class="med-info">
+        <div class="med-name-row">apixaban 5 mg tablet</div>
+        <div class="med-sig-row">Take one tablet by mouth twice daily</div>
+        <div class="med-dx-row">Dx: Atrial fibrillation / stroke prevention</div>
+        <div class="rx-badge">Rx. 00004</div>
+      </div>
+    </div>
+    <div style="margin-top:10px;">
+      <a class="new-rx-btn" href="order-new.html">＋ New Prescription Order</a>
+    </div>
+  </div>
+
+  <div class="accordion-row" onclick="toggleAccordion('allergies')">
+    <span class="accordion-title">Allergies</span>
+    <span class="accordion-icon" id="icon-allergies">›</span>
+  </div>
+  <div class="accordion-body" id="body-allergies">
+    <span class="allergy-chip">Penicillin</span>
+    <span class="allergy-chip">Sulfa</span>
+    <span class="allergy-chip">Codeine</span>
+  </div>
+
+  <div class="accordion-row" onclick="toggleAccordion('labs')">
+    <span class="accordion-title">Labs</span>
+    <span class="accordion-icon" id="icon-labs">›</span>
+  </div>
+  <div class="accordion-body" id="body-labs">
+    <div class="detail-grid">
+      <div class="detail-label">BMP (Apr 15):</div>
+      <div class="detail-value" style="color:#e53935;">Creatinine 1.8 (H)</div>
+      <div class="detail-label">eGFR:</div>
+      <div class="detail-value">42 — CKD Stage 3</div>
+      <div class="detail-label">HbA1c (Apr 1):</div>
+      <div class="detail-value" style="color:#22c55e;">7.2% — At goal</div>
+      <div class="detail-label">Glucose:</div>
+      <div class="detail-value">127 mg/dL</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="spacer"></div>
+
+<div class="bottom-nav">
+  <div class="nav-item active"><div class="nav-icon">🏠</div></div>
+  <div class="nav-item"><div class="nav-icon">✉️</div></div>
+  <div class="nav-item"><div class="nav-icon">🔍</div></div>
+  <div class="nav-item"><div class="nav-icon">⚙️</div></div>
+  <div class="nav-item"><div class="nav-icon">👤</div></div>
+</div>
+
+<script>
+function toggleAccordion(id) {
+  const body = document.getElementById('body-' + id);
+  const icon = document.getElementById('icon-' + id);
+  const row = icon.closest('.accordion-row');
+  const isOpen = body.classList.contains('open');
+  
+  body.classList.toggle('open', !isOpen);
+  icon.classList.toggle('open', !isOpen);
+  row.classList.toggle('open', !isOpen);
+}
+</script>
+</body>
+</html>
