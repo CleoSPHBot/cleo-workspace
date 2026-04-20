@@ -73,17 +73,28 @@
 - `dmPolicy: open` is a known TODO — tighten when pairing flow is resolved
 - David sometimes sends messages via openclaw-control-ui — not a security concern (confirmed Apr 12)
 
-## Project Rounds (New — Apr 16)
+## Project Rounds (Apr 16–18)
 - **Mission:** Clinical companion app for EHR — patient status + e-prescribing for doctors/nurses/med-techs
-- **Platform:** Expo React Native (iOS + Android from one codebase)
-- **Strategy:** HTML prototypes (Cleo) → backend API (David) → RN build (Hugo?)
+- **Platform:** Expo React Native (iOS + Android); strategy: HTML prototypes (Cleo) → backend API (David) → RN build
 - **Prescribing workflow:** Verbal order → Nurse stages (DRAFT) → Doctor signs → Surescripts transmits
 - **Order states:** DRAFT → STAGED → SIGNED → TRANSMITTED → CONFIRMED → ADMINISTERED
-- **Project file:** `projects/rounds/README.md`
-- **Figma EHR:** `FF0O3AiVbjlIr6tuk2RavO` — Responsive-UI, 36 sections (Screens - New), last modified 2026-04-16
-- **Figma Mobile:** `cr2l2yq0YFn6PGR3luD1tk` — Mobile App, 20 screens (Mobile Screens page)
-- **Figma token:** `/home2/cleo/figma-key` (personal access token, Figma REST API ready)
-- **Status:** Initial scoping done. Complexity: full stack (workflow, real-time sync, FHIR+Surescripts+FDB, event pipeline)
+- **Project file:** `projects/rounds/README.md`; **Figma EHR:** `FF0O3AiVbjlIr6tuk2RavO`; **token:** `/home2/cleo/figma-key`
+- **Prototype (Apr 18):** login.html, index.html (census), patient.html (accordion), order-new.html — port 8766 at http://100.70.3.21:8766/login.html
+- **Design system:** SPH blue #1a5f8a gradient, white body, urgency bars (red/yellow), accordion detail, pill image slots for FDB
+- **Status:** Prototype delivered. David: "Looks nice. Let me think about it."
+
+## Claude Code (Apr 18)
+- **Installed:** CLI v2.1.114 on cleo server; API keys in `~/keys` (line 1 → Anthropic, line 2 → Claude Code key)
+- **ACP config:** Enabled in `openclaw.json` (`defaultAgent: claude`, `permissionMode: approve-all`); gateway restarted
+- **CLAUDE.md:** Added to Cadence project with full context (Karpathy guidelines, Eastern time warning, wiki as separate git repo, upsert pattern)
+- **Workflow:** I spawn Claude Code as ACP session (`mode: session` = persistent); iterative task delegation; improves quality on established codebases
+- **David OAuth:** Logged in from his machine
+
+## Patient KB Spec (Apr 18)
+- **Spec:** `projects/cadence/specs/patient-knowledge-base.md`
+- **Vision:** Patient's "second brain" — Personal Data + Personal Journal + Curated Research layers
+- **Cleo role:** Intelligence layer (drug lookups, pattern detection, appointment prep, research feed)
+- **Open questions:** Infrastructure, Rounds bridge, multipatient scale, HIPAA path
 
 ## Key Decisions & Lessons
 - Always format NDCs with dashes: 5-4-2 (e.g., 00071-0155-23)
@@ -102,7 +113,7 @@
 - **Data sources:** WHOOP (live + backfilled), Visible (177 days ingested), iPhone check-in app (Hugo, prototype live)
 - **Stack:** AWS Lambda + API Gateway, MongoDB `cadence-dev` (dev-cluster-02.qpkxl.mongodb.net)
 - **Credentials:** stored in `projects/cadence/credentials.md` (not in MEMORY.md)
-- **Status (Apr 16):** Backfill complete — 2,272 `whoop_daily` docs (David + Hannah back to Dec 2022). Visible data in `visible_daily` (177 days). Lambda recovery fix generated (Claude Code, Apr 14) — pending deployment confirmation. iOS check-in prototype live at http://100.70.3.21:8765. Hannah invited to tailnet.
+- **Status (Apr 18):** Backfill complete — 2,272 `whoop_daily` docs. Visible data in `visible_daily` (177 days). Lambda recovery fix generated Apr 14 — **deployment still unconfirmed**. iOS check-in prototype live at http://100.70.3.21:8765. Hannah invited to tailnet. Hannah feedback on app still pending.
 - **iOS check-in app:** 8 questions (updated Apr 16), traffic light (🟢🟡🔴) UX. Brain fog = #1 constraint, under 60s on worst days. Fields: feeling, PEM, brain fog, pain, activity type, left home, food, probiotics. iMessage questionnaire sent to Hannah — feedback pending.
 - **LC phenotype:** Hannah = Gut/Viral persistence + PEM/Dysautonomia hybrid. v2 vision: phenotype-adaptive app.
 - **Pacing literature (key finding):** Ghali 2023 — pacing adherence is the single best predictor of recovery (OR 40.43). PACELOC 2025: 15% weekly reduction in PEM with structured pacing. GET is contraindicated (WHO, CDC, NICE). Heart rate monitoring is the tool (anaerobic threshold).

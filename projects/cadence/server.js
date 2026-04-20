@@ -9,7 +9,7 @@ const MONGO_URI = fs.readFileSync('/home2/cleo/mongo_uri', 'utf8').trim();
 const DB_NAME = 'cadence-dev';
 const COLLECTION = 'self_report';
 const PORT = 8765;
-const USER_ID = 'hannah'; // hardcoded for now; will come from auth later
+const DEFAULT_USER = 'hannah';
 
 const app = express();
 app.use(express.json());
@@ -42,17 +42,26 @@ async function connect() {
   console.log(`Connected to MongoDB: ${DB_NAME}`);
 }
 
+// Helper: resolve user_id from query param (GET) or body (POST), default to hannah
+function resolveUser(req) {
+  const u = req.query.user || req.body?.user || DEFAULT_USER;
+  // Allowlist to prevent arbitrary user injection
+  const allowed = ['hannah', 'david'];
+  return allowed.includes(u) ? u : DEFAULT_USER;
+}
+
 // POST /api/checkin — upsert by { user_id, date }
 app.post('/api/checkin', async (req, res) => {
   try {
+    const user_id = resolveUser(req);
     const { date, answers, submitted_at } = req.body;
     if (!date || !answers) return res.status(400).json({ error: 'Missing date or answers' });
 
     const now = new Date().toISOString();
-    const filter = { user_id: USER_ID, date };
+    const filter = { user_id, date };
     const update = {
       $set: {
-        user_id: USER_ID,
+        user_id,
         date,
         updated_at: now,
         source: 'web',
@@ -72,8 +81,8 @@ app.post('/api/checkin', async (req, res) => {
     };
 
     await db.collection(COLLECTION).updateOne(filter, update, { upsert: true });
-    console.log(`[${now}] Check-in saved: user=${USER_ID} date=${date}`);
-    res.json({ ok: true, date, user_id: USER_ID });
+    console.log(`[${now}] Check-in saved: user=${user_id} date=${date}`);
+    res.json({ ok: true, date, user_id });
   } catch (err) {
     console.error('Error saving check-in:', err);
     res.status(500).json({ error: err.message });
@@ -83,6 +92,7 @@ app.post('/api/checkin', async (req, res) => {
 // GET /api/checkin/status?days=7 — which days have entries? (must be before /:date)
 app.get('/api/checkin/status', async (req, res) => {
   try {
+    const user_id = resolveUser(req);
     const days = parseInt(req.query.days) || 7;
     // Use Eastern time for date boundaries
     const toEasternDate = (offsetDays = 0) => {
@@ -93,19 +103,25 @@ app.get('/api/checkin/status', async (req, res) => {
     const today = toEasternDate(0);
     const dates = Array.from({ length: days }, (_, i) => toEasternDate(i));
     const docs = await db.collection(COLLECTION)
-      .find({ user_id: USER_ID, date: { $in: dates } }, { projection: { date: 1, feeling: 1 } })
+      .find({ user_id, date: { $in: dates } }, { projection: { date: 1, feeling: 1 } })
       .toArray();
     const completed = {};
     docs.forEach(d => { completed[d.date] = d.feeling; });
-    res.json({ completed, today });
+    res.json({ completed, today, user_id });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
+// WHOOP user_id mapping
+const WHOOP_USER_IDS = { hannah: 6729032, david: 206067 };
+
 // GET /api/dashboard — aggregated data for past 3 days
 app.get('/api/dashboard', async (req, res) => {
   try {
+    const user_id = resolveUser(req);
+    const whoopUserId = WHOOP_USER_IDS[user_id] || WHOOP_USER_IDS.hannah;
+
     // Use Eastern time (Hannah's timezone) for date boundaries
     const toEasternDate = (offsetDays = 0) => {
       const d = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
@@ -115,28 +131,28 @@ app.get('/api/dashboard', async (req, res) => {
     // Fetch 4 days so the 3rd visible day has a previous day for trend arrows
     const dates = [0, 1, 2, 3].map(i => toEasternDate(i));
 
-    // WHOOP
+    // WHOOP — use mapped user id
     const whoopDocs = await db.collection('whoop_daily')
-      .find({ user_id: 6729032, date: { $in: dates } })
+      .find({ user_id: whoopUserId, date: { $in: dates } })
       .toArray();
     const whoop = {};
     whoopDocs.forEach(w => { whoop[w.date] = w; });
 
     // Check-ins
     const checkinDocs = await db.collection('self_report')
-      .find({ user_id: USER_ID, date: { $in: dates } })
+      .find({ user_id, date: { $in: dates } })
       .toArray();
     const checkins = {};
     checkinDocs.forEach(c => { checkins[c.date] = c; });
 
-    // Visible — most recent export date within range
+    // Visible
     const visibleDocs = await db.collection('visible_daily')
-      .find({ user_id: USER_ID, date: { $in: dates } })
+      .find({ user_id, date: { $in: dates } })
       .toArray();
     const visible = {};
     visibleDocs.forEach(v => { visible[v.date] = v; });
 
-    res.json({ whoop, checkins, visible, dates, generated_at: new Date().toISOString() });
+    res.json({ whoop, checkins, visible, dates, user_id, generated_at: new Date().toISOString() });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -145,8 +161,9 @@ app.get('/api/dashboard', async (req, res) => {
 // GET /api/checkin/:date — fetch stored answers for a specific date
 app.get('/api/checkin/:date', async (req, res) => {
   try {
+    const user_id = resolveUser(req);
     const { date } = req.params;
-    const doc = await db.collection(COLLECTION).findOne({ user_id: USER_ID, date });
+    const doc = await db.collection(COLLECTION).findOne({ user_id, date });
     if (!doc) return res.json({ found: false });
     res.json({ found: true, data: doc });
   } catch (err) {
@@ -157,6 +174,7 @@ app.get('/api/checkin/:date', async (req, res) => {
 // POST /api/visible/upload — parse Visible CSV and upsert into visible_daily
 app.post('/api/visible/upload', upload.single('file'), async (req, res) => {
   try {
+    const user_id = resolveUser(req);
     if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
 
     const csvText = req.file.buffer.toString('utf8');
@@ -188,10 +206,10 @@ app.post('/api/visible/upload', upload.single('file'), async (req, res) => {
     let upserted = 0, updated = 0;
 
     for (const date of dates) {
-      const filter = { user_id: USER_ID, date };
+      const filter = { user_id, date };
       const update = {
         $set: {
-          user_id: USER_ID,
+          user_id,
           date,
           observations: byDate[date],
           updated_at: now,

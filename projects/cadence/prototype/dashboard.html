@@ -407,9 +407,17 @@
   }
 
   // ── Data fetch ─────────────────────────────────────────────────────────────
+  // ── User param ──────────────────────────────────────────────────────────────
+  const _urlUser = new URLSearchParams(window.location.search).get('user');
+  function userParam(base) {
+    if (!_urlUser) return base;
+    const sep = base.includes('?') ? '&' : '?';
+    return base + sep + 'user=' + encodeURIComponent(_urlUser);
+  }
+
   async function loadDashboard() {
     try {
-      const res = await fetch('/api/dashboard');
+      const res = await fetch(userParam('/api/dashboard'));
       const data = await res.json();
 
       document.getElementById('loading').style.display = 'none';

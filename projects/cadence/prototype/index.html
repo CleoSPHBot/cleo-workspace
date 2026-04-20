@@ -680,7 +680,7 @@
 
     // Pre-populate from stored data if this day already has answers
     try {
-      const resp = await fetch('/api/checkin/' + activeDate);
+      const resp = await fetch(userParam('/api/checkin/' + activeDate));
       const result = await resp.json();
       if (result.found && result.data) {
         const d = result.data;
@@ -788,7 +788,7 @@
     try {
       const formData = new FormData();
       formData.append('file', file);
-      const resp = await fetch('/api/visible/upload', { method: 'POST', body: formData });
+      const resp = await fetch(userParam('/api/visible/upload'), { method: 'POST', body: formData });
       const data = await resp.json();
       if (data.ok) {
         resultEl.style.background = '#1a2e1a';
@@ -826,7 +826,7 @@
     };
 
     try {
-      const res = await fetch('/api/checkin', {
+      const res = await fetch(userParam('/api/checkin'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -846,9 +846,18 @@
     goTo('done');
   }
 
+  // ── User param ──────────────────────────────────────
+  // Pass ?user=X through to all API calls. Defaults to hannah on server.
+  const _urlUser = new URLSearchParams(window.location.search).get('user');
+  function userParam(base) {
+    if (!_urlUser) return base;
+    const sep = base.includes('?') ? '&' : '?';
+    return base + sep + 'user=' + encodeURIComponent(_urlUser);
+  }
+
   // ── Init ───────────────────────────────────────────
   // Get today's date from server (Eastern time) to avoid browser UTC mismatch
-  fetch('/api/checkin/status?days=7')
+  fetch(userParam('/api/checkin/status?days=7'))
     .then(r => r.json())
     .then(data => {
       Object.keys(data.completed).forEach(d => completedDays.add(d));
