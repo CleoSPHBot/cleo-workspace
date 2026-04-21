@@ -71,14 +71,13 @@
 
 ## Security Notes
 - `dmPolicy: open` is a known TODO — tighten when pairing flow is resolved
-- David sometimes sends messages via openclaw-control-ui — not a security concern (confirmed Apr 12)
 
 ## Project Rounds (Apr 16–18)
 - **Mission:** Clinical companion app for EHR — patient status + e-prescribing for doctors/nurses/med-techs
 - **Platform:** Expo React Native (iOS + Android); strategy: HTML prototypes (Cleo) → backend API (David) → RN build
 - **Prescribing workflow:** Verbal order → Nurse stages (DRAFT) → Doctor signs → Surescripts transmits
 - **Order states:** DRAFT → STAGED → SIGNED → TRANSMITTED → CONFIRMED → ADMINISTERED
-- **Project file:** `projects/rounds/README.md`; **Figma EHR:** `FF0O3AiVbjlIr6tuk2RavO`; **token:** `/home2/cleo/figma-key`
+- **Project file:** `projects/rounds/README.md`; **Figma:** EHR `FF0O3AiVbjlIr6tuk2RavO` | Mobile App `cr2l2yq0YFn6PGR3luD1tk`; **token:** `/home2/cleo/figma-key`
 - **Prototype (Apr 18):** login.html, index.html (census), patient.html (accordion), order-new.html — port 8766 at http://100.70.3.21:8766/login.html
 - **Design system:** SPH blue #1a5f8a gradient, white body, urgency bars (red/yellow), accordion detail, pill image slots for FDB
 - **Status:** Prototype delivered. David: "Looks nice. Let me think about it."
@@ -113,7 +112,7 @@
 - **Data sources:** WHOOP (live + backfilled), Visible (177 days ingested), iPhone check-in app (Hugo, prototype live)
 - **Stack:** AWS Lambda + API Gateway, MongoDB `cadence-dev` (dev-cluster-02.qpkxl.mongodb.net)
 - **Credentials:** stored in `projects/cadence/credentials.md` (not in MEMORY.md)
-- **Status (Apr 18):** Backfill complete — 2,272 `whoop_daily` docs. Visible data in `visible_daily` (177 days). Lambda recovery fix generated Apr 14 — **deployment still unconfirmed**. iOS check-in prototype live at http://100.70.3.21:8765. Hannah invited to tailnet. Hannah feedback on app still pending.
+- **Status (Apr 19):** Backfill complete — 2,272 `whoop_daily` docs. Visible data in `visible_daily` (177 days). iOS check-in prototype live at http://100.70.3.21:8765. Hannah invited to tailnet. Hannah feedback on app still pending.
 - **iOS check-in app:** 8 questions (updated Apr 16), traffic light (🟢🟡🔴) UX. Brain fog = #1 constraint, under 60s on worst days. Fields: feeling, PEM, brain fog, pain, activity type, left home, food, probiotics. iMessage questionnaire sent to Hannah — feedback pending.
 - **LC phenotype:** Hannah = Gut/Viral persistence + PEM/Dysautonomia hybrid. v2 vision: phenotype-adaptive app.
 - **Pacing literature (key finding):** Ghali 2023 — pacing adherence is the single best predictor of recovery (OR 40.43). PACELOC 2025: 15% weekly reduction in PEM with structured pacing. GET is contraindicated (WHO, CDC, NICE). Heart rate monitoring is the tool (anaerobic threshold).
