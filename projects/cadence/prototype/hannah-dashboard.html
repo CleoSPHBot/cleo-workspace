@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hannah — Cadence Dashboard</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f0f4f8;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1a5f8a 0%, #0d3f5f 100%);
+      color: white;
+      padding: 20px 24px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-left h1 { font-size: 1.4rem; font-weight: 700; }
+    .header-left .subtitle { font-size: 0.8rem; opacity: 0.75; margin-top: 2px; }
+    .avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    /* ── Nav tabs ── */
+    .nav-tabs {
+      background: #fff;
+      display: flex;
+      border-bottom: 1px solid #e0e7ef;
+      overflow-x: auto;
+    }
+    .nav-tab {
+      padding: 12px 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #6b7a8d;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .nav-tab.active { color: #1a5f8a; border-bottom-color: #1a5f8a; }
+
+    /* ── Content ── */
+    main { padding: 16px; max-width: 480px; margin: 0 auto; }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7a8d;
+      margin: 20px 0 8px;
+    }
+
+    /* ── Day row ── */
+    .day-row {
+      background: white;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+    .day-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .day-label { font-size: 0.95rem; font-weight: 700; }
+    .day-label .day-sub { font-size: 0.75rem; font-weight: 400; color: #8a9ab0; }
+    .feeling-badge {
+      font-size: 0.75rem; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px;
+    }
+    .feeling-good    { background: #d4edda; color: #155724; }
+    .feeling-mixed   { background: #fff3cd; color: #856404; }
+    .feeling-bad     { background: #f8d7da; color: #721c24; }
+    .feeling-unknown { background: #e9ecef; color: #6c757d; }
+
+    /* ── WHOOP metrics row ── */
+    .metrics-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .metric-chip {
+      flex: 1;
+      background: #f0f4f8;
+      border-radius: 10px;
+      padding: 8px 6px;
+      text-align: center;
+    }
+    .metric-chip .val {
+      font-size: 1.1rem; font-weight: 800;
+      line-height: 1;
+    }
+    .metric-chip .lbl {
+      font-size: 0.62rem; color: #6b7a8d; margin-top: 3px;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .val-green  { color: #1a8a4a; }
+    .val-yellow { color: #b08a00; }
+    .val-red    { color: #c0392b; }
+    .val-blue   { color: #1a5f8a; }
+    .val-gray   { color: #8a9ab0; }
+
+    /* ── Symptom pills ── */
+    .pills-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+    .pill {
+      font-size: 0.72rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 20px;
+      border: 1px solid transparent;
+    }
+    .pill-none    { background: #d4edda; color: #155724; border-color: #b8dfc5; }
+    .pill-mild    { background: #fff3cd; color: #856404; border-color: #fde1a0; }
+    .pill-moderate{ background: #ffe4cc; color: #7a3f00; border-color: #f5c99a; }
+    .pill-severe  { background: #f8d7da; color: #721c24; border-color: #f0a9ae; }
+    .pill-neutral { background: #e9ecef; color: #495057; border-color: #dee2e6; }
+
+    /* ── Notes ── */
+    .notes-text {
+      font-size: 0.78rem; color: #4a5568;
+      font-style: italic;
+      background: #f8fafc;
+      border-left: 3px solid #1a5f8a;
+      padding: 6px 10px;
+      border-radius: 0 6px 6px 0;
+      margin-top: 8px;
+    }
+
+    /* ── Sleep bar ── */
+    .sleep-bar-wrap { margin: 6px 0 4px; }
+    .sleep-bar-label { font-size: 0.68rem; color: #6b7a8d; margin-bottom: 3px; }
+    .sleep-bar-track {
+      height: 6px; background: #e0e7ef; border-radius: 3px; overflow: hidden;
+    }
+    .sleep-bar-fill {
+      height: 100%; border-radius: 3px;
+      background: linear-gradient(90deg, #1a5f8a, #2a9d8f);
+    }
+
+    /* ── Today card ── */
+    .today-card {
+      background: linear-gradient(135deg, #1a5f8a 0%, #0d3f5f 100%);
+      color: white;
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 8px;
+    }
+    .today-card .day-label { color: white; }
+    .today-card .day-sub { color: rgba(255,255,255,0.7); }
+    .today-card .metric-chip { background: rgba(255,255,255,0.15); }
+    .today-card .val-green  { color: #6fd9a0; }
+    .today-card .val-yellow { color: #ffd166; }
+    .today-card .val-red    { color: #ef8a7a; }
+    .today-card .val-blue   { color: #90cef0; }
+    .today-card .val-gray   { color: rgba(255,255,255,0.5); }
+    .today-card .metric-chip .lbl { color: rgba(255,255,255,0.65); }
+    .today-card .no-data-label {
+      font-size: 0.8rem; opacity: 0.7; margin-top: 8px; text-align: center;
+    }
+
+    /* ── Alerts ── */
+    .alert-strip {
+      background: #fff3cd;
+      border: 1px solid #fde1a0;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 0.8rem;
+      color: #856404;
+      margin-bottom: 12px;
+      display: flex; gap: 8px; align-items: flex-start;
+    }
+    .alert-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* ── SpO2 alert ── */
+    .spo2-alert {
+      background: #f8d7da;
+      border-color: #f0a9ae;
+      color: #721c24;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      font-size: 0.7rem;
+      color: #9aabbf;
+      padding: 20px 0 32px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>Hannah M.</h1>
+    <div class="subtitle">Cadence · Long COVID tracker</div>
+  </div>
+  <div class="avatar">🦋</div>
+</header>
+
+<div class="nav-tabs">
+  <div class="nav-tab active">Dashboard</div>
+  <div class="nav-tab">Timeline</div>
+  <div class="nav-tab">Patterns</div>
+  <div class="nav-tab">Reports</div>
+</div>
+
+<main>
+
+  <!-- ── Alerts ── -->
+  <div class="alert-strip spo2-alert" style="margin-top:14px;">
+    <div class="alert-icon">⚠️</div>
+    <div><strong>Low SpO₂ on Apr 18</strong> — 91.4% overnight (normal ≥ 95%). Worth discussing with care team.</div>
+  </div>
+
+  <div class="alert-strip">
+    <div class="alert-icon">📍</div>
+    <div><strong>Apr 20 — PEM crash</strong> after demanding activity day (Apr 18 move + Adderall). Classic PEM delay pattern.</div>
+  </div>
+
+  <!-- ── Today ── -->
+  <div class="section-label">Today · Apr 21</div>
+
+  <div class="today-card">
+    <div class="day-header">
+      <div class="day-label">Tuesday <span class="day-sub">· in progress</span></div>
+      <div class="feeling-badge feeling-unknown" style="background:rgba(255,255,255,0.2);color:white;">No check-in yet</div>
+    </div>
+    <div class="metrics-row">
+      <div class="metric-chip">
+        <div class="val val-gray">—</div>
+        <div class="lbl">Recovery</div>
+      </div>
+      <div class="metric-chip">
+        <div class="val val-gray">—</div>
+        <div class="lbl">HRV</div>
+      </div>
+      <div class="metric-chip">
+        <div class="val val-gray">—</div>
+        <div class="lbl">RHR</div>
+      </div>
+      <div class="metric-chip">
+        <div class="val val-yellow">0.0</div>
+        <div class="lbl">Strain</div>
+      </div>
+    </div>
+    <div class="no-data-label">Cycle started · sleep data pending</div>
+  </div>
+
+  <!-- ── Apr 20 ── -->
+  <div class="section-label">Apr 20 · Sunday</div>
+
+  <div class="day-row">
+    <div class="day-header">
+      <div class="day-label">Sunday <span class="day-sub">· Xolair day</span></div>
+      <div class="feeling-badge feeling-bad">😔 Bad</div>
+    </div>
+
+    <!-- No WHOOP data for Apr 20 — show checkin only -->
+    <div class="pills-row">
+      <span class="pill pill-severe">PEM: severe</span>
+      <span class="pill pill-severe">Pain: severe</span>
+      <span class="pill pill-mild">Brain fog: mild</span>
+      <span class="pill pill-neutral">Activity: demanding</span>
+      <span class="pill pill-neutral">Left home: yes</span>
+    </div>
+    <div class="notes-text">Xolair injection today.</div>
+  </div>
+
+  <!-- ── Apr 19 ── -->
+  <div class="section-label">Apr 19 · Saturday</div>
+
+  <div class="day-row">
+    <div class="day-header">
+      <div class="day-label">Saturday <span class="day-sub">· housework day</span></div>
+      <div class="feeling-badge feeling-mixed">😐 Mixed</div>
+    </div>
+    <div class="pills-row">
+      <span class="pill pill-mild">PEM: mild</span>
+      <span class="pill pill-mild">Pain: mild</span>
+      <span class="pill pill-mild">Brain fog: mild</span>
+      <span class="pill pill-neutral">Activity: light</span>
+      <span class="pill pill-neutral">Stayed home</span>
+    </div>
+    <div class="notes-text">Did some house work. Still felt wired from the Adderall the day before.</div>
+  </div>
+
+  <!-- ── Apr 18 ── -->
+  <div class="section-label">Apr 18 · Friday · WHOOP data</div>
+
+  <div class="day-row">
+    <div class="day-header">
+      <div class="day-label">Friday <span class="day-sub">· move day</span></div>
+      <div class="feeling-badge feeling-good">😊 Good</div>
+    </div>
+
+    <!-- WHOOP metrics -->
+    <div class="metrics-row">
+      <div class="metric-chip">
+        <div class="val val-green">76</div>
+        <div class="lbl">Recovery</div>
+      </div>
+      <div class="metric-chip">
+        <div class="val val-yellow">33</div>
+        <div class="lbl">HRV ms</div>
+      </div>
+      <div class="metric-chip">
+        <div class="val val-blue">78</div>
+        <div class="lbl">RHR</div>
+      </div>
+      <div class="metric-chip">
+        <div class="val val-yellow">15.3</div>
+        <div class="lbl">Strain</div>
+      </div>
+    </div>
+
+    <!-- Sleep bar -->
+    <div class="sleep-bar-wrap">
+      <div class="sleep-bar-label">Sleep performance: 73% &nbsp;·&nbsp; 9.7h in bed &nbsp;·&nbsp; RR 15.4 &nbsp;·&nbsp; ⚠️ SpO₂ 91.4%</div>
+      <div class="sleep-bar-track">
+        <div class="sleep-bar-fill" style="width:73%"></div>
+      </div>
+    </div>
+
+    <!-- Check-in pills -->
+    <div class="pills-row" style="margin-top:8px;">
+      <span class="pill pill-none">PEM: none</span>
+      <span class="pill pill-none">Brain fog: none</span>
+      <span class="pill pill-mild">Pain: mild</span>
+      <span class="pill pill-neutral">Activity: demanding</span>
+      <span class="pill pill-neutral">Left home: yes</span>
+    </div>
+    <div class="notes-text">Took 15mg XR Adderall. Moved back to Boston from Granby — 2+ hr car ride.</div>
+
+    <!-- Workout chip -->
+    <div style="margin-top:10px; font-size:0.75rem; color:#4a5568; background:#f0f4f8; border-radius:8px; padding:7px 10px;">
+      🏃 <strong>Activity</strong> &nbsp;·&nbsp; 27 min &nbsp;·&nbsp; Strain 6.9 &nbsp;·&nbsp; Avg HR 135 &nbsp;·&nbsp; Max HR 153
+    </div>
+  </div>
+
+  <div class="footer">
+    Cadence · Last updated Apr 21, 2026 at 4:54 PM UTC<br>
+    Data: WHOOP + self-report
+  </div>
+
+</main>
+</body>
+</html>

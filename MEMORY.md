@@ -72,7 +72,7 @@
 ## Security Notes
 - `dmPolicy: open` is a known TODO — tighten when pairing flow is resolved
 
-## Project Rounds (Apr 16–18)
+## Project Rounds (Apr 16–ongoing)
 - **Mission:** Clinical companion app for EHR — patient status + e-prescribing for doctors/nurses/med-techs
 - **Platform:** Expo React Native (iOS + Android); strategy: HTML prototypes (Cleo) → backend API (David) → RN build
 - **Prescribing workflow:** Verbal order → Nurse stages (DRAFT) → Doctor signs → Surescripts transmits
@@ -80,7 +80,9 @@
 - **Project file:** `projects/rounds/README.md`; **Figma:** EHR `FF0O3AiVbjlIr6tuk2RavO` | Mobile App `cr2l2yq0YFn6PGR3luD1tk`; **token:** `/home2/cleo/figma-key`
 - **Prototype (Apr 18):** login.html, index.html (census), patient.html (accordion), order-new.html — port 8766 at http://100.70.3.21:8766/login.html
 - **Design system:** SPH blue #1a5f8a gradient, white body, urgency bars (red/yellow), accordion detail, pill image slots for FDB
-- **Status:** Prototype delivered. David: "Looks nice. Let me think about it."
+- **Backend (Apr 21):** Service `aegis_mobile` running on port 15170 (cleo server); MongoDB connected; JWT auth off for dev; `/ping` + `/health` endpoints live
+- **Figma MCP:** Server running on port 3845, wired into Claude Code via `.mcp.json` in Rounds + Cadence project dirs
+- **Status:** Prototype delivered + backend started. Next: route implementation.
 
 ## Claude Code (Apr 18)
 - **Installed:** CLI v2.1.114 on cleo server; API keys in `~/keys` (line 1 → Anthropic, line 2 → Claude Code key)
@@ -125,6 +127,7 @@
 - **MongoDB collections:** `user`, `webhook_event`, `whoop_daily`, `visible_daily`, `self_report` (check-in data)
 - **v2 Design Decision (Apr 16):** Dynamic question schema — questions stored in MongoDB `questions` collection (not hardcoded). Enables add/remove without deploys, versioning, A/B testing. Schema: `question_id`, `version`, `active`, `order`, `text`, `type`, `options`. Types: `traffic_light`, `yes_no`, `scale`, `text`. Priority: v2.
 - **Server.js:** runs at port 8765, reads MongoDB URI from `/home2/cleo/mongo_uri`, saves to `self_report` collection keyed on `{user_id, date}`. ⚠️ Not daemonized — needs pm2 or systemd.
+- **User scoping (Apr 19):** URL param `?user=david` scopes check-ins to David; defaults to `hannah` when no param present
 - **Cadence app features (as of Apr 17):** Visible CSV upload (`POST /api/visible/upload`, multer + csv-parse → `visible_daily`); pre-population (`GET /api/checkin/:date`); server drives Eastern time `today` to avoid UTC mismatch; "Update →" button when today has data
 - **Dashboard:** `/dashboard` → `dashboard.html`, `/api/dashboard` endpoint. 3-day view: WHOOP metrics + check-in pills + Visible highlights. Auto-refreshes every 5 min, Eastern time aware, no-cache headers.
 - **Oura Ring:** v2 API at cloud.ouraring.com/v2/docs. Adds skin temp deviation, resilience score. Hannah doesn't have one yet — TBD.
