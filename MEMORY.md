@@ -82,7 +82,9 @@
 - **Design system:** SPH blue #1a5f8a gradient, white body, urgency bars (red/yellow), accordion detail, pill image slots for FDB
 - **Backend (Apr 21):** Service `aegis_mobile` running on port 15170 (cleo server); MongoDB connected; JWT auth off for dev; `/ping` + `/health` endpoints live
 - **Figma MCP:** Server running on port 3845, wired into Claude Code via `.mcp.json` in Rounds + Cadence project dirs
-- **Status:** Prototype delivered + backend started. Next: route implementation.
+- **Figma naming convention (Apr 21):** `screen/screen-element` pattern (e.g., `dashboard/resident`, `dashboard/conditions`)
+- **Backend source:** `git@github.com:SpectatorHealth/aegis_server.git`, branch `ub24_port` (C++ + MongoDB). Routes confirmed: `/residents` (census, sorted by name/residentId, excludes inactive) + `/details` (residents + AlertLog entries with thumbnail/age/dob)
+- **Status:** Prototype delivered + backend routes being built. Next: wire prototype to aegis_mobile API.
 
 ## Claude Code (Apr 18)
 - **Installed:** CLI v2.1.114 on cleo server; API keys in `~/keys` (line 1 → Anthropic, line 2 → Claude Code key)
@@ -130,6 +132,7 @@
 - **User scoping (Apr 19):** URL param `?user=david` scopes check-ins to David; defaults to `hannah` when no param present
 - **Cadence app features (as of Apr 17):** Visible CSV upload (`POST /api/visible/upload`, multer + csv-parse → `visible_daily`); pre-population (`GET /api/checkin/:date`); server drives Eastern time `today` to avoid UTC mismatch; "Update →" button when today has data
 - **Dashboard:** `/dashboard` → `dashboard.html`, `/api/dashboard` endpoint. 3-day view: WHOOP metrics + check-in pills + Visible highlights. Auto-refreshes every 5 min, Eastern time aware, no-cache headers.
+- **Hannah dashboard (Apr 21):** `/hannah-dashboard.html` — alerts at top (SpO₂ warnings, PEM crash patterns), full biometric + symptom view, pattern detection built in.
 - **Oura Ring:** v2 API at cloud.ouraring.com/v2/docs. Adds skin temp deviation, resilience score. Hannah doesn't have one yet — TBD.
 
 ## LC Wiki

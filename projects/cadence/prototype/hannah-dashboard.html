@@ -149,6 +149,9 @@
       height: 100%; border-radius: 3px;
       background: linear-gradient(90deg, #1a5f8a, #2a9d8f);
     }
+    .sleep-bar-fill.fill-red {
+      background: linear-gradient(90deg, #c0392b, #e74c3c);
+    }
 
     /* ── Today card ── */
     .today-card {
@@ -191,6 +194,13 @@
       color: #721c24;
     }
 
+    /* ── Critical alert ── */
+    .critical-alert {
+      background: #f8d7da;
+      border: 2px solid #c0392b;
+      color: #721c24;
+    }
+
     /* ── Footer ── */
     .footer {
       text-align: center;
@@ -220,24 +230,66 @@
 <main>
 
   <!-- ── Alerts ── -->
-  <div class="alert-strip spo2-alert" style="margin-top:14px;">
+  <div class="alert-strip critical-alert" style="margin-top:14px;">
+    <div class="alert-icon">🚨</div>
+    <div><strong>Recovery score: 1% — Apr 22</strong> — Lowest possible reading. Only 1.2h sleep. Rest day mandatory.</div>
+  </div>
+
+  <div class="alert-strip spo2-alert">
     <div class="alert-icon">⚠️</div>
-    <div><strong>Low SpO₂ on Apr 18</strong> — 91.4% overnight (normal ≥ 95%). Worth discussing with care team.</div>
+    <div><strong>Chronic low SpO₂ pattern</strong> — Apr 15: 89.5%, Apr 14: 91.7%, Apr 18: 91.4%. Consistent overnight dips below 95%. Discuss with care team.</div>
   </div>
 
   <div class="alert-strip">
     <div class="alert-icon">📍</div>
-    <div><strong>Apr 20 — PEM crash</strong> after demanding activity day (Apr 18 move + Adderall). Classic PEM delay pattern.</div>
+    <div><strong>Apr 20 — PEM crash</strong> after demanding activity day (Apr 18 move + Adderall). Classic 48h delayed PEM pattern. Now compounded by sleep crash Apr 22.</div>
   </div>
 
   <!-- ── Today ── -->
-  <div class="section-label">Today · Apr 21</div>
+  <div class="section-label">Today · Apr 22</div>
 
   <div class="today-card">
     <div class="day-header">
-      <div class="day-label">Tuesday <span class="day-sub">· in progress</span></div>
+      <div class="day-label">Wednesday <span class="day-sub">· scored</span></div>
       <div class="feeling-badge feeling-unknown" style="background:rgba(255,255,255,0.2);color:white;">No check-in yet</div>
     </div>
+    <div class="metrics-row">
+      <div class="metric-chip">
+        <div class="val val-red">1</div>
+        <div class="lbl">Recovery</div>
+      </div>
+      <div class="metric-chip">
+        <div class="val val-yellow">37.6</div>
+        <div class="lbl">HRV ms</div>
+      </div>
+      <div class="metric-chip">
+        <div class="val val-blue">74</div>
+        <div class="lbl">RHR</div>
+      </div>
+      <div class="metric-chip">
+        <div class="val val-gray">0.1</div>
+        <div class="lbl">Strain</div>
+      </div>
+    </div>
+
+    <!-- Sleep bar -->
+    <div class="sleep-bar-wrap">
+      <div class="sleep-bar-label" style="color:rgba(255,255,255,0.65);">Sleep performance: 27% &nbsp;·&nbsp; 1.2h sleep &nbsp;·&nbsp; RR 16.6 &nbsp;·&nbsp; 98.6% efficiency</div>
+      <div class="sleep-bar-track">
+        <div class="sleep-bar-fill fill-red" style="width:27%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Apr 21 ── -->
+  <div class="section-label">Apr 21 · Tuesday</div>
+
+  <div class="day-row">
+    <div class="day-header">
+      <div class="day-label">Tuesday</div>
+      <div class="feeling-badge feeling-mixed">😐 Mixed</div>
+    </div>
+    <!-- WHOOP: no recovery scored, strain only -->
     <div class="metrics-row">
       <div class="metric-chip">
         <div class="val val-gray">—</div>
@@ -245,18 +297,23 @@
       </div>
       <div class="metric-chip">
         <div class="val val-gray">—</div>
-        <div class="lbl">HRV</div>
+        <div class="lbl">HRV ms</div>
       </div>
       <div class="metric-chip">
         <div class="val val-gray">—</div>
         <div class="lbl">RHR</div>
       </div>
       <div class="metric-chip">
-        <div class="val val-yellow">0.0</div>
+        <div class="val val-yellow">2.0</div>
         <div class="lbl">Strain</div>
       </div>
     </div>
-    <div class="no-data-label">Cycle started · sleep data pending</div>
+    <div class="pills-row">
+      <span class="pill pill-mild">PEM: mild</span>
+      <span class="pill pill-mild">Brain fog: mild</span>
+      <span class="pill pill-mild">Pain: mild</span>
+      <span class="pill pill-neutral">Activity: rested</span>
+    </div>
   </div>
 
   <!-- ── Apr 20 ── -->
@@ -267,12 +324,10 @@
       <div class="day-label">Sunday <span class="day-sub">· Xolair day</span></div>
       <div class="feeling-badge feeling-bad">😔 Bad</div>
     </div>
-
-    <!-- No WHOOP data for Apr 20 — show checkin only -->
     <div class="pills-row">
       <span class="pill pill-severe">PEM: severe</span>
-      <span class="pill pill-severe">Pain: severe</span>
       <span class="pill pill-mild">Brain fog: mild</span>
+      <span class="pill pill-severe">Pain: severe</span>
       <span class="pill pill-neutral">Activity: demanding</span>
       <span class="pill pill-neutral">Left home: yes</span>
     </div>
@@ -289,8 +344,8 @@
     </div>
     <div class="pills-row">
       <span class="pill pill-mild">PEM: mild</span>
-      <span class="pill pill-mild">Pain: mild</span>
       <span class="pill pill-mild">Brain fog: mild</span>
+      <span class="pill pill-mild">Pain: mild</span>
       <span class="pill pill-neutral">Activity: light</span>
       <span class="pill pill-neutral">Stayed home</span>
     </div>
@@ -305,15 +360,13 @@
       <div class="day-label">Friday <span class="day-sub">· move day</span></div>
       <div class="feeling-badge feeling-good">😊 Good</div>
     </div>
-
-    <!-- WHOOP metrics -->
     <div class="metrics-row">
       <div class="metric-chip">
         <div class="val val-green">76</div>
         <div class="lbl">Recovery</div>
       </div>
       <div class="metric-chip">
-        <div class="val val-yellow">33</div>
+        <div class="val val-yellow">33.1</div>
         <div class="lbl">HRV ms</div>
       </div>
       <div class="metric-chip">
@@ -325,16 +378,12 @@
         <div class="lbl">Strain</div>
       </div>
     </div>
-
-    <!-- Sleep bar -->
     <div class="sleep-bar-wrap">
-      <div class="sleep-bar-label">Sleep performance: 73% &nbsp;·&nbsp; 9.7h in bed &nbsp;·&nbsp; RR 15.4 &nbsp;·&nbsp; ⚠️ SpO₂ 91.4%</div>
+      <div class="sleep-bar-label">Sleep performance: 73% &nbsp;·&nbsp; ~8.5h in bed &nbsp;·&nbsp; RR 15.4 &nbsp;·&nbsp; ⚠️ SpO₂ 91.4%</div>
       <div class="sleep-bar-track">
         <div class="sleep-bar-fill" style="width:73%"></div>
       </div>
     </div>
-
-    <!-- Check-in pills -->
     <div class="pills-row" style="margin-top:8px;">
       <span class="pill pill-none">PEM: none</span>
       <span class="pill pill-none">Brain fog: none</span>
@@ -343,16 +392,14 @@
       <span class="pill pill-neutral">Left home: yes</span>
     </div>
     <div class="notes-text">Took 15mg XR Adderall. Moved back to Boston from Granby — 2+ hr car ride.</div>
-
-    <!-- Workout chip -->
     <div style="margin-top:10px; font-size:0.75rem; color:#4a5568; background:#f0f4f8; border-radius:8px; padding:7px 10px;">
-      🏃 <strong>Activity</strong> &nbsp;·&nbsp; 27 min &nbsp;·&nbsp; Strain 6.9 &nbsp;·&nbsp; Avg HR 135 &nbsp;·&nbsp; Max HR 153
+      🏃 <strong>Activity</strong> &nbsp;·&nbsp; Strain 15.3 &nbsp;·&nbsp; High exertion day
     </div>
   </div>
 
   <div class="footer">
-    Cadence · Last updated Apr 21, 2026 at 4:54 PM UTC<br>
-    Data: WHOOP + self-report
+    Cadence · Last updated Apr 22, 2026 at 17:32 UTC<br>
+    Data: WHOOP backfill + self-report
   </div>
 
 </main>
