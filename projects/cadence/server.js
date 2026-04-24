@@ -236,6 +236,130 @@ app.post('/api/visible/upload', upload.single('file'), async (req, res) => {
   }
 });
 
+// GET /api/patterns — PEM risk detection for Hannah
+app.get('/api/patterns', async (req, res) => {
+  try {
+    res.set('Cache-Control', 'no-store');
+    const whoopUserId = 6729032;
+
+    // Pull last 7 days of visible + whoop data
+    const toEasternDate = (offsetDays = 0) => {
+      const d = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+      d.setDate(d.getDate() - offsetDays);
+      return d.toISOString().slice(0, 10);
+    };
+    const dates = [0,1,2,3,4,5,6].map(toEasternDate);
+    const oldest = dates[dates.length - 1];
+
+    const visibleDocs = await db.collection('visible_daily')
+      .find({ user_id: whoopUserId, date: { $gte: oldest } })
+      .toArray();
+    const whoopDocs = await db.collection('whoop_daily')
+      .find({ user_id: whoopUserId, date: { $gte: oldest } })
+      .toArray();
+
+    const vis = {};
+    visibleDocs.forEach(d => { vis[d.date] = d; });
+    const whoop = {};
+    whoopDocs.forEach(d => { whoop[d.date] = d; });
+
+    const alerts = [];
+    const today = dates[0];
+    const yesterday = dates[1];
+
+    // Alert 1: Low HRV + prior active day
+    const todayWhoop = whoop[today] || {};
+    const yestVisible = vis[yesterday] || {};
+    const todayHRV = todayWhoop.recovery?.score?.hrv_rmssd_milli
+      || vis[today]?.measurements?.HRV;
+    const yestActive = yestVisible.symptoms?.['Physically active']
+      || yestVisible.measurements?.['Physically active'];
+    const yestPacePoints = yestVisible.measurements?.PacePoints;
+
+    if (todayHRV && todayHRV < 45 && yestActive >= 2) {
+      alerts.push({
+        level: 'warning',
+        icon: '⚠️',
+        title: `Low HRV (${Math.round(todayHRV)}ms) after active day`,
+        body: `Yesterday: physically active=${yestActive}, PacePoints=${yestPacePoints ?? '—'}. HRV <45 + prior exertion = elevated PEM risk. Rest today.`,
+      });
+    } else if (todayHRV && todayHRV < 45) {
+      alerts.push({
+        level: 'warning',
+        icon: '⚠️',
+        title: `Low HRV today (${Math.round(todayHRV)}ms)`,
+        body: `HRV below 45ms threshold. Monitor fatigue closely and keep activity minimal.`,
+      });
+    }
+
+    // Alert 2: Consecutive high-fatigue days → crash risk
+    const fatigue0 = vis[today]?.symptoms?.Fatigue || 0;
+    const fatigue1 = vis[yesterday]?.symptoms?.Fatigue || 0;
+    const fatigue2 = vis[dates[2]]?.symptoms?.Fatigue || 0;
+    if (fatigue0 >= 2 && fatigue1 >= 2) {
+      alerts.push({
+        level: fatigue0 >= 3 ? 'critical' : 'warning',
+        icon: fatigue0 >= 3 ? '🚨' : '⚠️',
+        title: `Fatigue ≥2 for ${fatigue2 >= 2 ? '3+' : '2'} consecutive days`,
+        body: `Fatigue scores: today=${fatigue0}, yesterday=${fatigue1}${fatigue2 >= 2 ? `, 2 days ago=${fatigue2}` : ''}. Crash risk is elevated. Strict rest protocol.`,
+      });
+    }
+
+    // Alert 3: Crash flagged today or yesterday
+    const crashToday = vis[today]?.experience?.Crash || 0;
+    const crashYest = vis[yesterday]?.experience?.Crash || 0;
+    if (crashToday) {
+      alerts.push({
+        level: 'critical',
+        icon: '🚨',
+        title: 'Crash reported today',
+        body: 'Hannah flagged a crash in Visible today. Full rest — no exertion.',
+      });
+    } else if (crashYest) {
+      alerts.push({
+        level: 'warning',
+        icon: '⚠️',
+        title: 'Crash reported yesterday — recovery day',
+        body: 'Post-crash recovery in progress. Expect low capacity today. Minimal activity.',
+      });
+    }
+
+    // Alert 4: High PacePoints yesterday (over-exertion signal)
+    if (yestPacePoints && yestPacePoints > 20) {
+      alerts.push({
+        level: 'warning',
+        icon: '📊',
+        title: `High PacePoints yesterday (${yestPacePoints})`,
+        body: `Visible flagged exertion above pacing budget. Typical range is 5–15. Watch for delayed PEM in next 24–48h.`,
+      });
+    }
+
+    // Summary status
+    const hasCritical = alerts.some(a => a.level === 'critical');
+    const hasWarning = alerts.some(a => a.level === 'warning');
+    const status = hasCritical ? 'critical' : hasWarning ? 'warning' : 'ok';
+
+    res.json({
+      status,
+      alerts,
+      meta: {
+        today,
+        yesterday,
+        todayHRV,
+        yestActive,
+        yestPacePoints,
+        fatigue_today: fatigue0,
+        fatigue_yesterday: fatigue1,
+        crash_today: crashToday,
+        crash_yesterday: crashYest,
+      }
+    });
+  } catch (err) {
+    console.error('Error in /api/patterns:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 connect().then(() => {
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Cadence server running on http://0.0.0.0:${PORT}`);

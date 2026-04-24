@@ -25,6 +25,81 @@
     }
     .header-left h1 { font-size: 1.4rem; font-weight: 700; }
     .header-left .subtitle { font-size: 0.8rem; opacity: 0.75; margin-top: 2px; }
+    .simple-toggle {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .simple-toggle:active { background: rgba(255,255,255,0.25); }
+
+    /* ── Simple mode ── */
+    body.simple-mode .nav-tabs { display: none; }
+    body.simple-mode .section-label { display: none; }
+    body.simple-mode .day-row { display: none; }
+    body.simple-mode .pills-row { display: none; }
+    body.simple-mode .sleep-bar-wrap { display: none; }
+    body.simple-mode .notes-text { display: none; }
+    body.simple-mode .footer { display: none; }
+    body.simple-mode .metrics-row { display: none; }
+    body.simple-mode #simple-card { display: block !important; }
+    body.simple-mode .today-card { display: none; }
+    body.simple-mode #pattern-alerts { display: none; }
+    body.simple-mode #days-container { display: none; }
+
+    /* ── Simple card ── */
+    #simple-card {
+      display: none;
+      margin-top: 20px;
+    }
+    .simple-status {
+      border-radius: 24px;
+      padding: 32px 24px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .simple-status.status-red    { background: linear-gradient(135deg, #c0392b, #922b21); color: white; }
+    .simple-status.status-yellow { background: linear-gradient(135deg, #d4a017, #a07810); color: white; }
+    .simple-status.status-green  { background: linear-gradient(135deg, #1a8a4a, #0d5c30); color: white; }
+    .simple-emoji { font-size: 4rem; margin-bottom: 12px; }
+    .simple-headline { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
+    .simple-sub { font-size: 1rem; opacity: 0.85; }
+    .simple-metrics {
+      display: flex; gap: 12px; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .simple-metric {
+      background: white;
+      border-radius: 16px;
+      padding: 16px 20px;
+      text-align: center;
+      flex: 1;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .simple-metric .big-val {
+      font-size: 2rem; font-weight: 900; line-height: 1;
+    }
+    .simple-metric .big-lbl {
+      font-size: 0.8rem; color: #6b7a8d; margin-top: 6px;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .simple-note {
+      background: white;
+      border-radius: 16px;
+      padding: 16px 20px;
+      font-size: 1rem;
+      color: #4a5568;
+      font-style: italic;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      text-align: center;
+      line-height: 1.5;
+    }
+
     .avatar {
       width: 44px; height: 44px; border-radius: 50%;
       background: rgba(255,255,255,0.2);
@@ -217,7 +292,7 @@
     <h1>Hannah M.</h1>
     <div class="subtitle">Cadence · Long COVID tracker</div>
   </div>
-  <div class="avatar">🦋</div>
+  <button class="simple-toggle" id="simple-btn" onclick="toggleSimple()">🧘 Simple</button>
 </header>
 
 <div class="nav-tabs">
@@ -229,179 +304,303 @@
 
 <main>
 
-  <!-- ── Alerts ── -->
-  <div class="alert-strip critical-alert" style="margin-top:14px;">
-    <div class="alert-icon">🚨</div>
-    <div><strong>Recovery score: 1% — Apr 22</strong> — Lowest possible reading. Only 1.2h sleep. Rest day mandatory.</div>
+  <!-- ── Dynamic Pattern Alerts ── -->
+  <div id="pattern-alerts" style="margin-top:14px;"></div>
+
+  <!-- ── Simple mode card ── -->
+  <div id="simple-card">
+    <div id="simple-status-block"></div>
   </div>
 
-  <div class="alert-strip spo2-alert">
-    <div class="alert-icon">⚠️</div>
-    <div><strong>Chronic low SpO₂ pattern</strong> — Apr 15: 89.5%, Apr 14: 91.7%, Apr 18: 91.4%. Consistent overnight dips below 95%. Discuss with care team.</div>
-  </div>
+  <!-- ── Dynamic daily cards ── -->
+  <div id="days-container"></div>
 
-  <div class="alert-strip">
-    <div class="alert-icon">📍</div>
-    <div><strong>Apr 20 — PEM crash</strong> after demanding activity day (Apr 18 move + Adderall). Classic 48h delayed PEM pattern. Now compounded by sleep crash Apr 22.</div>
-  </div>
-
-  <!-- ── Today ── -->
-  <div class="section-label">Today · Apr 22</div>
-
-  <div class="today-card">
-    <div class="day-header">
-      <div class="day-label">Wednesday <span class="day-sub">· scored</span></div>
-      <div class="feeling-badge feeling-unknown" style="background:rgba(255,255,255,0.2);color:white;">No check-in yet</div>
-    </div>
-    <div class="metrics-row">
-      <div class="metric-chip">
-        <div class="val val-red">1</div>
-        <div class="lbl">Recovery</div>
-      </div>
-      <div class="metric-chip">
-        <div class="val val-yellow">37.6</div>
-        <div class="lbl">HRV ms</div>
-      </div>
-      <div class="metric-chip">
-        <div class="val val-blue">74</div>
-        <div class="lbl">RHR</div>
-      </div>
-      <div class="metric-chip">
-        <div class="val val-gray">0.1</div>
-        <div class="lbl">Strain</div>
-      </div>
-    </div>
-
-    <!-- Sleep bar -->
-    <div class="sleep-bar-wrap">
-      <div class="sleep-bar-label" style="color:rgba(255,255,255,0.65);">Sleep performance: 27% &nbsp;·&nbsp; 1.2h sleep &nbsp;·&nbsp; RR 16.6 &nbsp;·&nbsp; 98.6% efficiency</div>
-      <div class="sleep-bar-track">
-        <div class="sleep-bar-fill fill-red" style="width:27%"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── Apr 21 ── -->
-  <div class="section-label">Apr 21 · Tuesday</div>
-
-  <div class="day-row">
-    <div class="day-header">
-      <div class="day-label">Tuesday</div>
-      <div class="feeling-badge feeling-mixed">😐 Mixed</div>
-    </div>
-    <!-- WHOOP: no recovery scored, strain only -->
-    <div class="metrics-row">
-      <div class="metric-chip">
-        <div class="val val-gray">—</div>
-        <div class="lbl">Recovery</div>
-      </div>
-      <div class="metric-chip">
-        <div class="val val-gray">—</div>
-        <div class="lbl">HRV ms</div>
-      </div>
-      <div class="metric-chip">
-        <div class="val val-gray">—</div>
-        <div class="lbl">RHR</div>
-      </div>
-      <div class="metric-chip">
-        <div class="val val-yellow">2.0</div>
-        <div class="lbl">Strain</div>
-      </div>
-    </div>
-    <div class="pills-row">
-      <span class="pill pill-mild">PEM: mild</span>
-      <span class="pill pill-mild">Brain fog: mild</span>
-      <span class="pill pill-mild">Pain: mild</span>
-      <span class="pill pill-neutral">Activity: rested</span>
-    </div>
-  </div>
-
-  <!-- ── Apr 20 ── -->
-  <div class="section-label">Apr 20 · Sunday</div>
-
-  <div class="day-row">
-    <div class="day-header">
-      <div class="day-label">Sunday <span class="day-sub">· Xolair day</span></div>
-      <div class="feeling-badge feeling-bad">😔 Bad</div>
-    </div>
-    <div class="pills-row">
-      <span class="pill pill-severe">PEM: severe</span>
-      <span class="pill pill-mild">Brain fog: mild</span>
-      <span class="pill pill-severe">Pain: severe</span>
-      <span class="pill pill-neutral">Activity: demanding</span>
-      <span class="pill pill-neutral">Left home: yes</span>
-    </div>
-    <div class="notes-text">Xolair injection today.</div>
-  </div>
-
-  <!-- ── Apr 19 ── -->
-  <div class="section-label">Apr 19 · Saturday</div>
-
-  <div class="day-row">
-    <div class="day-header">
-      <div class="day-label">Saturday <span class="day-sub">· housework day</span></div>
-      <div class="feeling-badge feeling-mixed">😐 Mixed</div>
-    </div>
-    <div class="pills-row">
-      <span class="pill pill-mild">PEM: mild</span>
-      <span class="pill pill-mild">Brain fog: mild</span>
-      <span class="pill pill-mild">Pain: mild</span>
-      <span class="pill pill-neutral">Activity: light</span>
-      <span class="pill pill-neutral">Stayed home</span>
-    </div>
-    <div class="notes-text">Did some house work. Still felt wired from the Adderall the day before.</div>
-  </div>
-
-  <!-- ── Apr 18 ── -->
-  <div class="section-label">Apr 18 · Friday · WHOOP data</div>
-
-  <div class="day-row">
-    <div class="day-header">
-      <div class="day-label">Friday <span class="day-sub">· move day</span></div>
-      <div class="feeling-badge feeling-good">😊 Good</div>
-    </div>
-    <div class="metrics-row">
-      <div class="metric-chip">
-        <div class="val val-green">76</div>
-        <div class="lbl">Recovery</div>
-      </div>
-      <div class="metric-chip">
-        <div class="val val-yellow">33.1</div>
-        <div class="lbl">HRV ms</div>
-      </div>
-      <div class="metric-chip">
-        <div class="val val-blue">78</div>
-        <div class="lbl">RHR</div>
-      </div>
-      <div class="metric-chip">
-        <div class="val val-yellow">15.3</div>
-        <div class="lbl">Strain</div>
-      </div>
-    </div>
-    <div class="sleep-bar-wrap">
-      <div class="sleep-bar-label">Sleep performance: 73% &nbsp;·&nbsp; ~8.5h in bed &nbsp;·&nbsp; RR 15.4 &nbsp;·&nbsp; ⚠️ SpO₂ 91.4%</div>
-      <div class="sleep-bar-track">
-        <div class="sleep-bar-fill" style="width:73%"></div>
-      </div>
-    </div>
-    <div class="pills-row" style="margin-top:8px;">
-      <span class="pill pill-none">PEM: none</span>
-      <span class="pill pill-none">Brain fog: none</span>
-      <span class="pill pill-mild">Pain: mild</span>
-      <span class="pill pill-neutral">Activity: demanding</span>
-      <span class="pill pill-neutral">Left home: yes</span>
-    </div>
-    <div class="notes-text">Took 15mg XR Adderall. Moved back to Boston from Granby — 2+ hr car ride.</div>
-    <div style="margin-top:10px; font-size:0.75rem; color:#4a5568; background:#f0f4f8; border-radius:8px; padding:7px 10px;">
-      🏃 <strong>Activity</strong> &nbsp;·&nbsp; Strain 15.3 &nbsp;·&nbsp; High exertion day
-    </div>
-  </div>
-
-  <div class="footer">
-    Cadence · Last updated Apr 22, 2026 at 17:32 UTC<br>
-    Data: WHOOP backfill + self-report
-  </div>
+  <div class="footer" id="footer">Cadence · Loading…</div>
 
 </main>
+<script>
+const WHOOP_USER_ID = 6729032;
+
+// Eastern-time date strings
+function easternDate(offsetDays = 0) {
+  const d = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+  d.setDate(d.getDate() - offsetDays);
+  return d.toISOString().slice(0, 10);
+}
+
+function fmtDate(iso) {
+  const [y, m, d] = iso.split('-');
+  const dt = new Date(+y, +m - 1, +d);
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${days[dt.getDay()]} · ${months[+m-1]} ${+d}`;
+}
+
+function feelingBadge(feeling, checkin) {
+  if (!checkin) return `<div class="feeling-badge feeling-unknown" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);">No check-in</div>`;
+  const map = { good: ['feeling-good', '😊 Good'], okay: ['feeling-mixed', '😐 Okay'],
+                bad: ['feeling-bad', '😔 Bad'], terrible: ['feeling-bad', '😭 Terrible'] };
+  const [cls, label] = map[feeling] || ['feeling-unknown', feeling || '—'];
+  return `<div class="feeling-badge ${cls}">${label}</div>`;
+}
+
+function severityClass(val) {
+  if (!val || val === 'none') return 'pill-none';
+  if (val === 'mild') return 'pill-mild';
+  if (val === 'moderate') return 'pill-moderate';
+  if (val === 'severe') return 'pill-severe';
+  return 'pill-neutral';
+}
+
+function metricVal(val, type) {
+  if (val == null) return { html: '—', cls: 'val-gray' };
+  if (type === 'recovery') {
+    const cls = val >= 67 ? 'val-green' : val >= 34 ? 'val-yellow' : 'val-red';
+    return { html: Math.round(val), cls };
+  }
+  if (type === 'hrv') {
+    const cls = val >= 50 ? 'val-green' : val >= 40 ? 'val-yellow' : 'val-red';
+    return { html: val.toFixed(1), cls };
+  }
+  if (type === 'rhr') return { html: Math.round(val), cls: 'val-blue' };
+  if (type === 'strain') {
+    const cls = val >= 14 ? 'val-red' : val >= 10 ? 'val-yellow' : 'val-green';
+    return { html: val.toFixed(1), cls };
+  }
+  return { html: val, cls: 'val-gray' };
+}
+
+function renderDayCard(date, whoop, checkin, isToday) {
+  const w = whoop || {};
+  const rec = w.recovery?.score || {};
+  const slp = w.sleep?.score || {};
+  const wrk = w.workout?.score || {};
+
+  const recovery = rec.recovery_score ?? null;
+  const hrv = rec.hrv_rmssd_milli ?? null;
+  const rhr = rec.resting_heart_rate ?? null;
+  const strain = wrk.strain ?? null;
+  const sleepPerf = slp.sleep_performance_percentage ?? null;
+  const sleepEff = slp.sleep_efficiency_percentage ?? null;
+
+  const rv = metricVal(recovery, 'recovery');
+  const hv = metricVal(hrv, 'hrv');
+  const rhv = metricVal(rhr, 'rhr');
+  const sv = metricVal(strain, 'strain');
+
+  const cardClass = isToday ? 'today-card' : 'day-row';
+  const labelStyle = isToday ? '' : '';
+
+  let pills = '';
+  if (checkin) {
+    const fields = [
+      ['PEM', checkin.pem],
+      ['Brain fog', checkin.brain_fog],
+      ['Pain', checkin.pain],
+    ];
+    pills = fields.map(([label, val]) => val && val !== 'none'
+      ? `<span class="pill ${severityClass(val)}">${label}: ${val}</span>` : '').join('');
+    if (checkin.activity) pills += `<span class="pill pill-neutral">Activity: ${checkin.activity}</span>`;
+    if (checkin.pem === 'severe') pills += `<span class="pill pill-severe">⚠️ Severe PEM</span>`;
+    if (checkin.left_home === 'yes') pills += `<span class="pill pill-neutral">🚗 Left home</span>`;
+    if (checkin.probiotics === 'yes') pills += `<span class="pill pill-neutral">💨 Probiotics</span>`;
+  }
+
+  let sleepBar = '';
+  if (sleepPerf != null) {
+    const pct = Math.round(sleepPerf);
+    const barCls = pct < 40 ? 'fill-red' : '';
+    const effStr = sleepEff != null ? ` · ${sleepEff.toFixed(0)}% efficiency` : '';
+    const inBed = slp.total_in_bed_time_milli ? ` · ${(slp.total_in_bed_time_milli/3600000).toFixed(1)}h in bed` : '';
+    const lblStyle = isToday ? 'color:rgba(255,255,255,0.65);' : '';
+    sleepBar = `
+      <div class="sleep-bar-wrap">
+        <div class="sleep-bar-label" style="${lblStyle}">Sleep performance: ${pct}%${inBed}${effStr}</div>
+        <div class="sleep-bar-track"><div class="sleep-bar-fill ${barCls}" style="width:${pct}%"></div></div>
+      </div>`;
+  }
+
+  let notes = '';
+  if (checkin?.notes) notes = `<div class="notes-text">${checkin.notes}</div>`;
+
+  const badge = isToday
+    ? (checkin ? feelingBadge(checkin.feeling, checkin).replace('feeling-bad">', 'feeling-bad" style="background:rgba(200,50,50,0.4);color:#ef8a7a;">').replace('feeling-good">', 'feeling-good" style="background:rgba(50,180,100,0.3);color:#6fd9a0;">').replace('feeling-mixed">', 'feeling-mixed" style="background:rgba(200,160,0,0.3);color:#ffd166;">')
+               : `<div class="feeling-badge" style="background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);">No check-in</div>`)
+    : feelingBadge(checkin?.feeling, checkin);
+
+  return `
+    <div class="${cardClass}">
+      <div class="day-header">
+        <div class="day-label">${fmtDate(date)}</div>
+        ${badge}
+      </div>
+      <div class="metrics-row">
+        <div class="metric-chip"><div class="val ${rv.cls}">${rv.html}</div><div class="lbl">Recovery</div></div>
+        <div class="metric-chip"><div class="val ${hv.cls}">${hv.html}</div><div class="lbl">HRV ms</div></div>
+        <div class="metric-chip"><div class="val ${rhv.cls}">${rhv.html}</div><div class="lbl">RHR</div></div>
+        <div class="metric-chip"><div class="val ${sv.cls}">${sv.html}</div><div class="lbl">Strain</div></div>
+      </div>
+      ${sleepBar}
+      ${pills ? `<div class="pills-row" style="margin-top:8px;">${pills}</div>` : ''}
+      ${notes}
+    </div>`;
+}
+
+async function loadDashboard() {
+  const dates = [0,1,2,3,4].map(easternDate);
+  const today = dates[0];
+
+  // Fetch all data in parallel
+  const [patternRes, whoopRes, checkinRes] = await Promise.all([
+    fetch('/api/patterns').then(r => r.json()).catch(() => ({ alerts: [] })),
+    fetch('/api/dashboard?user=hannah').then(r => r.json()).catch(() => ({})),
+    Promise.all(dates.map(d =>
+      fetch(`/api/checkin/${d}?user=hannah`).then(r => r.json()).catch(() => ({ found: false }))
+    ))
+  ]);
+
+  // Pattern alerts
+  const alertContainer = document.getElementById('pattern-alerts');
+  if (!patternRes.alerts || patternRes.alerts.length === 0) {
+    alertContainer.innerHTML = `<div class="alert-strip" style="background:#d4edda;border-color:#b8dfc5;color:#155724;margin-bottom:12px;"><div class="alert-icon">✅</div><div><strong>No active PEM risk alerts</strong> — Patterns look stable today.</div></div>`;
+  } else {
+    alertContainer.innerHTML = patternRes.alerts.map(a => {
+      const cls = a.level === 'critical' ? 'alert-strip critical-alert' : 'alert-strip';
+      return `<div class="${cls}" style="margin-bottom:10px;"><div class="alert-icon">${a.icon}</div><div><strong>${a.title}</strong> — ${a.body}</div></div>`;
+    }).join('');
+  }
+
+  // Build day cards
+  const whoop = whoopRes.whoop || {};
+  const container = document.getElementById('days-container');
+  let html = '';
+
+  dates.forEach((date, i) => {
+    const checkin = checkinRes[i]?.found ? checkinRes[i].data : null;
+    const w = whoop[date] || null;
+    const isToday = i === 0;
+    if (isToday) html += `<div class="section-label" style="margin-top:14px;">Today · ${fmtDate(date)}</div>`;
+    else html += `<div class="section-label">${fmtDate(date)}</div>`;
+    html += renderDayCard(date, w, checkin, isToday);
+  });
+
+  container.innerHTML = html;
+
+  // Footer
+  document.getElementById('footer').innerHTML =
+    `Cadence · Updated ${new Date().toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit' })} ET · <a href="javascript:location.reload()" style="color:#9aabbf;">Refresh</a>`;
+}
+
+function toggleSimple() {
+  const isSimple = document.body.classList.toggle('simple-mode');
+  document.getElementById('simple-btn').textContent = isSimple ? '📊 Full view' : '🧘 Simple';
+  localStorage.setItem('hannah-simple-mode', isSimple ? '1' : '0');
+}
+
+function renderSimpleCard(patternData, whoopData, checkinData) {
+  const today = easternDate(0);
+  const w = (whoopData.whoop || {})[today] || {};
+  const rec = w.recovery?.score || {};
+  const checkin = checkinData?.found ? checkinData.data : null;
+
+  const recovery = rec.recovery_score ?? null;
+  const hrv = rec.hrv_rmssd_milli ?? null;
+  const feeling = checkin?.feeling || null;
+  const pem = checkin?.pem || null;
+  const notes = checkin?.notes || null;
+  const status = patternData.status || 'ok';
+
+  let emoji, headline, sub, statusCls;
+  if (status === 'critical' || feeling === 'terrible' || feeling === 'bad') {
+    emoji = '😔'; statusCls = 'status-red';
+    headline = pem === 'severe' ? 'Rest day — severe PEM' : 'Rest day';
+    sub = 'Low activity only. No pushing through.';
+  } else if (status === 'warning' || feeling === 'okay') {
+    emoji = '😐'; statusCls = 'status-yellow';
+    headline = 'Take it easy today';
+    sub = 'Some warning signs. Stay within your energy envelope.';
+  } else {
+    emoji = '🌿'; statusCls = 'status-green';
+    headline = 'Feeling okay';
+    sub = 'Stay within your pacing limits.';
+  }
+
+  const rColor = recovery == null ? '#8a9ab0' : recovery >= 67 ? '#1a8a4a' : recovery >= 34 ? '#b08a00' : '#c0392b';
+  const hColor = hrv == null ? '#8a9ab0' : hrv >= 50 ? '#1a8a4a' : hrv >= 40 ? '#b08a00' : '#c0392b';
+
+  document.getElementById('simple-status-block').innerHTML = `
+    <div class="simple-status ${statusCls}">
+      <div class="simple-emoji">${emoji}</div>
+      <div class="simple-headline">${headline}</div>
+      <div class="simple-sub">${sub}</div>
+    </div>
+    <div class="simple-metrics">
+      <div class="simple-metric">
+        <div class="big-val" style="color:${rColor}">${recovery != null ? Math.round(recovery) + '%' : '—'}</div>
+        <div class="big-lbl">Recovery</div>
+      </div>
+      <div class="simple-metric">
+        <div class="big-val" style="color:${hColor}">${hrv != null ? Math.round(hrv) : '—'}</div>
+        <div class="big-lbl">HRV ms</div>
+      </div>
+    </div>
+    ${notes ? `<div class="simple-note">“${notes}”</div>` : ''}
+  `;
+}
+
+async function loadDashboard() {
+  const dates = [0,1,2,3,4].map(easternDate);
+  const today = dates[0];
+
+  const [patternRes, whoopRes, checkinRes] = await Promise.all([
+    fetch('/api/patterns').then(r => r.json()).catch(() => ({ alerts: [], status: 'ok' })),
+    fetch('/api/dashboard?user=hannah').then(r => r.json()).catch(() => ({})),
+    Promise.all(dates.map(d =>
+      fetch(`/api/checkin/${d}?user=hannah`).then(r => r.json()).catch(() => ({ found: false }))
+    ))
+  ]);
+
+  // Restore simple mode preference
+  if (localStorage.getItem('hannah-simple-mode') === '1') {
+    document.body.classList.add('simple-mode');
+    document.getElementById('simple-btn').textContent = '📊 Full view';
+  }
+
+  // Build simple card
+  renderSimpleCard(patternRes, whoopRes, checkinRes[0]);
+
+  // Pattern alerts
+  const alertContainer = document.getElementById('pattern-alerts');
+  if (!patternRes.alerts || patternRes.alerts.length === 0) {
+    alertContainer.innerHTML = `<div class="alert-strip" style="background:#d4edda;border-color:#b8dfc5;color:#155724;margin-bottom:12px;"><div class="alert-icon">✅</div><div><strong>No active PEM risk alerts</strong> — Patterns look stable today.</div></div>`;
+  } else {
+    alertContainer.innerHTML = patternRes.alerts.map(a => {
+      const cls = a.level === 'critical' ? 'alert-strip critical-alert' : 'alert-strip';
+      return `<div class="${cls}" style="margin-bottom:10px;"><div class="alert-icon">${a.icon}</div><div><strong>${a.title}</strong> — ${a.body}</div></div>`;
+    }).join('');
+  }
+
+  // Build day cards
+  const whoop = whoopRes.whoop || {};
+  const container = document.getElementById('days-container');
+  let html = '';
+
+  dates.forEach((date, i) => {
+    const checkin = checkinRes[i]?.found ? checkinRes[i].data : null;
+    const w = whoop[date] || null;
+    const isToday = i === 0;
+    if (isToday) html += `<div class="section-label" style="margin-top:14px;">Today · ${fmtDate(date)}</div>`;
+    else html += `<div class="section-label">${fmtDate(date)}</div>`;
+    html += renderDayCard(date, w, checkin, isToday);
+  });
+
+  container.innerHTML = html;
+
+  document.getElementById('footer').innerHTML =
+    `Cadence · Updated ${new Date().toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit' })} ET · <a href="javascript:location.reload()" style="color:#9aabbf;">Refresh</a>`;
+}
+
+loadDashboard();
+</script>
 </body>
 </html>

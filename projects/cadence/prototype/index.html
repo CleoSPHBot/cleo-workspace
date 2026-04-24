@@ -292,9 +292,29 @@
   <div class="section-label">Previous days</div>
   <div class="past-days" id="past-days-list"></div>
 
-  <div style="margin-top:28px;text-align:center">
+  <div style="margin-top:28px;text-align:center;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
     <a href="/dashboard" style="display:inline-block;padding:10px 24px;background:#1e2d3d;color:#7a9ab8;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;border:1px solid #2a3d54">📊 Dashboard</a>
+    <a href="/hannah-dashboard.html" id="hannah-link" style="display:inline-block;padding:10px 24px;background:#1e2d3d;color:#7a9ab8;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;border:1px solid #2a3d54">🦋 Hannah</a>
   </div>
+  <script>
+  // Dynamically color the Hannah link based on pattern alert status
+  fetch('/api/patterns').then(r => r.json()).then(data => {
+    const link = document.getElementById('hannah-link');
+    if (data.status === 'critical') {
+      link.style.background = '#3d1e1e';
+      link.style.color = '#ef8a7a';
+      link.style.borderColor = '#7a3030';
+      link.textContent = '🚨 Hannah';
+    } else if (data.status === 'warning') {
+      link.style.background = '#3d2e1e';
+      link.style.color = '#ffd166';
+      link.style.borderColor = '#7a5a30';
+      link.textContent = '⚠️ Hannah';
+    } else {
+      link.textContent = '✅ Hannah';
+    }
+  }).catch(() => {});
+  </script>
 
   <div class="section-label" style="margin-top:24px">Data</div>
   <div class="upload-card" onclick="document.getElementById('visible-file-input').click()">

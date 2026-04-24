@@ -126,20 +126,20 @@
 - **WHOOP endpoints:** Sleep `GET /v2/activity/sleep/{uuid}` | Workout `GET /v2/activity/workout/{uuid}` | Recovery: `GET /v2/recovery?limit=10` + match `sleep_id` | Cycle `GET /v1/cycle/{id}`
 - **Webhook URL:** `https://nldsq794q0.execute-api.us-west-2.amazonaws.com/webhook` | Login: `.../login` | Secret: `com.sph.dev.whoop`
 - **David WHOOP user_id:** 206067 (hdmunguia@gmail.com) | **Hannah WHOOP user_id:** 6729032 (hannah.munguia@gmail.com)
-- **MongoDB collections:** `user`, `webhook_event`, `whoop_daily`, `visible_daily`, `self_report` (check-in data)
+- **MongoDB collections:** `user`, `webhook_event`, `whoop_daily` (2,286 docs), `visible_daily`, `self_report` (check-in data)
 - **v2 Design Decision (Apr 16):** Dynamic question schema — questions stored in MongoDB `questions` collection (not hardcoded). Enables add/remove without deploys, versioning, A/B testing. Schema: `question_id`, `version`, `active`, `order`, `text`, `type`, `options`. Types: `traffic_light`, `yes_no`, `scale`, `text`. Priority: v2.
 - **Server.js:** runs at port 8765, reads MongoDB URI from `/home2/cleo/mongo_uri`, saves to `self_report` collection keyed on `{user_id, date}`. ⚠️ Not daemonized — needs pm2 or systemd.
 - **User scoping (Apr 19):** URL param `?user=david` scopes check-ins to David; defaults to `hannah` when no param present
 - **Cadence app features (as of Apr 17):** Visible CSV upload (`POST /api/visible/upload`, multer + csv-parse → `visible_daily`); pre-population (`GET /api/checkin/:date`); server drives Eastern time `today` to avoid UTC mismatch; "Update →" button when today has data
 - **Dashboard:** `/dashboard` → `dashboard.html`, `/api/dashboard` endpoint. 3-day view: WHOOP metrics + check-in pills + Visible highlights. Auto-refreshes every 5 min, Eastern time aware, no-cache headers.
-- **Hannah dashboard (Apr 21):** `/hannah-dashboard.html` — alerts at top (SpO₂ warnings, PEM crash patterns), full biometric + symptom view, pattern detection built in.
+- **Dashboards:** `dashboard.html` = dynamic (live MongoDB pull, 3-day view, auto-refresh) | `hannah-dashboard.html` = static hardcoded view (updated manually as needed) — both served from `prototype/`
 - **Oura Ring:** v2 API at cloud.ouraring.com/v2/docs. Adds skin temp deviation, resilience score. Hannah doesn't have one yet — TBD.
 
 ## LC Wiki
 - Built Apr 17 using Karpathy's LLM wiki pattern — incremental, compounding knowledge base
 - Location: `projects/cadence/wiki/` — Obsidian-compatible wikilinks throughout
 - Schema: `AGENTS.md`, `index.md`, `log.md`, `raw/`, `sources/`, `entities/`, `concepts/`, `synthesis/`
-- **99 pages total:** 33 sources, 29 entities, 36 concepts, 1 synthesis overview
+- **~102 pages total:** 34 sources (1 added Apr 22), 29+ entities, 36+ concepts, 1 synthesis overview
 - Built via 4 parallel Sonnet subagents + Opus synthesis pass
 - **Repo:** `github.com/CleoSPHBot/lc-wiki` (private, PAT at `/home2/cleo/.github_token`)
 - Key contradictions flagged in synthesis: metformin (prevention vs treatment), GET/CBT harm, spike persistence evidence
