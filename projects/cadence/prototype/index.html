@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>Cadence — Daily Check-in</title>
+  <title>Cadence</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -26,6 +26,7 @@
       align-items: center;
       gap: 12px;
       border-bottom: 1px solid #1e2d3d;
+      position: sticky; top: 0; z-index: 10;
     }
     .logo {
       width: 36px; height: 36px;
@@ -50,119 +51,257 @@
     .screen {
       display: none;
       width: 100%; max-width: 420px;
-      padding: 28px 24px 24px;
+      padding: 24px 20px 40px;
       flex-direction: column; gap: 0;
     }
     .screen.active { display: flex; }
 
-    /* ── Home screen ── */
-    .home-greeting {
-      font-size: 24px; font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .home-sub {
-      font-size: 14px; color: #7a9ab8;
-      margin-bottom: 28px; line-height: 1.5;
-    }
+    /* ══════════════════════════════
+       HUB HOME SCREEN
+    ══════════════════════════════ */
+
     .section-label {
       font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
       text-transform: uppercase; color: #c9a84c;
+      margin-bottom: 10px; margin-top: 24px;
+    }
+    .section-label:first-child { margin-top: 0; }
+
+    /* ── Where Are You Now ── */
+    .now-card {
+      background: linear-gradient(135deg, #1a3550, #1e2d3d);
+      border: 1.5px solid #c9a84c44;
+      border-radius: 20px;
+      padding: 18px 20px;
+      cursor: pointer;
+      transition: all 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .now-card:active { transform: scale(0.98); }
+    .now-card.done { border-color: #4caf7d55; }
+    .now-card.partial { border-color: #f0c04055; }
+
+    .now-top {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .now-label { font-size: 13px; color: #7a9ab8; font-weight: 600; }
+    .now-status-pill {
+      font-size: 12px; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+    }
+    .now-status-pill.done { background: rgba(76,175,125,0.15); color: #4caf7d; }
+    .now-status-pill.partial { background: rgba(240,192,64,0.12); color: #f0c040; }
+    .now-status-pill.empty { background: rgba(201,168,76,0.12); color: #c9a84c; }
+
+    .now-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .now-metric {
+      background: #0f192380;
+      border-radius: 10px;
+      padding: 9px 10px;
+    }
+    .now-metric-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.8px;
+      text-transform: uppercase; color: #5a7a98; margin-bottom: 3px;
+    }
+    .now-metric-val {
+      font-size: 18px; font-weight: 700; color: #f0f4f8; line-height: 1;
+    }
+    .now-metric-unit { font-size: 10px; color: #7a9ab8; font-weight: 400; }
+
+    .now-checkin-row {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-bottom: 14px;
+    }
+    .ci-chip {
+      display: flex; align-items: center; gap: 4px;
+      background: #0f192380; border-radius: 8px;
+      padding: 5px 9px; font-size: 11px;
+    }
+    .ci-chip-label { color: #5a7a98; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; font-size: 9px; }
+    .ci-chip-val { color: #f0f4f8; font-weight: 600; }
+    .ci-chip-val.green { color: #4caf7d; }
+    .ci-chip-val.yellow { color: #f0c040; }
+    .ci-chip-val.red { color: #e05a5a; }
+
+    .now-edit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #c9a84c, #e8c96a);
+      border: none; border-radius: 12px;
+      color: #0f1923; font-size: 14px; font-weight: 700;
+      padding: 12px; cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .now-start-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #c9a84c, #e8c96a);
+      border: none; border-radius: 12px;
+      color: #0f1923; font-size: 15px; font-weight: 700;
+      padding: 14px; cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .now-continue-btn {
+      width: 100%;
+      background: transparent;
+      border: 1.5px solid #f0c040;
+      border-radius: 12px;
+      color: #f0c040; font-size: 14px; font-weight: 700;
+      padding: 12px; cursor: pointer;
+      margin-top: 8px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ── Yesterday / Trends ── */
+    .yest-card {
+      background: #131f2e;
+      border: 1px solid #1e2d3d;
+      border-radius: 18px;
+      padding: 18px 20px;
+    }
+    .yest-top {
+      display: flex; align-items: baseline; gap: 8px;
+      margin-bottom: 14px;
+    }
+    .yest-day { font-size: 15px; font-weight: 700; color: #f0f4f8; }
+    .yest-date { font-size: 12px; color: #7a9ab8; }
+
+    .yest-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .yest-metric {
+      background: #0f1923;
+      border-radius: 10px;
+      padding: 9px 10px;
+    }
+    .yest-metric-label {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.8px;
+      text-transform: uppercase; color: #5a7a98; margin-bottom: 3px;
+    }
+    .yest-metric-val {
+      font-size: 18px; font-weight: 700; color: #f0f4f8; line-height: 1;
+    }
+    .yest-metric-unit { font-size: 10px; color: #7a9ab8; }
+    .trend-up-good   { color: #4caf7d; font-size: 11px; }
+    .trend-down-bad  { color: #e05a5a; font-size: 11px; }
+    .trend-up-bad    { color: #e05a5a; font-size: 11px; }
+    .trend-down-good { color: #4caf7d; font-size: 11px; }
+    .trend-flat      { color: #3a5a78; font-size: 11px; }
+
+    .yest-checkin-row {
+      display: flex; flex-wrap: wrap; gap: 6px;
       margin-bottom: 12px;
     }
 
-    /* Today card */
-    .today-card {
-      background: linear-gradient(135deg, #1a3550, #1e2d3d);
-      border: 1.5px solid #c9a84c;
-      border-radius: 20px;
-      padding: 20px 22px;
-      margin-bottom: 24px;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      -webkit-tap-highlight-color: transparent;
+    /* Trend pills */
+    .trend-section { margin-top: 12px; }
+    .trend-row {
+      display: flex; align-items: center; gap: 8px;
+      padding: 7px 0;
+      border-bottom: 1px solid #1e2d3d;
+      font-size: 13px;
     }
-    .today-card:active { transform: scale(0.98); }
-    .today-card .day-name { font-size: 13px; color: #c9a84c; font-weight: 600; margin-bottom: 4px; }
-    .today-card .day-date { font-size: 22px; font-weight: 700; margin-bottom: 14px; }
-    .today-card .cta-row {
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .today-card .cta-label { font-size: 15px; color: #7a9ab8; }
-    .today-card .cta-btn {
-      background: linear-gradient(135deg, #c9a84c, #e8c96a);
-      color: #0f1923; font-size: 14px; font-weight: 700;
-      border: none; border-radius: 10px;
-      padding: 9px 18px; cursor: pointer;
-    }
-    .today-card.done .cta-label { color: #4caf7d; }
-    .today-card.done .cta-btn {
-      background: rgba(76,175,125,0.15);
-      color: #4caf7d;
-      border: 1.5px solid #4caf7d;
-    }
+    .trend-row:last-child { border-bottom: none; }
+    .trend-icon { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; }
+    .trend-text { color: #b0c8e0; flex: 1; line-height: 1.4; }
+    .trend-text strong { color: #f0f4f8; }
 
-    /* Past days list */
-    .past-days { display: flex; flex-direction: column; gap: 10px; }
-    .upload-card {
-      background: #1e1e2e; border-radius: 16px; padding: 16px 20px;
-      display: flex; align-items: center; gap: 16px; cursor: pointer;
-      border: 1px solid #333; transition: background 0.15s;
+    /* ── Insights & Advice ── */
+    .insight-card {
+      background: #131f2e;
+      border: 1px solid #1e2d3d;
+      border-radius: 18px;
+      padding: 18px 20px;
     }
-    .upload-card:active { background: #2a2a3e; }
-    .upload-label { font-size: 16px; font-weight: 600; color: #e0e0e0; }
-    .upload-sub { font-size: 13px; color: #888; margin-top: 2px; }
+    .insight-empty {
+      font-size: 13px; color: #3a5a78; font-style: italic; text-align: center; padding: 12px 0;
+    }
+    .advice-row {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid #1e2d3d;
+    }
+    .advice-row:last-child { border-bottom: none; }
+    .advice-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .advice-body { flex: 1; }
+    .advice-title { font-size: 14px; font-weight: 700; color: #f0f4f8; margin-bottom: 3px; }
+    .advice-text { font-size: 12px; color: #7a9ab8; line-height: 1.5; }
+    .advice-level-critical .advice-title { color: #e05a5a; }
+    .advice-level-warning .advice-title { color: #f0c040; }
+    .advice-level-good .advice-title { color: #4caf7d; }
+
+    /* ── Past days ── */
+    .past-days { display: flex; flex-direction: column; gap: 8px; }
     .day-row {
-      background: #1e2d3d;
-      border-radius: 14px;
-      padding: 14px 18px;
+      background: #1e2d3d; border-radius: 14px;
+      padding: 13px 16px;
       display: flex; align-items: center;
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.15s; border: 1.5px solid transparent;
       -webkit-tap-highlight-color: transparent;
-      border: 1.5px solid transparent;
     }
     .day-row:active { transform: scale(0.98); }
     .day-row.done { border-color: rgba(76,175,125,0.3); }
-    .day-row .dr-left { flex: 1; }
-    .day-row .dr-name { font-size: 15px; font-weight: 600; color: #f0f4f8; }
-    .day-row .dr-date { font-size: 12px; color: #7a9ab8; margin-top: 2px; }
-    .day-row .dr-status {
-      font-size: 13px; font-weight: 600;
-      padding: 5px 12px; border-radius: 8px;
-    }
-    .day-row .dr-status.done { background: rgba(76,175,125,0.15); color: #4caf7d; }
-    .day-row .dr-status.open { background: rgba(201,168,76,0.12); color: #c9a84c; }
+    .dr-left { flex: 1; }
+    .dr-name { font-size: 15px; font-weight: 600; color: #f0f4f8; }
+    .dr-date { font-size: 12px; color: #7a9ab8; margin-top: 2px; }
+    .dr-status { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 8px; }
+    .dr-status.done { background: rgba(76,175,125,0.15); color: #4caf7d; }
+    .dr-status.open { background: rgba(201,168,76,0.12); color: #c9a84c; }
 
-    /* ── Question screens ── */
+    /* ── Utility links ── */
+    .util-row {
+      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .util-link {
+      display: inline-block; padding: 9px 18px;
+      background: #1e2d3d; color: #7a9ab8;
+      border-radius: 20px; font-size: 12px; font-weight: 600;
+      text-decoration: none; border: 1px solid #2a3d54;
+    }
+    .upload-row {
+      margin-top: 12px;
+    }
+    .upload-card {
+      background: #1e2d3d; border-radius: 14px; padding: 14px 18px;
+      display: flex; align-items: center; gap: 14px;
+      cursor: pointer; border: 1px solid #2a3d54;
+    }
+    .upload-card:active { background: #2a3d54; }
+    .upload-label { font-size: 14px; font-weight: 600; color: #e0e0e0; }
+    .upload-sub { font-size: 12px; color: #7a9ab8; margin-top: 2px; }
+    #upload-result {
+      display: none; margin-top: 8px; padding: 10px 14px;
+      border-radius: 10px; font-size: 13px; text-align: center;
+    }
+
+    /* ══════════════════════════════
+       QUESTION SCREENS
+    ══════════════════════════════ */
     .q-date-tag {
-      display: inline-block;
-      background: #1e2d3d;
-      border-radius: 8px;
-      padding: 4px 10px;
-      font-size: 12px; color: #c9a84c; font-weight: 600;
-      margin-bottom: 16px;
+      display: inline-block; background: #1e2d3d;
+      border-radius: 8px; padding: 4px 10px;
+      font-size: 12px; color: #c9a84c; font-weight: 600; margin-bottom: 16px;
     }
-    .question-num {
-      font-size: 12px; font-weight: 600; color: #7a9ab8;
-      letter-spacing: 1.2px; text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .question-text {
-      font-size: 22px; font-weight: 700; color: #f0f4f8;
-      line-height: 1.3; margin-bottom: 28px;
-    }
+    .question-num { font-size: 12px; font-weight: 600; color: #7a9ab8; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 8px; }
+    .question-text { font-size: 22px; font-weight: 700; color: #f0f4f8; line-height: 1.3; margin-bottom: 28px; }
     .options { display: flex; flex-direction: column; gap: 12px; }
     .option-btn {
       background: #1e2d3d; border: 2px solid transparent;
       border-radius: 16px; padding: 18px 20px;
       display: flex; align-items: center; gap: 16px;
-      cursor: pointer; transition: all 0.15s ease;
+      cursor: pointer; transition: all 0.15s; text-align: left;
       -webkit-tap-highlight-color: transparent;
-      text-align: left;
     }
-    .option-btn > div {
-      display: flex; flex-direction: column; justify-content: center;
-    }
+    .option-btn > div { display: flex; flex-direction: column; justify-content: center; }
     .option-btn:active { transform: scale(0.97); }
     .option-btn.selected { border-color: #c9a84c; }
     .option-btn.green.selected  { border-color: #4caf7d; background: rgba(76,175,125,0.1); }
@@ -199,7 +338,6 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* Notes */
     .notes-area {
       background: #1e2d3d; border: 2px solid transparent;
       border-radius: 16px; padding: 16px;
@@ -211,31 +349,15 @@
     .notes-area::placeholder { color: #7a9ab8; }
 
     /* Summary */
-    .summary-card {
-      background: #1e2d3d; border-radius: 20px;
-      padding: 24px; margin-bottom: 16px;
-    }
-    .summary-title {
-      font-size: 13px; font-weight: 600; color: #7a9ab8;
-      letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 16px;
-    }
-    .summary-for {
-      font-size: 14px; color: #c9a84c; font-weight: 600;
-      margin-bottom: 16px;
-    }
-    .summary-table {
-      width: 100%; border-collapse: collapse;
-    }
-    .summary-table tr td {
-      padding: 10px 0;
-      border-bottom: 1px solid #0f1923;
-      font-size: 15px;
-      vertical-align: middle;
-    }
+    .summary-card { background: #1e2d3d; border-radius: 20px; padding: 24px; margin-bottom: 16px; }
+    .summary-title { font-size: 13px; font-weight: 600; color: #7a9ab8; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 16px; }
+    .summary-for { font-size: 14px; color: #c9a84c; font-weight: 600; margin-bottom: 16px; }
+    .summary-table { width: 100%; border-collapse: collapse; }
+    .summary-table tr td { padding: 10px 0; border-bottom: 1px solid #0f1923; font-size: 15px; vertical-align: middle; }
     .summary-table tr:last-child td { border-bottom: none; }
     .summary-table .summary-label { color: #7a9ab8; width: 100%; }
     .summary-table .summary-icon { white-space: nowrap; font-size: 18px; padding-right: 6px; text-align: right; }
-    .summary-table .summary-value { color: #f0f4f8; font-weight: 600; white-space: nowrap; text-align: left; }
+    .summary-table .summary-value { color: #f0f4f8; font-weight: 600; white-space: nowrap; }
     .btn-submit {
       width: 100%; height: 56px;
       background: linear-gradient(135deg, #c9a84c, #e8c96a);
@@ -248,17 +370,17 @@
     .done-icon { font-size: 64px; text-align: center; margin: 40px 0 20px; }
     .done-title { font-size: 26px; font-weight: 700; text-align: center; margin-bottom: 12px; }
     .done-sub { font-size: 15px; color: #7a9ab8; text-align: center; line-height: 1.6; }
-    .done-note {
-      background: #1e2d3d; border-radius: 16px;
-      padding: 16px 20px; margin-top: 32px;
-      font-size: 14px; color: #c9a84c; text-align: center; line-height: 1.5;
-    }
     .btn-home {
-      width: 100%; height: 52px; margin-top: 20px;
+      width: 100%; height: 52px; margin-top: 24px;
       background: #1e2d3d; border: none; border-radius: 14px;
-      color: #f0f4f8; font-size: 16px; font-weight: 600;
-      cursor: pointer;
+      color: #f0f4f8; font-size: 16px; font-weight: 600; cursor: pointer;
     }
+
+    /* Color helpers */
+    .rec-green { color: #4caf7d; }
+    .rec-yellow { color: #f0c040; }
+    .rec-red { color: #e05a5a; }
+    .rec-none { color: #5a7a98; }
   </style>
 </head>
 <body>
@@ -268,85 +390,113 @@
   <h1>Cadence</h1>
   <span id="header-right"></span>
 </header>
-<div class="progress-bar">
-  <div class="progress-fill" id="progress" style="width: 0%"></div>
-</div>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
 
 <!-- ══════════════════════════════════════════
-     SCREEN: Home
+     SCREEN: Hub Home
 ══════════════════════════════════════════ -->
 <div class="screen active" id="screen-home">
-  <div class="home-greeting">Good <span id="greeting-time"></span>, Hannah 👋</div>
-  <div class="home-sub">Track your day — even if you're filling in yesterday.</div>
 
-  <div class="section-label">Today</div>
-  <div class="today-card" id="today-card" onclick="startCheckin(0)">
-    <div class="day-name" id="today-dayname"></div>
-    <div class="day-date" id="today-datestr"></div>
-    <div class="cta-row">
-      <div class="cta-label" id="today-cta-label">Not checked in yet</div>
-      <button class="cta-btn" id="today-cta-btn">Start →</button>
+  <!-- WHERE ARE YOU NOW -->
+  <div class="section-label">Where are you now</div>
+  <div class="now-card" id="now-card" onclick="onNowCardTap()">
+    <div class="now-top">
+      <div class="now-label" id="now-label">Today</div>
+      <div class="now-status-pill empty" id="now-status-pill">Not started</div>
     </div>
+    <!-- WHOOP quick metrics -->
+    <div class="now-metrics" id="now-metrics" style="display:none">
+      <div class="now-metric">
+        <div class="now-metric-label">Recovery</div>
+        <div class="now-metric-val" id="now-recovery">—</div>
+      </div>
+      <div class="now-metric">
+        <div class="now-metric-label">HRV</div>
+        <div class="now-metric-val" id="now-hrv">—<span class="now-metric-unit"></span></div>
+      </div>
+      <div class="now-metric">
+        <div class="now-metric-label">Sleep</div>
+        <div class="now-metric-val" id="now-sleep">—<span class="now-metric-unit"></span></div>
+      </div>
+    </div>
+    <!-- Check-in chips -->
+    <div class="now-checkin-row" id="now-checkin-row" style="display:none"></div>
+    <!-- CTA -->
+    <div id="now-cta"></div>
   </div>
 
-  <div class="section-label">Previous days</div>
+  <!-- WHERE WERE YOU YESTERDAY -->
+  <div class="section-label">Where were you yesterday</div>
+  <div class="yest-card" id="yest-card">
+    <div class="yest-top">
+      <div class="yest-day" id="yest-day">Yesterday</div>
+      <div class="yest-date" id="yest-date"></div>
+    </div>
+    <div class="yest-metrics" id="yest-metrics">
+      <div class="yest-metric">
+        <div class="yest-metric-label">Recovery</div>
+        <div class="yest-metric-val" id="yest-recovery">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">HRV</div>
+        <div class="yest-metric-val" id="yest-hrv">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">Sleep</div>
+        <div class="yest-metric-val" id="yest-sleep">—</div>
+      </div>
+    </div>
+    <div class="yest-checkin-row" id="yest-checkin-row"></div>
+    <!-- Trends -->
+    <div class="trend-section" id="trend-section"></div>
+  </div>
+
+  <!-- INSIGHTS & ADVICE -->
+  <div class="section-label">Insights & advice</div>
+  <div class="insight-card" id="insight-card">
+    <div class="insight-empty" id="insight-empty">Loading…</div>
+  </div>
+
+  <!-- PAST DAYS -->
+  <div class="section-label" style="margin-top:28px">Previous days</div>
   <div class="past-days" id="past-days-list"></div>
 
-  <div style="margin-top:28px;text-align:center;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-    <a href="/dashboard" style="display:inline-block;padding:10px 24px;background:#1e2d3d;color:#7a9ab8;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;border:1px solid #2a3d54">📊 Dashboard</a>
-    <a href="/hannah-dashboard.html" id="hannah-link" style="display:inline-block;padding:10px 24px;background:#1e2d3d;color:#7a9ab8;border-radius:20px;font-size:13px;font-weight:600;text-decoration:none;border:1px solid #2a3d54">🦋 Hannah</a>
+  <!-- UTILITY -->
+  <div class="util-row">
+    <a href="/dashboard" class="util-link">📊 Dashboard</a>
+    <a href="/hannah-dashboard.html" class="util-link" id="hannah-link">🦋 Hannah</a>
   </div>
-  <script>
-  // Dynamically color the Hannah link based on pattern alert status
-  fetch('/api/patterns').then(r => r.json()).then(data => {
-    const link = document.getElementById('hannah-link');
-    if (data.status === 'critical') {
-      link.style.background = '#3d1e1e';
-      link.style.color = '#ef8a7a';
-      link.style.borderColor = '#7a3030';
-      link.textContent = '🚨 Hannah';
-    } else if (data.status === 'warning') {
-      link.style.background = '#3d2e1e';
-      link.style.color = '#ffd166';
-      link.style.borderColor = '#7a5a30';
-      link.textContent = '⚠️ Hannah';
-    } else {
-      link.textContent = '✅ Hannah';
-    }
-  }).catch(() => {});
-  </script>
-
-  <div class="section-label" style="margin-top:24px">Data</div>
-  <div class="upload-card" onclick="document.getElementById('visible-file-input').click()">
-    <div style="font-size:28px">📊</div>
-    <div>
-      <div class="upload-label">Upload Visible Export</div>
-      <div class="upload-sub">Tap to import a Visible CSV file</div>
+  <div class="upload-row">
+    <div class="upload-card" onclick="document.getElementById('visible-file-input').click()">
+      <div style="font-size:26px">📊</div>
+      <div>
+        <div class="upload-label">Upload Visible Export</div>
+        <div class="upload-sub">Tap to import a Visible CSV file</div>
+      </div>
     </div>
+    <input type="file" id="visible-file-input" accept=".csv" style="display:none" onchange="uploadVisible(event)">
+    <div id="upload-result"></div>
   </div>
-  <input type="file" id="visible-file-input" accept=".csv" style="display:none" onchange="uploadVisible(event)">
-  <div id="upload-result" style="display:none;margin-top:10px;padding:12px 16px;border-radius:12px;font-size:14px;text-align:center"></div>
 </div>
 
 <!-- ══════════════════════════════════════════
-     SCREEN: Q1 — Overall feeling
+     QUESTION SCREENS (Q1–Q8, Notes, Summary, Done)
 ══════════════════════════════════════════ -->
+
+<!-- Q1 -->
 <div class="screen" id="screen-1">
   <div class="q-date-tag" id="q-date-tag-1"></div>
   <div class="question-num">Question 1 of 8</div>
   <div class="question-text">How did you feel today?</div>
   <div class="options">
     <button class="option-btn green" onclick="select(1,'good','🟢 Good')">
-      <div class="option-icon">🟢</div>
-      <div><div class="option-label">Good</div><div class="option-sub">Energy up, manageable day</div></div>
+      <div class="option-icon">🟢</div><div><div class="option-label">Good</div><div class="option-sub">Energy up, manageable day</div></div>
     </button>
     <button class="option-btn yellow" onclick="select(1,'mixed','🟡 Mixed')">
-      <div class="option-icon">🟡</div>
-      <div><div class="option-label">Mixed</div><div class="option-sub">Some good, some hard moments</div></div>
+      <div class="option-icon">🟡</div><div><div class="option-label">Mixed</div><div class="option-sub">Some good, some hard moments</div></div>
     </button>
     <button class="option-btn red" onclick="select(1,'bad','🔴 Bad')">
-      <div class="option-icon">🔴</div>
-      <div><div class="option-label">Bad</div><div class="option-sub">Low energy, rough day</div></div>
+      <div class="option-icon">🔴</div><div><div class="option-label">Bad</div><div class="option-sub">Low energy, rough day</div></div>
     </button>
   </div>
   <div class="nav-row">
@@ -355,180 +505,101 @@
   </div>
 </div>
 
-<!-- Q2 — PEM -->
+<!-- Q2 -->
 <div class="screen" id="screen-2">
   <div class="q-date-tag" id="q-date-tag-2"></div>
   <div class="question-num">Question 2 of 8</div>
   <div class="question-text">Post-exertional malaise (PEM)?</div>
   <div class="options">
-    <button class="option-btn green" onclick="select(2,'none','🟢 None')">
-      <div class="option-icon">🟢</div>
-      <div><div class="option-label">None</div><div class="option-sub">Feeling okay after activity</div></div>
-    </button>
-    <button class="option-btn yellow" onclick="select(2,'mild','🟡 Mild')">
-      <div class="option-icon">🟡</div>
-      <div><div class="option-label">Mild</div><div class="option-sub">Some fatigue or heaviness</div></div>
-    </button>
-    <button class="option-btn red" onclick="select(2,'severe','🔴 Severe')">
-      <div class="option-icon">🔴</div>
-      <div><div class="option-label">Severe</div><div class="option-sub">Significant crash or collapse</div></div>
-    </button>
+    <button class="option-btn green" onclick="select(2,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Feeling okay after activity</div></div></button>
+    <button class="option-btn yellow" onclick="select(2,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Some fatigue or heaviness</div></div></button>
+    <button class="option-btn red" onclick="select(2,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Significant crash or collapse</div></div></button>
   </div>
-  <div class="nav-row">
-    <button class="btn-back" onclick="goTo(1)">←</button>
-    <button class="btn-next" id="next-2" disabled onclick="goTo(3)">Next →</button>
-  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(1)">←</button><button class="btn-next" id="next-2" disabled onclick="goTo(3)">Next →</button></div>
 </div>
 
-<!-- Q3 — Brain fog -->
+<!-- Q3 -->
 <div class="screen" id="screen-3">
   <div class="q-date-tag" id="q-date-tag-3"></div>
   <div class="question-num">Question 3 of 8</div>
   <div class="question-text">Brain fog today?</div>
   <div class="options">
-    <button class="option-btn green" onclick="select(3,'none','🟢 None')">
-      <div class="option-icon">🟢</div>
-      <div><div class="option-label">None</div><div class="option-sub">Thinking clearly</div></div>
-    </button>
-    <button class="option-btn yellow" onclick="select(3,'mild','🟡 Mild')">
-      <div class="option-icon">🟡</div>
-      <div><div class="option-label">Mild</div><div class="option-sub">A bit foggy, harder to concentrate</div></div>
-    </button>
-    <button class="option-btn red" onclick="select(3,'severe','🔴 Severe')">
-      <div class="option-icon">🔴</div>
-      <div><div class="option-label">Severe</div><div class="option-sub">Can't think straight, words hard</div></div>
-    </button>
+    <button class="option-btn green" onclick="select(3,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Thinking clearly</div></div></button>
+    <button class="option-btn yellow" onclick="select(3,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">A bit foggy, harder to concentrate</div></div></button>
+    <button class="option-btn red" onclick="select(3,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Can't think straight, words hard</div></div></button>
   </div>
-  <div class="nav-row">
-    <button class="btn-back" onclick="goTo(2)">←</button>
-    <button class="btn-next" id="next-3" disabled onclick="goTo(4)">Next →</button>
-  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(2)">←</button><button class="btn-next" id="next-3" disabled onclick="goTo(4)">Next →</button></div>
 </div>
 
-<!-- Q4 — Pain -->
+<!-- Q4 -->
 <div class="screen" id="screen-4">
   <div class="q-date-tag" id="q-date-tag-4"></div>
   <div class="question-num">Question 4 of 8</div>
   <div class="question-text">Any pain today?</div>
   <div class="options">
-    <button class="option-btn green" onclick="select(4,'none','🟢 None')">
-      <div class="option-icon">🟢</div>
-      <div><div class="option-label">None</div><div class="option-sub">No notable pain</div></div>
-    </button>
-    <button class="option-btn yellow" onclick="select(4,'mild','🟡 Mild')">
-      <div class="option-icon">🟡</div>
-      <div><div class="option-label">Mild</div><div class="option-sub">Noticeable but manageable</div></div>
-    </button>
-    <button class="option-btn red" onclick="select(4,'severe','🔴 Severe')">
-      <div class="option-icon">🔴</div>
-      <div><div class="option-label">Severe</div><div class="option-sub">Significant pain affecting my day</div></div>
-    </button>
+    <button class="option-btn green" onclick="select(4,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">No notable pain</div></div></button>
+    <button class="option-btn yellow" onclick="select(4,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Noticeable but manageable</div></div></button>
+    <button class="option-btn red" onclick="select(4,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Significant pain affecting my day</div></div></button>
   </div>
-  <div class="nav-row">
-    <button class="btn-back" onclick="goTo(3)">←</button>
-    <button class="btn-next" id="next-4" disabled onclick="goTo(5)">Next →</button>
-  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(3)">←</button><button class="btn-next" id="next-4" disabled onclick="goTo(5)">Next →</button></div>
 </div>
 
-<!-- Q5 — Activity -->
+<!-- Q5 -->
 <div class="screen" id="screen-5">
   <div class="q-date-tag" id="q-date-tag-5"></div>
   <div class="question-num">Question 5 of 8</div>
   <div class="question-text">What kind of day was it?</div>
   <div class="options">
-    <button class="option-btn green" onclick="select(5,'rested','🟢 Rested')">
-      <div class="option-icon">🟢</div>
-      <div><div class="option-label">Rested</div><div class="option-sub">Mostly at home, low demands</div></div>
-    </button>
-    <button class="option-btn yellow" onclick="select(5,'light','🟡 Light activity')">
-      <div class="option-icon">🟡</div>
-      <div><div class="option-label">Light activity</div><div class="option-sub">Short walk, light tasks</div></div>
-    </button>
-    <button class="option-btn red" onclick="select(5,'demanding','🔴 Demanding')">
-      <div class="option-icon">🔴</div>
-      <div><div class="option-label">Demanding</div><div class="option-sub">Meeting, appointment, physical effort, stress</div></div>
-    </button>
+    <button class="option-btn green" onclick="select(5,'rested','🟢 Rested')"><div class="option-icon">🟢</div><div><div class="option-label">Rested</div><div class="option-sub">Mostly at home, low demands</div></div></button>
+    <button class="option-btn yellow" onclick="select(5,'light','🟡 Light activity')"><div class="option-icon">🟡</div><div><div class="option-label">Light activity</div><div class="option-sub">Short walk, light tasks</div></div></button>
+    <button class="option-btn red" onclick="select(5,'demanding','🔴 Demanding')"><div class="option-icon">🔴</div><div><div class="option-label">Demanding</div><div class="option-sub">Meeting, appointment, physical effort, stress</div></div></button>
   </div>
-  <div class="nav-row">
-    <button class="btn-back" onclick="goTo(4)">←</button>
-    <button class="btn-next" id="next-5" disabled onclick="goTo(6)">Next →</button>
-  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(4)">←</button><button class="btn-next" id="next-5" disabled onclick="goTo(6)">Next →</button></div>
 </div>
 
-<!-- Q6 — Left home -->
+<!-- Q6 -->
 <div class="screen" id="screen-6">
   <div class="q-date-tag" id="q-date-tag-6"></div>
   <div class="question-num">Question 6 of 8</div>
   <div class="question-text">Did you leave home today?</div>
   <div class="options">
-    <button class="option-btn home" onclick="select(6,'no','🏠 No')">
-      <div class="option-icon">🏠</div>
-      <div><div class="option-label">No</div><div class="option-sub">Stayed home all day</div></div>
-    </button>
-    <button class="option-btn car" onclick="select(6,'yes','🚗 Yes')">
-      <div class="option-icon">🚗</div>
-      <div><div class="option-label">Yes</div><div class="option-sub">Left the house at least once</div></div>
-    </button>
+    <button class="option-btn home" onclick="select(6,'no','🏠 No')"><div class="option-icon">🏠</div><div><div class="option-label">No</div><div class="option-sub">Stayed home all day</div></div></button>
+    <button class="option-btn car" onclick="select(6,'yes','🚗 Yes')"><div class="option-icon">🚗</div><div><div class="option-label">Yes</div><div class="option-sub">Left the house at least once</div></div></button>
   </div>
-  <div class="nav-row">
-    <button class="btn-back" onclick="goTo(5)">←</button>
-    <button class="btn-next" id="next-6" disabled onclick="goTo(7)">Next →</button>
-  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(5)">←</button><button class="btn-next" id="next-6" disabled onclick="goTo(7)">Next →</button></div>
 </div>
 
-<!-- Q7 — Food -->
+<!-- Q7 -->
 <div class="screen" id="screen-7">
   <div class="q-date-tag" id="q-date-tag-7"></div>
   <div class="question-num">Question 7 of 8</div>
   <div class="question-text">How did you eat today?</div>
   <div class="options">
-    <button class="option-btn green" onclick="select(7,'clean','🟢 Clean')">
-      <div class="option-icon">🟢</div>
-      <div><div class="option-label">Clean</div><div class="option-sub">Whole foods, vegetables, home cooked</div></div>
-    </button>
-    <button class="option-btn yellow" onclick="select(7,'mixed','🟡 Mixed')">
-      <div class="option-icon">🟡</div>
-      <div><div class="option-label">Mixed</div><div class="option-sub">Combination of good and not-so-good</div></div>
-    </button>
-    <button class="option-btn red" onclick="select(7,'inflammatory','🔴 Inflammatory')">
-      <div class="option-icon">🔴</div>
-      <div><div class="option-label">Inflammatory</div><div class="option-sub">Sugar, processed, alcohol, junk food</div></div>
-    </button>
+    <button class="option-btn green" onclick="select(7,'clean','🟢 Clean')"><div class="option-icon">🟢</div><div><div class="option-label">Clean</div><div class="option-sub">Whole foods, vegetables, home cooked</div></div></button>
+    <button class="option-btn yellow" onclick="select(7,'mixed','🟡 Mixed')"><div class="option-icon">🟡</div><div><div class="option-label">Mixed</div><div class="option-sub">Combination of good and not-so-good</div></div></button>
+    <button class="option-btn red" onclick="select(7,'inflammatory','🔴 Inflammatory')"><div class="option-icon">🔴</div><div><div class="option-label">Inflammatory</div><div class="option-sub">Sugar, processed, alcohol, junk food</div></div></button>
   </div>
-  <div class="nav-row">
-    <button class="btn-back" onclick="goTo(6)">←</button>
-    <button class="btn-next" id="next-7" disabled onclick="goTo(8)">Next →</button>
-  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(6)">←</button><button class="btn-next" id="next-7" disabled onclick="goTo(8)">Next →</button></div>
 </div>
 
-<!-- Q8 — Probiotics -->
+<!-- Q8 -->
 <div class="screen" id="screen-8">
   <div class="q-date-tag" id="q-date-tag-8"></div>
   <div class="question-num">Question 8 of 8</div>
   <div class="question-text">Did you take your probiotics today?</div>
   <div class="options">
-    <button class="option-btn green" onclick="select(8,'yes','✅ Yes')">
-      <div class="option-icon">✅</div>
-      <div><div class="option-label">Yes</div><div class="option-sub">Took probiotic supplement today</div></div>
-    </button>
-    <button class="option-btn red" onclick="select(8,'no','❌ No')">
-      <div class="option-icon">❌</div>
-      <div><div class="option-label">No</div><div class="option-sub">Skipped today</div></div>
-    </button>
+    <button class="option-btn green" onclick="select(8,'yes','✅ Yes')"><div class="option-icon">✅</div><div><div class="option-label">Yes</div><div class="option-sub">Took probiotic supplement today</div></div></button>
+    <button class="option-btn red" onclick="select(8,'no','❌ No')"><div class="option-icon">❌</div><div><div class="option-label">No</div><div class="option-sub">Skipped today</div></div></button>
   </div>
-  <div class="nav-row">
-    <button class="btn-back" onclick="goTo(7)">←</button>
-    <button class="btn-next" id="next-8" disabled onclick="goTo(9)">Next →</button>
-  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(7)">←</button><button class="btn-next" id="next-8" disabled onclick="goTo(9)">Next →</button></div>
 </div>
 
-<!-- Notes (optional) -->
+<!-- Notes -->
 <div class="screen" id="screen-9">
   <div class="q-date-tag" id="q-date-tag-9"></div>
   <div class="question-num">Optional</div>
   <div class="question-text">Anything else to note?</div>
-  <textarea class="notes-area" id="notes-field"
-    placeholder="How are you feeling? Anything unusual today?&#10;&#10;(Skip if you don't feel up to it)"></textarea>
+  <textarea class="notes-area" id="notes-field" placeholder="How are you feeling? Anything unusual today?&#10;&#10;(Skip if you don't feel up to it)"></textarea>
   <div class="nav-row">
     <button class="btn-back" onclick="goTo(8)">←</button>
     <button class="btn-skip" onclick="goTo(10)">Skip</button>
@@ -536,7 +607,7 @@
   </div>
 </div>
 
-<!-- Summary / Review -->
+<!-- Summary -->
 <div class="screen" id="screen-10">
   <div class="question-num">Review</div>
   <div class="question-text">Your check-in</div>
@@ -555,9 +626,7 @@
     </table>
   </div>
   <button class="btn-submit" onclick="submitCheckin()">Submit Check-in ✓</button>
-  <div class="nav-row">
-    <button class="btn-back" style="flex:1;height:44px;font-size:14px" onclick="goTo(9)">← Edit</button>
-  </div>
+  <div class="nav-row"><button class="btn-back" style="flex:1;height:44px;font-size:14px" onclick="goTo(9)">← Edit</button></div>
 </div>
 
 <!-- Done -->
@@ -565,88 +634,206 @@
   <div class="done-icon">✅</div>
   <div class="done-title">Check-in saved!</div>
   <div class="done-sub" id="done-sub-text">Your entry has been recorded.<br>Thank you — every check-in helps.</div>
-
   <button class="btn-home" onclick="goHome()">← Back to home</button>
 </div>
 
 <script>
   // ── State ──────────────────────────────────────────
   const answers = {};
-  let activeDate = null;   // YYYY-MM-DD string of the day being filled
-  let activeDayOffset = 0; // 0 = today, 1 = yesterday, etc.
+  let activeDate = null;
+  let activeDayOffset = 0;
+  const completedDays = new Set();
+  let dashData = null; // cached from /api/dashboard
+  let serverToday = null;
 
-  // Fake "completed" set (will come from API later)
-  const completedDays = new Set(); // e.g. Set(['2026-04-14'])
+  // ── User param ─────────────────────────────────────
+  const _urlUser = new URLSearchParams(window.location.search).get('user');
+  function userParam(base) {
+    if (!_urlUser) return base;
+    return base + (base.includes('?') ? '&' : '?') + 'user=' + encodeURIComponent(_urlUser);
+  }
 
   // ── Date helpers ───────────────────────────────────
-  // Use Eastern time (Hannah's timezone) for all date calculations
   function easternNow() {
     return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
   }
-
   function dateKey(offset = 0) {
-    // Prefer server-provided today to avoid browser UTC mismatch
-    const base = window._serverToday
-      ? new Date(window._serverToday + 'T12:00:00')
-      : easternNow();
+    const base = serverToday ? new Date(serverToday + 'T12:00:00') : easternNow();
     base.setDate(base.getDate() - offset);
     return base.toISOString().slice(0, 10);
   }
-
-  function formatDate(offset = 0) {
-    const d = easternNow();
-    d.setDate(d.getDate() - offset);
-    return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  function formatDateShort(iso) {
+    return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   }
-
-  function formatDateShort(offset = 0) {
-    const d = easternNow();
-    d.setDate(d.getDate() - offset);
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  function formatDateFull(iso) {
+    return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
   }
-
-  function dayName(offset = 0) {
+  function dayName(offset) {
     if (offset === 0) return 'Today';
     if (offset === 1) return 'Yesterday';
-    const d = easternNow();
-    d.setDate(d.getDate() - offset);
+    const d = easternNow(); d.setDate(d.getDate() - offset);
     return d.toLocaleDateString('en-US', { weekday: 'long' });
   }
 
-  function greetingTime() {
-    const h = new Date().getHours();
-    if (h < 12) return 'morning';
-    if (h < 17) return 'afternoon';
-    return 'evening';
+  // ── Severity color ─────────────────────────────────
+  function severityClass(val) {
+    if (!val) return '';
+    const map = { good:'green', none:'green', clean:'green', rested:'green', yes:'green',
+                  mixed:'yellow', mild:'yellow', light:'yellow',
+                  bad:'red', severe:'red', inflammatory:'red', demanding:'red', no:'red' };
+    return map[val] || '';
+  }
+  function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : '—'; }
+
+  function recClass(score) {
+    if (score == null) return 'rec-none';
+    if (score >= 67) return 'rec-green';
+    if (score >= 34) return 'rec-yellow';
+    return 'rec-red';
   }
 
-  // ── Home screen ────────────────────────────────────
-  function buildHome() {
-    // Greeting
-    document.getElementById('greeting-time').textContent = greetingTime();
+  // ── Render check-in chips ──────────────────────────
+  function renderChips(checkin) {
+    if (!checkin) return '';
+    const fields = [
+      ['Feel', checkin.feeling], ['PEM', checkin.pem], ['Fog', checkin.brain_fog],
+      ['Pain', checkin.pain], ['Activity', checkin.activity],
+    ];
+    return fields.filter(([,v]) => v).map(([label, val]) => `
+      <div class="ci-chip">
+        <span class="ci-chip-label">${label}</span>
+        <span class="ci-chip-val ${severityClass(val)}">${capitalize(val)}</span>
+      </div>`).join('');
+  }
 
-    // Today card
-    const todayDone = completedDays.has(dateKey(0));
-    const todayCard = document.getElementById('today-card');
-    document.getElementById('today-dayname').textContent =
-      new Date().toLocaleDateString('en-US', { weekday: 'long' });
-    document.getElementById('today-datestr').textContent =
-      new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  // ── Build hub home ─────────────────────────────────
+  async function buildHome() {
+    document.getElementById('progress').style.width = '0%';
+    document.getElementById('header-right').textContent = '';
 
-    if (todayDone) {
-      todayCard.classList.add('done');
-      document.getElementById('today-cta-label').textContent = '✓ Check-in saved';
-      document.getElementById('today-cta-btn').textContent = 'Update →';
+    const todayDate = dateKey(0);
+    const yesterdayDate = dateKey(1);
+    const twoDaysDate = dateKey(2);
+
+    const todayWhoop  = dashData?.whoop?.[todayDate];
+    const yestWhoop   = dashData?.whoop?.[yesterdayDate];
+    const twoDayWhoop = dashData?.whoop?.[twoDaysDate];
+    const todayCI     = dashData?.checkins?.[todayDate];
+    const yestCI      = dashData?.checkins?.[yesterdayDate];
+
+    // ── WHERE ARE YOU NOW ──────────────────────────
+    const nowCard = document.getElementById('now-card');
+    const pill = document.getElementById('now-status-pill');
+    const nowMetrics = document.getElementById('now-metrics');
+    const nowCheckinRow = document.getElementById('now-checkin-row');
+    const nowCta = document.getElementById('now-cta');
+
+    const todayDone = completedDays.has(todayDate);
+    const todayPartial = todayCI && !todayDone; // has some data but not marked complete
+
+    document.getElementById('now-label').textContent =
+      new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+
+    // WHOOP metrics for today
+    const rec   = todayWhoop?.recovery?.score?.recovery_score;
+    const hrv   = todayWhoop?.recovery?.score?.hrv_rmssd_milli;
+    const sleep = todayWhoop?.sleep?.score?.sleep_performance_percentage;
+
+    if (rec != null || hrv != null || sleep != null) {
+      nowMetrics.style.display = 'grid';
+      document.getElementById('now-recovery').innerHTML =
+        rec != null ? `<span class="${recClass(rec)}">${rec}</span><span class="now-metric-unit">%</span>` : '<span class="rec-none">—</span>';
+      document.getElementById('now-hrv').innerHTML =
+        hrv != null ? `${hrv.toFixed(0)}<span class="now-metric-unit"> ms</span>` : '—';
+      document.getElementById('now-sleep').innerHTML =
+        sleep != null ? `${sleep}<span class="now-metric-unit">%</span>` : '—';
     } else {
-      todayCard.classList.remove('done');
-      document.getElementById('today-cta-label').textContent = 'Not checked in yet';
-      document.getElementById('today-cta-btn').textContent = 'Start →';
+      nowMetrics.style.display = 'none';
     }
 
-    // Past 6 days
+    if (todayDone || todayCI) {
+      nowCheckinRow.style.display = 'flex';
+      nowCheckinRow.innerHTML = renderChips(todayCI);
+    } else {
+      nowCheckinRow.style.display = 'none';
+    }
+
+    if (todayDone) {
+      nowCard.className = 'now-card done';
+      pill.className = 'now-status-pill done'; pill.textContent = '✓ Done';
+      nowCta.innerHTML = `<button class="now-edit-btn" onclick="startCheckin(0)">✏️ Update today's check-in</button>`;
+    } else if (todayPartial) {
+      nowCard.className = 'now-card partial';
+      pill.className = 'now-status-pill partial'; pill.textContent = 'In progress';
+      nowCta.innerHTML = `<button class="now-continue-btn" onclick="startCheckin(0)">Finish check-in →</button>`;
+    } else {
+      nowCard.className = 'now-card';
+      pill.className = 'now-status-pill empty'; pill.textContent = 'Not started';
+      nowCta.innerHTML = `<button class="now-start-btn" onclick="startCheckin(0)">Start today's check-in →</button>`;
+    }
+
+    // ── WHERE WERE YOU YESTERDAY ──────────────────
+    document.getElementById('yest-date').textContent = formatDateShort(yesterdayDate);
+
+    const yRec   = yestWhoop?.recovery?.score?.recovery_score;
+    const yHrv   = yestWhoop?.recovery?.score?.hrv_rmssd_milli;
+    const ySleep = yestWhoop?.sleep?.score?.sleep_performance_percentage;
+    const tdRec  = twoDayWhoop?.recovery?.score?.recovery_score;
+    const tdHrv  = twoDayWhoop?.recovery?.score?.hrv_rmssd_milli;
+    const tdSleep= twoDayWhoop?.sleep?.score?.sleep_performance_percentage;
+
+    function trendArrow(curr, prev, higherGood) {
+      if (curr == null || prev == null) return '';
+      const diff = curr - prev;
+      if (Math.abs(diff) < 1) return '<span class="trend-flat"> →</span>';
+      const up = diff > 0;
+      const good = higherGood ? up : !up;
+      return `<span class="${good ? 'trend-up-good' : 'trend-down-bad'}"> ${up ? '↑' : '↓'}</span>`;
+    }
+
+    document.getElementById('yest-recovery').innerHTML =
+      yRec != null ? `<span class="${recClass(yRec)}">${yRec}</span><span class="yest-metric-unit">%</span>${trendArrow(yRec, tdRec, true)}` : '—';
+    document.getElementById('yest-hrv').innerHTML =
+      yHrv != null ? `${yHrv.toFixed(0)}<span class="yest-metric-unit"> ms</span>${trendArrow(yHrv, tdHrv, true)}` : '—';
+    document.getElementById('yest-sleep').innerHTML =
+      ySleep != null ? `${ySleep}<span class="yest-metric-unit">%</span>${trendArrow(ySleep, tdSleep, true)}` : '—';
+
+    document.getElementById('yest-checkin-row').innerHTML = renderChips(yestCI);
+
+    // ── TRENDS (inline with yesterday) ────────────
+    const trendSection = document.getElementById('trend-section');
+    const trends = buildTrends();
+    if (trends.length) {
+      trendSection.innerHTML = trends.map(t =>
+        `<div class="trend-row"><div class="trend-icon">${t.icon}</div><div class="trend-text">${t.text}</div></div>`
+      ).join('');
+    } else {
+      trendSection.innerHTML = '';
+    }
+
+    // ── INSIGHTS & ADVICE ──────────────────────────
+    const insightCard = document.getElementById('insight-card');
+    const insightEmpty = document.getElementById('insight-empty');
+    const adviceItems = buildAdvice(todayWhoop, todayCI, yestWhoop, yestCI);
+    if (adviceItems.length) {
+      insightEmpty.style.display = 'none';
+      insightCard.innerHTML = adviceItems.map(a => `
+        <div class="advice-row advice-level-${a.level}">
+          <div class="advice-icon">${a.icon}</div>
+          <div class="advice-body">
+            <div class="advice-title">${a.title}</div>
+            <div class="advice-text">${a.text}</div>
+          </div>
+        </div>`).join('');
+    } else {
+      insightEmpty.textContent = 'No insights yet — check back after a few days of data.';
+      insightEmpty.style.display = 'block';
+    }
+
+    // ── PAST DAYS ──────────────────────────────────
     const list = document.getElementById('past-days-list');
     list.innerHTML = '';
-    for (let i = 1; i <= 6; i++) {
+    for (let i = 2; i <= 6; i++) {
       const key = dateKey(i);
       const done = completedDays.has(key);
       const row = document.createElement('div');
@@ -655,100 +842,150 @@
       row.innerHTML = `
         <div class="dr-left">
           <div class="dr-name">${dayName(i)}</div>
-          <div class="dr-date">${formatDateShort(i)}</div>
+          <div class="dr-date">${formatDateShort(key)}</div>
         </div>
-        <div class="dr-status ${done ? 'done' : 'open'}">${done ? '✓ Done' : '+ Fill in'}</div>
-      `;
+        <div class="dr-status ${done ? 'done' : 'open'}">${done ? '✓ Done' : '+ Fill in'}</div>`;
       list.appendChild(row);
     }
-
-    document.getElementById('header-right').textContent = '';
-    document.getElementById('progress').style.width = '0%';
   }
 
-  // ── Question field mappings (question number → answer field name + options) ────
-  const Q_FIELDS = {
-    1: { field: 'feeling',    options: { good: '🟢 Good', mixed: '🟡 Mixed', bad: '🔴 Bad' } },
-    2: { field: 'pem',       options: { none: '✅ None', mild: '🟡 Mild', moderate: '🟠 Moderate', severe: '🔴 Severe' } },
-    3: { field: 'brain_fog', options: { none: '✅ None', mild: '🟡 Mild', moderate: '🟠 Moderate', severe: '🔴 Severe' } },
-    4: { field: 'pain',      options: { none: '✅ None', mild: '🟡 Mild', moderate: '🟠 Moderate', severe: '🔴 Severe' } },
-    5: { field: 'activity',  options: { rested: '🟢 Rested', light: '🟡 Light activity', demanding: '🔴 Demanding' } },
-    6: { field: 'left_home', options: { yes: '✅ Yes', no: '❌ No' } },
-    7: { field: 'food',      options: { clean: '🟢 Clean', mixed: '🟡 Mixed', inflammatory: '🔴 Inflammatory' } },
-    8: { field: 'probiotics',options: { yes: '✅ Yes', no: '❌ No' } },
-  };
+  // ── Trend detection (last 7 days of checkin data) ─
+  function buildTrends() {
+    const trends = [];
+    if (!dashData) return trends;
+    const dates = [0,1,2,3,4,5,6].map(i => dateKey(i));
+    const checkins = dates.map(d => dashData.checkins?.[d]).filter(Boolean);
+    if (checkins.length < 3) return trends;
 
-  // ── Start a check-in for a given day offset ────────
+    // PEM trend
+    const pemSevere = checkins.filter(c => c.pem === 'severe').length;
+    if (pemSevere >= 3) trends.push({ icon: '🔴', text: `<strong>PEM severe ${pemSevere} of last ${checkins.length} days.</strong> Crash risk is elevated — prioritize rest.` });
+
+    // Demanding days → PEM lag check
+    const demanding = checkins.filter(c => c.activity === 'demanding').length;
+    if (demanding >= 2) trends.push({ icon: '⚠️', text: `<strong>${demanding} demanding day${demanding>1?'s':''} this week.</strong> Watch for PEM 24–48h after exertion.` });
+
+    // Consecutive good days
+    let streak = 0;
+    for (const c of checkins) { if (c.feeling === 'good') streak++; else break; }
+    if (streak >= 2) trends.push({ icon: '✅', text: `<strong>${streak} good day${streak>1?'s':''} in a row.</strong> Keep pacing — don't overdo it on good days.` });
+
+    // Probiotics compliance
+    const probDays = checkins.filter(c => c.probiotics === 'yes').length;
+    if (checkins.length >= 3 && probDays < checkins.length * 0.5) {
+      trends.push({ icon: '💊', text: `<strong>Probiotics taken ${probDays}/${checkins.length} days.</strong> Daily consistency matters for gut restoration.` });
+    }
+
+    // Inflammatory food
+    const inflam = checkins.filter(c => c.food === 'inflammatory').length;
+    if (inflam >= 2) trends.push({ icon: '🥴', text: `<strong>Inflammatory food ${inflam} day${inflam>1?'s':''} this week.</strong> May correlate with symptom flares — check the pattern.` });
+
+    return trends;
+  }
+
+  // ── Advice engine ──────────────────────────────────
+  function buildAdvice(todayW, todayCI, yestW, yestCI) {
+    const advice = [];
+
+    // Low HRV today
+    const hrv = todayW?.recovery?.score?.hrv_rmssd_milli;
+    const rec = todayW?.recovery?.score?.recovery_score;
+    if (hrv != null && hrv < 45) {
+      advice.push({ level: 'critical', icon: '🛑', title: `Low HRV — ${Math.round(hrv)}ms`, text: 'HRV below 45ms. Your nervous system is under stress. Keep today minimal — no exertion, no pushing through.' });
+    } else if (rec != null && rec < 34) {
+      advice.push({ level: 'warning', icon: '⚠️', title: `Low recovery — ${rec}%`, text: 'WHOOP is showing low recovery. Consider a rest day or very gentle activity only.' });
+    } else if (rec != null && rec >= 67) {
+      advice.push({ level: 'good', icon: '💚', title: `Good recovery — ${rec}%`, text: 'Your body is well-recovered. Still pace carefully — good days are when overexertion happens most.' });
+    }
+
+    // Yesterday was demanding → watch for PEM today
+    if (yestCI?.activity === 'demanding') {
+      advice.push({ level: 'warning', icon: '⏳', title: 'PEM window — yesterday was demanding', text: 'PEM can show up 24–48h after exertion. Monitor how you feel and keep today lighter if possible.' });
+    }
+
+    // PEM severe today
+    if (todayCI?.pem === 'severe') {
+      advice.push({ level: 'critical', icon: '🚨', title: 'Severe PEM today', text: 'Rest is the only medicine for PEM. Cancel non-essential commitments. No stretching, no walks — full rest.' });
+    } else if (todayCI?.pem === 'mild') {
+      advice.push({ level: 'warning', icon: '😮‍💨', title: 'Mild PEM — take it easy', text: 'PEM is present. Gentle active rest (breathing, relaxation) is okay — avoid anything that raises your heart rate.' });
+    }
+
+    // Stretching tip (if no severe PEM)
+    if (!todayCI?.pem || todayCI.pem === 'none') {
+      advice.push({ level: 'good', icon: '🧘', title: 'Stretching is safe today', text: 'Gentle stretching (Borg ≤3 — feels very easy, no elevated HR) is a good option. Parasympathetic, low-cost, won\'t trigger PEM.' });
+    }
+
+    // Probiotics reminder
+    if (todayCI && todayCI.probiotics === 'no') {
+      advice.push({ level: 'warning', icon: '💊', title: 'Probiotics not taken yet today', text: 'Take G-NiiB tonight before bed. Consistency matters — daily dosing is part of the gut restoration protocol.' });
+    }
+
+    return advice;
+  }
+
+  // ── Start check-in ─────────────────────────────────
   async function startCheckin(offset) {
     activeDayOffset = offset;
     activeDate = dateKey(offset);
 
-    // Clear previous answers & button states
     Object.keys(answers).forEach(k => delete answers[k]);
     document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-    for (let i = 1; i <= 8; i++) {
-      const btn = document.getElementById('next-' + i);
-      if (btn) btn.disabled = true;
-    }
+    for (let i = 1; i <= 8; i++) { const b = document.getElementById('next-' + i); if (b) b.disabled = true; }
     document.getElementById('notes-field').value = '';
 
-    // Update date tags on all question screens
-    const label = offset === 0 ? 'Today · ' + formatDateShort(0)
-                : offset === 1 ? 'Yesterday · ' + formatDateShort(1)
-                : dayName(offset) + ' · ' + formatDateShort(offset);
+    const label = offset === 0 ? 'Today · ' + formatDateShort(activeDate)
+                : offset === 1 ? 'Yesterday · ' + formatDateShort(activeDate)
+                : dayName(offset) + ' · ' + formatDateShort(activeDate);
     document.querySelectorAll('[id^="q-date-tag-"]').forEach(el => el.textContent = label);
 
-    // Pre-populate from stored data if this day already has answers
     try {
       const resp = await fetch(userParam('/api/checkin/' + activeDate));
       const result = await resp.json();
       if (result.found && result.data) {
         const d = result.data;
-        for (const [qNum, { field, options }] of Object.entries(Q_FIELDS)) {
-          const val = d[field];
-          if (!val) continue;
-          const label = options[val];
-          if (!label) continue;
-          answers[qNum] = { val, label };
-          // Highlight the matching button
-          const screen = document.getElementById('screen-' + qNum);
-          if (screen) {
-            screen.querySelectorAll('.option-btn').forEach(b => {
-              if (b.getAttribute('onclick')?.includes("'" + val + "'")) {
-                b.classList.add('selected');
-              }
-            });
-          }
-          const nextBtn = document.getElementById('next-' + qNum);
-          if (nextBtn) nextBtn.disabled = false;
+        const Q_FIELDS = {
+          1:{field:'feeling',options:{good:'🟢 Good',mixed:'🟡 Mixed',bad:'🔴 Bad'}},
+          2:{field:'pem',options:{none:'🟢 None',mild:'🟡 Mild',severe:'🔴 Severe'}},
+          3:{field:'brain_fog',options:{none:'🟢 None',mild:'🟡 Mild',severe:'🔴 Severe'}},
+          4:{field:'pain',options:{none:'🟢 None',mild:'🟡 Mild',severe:'🔴 Severe'}},
+          5:{field:'activity',options:{rested:'🟢 Rested',light:'🟡 Light activity',demanding:'🔴 Demanding'}},
+          6:{field:'left_home',options:{yes:'🚗 Yes',no:'🏠 No'}},
+          7:{field:'food',options:{clean:'🟢 Clean',mixed:'🟡 Mixed',inflammatory:'🔴 Inflammatory'}},
+          8:{field:'probiotics',options:{yes:'✅ Yes',no:'❌ No'}},
+        };
+        for (const [qNum, {field, options}] of Object.entries(Q_FIELDS)) {
+          const val = d[field]; if (!val) continue;
+          const lbl = options[val]; if (!lbl) continue;
+          answers[qNum] = { val, label: lbl };
+          document.getElementById('screen-' + qNum)?.querySelectorAll('.option-btn').forEach(b => {
+            if (b.getAttribute('onclick')?.includes("'" + val + "'")) b.classList.add('selected');
+          });
+          const nb = document.getElementById('next-' + qNum); if (nb) nb.disabled = false;
         }
         if (d.notes) document.getElementById('notes-field').value = d.notes;
       }
-    } catch (e) {
-      // Non-fatal — just start fresh if fetch fails
-      console.warn('Could not load prior answers:', e);
-    }
+    } catch(e) {}
 
     goTo(1);
   }
 
+  function onNowCardTap() { startCheckin(0); }
+
   // ── Navigation ─────────────────────────────────────
   function goHome() {
-    buildHome();
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-home').classList.add('active');
     document.getElementById('progress').style.width = '0%';
     window.scrollTo(0, 0);
+    buildHome();
   }
 
   function goTo(n) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const id = (n === 'done') ? 'screen-done' : 'screen-' + n;
     document.getElementById(id).classList.add('active');
-    // Progress: questions 1-8 = steps 1-8, notes = 9, summary = 10
     if (typeof n === 'number') {
-      const pct = Math.min(((n - 1) / 9) * 100, 100);
-      document.getElementById('progress').style.width = pct + '%';
+      document.getElementById('progress').style.width = Math.min(((n-1)/9)*100, 100) + '%';
       if (n === 10) updateSummary();
     }
     window.scrollTo(0, 0);
@@ -757,15 +994,11 @@
   // ── Answer selection ───────────────────────────────
   function select(q, val, label) {
     answers[q] = { val, label };
-    const screen = document.getElementById('screen-' + q);
-    screen.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    document.getElementById('screen-' + q).querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
     event.currentTarget.classList.add('selected');
     document.getElementById('next-' + q).disabled = false;
   }
-
-  function saveNotes() {
-    answers['notes'] = document.getElementById('notes-field').value.trim();
-  }
+  function saveNotes() { answers['notes'] = document.getElementById('notes-field').value.trim(); }
 
   // ── Summary ────────────────────────────────────────
   function updateSummary() {
@@ -773,119 +1006,83 @@
       const iconEl = document.getElementById('sum-icon-' + i);
       const valEl  = document.getElementById('sum-' + i);
       if (answers[i]) {
-        // Split "🟢 Good" into emoji + text
         const parts = answers[i].label.match(/^(\S+)\s+(.+)$/);
-        if (parts) {
-          iconEl.textContent = parts[1];
-          valEl.textContent  = parts[2];
-        } else {
-          iconEl.textContent = '';
-          valEl.textContent  = answers[i].label;
-        }
-      } else {
-        iconEl.textContent = '—';
-        valEl.textContent  = '';
-      }
+        if (parts) { iconEl.textContent = parts[1]; valEl.textContent = parts[2]; }
+        else { iconEl.textContent = ''; valEl.textContent = answers[i].label; }
+      } else { iconEl.textContent = '—'; valEl.textContent = ''; }
     }
     const offset = activeDayOffset;
-    const dateStr = offset === 0 ? 'Today, ' + formatDateShort(0)
-                  : offset === 1 ? 'Yesterday, ' + formatDateShort(1)
-                  : dayName(offset) + ', ' + formatDateShort(offset);
+    const dateStr = offset === 0 ? 'Today, ' + formatDateShort(activeDate)
+                  : offset === 1 ? 'Yesterday, ' + formatDateShort(activeDate)
+                  : dayName(offset) + ', ' + formatDateShort(activeDate);
     document.getElementById('summary-for-date').textContent = '📅 ' + dateStr;
     document.getElementById('progress').style.width = '100%';
   }
 
   // ── Submit ─────────────────────────────────────────
-  async function uploadVisible(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-    const resultEl = document.getElementById('upload-result');
-    resultEl.style.display = 'block';
-    resultEl.style.background = '#1e1e2e';
-    resultEl.style.color = '#aaa';
-    resultEl.textContent = '⏳ Uploading...';
-
-    try {
-      const formData = new FormData();
-      formData.append('file', file);
-      const resp = await fetch(userParam('/api/visible/upload'), { method: 'POST', body: formData });
-      const data = await resp.json();
-      if (data.ok) {
-        resultEl.style.background = '#1a2e1a';
-        resultEl.style.color = '#6fcf97';
-        resultEl.textContent = `✅ Imported ${data.days_imported} days (${data.rows} rows) · ${data.date_range}`;
-      } else {
-        resultEl.style.background = '#2e1a1a';
-        resultEl.style.color = '#eb5757';
-        resultEl.textContent = `❌ Error: ${data.error}`;
-      }
-    } catch (err) {
-      resultEl.style.background = '#2e1a1a';
-      resultEl.style.color = '#eb5757';
-      resultEl.textContent = `❌ Upload failed: ${err.message}`;
-    }
-    // Reset file input so same file can be re-uploaded
-    event.target.value = '';
-  }
-
   async function submitCheckin() {
     const payload = {
-      date: activeDate,
-      submitted_at: new Date().toISOString(),
+      date: activeDate, submitted_at: new Date().toISOString(),
       answers: {
-        feeling:     answers[1]?.val,
-        pem:         answers[2]?.val,
-        brain_fog:   answers[3]?.val,
-        pain:        answers[4]?.val,
-        activity:    answers[5]?.val,
-        left_home:   answers[6]?.val,
-        food:        answers[7]?.val,
-        probiotics:  answers[8]?.val,
-        notes:       answers['notes'] || null,
+        feeling: answers[1]?.val, pem: answers[2]?.val, brain_fog: answers[3]?.val,
+        pain: answers[4]?.val, activity: answers[5]?.val, left_home: answers[6]?.val,
+        food: answers[7]?.val, probiotics: answers[8]?.val, notes: answers['notes'] || null,
       }
     };
-
     try {
-      const res = await fetch(userParam('/api/checkin'), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      if (!res.ok) throw new Error('Server error');
-    } catch (err) {
-      console.error('Failed to save:', err);
-    }
-
+      await fetch(userParam('/api/checkin'), { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+    } catch(e) {}
     completedDays.add(activeDate);
-
     const offset = activeDayOffset;
     const dayStr = offset === 0 ? "today's" : offset === 1 ? "yesterday's" : dayName(offset) + "'s";
     document.getElementById('done-sub-text').innerHTML =
       `${dayStr.charAt(0).toUpperCase() + dayStr.slice(1)} check-in has been recorded.<br>Thank you — every entry helps.`;
-
     goTo('done');
   }
 
-  // ── User param ──────────────────────────────────────
-  // Pass ?user=X through to all API calls. Defaults to hannah on server.
-  const _urlUser = new URLSearchParams(window.location.search).get('user');
-  function userParam(base) {
-    if (!_urlUser) return base;
-    const sep = base.includes('?') ? '&' : '?';
-    return base + sep + 'user=' + encodeURIComponent(_urlUser);
+  // ── Visible upload ─────────────────────────────────
+  async function uploadVisible(event) {
+    const file = event.target.files[0]; if (!file) return;
+    const resultEl = document.getElementById('upload-result');
+    resultEl.style.display = 'block'; resultEl.style.background = '#1e1e2e'; resultEl.style.color = '#aaa'; resultEl.textContent = '⏳ Uploading…';
+    try {
+      const formData = new FormData(); formData.append('file', file);
+      const resp = await fetch(userParam('/api/visible/upload'), { method:'POST', body: formData });
+      const data = await resp.json();
+      if (data.ok) { resultEl.style.background = '#1a2e1a'; resultEl.style.color = '#6fcf97'; resultEl.textContent = `✅ Imported ${data.days_imported} days (${data.rows} rows) · ${data.date_range}`; }
+      else { resultEl.style.background = '#2e1a1a'; resultEl.style.color = '#eb5757'; resultEl.textContent = `❌ Error: ${data.error}`; }
+    } catch(err) { resultEl.style.background = '#2e1a1a'; resultEl.style.color = '#eb5757'; resultEl.textContent = `❌ Upload failed: ${err.message}`; }
+    event.target.value = '';
   }
 
   // ── Init ───────────────────────────────────────────
-  // Get today's date from server (Eastern time) to avoid browser UTC mismatch
-  fetch(userParam('/api/checkin/status?days=7'))
-    .then(r => r.json())
-    .then(data => {
-      Object.keys(data.completed).forEach(d => completedDays.add(d));
-      // Override dateKey(0) with server's today
-      if (data.today) window._serverToday = data.today;
-    })
-    .catch(() => {})
-    .finally(() => buildHome());
+  async function init() {
+    try {
+      // Load dashboard data (WHOOP + checkins + visible)
+      const [statusRes, dashRes] = await Promise.all([
+        fetch(userParam('/api/checkin/status?days=7')),
+        fetch(userParam('/api/dashboard')),
+      ]);
+      const statusData = await statusRes.json();
+      dashData = await dashRes.json();
+
+      Object.keys(statusData.completed || {}).forEach(d => completedDays.add(d));
+      if (statusData.today) { serverToday = statusData.today; window._serverToday = serverToday; }
+      if (dashData.dates?.[0]) serverToday = dashData.dates[0];
+
+      // Auto-redirect: if today has zero data, go straight to check-in
+      const todayDate = dateKey(0);
+      const todayHasData = completedDays.has(todayDate) || dashData?.checkins?.[todayDate];
+      if (!todayHasData) {
+        await startCheckin(0);
+        return;
+      }
+    } catch(e) {}
+
+    buildHome();
+  }
+
+  init();
 </script>
 </body>
 </html>

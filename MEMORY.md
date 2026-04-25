@@ -116,7 +116,7 @@
 - **Data sources:** WHOOP (live + backfilled), Visible (177 days ingested), iPhone check-in app (Hugo, prototype live)
 - **Stack:** AWS Lambda + API Gateway, MongoDB `cadence-dev` (dev-cluster-02.qpkxl.mongodb.net)
 - **Credentials:** stored in `projects/cadence/credentials.md` (not in MEMORY.md)
-- **Status (Apr 19):** Backfill complete — 2,272 `whoop_daily` docs. Visible data in `visible_daily` (177 days). iOS check-in prototype live at http://100.70.3.21:8765. Hannah invited to tailnet. Hannah feedback on app still pending.
+- **Status (Apr 24):** Backfill complete — 2,286 `whoop_daily` docs. Visible data in `visible_daily` (177 days). WHOOP Lambda recovery fix confirmed installed by David (Apr 23). iOS check-in prototype live at http://100.70.3.21:8765. Hannah invited to tailnet. Hannah feedback on app still pending (~3 weeks — she hasn't engaged).
 - **iOS check-in app:** 8 questions (updated Apr 16), traffic light (🟢🟡🔴) UX. Brain fog = #1 constraint, under 60s on worst days. Fields: feeling, PEM, brain fog, pain, activity type, left home, food, probiotics. iMessage questionnaire sent to Hannah — feedback pending.
 - **LC phenotype:** Hannah = Gut/Viral persistence + PEM/Dysautonomia hybrid. v2 vision: phenotype-adaptive app.
 - **Pacing literature (key finding):** Ghali 2023 — pacing adherence is the single best predictor of recovery (OR 40.43). PACELOC 2025: 15% weekly reduction in PEM with structured pacing. GET is contraindicated (WHO, CDC, NICE). Heart rate monitoring is the tool (anaerobic threshold).
@@ -126,10 +126,11 @@
 - **WHOOP endpoints:** Sleep `GET /v2/activity/sleep/{uuid}` | Workout `GET /v2/activity/workout/{uuid}` | Recovery: `GET /v2/recovery?limit=10` + match `sleep_id` | Cycle `GET /v1/cycle/{id}`
 - **Webhook URL:** `https://nldsq794q0.execute-api.us-west-2.amazonaws.com/webhook` | Login: `.../login` | Secret: `com.sph.dev.whoop`
 - **David WHOOP user_id:** 206067 (hdmunguia@gmail.com) | **Hannah WHOOP user_id:** 6729032 (hannah.munguia@gmail.com)
-- **MongoDB collections:** `user`, `webhook_event`, `whoop_daily` (2,286 docs), `visible_daily`, `self_report` (check-in data)
+- **MongoDB collections:** `user`, `webhook_event`, `whoop_daily` (2,286 docs, confirmed Apr 23), `visible_daily`, `self_report` (check-in data)
 - **v2 Design Decision (Apr 16):** Dynamic question schema — questions stored in MongoDB `questions` collection (not hardcoded). Enables add/remove without deploys, versioning, A/B testing. Schema: `question_id`, `version`, `active`, `order`, `text`, `type`, `options`. Types: `traffic_light`, `yes_no`, `scale`, `text`. Priority: v2.
 - **Server.js:** runs at port 8765, reads MongoDB URI from `/home2/cleo/mongo_uri`, saves to `self_report` collection keyed on `{user_id, date}`. ⚠️ Not daemonized — needs pm2 or systemd.
 - **User scoping (Apr 19):** URL param `?user=david` scopes check-ins to David; defaults to `hannah` when no param present
+- **UX redesign direction (Apr 24):** Hub model confirmed — "Where are you now" + "Where were you yesterday" + "Insights" (David prefers over "Trends") + "Advice from app". Auto-redirect: no data → questionnaire; partial → continue prompt; complete → home. David/Hannah same view. Open questions: real-time WHOOP on home? `/api/patterns` server-side? LLM vs rules-based advice? Resuming next session.
 - **Cadence app features (as of Apr 17):** Visible CSV upload (`POST /api/visible/upload`, multer + csv-parse → `visible_daily`); pre-population (`GET /api/checkin/:date`); server drives Eastern time `today` to avoid UTC mismatch; "Update →" button when today has data
 - **Dashboard:** `/dashboard` → `dashboard.html`, `/api/dashboard` endpoint. 3-day view: WHOOP metrics + check-in pills + Visible highlights. Auto-refreshes every 5 min, Eastern time aware, no-cache headers.
 - **Dashboards:** `dashboard.html` = dynamic (live MongoDB pull, 3-day view, auto-refresh) | `hannah-dashboard.html` = static hardcoded view (updated manually as needed) — both served from `prototype/`
@@ -143,6 +144,7 @@
 - Built via 4 parallel Sonnet subagents + Opus synthesis pass
 - **Repo:** `github.com/CleoSPHBot/lc-wiki` (private, PAT at `/home2/cleo/.github_token`)
 - Key contradictions flagged in synthesis: metformin (prevention vs treatment), GET/CBT harm, spike persistence evidence
+- **REVIVE-TOGETHER (Reis et al. 2026, AIM):** Fluvoxamine significantly reduces LC fatigue (22 Brazil sites, n=399, adaptive Bayesian). Metformin ineffective as *treatment* (only as prevention). GLP-1 agonists: plausible via gut spike reservoir mechanism — no RCT evidence yet. Gut spike persistence = likely common thread across fluvoxamine, JAK inhibitors, GLP-1.
 - No PHI — papers only, no patient-specific data
 - **Gemini / OpenAI:** Neither API configured currently. David may add for Cadence analysis.
 - **File transfer:** David drops files in `/home2/cleo/for-cleo/` — workaround for Teams desktop attachment issue
