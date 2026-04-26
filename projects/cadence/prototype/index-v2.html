@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Cadence</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f1923;
+      color: #f0f4f8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── Header ── */
+    header {
+      width: 100%;
+      background: #0f1923;
+      padding: 20px 24px 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #1e2d3d;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .logo {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, #1a3a5c, #0f1923);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid #c9a84c;
+      font-size: 18px;
+    }
+    header h1 { font-size: 20px; font-weight: 700; color: #f0f4f8; letter-spacing: -0.3px; }
+    #header-right { font-size: 13px; color: #7a9ab8; margin-left: auto; }
+
+    /* ── Progress bar ── */
+    .progress-bar { width: 100%; height: 3px; background: #1e2d3d; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #c9a84c, #e8c96a); transition: width 0.3s ease; }
+
+    /* ── Screens ── */
+    .screen {
+      display: none;
+      width: 100%; max-width: 420px;
+      padding: 24px 20px 40px;
+      flex-direction: column; gap: 0;
+    }
+    .screen.active { display: flex; }
+
+    /* ══════════════════════════════
+       SECTION LABELS
+    ══════════════════════════════ */
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: #c9a84c;
+      margin-bottom: 10px; margin-top: 24px;
+    }
+    .section-label:first-child { margin-top: 0; }
+
+    /* ══════════════════════════════
+       TAPPABLE CARD BASE
+    ══════════════════════════════ */
+    .tap-card {
+      border-radius: 20px;
+      padding: 18px 20px;
+      cursor: pointer;
+      transition: transform 0.12s;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+    }
+    .tap-card:active { transform: scale(0.985); }
+    .chevron {
+      position: absolute; right: 18px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px; color: #3a5a78;
+      pointer-events: none;
+    }
+
+    /* ══════════════════════════════
+       HERO: WHERE ARE YOU NOW
+    ══════════════════════════════ */
+    .now-card {
+      background: linear-gradient(135deg, #1a3550, #1e2d3d);
+      border: 1.5px solid #c9a84c44;
+    }
+    .now-card.done   { border-color: #4caf7d55; }
+    .now-card.partial { border-color: #f0c04055; }
+
+    .card-pencil {
+      background: none; border: none; cursor: pointer;
+      font-size: 18px; padding: 2px 4px; line-height: 1;
+      opacity: 0.6; transition: opacity 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .card-pencil:hover { opacity: 1; }
+
+    .now-top {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .now-label { font-size: 13px; color: #7a9ab8; font-weight: 600; }
+    .now-status-pill {
+      font-size: 12px; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px;
+    }
+    .now-status-pill.done    { background: rgba(76,175,125,0.15); color: #4caf7d; }
+    .now-status-pill.partial { background: rgba(240,192,64,0.12); color: #f0c040; }
+    .now-status-pill.empty   { background: rgba(201,168,76,0.12); color: #c9a84c; }
+
+    .now-metrics {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 8px; margin-bottom: 14px;
+    }
+    .now-metric { background: #0f192380; border-radius: 10px; padding: 9px 10px; }
+    .now-metric-label { font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #5a7a98; margin-bottom: 3px; }
+    .now-metric-val { font-size: 18px; font-weight: 700; color: #f0f4f8; line-height: 1; }
+    .now-metric-unit { font-size: 10px; color: #7a9ab8; font-weight: 400; }
+
+    .now-checkin-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .ci-chip { display: flex; align-items: center; gap: 4px; background: #0f192380; border-radius: 8px; padding: 5px 9px; font-size: 11px; }
+    .ci-chip-label { color: #5a7a98; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; font-size: 9px; }
+    .ci-chip-val { color: #f0f4f8; font-weight: 600; }
+    .ci-chip-val.green  { color: #4caf7d; }
+    .ci-chip-val.yellow { color: #f0c040; }
+    .ci-chip-val.red    { color: #e05a5a; }
+    .ci-chip-val.neutral { color: #b0c8e0; }
+
+    /* Cadence Effective Budget bar */
+    .budget-row {
+      margin-bottom: 14px;
+      background: #0f192360;
+      border-radius: 12px;
+      padding: 10px 14px;
+    }
+    .budget-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .budget-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #5a7a98; }
+    .budget-value { font-size: 13px; font-weight: 700; color: #f0f4f8; }
+    .budget-track {
+      width: 100%; height: 6px; background: #1e2d3d; border-radius: 4px; overflow: hidden;
+    }
+    .budget-fill {
+      height: 100%; border-radius: 4px;
+      transition: width 0.4s ease, background 0.4s ease;
+    }
+    .budget-sub { font-size: 10px; color: #3a5a78; margin-top: 5px; }
+
+    /* Visible nudge inside hero */
+    .visible-nudge {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 10px; padding: 8px 12px;
+      margin-bottom: 14px; cursor: pointer;
+    }
+    .visible-nudge-icon { font-size: 16px; }
+    .visible-nudge-text { font-size: 12px; color: #c9a84c; font-weight: 600; flex: 1; }
+    .visible-nudge-arrow { font-size: 12px; color: #c9a84c; }
+
+    .now-edit-btn {
+      width: 100%;
+      background: rgba(201,168,76,0.12); border: 1.5px solid #c9a84c55;
+      border-radius: 12px; color: #c9a84c; font-size: 13px; font-weight: 700;
+      padding: 10px; cursor: pointer;
+    }
+    .now-start-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #c9a84c, #e8c96a);
+      border: none; border-radius: 12px;
+      color: #0f1923; font-size: 15px; font-weight: 700;
+      padding: 14px; cursor: pointer;
+    }
+    .now-continue-btn {
+      width: 100%;
+      background: transparent; border: 1.5px solid #f0c040;
+      border-radius: 12px; color: #f0c040; font-size: 14px; font-weight: 700;
+      padding: 12px; cursor: pointer; margin-top: 8px;
+    }
+
+    /* ══════════════════════════════
+       YESTERDAY CARD
+    ══════════════════════════════ */
+    .yest-card {
+      background: #131f2e;
+      border: 1px solid #1e2d3d;
+      padding-right: 40px; /* room for chevron */
+    }
+    .yest-top { display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px; }
+    .yest-day  { font-size: 15px; font-weight: 700; color: #f0f4f8; }
+    .yest-date { font-size: 12px; color: #7a9ab8; }
+
+    .yest-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+    .now-metrics  { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+    .yest-metric { background: #0f1923; border-radius: 10px; padding: 9px 10px; }
+    .yest-metric-label { font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #5a7a98; margin-bottom: 3px; }
+    .yest-metric-val { font-size: 18px; font-weight: 700; color: #f0f4f8; line-height: 1; }
+    .yest-metric-unit { font-size: 10px; color: #7a9ab8; }
+    .trend-up-good   { color: #4caf7d; font-size: 11px; }
+    .trend-down-bad  { color: #e05a5a; font-size: 11px; }
+    .trend-down-good { color: #4caf7d; font-size: 11px; }
+    .trend-flat      { color: #3a5a78; font-size: 11px; }
+
+    .yest-checkin-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+
+    /* ══════════════════════════════
+       INSIGHTS CARD
+    ══════════════════════════════ */
+    .insights-card {
+      background: #131f2e;
+      border: 1px solid #1e2d3d;
+      padding-right: 40px;
+    }
+    .insight-empty { font-size: 13px; color: #3a5a78; font-style: italic; text-align: center; padding: 12px 0; }
+
+    .insight-row {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 10px 0; border-bottom: 1px solid #1e2d3d;
+    }
+    .insight-row:last-child { border-bottom: none; }
+    .insight-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .insight-body { flex: 1; }
+    .insight-title { font-size: 14px; font-weight: 700; color: #f0f4f8; margin-bottom: 3px; }
+    .insight-title.critical { color: #e05a5a; }
+    .insight-title.warning  { color: #f0c040; }
+    .insight-title.good     { color: #4caf7d; }
+    .insight-text  { font-size: 12px; color: #7a9ab8; line-height: 1.5; }
+    .insight-text .term { color: #5bc8e8; font-weight: 700; }
+
+    .more-link {
+      display: block; text-align: center;
+      font-size: 12px; color: #c9a84c; font-weight: 600;
+      padding: 10px 0 0; letter-spacing: 0.3px;
+    }
+
+    /* ══════════════════════════════
+       ADVICE CARD
+    ══════════════════════════════ */
+    .advice-card {
+      background: #131f2e;
+      border: 1px solid #1e2d3d;
+      padding-right: 40px;
+    }
+
+    /* ══════════════════════════════
+       HISTORY LINK
+    ══════════════════════════════ */
+    .history-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; margin-top: 28px; margin-bottom: 4px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .history-link-text {
+      font-size: 13px; color: #5a7a98; font-weight: 600;
+    }
+    .history-link-text:hover { color: #7a9ab8; }
+
+    /* ══════════════════════════════
+       HISTORY SCREEN
+    ══════════════════════════════ */
+    .screen-back-btn {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; color: #7a9ab8; font-weight: 600;
+      cursor: pointer; margin-bottom: 20px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .past-days { display: flex; flex-direction: column; gap: 8px; }
+    .day-row {
+      background: #1e2d3d; border-radius: 14px;
+      padding: 13px 16px;
+      display: flex; align-items: center;
+      cursor: pointer; transition: all 0.15s; border: 1.5px solid transparent;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .day-row:active { transform: scale(0.98); }
+    .day-row.done { border-color: rgba(76,175,125,0.3); }
+    .dr-left { flex: 1; }
+    .dr-name { font-size: 15px; font-weight: 600; color: #f0f4f8; }
+    .dr-date { font-size: 12px; color: #7a9ab8; margin-top: 2px; }
+    .dr-status { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 8px; }
+    .dr-status.done { background: rgba(76,175,125,0.15); color: #4caf7d; }
+    .dr-status.open { background: rgba(201,168,76,0.12); color: #c9a84c; }
+
+    /* ══════════════════════════════
+       DETAIL SCREENS
+    ══════════════════════════════ */
+    .detail-section-title {
+      font-size: 20px; font-weight: 700; color: #f0f4f8; margin-bottom: 16px;
+    }
+    .detail-card {
+      background: #131f2e; border: 1px solid #1e2d3d;
+      border-radius: 18px; padding: 18px 20px; margin-bottom: 12px;
+    }
+    .detail-metric-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+    .detail-metric { background: #0f1923; border-radius: 10px; padding: 12px; }
+    .detail-metric-label { font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #5a7a98; margin-bottom: 4px; }
+    .detail-metric-val { font-size: 22px; font-weight: 700; color: #f0f4f8; line-height: 1; }
+    .detail-metric-unit { font-size: 11px; color: #7a9ab8; }
+
+    /* ══════════════════════════════
+       QUESTION SCREENS
+    ══════════════════════════════ */
+    .q-date-tag { display: inline-block; background: #1e2d3d; border-radius: 8px; padding: 4px 10px; font-size: 12px; color: #c9a84c; font-weight: 600; margin-bottom: 16px; }
+    .question-num { font-size: 12px; font-weight: 600; color: #7a9ab8; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 8px; }
+    .question-text { font-size: 22px; font-weight: 700; color: #f0f4f8; line-height: 1.3; margin-bottom: 28px; }
+    .options { display: flex; flex-direction: column; gap: 12px; }
+    .option-btn {
+      background: #1e2d3d; border: 2px solid transparent;
+      border-radius: 16px; padding: 18px 20px;
+      display: flex; align-items: center; gap: 16px;
+      cursor: pointer; transition: all 0.15s; text-align: left;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .option-btn > div { display: flex; flex-direction: column; justify-content: center; }
+    .option-btn:active { transform: scale(0.97); }
+    .option-btn.selected { border-color: #c9a84c; }
+    .option-btn.green.selected  { border-color: #4caf7d; background: rgba(76,175,125,0.1); }
+    .option-btn.yellow.selected { border-color: #f0c040; background: rgba(240,192,64,0.1); }
+    .option-btn.red.selected    { border-color: #e05a5a; background: rgba(224,90,90,0.1); }
+    .option-btn.home.selected   { border-color: #7a9ab8; background: rgba(122,154,184,0.1); }
+    .option-btn.car.selected    { border-color: #c9a84c; background: rgba(201,168,76,0.1); }
+    .option-icon  { font-size: 28px; width: 40px; text-align: center; flex-shrink: 0; }
+    .option-label { font-size: 17px; font-weight: 600; color: #f0f4f8; }
+    .option-sub   { font-size: 13px; color: #7a9ab8; margin-top: 2px; }
+
+    .nav-row { display: flex; gap: 12px; margin-top: 28px; }
+    .btn-back {
+      flex: 0 0 52px; height: 52px;
+      background: #1e2d3d; border: none; border-radius: 14px;
+      color: #7a9ab8; font-size: 20px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .btn-next {
+      flex: 1; height: 52px;
+      background: linear-gradient(135deg, #c9a84c, #e8c96a);
+      border: none; border-radius: 14px;
+      color: #0f1923; font-size: 16px; font-weight: 700;
+      cursor: pointer; transition: opacity 0.15s;
+    }
+    .btn-next:disabled { opacity: 0.3; cursor: not-allowed; }
+    .btn-skip {
+      flex: 1; height: 52px;
+      background: transparent; border: 2px solid #1e2d3d;
+      border-radius: 14px; color: #7a9ab8;
+      font-size: 15px; font-weight: 600; cursor: pointer;
+    }
+
+    .notes-area {
+      background: #1e2d3d; border: 2px solid transparent;
+      border-radius: 16px; padding: 16px;
+      color: #f0f4f8; font-size: 16px; font-family: inherit;
+      width: 100%; min-height: 120px; resize: none; outline: none;
+      transition: border-color 0.15s;
+    }
+    .notes-area:focus { border-color: #c9a84c; }
+    .notes-area::placeholder { color: #7a9ab8; }
+
+    .summary-card { background: #1e2d3d; border-radius: 20px; padding: 24px; margin-bottom: 16px; }
+    .summary-title { font-size: 13px; font-weight: 600; color: #7a9ab8; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 16px; }
+    .summary-for { font-size: 14px; color: #c9a84c; font-weight: 600; margin-bottom: 16px; }
+    .summary-table { width: 100%; border-collapse: collapse; }
+    .summary-table tr td { padding: 10px 0; border-bottom: 1px solid #0f1923; font-size: 15px; vertical-align: middle; }
+    .summary-table tr:last-child td { border-bottom: none; }
+    .summary-label { color: #7a9ab8; width: 100%; }
+    .summary-icon { white-space: nowrap; font-size: 18px; padding-right: 6px; text-align: right; }
+    .summary-value { color: #f0f4f8; font-weight: 600; white-space: nowrap; }
+    .btn-submit {
+      width: 100%; height: 56px;
+      background: linear-gradient(135deg, #c9a84c, #e8c96a);
+      border: none; border-radius: 16px;
+      color: #0f1923; font-size: 17px; font-weight: 700;
+      cursor: pointer; margin-top: 8px;
+    }
+    .done-icon  { font-size: 64px; text-align: center; margin: 40px 0 20px; }
+    .done-title { font-size: 26px; font-weight: 700; text-align: center; margin-bottom: 12px; }
+    .done-sub   { font-size: 15px; color: #7a9ab8; text-align: center; line-height: 1.6; }
+    .btn-home {
+      width: 100%; height: 52px; margin-top: 24px;
+      background: #1e2d3d; border: none; border-radius: 14px;
+      color: #f0f4f8; font-size: 16px; font-weight: 600; cursor: pointer;
+    }
+
+    /* Color helpers */
+    .rec-green  { color: #4caf7d; }
+    .rec-yellow { color: #f0c040; }
+    .rec-red    { color: #e05a5a; }
+    .rec-none   { color: #5a7a98; }
+
+    /* Upload (hidden input) */
+    #visible-file-input { display: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">〰</div>
+  <h1>Cadence</h1>
+  <span id="header-right"></span>
+</header>
+<div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN: Hub Home
+══════════════════════════════════════════ -->
+<div class="screen active" id="screen-home">
+
+  <!-- ── WHERE ARE YOU NOW ── -->
+  <div class="section-label">Where are you now</div>
+  <div class="tap-card now-card" id="now-card" onclick="onNowCardTap()">
+    <div class="now-top">
+      <div class="now-label" id="now-label">Today</div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="now-status-pill empty" id="now-status-pill" style="display:none">Not started</div>
+        <button class="card-pencil" id="now-pencil">✏️</button>
+      </div>
+    </div>
+
+    <!-- WHOOP quick metrics -->
+    <div class="now-metrics" id="now-metrics" style="display:none">
+      <div class="now-metric">
+        <div class="now-metric-label">Recovery</div>
+        <div class="now-metric-val" id="now-recovery">—</div>
+      </div>
+      <div class="now-metric">
+        <div class="now-metric-label">HRV</div>
+        <div class="now-metric-val" id="now-hrv">—</div>
+      </div>
+      <div class="now-metric">
+        <div class="now-metric-label">Sleep</div>
+        <div class="now-metric-val" id="now-sleep">—</div>
+      </div>
+      <div class="now-metric">
+        <div class="now-metric-label">RHR</div>
+        <div class="now-metric-val" id="now-rhr">—</div>
+      </div>
+      <div class="now-metric">
+        <div class="now-metric-label">SpO2</div>
+        <div class="now-metric-val" id="now-spo2">—</div>
+      </div>
+      <div class="now-metric">
+        <div class="now-metric-label">Strain</div>
+        <div class="now-metric-val" id="now-strain">—</div>
+      </div>
+    </div>
+
+    <!-- Check-in chips -->
+    <div class="now-checkin-row" id="now-checkin-row" style="display:none"></div>
+
+    <!-- Cadence Effective Budget -->
+    <div class="budget-row" id="budget-row" style="display:none">
+      <div class="budget-header">
+        <span class="budget-label">⚡ Cadence Budget</span>
+        <span class="budget-value" id="budget-value"></span>
+      </div>
+      <div class="budget-track"><div class="budget-fill" id="budget-fill"></div></div>
+      <div class="budget-sub" id="budget-sub"></div>
+    </div>
+
+    <!-- CTA + optional Visible nudge -->
+    <div id="now-cta"></div>
+  </div>
+
+  <!-- ── WHERE WERE YOU YESTERDAY ── -->
+  <div class="section-label">Where were you yesterday</div>
+  <div class="tap-card yest-card" onclick="goToScreen('screen-yesterday-detail')">
+    <div class="yest-top" style="justify-content:space-between">
+      <div>
+        <div class="yest-day" id="yest-day">Yesterday</div>
+        <div class="yest-date" id="yest-date"></div>
+      </div>
+      <button class="card-pencil" style="margin-left:auto" onclick="event.stopPropagation();startCheckin(1)" title="Edit yesterday">✏️</button>
+    </div>
+    <div class="yest-metrics">
+      <div class="yest-metric">
+        <div class="yest-metric-label">Recovery</div>
+        <div class="yest-metric-val" id="yest-recovery">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">HRV</div>
+        <div class="yest-metric-val" id="yest-hrv">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">Sleep</div>
+        <div class="yest-metric-val" id="yest-sleep">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">RHR</div>
+        <div class="yest-metric-val" id="yest-rhr">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">SpO2</div>
+        <div class="yest-metric-val" id="yest-spo2">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">Strain</div>
+        <div class="yest-metric-val" id="yest-strain">—</div>
+      </div>
+    </div>
+    <div id="yest-checkin-row" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px"></div>
+    <div id="yest-visible-section"></div>
+    <div class="chevron">›</div>
+  </div>
+
+  <!-- ── INSIGHTS ── -->
+  <div class="section-label">Insights</div>
+  <div class="tap-card insights-card" onclick="goToScreen('screen-insights-detail')">
+    <div id="insights-list"><div class="insight-empty">Loading…</div></div>
+    <div class="chevron">›</div>
+  </div>
+
+  <!-- ── ADVICE ── -->
+  <div class="section-label">Advice from Cadence</div>
+  <div class="tap-card advice-card" onclick="goToScreen('screen-advice-detail')">
+    <div id="advice-list"><div class="insight-empty">Analyzing your patterns…</div></div>
+    <div class="chevron">›</div>
+  </div>
+
+  <!-- ── HISTORY LINK ── -->
+  <div class="history-row" onclick="goToScreen('screen-history')">
+    <span class="history-link-text">📅 View history</span>
+    <span style="font-size:12px;color:#3a5a78">›</span>
+  </div>
+
+  <!-- Hidden file input for Visible upload -->
+  <input type="file" id="visible-file-input" accept=".csv" onchange="uploadVisible(event)">
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN: History (past days)
+══════════════════════════════════════════ -->
+<div class="screen" id="screen-history">
+  <div class="screen-back-btn" onclick="goHome()">← Back</div>
+  <div class="detail-section-title">History</div>
+  <div class="past-days" id="past-days-list"></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN: Yesterday Detail
+══════════════════════════════════════════ -->
+<div class="screen" id="screen-yesterday-detail">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+    <div class="screen-back-btn" style="margin-bottom:0" onclick="goHome()">← Back</div>
+    <button class="card-pencil" style="font-size:20px;opacity:0.7" onclick="startCheckin(1)" title="Edit yesterday">✏️</button>
+  </div>
+  <div class="detail-section-title" id="yest-detail-title">Yesterday</div>
+  <div class="detail-card">
+    <div class="detail-metric-grid" id="yest-detail-metrics">
+      <div class="detail-metric">
+        <div class="detail-metric-label">Recovery</div>
+        <div class="detail-metric-val rec-none" id="yest-d-recovery">—</div>
+      </div>
+      <div class="detail-metric">
+        <div class="detail-metric-label">HRV</div>
+        <div class="detail-metric-val" id="yest-d-hrv">—</div>
+      </div>
+      <div class="detail-metric">
+        <div class="detail-metric-label">Sleep</div>
+        <div class="detail-metric-val" id="yest-d-sleep">—</div>
+      </div>
+    </div>
+  </div>
+  <div class="detail-card" id="yest-d-checkin-card">
+    <div id="yest-d-checkin-rows"></div>
+  </div>
+  <div class="detail-card" id="yest-d-notes-card" style="display:none">
+    <div style="font-size:12px;color:#5a7a98;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px">Notes</div>
+    <div id="yest-d-notes" style="font-size:14px;color:#b0c8e0;line-height:1.6"></div>
+  </div>
+  <div class="detail-card">
+    <div style="font-size:12px;color:#5a7a98;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px">📊 Visible</div>
+    <div id="yest-d-visible"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN: Insights Detail
+══════════════════════════════════════════ -->
+<div class="screen" id="screen-insights-detail">
+  <div class="screen-back-btn" onclick="goHome()">← Back</div>
+  <div class="detail-section-title">Insights · Last 7 days</div>
+  <div id="insights-detail-list">
+    <div class="insight-empty">Loading patterns…</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN: Advice Detail
+══════════════════════════════════════════ -->
+<div class="screen" id="screen-advice-detail">
+  <div class="screen-back-btn" onclick="goHome()">← Back</div>
+  <div class="detail-section-title">Advice from Cadence</div>
+  <div id="advice-detail-list">
+    <div class="insight-empty">Loading advice…</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     QUESTION SCREENS Q1–Q8, Notes, Summary, Done
+══════════════════════════════════════════ -->
+
+<!-- Q1 -->
+<div class="screen" id="screen-1">
+  <div class="q-date-tag" id="q-date-tag-1"></div>
+  <div class="question-num">Question 1 of 8</div>
+  <div class="question-text">How did you feel today?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(1,'good','🟢 Good')"><div class="option-icon">🟢</div><div><div class="option-label">Good</div><div class="option-sub">Energy up, manageable day</div></div></button>
+    <button class="option-btn yellow" onclick="select(1,'mixed','🟡 Mixed')"><div class="option-icon">🟡</div><div><div class="option-label">Mixed</div><div class="option-sub">Some good, some hard moments</div></div></button>
+    <button class="option-btn red" onclick="select(1,'bad','🔴 Bad')"><div class="option-icon">🔴</div><div><div class="option-label">Bad</div><div class="option-sub">Low energy, rough day</div></div></button>
+  </div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="goHome()">⌂</button>
+    <button class="btn-next" id="next-1" disabled onclick="goTo(2)">Next →</button>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="screen" id="screen-2">
+  <div class="q-date-tag" id="q-date-tag-2"></div>
+  <div class="question-num">Question 2 of 8</div>
+  <div class="question-text">Post-exertional malaise (PEM)?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(2,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Feeling okay after activity</div></div></button>
+    <button class="option-btn yellow" onclick="select(2,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Some fatigue or heaviness</div></div></button>
+    <button class="option-btn red" onclick="select(2,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Significant crash or collapse</div></div></button>
+  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(1)">←</button><button class="btn-next" id="next-2" disabled onclick="goTo(3)">Next →</button></div>
+</div>
+
+<!-- Q3 -->
+<div class="screen" id="screen-3">
+  <div class="q-date-tag" id="q-date-tag-3"></div>
+  <div class="question-num">Question 3 of 8</div>
+  <div class="question-text">Brain fog today?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(3,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Thinking clearly</div></div></button>
+    <button class="option-btn yellow" onclick="select(3,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">A bit foggy, harder to concentrate</div></div></button>
+    <button class="option-btn red" onclick="select(3,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Can't think straight, words hard</div></div></button>
+  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(2)">←</button><button class="btn-next" id="next-3" disabled onclick="goTo(4)">Next →</button></div>
+</div>
+
+<!-- Q4 -->
+<div class="screen" id="screen-4">
+  <div class="q-date-tag" id="q-date-tag-4"></div>
+  <div class="question-num">Question 4 of 8</div>
+  <div class="question-text">Any pain today?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(4,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">No notable pain</div></div></button>
+    <button class="option-btn yellow" onclick="select(4,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Noticeable but manageable</div></div></button>
+    <button class="option-btn red" onclick="select(4,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Significant pain affecting my day</div></div></button>
+  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(3)">←</button><button class="btn-next" id="next-4" disabled onclick="goTo(5)">Next →</button></div>
+</div>
+
+<!-- Q5 -->
+<div class="screen" id="screen-5">
+  <div class="q-date-tag" id="q-date-tag-5"></div>
+  <div class="question-num">Question 5 of 8</div>
+  <div class="question-text">What kind of day was it?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(5,'rested','🟢 Rested')"><div class="option-icon">🟢</div><div><div class="option-label">Rested</div><div class="option-sub">Mostly at home, low demands</div></div></button>
+    <button class="option-btn yellow" onclick="select(5,'light','🟡 Light activity')"><div class="option-icon">🟡</div><div><div class="option-label">Light activity</div><div class="option-sub">Short walk, light tasks</div></div></button>
+    <button class="option-btn red" onclick="select(5,'demanding','🔴 Demanding')"><div class="option-icon">🔴</div><div><div class="option-label">Demanding</div><div class="option-sub">Meeting, appointment, physical effort, stress</div></div></button>
+  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(4)">←</button><button class="btn-next" id="next-5" disabled onclick="goTo(6)">Next →</button></div>
+</div>
+
+<!-- Q6 -->
+<div class="screen" id="screen-6">
+  <div class="q-date-tag" id="q-date-tag-6"></div>
+  <div class="question-num">Question 6 of 8</div>
+  <div class="question-text">Did you leave home today?</div>
+  <div class="options">
+    <button class="option-btn home" onclick="select(6,'no','🏠 No')"><div class="option-icon">🏠</div><div><div class="option-label">No</div><div class="option-sub">Stayed home all day</div></div></button>
+    <button class="option-btn car" onclick="select(6,'yes','🚗 Yes')"><div class="option-icon">🚗</div><div><div class="option-label">Yes</div><div class="option-sub">Left the house at least once</div></div></button>
+  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(5)">←</button><button class="btn-next" id="next-6" disabled onclick="goTo(7)">Next →</button></div>
+</div>
+
+<!-- Q7 -->
+<div class="screen" id="screen-7">
+  <div class="q-date-tag" id="q-date-tag-7"></div>
+  <div class="question-num">Question 7 of 8</div>
+  <div class="question-text">How did you eat today?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(7,'clean','🟢 Clean')"><div class="option-icon">🟢</div><div><div class="option-label">Clean</div><div class="option-sub">Whole foods, vegetables, home cooked</div></div></button>
+    <button class="option-btn yellow" onclick="select(7,'mixed','🟡 Mixed')"><div class="option-icon">🟡</div><div><div class="option-label">Mixed</div><div class="option-sub">Combination of good and not-so-good</div></div></button>
+    <button class="option-btn red" onclick="select(7,'inflammatory','🔴 Inflammatory')"><div class="option-icon">🔴</div><div><div class="option-label">Inflammatory</div><div class="option-sub">Sugar, processed, alcohol, junk food</div></div></button>
+  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(6)">←</button><button class="btn-next" id="next-7" disabled onclick="goTo(8)">Next →</button></div>
+</div>
+
+<!-- Q8 -->
+<div class="screen" id="screen-8">
+  <div class="q-date-tag" id="q-date-tag-8"></div>
+  <div class="question-num">Question 8 of 8</div>
+  <div class="question-text">Did you take your probiotics today?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(8,'yes','✅ Yes')"><div class="option-icon">✅</div><div><div class="option-label">Yes</div><div class="option-sub">Took probiotic supplement today</div></div></button>
+    <button class="option-btn red" onclick="select(8,'no','❌ No')"><div class="option-icon">❌</div><div><div class="option-label">No</div><div class="option-sub">Skipped today</div></div></button>
+  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(7)">←</button><button class="btn-next" id="next-8" disabled onclick="goTo(9)">Next →</button></div>
+</div>
+
+<!-- Q9: Stimulants -->
+<div class="screen" id="screen-9">
+  <div class="q-date-tag" id="q-date-tag-9"></div>
+  <div class="question-num">Question 9 of 11</div>
+  <div class="question-text">Did you take any stimulants today?</div>
+  <div class="options">
+    <button class="option-btn red" onclick="select(9,'yes','⚡ Yes')"><div class="option-icon">⚡</div><div><div class="option-label">Yes</div><div class="option-sub">Adderall, caffeine above normal, or other stimulants</div></div></button>
+    <button class="option-btn green" onclick="select(9,'no','✅ No')"><div class="option-icon">✅</div><div><div class="option-label">No</div><div class="option-sub">No stimulants today</div></div></button>
+  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(8)">←</button><button class="btn-next" id="next-9" disabled onclick="goTo('notes')">Next →</button></div>
+</div>
+
+<!-- Q10: Compression -->
+<div class="screen" id="screen-10">
+  <div class="q-date-tag" id="q-date-tag-10"></div>
+  <div class="question-num">Question 10 of 11</div>
+  <div class="question-text">Did you wear compression today?</div>
+  <div class="options">
+    <button class="option-btn" onclick="select(10,'none','❌ None')"><div class="option-icon">❌</div><div><div class="option-label">None</div><div class="option-sub">No compression wear today</div></div></button>
+    <button class="option-btn green" onclick="select(10,'upper','💪 Upper')"><div class="option-icon">💪</div><div><div class="option-label">Upper</div><div class="option-sub">Arms, torso, or abdominal binder</div></div></button>
+    <button class="option-btn green" onclick="select(10,'lower','🧦 Lower')"><div class="option-icon">🧦</div><div><div class="option-label">Lower</div><div class="option-sub">Compression socks or leggings</div></div></button>
+    <button class="option-btn green" onclick="select(10,'both','✨ Upper &amp; Lower')"><div class="option-icon">✨</div><div><div class="option-label">Upper &amp; Lower</div><div class="option-sub">Full compression today</div></div></button>
+  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(9)">←</button><button class="btn-next" id="next-10" disabled onclick="goTo(11)">Next →</button></div>
+</div>
+
+<!-- Q11: Sodium -->
+<div class="screen" id="screen-11">
+  <div class="q-date-tag" id="q-date-tag-11"></div>
+  <div class="question-num">Question 11 of 11</div>
+  <div class="question-text">Did you hit your sodium goal today?</div>
+  <div class="options">
+    <button class="option-btn green" onclick="select(11,'yes','✅ Yes')"><div class="option-icon">✅</div><div><div class="option-label">Yes</div><div class="option-sub">~3,000mg sodium reached</div></div></button>
+    <button class="option-btn red" onclick="select(11,'no','❌ No')"><div class="option-icon">❌</div><div><div class="option-label">No</div><div class="option-sub">Fell short today</div></div></button>
+  </div>
+  <div class="nav-row"><button class="btn-back" onclick="goTo(10)">←</button><button class="btn-next" id="next-11" disabled onclick="goTo('notes')">Next →</button></div>
+</div>
+
+<!-- Notes -->
+<div class="screen" id="screen-notes">
+  <div class="q-date-tag" id="q-date-tag-notes"></div>
+  <div class="question-num">Optional</div>
+  <div class="question-text">Anything else to note?</div>
+  <textarea class="notes-area" id="notes-field" placeholder="How are you feeling? Anything unusual today?&#10;&#10;(Skip if you don't feel up to it)"></textarea>
+  <div class="nav-row">
+    <button class="btn-back" onclick="goTo(9)">←</button>
+    <button class="btn-skip" onclick="goTo(10)">Skip</button>
+    <button class="btn-next" style="flex:1" onclick="saveNotes(); goTo(10)">Done →</button>
+  </div>
+</div>
+
+<!-- Summary -->
+<div class="screen" id="screen-10">
+  <div class="question-num">Review</div>
+  <div class="question-text">Your check-in</div>
+  <div class="summary-card">
+    <div class="summary-for" id="summary-for-date"></div>
+    <div class="summary-title">Summary</div>
+    <table class="summary-table">
+      <tr><td class="summary-label">Overall feeling</td><td class="summary-icon" id="sum-icon-1">—</td><td class="summary-value" id="sum-1"></td></tr>
+      <tr><td class="summary-label">PEM</td><td class="summary-icon" id="sum-icon-2">—</td><td class="summary-value" id="sum-2"></td></tr>
+      <tr><td class="summary-label">Brain fog</td><td class="summary-icon" id="sum-icon-3">—</td><td class="summary-value" id="sum-3"></td></tr>
+      <tr><td class="summary-label">Pain</td><td class="summary-icon" id="sum-icon-4">—</td><td class="summary-value" id="sum-4"></td></tr>
+      <tr><td class="summary-label">Activity</td><td class="summary-icon" id="sum-icon-5">—</td><td class="summary-value" id="sum-5"></td></tr>
+      <tr><td class="summary-label">Left home</td><td class="summary-icon" id="sum-icon-6">—</td><td class="summary-value" id="sum-6"></td></tr>
+      <tr><td class="summary-label">Food</td><td class="summary-icon" id="sum-icon-7">—</td><td class="summary-value" id="sum-7"></td></tr>
+      <tr><td class="summary-label">Probiotics</td><td class="summary-icon" id="sum-icon-8">—</td><td class="summary-value" id="sum-8"></td></tr>
+      <tr><td class="summary-label">Stimulants</td><td class="summary-icon" id="sum-icon-9">—</td><td class="summary-value" id="sum-9"></td></tr>
+      <tr><td class="summary-label">Compression</td><td class="summary-icon" id="sum-icon-10">—</td><td class="summary-value" id="sum-10"></td></tr>
+      <tr><td class="summary-label">Sodium goal</td><td class="summary-icon" id="sum-icon-11">—</td><td class="summary-value" id="sum-11"></td></tr>
+    </table>
+  </div>
+  <button class="btn-submit" onclick="submitCheckin()">Submit Check-in ✓</button>
+  <div class="nav-row"><button class="btn-back" style="flex:1;height:44px;font-size:14px" onclick="goTo('notes')">← Edit</button></div>
+</div>
+
+<!-- Done -->
+<div class="screen" id="screen-done">
+  <div class="done-icon">✅</div>
+  <div class="done-title">Check-in saved!</div>
+  <div class="done-sub" id="done-sub-text">Your entry has been recorded.<br>Thank you — every check-in helps.</div>
+  <button class="btn-home" onclick="goHome()">← Back to home</button>
+</div>
+
+<script>
+  // ── State ──────────────────────────────────────
+  const answers = {};
+  let activeDate = null;
+  let activeDayOffset = 0;
+  const completedDays = new Set();
+  let dashData = null;
+  let serverToday = null;
+  let allAdvice = [];
+  let allInsights = [];
+
+  // ── User param ─────────────────────────────────
+  const _urlUser = new URLSearchParams(window.location.search).get('user');
+  function userParam(base) {
+    if (!_urlUser) return base;
+    return base + (base.includes('?') ? '&' : '?') + 'user=' + encodeURIComponent(_urlUser);
+  }
+
+  // ── Date helpers ───────────────────────────────
+  function easternNow() {
+    return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+  }
+  function dateKey(offset = 0) {
+    const base = serverToday ? new Date(serverToday + 'T12:00:00') : easternNow();
+    base.setDate(base.getDate() - offset);
+    return base.toISOString().slice(0, 10);
+  }
+  function formatDateShort(iso) {
+    return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  }
+  function dayName(offset) {
+    if (offset === 0) return 'Today';
+    if (offset === 1) return 'Yesterday';
+    const d = easternNow(); d.setDate(d.getDate() - offset);
+    return d.toLocaleDateString('en-US', { weekday: 'long' });
+  }
+  function severityClass(val) {
+    if (!val) return '';
+    const map = { good:'green', none:'green', clean:'green', rested:'green', yes:'green',
+                  mixed:'yellow', mild:'yellow', light:'yellow',
+                  bad:'red', severe:'red', inflammatory:'red', demanding:'red', no:'red' };
+    return map[val] || '';
+  }
+  function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : '—'; }
+  function recClass(score) {
+    if (score == null) return 'rec-none';
+    if (score >= 67) return 'rec-green';
+    if (score >= 34) return 'rec-yellow';
+    return 'rec-red';
+  }
+
+  // ── Check-in chips ─────────────────────────────
+  function renderChips(checkin, full=false) {
+    if (!checkin) return '';
+    const shortFields = [
+      ['Feel', checkin.feeling], ['PEM', checkin.pem], ['Fog', checkin.brain_fog],
+      ['Pain', checkin.pain], ['Activity', checkin.activity],
+    ];
+    const allFields = [
+      ...shortFields,
+      ['Left home', checkin.left_home], ['Food', checkin.food], ['Probiotics', checkin.probiotics],
+    ];
+    const fields = full ? allFields : shortFields;
+    return fields.filter(([,v]) => v).map(([label, val]) => {
+      const cls = severityClass(val) || 'neutral';
+      return `<div class="ci-chip">
+        <span class="ci-chip-label">${label}</span>
+        <span class="ci-chip-val ${cls}">${capitalize(val)}</span>
+      </div>`;
+    }).join('');
+  }
+
+  // ── Visible helpers ─────────────────────────────
+  function visibleMetric(obs, name) {
+    return obs?.find(o => o.tracker_name === name)?.value ?? null;
+  }
+  function visibleSymptomLabel(score) {
+    if (score == null || score === 0) return null;
+    if (score === 1) return 'mild';
+    if (score === 2) return 'moderate';
+    return 'severe';
+  }
+  function visibleSeverityClass(score) {
+    if (score <= 1) return 'yellow';
+    if (score === 2) return 'red';
+    return 'red';
+  }
+  function renderVisibleCompact(visData) {
+    if (!visData?.observations) return '';
+    const obs = visData.observations;
+    const stability = visibleMetric(obs, 'Stability Score');
+    const pacePoints = visibleMetric(obs, 'PacePoints');
+    const crash = visibleMetric(obs, 'Crash');
+    const fatigue = visibleMetric(obs, 'Fatigue');
+    const fog = visibleMetric(obs, 'Brain Fog');
+    const parts = [];
+    if (crash === 1) parts.push(`<span class="ci-chip"><span class="ci-chip-label">Crash</span><span class="ci-chip-val red">🚨 Yes</span></span>`);
+    if (stability != null) parts.push(`<span class="ci-chip"><span class="ci-chip-label">Stability</span><span class="ci-chip-val ${stability>=4?'green':stability>=3?'yellow':'red'}">${stability}/5</span></span>`);
+    if (pacePoints != null) parts.push(`<span class="ci-chip"><span class="ci-chip-label">PacePoints</span><span class="ci-chip-val ${pacePoints<=4?'green':pacePoints<=7?'yellow':'red'}">${pacePoints}</span></span>`);
+    if (fatigue) parts.push(`<span class="ci-chip"><span class="ci-chip-label">Fatigue</span><span class="ci-chip-val ${visibleSeverityClass(fatigue)}">${visibleSymptomLabel(fatigue)}</span></span>`);
+    if (fog) parts.push(`<span class="ci-chip"><span class="ci-chip-label">Fog</span><span class="ci-chip-val ${visibleSeverityClass(fog)}">${visibleSymptomLabel(fog)}</span></span>`);
+    if (!parts.length) return '';
+    return `<div style="margin-top:8px;padding-top:8px;border-top:1px solid #1e2d3d">
+      <div style="font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#5a7a98;margin-bottom:6px">Visible</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">${parts.join('')}</div>
+    </div>`;
+  }
+  function renderVisibleDetail(visData) {
+    if (!visData?.observations) return '<div style="font-size:13px;color:#3a5a78;font-style:italic">No Visible data for this date.</div>';
+    const obs = visData.observations;
+    const measurements = ['Stability Score','PacePoints','Pacing Budget','HRV','Resting HR'];
+    const keySymptoms = ['Fatigue','Brain Fog','Nerve pain','Muscle aches','Shortness of breath','Headache','Crash'];
+    let html = '<div style="font-size:12px;color:#5a7a98;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px">Measurements</div>';
+    measurements.forEach(name => {
+      const val = visibleMetric(obs, name);
+      if (val == null) return;
+      html += `<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #1e2d3d;font-size:13px">
+        <span style="color:#7a9ab8">${name}</span><span style="color:#f0f4f8;font-weight:600">${val}</span></div>`;
+    });
+    html += '<div style="font-size:12px;color:#5a7a98;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;margin:14px 0 10px">Active Symptoms</div>';
+    const activeSymptoms = obs.filter(o => o.value > 0 && !measurements.includes(o.tracker_name))
+      .sort((a,b) => b.value - a.value).slice(0, 8);
+    if (!activeSymptoms.length) { html += '<div style="font-size:13px;color:#4caf7d">No active symptoms logged.</div>'; }
+    else activeSymptoms.forEach(s => {
+      const labels = ['','Mild','Moderate','Severe'];
+      const cls = s.value===1?'#f0c040':s.value===2?'#e05a5a':'#e05a5a';
+      html += `<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #1e2d3d;font-size:13px">
+        <span style="color:#7a9ab8">${s.tracker_name}</span><span style="font-weight:600;color:${cls}">${labels[s.value]||s.value}</span></div>`;
+    });
+    return html;
+  }
+
+  // ── Trend arrow ────────────────────────────────
+  function trendArrow(curr, prev, higherGood) {
+    if (curr == null || prev == null) return '';
+    const diff = curr - prev;
+    if (Math.abs(diff) < 1) return '<span class="trend-flat"> →</span>';
+    const up = diff > 0;
+    const good = higherGood ? up : !up;
+    return `<span class="${good ? 'trend-up-good' : 'trend-down-bad'}"> ${up ? '↑' : '↓'}</span>`;
+  }
+
+  // ── Build insights (calls /api/patterns when available) ──
+  async function loadInsights() {
+    // TODO: replace mock with: GET /api/patterns?user=hannah&days=7&limit=3
+    // For now, compute client-side from dashData
+    allInsights = buildInsightsFromData();
+    renderInsightsHome();
+    renderInsightsDetail();
+  }
+
+  function buildInsightsFromData() {
+    const insights = [];
+    if (!dashData) return insights;
+    const dates = [0,1,2,3,4,5,6].map(i => dateKey(i));
+    const checkins = dates.map(d => dashData.checkins?.[d]).filter(Boolean);
+    if (checkins.length < 2) return insights;
+
+    const pemSevere = checkins.filter(c => c.pem === 'severe').length;
+    if (pemSevere >= 3) insights.push({ level:'critical', icon:'🔴', title:`PEM severe ${pemSevere} of ${checkins.length} days`, text:'Crash risk elevated. Prioritize rest and stay under your anaerobic threshold.' });
+
+    const demanding = checkins.filter(c => c.activity === 'demanding').length;
+    if (demanding >= 2) insights.push({ level:'warning', icon:'⚠️', title:`${demanding} demanding day${demanding>1?'s':''} this week`, text:'PEM can appear 24–48h after exertion. Monitor closely the day after any high-demand activity.' });
+
+    let streak = 0;
+    for (const c of checkins) { if (c.feeling === 'good') streak++; else break; }
+    if (streak >= 2) insights.push({ level:'good', icon:'✅', title:`${streak} good day${streak>1?'s':''} in a row`, text:'Consistency is working. Keep pacing — this is when overexertion most commonly happens.' });
+
+    const probDays = checkins.filter(c => c.probiotics === 'yes').length;
+    if (checkins.length >= 3 && probDays < checkins.length * 0.6) {
+      insights.push({ level:'warning', icon:'💊', title:`Probiotics ${probDays}/${checkins.length} days`, text:'Daily consistency is part of the gut restoration protocol. Try attaching it to a nightly routine.' });
+    }
+
+    const inflam = checkins.filter(c => c.food === 'inflammatory').length;
+    if (inflam >= 2) insights.push({ level:'warning', icon:'🥴', title:`Inflammatory food ${inflam} day${inflam>1?'s':''} this week`, text:'May correlate with symptom flares. Track whether bad food days predict bad symptom days 24h later.' });
+
+    if (insights.length === 0) insights.push({ level:'good', icon:'📊', title:'Keep logging', text:'Patterns emerge after 5–7 days of data. You\'re building a picture — keep going.' });
+    return insights;
+  }
+
+  function renderInsightsHome() {
+    const el = document.getElementById('insights-list');
+    const top = allInsights.slice(0, 4);
+    if (!top.length) { el.innerHTML = '<div class="insight-empty">No patterns yet — keep logging.</div>'; return; }
+    el.innerHTML = top.map(i => insightRowHTML(i)).join('');
+    if (allInsights.length > 4) {
+      el.innerHTML += `<a class="more-link" onclick="goToScreen('screen-insights-detail')">See all ${allInsights.length} insights →</a>`;
+    }
+  }
+
+  function renderInsightsDetail() {
+    const el = document.getElementById('insights-detail-list');
+    if (!allInsights.length) { el.innerHTML = '<div class="insight-empty">No patterns yet.</div>'; return; }
+    el.innerHTML = allInsights.map(i => `<div class="detail-card">${insightRowHTML(i)}</div>`).join('');
+  }
+
+  const KEY_TERMS = ['active rest', 'pacing', 'anaerobic threshold', 'PEM', 'heart rate', 'HRV', 'parasympathetic'];
+  function highlightTerms(text) {
+    let out = text;
+    KEY_TERMS.forEach(term => {
+      const re = new RegExp('(' + term + ')', 'gi');
+      out = out.replace(re, '<span class="term">$1</span>');
+    });
+    return out;
+  }
+
+  function insightRowHTML(i) {
+    return `<div class="insight-row">
+      <div class="insight-icon">${i.icon}</div>
+      <div class="insight-body">
+        <div class="insight-title ${i.level}">${i.title}</div>
+        <div class="insight-text">${highlightTerms(i.text)}</div>
+      </div>
+    </div>`;
+  }
+
+  // ── Build advice ───────────────────────────────
+  function loadAdvice() {
+    const todayDate = dateKey(0);
+    const yestDate  = dateKey(1);
+    const todayW  = dashData?.whoop?.[todayDate];
+    const yestW   = dashData?.whoop?.[yestDate];
+    const todayCI = dashData?.checkins?.[todayDate];
+    const yestCI  = dashData?.checkins?.[yestDate];
+    allAdvice = buildAdviceItems(todayW, todayCI, yestW, yestCI);
+    renderAdviceHome();
+    renderAdviceDetail();
+  }
+
+  function buildAdviceItems(todayW, todayCI, yestW, yestCI) {
+    const advice = [];
+    const hrv = todayW?.recovery?.score?.hrv_rmssd_milli;
+    const rec = todayW?.recovery?.score?.recovery_score;
+
+    if (hrv != null && hrv < 45) {
+      advice.push({ level:'critical', icon:'🛑', title:`Low HRV — ${Math.round(hrv)}ms`, text:'Your nervous system is under stress. Keep today minimal — no exertion, no pushing through.' });
+    } else if (rec != null && rec < 34) {
+      advice.push({ level:'warning', icon:'⚠️', title:`Low recovery — ${rec}%`, text:'WHOOP is showing low recovery. Consider a rest day or very gentle activity only.' });
+    } else if (rec != null && rec >= 67) {
+      advice.push({ level:'good', icon:'💚', title:`Good recovery — ${rec}%`, text:'Your body is well-recovered. Still pace carefully — good days are when overexertion most commonly happens.' });
+    }
+
+    if (yestCI?.activity === 'demanding') {
+      advice.push({ level:'warning', icon:'⏳', title:'PEM window — yesterday was demanding', text:'PEM can appear 24–48h after exertion. Monitor how you feel and keep today lighter if possible.' });
+    }
+
+    if (todayCI?.pem === 'severe') {
+      advice.push({ level:'critical', icon:'🚨', title:'Severe PEM today', text:'Rest is the only medicine for PEM. Cancel non-essential commitments. No stretching, no walks — full rest.' });
+    } else if (todayCI?.pem === 'mild') {
+      advice.push({ level:'warning', icon:'😮‍💨', title:'Mild PEM — take it easy', text:'Gentle active rest is okay — avoid anything that raises your heart rate.' });
+    }
+
+    if (!todayCI?.pem || todayCI.pem === 'none') {
+      advice.push({ level:'good', icon:'🧘', title:'Stretching is safe today', text:'Gentle stretching (Borg ≤3 — no elevated HR) is a good option. Parasympathetic, low-cost, won\'t trigger PEM.' });
+    }
+
+    if (todayCI?.probiotics === 'no') {
+      advice.push({ level:'warning', icon:'💊', title:'Probiotics not taken yet today', text:'Take G-NiiB tonight before bed. Daily consistency is part of the gut restoration protocol.' });
+    }
+
+    if (advice.length === 0) {
+      advice.push({ level:'good', icon:'✨', title:'Looking good', text:'No alerts right now. Keep pacing, keep logging.' });
+    }
+    return advice;
+  }
+
+  function renderAdviceHome() {
+    const el = document.getElementById('advice-list');
+    const top = allAdvice.slice(0, 4);
+    el.innerHTML = top.map(a => insightRowHTML(a)).join('');
+    if (allAdvice.length > 4) {
+      el.innerHTML += `<a class="more-link" onclick="goToScreen('screen-advice-detail')">See all ${allAdvice.length} items →</a>`;
+    }
+  }
+
+  function renderAdviceDetail() {
+    const el = document.getElementById('advice-detail-list');
+    el.innerHTML = allAdvice.map(a => `<div class="detail-card">${insightRowHTML(a)}</div>`).join('');
+  }
+
+  // ── Build home screen ──────────────────────────
+  async function buildHome() {
+    document.getElementById('progress').style.width = '0%';
+
+    const todayDate = dateKey(0);
+    const yestDate  = dateKey(1);
+    const twoDDate  = dateKey(2);
+
+    const todayW  = dashData?.whoop?.[todayDate];
+    const yestW   = dashData?.whoop?.[yestDate];
+    const twoDW   = dashData?.whoop?.[twoDDate];
+    const todayCI = dashData?.checkins?.[todayDate];
+    const yestCI  = dashData?.checkins?.[yestDate];
+
+    // ── HERO ──
+    const nowCard = document.getElementById('now-card');
+    const pill    = document.getElementById('now-status-pill');
+    const nowMetrics    = document.getElementById('now-metrics');
+    const nowCheckinRow = document.getElementById('now-checkin-row');
+    const nowCta        = document.getElementById('now-cta');
+
+    document.getElementById('now-label').textContent =
+      new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    document.getElementById('now-pencil').onclick = (e) => { e.stopPropagation(); startCheckin(0); };
+
+    // WHOOP metrics (today vs yesterday for trend arrows)
+    const rec   = todayW?.recovery?.score?.recovery_score;
+    const hrv   = todayW?.recovery?.score?.hrv_rmssd_milli;
+    const sleep = todayW?.sleep?.score?.sleep_performance_percentage;
+    const yRec2  = yestW?.recovery?.score?.recovery_score;
+    const yHrv2  = yestW?.recovery?.score?.hrv_rmssd_milli;
+    const ySleep2= yestW?.sleep?.score?.sleep_performance_percentage;
+    if (rec != null || hrv != null || sleep != null) {
+      nowMetrics.style.display = 'grid';
+      document.getElementById('now-recovery').innerHTML =
+        rec != null ? `<span class="${recClass(rec)}">${rec}</span><span class="now-metric-unit">%</span>${trendArrow(rec,yRec2,true)}` : '<span class="rec-none">—</span>';
+      document.getElementById('now-hrv').innerHTML =
+        hrv != null ? `${hrv.toFixed(0)}<span class="now-metric-unit"> ms</span>${trendArrow(hrv,yHrv2,true)}` : '—';
+      document.getElementById('now-sleep').innerHTML =
+        sleep != null ? `${sleep}<span class="now-metric-unit">%</span>${trendArrow(sleep,ySleep2,true)}` : '—';
+
+      const rhr   = todayW?.recovery?.score?.resting_heart_rate;
+      const spo2  = todayW?.recovery?.score?.spo2_percentage;
+      const strain= todayW?.strain?.score?.strain;
+      const yRhr2  = yestW?.recovery?.score?.resting_heart_rate;
+      const ySpo22 = yestW?.recovery?.score?.spo2_percentage;
+      const yStrain2 = yestW?.strain?.score?.strain;
+
+      document.getElementById('now-rhr').innerHTML =
+        rhr != null ? `${rhr}<span class="now-metric-unit"> bpm</span>${trendArrow(rhr,yRhr2,false)}` : '—';
+      document.getElementById('now-spo2').innerHTML =
+        spo2 != null ? `${spo2.toFixed(1)}<span class="now-metric-unit">%</span>${trendArrow(spo2,ySpo22,true)}` : '—';
+      document.getElementById('now-strain').innerHTML =
+        strain != null ? `${strain.toFixed(1)}${trendArrow(strain,yStrain2,false)}` : '<span class="rec-none">—</span>';
+    } else {
+      nowMetrics.style.display = 'none';
+    }
+
+    // Check-in chips
+    const todayDone = completedDays.has(todayDate);
+    const todayPartial = todayCI && !todayDone;
+    if (todayDone || todayCI) {
+      nowCheckinRow.style.display = 'flex';
+      nowCheckinRow.innerHTML = renderChips(todayCI, false);
+    } else {
+      nowCheckinRow.style.display = 'none';
+    }
+
+    // (Visible nudge is rendered inside the CTA block below)
+
+    // Status pill + Visible nudge
+    const hasVisibleToday = dashData?.visible?.[todayDate] != null;
+
+    if (todayDone) {
+      nowCard.className = 'tap-card now-card done';
+      pill.style.display = 'none'; // data speaks for itself
+    } else if (todayPartial) {
+      nowCard.className = 'tap-card now-card partial';
+      pill.style.display = ''; pill.className = 'now-status-pill partial'; pill.textContent = 'In progress';
+    } else {
+      nowCard.className = 'tap-card now-card';
+      pill.style.display = ''; pill.className = 'now-status-pill empty'; pill.textContent = 'Not started';
+    }
+
+    // Visible nudge — only show when no data and check-in is done
+    nowCta.innerHTML = (!hasVisibleToday && (todayDone || todayCI)) ? `
+      <button class="visible-nudge" style="width:100%;margin-top:8px;border:none;cursor:pointer"
+        onclick="event.stopPropagation();document.getElementById('visible-file-input').click()">
+        <span class="visible-nudge-icon">📊</span>
+        <span class="visible-nudge-text">Add Visible data</span>
+        <span class="visible-nudge-arrow">+</span>
+      </button>` : '';
+
+    // When not started, whole card tap = start check-in; pencil stays for edit
+    if (!todayDone && !todayCI) {
+      nowCard.onclick = () => startCheckin(0);
+    } else {
+      nowCard.onclick = null; // pencil handles edit; card tap does nothing extra
+    }
+
+    // ── YESTERDAY ──
+    document.getElementById('yest-date').textContent = formatDateShort(yestDate);
+    const yRec   = yestW?.recovery?.score?.recovery_score;
+    const yHrv   = yestW?.recovery?.score?.hrv_rmssd_milli;
+    const ySleep = yestW?.sleep?.score?.sleep_performance_percentage;
+    const tdRec  = twoDW?.recovery?.score?.recovery_score;
+    const tdHrv  = twoDW?.recovery?.score?.hrv_rmssd_milli;
+    const tdSleep= twoDW?.sleep?.score?.sleep_performance_percentage;
+
+    document.getElementById('yest-recovery').innerHTML =
+      yRec != null ? `<span class="${recClass(yRec)}">${yRec}</span><span class="yest-metric-unit">%</span>${trendArrow(yRec,tdRec,true)}` : '—';
+    document.getElementById('yest-hrv').innerHTML =
+      yHrv != null ? `${yHrv.toFixed(0)}<span class="yest-metric-unit"> ms</span>${trendArrow(yHrv,tdHrv,true)}` : '—';
+    document.getElementById('yest-sleep').innerHTML =
+      ySleep != null ? `${ySleep}<span class="yest-metric-unit">%</span>${trendArrow(ySleep,tdSleep,true)}` : '—';
+
+    const yRhr   = yestW?.recovery?.score?.resting_heart_rate;
+    const ySpo2  = yestW?.recovery?.score?.spo2_percentage;
+    const yStrain= yestW?.strain?.score?.strain;
+    const tdRhr  = twoDW?.recovery?.score?.resting_heart_rate;
+    const tdSpo2 = twoDW?.recovery?.score?.spo2_percentage;
+    const tdStrain=twoDW?.strain?.score?.strain;
+    document.getElementById('yest-rhr').innerHTML =
+      yRhr != null ? `${yRhr}<span class="yest-metric-unit"> bpm</span>${trendArrow(yRhr,tdRhr,false)}` : '—';
+    document.getElementById('yest-spo2').innerHTML =
+      ySpo2 != null ? `${ySpo2.toFixed(1)}<span class="yest-metric-unit">%</span>${trendArrow(ySpo2,tdSpo2,true)}` : '—';
+    document.getElementById('yest-strain').innerHTML =
+      yStrain != null ? `${yStrain.toFixed(1)}${trendArrow(yStrain,tdStrain,false)}` : '<span class="rec-none">—</span>';
+    document.getElementById('yest-checkin-row').innerHTML = renderChips(yestCI, false);
+
+    // Visible data for yesterday
+    const yestVisible = dashData?.visible?.[yestDate];
+    const visibleEl = document.getElementById('yest-visible-section');
+    if (yestVisible) {
+      visibleEl.innerHTML = renderVisibleCompact(yestVisible);
+      visibleEl.style.display = 'block';
+    } else {
+      visibleEl.style.display = 'none';
+    }
+
+    // Visible data for yesterday detail screen
+    document.getElementById('yest-d-visible').innerHTML = renderVisibleDetail(yestVisible);
+
+    // ── YESTERDAY DETAIL SCREEN ──
+    document.getElementById('yest-detail-title').textContent =
+      `Yesterday · ${formatDateShort(yestDate)}`;
+    document.getElementById('yest-d-recovery').innerHTML =
+      yRec != null ? `<span class="${recClass(yRec)}">${yRec}</span><span class="detail-metric-unit">%</span>` : '—';
+    document.getElementById('yest-d-hrv').innerHTML =
+      yHrv != null ? `${yHrv.toFixed(0)}<span class="detail-metric-unit"> ms</span>` : '—';
+    document.getElementById('yest-d-sleep').innerHTML =
+      ySleep != null ? `${ySleep}<span class="detail-metric-unit">%</span>` : '—';
+
+    if (yestCI) {
+      const fields = [
+        ['Overall feeling', yestCI.feeling], ['PEM', yestCI.pem], ['Brain fog', yestCI.brain_fog],
+        ['Pain', yestCI.pain], ['Activity', yestCI.activity], ['Left home', yestCI.left_home],
+        ['Food', yestCI.food], ['Probiotics', yestCI.probiotics],
+      ].filter(([,v]) => v);
+      document.getElementById('yest-d-checkin-rows').innerHTML = fields.map(([label,val]) => `
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid #1e2d3d">
+          <span style="font-size:13px;color:#7a9ab8">${label}</span>
+          <span style="font-size:13px;font-weight:600" class="${severityClass(val)}">${capitalize(val)}</span>
+        </div>`).join('');
+      if (yestCI.notes) {
+        document.getElementById('yest-d-notes').textContent = yestCI.notes;
+        document.getElementById('yest-d-notes-card').style.display = 'block';
+      }
+    } else {
+      document.getElementById('yest-d-checkin-rows').innerHTML =
+        '<div style="font-size:13px;color:#3a5a78;font-style:italic;text-align:center;padding:12px 0">No check-in for yesterday.</div>';
+    }
+
+    // ── HISTORY ──
+    const list = document.getElementById('past-days-list');
+    list.innerHTML = '';
+    for (let i = 1; i <= 14; i++) {
+      const key = dateKey(i);
+      const done = completedDays.has(key) || dashData?.checkins?.[key];
+      const row = document.createElement('div');
+      row.className = 'day-row' + (done ? ' done' : '');
+      row.onclick = () => startCheckin(i);
+      row.innerHTML = `
+        <div class="dr-left">
+          <div class="dr-name">${dayName(i)}</div>
+          <div class="dr-date">${formatDateShort(key)}</div>
+        </div>
+        <div class="dr-status ${done ? 'done' : 'open'}">${done ? '✓ Done' : '+ Fill in'}</div>`;
+      list.appendChild(row);
+    }
+
+    // ── CADENCE EFFECTIVE BUDGET ──
+    (function() {
+      const recovery = todayW?.recovery?.score?.recovery_score;
+      const visToday = dashData?.visible?.[todayDate];
+      const obs = visToday?.observations || [];
+      const getObs = n => visToday?.measurements?.[n] ?? obs.find(o=>o.tracker_name===n)?.value;
+      const stabilityRaw = getObs('Stability Score');  // 1–5
+      const pacePoints   = getObs('PacePoints');        // spent so far
+      const baseBudget   = 14;
+
+      if (recovery == null) {
+        document.getElementById('budget-row').style.display = 'none';
+        return;
+      }
+
+      // Stability modifier: 1.0 when no data, scales 0.4–1.0 over 1–5
+      const stabilityFactor = stabilityRaw != null ? (0.4 + (stabilityRaw - 1) * 0.15) : 1.0;
+      const effectiveBudget = Math.max(1, Math.round(baseBudget * (recovery / 100) * stabilityFactor));
+      const spent = pacePoints ?? 0;
+      const pct   = Math.min(100, Math.round((spent / effectiveBudget) * 100));
+
+      // Color: green < 60%, yellow 60–85%, red > 85%
+      const fillColor = pct >= 85 ? '#e05a5a' : pct >= 60 ? '#f0c040' : '#4caf7d';
+
+      document.getElementById('budget-row').style.display = 'block';
+      document.getElementById('budget-value').textContent =
+        pacePoints != null ? `${spent} / ${effectiveBudget} pts` : `${effectiveBudget} pts available`;
+      document.getElementById('budget-fill').style.width  = pct + '%';
+      document.getElementById('budget-fill').style.background = fillColor;
+      document.getElementById('budget-sub').textContent =
+        `Based on ${recovery}% recovery${stabilityRaw != null ? ` · stability ${stabilityRaw}/5` : ''} · Visible budget adjusted`;
+    })();
+
+    // ── INSIGHTS + ADVICE ──
+    loadInsights();
+    loadAdvice();
+  }
+
+  // ── Navigation ─────────────────────────────────
+  function goHome() {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-home').classList.add('active');
+    document.getElementById('progress').style.width = '0%';
+    window.scrollTo(0, 0);
+    buildHome();
+  }
+
+  function goToScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function goTo(n) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const id = (n === 'done') ? 'screen-done' : 'screen-' + n;
+    document.getElementById(id).classList.add('active');
+    if (typeof n === 'number') {
+      document.getElementById('progress').style.width = Math.min(((n-1)/9)*100, 100) + '%';
+      if (n === 10) updateSummary();
+    }
+    window.scrollTo(0, 0);
+  }
+
+  // ── Check-in flow ──────────────────────────────
+  async function startCheckin(offset) {
+    activeDayOffset = offset;
+    activeDate = dateKey(offset);
+    Object.keys(answers).forEach(k => delete answers[k]);
+    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    for (let i = 1; i <= 11; i++) { const b = document.getElementById('next-' + i); if (b) b.disabled = true; }
+    document.getElementById('notes-field').value = '';
+
+    const label = offset === 0 ? 'Today · ' + formatDateShort(activeDate)
+                : offset === 1 ? 'Yesterday · ' + formatDateShort(activeDate)
+                : dayName(offset) + ' · ' + formatDateShort(activeDate);
+    document.querySelectorAll('[id^="q-date-tag-"]').forEach(el => el.textContent = label);
+    const notesTag = document.getElementById('q-date-tag-notes');
+    if (notesTag) notesTag.textContent = label;
+
+    try {
+      const resp = await fetch(userParam('/api/checkin/' + activeDate));
+      const result = await resp.json();
+      if (result.found && result.data) {
+        const d = result.data;
+        const Q_FIELDS = {
+          1:{field:'feeling',options:{good:'🟢 Good',mixed:'🟡 Mixed',bad:'🔴 Bad'}},
+          2:{field:'pem',options:{none:'🟢 None',mild:'🟡 Mild',severe:'🔴 Severe'}},
+          3:{field:'brain_fog',options:{none:'🟢 None',mild:'🟡 Mild',severe:'🔴 Severe'}},
+          4:{field:'pain',options:{none:'🟢 None',mild:'🟡 Mild',severe:'🔴 Severe'}},
+          5:{field:'activity',options:{rested:'🟢 Rested',light:'🟡 Light activity',demanding:'🔴 Demanding'}},
+          6:{field:'left_home',options:{yes:'🚗 Yes',no:'🏠 No'}},
+          7:{field:'food',options:{clean:'🟢 Clean',mixed:'🟡 Mixed',inflammatory:'🔴 Inflammatory'}},
+          8:{field:'probiotics',options:{yes:'✅ Yes',no:'❌ No'}},
+          9:{field:'stimulants',options:{yes:'⚡ Yes',no:'✅ No'}},
+          10:{field:'compression',options:{none:'❌ None',upper:'💪 Upper',lower:'🧦 Lower',both:'✨ Both'}},
+          11:{field:'sodium_goal',options:{yes:'✅ Yes',no:'❌ No'}},
+        };
+        for (const [qNum, {field, options}] of Object.entries(Q_FIELDS)) {
+          const val = d[field]; if (!val) continue;
+          const lbl = options[val]; if (!lbl) continue;
+          answers[qNum] = { val, label: lbl };
+          document.getElementById('screen-' + qNum)?.querySelectorAll('.option-btn').forEach(b => {
+            if (b.getAttribute('onclick')?.includes("'" + val + "'")) b.classList.add('selected');
+          });
+          const nb = document.getElementById('next-' + qNum); if (nb) nb.disabled = false;
+        }
+        if (d.notes) document.getElementById('notes-field').value = d.notes;
+      }
+    } catch(e) {}
+    goTo(1);
+  }
+
+  function onNowCardTap() { startCheckin(0); }
+
+  function select(q, val, label) {
+    answers[q] = { val, label };
+    document.getElementById('screen-' + q).querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    event.currentTarget.classList.add('selected');
+    document.getElementById('next-' + q).disabled = false;
+  }
+  function saveNotes() { answers['notes'] = document.getElementById('notes-field').value.trim(); }
+
+  function updateSummary() {
+    for (let i = 1; i <= 11; i++) {
+      const iconEl = document.getElementById('sum-icon-' + i);
+      const valEl  = document.getElementById('sum-' + i);
+      if (answers[i]) {
+        const parts = answers[i].label.match(/^(\S+)\s+(.+)$/);
+        if (parts) { iconEl.textContent = parts[1]; valEl.textContent = parts[2]; }
+        else { iconEl.textContent = ''; valEl.textContent = answers[i].label; }
+      } else { iconEl.textContent = '—'; valEl.textContent = ''; }
+    }
+    const offset = activeDayOffset;
+    const dateStr = offset === 0 ? 'Today, ' + formatDateShort(activeDate)
+                  : offset === 1 ? 'Yesterday, ' + formatDateShort(activeDate)
+                  : dayName(offset) + ', ' + formatDateShort(activeDate);
+    document.getElementById('summary-for-date').textContent = '📅 ' + dateStr;
+    document.getElementById('progress').style.width = '100%';
+  }
+
+  async function submitCheckin() {
+    const payload = {
+      date: activeDate, submitted_at: new Date().toISOString(),
+      answers: {
+        feeling: answers[1]?.val, pem: answers[2]?.val, brain_fog: answers[3]?.val,
+        pain: answers[4]?.val, activity: answers[5]?.val, left_home: answers[6]?.val,
+        food: answers[7]?.val, probiotics: answers[8]?.val, stimulants: answers[9]?.val || null, compression: answers[10]?.val || null, sodium_goal: answers[11]?.val || null, notes: answers['notes'] || null,
+      }
+    };
+    try {
+      await fetch(userParam('/api/checkin'), { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+    } catch(e) {}
+    completedDays.add(activeDate);
+    const offset = activeDayOffset;
+    const dayStr = offset === 0 ? "today's" : offset === 1 ? "yesterday's" : dayName(offset) + "'s";
+    document.getElementById('done-sub-text').innerHTML =
+      `${dayStr.charAt(0).toUpperCase() + dayStr.slice(1)} check-in has been recorded.<br>Thank you — every entry helps.`;
+    goTo('done');
+  }
+
+  // ── Visible upload ─────────────────────────────
+  async function uploadVisible(event) {
+    const file = event.target.files[0]; if (!file) return;
+    try {
+      const formData = new FormData(); formData.append('file', file);
+      const resp = await fetch(userParam('/api/visible/upload'), { method:'POST', body: formData });
+      const data = await resp.json();
+      if (data.ok) {
+        // Hide nudge, reload home
+        document.getElementById('visible-nudge').style.display = 'none';
+        alert(`✅ Imported ${data.days_imported} days (${data.date_range})`);
+      } else {
+        alert(`❌ Error: ${data.error}`);
+      }
+    } catch(err) { alert(`❌ Upload failed: ${err.message}`); }
+    event.target.value = '';
+  }
+
+  // ── Init ───────────────────────────────────────
+  async function init() {
+    try {
+      const [statusRes, dashRes] = await Promise.all([
+        fetch(userParam('/api/checkin/status?days=14')),
+        fetch(userParam('/api/dashboard')),
+      ]);
+      const statusData = await statusRes.json();
+      dashData = await dashRes.json();
+      Object.keys(statusData.completed || {}).forEach(d => completedDays.add(d));
+      if (statusData.today) { serverToday = statusData.today; }
+      if (dashData.dates?.[0]) serverToday = dashData.dates[0];
+
+      // Auto-redirect: no data at all → go straight to check-in
+      const todayDate = dateKey(0);
+      const todayHasData = completedDays.has(todayDate) || dashData?.checkins?.[todayDate];
+      if (!todayHasData) {
+        await startCheckin(0);
+        return;
+      }
+    } catch(e) {}
+    buildHome();
+  }
+
+  init();
+
+  // ── SSE — live updates ───────────────────────────────
+  function connectSSE() {
+    const es = new EventSource(userParam('/api/events'));
+    es.onmessage = async (e) => {
+      try {
+        const { type } = JSON.parse(e.data);
+        // Only refresh if currently on home screen
+        if (!document.getElementById('screen-home').classList.contains('active')) return;
+        if (type === 'whoop' || type === 'visible') {
+          // Re-fetch dashboard and rebuild home
+          const [statusRes, dashRes] = await Promise.all([
+            fetch(userParam('/api/checkin/status?days=14')),
+            fetch(userParam('/api/dashboard')),
+          ]);
+          const statusData = await statusRes.json();
+          dashData = await dashRes.json();
+          Object.keys(statusData.completed || {}).forEach(d => completedDays.add(d));
+          buildHome();
+        } else if (type === 'checkin') {
+          // Re-fetch checkin status only
+          const statusRes = await fetch(userParam('/api/checkin/status?days=14'));
+          const statusData = await statusRes.json();
+          Object.keys(statusData.completed || {}).forEach(d => completedDays.add(d));
+          buildHome();
+        }
+      } catch(err) { console.warn('SSE parse error', err); }
+    };
+    es.onerror = () => {
+      es.close();
+      setTimeout(connectSSE, 5000); // reconnect after 5s
+    };
+  }
+  connectSSE();
+</script>
+</body>
+</html>

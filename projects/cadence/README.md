@@ -29,6 +29,30 @@ Hannah has Long COVID with PEM (post-exertional malaise) and dysautonomia. She a
 - **Design principle:** Minimal — low cognitive load (cognitive symptoms are part of Hannah's condition)
 - **Platform:** iOS (Hugo's domain)
 
+## Cadence Budget (CB)
+
+The **Cadence Budget** is the central behavioral metric — the daily energy ceiling derived from Hannah's own biometric data, used to guide pacing and track compliance.
+
+### Philosophy
+Cadence's purpose is to help the patient **moderate their behavior guided by their own data**. CB compliance isn't a grade — it's a mirror. The goal is to build the feedback loop where Hannah sees the connection between her choices and how she feels 24–48 hours later, and gradually internalizes it. Predictive and actionable, not judgmental.
+
+### CB Lifecycle
+- **v1 CB:** First approximation using published LC/ME-CFS anaerobic threshold estimates, calibrated to WHOOP recovery score. Best guess before personal history exists.
+- **v2 CB:** Refined by backtesting against Hannah's actual crash patterns — what biometric levels on day N predicted PEM on day N+1 or N+2.
+- **vN CB:** Continuously updated as data accumulates. The threshold tightens or relaxes based on what her body actually shows.
+
+### Compliance Metric
+- **Definition:** Did today's objective biometrics (WHOOP strain, Visible energy) stay below the current CB threshold?
+- **Display:** "Within budget" / "Over by ~X%" — not a raw score. Paired with PEM prediction when threshold is exceeded.
+- **Triggered self-report:** When biometrics show anomalies (unexpected strain spike, recovery drop), the app surfaces targeted questions — not a fixed daily questionnaire.
+
+### Data Sources for CB
+- **WHOOP:** Recovery score (sets daily ceiling), strain (actual exertion), HRV, resting HR
+- **Visible:** Energy envelope, HR trend (corroborates or contradicts WHOOP)
+- **Self-report:** Adaptive questions triggered by anomalies, not asked daily
+
+---
+
 ## Core Hypotheses to Test
 1. Low HRV night → bad day next day
 2. High WHOOP strain → PEM 24–48h later

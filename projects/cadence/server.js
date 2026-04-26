@@ -35,11 +35,73 @@ app.use(express.static(path.join(__dirname, 'prototype'), {
 
 let db;
 
+// ── SSE client registry ───────────────────────────────────────────────────
+const sseClients = new Map(); // user_id → Set of response objects
+
+function sseAdd(user_id, res) {
+  if (!sseClients.has(user_id)) sseClients.set(user_id, new Set());
+  sseClients.get(user_id).add(res);
+}
+function sseRemove(user_id, res) {
+  sseClients.get(user_id)?.delete(res);
+}
+function sseNotify(user_id, type, payload = {}) {
+  const clients = sseClients.get(user_id);
+  if (!clients?.size) return;
+  const data = JSON.stringify({ type, ...payload, ts: Date.now() });
+  clients.forEach(res => { try { res.write(`data: ${data}\n\n`); } catch(e) {} });
+  console.log(`[SSE] notify user=${user_id} type=${type} clients=${clients.size}`);
+}
+
 async function connect() {
   const client = new MongoClient(MONGO_URI);
   await client.connect();
   db = client.db(DB_NAME);
   console.log(`Connected to MongoDB: ${DB_NAME}`);
+  watchCollections(client);
+}
+
+// ── MongoDB Change Streams ─────────────────────────────────────────────────
+// Watches whoop_daily and visible_daily for external writes (Lambda, backfill)
+// and fans out SSE events to all connected clients for that user.
+function watchCollections(client) {
+  const watchDb = client.db(DB_NAME);
+
+  // Watch whoop_daily
+  const whoopStream = watchDb.collection('whoop_daily').watch(
+    [{ $match: { operationType: { $in: ['insert', 'update', 'replace'] } } }],
+    { fullDocument: 'updateLookup' }
+  );
+  whoopStream.on('change', (change) => {
+    const doc = change.fullDocument;
+    if (!doc) return;
+    // Map numeric user_id to string user_id for SSE
+    const uid = Object.entries(WHOOP_USER_IDS).find(([, v]) => v === doc.user_id)?.[0];
+    if (uid) {
+      console.log(`[ChangeStream] whoop_daily updated: user=${uid} date=${doc.date}`);
+      sseNotify(uid, 'whoop', { date: doc.date });
+    }
+  });
+  whoopStream.on('error', (e) => console.error('[ChangeStream] whoop_daily error:', e.message));
+
+  // Watch visible_daily
+  const visibleStream = watchDb.collection('visible_daily').watch(
+    [{ $match: { operationType: { $in: ['insert', 'update', 'replace'] } } }],
+    { fullDocument: 'updateLookup' }
+  );
+  visibleStream.on('change', (change) => {
+    const doc = change.fullDocument;
+    if (!doc) return;
+    const uid = typeof doc.user_id === 'string' ? doc.user_id :
+      Object.entries(WHOOP_USER_IDS).find(([, v]) => v === doc.user_id)?.[0];
+    if (uid) {
+      console.log(`[ChangeStream] visible_daily updated: user=${uid} date=${doc.date}`);
+      sseNotify(uid, 'visible', { date: doc.date });
+    }
+  });
+  visibleStream.on('error', (e) => console.error('[ChangeStream] visible_daily error:', e.message));
+
+  console.log('Change streams active: whoop_daily, visible_daily');
 }
 
 // Helper: resolve user_id from query param (GET) or body (POST), default to hannah
@@ -49,6 +111,30 @@ function resolveUser(req) {
   const allowed = ['hannah', 'david'];
   return allowed.includes(u) ? u : DEFAULT_USER;
 }
+
+// POST /api/notify — internal webhook for Lambda → SSE fan-out
+// Lambda calls this after writing to whoop_daily
+app.post('/api/notify', (req, res) => {
+  const { user_id, type, payload } = req.body || {};
+  if (!user_id || !type) return res.status(400).json({ error: 'Missing user_id or type' });
+  sseNotify(user_id, type, payload || {});
+  res.json({ ok: true });
+});
+
+// GET /api/events — Server-Sent Events stream
+app.get('/api/events', (req, res) => {
+  const user_id = resolveUser(req);
+  res.set({
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive',
+    'X-Accel-Buffering': 'no',
+  });
+  res.flushHeaders();
+  res.write(': connected\n\n'); // initial comment to open the stream
+  sseAdd(user_id, res);
+  req.on('close', () => sseRemove(user_id, res));
+});
 
 // POST /api/checkin — upsert by { user_id, date }
 app.post('/api/checkin', async (req, res) => {
@@ -82,6 +168,7 @@ app.post('/api/checkin', async (req, res) => {
 
     await db.collection(COLLECTION).updateOne(filter, update, { upsert: true });
     console.log(`[${now}] Check-in saved: user=${user_id} date=${date}`);
+    sseNotify(user_id, 'checkin', { date });
     res.json({ ok: true, date, user_id });
   } catch (err) {
     console.error('Error saving check-in:', err);
@@ -222,6 +309,7 @@ app.post('/api/visible/upload', upload.single('file'), async (req, res) => {
     }
 
     console.log(`[${now}] Visible upload: ${dates.length} days, ${records.length} rows — ${upserted} new, ${updated} updated`);
+    sseNotify(user_id, 'visible', { days: dates.length });
     res.json({
       ok: true,
       days_imported: dates.length,

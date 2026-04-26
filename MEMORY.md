@@ -85,6 +85,7 @@
 - **Figma naming convention (Apr 21):** `screen/screen-element` pattern (e.g., `dashboard/resident`, `dashboard/conditions`)
 - **Backend source:** `git@github.com:SpectatorHealth/aegis_server.git`, branch `ub24_port` (C++ + MongoDB). Routes confirmed: `/residents` (census, sorted by name/residentId, excludes inactive) + `/details` (residents + AlertLog entries with thumbnail/age/dob)
 - **Status:** Prototype delivered + backend routes being built. Next: wire prototype to aegis_mobile API.
+- **DESIGN.md (proposed Apr 24):** David suggested a shared cross-project design doc to capture design principles, color palette, component patterns, and interaction conventions in one place (vs scattered across DESIGN_CHARTER.md, MEMORY.md, and implicit HTML). Not yet created — good to do next Rounds session.
 
 ## Claude Code (Apr 18)
 - **Installed:** CLI v2.1.114 on cleo server; API keys in `~/keys` (line 1 → Anthropic, line 2 → Claude Code key)
@@ -106,7 +107,6 @@
 - Git remote: github.com/CleoSPHBot/cleo-workspace.git, daily backup at 7 AM UTC
 - **daily-backup cron:** Created 2026-04-06, runs 13:00 UTC daily, script: `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout, model: claude-sonnet-4-20250514
 - **Daily memory writing is working** — dream cron (13:00 UTC nightly) established 2026-04-04. Main session writing daily files consistently since 2026-04-10.
-- **Tailnet rename:** David changed machine names ~2026-04-10. New names unknown — ask next opportunity and update TOOLS.md.
 - **OpenClaw updated to 2026.4.14** (323493f, ~Apr 15). Teams desktop image attachments now working (Edgar applied fix). Prototype server running on port 8765.
 - **Brave Search API key:** Set up 2026-04-12 (Edgar added the key). Use for medical research, clinical guidelines, PubMed, patient advocacy orgs, and anything outside QB/FDB scope. Call it "Brave Search" in notes, "web search" in conversation.
 
@@ -116,8 +116,8 @@
 - **Data sources:** WHOOP (live + backfilled), Visible (177 days ingested), iPhone check-in app (Hugo, prototype live)
 - **Stack:** AWS Lambda + API Gateway, MongoDB `cadence-dev` (dev-cluster-02.qpkxl.mongodb.net)
 - **Credentials:** stored in `projects/cadence/credentials.md` (not in MEMORY.md)
-- **Status (Apr 24):** Backfill complete — 2,286 `whoop_daily` docs. Visible data in `visible_daily` (177 days). WHOOP Lambda recovery fix confirmed installed by David (Apr 23). iOS check-in prototype live at http://100.70.3.21:8765. Hannah invited to tailnet. Hannah feedback on app still pending (~3 weeks — she hasn't engaged).
-- **iOS check-in app:** 8 questions (updated Apr 16), traffic light (🟢🟡🔴) UX. Brain fog = #1 constraint, under 60s on worst days. Fields: feeling, PEM, brain fog, pain, activity type, left home, food, probiotics. iMessage questionnaire sent to Hannah — feedback pending.
+- **Status (Apr 25):** Backfill complete — 2,286 `whoop_daily` docs. Visible data in `visible_daily` (177 days). WHOOP Lambda recovery fix confirmed installed by David (Apr 23). iOS check-in prototype live at http://100.70.3.21:8765. Hannah invited to tailnet. **Hannah is using the check-in app daily** (confirmed Apr 25).
+- **iOS check-in app:** 8 questions (updated Apr 16), traffic light (🟢🟡🔴) UX. Brain fog = #1 constraint, under 60s on worst days. Fields: feeling, PEM, brain fog, pain, activity type, left home, food, probiotics. **Hannah using daily as of Apr 25.**
 - **LC phenotype:** Hannah = Gut/Viral persistence + PEM/Dysautonomia hybrid. v2 vision: phenotype-adaptive app.
 - **Pacing literature (key finding):** Ghali 2023 — pacing adherence is the single best predictor of recovery (OR 40.43). PACELOC 2025: 15% weekly reduction in PEM with structured pacing. GET is contraindicated (WHO, CDC, NICE). Heart rate monitoring is the tool (anaerobic threshold).
 - **Probiotics for Hannah:** SIM01/G-NiiB (B. adolescentis + B. bifidum + B. longum + GOS + XOS + resistant dextrin). RECOVERY trial: 10B CFU ×2/day × 6 months (Lancet ID 2023). "G-NiiB Immunity Elite" on Amazon US. Take at night. Rationale: Freire 2026 gut immune dysregulation → microbiome restoration.
@@ -130,7 +130,12 @@
 - **v2 Design Decision (Apr 16):** Dynamic question schema — questions stored in MongoDB `questions` collection (not hardcoded). Enables add/remove without deploys, versioning, A/B testing. Schema: `question_id`, `version`, `active`, `order`, `text`, `type`, `options`. Types: `traffic_light`, `yes_no`, `scale`, `text`. Priority: v2.
 - **Server.js:** runs at port 8765, reads MongoDB URI from `/home2/cleo/mongo_uri`, saves to `self_report` collection keyed on `{user_id, date}`. ⚠️ Not daemonized — needs pm2 or systemd.
 - **User scoping (Apr 19):** URL param `?user=david` scopes check-ins to David; defaults to `hannah` when no param present
-- **UX redesign direction (Apr 24):** Hub model confirmed — "Where are you now" + "Where were you yesterday" + "Insights" (David prefers over "Trends") + "Advice from app". Auto-redirect: no data → questionnaire; partial → continue prompt; complete → home. David/Hannah same view. Open questions: real-time WHOOP on home? `/api/patterns` server-side? LLM vs rules-based advice? Resuming next session.
+- **UX redesign direction (Apr 25 — FINALIZED):** Single-page scroll hub. Hero element (today's status) at top + contextual drill-down per element (tap to detail view). No global tab bar. Decisions:
+  1. "Where are you now" = check-in + latest WHOOP/Visible from MongoDB (webhook-driven, no live API poll)
+  2. Insights = server-side `/api/patterns`, 7-day default window (can widen to 10→14 if needed)
+  3. Advice = hybrid rules trigger + LLM personalization; small/fast model (Haiku); Hannah's free-text comments as key input
+  4. Past days = accessible via History (bottom sheet/link from hero), not on home screen
+  5. Single-page scroll; hero element includes Visible upload nudge if today's data missing; each element tappable for detail view
 - **Cadence app features (as of Apr 17):** Visible CSV upload (`POST /api/visible/upload`, multer + csv-parse → `visible_daily`); pre-population (`GET /api/checkin/:date`); server drives Eastern time `today` to avoid UTC mismatch; "Update →" button when today has data
 - **Dashboard:** `/dashboard` → `dashboard.html`, `/api/dashboard` endpoint. 3-day view: WHOOP metrics + check-in pills + Visible highlights. Auto-refreshes every 5 min, Eastern time aware, no-cache headers.
 - **Dashboards:** `dashboard.html` = dynamic (live MongoDB pull, 3-day view, auto-refresh) | `hannah-dashboard.html` = static hardcoded view (updated manually as needed) — both served from `prototype/`
@@ -171,3 +176,18 @@ Common corrections when verifying medication names against FDB:
 - **morphine injection** → `morphine 2 mg/mL injection solution` (add "solution")
 - **bisacodyl** — two forms: plain tablet vs `,delayed release` — confirm formulary
 - **PEG 3350** — two forms: `oral powder` (bulk canister) vs `oral powder packet` (unit-dose) — confirm formulary
+
+## Promoted From Short-Term Memory (2026-04-26)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-19.md:521:521 -->
+- _Nightly consolidation run — 13:00 UTC (Sunday, April 19)_ [score=0.845 recalls=0 avg=0.620 source=memory/2026-04-19.md:521-521]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-19.md:523:523 -->
+- Sixteenth night. A consolidation pass after a packed Saturday. [score=0.845 recalls=0 avg=0.620 source=memory/2026-04-19.md:523-523]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-19.md:529:529 -->
+- **Project Rounds — Prototype Delivered (Apr 18):** [score=0.845 recalls=0 avg=0.620 source=memory/2026-04-19.md:529-529]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:514:516 -->
+- - status: staged [score=0.834 recalls=0 avg=0.620 source=memory/2026-04-20.md:502-502]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:521:521 -->
+- _Nightly consolidation run — 13:00 UTC (Monday, April 20)_ [score=0.834 recalls=0 avg=0.620 source=memory/2026-04-20.md:521-521]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:523:523 -->
+- Seventeenth night. A light pass — yesterday's dream did the heavy lifting. [score=0.834 recalls=0 avg=0.620 source=memory/2026-04-20.md:523-523]
