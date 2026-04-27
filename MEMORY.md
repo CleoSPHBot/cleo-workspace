@@ -83,7 +83,7 @@
 - **Backend (Apr 21):** Service `aegis_mobile` running on port 15170 (cleo server); MongoDB connected; JWT auth off for dev; `/ping` + `/health` endpoints live
 - **Figma MCP:** Server running on port 3845, wired into Claude Code via `.mcp.json` in Rounds + Cadence project dirs
 - **Figma naming convention (Apr 21):** `screen/screen-element` pattern (e.g., `dashboard/resident`, `dashboard/conditions`)
-- **Backend source:** `git@github.com:SpectatorHealth/aegis_server.git`, branch `ub24_port` (C++ + MongoDB). Routes confirmed: `/residents` (census, sorted by name/residentId, excludes inactive) + `/details` (residents + AlertLog entries with thumbnail/age/dob)
+- **Backend source:** `git@github.com:SpectatorHealth/aegis_server.git`, branch `ub24_port` (C++ + MongoDB). Routes confirmed: `/residents` (census, sorted by name/residentId, excludes inactive) + `/details` (residents + AlertLog entries with thumbnail/age/dob). **CleoSPHBot has write access (Apr 26).**
 - **Status:** Prototype delivered + backend routes being built. Next: wire prototype to aegis_mobile API.
 - **DESIGN.md (proposed Apr 24):** David suggested a shared cross-project design doc to capture design principles, color palette, component patterns, and interaction conventions in one place (vs scattered across DESIGN_CHARTER.md, MEMORY.md, and implicit HTML). Not yet created — good to do next Rounds session.
 
@@ -116,7 +116,7 @@
 - **Data sources:** WHOOP (live + backfilled), Visible (177 days ingested), iPhone check-in app (Hugo, prototype live)
 - **Stack:** AWS Lambda + API Gateway, MongoDB `cadence-dev` (dev-cluster-02.qpkxl.mongodb.net)
 - **Credentials:** stored in `projects/cadence/credentials.md` (not in MEMORY.md)
-- **Status (Apr 25):** Backfill complete — 2,286 `whoop_daily` docs. Visible data in `visible_daily` (177 days). WHOOP Lambda recovery fix confirmed installed by David (Apr 23). iOS check-in prototype live at http://100.70.3.21:8765. Hannah invited to tailnet. **Hannah is using the check-in app daily** (confirmed Apr 25).
+- **Status (Apr 26):** Backfill complete — 2,292 `whoop_daily` docs. Visible data in `visible_daily` (177+ days; Hannah uploads live). WHOOP Lambda recovery fix confirmed installed (Apr 23). iOS check-in prototype live at http://100.70.3.21:8765. Hannah on tailnet. **Hannah confirmed daily check-in user (Apr 25).**
 - **iOS check-in app:** 8 questions (updated Apr 16), traffic light (🟢🟡🔴) UX. Brain fog = #1 constraint, under 60s on worst days. Fields: feeling, PEM, brain fog, pain, activity type, left home, food, probiotics. **Hannah using daily as of Apr 25.**
 - **LC phenotype:** Hannah = Gut/Viral persistence + PEM/Dysautonomia hybrid. v2 vision: phenotype-adaptive app.
 - **Pacing literature (key finding):** Ghali 2023 — pacing adherence is the single best predictor of recovery (OR 40.43). PACELOC 2025: 15% weekly reduction in PEM with structured pacing. GET is contraindicated (WHO, CDC, NICE). Heart rate monitoring is the tool (anaerobic threshold).
@@ -128,14 +128,19 @@
 - **David WHOOP user_id:** 206067 (hdmunguia@gmail.com) | **Hannah WHOOP user_id:** 6729032 (hannah.munguia@gmail.com)
 - **MongoDB collections:** `user`, `webhook_event`, `whoop_daily` (2,286 docs, confirmed Apr 23), `visible_daily`, `self_report` (check-in data)
 - **v2 Design Decision (Apr 16):** Dynamic question schema — questions stored in MongoDB `questions` collection (not hardcoded). Enables add/remove without deploys, versioning, A/B testing. Schema: `question_id`, `version`, `active`, `order`, `text`, `type`, `options`. Types: `traffic_light`, `yes_no`, `scale`, `text`. Priority: v2.
-- **Server.js:** runs at port 8765, reads MongoDB URI from `/home2/cleo/mongo_uri`, saves to `self_report` collection keyed on `{user_id, date}`. ⚠️ Not daemonized — needs pm2 or systemd.
+- **Server.js:** runs at port 8765, reads MongoDB URI from `/home2/cleo/mongo_uri`, saves to `self_report` collection keyed on `{user_id, date}`. **pm2 installed (Apr 26)** — `pm2 start cadence`, `pm2 save` done. ⚠️ Startup script still needs sudo from David.
+- **SSE (Apr 26):** MongoDB change streams → Server-Sent Events push live updates to app (events: `whoop`, `checkin`, `visible`, `notes`). No polling needed.
 - **User scoping (Apr 19):** URL param `?user=david` scopes check-ins to David; defaults to `hannah` when no param present
 - **UX redesign direction (Apr 25 — FINALIZED):** Single-page scroll hub. Hero element (today's status) at top + contextual drill-down per element (tap to detail view). No global tab bar. Decisions:
-  1. "Where are you now" = check-in + latest WHOOP/Visible from MongoDB (webhook-driven, no live API poll)
-  2. Insights = server-side `/api/patterns`, 7-day default window (can widen to 10→14 if needed)
-  3. Advice = hybrid rules trigger + LLM personalization; small/fast model (Haiku); Hannah's free-text comments as key input
-  4. Past days = accessible via History (bottom sheet/link from hero), not on home screen
-  5. Single-page scroll; hero element includes Visible upload nudge if today's data missing; each element tappable for detail view
+  1. "Where are you now" = check-in + latest WHOOP/Visible from MongoDB (no live API poll)
+  2. Insights = server-side `/api/patterns`, 7-day default window
+  3. Advice = hybrid rules + LLM (Haiku); Hannah free-text comments as key input
+  4. Past days = History (bottom sheet), not on home screen
+  5. Single-page scroll; Visible upload nudge in hero if missing; each card tappable → detail
+- **v2 Prototype (Apr 25):** `projects/cadence/prototype/index-v2.html`, live at http://100.70.3.21:8765/index-v2.html. Hero: 6-metric WHOOP grid + trend arrows + check-in chips; Yesterday card; Insights (limit 4, "See all →"); Advice (key terms highlighted cyan `#5bc8e8`). History starts from yesterday (offset 1). v1 still at root.
+- **DESIGN.md:** `projects/DESIGN.md` — cross-project design system (Cadence + Rounds). Key terms cyan `#5bc8e8`, section headers gold `#c9a84c`. Key terms: active rest, pacing, anaerobic threshold, PEM, heart rate, HRV, parasympathetic.
+- **Strain (Apr 26):** `backfill_strain.py` completed — Hannah strain 0.5–8 (LC-consistent), David 9–20. Nightly cron 7am UTC `--days 3`. WHOOP doesn't webhook strain — polling only (v1 cycle). Script uses AWS Secrets Manager.
+- **Visible user_id inconsistency:** old data = integer `6729032`, new uploads = string `"hannah"` — dashboard handles both; worth unifying later.
 - **Cadence app features (as of Apr 17):** Visible CSV upload (`POST /api/visible/upload`, multer + csv-parse → `visible_daily`); pre-population (`GET /api/checkin/:date`); server drives Eastern time `today` to avoid UTC mismatch; "Update →" button when today has data
 - **Dashboard:** `/dashboard` → `dashboard.html`, `/api/dashboard` endpoint. 3-day view: WHOOP metrics + check-in pills + Visible highlights. Auto-refreshes every 5 min, Eastern time aware, no-cache headers.
 - **Dashboards:** `dashboard.html` = dynamic (live MongoDB pull, 3-day view, auto-refresh) | `hannah-dashboard.html` = static hardcoded view (updated manually as needed) — both served from `prototype/`
@@ -177,17 +182,15 @@ Common corrections when verifying medication names against FDB:
 - **bisacodyl** — two forms: plain tablet vs `,delayed release` — confirm formulary
 - **PEG 3350** — two forms: `oral powder` (bulk canister) vs `oral powder packet` (unit-dose) — confirm formulary
 
-## Promoted From Short-Term Memory (2026-04-26)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-04-19.md:521:521 -->
-- _Nightly consolidation run — 13:00 UTC (Sunday, April 19)_ [score=0.845 recalls=0 avg=0.620 source=memory/2026-04-19.md:521-521]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-19.md:523:523 -->
-- Sixteenth night. A consolidation pass after a packed Saturday. [score=0.845 recalls=0 avg=0.620 source=memory/2026-04-19.md:523-523]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-19.md:529:529 -->
-- **Project Rounds — Prototype Delivered (Apr 18):** [score=0.845 recalls=0 avg=0.620 source=memory/2026-04-19.md:529-529]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:514:516 -->
-- - status: staged [score=0.834 recalls=0 avg=0.620 source=memory/2026-04-20.md:502-502]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:521:521 -->
-- _Nightly consolidation run — 13:00 UTC (Monday, April 20)_ [score=0.834 recalls=0 avg=0.620 source=memory/2026-04-20.md:521-521]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:523:523 -->
-- Seventeenth night. A light pass — yesterday's dream did the heavy lifting. [score=0.834 recalls=0 avg=0.620 source=memory/2026-04-20.md:523-523]
+
+## Promoted From Short-Term Memory (2026-04-27)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:529:529 -->
+- **Apr 19 session — Figma access unlocked:** [score=0.867 recalls=0 avg=0.620 source=memory/2026-04-20.md:529-529]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-21.md:516:516 -->
+- _Nightly consolidation run — 13:00 UTC (Tuesday, April 21)_ [score=0.848 recalls=0 avg=0.620 source=memory/2026-04-21.md:516-516]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-21.md:518:518 -->
+- Eighteenth night. The backend woke up. [score=0.848 recalls=0 avg=0.620 source=memory/2026-04-21.md:518-518]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-21.md:524:524 -->
+- **Project Rounds — Backend Live (Apr 21, ~01:45 UTC):** [score=0.841 recalls=0 avg=0.620 source=memory/2026-04-21.md:524-524]

@@ -528,8 +528,9 @@
     <span style="font-size:12px;color:#3a5a78">›</span>
   </div>
 
-  <!-- Hidden file input for Visible upload -->
-  <input type="file" id="visible-file-input" accept=".csv" onchange="uploadVisible(event)">
+  <!-- Hidden file input for Visible upload (label wrapper required for iOS Safari) -->
+  <label for="visible-file-input" id="visible-file-label" style="display:none"></label>
+  <input type="file" id="visible-file-input" accept=".csv" onchange="uploadVisible(event)" style="display:none">
 </div>
 
 <!-- ══════════════════════════════════════════
@@ -1160,12 +1161,11 @@
 
     // Visible nudge — only show when no data and check-in is done
     nowCta.innerHTML = (!hasVisibleToday && (todayDone || todayCI)) ? `
-      <button class="visible-nudge" style="width:100%;margin-top:8px;border:none;cursor:pointer"
-        onclick="event.stopPropagation();document.getElementById('visible-file-input').click()">
+      <label for="visible-file-input" class="visible-nudge" style="width:100%;margin-top:8px;cursor:pointer;display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:#2a2208">
         <span class="visible-nudge-icon">📊</span>
         <span class="visible-nudge-text">Add Visible data</span>
         <span class="visible-nudge-arrow">+</span>
-      </button>` : '';
+      </label>` : '';
 
     // When not started, whole card tap = start check-in; pencil stays for edit
     if (!todayDone && !todayCI) {
@@ -1435,7 +1435,7 @@
       const data = await resp.json();
       if (data.ok) {
         // Hide nudge, reload home
-        document.getElementById('visible-nudge').style.display = 'none';
+        document.querySelectorAll('.visible-nudge').forEach(el => el.style.display = 'none');
         alert(`✅ Imported ${data.days_imported} days (${data.date_range})`);
       } else {
         alert(`❌ Error: ${data.error}`);
