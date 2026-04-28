@@ -321,9 +321,9 @@
 <script>
 const WHOOP_USER_ID = 6729032;
 
-// Eastern-time date strings
+// Pacific-time date strings
 function easternDate(offsetDays = 0) {
-  const d = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+  const d = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
   d.setDate(d.getDate() - offsetDays);
   return d.toISOString().slice(0, 10);
 }
@@ -488,7 +488,7 @@ async function loadDashboard() {
 
   // Footer
   document.getElementById('footer').innerHTML =
-    `Cadence · Updated ${new Date().toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit' })} ET · <a href="javascript:location.reload()" style="color:#9aabbf;">Refresh</a>`;
+    `Cadence · Updated ${new Date().toLocaleTimeString('en-US', { timeZone: 'America/Los_Angeles', hour: '2-digit', minute: '2-digit' })} ET · <a href="javascript:location.reload()" style="color:#9aabbf;">Refresh</a>`;
 }
 
 function toggleSimple() {
@@ -597,7 +597,7 @@ async function loadDashboard() {
   container.innerHTML = html;
 
   document.getElementById('footer').innerHTML =
-    `Cadence · Updated ${new Date().toLocaleTimeString('en-US', { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit' })} ET · <a href="javascript:location.reload()" style="color:#9aabbf;">Refresh</a>`;
+    `Cadence · Updated ${new Date().toLocaleTimeString('en-US', { timeZone: 'America/Los_Angeles', hour: '2-digit', minute: '2-digit' })} ET · <a href="javascript:location.reload()" style="color:#9aabbf;">Refresh</a>`;
 }
 
 loadDashboard();

@@ -242,8 +242,8 @@
 <script>
   // ── Helpers ────────────────────────────────────────────────────────────────
   function dateKey(offset = 0) {
-    // Use Eastern time to match Hannah's timezone
-    const d = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    // Use Pacific time for date boundaries
+    const d = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
     d.setDate(d.getDate() - offset);
     return d.toISOString().slice(0, 10);
   }

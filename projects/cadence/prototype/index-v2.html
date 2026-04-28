@@ -815,7 +815,7 @@
 
   // ── Date helpers ───────────────────────────────
   function easternNow() {
-    return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
   }
   function dateKey(offset = 0) {
     const base = serverToday ? new Date(serverToday + 'T12:00:00') : easternNow();

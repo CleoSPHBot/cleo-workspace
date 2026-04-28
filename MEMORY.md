@@ -85,7 +85,7 @@
 - **Figma naming convention (Apr 21):** `screen/screen-element` pattern (e.g., `dashboard/resident`, `dashboard/conditions`)
 - **Backend source:** `git@github.com:SpectatorHealth/aegis_server.git`, branch `ub24_port` (C++ + MongoDB). Routes confirmed: `/residents` (census, sorted by name/residentId, excludes inactive) + `/details` (residents + AlertLog entries with thumbnail/age/dob). **CleoSPHBot has write access (Apr 26).**
 - **Status:** Prototype delivered + backend routes being built. Next: wire prototype to aegis_mobile API.
-- **DESIGN.md (proposed Apr 24):** David suggested a shared cross-project design doc to capture design principles, color palette, component patterns, and interaction conventions in one place (vs scattered across DESIGN_CHARTER.md, MEMORY.md, and implicit HTML). Not yet created — good to do next Rounds session.
+- **DESIGN.md (created Apr 25):** Shared cross-project design doc — `projects/DESIGN.md` — color palette, component patterns, interaction conventions for Cadence + Rounds.
 
 ## Claude Code (Apr 18)
 - **Installed:** CLI v2.1.114 on cleo server; API keys in `~/keys` (line 1 → Anthropic, line 2 → Claude Code key)
@@ -126,7 +126,7 @@
 - **WHOOP endpoints:** Sleep `GET /v2/activity/sleep/{uuid}` | Workout `GET /v2/activity/workout/{uuid}` | Recovery: `GET /v2/recovery?limit=10` + match `sleep_id` | Cycle `GET /v1/cycle/{id}`
 - **Webhook URL:** `https://nldsq794q0.execute-api.us-west-2.amazonaws.com/webhook` | Login: `.../login` | Secret: `com.sph.dev.whoop`
 - **David WHOOP user_id:** 206067 (hdmunguia@gmail.com) | **Hannah WHOOP user_id:** 6729032 (hannah.munguia@gmail.com)
-- **MongoDB collections:** `user`, `webhook_event`, `whoop_daily` (2,286 docs, confirmed Apr 23), `visible_daily`, `self_report` (check-in data)
+- **MongoDB collections:** `user`, `webhook_event`, `whoop_daily` (2,292 docs, confirmed Apr 25), `visible_daily`, `self_report` (check-in data)
 - **v2 Design Decision (Apr 16):** Dynamic question schema — questions stored in MongoDB `questions` collection (not hardcoded). Enables add/remove without deploys, versioning, A/B testing. Schema: `question_id`, `version`, `active`, `order`, `text`, `type`, `options`. Types: `traffic_light`, `yes_no`, `scale`, `text`. Priority: v2.
 - **Server.js:** runs at port 8765, reads MongoDB URI from `/home2/cleo/mongo_uri`, saves to `self_report` collection keyed on `{user_id, date}`. **pm2 installed (Apr 26)** — `pm2 start cadence`, `pm2 save` done. ⚠️ Startup script still needs sudo from David.
 - **SSE (Apr 26):** MongoDB change streams → Server-Sent Events push live updates to app (events: `whoop`, `checkin`, `visible`, `notes`). No polling needed.
@@ -141,6 +141,7 @@
 - **DESIGN.md:** `projects/DESIGN.md` — cross-project design system (Cadence + Rounds). Key terms cyan `#5bc8e8`, section headers gold `#c9a84c`. Key terms: active rest, pacing, anaerobic threshold, PEM, heart rate, HRV, parasympathetic.
 - **Strain (Apr 26):** `backfill_strain.py` completed — Hannah strain 0.5–8 (LC-consistent), David 9–20. Nightly cron 7am UTC `--days 3`. WHOOP doesn't webhook strain — polling only (v1 cycle). Script uses AWS Secrets Manager.
 - **Visible user_id inconsistency:** old data = integer `6729032`, new uploads = string `"hannah"` — dashboard handles both; worth unifying later.
+- **Hannah energy budget (Apr 26):** PacePoints alone is NOT a reliable predictor of bad days. Apr 19: 26.8 PacePoints → mild fatigue only. Apr 25: 3.1 PacePoints → severe crash. WHOOP HRV morning reading is likely a better energy signal. 177 days of Visible data available for correlation analysis — David interested.
 - **Cadence app features (as of Apr 17):** Visible CSV upload (`POST /api/visible/upload`, multer + csv-parse → `visible_daily`); pre-population (`GET /api/checkin/:date`); server drives Eastern time `today` to avoid UTC mismatch; "Update →" button when today has data
 - **Dashboard:** `/dashboard` → `dashboard.html`, `/api/dashboard` endpoint. 3-day view: WHOOP metrics + check-in pills + Visible highlights. Auto-refreshes every 5 min, Eastern time aware, no-cache headers.
 - **Dashboards:** `dashboard.html` = dynamic (live MongoDB pull, 3-day view, auto-refresh) | `hannah-dashboard.html` = static hardcoded view (updated manually as needed) — both served from `prototype/`
@@ -184,13 +185,14 @@ Common corrections when verifying medication names against FDB:
 
 
 
-## Promoted From Short-Term Memory (2026-04-27)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:529:529 -->
-- **Apr 19 session — Figma access unlocked:** [score=0.867 recalls=0 avg=0.620 source=memory/2026-04-20.md:529-529]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-21.md:516:516 -->
-- _Nightly consolidation run — 13:00 UTC (Tuesday, April 21)_ [score=0.848 recalls=0 avg=0.620 source=memory/2026-04-21.md:516-516]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-21.md:518:518 -->
-- Eighteenth night. The backend woke up. [score=0.848 recalls=0 avg=0.620 source=memory/2026-04-21.md:518-518]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-21.md:524:524 -->
-- **Project Rounds — Backend Live (Apr 21, ~01:45 UTC):** [score=0.841 recalls=0 avg=0.620 source=memory/2026-04-21.md:524-524]
+## Promoted From Short-Term Memory (2026-04-28)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-22.md:507:507 -->
+- _Nightly consolidation run — 13:00 UTC (Wednesday, April 22)_ [score=0.869 recalls=0 avg=0.620 source=memory/2026-04-22.md:507-507]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-22.md:509:509 -->
+- Nineteenth night. A focused pass — yesterday's dream covered the big items; today caught the tail of the Apr 21 evening session. [score=0.869 recalls=0 avg=0.620 source=memory/2026-04-22.md:509-509]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-22.md:515:515 -->
+- **aegis_server source access (Apr 21 evening):** [score=0.862 recalls=0 avg=0.620 source=memory/2026-04-22.md:515-515]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-22.md:521:521 -->
+- **Figma naming convention (Apr 21):** [score=0.862 recalls=0 avg=0.620 source=memory/2026-04-22.md:521-521]

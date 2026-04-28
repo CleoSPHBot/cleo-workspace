@@ -11,6 +11,13 @@ const COLLECTION = 'self_report';
 const PORT = 8765;
 const DEFAULT_USER = 'hannah';
 
+// Reliable Pacific date helper — uses en-CA locale for YYYY-MM-DD output directly
+function pacificDate(offsetDays = 0) {
+  const d = new Date();
+  d.setUTCDate(d.getUTCDate() - offsetDays);
+  return d.toLocaleDateString('en-CA', { timeZone: 'America/Los_Angeles' });
+}
+
 const app = express();
 app.use(express.json());
 
@@ -181,14 +188,8 @@ app.get('/api/checkin/status', async (req, res) => {
   try {
     const user_id = resolveUser(req);
     const days = parseInt(req.query.days) || 7;
-    // Use Eastern time for date boundaries
-    const toEasternDate = (offsetDays = 0) => {
-      const d = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
-      d.setDate(d.getDate() - offsetDays);
-      return d.toISOString().slice(0, 10);
-    };
-    const today = toEasternDate(0);
-    const dates = Array.from({ length: days }, (_, i) => toEasternDate(i));
+    const today = pacificDate(0);
+    const dates = Array.from({ length: days }, (_, i) => pacificDate(i));
     const docs = await db.collection(COLLECTION)
       .find({ user_id, date: { $in: dates } }, { projection: { date: 1, feeling: 1 } })
       .toArray();
@@ -209,14 +210,8 @@ app.get('/api/dashboard', async (req, res) => {
     const user_id = resolveUser(req);
     const whoopUserId = WHOOP_USER_IDS[user_id] || WHOOP_USER_IDS.hannah;
 
-    // Use Eastern time (Hannah's timezone) for date boundaries
-    const toEasternDate = (offsetDays = 0) => {
-      const d = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
-      d.setDate(d.getDate() - offsetDays);
-      return d.toISOString().slice(0, 10);
-    };
     // Fetch 4 days so the 3rd visible day has a previous day for trend arrows
-    const dates = [0, 1, 2, 3].map(i => toEasternDate(i));
+    const dates = [0, 1, 2, 3].map(i => pacificDate(i));
 
     // WHOOP — use mapped user id
     const whoopDocs = await db.collection('whoop_daily')
@@ -331,12 +326,7 @@ app.get('/api/patterns', async (req, res) => {
     const whoopUserId = 6729032;
 
     // Pull last 7 days of visible + whoop data
-    const toEasternDate = (offsetDays = 0) => {
-      const d = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }));
-      d.setDate(d.getDate() - offsetDays);
-      return d.toISOString().slice(0, 10);
-    };
-    const dates = [0,1,2,3,4,5,6].map(toEasternDate);
+    const dates = [0,1,2,3,4,5,6].map(pacificDate);
     const oldest = dates[dates.length - 1];
 
     const visibleDocs = await db.collection('visible_daily')
