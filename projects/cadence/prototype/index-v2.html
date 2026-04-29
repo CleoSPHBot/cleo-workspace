@@ -326,6 +326,34 @@
     .option-btn.red.selected    { border-color: #e05a5a; background: rgba(224,90,90,0.1); }
     .option-btn.home.selected   { border-color: #7a9ab8; background: rgba(122,154,184,0.1); }
     .option-btn.car.selected    { border-color: #c9a84c; background: rgba(201,168,76,0.1); }
+
+    /* ══════════════════════════════
+       SINGLE-PAGE CHECK-IN
+    ══════════════════════════════ */
+    .checkin-section {
+      padding: 16px 0;
+      border-bottom: 1px solid #1a3558;
+    }
+    .checkin-section:last-of-type { border-bottom: none; }
+    .mode-btn { display:block; width:100%; min-height:56px; background:#1a3558; color:#b0c8e0; border:1px solid #2a4568; border-radius:12px; padding:16px; font-size:16px; text-align:left; cursor:pointer; margin-bottom:12px; }
+    .mode-btn:active { background:#1f4070; }
+    .question-num { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:#7a9ab8; margin-bottom:8px; }
+    .question-text { font-size:18px; color:#e0eaf4; font-weight:600; margin-bottom:16px; }
+    .nav-row { display:flex; gap:12px; margin-top:20px; }
+    .btn-back { flex:0 0 60px; background:#1a3558; color:#b0c8e0; border:1px solid #2a4568; border-radius:10px; padding:12px; font-size:16px; cursor:pointer; }
+    .btn-next { flex:1; background:#1a5f8a; color:#fff; border:none; border-radius:10px; padding:12px; font-size:16px; cursor:pointer; }
+    .btn-next:disabled { background:#1a3558; color:#4a6a88; cursor:default; }
+    .step-summary-row { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid #1a3558; font-size:14px; color:#b0c8e0; }
+    .step-sum-icon { font-size:18px; min-width:24px; text-align:center; }
+    .checkin-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: #7a9ab8;
+      margin-bottom: 6px;
+    }
+    .checkin-question {
+      font-size: 16px; font-weight: 600; color: #b0c8e0;
+      margin-bottom: 12px;
+    }
     .option-icon  { font-size: 28px; width: 40px; text-align: center; flex-shrink: 0; }
     .option-label { font-size: 17px; font-weight: 600; color: #f0f4f8; }
     .option-sub   { font-size: 13px; color: #7a9ab8; margin-top: 2px; }
@@ -404,7 +432,7 @@
   <h1>Cadence</h1>
   <span id="header-right"></span>
 </header>
-<div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+
 
 <!-- ══════════════════════════════════════════
      SCREEN: Hub Home
@@ -450,8 +478,17 @@
       </div>
     </div>
 
+    <!-- Separator: WHOOP / Visible -->
+    <div id="now-sep-1" style="display:none;height:1px;background:rgba(255,255,255,0.07);margin:10px 0"></div>
+
+    <!-- Visible data for today -->
+    <div id="now-visible-section" style="display:none"></div>
+
     <!-- Check-in chips -->
     <div class="now-checkin-row" id="now-checkin-row" style="display:none"></div>
+
+    <!-- Separator: Visible+chips / Budget -->
+    <div id="now-sep-2" style="display:none;height:1px;background:rgba(255,255,255,0.07);margin:10px 0"></div>
 
     <!-- Cadence Effective Budget -->
     <div class="budget-row" id="budget-row" style="display:none">
@@ -462,6 +499,9 @@
       <div class="budget-track"><div class="budget-fill" id="budget-fill"></div></div>
       <div class="budget-sub" id="budget-sub"></div>
     </div>
+
+    <!-- Check-in progress -->
+    <div id="now-checkin-progress" style="display:none;font-size:11px;color:#3a5a78;margin-top:6px"></div>
 
     <!-- CTA + optional Visible nudge -->
     <div id="now-cta"></div>
@@ -503,8 +543,17 @@
         <div class="yest-metric-val" id="yest-strain">—</div>
       </div>
     </div>
-    <div id="yest-checkin-row" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px"></div>
     <div id="yest-visible-section"></div>
+    <div id="yest-checkin-row" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px"></div>
+    <div id="yest-sep-2" style="display:none;height:1px;background:rgba(255,255,255,0.07);margin:10px 0"></div>
+    <div class="budget-row" id="yest-budget-row" style="display:none">
+      <div class="budget-header">
+        <span class="budget-label">⚡ Cadence Budget</span>
+        <span class="budget-value" id="yest-budget-value"></span>
+      </div>
+      <div class="budget-track"><div class="budget-fill" id="yest-budget-fill"></div></div>
+      <div class="budget-sub" id="yest-budget-sub"></div>
+    </div>
     <div class="chevron">›</div>
   </div>
 
@@ -603,189 +652,340 @@
 </div>
 
 <!-- ══════════════════════════════════════════
-     QUESTION SCREENS Q1–Q8, Notes, Summary, Done
+     SINGLE-PAGE CHECK-IN
 ══════════════════════════════════════════ -->
 
-<!-- Q1 -->
-<div class="screen" id="screen-1">
-  <div class="q-date-tag" id="q-date-tag-1"></div>
-  <div class="question-num">Question 1 of 8</div>
+<div class="screen" id="screen-checkin">
+  <div class="q-date-tag" id="q-date-tag-checkin"></div>
+
+  <!-- Q1: Overall feeling -->
+  <div class="checkin-section">
+    <div class="checkin-label">Overall feeling</div>
+    <div class="checkin-question">How did you feel today?</div>
+    <div class="options" id="options-q-1">
+      <button class="option-btn green" onclick="select(1,'good','🟢 Good')"><div class="option-icon">🟢</div><div><div class="option-label">Good</div><div class="option-sub">Energy up, manageable day</div></div></button>
+      <button class="option-btn yellow" onclick="select(1,'mixed','🟡 Mixed')"><div class="option-icon">🟡</div><div><div class="option-label">Mixed</div><div class="option-sub">Some good, some hard moments</div></div></button>
+      <button class="option-btn red" onclick="select(1,'bad','🔴 Bad')"><div class="option-icon">🔴</div><div><div class="option-label">Bad</div><div class="option-sub">Low energy, rough day</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q2: PEM -->
+  <div class="checkin-section">
+    <div class="checkin-label">Post-exertional malaise</div>
+    <div class="checkin-question">Post-exertional malaise (PEM)?</div>
+    <div class="options" id="options-q-2">
+      <button class="option-btn green" onclick="select(2,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Feeling okay after activity</div></div></button>
+      <button class="option-btn yellow" onclick="select(2,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Some fatigue or heaviness</div></div></button>
+      <button class="option-btn red" onclick="select(2,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Significant crash or collapse</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q3: Brain fog -->
+  <div class="checkin-section">
+    <div class="checkin-label">Cognitive function</div>
+    <div class="checkin-question">Brain fog today?</div>
+    <div class="options" id="options-q-3">
+      <button class="option-btn green" onclick="select(3,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Thinking clearly</div></div></button>
+      <button class="option-btn yellow" onclick="select(3,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">A bit foggy, harder to concentrate</div></div></button>
+      <button class="option-btn red" onclick="select(3,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Can't think straight, words hard</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q4: Pain -->
+  <div class="checkin-section">
+    <div class="checkin-label">Pain</div>
+    <div class="checkin-question">Any pain today?</div>
+    <div class="options" id="options-q-4">
+      <button class="option-btn green" onclick="select(4,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">No notable pain</div></div></button>
+      <button class="option-btn yellow" onclick="select(4,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Noticeable but manageable</div></div></button>
+      <button class="option-btn red" onclick="select(4,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Significant pain affecting my day</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q5: Activity -->
+  <div class="checkin-section">
+    <div class="checkin-label">Activity level</div>
+    <div class="checkin-question">What kind of day was it?</div>
+    <div class="options" id="options-q-5">
+      <button class="option-btn green" onclick="select(5,'rested','🟢 Rested')"><div class="option-icon">🟢</div><div><div class="option-label">Rested</div><div class="option-sub">Mostly at home, low demands</div></div></button>
+      <button class="option-btn yellow" onclick="select(5,'light','🟡 Light activity')"><div class="option-icon">🟡</div><div><div class="option-label">Light activity</div><div class="option-sub">Short walk, light tasks</div></div></button>
+      <button class="option-btn red" onclick="select(5,'demanding','🔴 Demanding')"><div class="option-icon">🔴</div><div><div class="option-label">Demanding</div><div class="option-sub">Meeting, appointment, physical effort, stress</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q6: Left home -->
+  <div class="checkin-section">
+    <div class="checkin-label">Outing</div>
+    <div class="checkin-question">Did you leave home today?</div>
+    <div class="options" id="options-q-6">
+      <button class="option-btn home" onclick="select(6,'no','🏠 No')"><div class="option-icon">🏠</div><div><div class="option-label">No</div><div class="option-sub">Stayed home all day</div></div></button>
+      <button class="option-btn car" onclick="select(6,'yes','🚗 Yes')"><div class="option-icon">🚗</div><div><div class="option-label">Yes</div><div class="option-sub">Left the house at least once</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q7: Food -->
+  <div class="checkin-section">
+    <div class="checkin-label">Nutrition</div>
+    <div class="checkin-question">How did you eat today?</div>
+    <div class="options" id="options-q-7">
+      <button class="option-btn green" onclick="select(7,'clean','🟢 Clean')"><div class="option-icon">🟢</div><div><div class="option-label">Clean</div><div class="option-sub">Whole foods, vegetables, home cooked</div></div></button>
+      <button class="option-btn yellow" onclick="select(7,'mixed','🟡 Mixed')"><div class="option-icon">🟡</div><div><div class="option-label">Mixed</div><div class="option-sub">Combination of good and not-so-good</div></div></button>
+      <button class="option-btn red" onclick="select(7,'inflammatory','🔴 Inflammatory')"><div class="option-icon">🔴</div><div><div class="option-label">Inflammatory</div><div class="option-sub">Sugar, processed, alcohol, junk food</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q8: Probiotics -->
+  <div class="checkin-section">
+    <div class="checkin-label">Supplements</div>
+    <div class="checkin-question">Did you take your probiotics today?</div>
+    <div class="options" id="options-q-8">
+      <button class="option-btn green" onclick="select(8,'yes','✅ Yes')"><div class="option-icon">✅</div><div><div class="option-label">Yes</div><div class="option-sub">Took probiotic supplement today</div></div></button>
+      <button class="option-btn red" onclick="select(8,'no','❌ No')"><div class="option-icon">❌</div><div><div class="option-label">No</div><div class="option-sub">Skipped today</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q9: Stimulants -->
+  <div class="checkin-section">
+    <div class="checkin-label">Stimulants</div>
+    <div class="checkin-question">Did you take any stimulants today?</div>
+    <div class="options" id="options-q-9">
+      <button class="option-btn red" onclick="select(9,'yes','⚡ Yes')"><div class="option-icon">⚡</div><div><div class="option-label">Yes</div><div class="option-sub">Adderall, caffeine above normal, or other stimulants</div></div></button>
+      <button class="option-btn green" onclick="select(9,'no','✅ No')"><div class="option-icon">✅</div><div><div class="option-label">No</div><div class="option-sub">No stimulants today</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q10: Compression -->
+  <div class="checkin-section">
+    <div class="checkin-label">Compression</div>
+    <div class="checkin-question">Did you wear compression today?</div>
+    <div class="options" id="options-q-10">
+      <button class="option-btn" onclick="select(10,'none','❌ None')"><div class="option-icon">❌</div><div><div class="option-label">None</div><div class="option-sub">No compression wear today</div></div></button>
+      <button class="option-btn green" onclick="select(10,'upper','💪 Upper')"><div class="option-icon">💪</div><div><div class="option-label">Upper</div><div class="option-sub">Arms, torso, or abdominal binder</div></div></button>
+      <button class="option-btn green" onclick="select(10,'lower','🧦 Lower')"><div class="option-icon">🧦</div><div><div class="option-label">Lower</div><div class="option-sub">Compression socks or leggings</div></div></button>
+      <button class="option-btn green" onclick="select(10,'both','✨ Upper &amp; Lower')"><div class="option-icon">✨</div><div><div class="option-label">Upper &amp; Lower</div><div class="option-sub">Full compression today</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q11: Sodium goal -->
+  <div class="checkin-section">
+    <div class="checkin-label">Sodium goal</div>
+    <div class="checkin-question">Did you hit your sodium goal today?</div>
+    <div class="options" id="options-q-11">
+      <button class="option-btn green" onclick="select(11,'yes','✅ Yes')"><div class="option-icon">✅</div><div><div class="option-label">Yes</div><div class="option-sub">~3,000mg sodium reached</div></div></button>
+      <button class="option-btn red" onclick="select(11,'no','❌ No')"><div class="option-icon">❌</div><div><div class="option-label">No</div><div class="option-sub">Fell short today</div></div></button>
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="checkin-section" style="border-bottom: none;">
+    <div class="checkin-label">Notes (optional)</div>
+    <div class="checkin-question" style="font-size:16px;">Anything else to note?</div>
+    <textarea class="notes-area" id="notes-field" placeholder="How are you feeling? Anything unusual today?&#10;&#10;(Skip if you don't feel up to it)" onchange="saveNotes()" onblur="saveNotes()"></textarea>
+  </div>
+
+  <button class="btn-submit" onclick="submitCheckin()" style="margin-top: 24px;">Submit Check-in ✓</button>
+  <div class="nav-row" style="margin-top: 12px;">
+    <button class="btn-back" onclick="goHome()" style="flex:1;height:44px;font-size:14px;">⌂ Home</button>
+  </div>
+</div>
+
+<!-- Mode picker -->
+<div class="screen" id="screen-checkin-mode">
+  <div class="q-date-tag" id="q-date-tag-mode"></div>
+  <div style="font-size:20px;font-weight:700;color:#e0eaf4;margin-bottom:8px;">How do you want to check in?</div>
+  <div style="color:#7a9ab8;font-size:14px;margin-bottom:24px;">Pick what works for your brain today.</div>
+  <button class="mode-btn" onclick="startStepFlow()">📋 <strong>Step by step</strong><br><span style="font-size:13px;color:#7a9ab8;">One question at a time — easier on bad days</span></button>
+  <button class="mode-btn" onclick="goTo('checkin')">📄 <strong>Full page</strong><br><span style="font-size:13px;color:#7a9ab8;">All questions at once, scroll and submit</span></button>
+  <button class="mode-btn" onclick="goTo('checkin'); setTimeout(() => { const n = document.getElementById('notes-field'); if(n){n.scrollIntoView({behavior:'smooth',block:'center'});n.focus();} }, 150);">📝 <strong>Add a note</strong><br><span style="font-size:13px;color:#7a9ab8;">Just add or update today's notes</span></button>
+  <button class="btn-back" style="width:100%;margin-top:8px;text-align:center;" onclick="goHome()">← Home</button>
+</div>
+
+<!-- Step-by-step flow -->
+<div id="step-flow-container">
+
+<div class="screen" id="screen-q1">
+  <div class="q-date-tag" id="q-date-tag-q1"></div>
+  <div class="question-num">Question 1 of 11</div>
   <div class="question-text">How did you feel today?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-1">
     <button class="option-btn green" onclick="select(1,'good','🟢 Good')"><div class="option-icon">🟢</div><div><div class="option-label">Good</div><div class="option-sub">Energy up, manageable day</div></div></button>
     <button class="option-btn yellow" onclick="select(1,'mixed','🟡 Mixed')"><div class="option-icon">🟡</div><div><div class="option-label">Mixed</div><div class="option-sub">Some good, some hard moments</div></div></button>
     <button class="option-btn red" onclick="select(1,'bad','🔴 Bad')"><div class="option-icon">🔴</div><div><div class="option-label">Bad</div><div class="option-sub">Low energy, rough day</div></div></button>
   </div>
   <div class="nav-row">
-    <button class="btn-back" onclick="goHome()">⌂</button>
-    <button class="btn-next" id="next-1" disabled onclick="goTo(2)">Next →</button>
+    <button class="btn-back" onclick="stepGoTo('mode')">←</button>
+    <button class="btn-next" id="step-next-1" disabled onclick="stepGoTo('q2')">Next →</button>
   </div>
 </div>
 
-<!-- Q2 -->
-<div class="screen" id="screen-2">
-  <div class="q-date-tag" id="q-date-tag-2"></div>
-  <div class="question-num">Question 2 of 8</div>
+<div class="screen" id="screen-q2">
+  <div class="q-date-tag" id="q-date-tag-q2"></div>
+  <div class="question-num">Question 2 of 11</div>
   <div class="question-text">Post-exertional malaise (PEM)?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-2">
     <button class="option-btn green" onclick="select(2,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Feeling okay after activity</div></div></button>
     <button class="option-btn yellow" onclick="select(2,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Some fatigue or heaviness</div></div></button>
     <button class="option-btn red" onclick="select(2,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Significant crash or collapse</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(1)">←</button><button class="btn-next" id="next-2" disabled onclick="goTo(3)">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q1')">←</button>
+    <button class="btn-next" id="step-next-2" disabled onclick="stepGoTo('q3')">Next →</button>
+  </div>
 </div>
 
-<!-- Q3 -->
-<div class="screen" id="screen-3">
-  <div class="q-date-tag" id="q-date-tag-3"></div>
-  <div class="question-num">Question 3 of 8</div>
+<div class="screen" id="screen-q3">
+  <div class="q-date-tag" id="q-date-tag-q3"></div>
+  <div class="question-num">Question 3 of 11</div>
   <div class="question-text">Brain fog today?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-3">
     <button class="option-btn green" onclick="select(3,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Thinking clearly</div></div></button>
     <button class="option-btn yellow" onclick="select(3,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">A bit foggy, harder to concentrate</div></div></button>
     <button class="option-btn red" onclick="select(3,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Can't think straight, words hard</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(2)">←</button><button class="btn-next" id="next-3" disabled onclick="goTo(4)">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q2')">←</button>
+    <button class="btn-next" id="step-next-3" disabled onclick="stepGoTo('q4')">Next →</button>
+  </div>
 </div>
 
-<!-- Q4 -->
-<div class="screen" id="screen-4">
-  <div class="q-date-tag" id="q-date-tag-4"></div>
-  <div class="question-num">Question 4 of 8</div>
+<div class="screen" id="screen-q4">
+  <div class="q-date-tag" id="q-date-tag-q4"></div>
+  <div class="question-num">Question 4 of 11</div>
   <div class="question-text">Any pain today?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-4">
     <button class="option-btn green" onclick="select(4,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">No notable pain</div></div></button>
     <button class="option-btn yellow" onclick="select(4,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Noticeable but manageable</div></div></button>
     <button class="option-btn red" onclick="select(4,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Significant pain affecting my day</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(3)">←</button><button class="btn-next" id="next-4" disabled onclick="goTo(5)">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q3')">←</button>
+    <button class="btn-next" id="step-next-4" disabled onclick="stepGoTo('q5')">Next →</button>
+  </div>
 </div>
 
-<!-- Q5 -->
-<div class="screen" id="screen-5">
-  <div class="q-date-tag" id="q-date-tag-5"></div>
-  <div class="question-num">Question 5 of 8</div>
+<div class="screen" id="screen-q5">
+  <div class="q-date-tag" id="q-date-tag-q5"></div>
+  <div class="question-num">Question 5 of 11</div>
   <div class="question-text">What kind of day was it?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-5">
     <button class="option-btn green" onclick="select(5,'rested','🟢 Rested')"><div class="option-icon">🟢</div><div><div class="option-label">Rested</div><div class="option-sub">Mostly at home, low demands</div></div></button>
     <button class="option-btn yellow" onclick="select(5,'light','🟡 Light activity')"><div class="option-icon">🟡</div><div><div class="option-label">Light activity</div><div class="option-sub">Short walk, light tasks</div></div></button>
     <button class="option-btn red" onclick="select(5,'demanding','🔴 Demanding')"><div class="option-icon">🔴</div><div><div class="option-label">Demanding</div><div class="option-sub">Meeting, appointment, physical effort, stress</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(4)">←</button><button class="btn-next" id="next-5" disabled onclick="goTo(6)">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q4')">←</button>
+    <button class="btn-next" id="step-next-5" disabled onclick="stepGoTo('q6')">Next →</button>
+  </div>
 </div>
 
-<!-- Q6 -->
-<div class="screen" id="screen-6">
-  <div class="q-date-tag" id="q-date-tag-6"></div>
-  <div class="question-num">Question 6 of 8</div>
+<div class="screen" id="screen-q6">
+  <div class="q-date-tag" id="q-date-tag-q6"></div>
+  <div class="question-num">Question 6 of 11</div>
   <div class="question-text">Did you leave home today?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-6">
     <button class="option-btn home" onclick="select(6,'no','🏠 No')"><div class="option-icon">🏠</div><div><div class="option-label">No</div><div class="option-sub">Stayed home all day</div></div></button>
     <button class="option-btn car" onclick="select(6,'yes','🚗 Yes')"><div class="option-icon">🚗</div><div><div class="option-label">Yes</div><div class="option-sub">Left the house at least once</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(5)">←</button><button class="btn-next" id="next-6" disabled onclick="goTo(7)">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q5')">←</button>
+    <button class="btn-next" id="step-next-6" disabled onclick="stepGoTo('q7')">Next →</button>
+  </div>
 </div>
 
-<!-- Q7 -->
-<div class="screen" id="screen-7">
-  <div class="q-date-tag" id="q-date-tag-7"></div>
-  <div class="question-num">Question 7 of 8</div>
+<div class="screen" id="screen-q7">
+  <div class="q-date-tag" id="q-date-tag-q7"></div>
+  <div class="question-num">Question 7 of 11</div>
   <div class="question-text">How did you eat today?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-7">
     <button class="option-btn green" onclick="select(7,'clean','🟢 Clean')"><div class="option-icon">🟢</div><div><div class="option-label">Clean</div><div class="option-sub">Whole foods, vegetables, home cooked</div></div></button>
     <button class="option-btn yellow" onclick="select(7,'mixed','🟡 Mixed')"><div class="option-icon">🟡</div><div><div class="option-label">Mixed</div><div class="option-sub">Combination of good and not-so-good</div></div></button>
     <button class="option-btn red" onclick="select(7,'inflammatory','🔴 Inflammatory')"><div class="option-icon">🔴</div><div><div class="option-label">Inflammatory</div><div class="option-sub">Sugar, processed, alcohol, junk food</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(6)">←</button><button class="btn-next" id="next-7" disabled onclick="goTo(8)">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q6')">←</button>
+    <button class="btn-next" id="step-next-7" disabled onclick="stepGoTo('q8')">Next →</button>
+  </div>
 </div>
 
-<!-- Q8 -->
-<div class="screen" id="screen-8">
-  <div class="q-date-tag" id="q-date-tag-8"></div>
-  <div class="question-num">Question 8 of 8</div>
+<div class="screen" id="screen-q8">
+  <div class="q-date-tag" id="q-date-tag-q8"></div>
+  <div class="question-num">Question 8 of 11</div>
   <div class="question-text">Did you take your probiotics today?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-8">
     <button class="option-btn green" onclick="select(8,'yes','✅ Yes')"><div class="option-icon">✅</div><div><div class="option-label">Yes</div><div class="option-sub">Took probiotic supplement today</div></div></button>
     <button class="option-btn red" onclick="select(8,'no','❌ No')"><div class="option-icon">❌</div><div><div class="option-label">No</div><div class="option-sub">Skipped today</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(7)">←</button><button class="btn-next" id="next-8" disabled onclick="goTo(9)">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q7')">←</button>
+    <button class="btn-next" id="step-next-8" disabled onclick="stepGoTo('q9')">Next →</button>
+  </div>
 </div>
 
-<!-- Q9: Stimulants -->
-<div class="screen" id="screen-9">
-  <div class="q-date-tag" id="q-date-tag-9"></div>
+<div class="screen" id="screen-q9">
+  <div class="q-date-tag" id="q-date-tag-q9"></div>
   <div class="question-num">Question 9 of 11</div>
   <div class="question-text">Did you take any stimulants today?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-9">
     <button class="option-btn red" onclick="select(9,'yes','⚡ Yes')"><div class="option-icon">⚡</div><div><div class="option-label">Yes</div><div class="option-sub">Adderall, caffeine above normal, or other stimulants</div></div></button>
     <button class="option-btn green" onclick="select(9,'no','✅ No')"><div class="option-icon">✅</div><div><div class="option-label">No</div><div class="option-sub">No stimulants today</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(8)">←</button><button class="btn-next" id="next-9" disabled onclick="goTo('notes')">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q8')">←</button>
+    <button class="btn-next" id="step-next-9" disabled onclick="stepGoTo('q10')">Next →</button>
+  </div>
 </div>
 
-<!-- Q10: Compression -->
-<div class="screen" id="screen-10">
-  <div class="q-date-tag" id="q-date-tag-10"></div>
+<div class="screen" id="screen-q10">
+  <div class="q-date-tag" id="q-date-tag-q10"></div>
   <div class="question-num">Question 10 of 11</div>
   <div class="question-text">Did you wear compression today?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-10">
     <button class="option-btn" onclick="select(10,'none','❌ None')"><div class="option-icon">❌</div><div><div class="option-label">None</div><div class="option-sub">No compression wear today</div></div></button>
     <button class="option-btn green" onclick="select(10,'upper','💪 Upper')"><div class="option-icon">💪</div><div><div class="option-label">Upper</div><div class="option-sub">Arms, torso, or abdominal binder</div></div></button>
     <button class="option-btn green" onclick="select(10,'lower','🧦 Lower')"><div class="option-icon">🧦</div><div><div class="option-label">Lower</div><div class="option-sub">Compression socks or leggings</div></div></button>
     <button class="option-btn green" onclick="select(10,'both','✨ Upper &amp; Lower')"><div class="option-icon">✨</div><div><div class="option-label">Upper &amp; Lower</div><div class="option-sub">Full compression today</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(9)">←</button><button class="btn-next" id="next-10" disabled onclick="goTo(11)">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q9')">←</button>
+    <button class="btn-next" id="step-next-10" disabled onclick="stepGoTo('q11')">Next →</button>
+  </div>
 </div>
 
-<!-- Q11: Sodium -->
-<div class="screen" id="screen-11">
-  <div class="q-date-tag" id="q-date-tag-11"></div>
+<div class="screen" id="screen-q11">
+  <div class="q-date-tag" id="q-date-tag-q11"></div>
   <div class="question-num">Question 11 of 11</div>
   <div class="question-text">Did you hit your sodium goal today?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-11">
     <button class="option-btn green" onclick="select(11,'yes','✅ Yes')"><div class="option-icon">✅</div><div><div class="option-label">Yes</div><div class="option-sub">~3,000mg sodium reached</div></div></button>
     <button class="option-btn red" onclick="select(11,'no','❌ No')"><div class="option-icon">❌</div><div><div class="option-label">No</div><div class="option-sub">Fell short today</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(10)">←</button><button class="btn-next" id="next-11" disabled onclick="goTo('notes')">Next →</button></div>
-</div>
-
-<!-- Notes -->
-<div class="screen" id="screen-notes">
-  <div class="q-date-tag" id="q-date-tag-notes"></div>
-  <div class="question-num">Optional</div>
-  <div class="question-text">Anything else to note?</div>
-  <textarea class="notes-area" id="notes-field" placeholder="How are you feeling? Anything unusual today?&#10;&#10;(Skip if you don't feel up to it)"></textarea>
   <div class="nav-row">
-    <button class="btn-back" onclick="goTo(9)">←</button>
-    <button class="btn-skip" onclick="goTo(10)">Skip</button>
-    <button class="btn-next" style="flex:1" onclick="saveNotes(); goTo(10)">Done →</button>
+    <button class="btn-back" onclick="stepGoTo('q10')">←</button>
+    <button class="btn-next" id="step-next-11" disabled onclick="stepGoTo('notes-step')">Next →</button>
   </div>
 </div>
 
-<!-- Summary -->
-<div class="screen" id="screen-10">
-  <div class="question-num">Review</div>
-  <div class="question-text">Your check-in</div>
-  <div class="summary-card">
-    <div class="summary-for" id="summary-for-date"></div>
-    <div class="summary-title">Summary</div>
-    <table class="summary-table">
-      <tr><td class="summary-label">Overall feeling</td><td class="summary-icon" id="sum-icon-1">—</td><td class="summary-value" id="sum-1"></td></tr>
-      <tr><td class="summary-label">PEM</td><td class="summary-icon" id="sum-icon-2">—</td><td class="summary-value" id="sum-2"></td></tr>
-      <tr><td class="summary-label">Brain fog</td><td class="summary-icon" id="sum-icon-3">—</td><td class="summary-value" id="sum-3"></td></tr>
-      <tr><td class="summary-label">Pain</td><td class="summary-icon" id="sum-icon-4">—</td><td class="summary-value" id="sum-4"></td></tr>
-      <tr><td class="summary-label">Activity</td><td class="summary-icon" id="sum-icon-5">—</td><td class="summary-value" id="sum-5"></td></tr>
-      <tr><td class="summary-label">Left home</td><td class="summary-icon" id="sum-icon-6">—</td><td class="summary-value" id="sum-6"></td></tr>
-      <tr><td class="summary-label">Food</td><td class="summary-icon" id="sum-icon-7">—</td><td class="summary-value" id="sum-7"></td></tr>
-      <tr><td class="summary-label">Probiotics</td><td class="summary-icon" id="sum-icon-8">—</td><td class="summary-value" id="sum-8"></td></tr>
-      <tr><td class="summary-label">Stimulants</td><td class="summary-icon" id="sum-icon-9">—</td><td class="summary-value" id="sum-9"></td></tr>
-      <tr><td class="summary-label">Compression</td><td class="summary-icon" id="sum-icon-10">—</td><td class="summary-value" id="sum-10"></td></tr>
-      <tr><td class="summary-label">Sodium goal</td><td class="summary-icon" id="sum-icon-11">—</td><td class="summary-value" id="sum-11"></td></tr>
-    </table>
+<div class="screen" id="screen-notes-step">
+  <div class="question-num" style="margin-bottom:12px;">Notes (optional)</div>
+  <div style="color:#7a9ab8;font-size:14px;margin-bottom:16px;">Anything else worth capturing today?</div>
+  <textarea id="notes-field" placeholder="How are you feeling... what happened today..." onchange="saveNotes()" onblur="saveNotes()" style="width:100%;min-height:120px;background:#0d1f35;color:#b0c8e0;border:1px solid #2a4568;border-radius:10px;padding:12px;font-size:15px;resize:vertical;"></textarea>
+  <div class="nav-row" style="margin-top:16px;">
+    <button class="btn-back" onclick="stepGoTo('q11')">←</button>
+    <button class="btn-next" style="background:#1a5f8a;" onclick="saveNotes(); stepGoTo('summary-step')">Done →</button>
   </div>
-  <button class="btn-submit" onclick="submitCheckin()">Submit Check-in ✓</button>
-  <div class="nav-row"><button class="btn-back" style="flex:1;height:44px;font-size:14px" onclick="goTo('notes')">← Edit</button></div>
+  <button class="btn-next" style="width:100%;margin-top:8px;background:#1a3558;color:#7a9ab8;" onclick="stepGoTo('summary-step')">Skip notes →</button>
 </div>
+
+<div class="screen" id="screen-summary-step">
+  <div style="font-size:18px;font-weight:700;color:#e0eaf4;margin-bottom:16px;">Review your check-in</div>
+  <div id="step-summary-rows"></div>
+  <div class="nav-row" style="margin-top:20px;">
+    <button class="btn-back" onclick="stepGoTo('notes-step')">←</button>
+    <button class="btn-next" onclick="submitCheckin()">Submit ✓</button>
+  </div>
+</div>
+
+</div><!-- end step-flow-container -->
 
 <!-- Done -->
 <div class="screen" id="screen-done">
@@ -1077,7 +1277,7 @@
 
   // ── Build home screen ──────────────────────────
   async function buildHome() {
-    document.getElementById('progress').style.width = '0%';
+    const progressEl = document.getElementById('progress'); if (progressEl) progressEl.style.width = '0%';
 
     const todayDate = dateKey(0);
     const yestDate  = dateKey(1);
@@ -1143,10 +1343,36 @@
       nowCheckinRow.style.display = 'none';
     }
 
+    // Check-in progress count
+    const ciProgressEl = document.getElementById('now-checkin-progress');
+    if (ciProgressEl && todayCI) {
+      const ciFields = ['feeling','pem','brain_fog','pain','activity','left_home','food','probiotics','stimulants','compression','sodium_goal'];
+      const ciAnswered = ciFields.filter(f => todayCI[f] != null && todayCI[f] !== '').length;
+      ciProgressEl.textContent = `${ciAnswered} of ${ciFields.length} questions answered`;
+      ciProgressEl.style.display = 'block';
+    } else if (ciProgressEl) {
+      ciProgressEl.style.display = 'none';
+    }
+
     // (Visible nudge is rendered inside the CTA block below)
 
     // Status pill + Visible nudge
     const hasVisibleToday = dashData?.visible?.[todayDate] != null;
+
+    // Visible compact data for today
+    const nowVisibleEl = document.getElementById('now-visible-section');
+    const nowSep1 = document.getElementById('now-sep-1');
+    const nowSep2 = document.getElementById('now-sep-2');
+    if (hasVisibleToday) {
+      nowVisibleEl.innerHTML = renderVisibleCompact(dashData.visible[todayDate]);
+      nowVisibleEl.style.display = 'block';
+      if (nowSep1) nowSep1.style.display = 'block';
+      if (nowSep2) nowSep2.style.display = 'block';
+    } else {
+      nowVisibleEl.style.display = 'none';
+      if (nowSep1) nowSep1.style.display = 'none';
+      if (nowSep2) nowSep2.style.display = 'none';
+    }
 
     if (todayDone) {
       nowCard.className = 'tap-card now-card done';
@@ -1203,6 +1429,37 @@
     document.getElementById('yest-strain').innerHTML =
       yStrain != null ? `${yStrain.toFixed(1)}${trendArrow(yStrain,tdStrain,false)}` : '<span class="rec-none">—</span>';
     document.getElementById('yest-checkin-row').innerHTML = renderChips(yestCI, false);
+
+    // Cadence Budget for yesterday
+    (function() {
+      const yestRec = yestW?.recovery?.score?.recovery_score;
+      const yestVis = dashData?.visible?.[yestDate];
+      const yobs = yestVis?.observations || [];
+      const getYestObs = n => yestVis?.measurements?.[n] ?? yobs.find(o=>o.tracker_name===n)?.value;
+      const yStabilityRaw = getYestObs('Stability Score');
+      const yPacePoints   = getYestObs('PacePoints');
+      const baseBudget = 14;
+      const yestSep2El = document.getElementById('yest-sep-2');
+      if (yestRec == null) {
+        document.getElementById('yest-budget-row').style.display = 'none';
+        if (yestSep2El) yestSep2El.style.display = 'none';
+      } else {
+        const yStabilityFactor = yStabilityRaw != null ? (0.4 + (yStabilityRaw - 1) * 0.15) : 1.0;
+        const yEffectiveBudget = Math.max(1, Math.round(baseBudget * (yestRec / 100) * yStabilityFactor));
+        const ySpent = yPacePoints ?? 0;
+        const yPct   = Math.min(100, Math.round((ySpent / yEffectiveBudget) * 100));
+        const yFillColor = yPct >= 85 ? '#e05a5a' : yPct >= 60 ? '#f0c040' : '#4caf7d';
+        document.getElementById('yest-budget-row').style.display = 'block';
+        if (yestSep2El) yestSep2El.style.display = 'block';
+        const yUnderBudget = yPacePoints != null && ySpent < yEffectiveBudget;
+        document.getElementById('yest-budget-value').textContent =
+          yPacePoints != null ? `${ySpent} / ${yEffectiveBudget} pts${yUnderBudget ? ' 👍' : ''}` : `${yEffectiveBudget} pts available`;
+        document.getElementById('yest-budget-fill').style.width = yPct + '%';
+        document.getElementById('yest-budget-fill').style.background = yFillColor;
+        document.getElementById('yest-budget-sub').textContent =
+          `Based on ${yestRec}% recovery${yStabilityRaw != null ? ` · stability ${yStabilityRaw}/5` : ''} · Visible budget adjusted`;
+      }
+    })();
 
     // Visible data for yesterday
     const yestVisible = dashData?.visible?.[yestDate];
@@ -1307,7 +1564,6 @@
   function goHome() {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     document.getElementById('screen-home').classList.add('active');
-    document.getElementById('progress').style.width = '0%';
     window.scrollTo(0, 0);
     buildHome();
   }
@@ -1320,13 +1576,62 @@
 
   function goTo(n) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    const id = (n === 'done') ? 'screen-done' : 'screen-' + n;
+    const id = (n === 'done') ? 'screen-done' : (n === 'checkin') ? 'screen-checkin' : (n === 'checkin-mode') ? 'screen-checkin-mode' : 'screen-' + n;
     document.getElementById(id).classList.add('active');
-    if (typeof n === 'number') {
-      document.getElementById('progress').style.width = Math.min(((n-1)/9)*100, 100) + '%';
-      if (n === 10) updateSummary();
-    }
     window.scrollTo(0, 0);
+  }
+
+  function stepGoTo(n) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    let id;
+    if (n === 'mode') id = 'screen-checkin-mode';
+    else if (n === 'notes-step') id = 'screen-notes-step';
+    else if (n === 'summary-step') { id = 'screen-summary-step'; updateStepSummary(); }
+    else id = 'screen-' + n;
+    const el = document.getElementById(id);
+    if (el) el.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function startStepFlow() {
+    for (let i = 1; i <= 11; i++) {
+      const nb = document.getElementById('step-next-' + i);
+      if (nb) nb.disabled = !answers[i];
+      // Re-mark pre-populated answers in step containers
+      if (answers[i]) {
+        const el = document.getElementById('step-options-q-' + i);
+        if (el) {
+          el.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+          el.querySelectorAll('.option-btn').forEach(b => {
+            if (b.textContent.trim().toLowerCase().includes(answers[i].label.toLowerCase()) ||
+                b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + answers[i].val + "'")) {
+              b.classList.add('selected');
+            }
+          });
+        }
+      }
+    }
+    stepGoTo('q1');
+  }
+
+  function updateStepSummary() {
+    const qLabels = ['','Feeling','PEM','Brain fog','Pain','Activity','Left home','Food','Probiotics','Stimulants','Compression','Sodium goal'];
+    const icons = { good:'😊', mixed:'😐', bad:'😔', none:'✅', mild:'⚠️', severe:'🚨',
+      rested:'🛋️', light:'🚶', demanding:'💪', yes:'✅', no:'❌', clean:'🥗',
+      inflammatory:'🍔', upper:'👕', lower:'🧦', both:'✅' };
+    const container = document.getElementById('step-summary-rows');
+    if (!container) return;
+    let html = '';
+    for (let i = 1; i <= 11; i++) {
+      const a = answers[i];
+      const icon = a ? (icons[a.val] || '•') : '—';
+      const lbl = a ? a.label : 'Skipped';
+      html += `<div class="step-summary-row"><span class="step-sum-icon">${icon}</span><span style="color:#7a9ab8;min-width:110px">${qLabels[i]}</span><span>${lbl}</span></div>`;
+    }
+    if (answers.notes) {
+      html += `<div class="step-summary-row"><span class="step-sum-icon">📝</span><span style="color:#7a9ab8;min-width:110px">Notes</span><span style="font-size:13px">${answers.notes}</span></div>`;
+    }
+    container.innerHTML = html;
   }
 
   // ── Check-in flow ──────────────────────────────
@@ -1335,7 +1640,6 @@
     activeDate = dateKey(offset);
     Object.keys(answers).forEach(k => delete answers[k]);
     document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-    for (let i = 1; i <= 11; i++) { const b = document.getElementById('next-' + i); if (b) b.disabled = true; }
     document.getElementById('notes-field').value = '';
 
     const label = offset === 0 ? 'Today · ' + formatDateShort(activeDate)
@@ -1367,24 +1671,41 @@
           const val = d[field]; if (!val) continue;
           const lbl = options[val]; if (!lbl) continue;
           answers[qNum] = { val, label: lbl };
-          document.getElementById('screen-' + qNum)?.querySelectorAll('.option-btn').forEach(b => {
+          document.getElementById('options-q-' + qNum)?.querySelectorAll('.option-btn').forEach(b => {
             if (b.getAttribute('onclick')?.includes("'" + val + "'")) b.classList.add('selected');
           });
-          const nb = document.getElementById('next-' + qNum); if (nb) nb.disabled = false;
         }
         if (d.notes) document.getElementById('notes-field').value = d.notes;
       }
     } catch(e) {}
-    goTo(1);
+    goTo('checkin-mode');
   }
 
   function onNowCardTap() { startCheckin(0); }
 
+  async function startNotes(offset) {
+    await startCheckin(offset);
+    // Scroll to notes field and focus it
+    setTimeout(() => {
+      const notesField = document.getElementById('notes-field');
+      if (notesField) {
+        notesField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        notesField.focus();
+      }
+    }, 100);
+  }
+
   function select(q, val, label) {
     answers[q] = { val, label };
-    document.getElementById('screen-' + q).querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    // Deselect in both containers (only one is visible)
+    ['options-q-' + q, 'step-options-q-' + q].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    });
     event.currentTarget.classList.add('selected');
-    document.getElementById('next-' + q).disabled = false;
+    // Enable step-next button if in step flow
+    const stepBtn = document.getElementById('step-next-' + q);
+    if (stepBtn) stepBtn.disabled = false;
   }
   function saveNotes() { answers['notes'] = document.getElementById('notes-field').value.trim(); }
 
@@ -1403,7 +1724,7 @@
                   : offset === 1 ? 'Yesterday, ' + formatDateShort(activeDate)
                   : dayName(offset) + ', ' + formatDateShort(activeDate);
     document.getElementById('summary-for-date').textContent = '📅 ' + dateStr;
-    document.getElementById('progress').style.width = '100%';
+    const progressEl2 = document.getElementById('progress'); if (progressEl2) progressEl2.style.width = '100%';
   }
 
   async function submitCheckin() {

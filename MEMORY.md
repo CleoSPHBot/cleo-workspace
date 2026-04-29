@@ -185,14 +185,11 @@ Common corrections when verifying medication names against FDB:
 
 
 
+## Promoted From Short-Term Memory (2026-04-29)
 
-## Promoted From Short-Term Memory (2026-04-28)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-04-22.md:507:507 -->
-- _Nightly consolidation run — 13:00 UTC (Wednesday, April 22)_ [score=0.869 recalls=0 avg=0.620 source=memory/2026-04-22.md:507-507]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-22.md:509:509 -->
-- Nineteenth night. A focused pass — yesterday's dream covered the big items; today caught the tail of the Apr 21 evening session. [score=0.869 recalls=0 avg=0.620 source=memory/2026-04-22.md:509-509]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-22.md:515:515 -->
-- **aegis_server source access (Apr 21 evening):** [score=0.862 recalls=0 avg=0.620 source=memory/2026-04-22.md:515-515]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-22.md:521:521 -->
-- **Figma naming convention (Apr 21):** [score=0.862 recalls=0 avg=0.620 source=memory/2026-04-22.md:521-521]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-23.md:3:3 -->
+- _Nightly consolidation run — 13:00 UTC (Thursday, April 23)_ [score=0.862 recalls=0 avg=0.620 source=memory/2026-04-23.md:3-3]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-23.md:5:5 -->
+- Twentieth night. A quiet pass — yesterday's dream did most of the work. [score=0.862 recalls=0 avg=0.620 source=memory/2026-04-23.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-23.md:11:11 -->
+- **Apr 22 post-dream session:** [score=0.862 recalls=0 avg=0.620 source=memory/2026-04-23.md:11-11]
