@@ -117,7 +117,7 @@
 - **Stack:** AWS Lambda + API Gateway, MongoDB `cadence-dev` (dev-cluster-02.qpkxl.mongodb.net)
 - **Credentials:** stored in `projects/cadence/credentials.md` (not in MEMORY.md)
 - **Status (Apr 26):** Backfill complete — 2,292 `whoop_daily` docs. Visible data in `visible_daily` (177+ days; Hannah uploads live). WHOOP Lambda recovery fix confirmed installed (Apr 23). iOS check-in prototype live at http://100.70.3.21:8765. Hannah on tailnet. **Hannah confirmed daily check-in user (Apr 25).**
-- **iOS check-in app:** 8 questions (updated Apr 16), traffic light (🟢🟡🔴) UX. Brain fog = #1 constraint, under 60s on worst days. Fields: feeling, PEM, brain fog, pain, activity type, left home, food, probiotics. **Hannah using daily as of Apr 25.**
+- **iOS check-in app:** 8 questions (updated Apr 16), traffic light (🟢🟡🔴) UX. Brain fog = #1 constraint, under 60s on worst days. Fields: feeling, PEM, brain fog, pain, activity type, left home, food, probiotics. **Hannah using daily as of Apr 25.** **Single-page scroll format (Apr 28)** — all questions on one page instead of step-by-step. Correct flow: Q1→…→Q9→Q10→Q11→Notes→Summary→Submit (nav bug fixed Apr 28).
 - **LC phenotype:** Hannah = Gut/Viral persistence + PEM/Dysautonomia hybrid. v2 vision: phenotype-adaptive app.
 - **Pacing literature (key finding):** Ghali 2023 — pacing adherence is the single best predictor of recovery (OR 40.43). PACELOC 2025: 15% weekly reduction in PEM with structured pacing. GET is contraindicated (WHO, CDC, NICE). Heart rate monitoring is the tool (anaerobic threshold).
 - **Probiotics for Hannah:** SIM01/G-NiiB (B. adolescentis + B. bifidum + B. longum + GOS + XOS + resistant dextrin). RECOVERY trial: 10B CFU ×2/day × 6 months (Lancet ID 2023). "G-NiiB Immunity Elite" on Amazon US. Take at night. Rationale: Freire 2026 gut immune dysregulation → microbiome restoration.
@@ -138,12 +138,13 @@
   4. Past days = History (bottom sheet), not on home screen
   5. Single-page scroll; Visible upload nudge in hero if missing; each card tappable → detail
 - **v2 Prototype (Apr 25):** `projects/cadence/prototype/index-v2.html`, live at http://100.70.3.21:8765/index-v2.html. Hero: 6-metric WHOOP grid + trend arrows + check-in chips; Yesterday card; Insights (limit 4, "See all →"); Advice (key terms highlighted cyan `#5bc8e8`). History starts from yesterday (offset 1). v1 still at root.
+- **Hannah Ask-Cleo feature (Apr 29 — planned):** Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; not yet built. Resume with David Apr 30.
 - **DESIGN.md:** `projects/DESIGN.md` — cross-project design system (Cadence + Rounds). Key terms cyan `#5bc8e8`, section headers gold `#c9a84c`. Key terms: active rest, pacing, anaerobic threshold, PEM, heart rate, HRV, parasympathetic.
 - **Strain (Apr 26):** `backfill_strain.py` completed — Hannah strain 0.5–8 (LC-consistent), David 9–20. Nightly cron 7am UTC `--days 3`. WHOOP doesn't webhook strain — polling only (v1 cycle). Script uses AWS Secrets Manager.
 - **Visible user_id inconsistency:** old data = integer `6729032`, new uploads = string `"hannah"` — dashboard handles both; worth unifying later.
 - **Hannah energy budget (Apr 26):** PacePoints alone is NOT a reliable predictor of bad days. Apr 19: 26.8 PacePoints → mild fatigue only. Apr 25: 3.1 PacePoints → severe crash. WHOOP HRV morning reading is likely a better energy signal. 177 days of Visible data available for correlation analysis — David interested.
-- **Cadence app features (as of Apr 17):** Visible CSV upload (`POST /api/visible/upload`, multer + csv-parse → `visible_daily`); pre-population (`GET /api/checkin/:date`); server drives Eastern time `today` to avoid UTC mismatch; "Update →" button when today has data
-- **Dashboard:** `/dashboard` → `dashboard.html`, `/api/dashboard` endpoint. 3-day view: WHOOP metrics + check-in pills + Visible highlights. Auto-refreshes every 5 min, Eastern time aware, no-cache headers.
+- **Cadence app features (as of Apr 17):** Visible CSV upload (`POST /api/visible/upload`, multer + csv-parse → `visible_daily`); pre-population (`GET /api/checkin/:date`); server drives Pacific time `today` (changed from Eastern Apr 28); "Update →" button when today has data
+- **Dashboard:** `/dashboard` → `dashboard.html`, `/api/dashboard` endpoint. 3-day view: WHOOP metrics + check-in pills + Visible highlights. Auto-refreshes every 5 min, Pacific time aware (changed Apr 28), no-cache headers.
 - **Dashboards:** `dashboard.html` = dynamic (live MongoDB pull, 3-day view, auto-refresh) | `hannah-dashboard.html` = static hardcoded view (updated manually as needed) — both served from `prototype/`
 - **Oura Ring:** v2 API at cloud.ouraring.com/v2/docs. Adds skin temp deviation, resilience score. Hannah doesn't have one yet — TBD.
 
@@ -185,11 +186,4 @@ Common corrections when verifying medication names against FDB:
 
 
 
-## Promoted From Short-Term Memory (2026-04-29)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-04-23.md:3:3 -->
-- _Nightly consolidation run — 13:00 UTC (Thursday, April 23)_ [score=0.862 recalls=0 avg=0.620 source=memory/2026-04-23.md:3-3]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-23.md:5:5 -->
-- Twentieth night. A quiet pass — yesterday's dream did most of the work. [score=0.862 recalls=0 avg=0.620 source=memory/2026-04-23.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-23.md:11:11 -->
-- **Apr 22 post-dream session:** [score=0.862 recalls=0 avg=0.620 source=memory/2026-04-23.md:11-11]
