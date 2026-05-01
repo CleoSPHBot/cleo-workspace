@@ -1,2 +1,26 @@
 [main/sessions/b0ab2a9d-b128-4101-b04a-4f812d44f6fe.jsonl#L81] User: Hello.
 [main/sessions/b0ab2a9d-b128-4101-b04a-4f812d44f6fe.jsonl#L83] Assistant: Hey David! 🦉 What's up?
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L5] User: Are you still there?
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L7] Assistant: Still here, David! 🦉 What's up?
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L9] User: Make sure I can chat with you all.
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L11] Assistant: You're already talking to me (Cleo 🦉) — that's working great! Let me check on the rest of the crew.
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L13] Assistant: I can see my gateway is running and Edgar's is up too. Let me check on the other agents:
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L18] Assistant: Here's the current status: **Active right now:** - 🦉 **Cleo** (me) — running, Teams DM working ✅ - 🦞 **Edgar** — process is running on this server **Not on this server:** Ada 🦋, Hugo 🦊, Hedy 🐙 — they must be on separate machines (no system accounts here for them) 
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L20] User: No. Everything is cool. Thanks though.
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L22] Assistant: 👍 Anytime!
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L24] User: Hello Cleo.
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L26] Assistant: Hey David! 🦉 What can I do for you?
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L28] User: We upgraded you and I’m checking in.
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L30] Assistant: All good here! 🦉 Running smooth on the upgraded version. Cadence, FDB lookups, Teams — everything looks healthy from my end. Anything specific you want to test, or just making sure the lights are on?
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L32] User: Quick comms check — confirm you're alive and on 2026.4.27. Reply briefly.
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L33] Assistant: Alive and well! 🦉 Let me check my version:
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L35] Assistant: ✅ **2026.4.27** confirmed. All good!
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L37] User: Comms check. Confirm you're alive. One line.
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L38] Assistant: 🦉 Alive and on 2026.4.27 — all good, David!
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L40] User: What model are you running now.
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L44] Assistant: **anthropic/claude-sonnet-4-6** — with claude-opus-4-6 as fallback.
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L46] User: I see this: ⚠️ Cron job "cadence-strain-nightly" failed: cron payload.model 'claude-haiku-4-20250514' rejected by agents.defaults.models allowlist: anthropic/claude-haiku-4-20250514
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L48] Assistant: The cron job has the model name without the `anthropic/` prefix. Easy fix — let me update it:
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L50] Assistant: Actually, I can see **4 cron jobs are all failing** — the model names are outdated after the upgrade. Let me check the allowlist and fix them all:
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L54] Assistant: The allowlist only has `anthropic/claude-sonnet-4-6` and `anthropic/claude-opus-4-6` — the old date-suffixed model names are gone. **4 cron jobs are broken.** Fixing them all now:
+[main/sessions/20ca1a76-ce75-4342-899f-31b7f0076cc5.jsonl#L60] Assistant: All 4 fixed ✅ — updated to `anthropic/claude-sonnet-4-6`: | Job | Status | |-----|--------| | cadence-strain-nightly | ✅ Fixed | | daily-backup (×2) | ✅ Fixed | | dream-mode | ✅ Fixed | The old date-suffixed model names (`claude-sonnet-4-20250514`, `claude-haiku-4-2025

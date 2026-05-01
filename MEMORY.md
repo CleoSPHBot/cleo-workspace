@@ -187,3 +187,14 @@ Common corrections when verifying medication names against FDB:
 
 
 
+
+## Promoted From Short-Term Memory (2026-05-01)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-25.md:12:12 -->
+- All 5 open design questions resolved: [score=0.891 recalls=0 avg=0.620 source=memory/2026-04-25.md:12-12]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-24.md:521:521 -->
+- _Nightly consolidation run — 13:00 UTC (Friday, April 24)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-24.md:521-521]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-24.md:523:523 -->
+- Twenty-first night. A productive pass — three real updates to make. [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-24.md:523-523]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-24.md:529:529 -->
+- **REVIVE-TOGETHER (Reis et al. 2026) — Apr 22 post-dream:** [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-24.md:529-529]
