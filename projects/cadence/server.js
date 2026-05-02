@@ -169,6 +169,7 @@ app.post('/api/checkin', async (req, res) => {
         stimulants:   answers.stimulants  ?? null,
         compression:  answers.compression ?? null,
         sodium_goal:  answers.sodium_goal ?? null,
+        hours_upright: answers.hours_upright ?? null,
         notes:        answers.notes || null,
       },
       $setOnInsert: {
@@ -237,7 +238,103 @@ app.get('/api/dashboard', async (req, res) => {
     const visible = {};
     visibleDocs.forEach(v => { visible[v.date] = v; });
 
-    res.json({ whoop, checkins, visible, dates, user_id, generated_at: new Date().toISOString() });
+    // Meds (last 4 days)
+    const medsDocs = await db.collection('med_log')
+      .find({ user_id, date: { $in: dates } })
+      .toArray();
+    const meds = {};
+    medsDocs.forEach(m => {
+      if (!meds[m.date]) meds[m.date] = {};
+      meds[m.date][m.med] = m.count;
+    });
+
+    res.json({ whoop, checkins, visible, meds, dates, user_id, generated_at: new Date().toISOString() });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ── Meds tracker ───────────────────────────────────────────────────────────
+// Hannah's med list (canonical keys)
+const MED_LIST = [
+  { key: 'aleve',      label: 'Aleve',         note: 'naproxen 220 mg' },
+  { key: 'aleve_pm',   label: 'Aleve PM',      note: 'naproxen + diphenhydramine' },
+  { key: 'allegra',    label: 'Allegra',       note: 'fexofenadine — antihistamine' },
+  { key: 'libertrim',  label: 'Libertrim',     note: 'antidiarrheal' },
+  { key: 'plidan',     label: 'Plidan',        note: 'cramps + bloating' },
+  { key: 'adderall',   label: 'Adderall',      note: 'stimulant' },
+  { key: 'melatonin',  label: 'Melatonin',     note: 'sleep' },
+  { key: 'tylenol',    label: 'Tylenol',       note: 'acetaminophen' },
+];
+const MED_KEYS = new Set(MED_LIST.map(m => m.key));
+
+// GET /api/meds/list — return the active med catalog
+app.get('/api/meds/list', (req, res) => {
+  res.json({ meds: MED_LIST });
+});
+
+// GET /api/meds?date=YYYY-MM-DD — fetch counts for one day
+app.get('/api/meds', async (req, res) => {
+  try {
+    const user_id = resolveUser(req);
+    const date = req.query.date || pacificDate(0);
+    const docs = await db.collection('med_log').find({ user_id, date }).toArray();
+    const counts = {};
+    docs.forEach(d => { counts[d.med] = d.count; });
+    res.json({ user_id, date, counts });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// POST /api/meds/set — set absolute count for { med, date, count }
+app.post('/api/meds/set', async (req, res) => {
+  try {
+    const user_id = resolveUser(req);
+    const { med, date, count } = req.body || {};
+    if (!med || !MED_KEYS.has(med)) return res.status(400).json({ error: 'invalid med' });
+    const d = date || pacificDate(0);
+    const c = Math.max(0, Math.min(50, parseInt(count, 10) || 0));
+    const now = new Date();
+    if (c === 0) {
+      // Delete row when count is 0 to keep the collection sparse
+      await db.collection('med_log').deleteOne({ user_id, date: d, med });
+    } else {
+      await db.collection('med_log').updateOne(
+        { user_id, date: d, med },
+        { $set: { user_id, date: d, med, count: c, updated_at: now } },
+        { upsert: true }
+      );
+    }
+    sseNotify(user_id, 'meds', { date: d, med, count: c });
+    res.json({ ok: true, user_id, date: d, med, count: c });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// POST /api/meds/inc — increment by delta { med, date, delta }
+app.post('/api/meds/inc', async (req, res) => {
+  try {
+    const user_id = resolveUser(req);
+    const { med, date, delta } = req.body || {};
+    if (!med || !MED_KEYS.has(med)) return res.status(400).json({ error: 'invalid med' });
+    const d = date || pacificDate(0);
+    const delt = Math.max(-10, Math.min(10, parseInt(delta, 10) || 0));
+    const now = new Date();
+    const existing = await db.collection('med_log').findOne({ user_id, date: d, med });
+    const newCount = Math.max(0, Math.min(50, (existing?.count || 0) + delt));
+    if (newCount === 0) {
+      await db.collection('med_log').deleteOne({ user_id, date: d, med });
+    } else {
+      await db.collection('med_log').updateOne(
+        { user_id, date: d, med },
+        { $set: { user_id, date: d, med, count: newCount, updated_at: now } },
+        { upsert: true }
+      );
+    }
+    sseNotify(user_id, 'meds', { date: d, med, count: newCount });
+    res.json({ ok: true, user_id, date: d, med, count: newCount });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

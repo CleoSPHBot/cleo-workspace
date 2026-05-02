@@ -1,0 +1,296 @@
+{
+  "generated_at": "2026-05-01T21:07:42.749Z",
+  "n_labeled_days": 15,
+  "feeling_distribution": {
+    "bad": 9,
+    "good": 1,
+    "mixed": 5
+  },
+  "correlations": [
+    {
+      "feature": "v_hrv",
+      "r": -0.873862897505303,
+      "n": 7
+    },
+    {
+      "feature": "pace_points",
+      "r": 0.8660254037844387,
+      "n": 7
+    },
+    {
+      "feature": "pace_lag3",
+      "r": -0.7378647873726218,
+      "n": 5
+    },
+    {
+      "feature": "adderall",
+      "r": 0.668153104781061,
+      "n": 15
+    },
+    {
+      "feature": "stability_lag1",
+      "r": 0.6123724356957946,
+      "n": 6
+    },
+    {
+      "feature": "strain",
+      "r": 0.5262348115842175,
+      "n": 12
+    },
+    {
+      "feature": "recovery",
+      "r": -0.5168797283007817,
+      "n": 12
+    },
+    {
+      "feature": "hrv",
+      "r": -0.5000706314454717,
+      "n": 12
+    },
+    {
+      "feature": "socially_demanding",
+      "r": 0.4193139346887674,
+      "n": 15
+    },
+    {
+      "feature": "pace_lag2",
+      "r": -0.41403933560541256,
+      "n": 6
+    },
+    {
+      "feature": "stability_lag2",
+      "r": 0.408248290463863,
+      "n": 5
+    },
+    {
+      "feature": "rhr",
+      "r": 0.3737412737209254,
+      "n": 12
+    },
+    {
+      "feature": "sleep_lag3",
+      "r": -0.36790682793289464,
+      "n": 12
+    },
+    {
+      "feature": "v_rhr",
+      "r": -0.36410954062720957,
+      "n": 7
+    },
+    {
+      "feature": "sleep_lag1",
+      "r": 0.3571221526089609,
+      "n": 12
+    },
+    {
+      "feature": "stomach_pain",
+      "r": -0.34838717883071757,
+      "n": 15
+    },
+    {
+      "feature": "respiratory_rate",
+      "r": -0.3451904938598598,
+      "n": 12
+    },
+    {
+      "feature": "strain_lag2",
+      "r": -0.3428499530018387,
+      "n": 12
+    },
+    {
+      "feature": "spo2",
+      "r": 0.34189907453655055,
+      "n": 11
+    },
+    {
+      "feature": "probiotics",
+      "r": -0.3401680257083045,
+      "n": 15
+    },
+    {
+      "feature": "pace_lag1",
+      "r": 0.31622776601683794,
+      "n": 7
+    },
+    {
+      "feature": "crash",
+      "r": -0.31448545101657555,
+      "n": 15
+    },
+    {
+      "feature": "stimulants",
+      "r": 0.2857142857142857,
+      "n": 15
+    },
+    {
+      "feature": "skin_temp",
+      "r": -0.23952963018816711,
+      "n": 12
+    },
+    {
+      "feature": "brain_fog",
+      "r": -0.22878777639891715,
+      "n": 15
+    },
+    {
+      "feature": "physically_active",
+      "r": 0.20472005032073007,
+      "n": 15
+    },
+    {
+      "feature": "sleep_sws_hours",
+      "r": 0.1933046138360647,
+      "n": 12
+    },
+    {
+      "feature": "hrv_lag2",
+      "r": 0.1913581133033518,
+      "n": 12
+    },
+    {
+      "feature": "sleep_disturbances",
+      "r": 0.19077732662264593,
+      "n": 12
+    },
+    {
+      "feature": "muscle_aches",
+      "r": -0.181015026749983,
+      "n": 15
+    },
+    {
+      "feature": "strain_lag1",
+      "r": 0.17939823122189233,
+      "n": 12
+    },
+    {
+      "feature": "recovery_lag1",
+      "r": -0.16743834914043285,
+      "n": 12
+    },
+    {
+      "feature": "stability",
+      "r": 0.16101529717988267,
+      "n": 7
+    },
+    {
+      "feature": "sleep_consistency",
+      "r": 0.15154704608481648,
+      "n": 12
+    },
+    {
+      "feature": "sleep_total_hours",
+      "r": 0.13027050062865228,
+      "n": 12
+    },
+    {
+      "feature": "sleep_perf",
+      "r": 0.12200696331040049,
+      "n": 12
+    },
+    {
+      "feature": "recovery_lag3",
+      "r": -0.11561219345410839,
+      "n": 12
+    },
+    {
+      "feature": "sleep_efficiency",
+      "r": 0.11346140377334232,
+      "n": 12
+    },
+    {
+      "feature": "recovery_3d_avg",
+      "r": -0.10403129732205987,
+      "n": 10
+    },
+    {
+      "feature": "strain_lag3",
+      "r": -0.10050378152592121,
+      "n": 11
+    },
+    {
+      "feature": "headache",
+      "r": -0.08908708063747481,
+      "n": 15
+    },
+    {
+      "feature": "nerve_pain",
+      "r": -0.08908708063747481,
+      "n": 15
+    },
+    {
+      "feature": "hrv_lag1",
+      "r": -0.07973254720972993,
+      "n": 12
+    },
+    {
+      "feature": "emotionally_stressful",
+      "r": 0.07962294915488702,
+      "n": 15
+    },
+    {
+      "feature": "shortness",
+      "r": 0.0766778628745276,
+      "n": 15
+    },
+    {
+      "feature": "left_home",
+      "r": 0.07559289460184544,
+      "n": 15
+    },
+    {
+      "feature": "recovery_lag2",
+      "r": 0.05979941040729744,
+      "n": 12
+    },
+    {
+      "feature": "lightheaded",
+      "r": 0.05241424183609592,
+      "n": 15
+    },
+    {
+      "feature": "sleep_rem_hours",
+      "r": 0.05042729056592992,
+      "n": 12
+    },
+    {
+      "feature": "fatigue",
+      "r": 0.04879500364742666,
+      "n": 15
+    },
+    {
+      "feature": "hrv_lag3",
+      "r": -0.027906391523405474,
+      "n": 12
+    },
+    {
+      "feature": "mentally_demanding",
+      "r": 0.014920941939059814,
+      "n": 15
+    },
+    {
+      "feature": "sleep_lag2",
+      "r": -0.004058206279647284,
+      "n": 12
+    },
+    {
+      "feature": "pacing_budget",
+      "r": 0,
+      "n": 7
+    },
+    {
+      "feature": "anxiety",
+      "r": 0,
+      "n": 15
+    },
+    {
+      "feature": "depression",
+      "r": 0,
+      "n": 15
+    },
+    {
+      "feature": "compression",
+      "r": 0,
+      "n": 15
+    }
+  ]
+}

@@ -130,27 +130,134 @@
     .ci-chip-val.red    { color: #e05a5a; }
     .ci-chip-val.neutral { color: #b0c8e0; }
 
-    /* Cadence Effective Budget bar */
-    .budget-row {
+    /* Budget Models stacked */
+    .budget-stack {
       margin-bottom: 14px;
       background: #0f192360;
       border-radius: 12px;
       padding: 10px 14px;
     }
-    .budget-header {
+    .budget-stack-title {
+      font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      color: #5a7a98; margin-bottom: 10px;
+    }
+    /* Recommended ceiling — the actionable one */
+    .ceiling-card {
+      margin-bottom: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #c9a84c40;
+      background: linear-gradient(90deg, #2a220860, #1a3a5c30);
+    }
+    .ceiling-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .ceiling-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #c9a84c; }
+    .ceiling-value { font-size: 18px; font-weight: 700; color: #f0f4f8; line-height: 1; }
+    .ceiling-track { width: 100%; height: 7px; background: #1e2d3d; border-radius: 4px; overflow: hidden; margin-bottom: 6px; }
+    .ceiling-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease, background 0.4s ease; }
+    .ceiling-sub { font-size: 11px; color: #7a9ab8; line-height: 1.35; }
+    .ceiling-sub-strong { color: #e8c96a; font-weight: 600; }
+
+    /* Lag-3 watch — standalone PEM lag indicator */
+    .lag3-card {
+      margin-bottom: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #0f192360;
+      border-left: 3px solid #c9a84c;
+    }
+    .lag3-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .lag3-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #5a7a98; }
+    .lag3-date { font-size: 11px; color: #7a9ab8; }
+    .lag3-value-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+    .lag3-value { font-size: 20px; font-weight: 700; color: #f0f4f8; line-height: 1; }
+    .lag3-unit { font-size: 11px; color: #7a9ab8; }
+    .lag3-status {
+      font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px;
+      letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .lag3-status.low { background: #1a3a2c; color: #4caf7d; }
+    .lag3-status.med { background: #2a2208; color: #f0c040; }
+    .lag3-status.high{ background: #2a0d0d; color: #e05a5a; }
+    .lag3-explain { font-size: 11px; color: #7a9ab8; line-height: 1.4; }
+    .lag3-explain strong { color: #c9a84c; }
+
+    /* Ceiling rules reference */
+    .rules-card {
+      margin-bottom: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #0f192360;
+    }
+    .rules-title { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #5a7a98; margin-bottom: 10px; }
+    .rule-row {
+      display: flex; align-items: flex-start; gap: 10px; padding: 8px 0;
+      border-bottom: 1px solid #1e2d3d; font-size: 12px;
+    }
+    .rule-row:last-child { border-bottom: none; }
+    .rule-cap { font-weight: 700; color: #c9a84c; min-width: 48px; }
+    .rule-cond { color: #7a9ab8; flex: 1; }
+    .rule-cond strong { color: #f0f4f8; font-weight: 600; }
+
+    /* Meds tracker */
+    .meds-card {
+      margin-bottom: 14px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: #0f192360;
+    }
+    .meds-title { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #5a7a98; margin-bottom: 10px; }
+    .med-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0;
+      border-bottom: 1px solid #1e2d3d;
+    }
+    .med-row:last-child { border-bottom: none; }
+    .med-name { flex: 1; min-width: 0; }
+    .med-label { font-size: 13px; font-weight: 600; color: #f0f4f8; line-height: 1.2; }
+    .med-note  { font-size: 10px; color: #5a7a98; margin-top: 1px; }
+    .med-count {
+      font-size: 16px; font-weight: 700; color: #f0f4f8;
+      min-width: 22px; text-align: center;
+    }
+    .med-count.zero { color: #3a5a78; }
+    .med-stepper {
+      display: flex; align-items: center; gap: 0;
+      border-radius: 8px; overflow: hidden;
+      background: #1e2d3d;
+    }
+    .med-btn {
+      width: 36px; height: 32px;
+      border: none; background: transparent;
+      color: #c9a84c; font-size: 18px; font-weight: 700;
+      cursor: pointer; line-height: 1; padding: 0;
+      transition: background 0.15s;
+    }
+    .med-btn:hover { background: #2a3d52; }
+    .med-btn:active { background: #c9a84c; color: #0f1923; }
+    .med-btn:disabled { color: #3a5a78; cursor: not-allowed; }
+    .med-btn-divider { width: 1px; background: #0f1923; }
+    .bm-row {
+      margin-bottom: 9px;
+    }
+    .bm-row:last-child { margin-bottom: 0; }
+    .bm-header {
       display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
-    .budget-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #5a7a98; }
-    .budget-value { font-size: 13px; font-weight: 700; color: #f0f4f8; }
-    .budget-track {
-      width: 100%; height: 6px; background: #1e2d3d; border-radius: 4px; overflow: hidden;
+    .bm-label { font-size: 10px; font-weight: 600; color: #7a9ab8; }
+    .bm-value { font-size: 11px; font-weight: 700; color: #f0f4f8; }
+    .bm-track {
+      width: 100%; height: 5px; background: #1e2d3d; border-radius: 3px; overflow: hidden;
     }
-    .budget-fill {
-      height: 100%; border-radius: 4px;
+    .bm-fill {
+      height: 100%; border-radius: 3px;
       transition: width 0.4s ease, background 0.4s ease;
     }
-    .budget-sub { font-size: 10px; color: #3a5a78; margin-top: 5px; }
+    .bm-asterisk { color: #f0c040; font-size: 11px; margin-left: 3px; }
+    /* keep old names as aliases so nothing else breaks */
+    .budget-row { display: none; }
+    .budget-track { width: 100%; height: 6px; background: #1e2d3d; border-radius: 4px; overflow: hidden; }
+    .budget-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease, background 0.4s ease; }
 
     /* Visible nudge inside hero */
     .visible-nudge {
@@ -446,7 +553,7 @@
       <div class="now-label" id="now-label">Today</div>
       <div style="display:flex;align-items:center;gap:8px">
         <div class="now-status-pill empty" id="now-status-pill" style="display:none">Not started</div>
-        <button class="card-pencil" id="now-pencil">✏️</button>
+        <button class="card-pencil" id="now-pencil" style="display:none">✏️</button>
       </div>
     </div>
 
@@ -478,6 +585,9 @@
       </div>
     </div>
 
+    <!-- CTA + Visible nudge (right after WHOOP metrics) -->
+    <div id="now-cta"></div>
+
     <!-- Separator: WHOOP / Visible -->
     <div id="now-sep-1" style="display:none;height:1px;background:rgba(255,255,255,0.07);margin:10px 0"></div>
 
@@ -490,21 +600,58 @@
     <!-- Separator: Visible+chips / Budget -->
     <div id="now-sep-2" style="display:none;height:1px;background:rgba(255,255,255,0.07);margin:10px 0"></div>
 
-    <!-- Cadence Effective Budget -->
-    <div class="budget-row" id="budget-row" style="display:none">
-      <div class="budget-header">
-        <span class="budget-label">⚡ Cadence Budget</span>
-        <span class="budget-value" id="budget-value"></span>
+    <!-- Recommended ceiling (actionable) -->
+    <div class="ceiling-card" id="ceiling-card" style="display:none">
+      <div class="ceiling-header">
+        <span class="ceiling-label">🎯 Today's ceiling</span>
+        <span class="ceiling-value" id="ceiling-value">—</span>
       </div>
-      <div class="budget-track"><div class="budget-fill" id="budget-fill"></div></div>
-      <div class="budget-sub" id="budget-sub"></div>
+      <div class="ceiling-track"><div class="ceiling-fill" id="ceiling-fill"></div></div>
+      <div class="ceiling-sub" id="ceiling-sub"></div>
+    </div>
+
+
+    <!-- Budget Models stacked -->
+    <div class="budget-stack" id="budget-stack" style="display:none">
+      <div class="budget-stack-title">⚡ Energy Budget</div>
+      <!-- Model 1: Visible PacePoints -->
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Visible<span class="bm-asterisk" id="bm1-asterisk" style="display:none">*</span></span>
+          <span class="bm-value" id="bm1-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="bm1-fill"></div></div>
+      </div>
+      <!-- Model 2: WHOOP Recovery-adjusted -->
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Recovery-adj</span>
+          <span class="bm-value" id="bm2-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="bm2-fill"></div></div>
+      </div>
+      <!-- Model 3: Sleep capacity -->
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Sleep capacity</span>
+          <span class="bm-value" id="bm3-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="bm3-fill"></div></div>
+      </div>
+      <!-- Model 4: Yesterday's recovery (lag predictor) -->
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Yesterday recovery</span>
+          <span class="bm-value" id="bm4-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="bm4-fill"></div></div>
+      </div>
     </div>
 
     <!-- Check-in progress -->
     <div id="now-checkin-progress" style="display:none;font-size:11px;color:#3a5a78;margin-top:6px"></div>
 
-    <!-- CTA + optional Visible nudge -->
-    <div id="now-cta"></div>
+
   </div>
 
   <!-- ── WHERE WERE YOU YESTERDAY ── -->
@@ -546,15 +693,115 @@
     <div id="yest-visible-section"></div>
     <div id="yest-checkin-row" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px"></div>
     <div id="yest-sep-2" style="display:none;height:1px;background:rgba(255,255,255,0.07);margin:10px 0"></div>
-    <div class="budget-row" id="yest-budget-row" style="display:none">
-      <div class="budget-header">
-        <span class="budget-label">⚡ Cadence Budget</span>
-        <span class="budget-value" id="yest-budget-value"></span>
+    <!-- Yesterday Budget Models stacked -->
+    <div class="budget-stack" id="yest-budget-stack" style="display:none">
+      <div class="budget-stack-title">⚡ Energy Budget</div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Visible<span class="bm-asterisk" id="ybm1-asterisk" style="display:none">*</span></span>
+          <span class="bm-value" id="ybm1-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="ybm1-fill"></div></div>
       </div>
-      <div class="budget-track"><div class="budget-fill" id="yest-budget-fill"></div></div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Recovery-adj</span>
+          <span class="bm-value" id="ybm2-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="ybm2-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Sleep capacity</span>
+          <span class="bm-value" id="ybm3-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="ybm3-fill"></div></div>
+      </div>
+      <!-- Model 4: Day-before-yesterday recovery (lag predictor) -->
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Prior recovery</span>
+          <span class="bm-value" id="ybm4-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="ybm4-fill"></div></div>
+      </div>
+    </div>
+    <div style="display:none" id="yest-budget-row"><div class="budget-track"><div class="budget-fill" id="yest-budget-fill"></div></div>
       <div class="budget-sub" id="yest-budget-sub"></div>
     </div>
     <div class="chevron">›</div>
+  </div>
+
+  <!-- ── TWO DAYS AGO ── -->
+  <div class="section-label" id="twod-label">Two days ago</div>
+  <div class="tap-card yest-card" id="twod-card">
+    <div class="yest-top" style="justify-content:space-between">
+      <div>
+        <div class="yest-day" id="twod-day">Two days ago</div>
+        <div class="yest-date" id="twod-date"></div>
+      </div>
+      <button class="card-pencil" style="margin-left:auto" onclick="event.stopPropagation();startCheckin(2)" title="Edit two days ago">✏️</button>
+    </div>
+    <div class="yest-metrics">
+      <div class="yest-metric">
+        <div class="yest-metric-label">Recovery</div>
+        <div class="yest-metric-val" id="twod-recovery">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">HRV</div>
+        <div class="yest-metric-val" id="twod-hrv">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">Sleep</div>
+        <div class="yest-metric-val" id="twod-sleep">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">RHR</div>
+        <div class="yest-metric-val" id="twod-rhr">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">SpO2</div>
+        <div class="yest-metric-val" id="twod-spo2">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">Strain</div>
+        <div class="yest-metric-val" id="twod-strain">—</div>
+      </div>
+    </div>
+    <div id="twod-visible-section"></div>
+    <div id="twod-checkin-row" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px"></div>
+    <div id="twod-sep-2" style="display:none;height:1px;background:rgba(255,255,255,0.07);margin:10px 0"></div>
+    <div class="budget-stack" id="twod-budget-stack" style="display:none">
+      <div class="budget-stack-title">⚡ Energy Budget</div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Visible<span class="bm-asterisk" id="tbm1-asterisk" style="display:none">*</span></span>
+          <span class="bm-value" id="tbm1-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="tbm1-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Recovery-adj</span>
+          <span class="bm-value" id="tbm2-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="tbm2-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Sleep capacity</span>
+          <span class="bm-value" id="tbm3-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="tbm3-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Prior recovery</span>
+          <span class="bm-value" id="tbm4-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="tbm4-fill"></div></div>
+      </div>
+    </div>
   </div>
 
   <!-- ── INSIGHTS ── -->
@@ -569,6 +816,35 @@
   <div class="tap-card advice-card" onclick="goToScreen('screen-advice-detail')">
     <div id="advice-list"><div class="insight-empty">Analyzing your patterns…</div></div>
     <div class="chevron">›</div>
+  </div>
+
+  <!-- ── LAG-3 WATCH (Option B) ── -->
+  <div class="section-label">Lag-3 watch</div>
+  <div class="lag3-card" id="lag3-card" style="display:none">
+    <div class="lag3-header">
+      <span class="lag3-label">⚠️ 3 days ago</span>
+      <span class="lag3-date" id="lag3-date"></span>
+    </div>
+    <div class="lag3-value-row">
+      <span class="lag3-value" id="lag3-value">—</span>
+      <span class="lag3-unit">PacePoints</span>
+      <span class="lag3-status" id="lag3-status" style="margin-left:auto">—</span>
+    </div>
+    <div class="lag3-explain" id="lag3-explain">
+      In Hannah's data, activity 3 days ago is the <strong>strongest predictor</strong> of how she'll feel today (−0.74 correlation). High lag-3 = PEM crash window.
+    </div>
+  </div>
+
+  <!-- ── CEILING RULES REFERENCE (Option A) ── -->
+  <div class="section-label">How today's ceiling works</div>
+  <div class="rules-card">
+    <div class="rules-title">🎯 Ceiling rules (in priority order)</div>
+    <div class="rule-row"><span class="rule-cap">4 pts</span><span class="rule-cond"><strong>Mandatory rest</strong> — last 3 days summed > 30 pts (PEM debt).</span></div>
+    <div class="rule-row"><span class="rule-cap">5 pts</span><span class="rule-cond"><strong>Active recovery</strong> — last 2 days summed > 22 pts.</span></div>
+    <div class="rule-row"><span class="rule-cap">6 pts</span><span class="rule-cond"><strong>Recovery day</strong> — yesterday spent > 14 pts (over budget).</span></div>
+    <div class="rule-row"><span class="rule-cap">7 pts</span><span class="rule-cond"><strong>PEM lag risk</strong> — 2 days ago spent > 14 pts.</span></div>
+    <div class="rule-row"><span class="rule-cap">8 pts</span><span class="rule-cond"><strong>Lag-3 PEM window</strong> — 3 days ago spent > 14 pts (highest-risk lag day).</span></div>
+    <div class="rule-row"><span class="rule-cap">14 pts</span><span class="rule-cond"><strong>Full budget</strong> — light recent load.</span></div>
   </div>
 
   <!-- ── HISTORY LINK ── -->
@@ -669,14 +945,14 @@
     </div>
   </div>
 
-  <!-- Q2: PEM -->
+  <!-- Q2: Fatigue -->
   <div class="checkin-section">
-    <div class="checkin-label">Post-exertional malaise</div>
-    <div class="checkin-question">Post-exertional malaise (PEM)?</div>
+    <div class="checkin-label">Fatigue</div>
+    <div class="checkin-question">How fatigued are you?</div>
     <div class="options" id="options-q-2">
-      <button class="option-btn green" onclick="select(2,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Feeling okay after activity</div></div></button>
-      <button class="option-btn yellow" onclick="select(2,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Some fatigue or heaviness</div></div></button>
-      <button class="option-btn red" onclick="select(2,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Significant crash or collapse</div></div></button>
+      <button class="option-btn green" onclick="select(2,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Energy feels normal</div></div></button>
+      <button class="option-btn yellow" onclick="select(2,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Tired but functional</div></div></button>
+      <button class="option-btn red" onclick="select(2,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Wiped out, hard to do anything</div></div></button>
     </div>
   </div>
 
@@ -744,15 +1020,7 @@
     </div>
   </div>
 
-  <!-- Q9: Stimulants -->
-  <div class="checkin-section">
-    <div class="checkin-label">Stimulants</div>
-    <div class="checkin-question">Did you take any stimulants today?</div>
-    <div class="options" id="options-q-9">
-      <button class="option-btn red" onclick="select(9,'yes','⚡ Yes')"><div class="option-icon">⚡</div><div><div class="option-label">Yes</div><div class="option-sub">Adderall, caffeine above normal, or other stimulants</div></div></button>
-      <button class="option-btn green" onclick="select(9,'no','✅ No')"><div class="option-icon">✅</div><div><div class="option-label">No</div><div class="option-sub">No stimulants today</div></div></button>
-    </div>
-  </div>
+  <!-- Q9 (Stimulants) removed — superseded by med tracker -->
 
   <!-- Q10: Compression -->
   <div class="checkin-section">
@@ -776,10 +1044,31 @@
     </div>
   </div>
 
+  <!-- Q12: Hours upright -->
+  <div class="checkin-section">
+    <div class="checkin-label">Hours upright</div>
+    <div class="checkin-question">How many hours were you upright today?</div>
+    <div class="options" id="options-q-12">
+      <button class="option-btn green" onclick="select(12,'lt2','🛋️ < 2 hrs')"><div class="option-icon">🛋️</div><div><div class="option-label">Less than 2 hrs</div><div class="option-sub">Mostly horizontal</div></div></button>
+      <button class="option-btn yellow" onclick="select(12,'2to4','🪑 2-4 hrs')"><div class="option-icon">🪑</div><div><div class="option-label">2-4 hrs</div><div class="option-sub">Mostly seated/reclined</div></div></button>
+      <button class="option-btn yellow" onclick="select(12,'4to6','🧍 4-6 hrs')"><div class="option-icon">🧍</div><div><div class="option-label">4-6 hrs</div><div class="option-sub">Active morning or afternoon</div></div></button>
+      <button class="option-btn red" onclick="select(12,'gt6','🚶 6+ hrs')"><div class="option-icon">🚶</div><div><div class="option-label">6 or more hrs</div><div class="option-sub">Lots of vertical time</div></div></button>
+    </div>
+  </div>
+
+  <!-- Meds tracker (in-flow) -->
+  <div class="checkin-section">
+    <div class="checkin-label">Meds today</div>
+    <div class="checkin-question" style="font-size:16px;">How many of each did you take?</div>
+    <div id="meds-list-checkin" style="margin-top:12px;">
+      <div style="font-size:11px;color:#3a5a78;padding:6px 0;">Loading…</div>
+    </div>
+  </div>
+
   <!-- Notes -->
   <div class="checkin-section" style="border-bottom: none;">
     <div class="checkin-label">Notes (optional)</div>
-    <div class="checkin-question" style="font-size:16px;">Anything else to note?</div>
+    <div class="checkin-question" id="notes-prompt-full" style="font-size:16px;">Anything else to note?</div>
     <textarea class="notes-area" id="notes-field" placeholder="How are you feeling? Anything unusual today?&#10;&#10;(Skip if you don't feel up to it)" onchange="saveNotes()" onblur="saveNotes()"></textarea>
   </div>
 
@@ -821,11 +1110,11 @@
 <div class="screen" id="screen-q2">
   <div class="q-date-tag" id="q-date-tag-q2"></div>
   <div class="question-num">Question 2 of 11</div>
-  <div class="question-text">Post-exertional malaise (PEM)?</div>
+  <div class="question-text">How fatigued are you?</div>
   <div class="options" id="step-options-q-2">
-    <button class="option-btn green" onclick="select(2,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Feeling okay after activity</div></div></button>
-    <button class="option-btn yellow" onclick="select(2,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Some fatigue or heaviness</div></div></button>
-    <button class="option-btn red" onclick="select(2,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Significant crash or collapse</div></div></button>
+    <button class="option-btn green" onclick="select(2,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Energy feels normal</div></div></button>
+    <button class="option-btn yellow" onclick="select(2,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Tired but functional</div></div></button>
+    <button class="option-btn red" onclick="select(2,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Wiped out, hard to do anything</div></div></button>
   </div>
   <div class="nav-row">
     <button class="btn-back" onclick="stepGoTo('q1')">←</button>
@@ -917,27 +1206,13 @@
   </div>
   <div class="nav-row">
     <button class="btn-back" onclick="stepGoTo('q7')">←</button>
-    <button class="btn-next" id="step-next-8" disabled onclick="stepGoTo('q9')">Next →</button>
-  </div>
-</div>
-
-<div class="screen" id="screen-q9">
-  <div class="q-date-tag" id="q-date-tag-q9"></div>
-  <div class="question-num">Question 9 of 11</div>
-  <div class="question-text">Did you take any stimulants today?</div>
-  <div class="options" id="step-options-q-9">
-    <button class="option-btn red" onclick="select(9,'yes','⚡ Yes')"><div class="option-icon">⚡</div><div><div class="option-label">Yes</div><div class="option-sub">Adderall, caffeine above normal, or other stimulants</div></div></button>
-    <button class="option-btn green" onclick="select(9,'no','✅ No')"><div class="option-icon">✅</div><div><div class="option-label">No</div><div class="option-sub">No stimulants today</div></div></button>
-  </div>
-  <div class="nav-row">
-    <button class="btn-back" onclick="stepGoTo('q8')">←</button>
-    <button class="btn-next" id="step-next-9" disabled onclick="stepGoTo('q10')">Next →</button>
+    <button class="btn-next" id="step-next-8" disabled onclick="stepGoTo('q10')">Next →</button>
   </div>
 </div>
 
 <div class="screen" id="screen-q10">
   <div class="q-date-tag" id="q-date-tag-q10"></div>
-  <div class="question-num">Question 10 of 11</div>
+  <div class="question-num">Question 9 of 11</div>
   <div class="question-text">Did you wear compression today?</div>
   <div class="options" id="step-options-q-10">
     <button class="option-btn" onclick="select(10,'none','❌ None')"><div class="option-icon">❌</div><div><div class="option-label">None</div><div class="option-sub">No compression wear today</div></div></button>
@@ -946,14 +1221,14 @@
     <button class="option-btn green" onclick="select(10,'both','✨ Upper &amp; Lower')"><div class="option-icon">✨</div><div><div class="option-label">Upper &amp; Lower</div><div class="option-sub">Full compression today</div></div></button>
   </div>
   <div class="nav-row">
-    <button class="btn-back" onclick="stepGoTo('q9')">←</button>
+    <button class="btn-back" onclick="stepGoTo('q8')">←</button>
     <button class="btn-next" id="step-next-10" disabled onclick="stepGoTo('q11')">Next →</button>
   </div>
 </div>
 
 <div class="screen" id="screen-q11">
   <div class="q-date-tag" id="q-date-tag-q11"></div>
-  <div class="question-num">Question 11 of 11</div>
+  <div class="question-num">Question 10 of 11</div>
   <div class="question-text">Did you hit your sodium goal today?</div>
   <div class="options" id="step-options-q-11">
     <button class="option-btn green" onclick="select(11,'yes','✅ Yes')"><div class="option-icon">✅</div><div><div class="option-label">Yes</div><div class="option-sub">~3,000mg sodium reached</div></div></button>
@@ -961,16 +1236,46 @@
   </div>
   <div class="nav-row">
     <button class="btn-back" onclick="stepGoTo('q10')">←</button>
-    <button class="btn-next" id="step-next-11" disabled onclick="stepGoTo('notes-step')">Next →</button>
+    <button class="btn-next" id="step-next-11" disabled onclick="stepGoTo('q12')">Next →</button>
   </div>
+</div>
+
+<div class="screen" id="screen-q12">
+  <div class="q-date-tag" id="q-date-tag-q12"></div>
+  <div class="question-num">Question 11 of 11</div>
+  <div class="question-text">How many hours were you upright today?</div>
+  <div class="options" id="step-options-q-12">
+    <button class="option-btn green" onclick="select(12,'lt2','🛋️ < 2 hrs')"><div class="option-icon">🛋️</div><div><div class="option-label">Less than 2 hrs</div><div class="option-sub">Mostly horizontal</div></div></button>
+    <button class="option-btn yellow" onclick="select(12,'2to4','🪑 2-4 hrs')"><div class="option-icon">🪑</div><div><div class="option-label">2-4 hrs</div><div class="option-sub">Mostly seated/reclined</div></div></button>
+    <button class="option-btn yellow" onclick="select(12,'4to6','🧍 4-6 hrs')"><div class="option-icon">🧍</div><div><div class="option-label">4-6 hrs</div><div class="option-sub">Active morning or afternoon</div></div></button>
+    <button class="option-btn red" onclick="select(12,'gt6','🚶 6+ hrs')"><div class="option-icon">🚶</div><div><div class="option-label">6 or more hrs</div><div class="option-sub">Lots of vertical time</div></div></button>
+  </div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q11')">←</button>
+    <button class="btn-next" id="step-next-12" disabled onclick="stepGoTo('meds-step')">Next →</button>
+  </div>
+</div>
+
+<div class="screen" id="screen-meds-step">
+  <div class="q-date-tag" id="q-date-tag-meds"></div>
+  <div class="question-num">Meds today</div>
+  <div class="question-text" style="font-size:18px;">How many of each did you take?</div>
+  <div id="meds-list-step" style="margin-top:18px;margin-bottom:18px;">
+    <div style="font-size:11px;color:#3a5a78;padding:6px 0;">Loading…</div>
+  </div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q12')">←</button>
+    <button class="btn-next" style="background:#1a5f8a;" onclick="stepGoTo('notes-step')">Next →</button>
+  </div>
+  <button class="btn-next" style="width:100%;margin-top:8px;background:#1a3558;color:#7a9ab8;" onclick="stepGoTo('notes-step')">Skip meds →</button>
 </div>
 
 <div class="screen" id="screen-notes-step">
   <div class="question-num" style="margin-bottom:12px;">Notes (optional)</div>
-  <div style="color:#7a9ab8;font-size:14px;margin-bottom:16px;">Anything else worth capturing today?</div>
-  <textarea id="notes-field" placeholder="How are you feeling... what happened today..." onchange="saveNotes()" onblur="saveNotes()" style="width:100%;min-height:120px;background:#0d1f35;color:#b0c8e0;border:1px solid #2a4568;border-radius:10px;padding:12px;font-size:15px;resize:vertical;"></textarea>
+  <div id="notes-prompt-step" style="color:#7a9ab8;font-size:14px;margin-bottom:16px;">Anything else worth capturing today?</div>
+  <textarea id="notes-field-step" placeholder="How are you feeling... what happened today..." onchange="saveNotesStep()" onblur="saveNotesStep()" style="width:100%;min-height:120px;background:#0d1f35;color:#b0c8e0;border:1px solid #2a4568;border-radius:10px;padding:12px;font-size:15px;resize:vertical;"></textarea>
   <div class="nav-row" style="margin-top:16px;">
-    <button class="btn-back" onclick="stepGoTo('q11')">←</button>
+    <button class="btn-back" onclick="stepGoTo('meds-step')">←</button>
     <button class="btn-next" style="background:#1a5f8a;" onclick="saveNotes(); stepGoTo('summary-step')">Done →</button>
   </div>
   <button class="btn-next" style="width:100%;margin-top:8px;background:#1a3558;color:#7a9ab8;" onclick="stepGoTo('summary-step')">Skip notes →</button>
@@ -1050,7 +1355,7 @@
   function renderChips(checkin, full=false) {
     if (!checkin) return '';
     const shortFields = [
-      ['Feel', checkin.feeling], ['PEM', checkin.pem], ['Fog', checkin.brain_fog],
+      ['Feel', checkin.feeling], ['Fatigue', checkin.pem], ['Fog', checkin.brain_fog],
       ['Pain', checkin.pain], ['Activity', checkin.activity],
     ];
     const allFields = [
@@ -1098,7 +1403,10 @@
     if (fog) parts.push(`<span class="ci-chip"><span class="ci-chip-label">Fog</span><span class="ci-chip-val ${visibleSeverityClass(fog)}">${visibleSymptomLabel(fog)}</span></span>`);
     if (!parts.length) return '';
     return `<div style="margin-top:8px;padding-top:8px;border-top:1px solid #1e2d3d">
-      <div style="font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#5a7a98;margin-bottom:6px">Visible</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#5a7a98">Visible</div>
+        <label for="visible-file-input" title="Re-upload Visible data" onclick="event.stopPropagation()" style="cursor:pointer;font-size:13px;color:#3a5a78;line-height:1">✏️</label>
+      </div>
       <div style="display:flex;flex-wrap:wrap;gap:6px">${parts.join('')}</div>
     </div>`;
   }
@@ -1346,7 +1654,8 @@
     // Check-in progress count
     const ciProgressEl = document.getElementById('now-checkin-progress');
     if (ciProgressEl && todayCI) {
-      const ciFields = ['feeling','pem','brain_fog','pain','activity','left_home','food','probiotics','stimulants','compression','sodium_goal'];
+      // Note: stimulants intentionally excluded — question removed, replaced by med_log
+      const ciFields = ['feeling','pem','brain_fog','pain','activity','left_home','food','probiotics','compression','sodium_goal','hours_upright'];
       const ciAnswered = ciFields.filter(f => todayCI[f] != null && todayCI[f] !== '').length;
       ciProgressEl.textContent = `${ciAnswered} of ${ciFields.length} questions answered`;
       ciProgressEl.style.display = 'block';
@@ -1374,19 +1683,23 @@
       if (nowSep2) nowSep2.style.display = 'none';
     }
 
+    const nowPencil = document.getElementById('now-pencil');
     if (todayDone) {
       nowCard.className = 'tap-card now-card done';
-      pill.style.display = 'none'; // data speaks for itself
+      pill.style.display = 'none';
+      nowPencil.style.display = 'inline-flex'; // show pencil to edit
     } else if (todayPartial) {
       nowCard.className = 'tap-card now-card partial';
       pill.style.display = ''; pill.className = 'now-status-pill partial'; pill.textContent = 'In progress';
+      nowPencil.style.display = 'inline-flex'; // show pencil to continue
     } else {
       nowCard.className = 'tap-card now-card';
       pill.style.display = ''; pill.className = 'now-status-pill empty'; pill.textContent = 'Not started';
+      nowPencil.style.display = 'none'; // not started — no pencil, tap card to start
     }
 
-    // Visible nudge — only show when no data and check-in is done
-    nowCta.innerHTML = (!hasVisibleToday && (todayDone || todayCI)) ? `
+    // Visible nudge — big button when no data; pencil is now in the Visible section header
+    nowCta.innerHTML = !hasVisibleToday ? `
       <label for="visible-file-input" class="visible-nudge" style="width:100%;margin-top:8px;cursor:pointer;display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:#2a2208">
         <span class="visible-nudge-icon">📊</span>
         <span class="visible-nudge-text">Add Visible data</span>
@@ -1430,34 +1743,78 @@
       yStrain != null ? `${yStrain.toFixed(1)}${trendArrow(yStrain,tdStrain,false)}` : '<span class="rec-none">—</span>';
     document.getElementById('yest-checkin-row').innerHTML = renderChips(yestCI, false);
 
-    // Cadence Budget for yesterday
+    // Yesterday Budget Models (stacked)
     (function() {
-      const yestRec = yestW?.recovery?.score?.recovery_score;
-      const yestVis = dashData?.visible?.[yestDate];
-      const yobs = yestVis?.observations || [];
-      const getYestObs = n => yestVis?.measurements?.[n] ?? yobs.find(o=>o.tracker_name===n)?.value;
-      const yStabilityRaw = getYestObs('Stability Score');
-      const yPacePoints   = getYestObs('PacePoints');
+      const yestRec  = yestW?.recovery?.score?.recovery_score;
+      const yestSlp  = yestW?.sleep?.score?.sleep_performance_percentage;
+      const yestVis  = dashData?.visible?.[yestDate];
+      const yobs     = yestVis?.observations || [];
+      const getYObs  = n => yestVis?.measurements?.[n] ?? yobs.find(o=>o.tracker_name===n)?.value;
+      const yPace    = getYObs('PacePoints');
       const baseBudget = 14;
       const yestSep2El = document.getElementById('yest-sep-2');
-      if (yestRec == null) {
-        document.getElementById('yest-budget-row').style.display = 'none';
+
+      const yestCI     = dashData?.checkins?.[yestDate];
+      // Adderall flag: prefer structured med_log; fall back to legacy stimulants/notes for old records
+      const yAdderall  = (dashData?.meds?.[yestDate]?.adderall > 0) ||
+                         (yestCI?.stimulants === true) || (yestCI?.stimulants === 'yes') ||
+                         (yestCI?.notes || '').toLowerCase().includes('adderall');
+
+      const yStackEl = document.getElementById('yest-budget-stack');
+      if (yPace == null && yestRec == null && yestSlp == null) {
+        yStackEl.style.display = 'none';
         if (yestSep2El) yestSep2El.style.display = 'none';
+        return;
+      }
+      yStackEl.style.display = 'block';
+      if (yestSep2El) yestSep2El.style.display = 'block';
+
+      function setBar(fillId, valueId, pct, label, color) {
+        document.getElementById(fillId).style.width = Math.min(100, pct) + '%';
+        document.getElementById(fillId).style.background = color || (pct >= 85 ? '#e05a5a' : pct >= 60 ? '#f0c040' : '#4caf7d');
+        document.getElementById(valueId).textContent = label;
+      }
+
+      // Model 1: Visible PacePoints
+      if (yPace != null) {
+        const pct1 = Math.round((yPace / baseBudget) * 100);
+        setBar('ybm1-fill', 'ybm1-value', pct1, `${yPace} / ${baseBudget} pts`);
+        document.getElementById('ybm1-asterisk').style.display = yAdderall ? 'inline' : 'none';
       } else {
-        const yStabilityFactor = yStabilityRaw != null ? (0.4 + (yStabilityRaw - 1) * 0.15) : 1.0;
-        const yEffectiveBudget = Math.max(1, Math.round(baseBudget * (yestRec / 100) * yStabilityFactor));
-        const ySpent = yPacePoints ?? 0;
-        const yPct   = Math.min(100, Math.round((ySpent / yEffectiveBudget) * 100));
-        const yFillColor = yPct >= 85 ? '#e05a5a' : yPct >= 60 ? '#f0c040' : '#4caf7d';
-        document.getElementById('yest-budget-row').style.display = 'block';
-        if (yestSep2El) yestSep2El.style.display = 'block';
-        const yUnderBudget = yPacePoints != null && ySpent < yEffectiveBudget;
-        document.getElementById('yest-budget-value').textContent =
-          yPacePoints != null ? `${ySpent} / ${yEffectiveBudget} pts${yUnderBudget ? ' 👍' : ''}` : `${yEffectiveBudget} pts available`;
-        document.getElementById('yest-budget-fill').style.width = yPct + '%';
-        document.getElementById('yest-budget-fill').style.background = yFillColor;
-        document.getElementById('yest-budget-sub').textContent =
-          `Based on ${yestRec}% recovery${yStabilityRaw != null ? ` · stability ${yStabilityRaw}/5` : ''} · Visible budget adjusted`;
+        document.getElementById('ybm1-value').textContent = '—';
+        document.getElementById('ybm1-fill').style.width = '0%';
+      }
+
+      // Model 2: Recovery-adjusted
+      if (yestRec != null) {
+        const adjBudget = Math.max(1, Math.round(baseBudget * (yestRec / 100)));
+        const spent2    = yPace ?? 0;
+        const pct2      = yPace != null ? Math.round((spent2 / adjBudget) * 100) : yestRec;
+        const label2    = yPace != null ? `${spent2} / ${adjBudget} pts` : `${yestRec}% → ${adjBudget} pts`;
+        setBar('ybm2-fill', 'ybm2-value', pct2, label2);
+      } else {
+        document.getElementById('ybm2-value').textContent = '—';
+        document.getElementById('ybm2-fill').style.width = '0%';
+      }
+
+      // Model 3: Sleep capacity
+      if (yestSlp != null) {
+        const slColor = yestSlp >= 85 ? '#4caf7d' : yestSlp >= 60 ? '#f0c040' : '#e05a5a';
+        setBar('ybm3-fill', 'ybm3-value', yestSlp, `${yestSlp}%`, slColor);
+      } else {
+        document.getElementById('ybm3-value').textContent = '—';
+        document.getElementById('ybm3-fill').style.width = '0%';
+      }
+
+      // Model 4: Day-before-yesterday recovery (lag predictor for yesterday)
+      const twoDaysAgoW  = dashData?.whoop?.[dateKey(2)];
+      const twoDaysAgoRec = twoDaysAgoW?.recovery?.score?.recovery_score;
+      if (twoDaysAgoRec != null) {
+        const slColor4 = twoDaysAgoRec >= 67 ? '#4caf7d' : twoDaysAgoRec >= 34 ? '#f0c040' : '#e05a5a';
+        setBar('ybm4-fill', 'ybm4-value', twoDaysAgoRec, `${twoDaysAgoRec}%`, slColor4);
+      } else {
+        document.getElementById('ybm4-value').textContent = '—';
+        document.getElementById('ybm4-fill').style.width = '0%';
       }
     })();
 
@@ -1474,6 +1831,134 @@
     // Visible data for yesterday detail screen
     document.getElementById('yest-d-visible').innerHTML = renderVisibleDetail(yestVisible);
 
+    // ── TWO DAYS AGO ──
+    (function renderTwoDaysAgo() {
+      const twoDDate_local = dateKey(2);
+      const threeDDate     = dateKey(3);
+      const tdW            = dashData?.whoop?.[twoDDate_local];
+      const trDW           = dashData?.whoop?.[threeDDate]; // for trend arrows
+      const tdCI           = dashData?.checkins?.[twoDDate_local];
+      const tdVis          = dashData?.visible?.[twoDDate_local];
+
+      const twodCard = document.getElementById('twod-card');
+      const twodLabel = document.getElementById('twod-label');
+
+      // Hide the whole card if no data at all
+      if (!tdW && !tdCI && !tdVis) {
+        twodCard.style.display = 'none';
+        twodLabel.style.display = 'none';
+        return;
+      }
+      twodCard.style.display = '';
+      twodLabel.style.display = '';
+
+      document.getElementById('twod-date').textContent = formatDateShort(twoDDate_local);
+
+      const tRec    = tdW?.recovery?.score?.recovery_score;
+      const tHrv    = tdW?.recovery?.score?.hrv_rmssd_milli;
+      const tSleep  = tdW?.sleep?.score?.sleep_performance_percentage;
+      const tRhr    = tdW?.recovery?.score?.resting_heart_rate;
+      const tSpo2   = tdW?.recovery?.score?.spo2_percentage;
+      const tStrain = tdW?.strain?.score?.strain;
+
+      const trRec   = trDW?.recovery?.score?.recovery_score;
+      const trHrv   = trDW?.recovery?.score?.hrv_rmssd_milli;
+      const trSleep = trDW?.sleep?.score?.sleep_performance_percentage;
+      const trRhr   = trDW?.recovery?.score?.resting_heart_rate;
+      const trSpo2  = trDW?.recovery?.score?.spo2_percentage;
+      const trStrain= trDW?.strain?.score?.strain;
+
+      document.getElementById('twod-recovery').innerHTML =
+        tRec != null ? `<span class="${recClass(tRec)}">${tRec}</span><span class="yest-metric-unit">%</span>${trendArrow(tRec,trRec,true)}` : '—';
+      document.getElementById('twod-hrv').innerHTML =
+        tHrv != null ? `${tHrv.toFixed(0)}<span class="yest-metric-unit"> ms</span>${trendArrow(tHrv,trHrv,true)}` : '—';
+      document.getElementById('twod-sleep').innerHTML =
+        tSleep != null ? `${tSleep}<span class="yest-metric-unit">%</span>${trendArrow(tSleep,trSleep,true)}` : '—';
+      document.getElementById('twod-rhr').innerHTML =
+        tRhr != null ? `${tRhr}<span class="yest-metric-unit"> bpm</span>${trendArrow(tRhr,trRhr,false)}` : '—';
+      document.getElementById('twod-spo2').innerHTML =
+        tSpo2 != null ? `${tSpo2.toFixed(1)}<span class="yest-metric-unit">%</span>${trendArrow(tSpo2,trSpo2,true)}` : '—';
+      document.getElementById('twod-strain').innerHTML =
+        tStrain != null ? `${tStrain.toFixed(1)}${trendArrow(tStrain,trStrain,false)}` : '<span class="rec-none">—</span>';
+
+      document.getElementById('twod-checkin-row').innerHTML = renderChips(tdCI, false);
+
+      const twodVisibleEl = document.getElementById('twod-visible-section');
+      if (tdVis) {
+        twodVisibleEl.innerHTML = renderVisibleCompact(tdVis);
+        twodVisibleEl.style.display = 'block';
+      } else {
+        twodVisibleEl.style.display = 'none';
+      }
+
+      // Budget models for two days ago
+      const tobs    = tdVis?.observations || [];
+      const getTObs = n => tdVis?.measurements?.[n] ?? tobs.find(o=>o.tracker_name===n)?.value;
+      const tPace   = getTObs('PacePoints');
+      const baseBudget = 14;
+      const tStackEl  = document.getElementById('twod-budget-stack');
+      const twodSep2El= document.getElementById('twod-sep-2');
+      // Adderall flag: prefer structured med_log; fall back to legacy stimulants/notes for old records
+      const tAdderall = (dashData?.meds?.[twoDDate_local]?.adderall > 0) ||
+                        (tdCI?.stimulants === true) || (tdCI?.stimulants === 'yes') ||
+                        (tdCI?.notes || '').toLowerCase().includes('adderall');
+
+      if (tPace == null && tRec == null && tSleep == null) {
+        tStackEl.style.display = 'none';
+        if (twodSep2El) twodSep2El.style.display = 'none';
+        return;
+      }
+      tStackEl.style.display = 'block';
+      if (twodSep2El) twodSep2El.style.display = 'block';
+
+      function setBar(fillId, valueId, pct, label, color) {
+        document.getElementById(fillId).style.width = Math.min(100, pct) + '%';
+        document.getElementById(fillId).style.background = color || (pct >= 85 ? '#e05a5a' : pct >= 60 ? '#f0c040' : '#4caf7d');
+        document.getElementById(valueId).textContent = label;
+      }
+
+      // Model 1: Visible PacePoints
+      if (tPace != null) {
+        const pct1 = Math.round((tPace / baseBudget) * 100);
+        setBar('tbm1-fill', 'tbm1-value', pct1, `${tPace} / ${baseBudget} pts`);
+        document.getElementById('tbm1-asterisk').style.display = tAdderall ? 'inline' : 'none';
+      } else {
+        document.getElementById('tbm1-value').textContent = '—';
+        document.getElementById('tbm1-fill').style.width = '0%';
+      }
+
+      // Model 2: Recovery-adjusted
+      if (tRec != null) {
+        const adjBudget = Math.max(1, Math.round(baseBudget * (tRec / 100)));
+        const spent2    = tPace ?? 0;
+        const pct2      = tPace != null ? Math.round((spent2 / adjBudget) * 100) : tRec;
+        const label2    = tPace != null ? `${spent2} / ${adjBudget} pts` : `${tRec}% → ${adjBudget} pts`;
+        setBar('tbm2-fill', 'tbm2-value', pct2, label2);
+      } else {
+        document.getElementById('tbm2-value').textContent = '—';
+        document.getElementById('tbm2-fill').style.width = '0%';
+      }
+
+      // Model 3: Sleep capacity
+      if (tSleep != null) {
+        const slColor = tSleep >= 85 ? '#4caf7d' : tSleep >= 60 ? '#f0c040' : '#e05a5a';
+        setBar('tbm3-fill', 'tbm3-value', tSleep, `${tSleep}%`, slColor);
+      } else {
+        document.getElementById('tbm3-value').textContent = '—';
+        document.getElementById('tbm3-fill').style.width = '0%';
+      }
+
+      // Model 4: Three-days-ago recovery (lag predictor for two days ago)
+      const threeDRec = trDW?.recovery?.score?.recovery_score;
+      if (threeDRec != null) {
+        const slColor4 = threeDRec >= 67 ? '#4caf7d' : threeDRec >= 34 ? '#f0c040' : '#e05a5a';
+        setBar('tbm4-fill', 'tbm4-value', threeDRec, `${threeDRec}%`, slColor4);
+      } else {
+        document.getElementById('tbm4-value').textContent = '—';
+        document.getElementById('tbm4-fill').style.width = '0%';
+      }
+    })();
+
     // ── YESTERDAY DETAIL SCREEN ──
     document.getElementById('yest-detail-title').textContent =
       `Yesterday · ${formatDateShort(yestDate)}`;
@@ -1486,7 +1971,7 @@
 
     if (yestCI) {
       const fields = [
-        ['Overall feeling', yestCI.feeling], ['PEM', yestCI.pem], ['Brain fog', yestCI.brain_fog],
+        ['Overall feeling', yestCI.feeling], ['Fatigue', yestCI.pem], ['Brain fog', yestCI.brain_fog],
         ['Pain', yestCI.pain], ['Activity', yestCI.activity], ['Left home', yestCI.left_home],
         ['Food', yestCI.food], ['Probiotics', yestCI.probiotics],
       ].filter(([,v]) => v);
@@ -1522,42 +2007,273 @@
       list.appendChild(row);
     }
 
-    // ── CADENCE EFFECTIVE BUDGET ──
+    // ── RECOMMENDED CEILING (actionable) ──
     (function() {
-      const recovery = todayW?.recovery?.score?.recovery_score;
-      const visToday = dashData?.visible?.[todayDate];
-      const obs = visToday?.observations || [];
-      const getObs = n => visToday?.measurements?.[n] ?? obs.find(o=>o.tracker_name===n)?.value;
-      const stabilityRaw = getObs('Stability Score');  // 1–5
-      const pacePoints   = getObs('PacePoints');        // spent so far
-      const baseBudget   = 14;
+      const baseBudget = 14;
+      // Get last 3 days of PacePoints
+      const lag = [1,2,3].map(i => {
+        const d = dateKey(i);
+        const v = dashData?.visible?.[d];
+        const obs = v?.observations || [];
+        return v?.measurements?.PacePoints ?? obs.find(o=>o.tracker_name==='PacePoints')?.value ?? null;
+      });
+      const lag1 = lag[0], lag2 = lag[1], lag3 = lag[2];
 
-      if (recovery == null) {
-        document.getElementById('budget-row').style.display = 'none';
+      // Need at least 1 day of history to compute ceiling
+      if (lag1 == null && lag2 == null && lag3 == null) {
+        document.getElementById('ceiling-card').style.display = 'none';
+      } else {
+        // Weighted recent load (lag-3 weighted heaviest per the -0.74 correlation)
+        // Total weight = 1.0 ; lag1=0.30, lag2=0.30, lag3=0.40
+        const w1 = lag1 != null ? lag1 * 0.30 : 0;
+        const w2 = lag2 != null ? lag2 * 0.30 : 0;
+        const w3 = lag3 != null ? lag3 * 0.40 : 0;
+        const weightedLoad = w1 + w2 + w3;
+
+        // 3-day raw sum for the rules
+        const rawSum = (lag1||0) + (lag2||0) + (lag3||0);
+        const days = lag.filter(v => v != null).length;
+
+        // Find the highest single day in the lookback window
+        const maxLag = Math.max(lag1||0, lag2||0, lag3||0);
+
+        // Hard rules (override weighted ceiling)
+        let ceiling, reason;
+        if (rawSum > 30 && days >= 3) {
+          ceiling = 4;
+          reason = `<span class="ceiling-sub-strong">Mandatory rest.</span> 3-day load is ${rawSum.toFixed(0)} pts (over 30) — PEM debt.`;
+        } else if ((lag1 != null && lag2 != null) && (lag1 + lag2) > 22) {
+          ceiling = 5;
+          reason = `<span class="ceiling-sub-strong">Active recovery.</span> 2-day load is ${(lag1+lag2).toFixed(0)} pts (over 22).`;
+        } else if (lag1 != null && lag1 > baseBudget) {
+          ceiling = 6;
+          reason = `<span class="ceiling-sub-strong">Recovery day.</span> Yesterday spent ${lag1.toFixed(0)} pts (over ${baseBudget}).`;
+        } else if (lag2 != null && lag2 > baseBudget) {
+          // 2 days ago overshoot — PEM lag risk
+          ceiling = 7;
+          reason = `<span class="ceiling-sub-strong">PEM lag risk.</span> 2 days ago spent ${lag2.toFixed(0)} pts — crash often shows up today.`;
+        } else if (lag3 != null && lag3 > baseBudget) {
+          // Lag-3 is the strongest negative correlation (−0.74) — strongest warning
+          ceiling = 8;
+          reason = `<span class="ceiling-sub-strong">Lag-3 PEM window.</span> 3 days ago spent ${lag3.toFixed(0)} pts — the highest-risk lag day.`;
+        } else {
+          // Weighted formula: gradual reduction based on recent load
+          const baseline = baseBudget * (days / 3);
+          const reduction = Math.max(0, weightedLoad - baseline * 0.7) * 0.5;
+          ceiling = Math.max(6, Math.round(baseBudget - reduction));
+          if (ceiling >= baseBudget) {
+            reason = `Light recent load — full budget today.`;
+          } else {
+            reason = `Recent load: ${weightedLoad.toFixed(1)} pts (lag-3 weighted). Pace yourself.`;
+          }
+        }
+
+        // Today's spend so far
+        const visTodayObs = (dashData?.visible?.[todayDate]?.observations) || [];
+        const todaySpent = dashData?.visible?.[todayDate]?.measurements?.PacePoints ??
+                           visTodayObs.find(o=>o.tracker_name==='PacePoints')?.value ?? 0;
+
+        const pct = Math.min(100, Math.round((todaySpent / ceiling) * 100));
+        const fillColor = pct >= 100 ? '#e05a5a' : pct >= 80 ? '#f0c040' : '#c9a84c';
+
+        document.getElementById('ceiling-card').style.display = 'block';
+        document.getElementById('ceiling-value').textContent =
+          todaySpent > 0 ? `${todaySpent.toFixed(1)} / ${ceiling} pts` : `${ceiling} pts`;
+        document.getElementById('ceiling-fill').style.width = pct + '%';
+        document.getElementById('ceiling-fill').style.background = fillColor;
+        document.getElementById('ceiling-sub').innerHTML = reason;
+      }
+    })();
+
+    // ── LAG-3 WATCH (standalone PEM lag indicator) ──
+    (function() {
+      const lag3Date = dateKey(3);
+      const lag3Vis = dashData?.visible?.[lag3Date];
+      const lag3Obs = lag3Vis?.observations || [];
+      const lag3Pace = lag3Vis?.measurements?.PacePoints ?? lag3Obs.find(o=>o.tracker_name==='PacePoints')?.value;
+      const card = document.getElementById('lag3-card');
+      if (lag3Pace == null) {
+        card.style.display = 'none';
         return;
       }
+      card.style.display = 'block';
+      document.getElementById('lag3-date').textContent = formatDateShort(lag3Date);
+      document.getElementById('lag3-value').textContent = lag3Pace.toFixed(1);
 
-      // Stability modifier: 1.0 when no data, scales 0.4–1.0 over 1–5
-      const stabilityFactor = stabilityRaw != null ? (0.4 + (stabilityRaw - 1) * 0.15) : 1.0;
-      const effectiveBudget = Math.max(1, Math.round(baseBudget * (recovery / 100) * stabilityFactor));
-      const spent = pacePoints ?? 0;
-      const pct   = Math.min(100, Math.round((spent / effectiveBudget) * 100));
+      const statusEl = document.getElementById('lag3-status');
+      const explainEl = document.getElementById('lag3-explain');
+      if (lag3Pace > 14) {
+        statusEl.className = 'lag3-status high';
+        statusEl.textContent = '🔴 High risk';
+        explainEl.innerHTML = `<strong>PEM crash window today.</strong> Lag-3 spike of ${lag3Pace.toFixed(1)} pts is over budget. In your data, this is the strongest predictor of feeling worse — plan a quiet day.`;
+      } else if (lag3Pace > 8) {
+        statusEl.className = 'lag3-status med';
+        statusEl.textContent = '🟡 Watch';
+        explainEl.innerHTML = `Moderate lag-3 spend (${lag3Pace.toFixed(1)} pts). Some PEM lag risk — pace yourself, listen for early symptoms.`;
+      } else {
+        statusEl.className = 'lag3-status low';
+        statusEl.textContent = '🟢 Clear';
+        explainEl.innerHTML = `Low lag-3 spend (${lag3Pace.toFixed(1)} pts). The 3-day-ago PEM window is clear today.`;
+      }
+    })();
 
-      // Color: green < 60%, yellow 60–85%, red > 85%
-      const fillColor = pct >= 85 ? '#e05a5a' : pct >= 60 ? '#f0c040' : '#4caf7d';
+    // ── BUDGET MODELS (stacked) ──
+    (function() {
+      const recovery   = todayW?.recovery?.score?.recovery_score;
+      const sleepPerf  = todayW?.sleep?.score?.sleep_performance_percentage;
+      const visToday   = dashData?.visible?.[todayDate];
+      const obs        = visToday?.observations || [];
+      const getObs     = n => visToday?.measurements?.[n] ?? obs.find(o=>o.tracker_name===n)?.value;
+      const pacePoints = getObs('PacePoints');
+      const baseBudget = 14;
 
-      document.getElementById('budget-row').style.display = 'block';
-      document.getElementById('budget-value').textContent =
-        pacePoints != null ? `${spent} / ${effectiveBudget} pts` : `${effectiveBudget} pts available`;
-      document.getElementById('budget-fill').style.width  = pct + '%';
-      document.getElementById('budget-fill').style.background = fillColor;
-      document.getElementById('budget-sub').textContent =
-        `Based on ${recovery}% recovery${stabilityRaw != null ? ` · stability ${stabilityRaw}/5` : ''} · Visible budget adjusted`;
+      // Check for Adderall in today's check-in notes
+      const todayCI    = dashData?.checkins?.[todayDate];
+      // Adderall flag: prefer structured med_log; fall back to legacy stimulants/notes for old records
+      const hasAdderall = (dashData?.meds?.[todayDate]?.adderall > 0) ||
+                          (todayCI?.stimulants === true) || (todayCI?.stimulants === 'yes') ||
+                          (todayCI?.notes || '').toLowerCase().includes('adderall');
+
+      const stackEl = document.getElementById('budget-stack');
+      if (pacePoints == null && recovery == null && sleepPerf == null) {
+        stackEl.style.display = 'none'; return;
+      }
+      stackEl.style.display = 'block';
+
+      function setBar(fillId, valueId, pct, label, color) {
+        document.getElementById(fillId).style.width = Math.min(100, pct) + '%';
+        document.getElementById(fillId).style.background = color || (pct >= 85 ? '#e05a5a' : pct >= 60 ? '#f0c040' : '#4caf7d');
+        document.getElementById(valueId).textContent = label;
+      }
+
+      // Model 1: Visible PacePoints vs base budget
+      if (pacePoints != null) {
+        const pct1 = Math.round((pacePoints / baseBudget) * 100);
+        setBar('bm1-fill', 'bm1-value', pct1, `${pacePoints} / ${baseBudget} pts`);
+        document.getElementById('bm1-asterisk').style.display = hasAdderall ? 'inline' : 'none';
+      } else {
+        document.getElementById('bm1-value').textContent = '—';
+        document.getElementById('bm1-fill').style.width = '0%';
+      }
+
+      // Model 2: WHOOP Recovery-adjusted budget (how much she could handle)
+      if (recovery != null) {
+        const adjBudget = Math.max(1, Math.round(baseBudget * (recovery / 100)));
+        const spent2    = pacePoints ?? 0;
+        const pct2      = pacePoints != null ? Math.round((spent2 / adjBudget) * 100) : recovery;
+        const label2    = pacePoints != null ? `${spent2} / ${adjBudget} pts` : `${recovery}% → ${adjBudget} pts`;
+        setBar('bm2-fill', 'bm2-value', pct2, label2);
+      } else {
+        document.getElementById('bm2-value').textContent = '—';
+        document.getElementById('bm2-fill').style.width = '0%';
+      }
+
+      // Model 3: Sleep capacity (0–100% bar, sleep performance score)
+      if (sleepPerf != null) {
+        const slColor = sleepPerf >= 85 ? '#4caf7d' : sleepPerf >= 60 ? '#f0c040' : '#e05a5a';
+        setBar('bm3-fill', 'bm3-value', sleepPerf, `${sleepPerf}%`, slColor);
+      } else {
+        document.getElementById('bm3-value').textContent = '—';
+        document.getElementById('bm3-fill').style.width = '0%';
+      }
+
+      // Model 4: Yesterday's recovery (lag predictor — what she banked going into today)
+      const yestW_today = dashData?.whoop?.[dateKey(1)];
+      const yestRec_today = yestW_today?.recovery?.score?.recovery_score;
+      if (yestRec_today != null) {
+        const slColor4 = yestRec_today >= 67 ? '#4caf7d' : yestRec_today >= 34 ? '#f0c040' : '#e05a5a';
+        setBar('bm4-fill', 'bm4-value', yestRec_today, `${yestRec_today}%`, slColor4);
+      } else {
+        document.getElementById('bm4-value').textContent = '—';
+        document.getElementById('bm4-fill').style.width = '0%';
+      }
     })();
 
     // ── INSIGHTS + ADVICE ──
     loadInsights();
     loadAdvice();
+  }
+
+  // ── Meds tracker ───────────────────────────────────────
+  // medCounts is keyed per-date so we can show different counts in different
+  // contexts (today on home, plus the check-in's active date inside a flow).
+  let medCatalog = [];                     // [{key,label,note}, ...]
+  const medCountsByDate = {};              // { '2026-05-01': { aleve: 2, ... }, ... }
+  function getMedCounts(date) { return medCountsByDate[date] || {}; }
+  function activeMedsDate() {
+    // In check-in flows, point at the active check-in date; otherwise today
+    const inCheckin = document.getElementById('screen-checkin')?.classList.contains('active') ||
+                      document.getElementById('screen-meds-step')?.classList.contains('active');
+    if (inCheckin && typeof activeDate === 'string' && activeDate) return activeDate;
+    return dateKey(0);
+  }
+  async function loadMeds(date) {
+    const d = date || dateKey(0);
+    try {
+      const promises = [];
+      if (!medCatalog.length) promises.push(fetch('/api/meds/list').then(r => r.json()));
+      promises.push(fetch(userParam('/api/meds?date=' + d)).then(r => r.json()));
+      const results = await Promise.all(promises);
+      if (results.length === 2) {
+        medCatalog = results[0].meds || [];
+        medCountsByDate[d] = results[1].counts || {};
+      } else {
+        medCountsByDate[d] = results[0].counts || {};
+      }
+      renderMeds();
+    } catch(e) { console.warn('loadMeds error', e); }
+  }
+  function renderMeds() {
+    const containers = ['meds-list-checkin', 'meds-list-step'];
+    if (!medCatalog.length) {
+      containers.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = '<div style="font-size:11px;color:#3a5a78;padding:6px 0;">No meds configured.</div>';
+      });
+      return;
+    }
+    const activeD = activeMedsDate();
+    function renderInto(elId, date) {
+      const el = document.getElementById(elId); if (!el) return;
+      const counts = getMedCounts(date);
+      el.innerHTML = medCatalog.map(m => {
+        const c = counts[m.key] || 0;
+        const countCls = c === 0 ? 'med-count zero' : 'med-count';
+        return `<div class="med-row">
+          <div class="med-name">
+            <div class="med-label">${m.label}</div>
+            <div class="med-note">${m.note || ''}</div>
+          </div>
+          <span class="${countCls}">${c}</span>
+          <div class="med-stepper">
+            <button class="med-btn" onclick="medStep('${m.key}',-1,'${date}')" ${c===0?'disabled':''}>−</button>
+            <div class="med-btn-divider"></div>
+            <button class="med-btn" onclick="medStep('${m.key}',1,'${date}')">+</button>
+          </div>
+        </div>`;
+      }).join('');
+    }
+    renderInto('meds-list-checkin', activeD);
+    renderInto('meds-list-step',   activeD);
+  }
+  async function medStep(med, delta, date) {
+    const d = date || activeMedsDate();
+    if (!medCountsByDate[d]) medCountsByDate[d] = {};
+    const prev = medCountsByDate[d][med] || 0;
+    const next = Math.max(0, Math.min(50, prev + delta));
+    medCountsByDate[d][med] = next;
+    renderMeds();
+    try {
+      await fetch(userParam('/api/meds/inc'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ med, date: d, delta }),
+      });
+    } catch(e) {
+      // Revert on failure
+      medCountsByDate[d][med] = prev;
+      renderMeds();
+    }
   }
 
   // ── Navigation ─────────────────────────────────
@@ -1586,6 +2302,7 @@
     let id;
     if (n === 'mode') id = 'screen-checkin-mode';
     else if (n === 'notes-step') id = 'screen-notes-step';
+    else if (n === 'meds-step') { id = 'screen-meds-step'; renderMeds(); }
     else if (n === 'summary-step') { id = 'screen-summary-step'; updateStepSummary(); }
     else id = 'screen-' + n;
     const el = document.getElementById(id);
@@ -1594,7 +2311,7 @@
   }
 
   function startStepFlow() {
-    for (let i = 1; i <= 11; i++) {
+    for (let i = 1; i <= 12; i++) {
       const nb = document.getElementById('step-next-' + i);
       if (nb) nb.disabled = !answers[i];
       // Re-mark pre-populated answers in step containers
@@ -1615,17 +2332,20 @@
   }
 
   function updateStepSummary() {
-    const qLabels = ['','Feeling','PEM','Brain fog','Pain','Activity','Left home','Food','Probiotics','Stimulants','Compression','Sodium goal'];
+    // Index 9 (Stimulants) intentionally empty — question removed but data preserved
+    const qLabels = ['','Feeling','Fatigue','Brain fog','Pain','Activity','Left home','Food','Probiotics','','Compression','Sodium goal','Hours upright'];
     const icons = { good:'😊', mixed:'😐', bad:'😔', none:'✅', mild:'⚠️', severe:'🚨',
       rested:'🛋️', light:'🚶', demanding:'💪', yes:'✅', no:'❌', clean:'🥗',
-      inflammatory:'🍔', upper:'👕', lower:'🧦', both:'✅' };
+      inflammatory:'🍔', upper:'👕', lower:'🧦', both:'✅',
+      lt2:'🛋️', '2to4':'🪑', '4to6':'🧍', gt6:'🚶' };
     const container = document.getElementById('step-summary-rows');
     if (!container) return;
     let html = '';
-    for (let i = 1; i <= 11; i++) {
+    for (let i = 1; i <= 12; i++) {
       const a = answers[i];
       const icon = a ? (icons[a.val] || '•') : '—';
       const lbl = a ? a.label : 'Skipped';
+      if (!qLabels[i]) continue;  // skip removed/empty questions
       html += `<div class="step-summary-row"><span class="step-sum-icon">${icon}</span><span style="color:#7a9ab8;min-width:110px">${qLabels[i]}</span><span>${lbl}</span></div>`;
     }
     if (answers.notes) {
@@ -1641,6 +2361,7 @@
     Object.keys(answers).forEach(k => delete answers[k]);
     document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
     document.getElementById('notes-field').value = '';
+    const stepNotes = document.getElementById('notes-field-step'); if (stepNotes) stepNotes.value = '';
 
     const label = offset === 0 ? 'Today · ' + formatDateShort(activeDate)
                 : offset === 1 ? 'Yesterday · ' + formatDateShort(activeDate)
@@ -1666,6 +2387,7 @@
           9:{field:'stimulants',options:{yes:'⚡ Yes',no:'✅ No'}},
           10:{field:'compression',options:{none:'❌ None',upper:'💪 Upper',lower:'🧦 Lower',both:'✨ Both'}},
           11:{field:'sodium_goal',options:{yes:'✅ Yes',no:'❌ No'}},
+          12:{field:'hours_upright',options:{lt2:'🛋️ < 2 hrs','2to4':'🪑 2-4 hrs','4to6':'🧍 4-6 hrs',gt6:'🚶 6+ hrs'}},
         };
         for (const [qNum, {field, options}] of Object.entries(Q_FIELDS)) {
           const val = d[field]; if (!val) continue;
@@ -1675,9 +2397,15 @@
             if (b.getAttribute('onclick')?.includes("'" + val + "'")) b.classList.add('selected');
           });
         }
-        if (d.notes) document.getElementById('notes-field').value = d.notes;
+        if (d.notes) {
+          document.getElementById('notes-field').value = d.notes;
+          const stepEl = document.getElementById('notes-field-step'); if (stepEl) stepEl.value = d.notes;
+        }
       }
     } catch(e) {}
+    refreshNotesPrompt();
+    // Preload meds for the active check-in date so the in-flow lists are ready
+    loadMeds(activeDate);
     goTo('checkin-mode');
   }
 
@@ -1706,11 +2434,47 @@
     // Enable step-next button if in step flow
     const stepBtn = document.getElementById('step-next-' + q);
     if (stepBtn) stepBtn.disabled = false;
+    if (q === 1) refreshNotesPrompt();
   }
-  function saveNotes() { answers['notes'] = document.getElementById('notes-field').value.trim(); }
+  function saveNotes() {
+    const full = document.getElementById('notes-field')?.value.trim() || '';
+    const step = document.getElementById('notes-field-step')?.value.trim() || '';
+    answers['notes'] = full || step;
+  }
+  function saveNotesStep() {
+    const v = document.getElementById('notes-field-step')?.value.trim() || '';
+    answers['notes'] = v;
+    const f = document.getElementById('notes-field'); if (f) f.value = v;
+  }
+  // State-aware notes prompt: changes based on Q1 (feeling)
+  function refreshNotesPrompt() {
+    const feeling = answers[1]?.val;
+    let prompt, placeholder;
+    if (feeling === 'good') {
+      prompt = 'What did you do today that mattered?';
+      placeholder = 'A walk, a friend, a small win… what made today good?';
+    } else if (feeling === 'mixed') {
+      prompt = 'Anything notable today?';
+      placeholder = 'What stood out? Good or hard?';
+    } else if (feeling === 'bad') {
+      prompt = 'Anything to remember? (skip if not)';
+      placeholder = 'What hurt, what triggered it, or anything to flag for later.';
+    } else {
+      prompt = 'Anything else to note?';
+      placeholder = 'How are you feeling? Anything unusual today?';
+    }
+    const fullPrompt = document.getElementById('notes-prompt-full');
+    const stepPrompt = document.getElementById('notes-prompt-step');
+    if (fullPrompt) fullPrompt.textContent = prompt;
+    if (stepPrompt) stepPrompt.textContent = prompt;
+    const fullField = document.getElementById('notes-field');
+    const stepField = document.getElementById('notes-field-step');
+    if (fullField) fullField.placeholder = placeholder;
+    if (stepField) stepField.placeholder = placeholder;
+  }
 
   function updateSummary() {
-    for (let i = 1; i <= 11; i++) {
+    for (let i = 1; i <= 12; i++) {
       const iconEl = document.getElementById('sum-icon-' + i);
       const valEl  = document.getElementById('sum-' + i);
       if (answers[i]) {
@@ -1733,7 +2497,7 @@
       answers: {
         feeling: answers[1]?.val, pem: answers[2]?.val, brain_fog: answers[3]?.val,
         pain: answers[4]?.val, activity: answers[5]?.val, left_home: answers[6]?.val,
-        food: answers[7]?.val, probiotics: answers[8]?.val, stimulants: answers[9]?.val || null, compression: answers[10]?.val || null, sodium_goal: answers[11]?.val || null, notes: answers['notes'] || null,
+        food: answers[7]?.val, probiotics: answers[8]?.val, stimulants: answers[9]?.val || null, compression: answers[10]?.val || null, sodium_goal: answers[11]?.val || null, hours_upright: answers[12]?.val || null, notes: answers['notes'] || null,
       }
     };
     try {
@@ -1779,9 +2543,11 @@
       if (dashData.dates?.[0]) serverToday = dashData.dates[0];
 
       // Auto-redirect: no data at all → go straight to check-in
+      // Only redirect if there's no check-in AND no WHOOP data for today
       const todayDate = dateKey(0);
-      const todayHasData = completedDays.has(todayDate) || dashData?.checkins?.[todayDate];
-      if (!todayHasData) {
+      const todayHasCheckin = completedDays.has(todayDate) || dashData?.checkins?.[todayDate];
+      const todayHasWHOOP   = dashData?.whoop?.[todayDate] != null;
+      if (!todayHasCheckin && !todayHasWHOOP) {
         await startCheckin(0);
         return;
       }
@@ -1815,6 +2581,9 @@
           const statusData = await statusRes.json();
           Object.keys(statusData.completed || {}).forEach(d => completedDays.add(d));
           buildHome();
+        } else if (type === 'meds') {
+          // Refresh meds (only matters if a check-in is currently open)
+          if (typeof activeDate === 'string' && activeDate) loadMeds(activeDate);
         }
       } catch(err) { console.warn('SSE parse error', err); }
     };

@@ -138,7 +138,7 @@
   4. Past days = History (bottom sheet), not on home screen
   5. Single-page scroll; Visible upload nudge in hero if missing; each card tappable → detail
 - **v2 Prototype (Apr 25):** `projects/cadence/prototype/index-v2.html`, live at http://100.70.3.21:8765/index-v2.html. Hero: 6-metric WHOOP grid + trend arrows + check-in chips; Yesterday card; Insights (limit 4, "See all →"); Advice (key terms highlighted cyan `#5bc8e8`). History starts from yesterday (offset 1). v1 still at root.
-- **Hannah Ask-Cleo feature (Apr 29 — planned):** Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; not yet built. Resume with David Apr 30.
+- **Hannah Ask-Cleo feature (Apr 29 — planned):** Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; not yet built.
 - **DESIGN.md:** `projects/DESIGN.md` — cross-project design system (Cadence + Rounds). Key terms cyan `#5bc8e8`, section headers gold `#c9a84c`. Key terms: active rest, pacing, anaerobic threshold, PEM, heart rate, HRV, parasympathetic.
 - **Strain (Apr 26):** `backfill_strain.py` completed — Hannah strain 0.5–8 (LC-consistent), David 9–20. Nightly cron 7am UTC `--days 3`. WHOOP doesn't webhook strain — polling only (v1 cycle). Script uses AWS Secrets Manager.
 - **Visible user_id inconsistency:** old data = integer `6729032`, new uploads = string `"hannah"` — dashboard handles both; worth unifying later.
@@ -185,16 +185,7 @@ Common corrections when verifying medication names against FDB:
 - **PEG 3350** — two forms: `oral powder` (bulk canister) vs `oral powder packet` (unit-dose) — confirm formulary
 
 
+## Promoted From Short-Term Memory (2026-05-02)
 
-
-
-## Promoted From Short-Term Memory (2026-05-01)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-04-25.md:12:12 -->
-- All 5 open design questions resolved: [score=0.891 recalls=0 avg=0.620 source=memory/2026-04-25.md:12-12]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-24.md:521:521 -->
-- _Nightly consolidation run — 13:00 UTC (Friday, April 24)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-24.md:521-521]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-24.md:523:523 -->
-- Twenty-first night. A productive pass — three real updates to make. [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-24.md:523-523]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-24.md:529:529 -->
-- **REVIVE-TOGETHER (Reis et al. 2026) — Apr 22 post-dream:** [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-24.md:529-529]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-25.md:5:5 -->
+- Long productive session with David. Two major threads: locking Cadence UX decisions + building the v2 prototype. [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-25.md:5-5]
