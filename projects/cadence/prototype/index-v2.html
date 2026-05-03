@@ -804,6 +804,78 @@
     </div>
   </div>
 
+  <!-- ── THREE DAYS AGO ── -->
+  <div class="section-label" id="threed-label">Three days ago</div>
+  <div class="tap-card yest-card" id="threed-card">
+    <div class="yest-top" style="justify-content:space-between">
+      <div>
+        <div class="yest-day" id="threed-day">Three days ago</div>
+        <div class="yest-date" id="threed-date"></div>
+      </div>
+      <button class="card-pencil" style="margin-left:auto" onclick="event.stopPropagation();startCheckin(3)" title="Edit three days ago">✏️</button>
+    </div>
+    <div class="yest-metrics">
+      <div class="yest-metric">
+        <div class="yest-metric-label">Recovery</div>
+        <div class="yest-metric-val" id="threed-recovery">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">HRV</div>
+        <div class="yest-metric-val" id="threed-hrv">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">Sleep</div>
+        <div class="yest-metric-val" id="threed-sleep">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">RHR</div>
+        <div class="yest-metric-val" id="threed-rhr">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">SpO2</div>
+        <div class="yest-metric-val" id="threed-spo2">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">Strain</div>
+        <div class="yest-metric-val" id="threed-strain">—</div>
+      </div>
+    </div>
+    <div id="threed-visible-section"></div>
+    <div id="threed-checkin-row" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px"></div>
+    <div id="threed-sep-2" style="display:none;height:1px;background:rgba(255,255,255,0.07);margin:10px 0"></div>
+    <div class="budget-stack" id="threed-budget-stack" style="display:none">
+      <div class="budget-stack-title">⚡ Energy Budget</div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Visible<span class="bm-asterisk" id="hdm1-asterisk" style="display:none">*</span></span>
+          <span class="bm-value" id="hdm1-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="hdm1-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Recovery-adj</span>
+          <span class="bm-value" id="hdm2-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="hdm2-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Sleep capacity</span>
+          <span class="bm-value" id="hdm3-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="hdm3-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Prior recovery</span>
+          <span class="bm-value" id="hdm4-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="hdm4-fill"></div></div>
+      </div>
+    </div>
+  </div>
+
   <!-- ── INSIGHTS ── -->
   <div class="section-label">Insights</div>
   <div class="tap-card insights-card" onclick="goToScreen('screen-insights-detail')">
@@ -1956,6 +2028,129 @@
       } else {
         document.getElementById('tbm4-value').textContent = '—';
         document.getElementById('tbm4-fill').style.width = '0%';
+      }
+    })();
+
+    // ── THREE DAYS AGO ──
+    (function renderThreeDaysAgo() {
+      const threeDDate_local = dateKey(3);
+      const fourDDate        = dateKey(4);
+      const hdW              = dashData?.whoop?.[threeDDate_local];
+      const fourDW           = dashData?.whoop?.[fourDDate]; // for trend arrows
+      const hdCI             = dashData?.checkins?.[threeDDate_local];
+      const hdVis            = dashData?.visible?.[threeDDate_local];
+
+      const threedCard  = document.getElementById('threed-card');
+      const threedLabel = document.getElementById('threed-label');
+
+      if (!hdW && !hdCI && !hdVis) {
+        threedCard.style.display  = 'none';
+        threedLabel.style.display = 'none';
+        return;
+      }
+      threedCard.style.display  = '';
+      threedLabel.style.display = '';
+
+      document.getElementById('threed-date').textContent = formatDateShort(threeDDate_local);
+
+      const hRec    = hdW?.recovery?.score?.recovery_score;
+      const hHrv    = hdW?.recovery?.score?.hrv_rmssd_milli;
+      const hSleep  = hdW?.sleep?.score?.sleep_performance_percentage;
+      const hRhr    = hdW?.recovery?.score?.resting_heart_rate;
+      const hSpo2   = hdW?.recovery?.score?.spo2_percentage;
+      const hStrain = hdW?.strain?.score?.strain;
+
+      const frRec   = fourDW?.recovery?.score?.recovery_score;
+      const frHrv   = fourDW?.recovery?.score?.hrv_rmssd_milli;
+      const frSleep = fourDW?.sleep?.score?.sleep_performance_percentage;
+      const frRhr   = fourDW?.recovery?.score?.resting_heart_rate;
+      const frSpo2  = fourDW?.recovery?.score?.spo2_percentage;
+      const frStrain= fourDW?.strain?.score?.strain;
+
+      document.getElementById('threed-recovery').innerHTML =
+        hRec != null ? `<span class="${recClass(hRec)}">${hRec}</span><span class="yest-metric-unit">%</span>${trendArrow(hRec,frRec,true)}` : '—';
+      document.getElementById('threed-hrv').innerHTML =
+        hHrv != null ? `${hHrv.toFixed(0)}<span class="yest-metric-unit"> ms</span>${trendArrow(hHrv,frHrv,true)}` : '—';
+      document.getElementById('threed-sleep').innerHTML =
+        hSleep != null ? `${hSleep}<span class="yest-metric-unit">%</span>${trendArrow(hSleep,frSleep,true)}` : '—';
+      document.getElementById('threed-rhr').innerHTML =
+        hRhr != null ? `${hRhr}<span class="yest-metric-unit"> bpm</span>${trendArrow(hRhr,frRhr,false)}` : '—';
+      document.getElementById('threed-spo2').innerHTML =
+        hSpo2 != null ? `${hSpo2.toFixed(1)}<span class="yest-metric-unit">%</span>${trendArrow(hSpo2,frSpo2,true)}` : '—';
+      document.getElementById('threed-strain').innerHTML =
+        hStrain != null ? `${hStrain.toFixed(1)}${trendArrow(hStrain,frStrain,false)}` : '<span class="rec-none">—</span>';
+
+      document.getElementById('threed-checkin-row').innerHTML = renderChips(hdCI, false);
+
+      const threedVisibleEl = document.getElementById('threed-visible-section');
+      if (hdVis) {
+        threedVisibleEl.innerHTML = renderVisibleCompact(hdVis);
+        threedVisibleEl.style.display = 'block';
+      } else {
+        threedVisibleEl.style.display = 'none';
+      }
+
+      // Budget models for three days ago
+      const hobs    = hdVis?.observations || [];
+      const getHObs = n => hdVis?.measurements?.[n] ?? hobs.find(o=>o.tracker_name===n)?.value;
+      const hPace   = getHObs('PacePoints');
+      const baseBudget = 14;
+      const hStackEl   = document.getElementById('threed-budget-stack');
+      const threedSep2El = document.getElementById('threed-sep-2');
+      const hAdderall = (dashData?.meds?.[threeDDate_local]?.adderall > 0) ||
+                        (hdCI?.stimulants === true) || (hdCI?.stimulants === 'yes') ||
+                        (hdCI?.notes || '').toLowerCase().includes('adderall');
+
+      if (hPace == null && hRec == null && hSleep == null) {
+        hStackEl.style.display = 'none';
+        if (threedSep2El) threedSep2El.style.display = 'none';
+        return;
+      }
+      hStackEl.style.display = 'block';
+      if (threedSep2El) threedSep2El.style.display = 'block';
+
+      function setBar(fillId, valueId, pct, label, color) {
+        document.getElementById(fillId).style.width = Math.min(100, pct) + '%';
+        document.getElementById(fillId).style.background = color || (pct >= 85 ? '#e05a5a' : pct >= 60 ? '#f0c040' : '#4caf7d');
+        document.getElementById(valueId).textContent = label;
+      }
+
+      if (hPace != null) {
+        const pct1 = Math.round((hPace / baseBudget) * 100);
+        setBar('hdm1-fill', 'hdm1-value', pct1, `${hPace} / ${baseBudget} pts`);
+        document.getElementById('hdm1-asterisk').style.display = hAdderall ? 'inline' : 'none';
+      } else {
+        document.getElementById('hdm1-value').textContent = '—';
+        document.getElementById('hdm1-fill').style.width = '0%';
+      }
+
+      if (hRec != null) {
+        const adjBudget = Math.max(1, Math.round(baseBudget * (hRec / 100)));
+        const spent2    = hPace ?? 0;
+        const pct2      = hPace != null ? Math.round((spent2 / adjBudget) * 100) : hRec;
+        const label2    = hPace != null ? `${spent2} / ${adjBudget} pts` : `${hRec}% → ${adjBudget} pts`;
+        setBar('hdm2-fill', 'hdm2-value', pct2, label2);
+      } else {
+        document.getElementById('hdm2-value').textContent = '—';
+        document.getElementById('hdm2-fill').style.width = '0%';
+      }
+
+      if (hSleep != null) {
+        const slColor = hSleep >= 85 ? '#4caf7d' : hSleep >= 60 ? '#f0c040' : '#e05a5a';
+        setBar('hdm3-fill', 'hdm3-value', hSleep, `${hSleep}%`, slColor);
+      } else {
+        document.getElementById('hdm3-value').textContent = '—';
+        document.getElementById('hdm3-fill').style.width = '0%';
+      }
+
+      // Model 4: Four days ago recovery (lag predictor)
+      const fourDRec = fourDW?.recovery?.score?.recovery_score;
+      if (fourDRec != null) {
+        const slColor4 = fourDRec >= 67 ? '#4caf7d' : fourDRec >= 34 ? '#f0c040' : '#e05a5a';
+        setBar('hdm4-fill', 'hdm4-value', fourDRec, `${fourDRec}%`, slColor4);
+      } else {
+        document.getElementById('hdm4-value').textContent = '—';
+        document.getElementById('hdm4-fill').style.width = '0%';
       }
     })();
 

@@ -214,8 +214,8 @@ app.get('/api/dashboard', async (req, res) => {
     const user_id = resolveUser(req);
     const whoopUserId = WHOOP_USER_IDS[user_id] || WHOOP_USER_IDS.hannah;
 
-    // Fetch 4 days so the 3rd visible day has a previous day for trend arrows
-    const dates = [0, 1, 2, 3].map(i => pacificDate(i));
+    // Fetch 5 days so the 3rd day has a previous day for trend arrows
+    const dates = [0, 1, 2, 3, 4].map(i => pacificDate(i));
 
     // WHOOP — use mapped user id
     const whoopDocs = await db.collection('whoop_daily')
@@ -238,7 +238,7 @@ app.get('/api/dashboard', async (req, res) => {
     const visible = {};
     visibleDocs.forEach(v => { visible[v.date] = v; });
 
-    // Meds (last 4 days)
+    // Meds (last 5 days)
     const medsDocs = await db.collection('med_log')
       .find({ user_id, date: { $in: dates } })
       .toArray();

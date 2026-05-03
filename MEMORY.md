@@ -108,7 +108,7 @@
 - **daily-backup cron:** Created 2026-04-06, runs 13:00 UTC daily, script: `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout, model: claude-sonnet-4-20250514
 - **Daily memory writing is working** — dream cron (13:00 UTC nightly) established 2026-04-04. Main session writing daily files consistently since 2026-04-10.
 - **OpenClaw updated to 2026.4.14** (323493f, ~Apr 15). Teams desktop image attachments now working (Edgar applied fix). Prototype server running on port 8765.
-- **Brave Search API key:** Set up 2026-04-12 (Edgar added the key). Use for medical research, clinical guidelines, PubMed, patient advocacy orgs, and anything outside QB/FDB scope. Call it "Brave Search" in notes, "web search" in conversation.
+- **Brave Search API key:** Set up 2026-04-12. Fixed May 2: set `tools.web.search.provider brave`, disabled MiniMax + Google plugins (no keys). Free tier: 1 req/sec, 2000/month — call sequentially, not in parallel. Hard restart required after plugin enablement changes (`systemctl --user restart openclaw-gateway.service`; then `pm2 resurrect`).
 
 ## Project Cadence
 - **Mission:** Identify biometric, dietary, and behavioral factors driving Hannah's symptomatic days. Find what makes the 5 bad days happen.
@@ -117,7 +117,7 @@
 - **Stack:** AWS Lambda + API Gateway, MongoDB `cadence-dev` (dev-cluster-02.qpkxl.mongodb.net)
 - **Credentials:** stored in `projects/cadence/credentials.md` (not in MEMORY.md)
 - **Status (Apr 26):** Backfill complete — 2,292 `whoop_daily` docs. Visible data in `visible_daily` (177+ days; Hannah uploads live). WHOOP Lambda recovery fix confirmed installed (Apr 23). iOS check-in prototype live at http://100.70.3.21:8765. Hannah on tailnet. **Hannah confirmed daily check-in user (Apr 25).**
-- **iOS check-in app:** 8 questions (updated Apr 16), traffic light (🟢🟡🔴) UX. Brain fog = #1 constraint, under 60s on worst days. Fields: feeling, PEM, brain fog, pain, activity type, left home, food, probiotics. **Hannah using daily as of Apr 25.** **Single-page scroll format (Apr 28)** — all questions on one page instead of step-by-step. Correct flow: Q1→…→Q9→Q10→Q11→Notes→Summary→Submit (nav bug fixed Apr 28).
+- **iOS check-in app:** 8 questions (updated Apr 16), traffic light (🟢🟡🔴) UX. Brain fog = #1 constraint, under 60s on worst days. Fields: feeling, PEM, brain fog, pain, activity type, left home, food, probiotics. **Hannah using daily as of Apr 25.** **Single-page scroll format (Apr 28)** — all questions on one page instead of step-by-step. Correct flow: Q1→…→Q9→Q10→Q11→Notes→Summary→Submit (nav bug fixed Apr 28). **Div balance check mandatory** after any HTML structural edits (`open count - close count = 0`) — HTML layout bugs fail silently at runtime (lesson Apr 28).
 - **LC phenotype:** Hannah = Gut/Viral persistence + PEM/Dysautonomia hybrid. v2 vision: phenotype-adaptive app.
 - **Pacing literature (key finding):** Ghali 2023 — pacing adherence is the single best predictor of recovery (OR 40.43). PACELOC 2025: 15% weekly reduction in PEM with structured pacing. GET is contraindicated (WHO, CDC, NICE). Heart rate monitoring is the tool (anaerobic threshold).
 - **Probiotics for Hannah:** SIM01/G-NiiB (B. adolescentis + B. bifidum + B. longum + GOS + XOS + resistant dextrin). RECOVERY trial: 10B CFU ×2/day × 6 months (Lancet ID 2023). "G-NiiB Immunity Elite" on Amazon US. Take at night. Rationale: Freire 2026 gut immune dysregulation → microbiome restoration.
@@ -128,7 +128,7 @@
 - **David WHOOP user_id:** 206067 (hdmunguia@gmail.com) | **Hannah WHOOP user_id:** 6729032 (hannah.munguia@gmail.com)
 - **MongoDB collections:** `user`, `webhook_event`, `whoop_daily` (2,292 docs, confirmed Apr 25), `visible_daily`, `self_report` (check-in data)
 - **v2 Design Decision (Apr 16):** Dynamic question schema — questions stored in MongoDB `questions` collection (not hardcoded). Enables add/remove without deploys, versioning, A/B testing. Schema: `question_id`, `version`, `active`, `order`, `text`, `type`, `options`. Types: `traffic_light`, `yes_no`, `scale`, `text`. Priority: v2.
-- **Server.js:** runs at port 8765, reads MongoDB URI from `/home2/cleo/mongo_uri`, saves to `self_report` collection keyed on `{user_id, date}`. **pm2 installed (Apr 26)** — `pm2 start cadence`, `pm2 save` done. ⚠️ Startup script still needs sudo from David.
+- **Server.js:** runs at port 8765, reads MongoDB URI from `/home2/cleo/mongo_uri`, saves to `self_report` collection keyed on `{user_id, date}`. **pm2 installed (Apr 26)** — `pm2 start cadence`, `pm2 save` done. ⚠️ Startup script still needs sudo from David. **systemd gateway restart kills pm2** — always run `pm2 status` after `systemctl --user restart openclaw-gateway.service`; if cadence missing, run `pm2 resurrect` (reads `~/.pm2/dump.pm2`).
 - **SSE (Apr 26):** MongoDB change streams → Server-Sent Events push live updates to app (events: `whoop`, `checkin`, `visible`, `notes`). No polling needed.
 - **User scoping (Apr 19):** URL param `?user=david` scopes check-ins to David; defaults to `hannah` when no param present
 - **UX redesign direction (Apr 25 — FINALIZED):** Single-page scroll hub. Hero element (today's status) at top + contextual drill-down per element (tap to detail view). No global tab bar. Decisions:
@@ -138,7 +138,9 @@
   4. Past days = History (bottom sheet), not on home screen
   5. Single-page scroll; Visible upload nudge in hero if missing; each card tappable → detail
 - **v2 Prototype (Apr 25):** `projects/cadence/prototype/index-v2.html`, live at http://100.70.3.21:8765/index-v2.html. Hero: 6-metric WHOOP grid + trend arrows + check-in chips; Yesterday card; Insights (limit 4, "See all →"); Advice (key terms highlighted cyan `#5bc8e8`). History starts from yesterday (offset 1). v1 still at root.
-- **Hannah Ask-Cleo feature (Apr 29 — planned):** Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; not yet built.
+- **Hannah Ask-Cleo feature (planned):** Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; not yet built.
+- **Correlation analysis (May 1):** `projects/cadence/analysis/` — `correlate.js` (Spearman, 60+ features vs feeling_score), `proxy_score.js` (Visible Stability → feeling proxy). Cron at 14:00 UTC daily. Key findings (n=15): WHOOP recovery anti-correlated with feeling (-0.52, dysautonomia decoupling confirmed); pace_lag3 = -0.74 (PEM 3-day lag strongest signal); stability_lag1 = +0.61; adderall = +0.67. **Budget window: 3-7 days** (40% yesterday, 25% 2d ago, 15% 3d ago, 20% 4-7d ago).
+- **Budget models (May 1):** 4 stacked budget bars on Today/Yesterday/2-Days-Ago cards: Visible (PacePoints/14), Recovery-adj (PacePoints/(14×WHOOP recovery%)), Sleep capacity (sleep_performance%), Yesterday/Prior recovery (lag predictor). Three-day homepage live.
 - **DESIGN.md:** `projects/DESIGN.md` — cross-project design system (Cadence + Rounds). Key terms cyan `#5bc8e8`, section headers gold `#c9a84c`. Key terms: active rest, pacing, anaerobic threshold, PEM, heart rate, HRV, parasympathetic.
 - **Strain (Apr 26):** `backfill_strain.py` completed — Hannah strain 0.5–8 (LC-consistent), David 9–20. Nightly cron 7am UTC `--days 3`. WHOOP doesn't webhook strain — polling only (v1 cycle). Script uses AWS Secrets Manager.
 - **Visible user_id inconsistency:** old data = integer `6729032`, new uploads = string `"hannah"` — dashboard handles both; worth unifying later.
@@ -185,7 +187,8 @@ Common corrections when verifying medication names against FDB:
 - **PEG 3350** — two forms: `oral powder` (bulk canister) vs `oral powder packet` (unit-dose) — confirm formulary
 
 
-## Promoted From Short-Term Memory (2026-05-02)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-04-25.md:5:5 -->
-- Long productive session with David. Two major threads: locking Cadence UX decisions + building the v2 prototype. [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-25.md:5-5]
+## Promoted From Short-Term Memory (2026-05-03)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-26.md:7:7 -->
+- After the Apr 25 memory flush, continued iterating on index-v2.html: [score=0.894 recalls=0 avg=0.620 source=memory/2026-04-26.md:7-7]
