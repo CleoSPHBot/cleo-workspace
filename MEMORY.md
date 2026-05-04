@@ -140,6 +140,7 @@
 - **v2 Prototype (Apr 25):** `projects/cadence/prototype/index-v2.html`, live at http://100.70.3.21:8765/index-v2.html. Hero: 6-metric WHOOP grid + trend arrows + check-in chips; Yesterday card; Insights (limit 4, "See all →"); Advice (key terms highlighted cyan `#5bc8e8`). History starts from yesterday (offset 1). v1 still at root.
 - **Hannah Ask-Cleo feature (planned):** Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; not yet built.
 - **Correlation analysis (May 1):** `projects/cadence/analysis/` — `correlate.js` (Spearman, 60+ features vs feeling_score), `proxy_score.js` (Visible Stability → feeling proxy). Cron at 14:00 UTC daily. Key findings (n=15): WHOOP recovery anti-correlated with feeling (-0.52, dysautonomia decoupling confirmed); pace_lag3 = -0.74 (PEM 3-day lag strongest signal); stability_lag1 = +0.61; adderall = +0.67. **Budget window: 3-7 days** (40% yesterday, 25% 2d ago, 15% 3d ago, 20% 4-7d ago).
+- **Repair Spectrum Framework (May 4):** Data-driven pacing protocol from 774 days WHOOP + Visible. Core finding: **3-day lag** (pace_lag3 −0.74 = strongest predictor). Spectrum: 🔴 Red (recovery <34, full rest) → 🟡 Yellow (34–66, PacePoints ≤8, no spend) → 🟢 First Green (rest day even feeling good, ≤8 PP; spend → crash ~10d, rest → ~29d stability) → 🟢🟢 Second Green (repair begins, ≤12 PP) → 🟢🟢🟢 Third+ (functional day, ≤14 PP, avoid strain ≥6). Sleep anchor: <60% = yellow, <40% = red, 2 bad nights = rest day. Three levers: (1) sleep, (2) pacing on good days esp. first green, (3) SIM01 gut health. **Next: display "where is Hannah on the repair spectrum" in Cadence app** — consecutive green day count, current day type, lag-3 flag.
 - **Budget models (May 1):** 4 stacked budget bars on Today/Yesterday/2-Days-Ago cards: Visible (PacePoints/14), Recovery-adj (PacePoints/(14×WHOOP recovery%)), Sleep capacity (sleep_performance%), Yesterday/Prior recovery (lag predictor). Three-day homepage live.
 - **DESIGN.md:** `projects/DESIGN.md` — cross-project design system (Cadence + Rounds). Key terms cyan `#5bc8e8`, section headers gold `#c9a84c`. Key terms: active rest, pacing, anaerobic threshold, PEM, heart rate, HRV, parasympathetic.
 - **Strain (Apr 26):** `backfill_strain.py` completed — Hannah strain 0.5–8 (LC-consistent), David 9–20. Nightly cron 7am UTC `--days 3`. WHOOP doesn't webhook strain — polling only (v1 cycle). Script uses AWS Secrets Manager.
@@ -188,7 +189,13 @@ Common corrections when verifying medication names against FDB:
 
 
 
-## Promoted From Short-Term Memory (2026-05-03)
+## Promoted From Short-Term Memory (2026-05-04)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-04-26.md:7:7 -->
-- After the Apr 25 memory flush, continued iterating on index-v2.html: [score=0.894 recalls=0 avg=0.620 source=memory/2026-04-26.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-27.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Monday, April 27)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-27.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-27.md:7:7 -->
+- Twenty-third night. A maintenance pass. The big week is already logged. [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-27.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-27.md:13:13 -->
+- The Apr 26 dream did the heavy lifting — it covered the full sprint: pm2, SSE, v2 prototype, strain backfill, DESIGN.md, aegis_server write access, Hannah's daily usage confirmed. Almost nothing left to capture. [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-27.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-27.md:15:15 -->
+- **Remaining gaps closed today:** [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-27.md:15-15]
