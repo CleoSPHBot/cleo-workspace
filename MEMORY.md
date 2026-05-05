@@ -189,13 +189,15 @@ Common corrections when verifying medication names against FDB:
 
 
 
-## Promoted From Short-Term Memory (2026-05-04)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-04-27.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Monday, April 27)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-27.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-27.md:7:7 -->
-- Twenty-third night. A maintenance pass. The big week is already logged. [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-27.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-27.md:13:13 -->
-- The Apr 26 dream did the heavy lifting — it covered the full sprint: pm2, SSE, v2 prototype, strain backfill, DESIGN.md, aegis_server write access, Hannah's daily usage confirmed. Almost nothing left to capture. [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-27.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-27.md:15:15 -->
-- **Remaining gaps closed today:** [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-27.md:15-15]
+
+## Promoted From Short-Term Memory (2026-05-05)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-28.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Tuesday, April 28)_ [score=0.894 recalls=0 avg=0.620 source=memory/2026-04-28.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-28.md:7:7 -->
+- Twenty-fourth night. A clean maintenance pass. [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-28.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-28.md:13:13 -->
+- **Apr 27 was quiet.** Yesterday's dream was a maintenance pass (fixed 3 small stale facts: whoop_daily count, DESIGN.md date annotation, added Hannah energy budget insight). No post-dream sessions yesterday — nothing new to capture. [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-28.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-28.md:15:15 -->
+- **One recurring nuisance:** [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-28.md:15-15]
