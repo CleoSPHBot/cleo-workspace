@@ -84,6 +84,44 @@
     /* ══════════════════════════════
        HERO: WHERE ARE YOU NOW
     ══════════════════════════════ */
+    /* ── Crash Line Status Bar ── */
+    .crash-line-bar {
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: background 0.4s;
+    }
+    .crash-line-bar.above {
+      background: linear-gradient(135deg, rgba(76,175,125,0.15), rgba(76,175,125,0.05));
+      border: 1px solid rgba(76,175,125,0.3);
+    }
+    .crash-line-bar.below {
+      background: linear-gradient(135deg, rgba(224,90,90,0.15), rgba(224,90,90,0.05));
+      border: 1px solid rgba(224,90,90,0.3);
+    }
+    .crash-line-bar.borderline {
+      background: linear-gradient(135deg, rgba(240,192,64,0.12), rgba(240,192,64,0.04));
+      border: 1px solid rgba(240,192,64,0.3);
+    }
+    .crash-line-icon { font-size: 28px; flex-shrink: 0; }
+    .crash-line-body { flex: 1; }
+    .crash-line-status { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+    .crash-line-bar.above  .crash-line-status { color: #4caf7d; }
+    .crash-line-bar.below  .crash-line-status { color: #e05a5a; }
+    .crash-line-bar.borderline .crash-line-status { color: #f0c040; }
+    .crash-line-detail { font-size: 11px; color: #7a9ab8; line-height: 1.5; }
+    .crash-line-metrics { display: flex; gap: 10px; margin-top: 8px; }
+    .clm { background: rgba(0,0,0,0.2); border-radius: 8px; padding: 5px 10px; text-align: center; }
+    .clm-label { font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #5a7a98; }
+    .clm-val { font-size: 15px; font-weight: 700; margin-top: 1px; }
+    .clm-val.good  { color: #4caf7d; }
+    .clm-val.warn  { color: #f0c040; }
+    .clm-val.bad   { color: #e05a5a; }
+    .clm-val.neutral { color: #f0f4f8; }
+
     .now-card {
       background: linear-gradient(135deg, #1a3550, #1e2d3d);
       border: 1.5px solid #c9a84c44;
@@ -337,6 +375,7 @@
     .insight-title.critical { color: #e05a5a; }
     .insight-title.warning  { color: #f0c040; }
     .insight-title.good     { color: #4caf7d; }
+    .insight-title.repair   { color: #5bc8e8; }
     .insight-text  { font-size: 12px; color: #7a9ab8; line-height: 1.5; }
     .insight-text .term { color: #5bc8e8; font-weight: 700; }
 
@@ -545,6 +584,9 @@
      SCREEN: Hub Home
 ══════════════════════════════════════════ -->
 <div class="screen active" id="screen-home">
+
+  <!-- ── CRASH LINE STATUS ── -->
+  <div id="crash-line-bar" class="crash-line-bar" style="display:none"></div>
 
   <!-- ── WHERE ARE YOU NOW ── -->
   <div class="section-label">Where are you now</div>
@@ -1427,7 +1469,7 @@
   function renderChips(checkin, full=false) {
     if (!checkin) return '';
     const shortFields = [
-      ['Feel', checkin.feeling], ['Fatigue', checkin.pem], ['Fog', checkin.brain_fog],
+      ['Feel', checkin.feeling], ['PEM', checkin.pem], ['Fog', checkin.brain_fog],
       ['Pain', checkin.pain], ['Activity', checkin.activity],
     ];
     const allFields = [
@@ -1599,15 +1641,60 @@
     const yestW   = dashData?.whoop?.[yestDate];
     const todayCI = dashData?.checkins?.[todayDate];
     const yestCI  = dashData?.checkins?.[yestDate];
-    allAdvice = buildAdviceItems(todayW, todayCI, yestW, yestCI);
+    // Pass recent WHOOP history for repair window detection
+    const recentW = [0,1,2,3,4].map(i => dashData?.whoop?.[dateKey(i)]);
+    const recentCI = [0,1,2,3,4].map(i => dashData?.checkins?.[dateKey(i)]);
+    allAdvice = buildAdviceItems(todayW, todayCI, yestW, yestCI, recentW, recentCI);
     renderAdviceHome();
     renderAdviceDetail();
   }
 
-  function buildAdviceItems(todayW, todayCI, yestW, yestCI) {
+  // Detect if HRV is rising out of a crash (repair window)
+  function detectRepairWindow(recentW, recentCI) {
+    if (!recentW || recentW.length < 3) return null;
+    const hrvs = recentW.map(w => w?.recovery?.score?.hrv_rmssd_milli);
+    const todayHRV = hrvs[0];
+    if (todayHRV == null) return null;
+
+    // Was there a crash in last 4 days? (any recovery <50 or severe PEM)
+    const recentCrash = recentW.slice(1,5).some((w,i) => {
+      const rec = w?.recovery?.score?.recovery_score;
+      const pem = recentCI[i+1]?.pem;
+      return (rec != null && rec < 50) || pem === 'severe';
+    });
+    if (!recentCrash) return null;
+
+    // Is HRV trending up over last 2 days and above threshold?
+    const HRV_THRESHOLD = 34;
+    const yestHRV = hrvs[1];
+    const twodHRV = hrvs[2];
+    const risingHRV = yestHRV != null && todayHRV > yestHRV;
+    const aboveThreshold = todayHRV >= HRV_THRESHOLD;
+
+    if (aboveThreshold && risingHRV) {
+      return { hrv: todayHRV, rising: true };
+    } else if (aboveThreshold) {
+      return { hrv: todayHRV, rising: false };
+    }
+    return null;
+  }
+
+  function buildAdviceItems(todayW, todayCI, yestW, yestCI, recentW, recentCI) {
     const advice = [];
     const hrv = todayW?.recovery?.score?.hrv_rmssd_milli;
     const rec = todayW?.recovery?.score?.recovery_score;
+
+    // ── Repair Window ──────────────────────────────
+    const repairWindow = detectRepairWindow(recentW || [], recentCI || []);
+    if (repairWindow) {
+      const trend = repairWindow.rising ? '↑ rising' : 'elevated';
+      advice.push({
+        level: 'repair',
+        icon: '🔧',
+        title: `Repair window — HRV ${Math.round(repairWindow.hrv)}ms ${trend}`,
+        text: 'Your nervous system has capacity to heal right now. Rest into it — don\'t spend it. This window closes if you push today. Stay under 8 PacePoints.'
+      });
+    }
 
     if (hrv != null && hrv < 45) {
       advice.push({ level:'critical', icon:'🛑', title:`Low HRV — ${Math.round(hrv)}ms`, text:'Your nervous system is under stress. Keep today minimal — no exertion, no pushing through.' });
@@ -2166,7 +2253,7 @@
 
     if (yestCI) {
       const fields = [
-        ['Overall feeling', yestCI.feeling], ['Fatigue', yestCI.pem], ['Brain fog', yestCI.brain_fog],
+        ['Overall feeling', yestCI.feeling], ['PEM', yestCI.pem], ['Brain fog', yestCI.brain_fog],
         ['Pain', yestCI.pain], ['Activity', yestCI.activity], ['Left home', yestCI.left_home],
         ['Food', yestCI.food], ['Probiotics', yestCI.probiotics],
       ].filter(([,v]) => v);
@@ -2384,9 +2471,84 @@
       }
     })();
 
+    // ── CRASH LINE STATUS ──
+    renderCrashLine(todayW, todayCI, dashData?.visible?.[todayDate]);
+
     // ── INSIGHTS + ADVICE ──
     loadInsights();
     loadAdvice();
+  }
+
+  function renderCrashLine(todayW, todayCI, todayVis) {
+    const el = document.getElementById('crash-line-bar');
+    if (!el) return;
+
+    const hrv      = todayW?.recovery?.score?.hrv_rmssd_milli;
+    const strain   = todayW?.strain?.score?.strain;
+    const obs      = todayVis?.observations || [];
+    const pp       = (obs.find(o => o.tracker_name === 'PacePoints') || {}).value;
+
+    // Thresholds
+    const HRV_THRESHOLD = 34;
+    const PP_LIMIT      = 6;
+    const STRAIN_LIMIT  = 2;
+
+    const hrvOk    = hrv != null ? hrv >= HRV_THRESHOLD : null;
+    const ppOk     = pp  != null ? pp  <= PP_LIMIT      : null;
+    const strainOk = strain != null ? strain <= STRAIN_LIMIT : null;
+
+    // Overall status
+    // Above = HRV ok AND (pp ok or no data) AND (strain ok or no data)
+    const failing  = (hrvOk === false) || (ppOk === false) || (strainOk === false);
+    const allGood  = (hrvOk === true)  && (ppOk !== false) && (strainOk !== false);
+    const borderline = !failing && !allGood;
+
+    let state, icon, statusText, detail;
+    if (allGood) {
+      state = 'above';
+      icon  = '🟢';
+      statusText = 'Above the crash line';
+      detail = 'HRV and activity levels are in the repair zone. Keep it here.';
+    } else if (failing) {
+      state = 'below';
+      icon  = '🔴';
+      statusText = 'Below the crash line';
+      detail = 'One or more signals are in crash risk territory. Full rest today.';
+    } else {
+      state = 'borderline';
+      icon  = '🟡';
+      statusText = 'On the line';
+      detail = 'Close to the edge. Stay conservative — don\'t spend today.';
+    }
+
+    // Build metric pills
+    const hrvClass   = hrv == null ? 'neutral' : hrv >= HRV_THRESHOLD ? 'good' : 'bad';
+    const ppClass    = pp  == null ? 'neutral' : pp  <= PP_LIMIT      ? 'good' : 'bad';
+    const strainClass= strain == null ? 'neutral' : strain <= STRAIN_LIMIT ? 'good' : 'bad';
+
+    el.className = `crash-line-bar ${state}`;
+    el.style.display = 'flex';
+    el.innerHTML = `
+      <div class="crash-line-icon">${icon}</div>
+      <div class="crash-line-body">
+        <div class="crash-line-status">${statusText}</div>
+        <div class="crash-line-detail">${detail}</div>
+        <div class="crash-line-metrics">
+          <div class="clm">
+            <div class="clm-label">HRV</div>
+            <div class="clm-val ${hrvClass}">${hrv != null ? Math.round(hrv) + 'ms' : '—'}</div>
+          </div>
+          <div class="clm">
+            <div class="clm-label">PacePoints</div>
+            <div class="clm-val ${ppClass}">${pp != null ? pp : '—'}</div>
+          </div>
+          <div class="clm">
+            <div class="clm-label">Strain</div>
+            <div class="clm-val ${strainClass}">${strain != null ? strain.toFixed(1) : '—'}</div>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
   // ── Meds tracker ───────────────────────────────────────

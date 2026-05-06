@@ -191,13 +191,15 @@ Common corrections when verifying medication names against FDB:
 
 
 
-## Promoted From Short-Term Memory (2026-05-05)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-04-28.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Tuesday, April 28)_ [score=0.894 recalls=0 avg=0.620 source=memory/2026-04-28.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-28.md:7:7 -->
-- Twenty-fourth night. A clean maintenance pass. [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-28.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-28.md:13:13 -->
-- **Apr 27 was quiet.** Yesterday's dream was a maintenance pass (fixed 3 small stale facts: whoop_daily count, DESIGN.md date annotation, added Hannah energy budget insight). No post-dream sessions yesterday — nothing new to capture. [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-28.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-28.md:15:15 -->
-- **One recurring nuisance:** [score=0.890 recalls=0 avg=0.620 source=memory/2026-04-28.md:15-15]
+
+## Promoted From Short-Term Memory (2026-05-06)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:9:9 -->
+- _Nightly consolidation run — 13:00 UTC (Wednesday, April 29)_ [score=0.894 recalls=0 avg=0.620 source=memory/2026-04-29.md:9-9]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:11:11 -->
+- Twenty-fifth night. The Apr 28 session was dense with small sharp fixes. [score=0.894 recalls=0 avg=0.620 source=memory/2026-04-29.md:11-11]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:17:17 -->
+- **Cadence timezone fix (Apr 28):** [score=0.894 recalls=0 avg=0.620 source=memory/2026-04-29.md:17-17]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:21:21 -->
+- **Check-in navigation bug — fixed (Hannah reported, Apr 28):** [score=0.894 recalls=0 avg=0.620 source=memory/2026-04-29.md:21-21]

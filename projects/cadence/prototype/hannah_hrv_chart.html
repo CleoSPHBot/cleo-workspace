@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hannah — HRV & Spend (3 weeks)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  body { background: #0d1520; color: #f0f4f8; font-family: -apple-system, sans-serif; margin: 0; padding: 24px; }
+  h2 { font-size: 16px; color: #c9a84c; font-weight: 700; letter-spacing: 0.5px; margin: 0 0 4px; }
+  p.sub { font-size: 12px; color: #5a7a98; margin: 0 0 24px; }
+  .chart-wrap { background: #111d2b; border-radius: 14px; padding: 20px; margin-bottom: 24px; }
+  .legend { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 16px; font-size: 12px; color: #7a9ab8; }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .legend-line { width: 24px; height: 3px; border-radius: 2px; flex-shrink: 0; }
+  .note { font-size: 11px; color: #3a5a78; margin-top: 20px; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<h2>Hannah — HRV & Activity Spend</h2>
+<p class="sub">Apr 15 – May 5, 2026 &nbsp;·&nbsp; WHOOP HRV (rMSSD) with spend markers</p>
+
+<div class="chart-wrap">
+  <canvas id="hrvchart" height="280"></canvas>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-line" style="background:#5bc8e8"></div> HRV (ms)</div>
+    <div class="legend-item"><div class="legend-line" style="background:#3a5a78;border-top:2px dashed #3a5a78;height:0"></div> Threshold (34ms)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e05a5a"></div> Spend day (strain>2 or PP>8)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#f0c040"></div> PEM severe</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#4caf7d"></div> Feeling good</div>
+  </div>
+</div>
+
+<div class="note">
+  <strong style="color:#c9a84c">Spend</strong> = WHOOP strain &gt;2 OR Visible PacePoints &gt;8 (either signal).<br>
+  Apr 18 PacePoints outlier (155) excluded. Apr 21 HRV missing from WHOOP.
+</div>
+
+<script>
+const raw = [
+  { date: "Apr 15", hrv: 31.7, spend: true,  pem: null,     feeling: null },
+  { date: "Apr 16", hrv: 30.3, spend: true,  pem: "severe", feeling: "bad" },
+  { date: "Apr 17", hrv: 35.5, spend: true,  pem: "mild",   feeling: "bad" },
+  { date: "Apr 18", hrv: 33.1, spend: false, pem: "none",   feeling: "good" }, // PP outlier excluded
+  { date: "Apr 21", hrv: null, spend: true,  pem: "mild",   feeling: "mixed" },
+  { date: "Apr 22", hrv: 42.3, spend: false, pem: "severe", feeling: "bad" },
+  { date: "Apr 23", hrv: 38.8, spend: false, pem: "severe", feeling: "bad" },
+  { date: "Apr 24", hrv: 26.3, spend: true,  pem: "severe", feeling: "mixed" },
+  { date: "Apr 25", hrv: 32.2, spend: false, pem: "severe", feeling: "bad" },
+  { date: "Apr 26", hrv: 37.2, spend: true,  pem: "mild",   feeling: "bad" },
+  { date: "Apr 27", hrv: 40.3, spend: false, pem: "mild",   feeling: "bad" },
+  { date: "Apr 28", hrv: 30.7, spend: false, pem: "mild",   feeling: "bad" },
+  { date: "Apr 29", hrv: 27.9, spend: true,  pem: "mild",   feeling: "mixed" },
+  { date: "Apr 30", hrv: 30.5, spend: true,  pem: "mild",   feeling: "mixed" },
+  { date: "May 1",  hrv: 33.3, spend: true,  pem: "severe", feeling: "mixed" },
+  { date: "May 2",  hrv: 38.4, spend: true,  pem: "severe", feeling: "bad" },
+  { date: "May 3",  hrv: 34.0, spend: false, pem: "severe", feeling: "bad" },
+  { date: "May 4",  hrv: 29.2, spend: false, pem: "severe", feeling: "bad" },
+  { date: "May 5",  hrv: 32.5, spend: false, pem: "severe", feeling: "bad" },
+];
+
+const labels = raw.map(d => d.date);
+const hrvData = raw.map(d => d.hrv);
+const threshold = raw.map(() => 34);
+
+// Spend markers — red dots at HRV position (or 28 if null)
+const spendPoints = raw.map(d => d.spend ? (d.hrv ?? 28) : null);
+
+// PEM severe markers — yellow diamonds at bottom
+const pemPoints = raw.map(d => d.pem === 'severe' ? 22 : null);
+
+// Good feeling markers — green dots at top
+const goodPoints = raw.map(d => d.feeling === 'good' ? (d.hrv ? d.hrv + 3 : 37) : null);
+
+const ctx = document.getElementById('hrvchart').getContext('2d');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'HRV (ms)',
+        data: hrvData,
+        borderColor: '#5bc8e8',
+        backgroundColor: 'rgba(91,200,232,0.08)',
+        borderWidth: 2.5,
+        pointRadius: raw.map(d => d.hrv != null ? 4 : 0),
+        pointBackgroundColor: raw.map(d => {
+          if (d.feeling === 'good') return '#4caf7d';
+          if (d.spend) return '#e05a5a';
+          return '#5bc8e8';
+        }),
+        pointBorderColor: 'transparent',
+        pointHoverRadius: 6,
+        tension: 0.35,
+        fill: true,
+        spanGaps: true,
+        order: 2,
+      },
+      {
+        label: 'Threshold (34ms)',
+        data: threshold,
+        borderColor: 'rgba(58,90,120,0.6)',
+        borderWidth: 1.5,
+        borderDash: [5,4],
+        pointRadius: 0,
+        fill: false,
+        order: 3,
+      },
+      {
+        label: 'Spend day',
+        data: spendPoints,
+        type: 'scatter',
+        pointStyle: 'triangle',
+        pointRadius: 8,
+        pointBackgroundColor: 'rgba(224,90,90,0.85)',
+        pointBorderColor: 'transparent',
+        showLine: false,
+        order: 1,
+      },
+      {
+        label: 'PEM severe',
+        data: pemPoints,
+        type: 'scatter',
+        pointStyle: 'rectRot',
+        pointRadius: 7,
+        pointBackgroundColor: 'rgba(240,192,64,0.85)',
+        pointBorderColor: 'transparent',
+        showLine: false,
+        order: 1,
+      },
+    ]
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: '#111d2b',
+        borderColor: '#1e2d3d',
+        borderWidth: 1,
+        titleColor: '#c9a84c',
+        bodyColor: '#7a9ab8',
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.dataset.label === 'HRV (ms)' && ctx.parsed.y != null) {
+              const d = raw[ctx.dataIndex];
+              let lines = [`HRV: ${ctx.parsed.y.toFixed(1)}ms`];
+              if (d.spend) lines.push('⚡ Spend day');
+              if (d.pem) lines.push(`PEM: ${d.pem}`);
+              if (d.feeling) lines.push(`Feeling: ${d.feeling}`);
+              return lines;
+            }
+            return null;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        grid: { color: 'rgba(30,45,61,0.8)' },
+        ticks: { color: '#5a7a98', font: { size: 10 }, maxRotation: 45 }
+      },
+      y: {
+        min: 18,
+        max: 50,
+        grid: { color: 'rgba(30,45,61,0.8)' },
+        ticks: {
+          color: '#5a7a98',
+          font: { size: 10 },
+          callback: v => v + 'ms'
+        },
+        title: { display: true, text: 'HRV rMSSD', color: '#3a5a78', font: { size: 11 } }
+      }
+    }
+  }
+});
+</script>
+</body>
+</html>
