@@ -170,7 +170,7 @@ app.post('/api/checkin', async (req, res) => {
         compression:  answers.compression ?? null,
         sodium_goal:  answers.sodium_goal ?? null,
         hours_upright: answers.hours_upright ?? null,
-        notes:        answers.notes || null,
+        ...(answers.notes !== undefined && answers.notes !== null ? { notes: answers.notes } : {}),
       },
       $setOnInsert: {
         submitted_at: submitted_at || now,

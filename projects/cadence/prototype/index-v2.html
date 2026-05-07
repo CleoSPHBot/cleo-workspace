@@ -1696,8 +1696,14 @@
       });
     }
 
-    if (hrv != null && hrv < 45) {
-      advice.push({ level:'critical', icon:'🛑', title:`Low HRV — ${Math.round(hrv)}ms`, text:'Your nervous system is under stress. Keep today minimal — no exertion, no pushing through.' });
+    // HRV advice using personal percentiles (p10=26.9, p25=29.5, p50=31.9)
+    const _hrvSev = hrv == null ? 0 : hrv < 27 ? 3 : hrv < 29.5 ? 2 : hrv < 31.9 ? 1 : 0;
+    if (_hrvSev >= 3) {
+      advice.push({ level:'critical', icon:'🛑', title:`HRV ${Math.round(hrv)}ms — below your floor`, text:'Your autonomic system is in crisis. Full rest only — no exertion, no pushing through. This is your body\'s lowest gear.' });
+    } else if (_hrvSev >= 2) {
+      advice.push({ level:'critical', icon:'🛑', title:`HRV ${Math.round(hrv)}ms — bottom quartile`, text:'Your nervous system needs rest. Keep today minimal — nervous system stress is a direct PEM trigger.' });
+    } else if (_hrvSev >= 1) {
+      advice.push({ level:'warning', icon:'⚠️', title:`HRV ${Math.round(hrv)}ms — below median`, text:'HRV is below your normal baseline. Reduced tolerance today — stay conservative.' });
     } else if (rec != null && rec < 34) {
       advice.push({ level:'warning', icon:'⚠️', title:`Low recovery — ${rec}%`, text:'WHOOP is showing low recovery. Consider a rest day or very gentle activity only.' });
     } else if (rec != null && rec >= 67) {
@@ -1714,7 +1720,7 @@
       advice.push({ level:'warning', icon:'😮‍💨', title:'Mild PEM — take it easy', text:'Gentle active rest is okay — avoid anything that raises your heart rate.' });
     }
 
-    if (!todayCI?.pem || todayCI.pem === 'none') {
+    if ((!todayCI?.pem || todayCI.pem === 'none') && _hrvSev < 2) {
       advice.push({ level:'good', icon:'🧘', title:'Stretching is safe today', text:'Gentle stretching (Borg ≤3 — no elevated HR) is a good option. Parasympathetic, low-cost, won\'t trigger PEM.' });
     }
 
@@ -1755,6 +1761,15 @@
     const twoDW   = dashData?.whoop?.[twoDDate];
     const todayCI = dashData?.checkins?.[todayDate];
     const yestCI  = dashData?.checkins?.[yestDate];
+
+    // ── SHARED HRV SEVERITY (Hannah's personal percentiles: p10=26.9, p25=29.5, p50=31.9) ──
+    // 0=normal, 1=below-median, 2=bottom-quartile, 3=crisis (below p10)
+    const _hrv = todayW?.recovery?.score?.hrv_rmssd_milli;
+    const hrvSeverity = _hrv == null ? 0
+      : _hrv < 27   ? 3
+      : _hrv < 29.5 ? 2
+      : _hrv < 31.9 ? 1
+      : 0;
 
     // ── HERO ──
     const nowCard = document.getElementById('now-card');
@@ -2350,6 +2365,27 @@
           }
         }
 
+        // ── HRV override — Hannah's personal percentiles (90-day baseline) ──
+        // p10=26.9ms, p25=29.5ms, p50=31.9ms
+        const todayHRV = todayW?.recovery?.score?.hrv_rmssd_milli;
+        if (todayHRV != null) {
+          let hrvCeiling, hrvReason;
+          if (todayHRV < 27) {
+            hrvCeiling = 4;
+            hrvReason = `<span class="ceiling-sub-strong">Autonomic stress.</span> HRV ${todayHRV.toFixed(0)}ms is below your historical floor — full rest only.`;
+          } else if (todayHRV < 29.5) {
+            hrvCeiling = 6;
+            hrvReason = `<span class="ceiling-sub-strong">Low HRV.</span> HRV ${todayHRV.toFixed(0)}ms is in your bottom quartile — nervous system needs rest.`;
+          } else if (todayHRV < 31.9) {
+            hrvCeiling = 9;
+            hrvReason = `<span class="ceiling-sub-strong">Below-median HRV.</span> HRV ${todayHRV.toFixed(0)}ms — reduced tolerance today.`;
+          }
+          if (hrvCeiling != null && hrvCeiling < ceiling) {
+            ceiling = hrvCeiling;
+            reason = hrvReason;
+          }
+        }
+
         // Today's spend so far
         const visTodayObs = (dashData?.visible?.[todayDate]?.observations) || [];
         const todaySpent = dashData?.visible?.[todayDate]?.measurements?.PacePoints ??
@@ -2392,6 +2428,14 @@
         statusEl.className = 'lag3-status med';
         statusEl.textContent = '🟡 Watch';
         explainEl.innerHTML = `Moderate lag-3 spend (${lag3Pace.toFixed(1)} pts). Some PEM lag risk — pace yourself, listen for early symptoms.`;
+      } else if (hrvSeverity >= 3) {
+        statusEl.className = 'lag3-status med';
+        statusEl.textContent = '🟡 Watch';
+        explainEl.innerHTML = `Lag-3 spend is low (${lag3Pace.toFixed(1)} pts), but <strong>HRV is at your floor</strong> — autonomic state overrides a clear lag-3. Treat today as a watch day.`;
+      } else if (hrvSeverity >= 2) {
+        statusEl.className = 'lag3-status med';
+        statusEl.textContent = '🟡 Watch';
+        explainEl.innerHTML = `Lag-3 spend is low (${lag3Pace.toFixed(1)} pts), but <strong>HRV is in your bottom quartile</strong> — reduced tolerance today regardless.`;
       } else {
         statusEl.className = 'lag3-status low';
         statusEl.textContent = '🟢 Clear';
@@ -2407,7 +2451,11 @@
       const obs        = visToday?.observations || [];
       const getObs     = n => visToday?.measurements?.[n] ?? obs.find(o=>o.tracker_name===n)?.value;
       const pacePoints = getObs('PacePoints');
-      const baseBudget = 14;
+      // HRV-adjusted base budget (same personal percentiles as ceiling)
+      const baseBudget = hrvSeverity >= 3 ? 4
+                       : hrvSeverity >= 2 ? 6
+                       : hrvSeverity >= 1 ? 9
+                       : 14;
 
       // Check for Adderall in today's check-in notes
       const todayCI    = dashData?.checkins?.[todayDate];
@@ -2564,12 +2612,13 @@
     if (inCheckin && typeof activeDate === 'string' && activeDate) return activeDate;
     return dateKey(0);
   }
-  async function loadMeds(date) {
+  async function loadMeds(date, forceRefresh) {
     const d = date || dateKey(0);
     try {
       const promises = [];
       if (!medCatalog.length) promises.push(fetch('/api/meds/list').then(r => r.json()));
-      promises.push(fetch(userParam('/api/meds?date=' + d)).then(r => r.json()));
+      // Always fetch fresh from API (bypass cache) — past-date edits need current server state
+      promises.push(fetch(userParam('/api/meds?date=' + d) + '&_=' + Date.now()).then(r => r.json()));
       const results = await Promise.all(promises);
       if (results.length === 2) {
         medCatalog = results[0].meds || [];
@@ -2651,6 +2700,7 @@
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
     const id = (n === 'done') ? 'screen-done' : (n === 'checkin') ? 'screen-checkin' : (n === 'checkin-mode') ? 'screen-checkin-mode' : 'screen-' + n;
     document.getElementById(id).classList.add('active');
+    if (n === 'checkin') loadMeds(activeDate);
     window.scrollTo(0, 0);
   }
 
@@ -2659,7 +2709,7 @@
     let id;
     if (n === 'mode') id = 'screen-checkin-mode';
     else if (n === 'notes-step') id = 'screen-notes-step';
-    else if (n === 'meds-step') { id = 'screen-meds-step'; renderMeds(); }
+    else if (n === 'meds-step') { id = 'screen-meds-step'; loadMeds(activeDate).then(() => renderMeds()); }
     else if (n === 'summary-step') { id = 'screen-summary-step'; updateStepSummary(); }
     else id = 'screen-' + n;
     const el = document.getElementById(id);
@@ -2762,7 +2812,7 @@
     } catch(e) {}
     refreshNotesPrompt();
     // Preload meds for the active check-in date so the in-flow lists are ready
-    loadMeds(activeDate);
+    await loadMeds(activeDate);
     goTo('checkin-mode');
   }
 

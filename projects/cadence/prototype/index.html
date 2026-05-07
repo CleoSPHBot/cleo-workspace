@@ -41,11 +41,7 @@
 
     /* ── Progress bar ── */
     .progress-bar { width: 100%; height: 3px; background: #1e2d3d; }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #c9a84c, #e8c96a);
-      transition: width 0.3s ease;
-    }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #c9a84c, #e8c96a); transition: width 0.3s ease; }
 
     /* ── Screens ── */
     .screen {
@@ -57,9 +53,8 @@
     .screen.active { display: flex; }
 
     /* ══════════════════════════════
-       HUB HOME SCREEN
+       SECTION LABELS
     ══════════════════════════════ */
-
     .section-label {
       font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
       text-transform: uppercase; color: #c9a84c;
@@ -67,19 +62,80 @@
     }
     .section-label:first-child { margin-top: 0; }
 
-    /* ── Where Are You Now ── */
-    .now-card {
-      background: linear-gradient(135deg, #1a3550, #1e2d3d);
-      border: 1.5px solid #c9a84c44;
+    /* ══════════════════════════════
+       TAPPABLE CARD BASE
+    ══════════════════════════════ */
+    .tap-card {
       border-radius: 20px;
       padding: 18px 20px;
       cursor: pointer;
-      transition: all 0.15s;
+      transition: transform 0.12s;
+      -webkit-tap-highlight-color: transparent;
+      position: relative;
+    }
+    .tap-card:active { transform: scale(0.985); }
+    .chevron {
+      position: absolute; right: 18px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px; color: #3a5a78;
+      pointer-events: none;
+    }
+
+    /* ══════════════════════════════
+       HERO: WHERE ARE YOU NOW
+    ══════════════════════════════ */
+    /* ── Crash Line Status Bar ── */
+    .crash-line-bar {
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: background 0.4s;
+    }
+    .crash-line-bar.above {
+      background: linear-gradient(135deg, rgba(76,175,125,0.15), rgba(76,175,125,0.05));
+      border: 1px solid rgba(76,175,125,0.3);
+    }
+    .crash-line-bar.below {
+      background: linear-gradient(135deg, rgba(224,90,90,0.15), rgba(224,90,90,0.05));
+      border: 1px solid rgba(224,90,90,0.3);
+    }
+    .crash-line-bar.borderline {
+      background: linear-gradient(135deg, rgba(240,192,64,0.12), rgba(240,192,64,0.04));
+      border: 1px solid rgba(240,192,64,0.3);
+    }
+    .crash-line-icon { font-size: 28px; flex-shrink: 0; }
+    .crash-line-body { flex: 1; }
+    .crash-line-status { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+    .crash-line-bar.above  .crash-line-status { color: #4caf7d; }
+    .crash-line-bar.below  .crash-line-status { color: #e05a5a; }
+    .crash-line-bar.borderline .crash-line-status { color: #f0c040; }
+    .crash-line-detail { font-size: 11px; color: #7a9ab8; line-height: 1.5; }
+    .crash-line-metrics { display: flex; gap: 10px; margin-top: 8px; }
+    .clm { background: rgba(0,0,0,0.2); border-radius: 8px; padding: 5px 10px; text-align: center; }
+    .clm-label { font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #5a7a98; }
+    .clm-val { font-size: 15px; font-weight: 700; margin-top: 1px; }
+    .clm-val.good  { color: #4caf7d; }
+    .clm-val.warn  { color: #f0c040; }
+    .clm-val.bad   { color: #e05a5a; }
+    .clm-val.neutral { color: #f0f4f8; }
+
+    .now-card {
+      background: linear-gradient(135deg, #1a3550, #1e2d3d);
+      border: 1.5px solid #c9a84c44;
+    }
+    .now-card.done   { border-color: #4caf7d55; }
+    .now-card.partial { border-color: #f0c04055; }
+
+    .card-pencil {
+      background: none; border: none; cursor: pointer;
+      font-size: 18px; padding: 2px 4px; line-height: 1;
+      opacity: 0.6; transition: opacity 0.15s;
       -webkit-tap-highlight-color: transparent;
     }
-    .now-card:active { transform: scale(0.98); }
-    .now-card.done { border-color: #4caf7d55; }
-    .now-card.partial { border-color: #f0c04055; }
+    .card-pencil:hover { opacity: 1; }
 
     .now-top {
       display: flex; align-items: center; justify-content: space-between;
@@ -90,52 +146,174 @@
       font-size: 12px; font-weight: 700;
       padding: 4px 12px; border-radius: 20px;
     }
-    .now-status-pill.done { background: rgba(76,175,125,0.15); color: #4caf7d; }
+    .now-status-pill.done    { background: rgba(76,175,125,0.15); color: #4caf7d; }
     .now-status-pill.partial { background: rgba(240,192,64,0.12); color: #f0c040; }
-    .now-status-pill.empty { background: rgba(201,168,76,0.12); color: #c9a84c; }
+    .now-status-pill.empty   { background: rgba(201,168,76,0.12); color: #c9a84c; }
 
     .now-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-bottom: 14px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 8px; margin-bottom: 14px;
     }
-    .now-metric {
-      background: #0f192380;
-      border-radius: 10px;
-      padding: 9px 10px;
-    }
-    .now-metric-label {
-      font-size: 9px; font-weight: 700; letter-spacing: 0.8px;
-      text-transform: uppercase; color: #5a7a98; margin-bottom: 3px;
-    }
-    .now-metric-val {
-      font-size: 18px; font-weight: 700; color: #f0f4f8; line-height: 1;
-    }
+    .now-metric { background: #0f192380; border-radius: 10px; padding: 9px 10px; }
+    .now-metric-label { font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #5a7a98; margin-bottom: 3px; }
+    .now-metric-val { font-size: 18px; font-weight: 700; color: #f0f4f8; line-height: 1; }
     .now-metric-unit { font-size: 10px; color: #7a9ab8; font-weight: 400; }
 
-    .now-checkin-row {
-      display: flex; flex-wrap: wrap; gap: 6px;
-      margin-bottom: 14px;
-    }
-    .ci-chip {
-      display: flex; align-items: center; gap: 4px;
-      background: #0f192380; border-radius: 8px;
-      padding: 5px 9px; font-size: 11px;
-    }
+    .now-checkin-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .ci-chip { display: flex; align-items: center; gap: 4px; background: #0f192380; border-radius: 8px; padding: 5px 9px; font-size: 11px; }
     .ci-chip-label { color: #5a7a98; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; font-size: 9px; }
     .ci-chip-val { color: #f0f4f8; font-weight: 600; }
-    .ci-chip-val.green { color: #4caf7d; }
+    .ci-chip-val.green  { color: #4caf7d; }
     .ci-chip-val.yellow { color: #f0c040; }
-    .ci-chip-val.red { color: #e05a5a; }
+    .ci-chip-val.red    { color: #e05a5a; }
+    .ci-chip-val.neutral { color: #b0c8e0; }
+
+    /* Budget Models stacked */
+    .budget-stack {
+      margin-bottom: 14px;
+      background: #0f192360;
+      border-radius: 12px;
+      padding: 10px 14px;
+    }
+    .budget-stack-title {
+      font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+      color: #5a7a98; margin-bottom: 10px;
+    }
+    /* Recommended ceiling — the actionable one */
+    .ceiling-card {
+      margin-bottom: 10px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #c9a84c40;
+      background: linear-gradient(90deg, #2a220860, #1a3a5c30);
+    }
+    .ceiling-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .ceiling-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #c9a84c; }
+    .ceiling-value { font-size: 18px; font-weight: 700; color: #f0f4f8; line-height: 1; }
+    .ceiling-track { width: 100%; height: 7px; background: #1e2d3d; border-radius: 4px; overflow: hidden; margin-bottom: 6px; }
+    .ceiling-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease, background 0.4s ease; }
+    .ceiling-sub { font-size: 11px; color: #7a9ab8; line-height: 1.35; }
+    .ceiling-sub-strong { color: #e8c96a; font-weight: 600; }
+
+    /* Lag-3 watch — standalone PEM lag indicator */
+    .lag3-card {
+      margin-bottom: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #0f192360;
+      border-left: 3px solid #c9a84c;
+    }
+    .lag3-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .lag3-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #5a7a98; }
+    .lag3-date { font-size: 11px; color: #7a9ab8; }
+    .lag3-value-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+    .lag3-value { font-size: 20px; font-weight: 700; color: #f0f4f8; line-height: 1; }
+    .lag3-unit { font-size: 11px; color: #7a9ab8; }
+    .lag3-status {
+      font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 10px;
+      letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .lag3-status.low { background: #1a3a2c; color: #4caf7d; }
+    .lag3-status.med { background: #2a2208; color: #f0c040; }
+    .lag3-status.high{ background: #2a0d0d; color: #e05a5a; }
+    .lag3-explain { font-size: 11px; color: #7a9ab8; line-height: 1.4; }
+    .lag3-explain strong { color: #c9a84c; }
+
+    /* Ceiling rules reference */
+    .rules-card {
+      margin-bottom: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: #0f192360;
+    }
+    .rules-title { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #5a7a98; margin-bottom: 10px; }
+    .rule-row {
+      display: flex; align-items: flex-start; gap: 10px; padding: 8px 0;
+      border-bottom: 1px solid #1e2d3d; font-size: 12px;
+    }
+    .rule-row:last-child { border-bottom: none; }
+    .rule-cap { font-weight: 700; color: #c9a84c; min-width: 48px; }
+    .rule-cond { color: #7a9ab8; flex: 1; }
+    .rule-cond strong { color: #f0f4f8; font-weight: 600; }
+
+    /* Meds tracker */
+    .meds-card {
+      margin-bottom: 14px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: #0f192360;
+    }
+    .meds-title { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #5a7a98; margin-bottom: 10px; }
+    .med-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0;
+      border-bottom: 1px solid #1e2d3d;
+    }
+    .med-row:last-child { border-bottom: none; }
+    .med-name { flex: 1; min-width: 0; }
+    .med-label { font-size: 13px; font-weight: 600; color: #f0f4f8; line-height: 1.2; }
+    .med-note  { font-size: 10px; color: #5a7a98; margin-top: 1px; }
+    .med-count {
+      font-size: 16px; font-weight: 700; color: #f0f4f8;
+      min-width: 22px; text-align: center;
+    }
+    .med-count.zero { color: #3a5a78; }
+    .med-stepper {
+      display: flex; align-items: center; gap: 0;
+      border-radius: 8px; overflow: hidden;
+      background: #1e2d3d;
+    }
+    .med-btn {
+      width: 36px; height: 32px;
+      border: none; background: transparent;
+      color: #c9a84c; font-size: 18px; font-weight: 700;
+      cursor: pointer; line-height: 1; padding: 0;
+      transition: background 0.15s;
+    }
+    .med-btn:hover { background: #2a3d52; }
+    .med-btn:active { background: #c9a84c; color: #0f1923; }
+    .med-btn:disabled { color: #3a5a78; cursor: not-allowed; }
+    .med-btn-divider { width: 1px; background: #0f1923; }
+    .bm-row {
+      margin-bottom: 9px;
+    }
+    .bm-row:last-child { margin-bottom: 0; }
+    .bm-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 4px;
+    }
+    .bm-label { font-size: 10px; font-weight: 600; color: #7a9ab8; }
+    .bm-value { font-size: 11px; font-weight: 700; color: #f0f4f8; }
+    .bm-track {
+      width: 100%; height: 5px; background: #1e2d3d; border-radius: 3px; overflow: hidden;
+    }
+    .bm-fill {
+      height: 100%; border-radius: 3px;
+      transition: width 0.4s ease, background 0.4s ease;
+    }
+    .bm-asterisk { color: #f0c040; font-size: 11px; margin-left: 3px; }
+    /* keep old names as aliases so nothing else breaks */
+    .budget-row { display: none; }
+    .budget-track { width: 100%; height: 6px; background: #1e2d3d; border-radius: 4px; overflow: hidden; }
+    .budget-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease, background 0.4s ease; }
+
+    /* Visible nudge inside hero */
+    .visible-nudge {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 10px; padding: 8px 12px;
+      margin-bottom: 14px; cursor: pointer;
+    }
+    .visible-nudge-icon { font-size: 16px; }
+    .visible-nudge-text { font-size: 12px; color: #c9a84c; font-weight: 600; flex: 1; }
+    .visible-nudge-arrow { font-size: 12px; color: #c9a84c; }
 
     .now-edit-btn {
       width: 100%;
-      background: linear-gradient(135deg, #c9a84c, #e8c96a);
-      border: none; border-radius: 12px;
-      color: #0f1923; font-size: 14px; font-weight: 700;
-      padding: 12px; cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
+      background: rgba(201,168,76,0.12); border: 1.5px solid #c9a84c55;
+      border-radius: 12px; color: #c9a84c; font-size: 13px; font-weight: 700;
+      padding: 10px; cursor: pointer;
     }
     .now-start-btn {
       width: 100%;
@@ -143,108 +321,108 @@
       border: none; border-radius: 12px;
       color: #0f1923; font-size: 15px; font-weight: 700;
       padding: 14px; cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
     }
     .now-continue-btn {
       width: 100%;
-      background: transparent;
-      border: 1.5px solid #f0c040;
-      border-radius: 12px;
-      color: #f0c040; font-size: 14px; font-weight: 700;
-      padding: 12px; cursor: pointer;
-      margin-top: 8px;
-      -webkit-tap-highlight-color: transparent;
+      background: transparent; border: 1.5px solid #f0c040;
+      border-radius: 12px; color: #f0c040; font-size: 14px; font-weight: 700;
+      padding: 12px; cursor: pointer; margin-top: 8px;
     }
 
-    /* ── Yesterday / Trends ── */
+    /* ══════════════════════════════
+       YESTERDAY CARD
+    ══════════════════════════════ */
     .yest-card {
       background: #131f2e;
       border: 1px solid #1e2d3d;
-      border-radius: 18px;
-      padding: 18px 20px;
+      padding-right: 40px; /* room for chevron */
     }
-    .yest-top {
-      display: flex; align-items: baseline; gap: 8px;
-      margin-bottom: 14px;
-    }
-    .yest-day { font-size: 15px; font-weight: 700; color: #f0f4f8; }
+    .yest-top { display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px; }
+    .yest-day  { font-size: 15px; font-weight: 700; color: #f0f4f8; }
     .yest-date { font-size: 12px; color: #7a9ab8; }
 
-    .yest-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-    .yest-metric {
-      background: #0f1923;
-      border-radius: 10px;
-      padding: 9px 10px;
-    }
-    .yest-metric-label {
-      font-size: 9px; font-weight: 700; letter-spacing: 0.8px;
-      text-transform: uppercase; color: #5a7a98; margin-bottom: 3px;
-    }
-    .yest-metric-val {
-      font-size: 18px; font-weight: 700; color: #f0f4f8; line-height: 1;
-    }
+    .yest-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+    .now-metrics  { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+    .yest-metric { background: #0f1923; border-radius: 10px; padding: 9px 10px; }
+    .yest-metric-label { font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #5a7a98; margin-bottom: 3px; }
+    .yest-metric-val { font-size: 18px; font-weight: 700; color: #f0f4f8; line-height: 1; }
     .yest-metric-unit { font-size: 10px; color: #7a9ab8; }
     .trend-up-good   { color: #4caf7d; font-size: 11px; }
     .trend-down-bad  { color: #e05a5a; font-size: 11px; }
-    .trend-up-bad    { color: #e05a5a; font-size: 11px; }
     .trend-down-good { color: #4caf7d; font-size: 11px; }
     .trend-flat      { color: #3a5a78; font-size: 11px; }
 
-    .yest-checkin-row {
-      display: flex; flex-wrap: wrap; gap: 6px;
-      margin-bottom: 12px;
-    }
+    .yest-checkin-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 
-    /* Trend pills */
-    .trend-section { margin-top: 12px; }
-    .trend-row {
-      display: flex; align-items: center; gap: 8px;
-      padding: 7px 0;
-      border-bottom: 1px solid #1e2d3d;
-      font-size: 13px;
-    }
-    .trend-row:last-child { border-bottom: none; }
-    .trend-icon { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; }
-    .trend-text { color: #b0c8e0; flex: 1; line-height: 1.4; }
-    .trend-text strong { color: #f0f4f8; }
-
-    /* ── Insights & Advice ── */
-    .insight-card {
+    /* ══════════════════════════════
+       INSIGHTS CARD
+    ══════════════════════════════ */
+    .insights-card {
       background: #131f2e;
       border: 1px solid #1e2d3d;
-      border-radius: 18px;
-      padding: 18px 20px;
+      padding-right: 40px;
     }
-    .insight-empty {
-      font-size: 13px; color: #3a5a78; font-style: italic; text-align: center; padding: 12px 0;
-    }
-    .advice-row {
-      display: flex; gap: 12px; align-items: flex-start;
-      padding: 10px 0;
-      border-bottom: 1px solid #1e2d3d;
-    }
-    .advice-row:last-child { border-bottom: none; }
-    .advice-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-    .advice-body { flex: 1; }
-    .advice-title { font-size: 14px; font-weight: 700; color: #f0f4f8; margin-bottom: 3px; }
-    .advice-text { font-size: 12px; color: #7a9ab8; line-height: 1.5; }
-    .advice-level-critical .advice-title { color: #e05a5a; }
-    .advice-level-warning .advice-title { color: #f0c040; }
-    .advice-level-good .advice-title { color: #4caf7d; }
+    .insight-empty { font-size: 13px; color: #3a5a78; font-style: italic; text-align: center; padding: 12px 0; }
 
-    /* ── Past days ── */
+    .insight-row {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 10px 0; border-bottom: 1px solid #1e2d3d;
+    }
+    .insight-row:last-child { border-bottom: none; }
+    .insight-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+    .insight-body { flex: 1; }
+    .insight-title { font-size: 14px; font-weight: 700; color: #f0f4f8; margin-bottom: 3px; }
+    .insight-title.critical { color: #e05a5a; }
+    .insight-title.warning  { color: #f0c040; }
+    .insight-title.good     { color: #4caf7d; }
+    .insight-title.repair   { color: #5bc8e8; }
+    .insight-text  { font-size: 12px; color: #7a9ab8; line-height: 1.5; }
+    .insight-text .term { color: #5bc8e8; font-weight: 700; }
+
+    .more-link {
+      display: block; text-align: center;
+      font-size: 12px; color: #c9a84c; font-weight: 600;
+      padding: 10px 0 0; letter-spacing: 0.3px;
+    }
+
+    /* ══════════════════════════════
+       ADVICE CARD
+    ══════════════════════════════ */
+    .advice-card {
+      background: #131f2e;
+      border: 1px solid #1e2d3d;
+      padding-right: 40px;
+    }
+
+    /* ══════════════════════════════
+       HISTORY LINK
+    ══════════════════════════════ */
+    .history-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; margin-top: 28px; margin-bottom: 4px;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .history-link-text {
+      font-size: 13px; color: #5a7a98; font-weight: 600;
+    }
+    .history-link-text:hover { color: #7a9ab8; }
+
+    /* ══════════════════════════════
+       HISTORY SCREEN
+    ══════════════════════════════ */
+    .screen-back-btn {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; color: #7a9ab8; font-weight: 600;
+      cursor: pointer; margin-bottom: 20px;
+      -webkit-tap-highlight-color: transparent;
+    }
     .past-days { display: flex; flex-direction: column; gap: 8px; }
     .day-row {
       background: #1e2d3d; border-radius: 14px;
       padding: 13px 16px;
       display: flex; align-items: center;
-      cursor: pointer;
-      transition: all 0.15s; border: 1.5px solid transparent;
+      cursor: pointer; transition: all 0.15s; border: 1.5px solid transparent;
       -webkit-tap-highlight-color: transparent;
     }
     .day-row:active { transform: scale(0.98); }
@@ -256,41 +434,26 @@
     .dr-status.done { background: rgba(76,175,125,0.15); color: #4caf7d; }
     .dr-status.open { background: rgba(201,168,76,0.12); color: #c9a84c; }
 
-    /* ── Utility links ── */
-    .util-row {
-      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
-      margin-top: 24px;
+    /* ══════════════════════════════
+       DETAIL SCREENS
+    ══════════════════════════════ */
+    .detail-section-title {
+      font-size: 20px; font-weight: 700; color: #f0f4f8; margin-bottom: 16px;
     }
-    .util-link {
-      display: inline-block; padding: 9px 18px;
-      background: #1e2d3d; color: #7a9ab8;
-      border-radius: 20px; font-size: 12px; font-weight: 600;
-      text-decoration: none; border: 1px solid #2a3d54;
+    .detail-card {
+      background: #131f2e; border: 1px solid #1e2d3d;
+      border-radius: 18px; padding: 18px 20px; margin-bottom: 12px;
     }
-    .upload-row {
-      margin-top: 12px;
-    }
-    .upload-card {
-      background: #1e2d3d; border-radius: 14px; padding: 14px 18px;
-      display: flex; align-items: center; gap: 14px;
-      cursor: pointer; border: 1px solid #2a3d54;
-    }
-    .upload-card:active { background: #2a3d54; }
-    .upload-label { font-size: 14px; font-weight: 600; color: #e0e0e0; }
-    .upload-sub { font-size: 12px; color: #7a9ab8; margin-top: 2px; }
-    #upload-result {
-      display: none; margin-top: 8px; padding: 10px 14px;
-      border-radius: 10px; font-size: 13px; text-align: center;
-    }
+    .detail-metric-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+    .detail-metric { background: #0f1923; border-radius: 10px; padding: 12px; }
+    .detail-metric-label { font-size: 9px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; color: #5a7a98; margin-bottom: 4px; }
+    .detail-metric-val { font-size: 22px; font-weight: 700; color: #f0f4f8; line-height: 1; }
+    .detail-metric-unit { font-size: 11px; color: #7a9ab8; }
 
     /* ══════════════════════════════
        QUESTION SCREENS
     ══════════════════════════════ */
-    .q-date-tag {
-      display: inline-block; background: #1e2d3d;
-      border-radius: 8px; padding: 4px 10px;
-      font-size: 12px; color: #c9a84c; font-weight: 600; margin-bottom: 16px;
-    }
+    .q-date-tag { display: inline-block; background: #1e2d3d; border-radius: 8px; padding: 4px 10px; font-size: 12px; color: #c9a84c; font-weight: 600; margin-bottom: 16px; }
     .question-num { font-size: 12px; font-weight: 600; color: #7a9ab8; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 8px; }
     .question-text { font-size: 22px; font-weight: 700; color: #f0f4f8; line-height: 1.3; margin-bottom: 28px; }
     .options { display: flex; flex-direction: column; gap: 12px; }
@@ -309,9 +472,37 @@
     .option-btn.red.selected    { border-color: #e05a5a; background: rgba(224,90,90,0.1); }
     .option-btn.home.selected   { border-color: #7a9ab8; background: rgba(122,154,184,0.1); }
     .option-btn.car.selected    { border-color: #c9a84c; background: rgba(201,168,76,0.1); }
-    .option-icon { font-size: 28px; width: 40px; text-align: center; flex-shrink: 0; }
+
+    /* ══════════════════════════════
+       SINGLE-PAGE CHECK-IN
+    ══════════════════════════════ */
+    .checkin-section {
+      padding: 16px 0;
+      border-bottom: 1px solid #1a3558;
+    }
+    .checkin-section:last-of-type { border-bottom: none; }
+    .mode-btn { display:block; width:100%; min-height:56px; background:#1a3558; color:#b0c8e0; border:1px solid #2a4568; border-radius:12px; padding:16px; font-size:16px; text-align:left; cursor:pointer; margin-bottom:12px; }
+    .mode-btn:active { background:#1f4070; }
+    .question-num { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:#7a9ab8; margin-bottom:8px; }
+    .question-text { font-size:18px; color:#e0eaf4; font-weight:600; margin-bottom:16px; }
+    .nav-row { display:flex; gap:12px; margin-top:20px; }
+    .btn-back { flex:0 0 60px; background:#1a3558; color:#b0c8e0; border:1px solid #2a4568; border-radius:10px; padding:12px; font-size:16px; cursor:pointer; }
+    .btn-next { flex:1; background:#1a5f8a; color:#fff; border:none; border-radius:10px; padding:12px; font-size:16px; cursor:pointer; }
+    .btn-next:disabled { background:#1a3558; color:#4a6a88; cursor:default; }
+    .step-summary-row { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid #1a3558; font-size:14px; color:#b0c8e0; }
+    .step-sum-icon { font-size:18px; min-width:24px; text-align:center; }
+    .checkin-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: #7a9ab8;
+      margin-bottom: 6px;
+    }
+    .checkin-question {
+      font-size: 16px; font-weight: 600; color: #b0c8e0;
+      margin-bottom: 12px;
+    }
+    .option-icon  { font-size: 28px; width: 40px; text-align: center; flex-shrink: 0; }
     .option-label { font-size: 17px; font-weight: 600; color: #f0f4f8; }
-    .option-sub { font-size: 13px; color: #7a9ab8; margin-top: 2px; }
+    .option-sub   { font-size: 13px; color: #7a9ab8; margin-top: 2px; }
 
     .nav-row { display: flex; gap: 12px; margin-top: 28px; }
     .btn-back {
@@ -319,15 +510,13 @@
       background: #1e2d3d; border: none; border-radius: 14px;
       color: #7a9ab8; font-size: 20px; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      -webkit-tap-highlight-color: transparent;
     }
     .btn-next {
       flex: 1; height: 52px;
       background: linear-gradient(135deg, #c9a84c, #e8c96a);
       border: none; border-radius: 14px;
       color: #0f1923; font-size: 16px; font-weight: 700;
-      cursor: pointer; -webkit-tap-highlight-color: transparent;
-      transition: opacity 0.15s;
+      cursor: pointer; transition: opacity 0.15s;
     }
     .btn-next:disabled { opacity: 0.3; cursor: not-allowed; }
     .btn-skip {
@@ -335,7 +524,6 @@
       background: transparent; border: 2px solid #1e2d3d;
       border-radius: 14px; color: #7a9ab8;
       font-size: 15px; font-weight: 600; cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
     }
 
     .notes-area {
@@ -348,16 +536,15 @@
     .notes-area:focus { border-color: #c9a84c; }
     .notes-area::placeholder { color: #7a9ab8; }
 
-    /* Summary */
     .summary-card { background: #1e2d3d; border-radius: 20px; padding: 24px; margin-bottom: 16px; }
     .summary-title { font-size: 13px; font-weight: 600; color: #7a9ab8; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 16px; }
     .summary-for { font-size: 14px; color: #c9a84c; font-weight: 600; margin-bottom: 16px; }
     .summary-table { width: 100%; border-collapse: collapse; }
     .summary-table tr td { padding: 10px 0; border-bottom: 1px solid #0f1923; font-size: 15px; vertical-align: middle; }
     .summary-table tr:last-child td { border-bottom: none; }
-    .summary-table .summary-label { color: #7a9ab8; width: 100%; }
-    .summary-table .summary-icon { white-space: nowrap; font-size: 18px; padding-right: 6px; text-align: right; }
-    .summary-table .summary-value { color: #f0f4f8; font-weight: 600; white-space: nowrap; }
+    .summary-label { color: #7a9ab8; width: 100%; }
+    .summary-icon { white-space: nowrap; font-size: 18px; padding-right: 6px; text-align: right; }
+    .summary-value { color: #f0f4f8; font-weight: 600; white-space: nowrap; }
     .btn-submit {
       width: 100%; height: 56px;
       background: linear-gradient(135deg, #c9a84c, #e8c96a);
@@ -365,11 +552,9 @@
       color: #0f1923; font-size: 17px; font-weight: 700;
       cursor: pointer; margin-top: 8px;
     }
-
-    /* Done */
-    .done-icon { font-size: 64px; text-align: center; margin: 40px 0 20px; }
+    .done-icon  { font-size: 64px; text-align: center; margin: 40px 0 20px; }
     .done-title { font-size: 26px; font-weight: 700; text-align: center; margin-bottom: 12px; }
-    .done-sub { font-size: 15px; color: #7a9ab8; text-align: center; line-height: 1.6; }
+    .done-sub   { font-size: 15px; color: #7a9ab8; text-align: center; line-height: 1.6; }
     .btn-home {
       width: 100%; height: 52px; margin-top: 24px;
       background: #1e2d3d; border: none; border-radius: 14px;
@@ -377,10 +562,13 @@
     }
 
     /* Color helpers */
-    .rec-green { color: #4caf7d; }
+    .rec-green  { color: #4caf7d; }
     .rec-yellow { color: #f0c040; }
-    .rec-red { color: #e05a5a; }
-    .rec-none { color: #5a7a98; }
+    .rec-red    { color: #e05a5a; }
+    .rec-none   { color: #5a7a98; }
+
+    /* Upload (hidden input) */
+    #visible-file-input { display: none; }
   </style>
 </head>
 <body>
@@ -390,20 +578,27 @@
   <h1>Cadence</h1>
   <span id="header-right"></span>
 </header>
-<div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+
 
 <!-- ══════════════════════════════════════════
      SCREEN: Hub Home
 ══════════════════════════════════════════ -->
 <div class="screen active" id="screen-home">
 
-  <!-- WHERE ARE YOU NOW -->
+  <!-- ── CRASH LINE STATUS ── -->
+  <div id="crash-line-bar" class="crash-line-bar" style="display:none"></div>
+
+  <!-- ── WHERE ARE YOU NOW ── -->
   <div class="section-label">Where are you now</div>
-  <div class="now-card" id="now-card" onclick="onNowCardTap()">
+  <div class="tap-card now-card" id="now-card" onclick="onNowCardTap()">
     <div class="now-top">
       <div class="now-label" id="now-label">Today</div>
-      <div class="now-status-pill empty" id="now-status-pill">Not started</div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="now-status-pill empty" id="now-status-pill" style="display:none">Not started</div>
+        <button class="card-pencil" id="now-pencil" style="display:none">✏️</button>
+      </div>
     </div>
+
     <!-- WHOOP quick metrics -->
     <div class="now-metrics" id="now-metrics" style="display:none">
       <div class="now-metric">
@@ -412,27 +607,106 @@
       </div>
       <div class="now-metric">
         <div class="now-metric-label">HRV</div>
-        <div class="now-metric-val" id="now-hrv">—<span class="now-metric-unit"></span></div>
+        <div class="now-metric-val" id="now-hrv">—</div>
       </div>
       <div class="now-metric">
         <div class="now-metric-label">Sleep</div>
-        <div class="now-metric-val" id="now-sleep">—<span class="now-metric-unit"></span></div>
+        <div class="now-metric-val" id="now-sleep">—</div>
+      </div>
+      <div class="now-metric">
+        <div class="now-metric-label">RHR</div>
+        <div class="now-metric-val" id="now-rhr">—</div>
+      </div>
+      <div class="now-metric">
+        <div class="now-metric-label">SpO2</div>
+        <div class="now-metric-val" id="now-spo2">—</div>
+      </div>
+      <div class="now-metric">
+        <div class="now-metric-label">Strain</div>
+        <div class="now-metric-val" id="now-strain">—</div>
       </div>
     </div>
+
+    <!-- CTA + Visible nudge (right after WHOOP metrics) -->
+    <div id="now-cta"></div>
+
+    <!-- Separator: WHOOP / Visible -->
+    <div id="now-sep-1" style="display:none;height:1px;background:rgba(255,255,255,0.07);margin:10px 0"></div>
+
+    <!-- Visible data for today -->
+    <div id="now-visible-section" style="display:none"></div>
+
     <!-- Check-in chips -->
     <div class="now-checkin-row" id="now-checkin-row" style="display:none"></div>
-    <!-- CTA -->
-    <div id="now-cta"></div>
+
+    <!-- Separator: Visible+chips / Budget -->
+    <div id="now-sep-2" style="display:none;height:1px;background:rgba(255,255,255,0.07);margin:10px 0"></div>
+
+    <!-- Recommended ceiling (actionable) -->
+    <div class="ceiling-card" id="ceiling-card" style="display:none">
+      <div class="ceiling-header">
+        <span class="ceiling-label">🎯 Today's ceiling</span>
+        <span class="ceiling-value" id="ceiling-value">—</span>
+      </div>
+      <div class="ceiling-track"><div class="ceiling-fill" id="ceiling-fill"></div></div>
+      <div class="ceiling-sub" id="ceiling-sub"></div>
+    </div>
+
+
+    <!-- Budget Models stacked -->
+    <div class="budget-stack" id="budget-stack" style="display:none">
+      <div class="budget-stack-title">⚡ Energy Budget</div>
+      <!-- Model 1: Visible PacePoints -->
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Visible<span class="bm-asterisk" id="bm1-asterisk" style="display:none">*</span></span>
+          <span class="bm-value" id="bm1-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="bm1-fill"></div></div>
+      </div>
+      <!-- Model 2: WHOOP Recovery-adjusted -->
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Recovery-adj</span>
+          <span class="bm-value" id="bm2-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="bm2-fill"></div></div>
+      </div>
+      <!-- Model 3: Sleep capacity -->
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Sleep capacity</span>
+          <span class="bm-value" id="bm3-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="bm3-fill"></div></div>
+      </div>
+      <!-- Model 4: Yesterday's recovery (lag predictor) -->
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Yesterday recovery</span>
+          <span class="bm-value" id="bm4-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="bm4-fill"></div></div>
+      </div>
+    </div>
+
+    <!-- Check-in progress -->
+    <div id="now-checkin-progress" style="display:none;font-size:11px;color:#3a5a78;margin-top:6px"></div>
+
+
   </div>
 
-  <!-- WHERE WERE YOU YESTERDAY -->
+  <!-- ── WHERE WERE YOU YESTERDAY ── -->
   <div class="section-label">Where were you yesterday</div>
-  <div class="yest-card" id="yest-card">
-    <div class="yest-top">
-      <div class="yest-day" id="yest-day">Yesterday</div>
-      <div class="yest-date" id="yest-date"></div>
+  <div class="tap-card yest-card" onclick="goToScreen('screen-yesterday-detail')">
+    <div class="yest-top" style="justify-content:space-between">
+      <div>
+        <div class="yest-day" id="yest-day">Yesterday</div>
+        <div class="yest-date" id="yest-date"></div>
+      </div>
+      <button class="card-pencil" style="margin-left:auto" onclick="event.stopPropagation();startCheckin(1)" title="Edit yesterday">✏️</button>
     </div>
-    <div class="yest-metrics" id="yest-metrics">
+    <div class="yest-metrics">
       <div class="yest-metric">
         <div class="yest-metric-label">Recovery</div>
         <div class="yest-metric-val" id="yest-recovery">—</div>
@@ -445,189 +719,692 @@
         <div class="yest-metric-label">Sleep</div>
         <div class="yest-metric-val" id="yest-sleep">—</div>
       </div>
-    </div>
-    <div class="yest-checkin-row" id="yest-checkin-row"></div>
-    <!-- Trends -->
-    <div class="trend-section" id="trend-section"></div>
-  </div>
-
-  <!-- INSIGHTS & ADVICE -->
-  <div class="section-label">Insights & advice</div>
-  <div class="insight-card" id="insight-card">
-    <div class="insight-empty" id="insight-empty">Loading…</div>
-  </div>
-
-  <!-- PAST DAYS -->
-  <div class="section-label" style="margin-top:28px">Previous days</div>
-  <div class="past-days" id="past-days-list"></div>
-
-  <!-- UTILITY -->
-  <div class="util-row">
-    <a href="/dashboard" class="util-link">📊 Dashboard</a>
-    <a href="/hannah-dashboard.html" class="util-link" id="hannah-link">🦋 Hannah</a>
-  </div>
-  <div class="upload-row">
-    <div class="upload-card" onclick="document.getElementById('visible-file-input').click()">
-      <div style="font-size:26px">📊</div>
-      <div>
-        <div class="upload-label">Upload Visible Export</div>
-        <div class="upload-sub">Tap to import a Visible CSV file</div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">RHR</div>
+        <div class="yest-metric-val" id="yest-rhr">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">SpO2</div>
+        <div class="yest-metric-val" id="yest-spo2">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">Strain</div>
+        <div class="yest-metric-val" id="yest-strain">—</div>
       </div>
     </div>
-    <input type="file" id="visible-file-input" accept=".csv" style="display:none" onchange="uploadVisible(event)">
-    <div id="upload-result"></div>
+    <div id="yest-visible-section"></div>
+    <div id="yest-checkin-row" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px"></div>
+    <div id="yest-sep-2" style="display:none;height:1px;background:rgba(255,255,255,0.07);margin:10px 0"></div>
+    <!-- Yesterday Budget Models stacked -->
+    <div class="budget-stack" id="yest-budget-stack" style="display:none">
+      <div class="budget-stack-title">⚡ Energy Budget</div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Visible<span class="bm-asterisk" id="ybm1-asterisk" style="display:none">*</span></span>
+          <span class="bm-value" id="ybm1-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="ybm1-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Recovery-adj</span>
+          <span class="bm-value" id="ybm2-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="ybm2-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Sleep capacity</span>
+          <span class="bm-value" id="ybm3-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="ybm3-fill"></div></div>
+      </div>
+      <!-- Model 4: Day-before-yesterday recovery (lag predictor) -->
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Prior recovery</span>
+          <span class="bm-value" id="ybm4-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="ybm4-fill"></div></div>
+      </div>
+    </div>
+    <div style="display:none" id="yest-budget-row"><div class="budget-track"><div class="budget-fill" id="yest-budget-fill"></div></div>
+      <div class="budget-sub" id="yest-budget-sub"></div>
+    </div>
+    <div class="chevron">›</div>
+  </div>
+
+  <!-- ── TWO DAYS AGO ── -->
+  <div class="section-label" id="twod-label">Two days ago</div>
+  <div class="tap-card yest-card" id="twod-card">
+    <div class="yest-top" style="justify-content:space-between">
+      <div>
+        <div class="yest-day" id="twod-day">Two days ago</div>
+        <div class="yest-date" id="twod-date"></div>
+      </div>
+      <button class="card-pencil" style="margin-left:auto" onclick="event.stopPropagation();startCheckin(2)" title="Edit two days ago">✏️</button>
+    </div>
+    <div class="yest-metrics">
+      <div class="yest-metric">
+        <div class="yest-metric-label">Recovery</div>
+        <div class="yest-metric-val" id="twod-recovery">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">HRV</div>
+        <div class="yest-metric-val" id="twod-hrv">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">Sleep</div>
+        <div class="yest-metric-val" id="twod-sleep">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">RHR</div>
+        <div class="yest-metric-val" id="twod-rhr">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">SpO2</div>
+        <div class="yest-metric-val" id="twod-spo2">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">Strain</div>
+        <div class="yest-metric-val" id="twod-strain">—</div>
+      </div>
+    </div>
+    <div id="twod-visible-section"></div>
+    <div id="twod-checkin-row" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px"></div>
+    <div id="twod-sep-2" style="display:none;height:1px;background:rgba(255,255,255,0.07);margin:10px 0"></div>
+    <div class="budget-stack" id="twod-budget-stack" style="display:none">
+      <div class="budget-stack-title">⚡ Energy Budget</div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Visible<span class="bm-asterisk" id="tbm1-asterisk" style="display:none">*</span></span>
+          <span class="bm-value" id="tbm1-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="tbm1-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Recovery-adj</span>
+          <span class="bm-value" id="tbm2-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="tbm2-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Sleep capacity</span>
+          <span class="bm-value" id="tbm3-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="tbm3-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Prior recovery</span>
+          <span class="bm-value" id="tbm4-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="tbm4-fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── THREE DAYS AGO ── -->
+  <div class="section-label" id="threed-label">Three days ago</div>
+  <div class="tap-card yest-card" id="threed-card">
+    <div class="yest-top" style="justify-content:space-between">
+      <div>
+        <div class="yest-day" id="threed-day">Three days ago</div>
+        <div class="yest-date" id="threed-date"></div>
+      </div>
+      <button class="card-pencil" style="margin-left:auto" onclick="event.stopPropagation();startCheckin(3)" title="Edit three days ago">✏️</button>
+    </div>
+    <div class="yest-metrics">
+      <div class="yest-metric">
+        <div class="yest-metric-label">Recovery</div>
+        <div class="yest-metric-val" id="threed-recovery">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">HRV</div>
+        <div class="yest-metric-val" id="threed-hrv">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">Sleep</div>
+        <div class="yest-metric-val" id="threed-sleep">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">RHR</div>
+        <div class="yest-metric-val" id="threed-rhr">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">SpO2</div>
+        <div class="yest-metric-val" id="threed-spo2">—</div>
+      </div>
+      <div class="yest-metric">
+        <div class="yest-metric-label">Strain</div>
+        <div class="yest-metric-val" id="threed-strain">—</div>
+      </div>
+    </div>
+    <div id="threed-visible-section"></div>
+    <div id="threed-checkin-row" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px"></div>
+    <div id="threed-sep-2" style="display:none;height:1px;background:rgba(255,255,255,0.07);margin:10px 0"></div>
+    <div class="budget-stack" id="threed-budget-stack" style="display:none">
+      <div class="budget-stack-title">⚡ Energy Budget</div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Visible<span class="bm-asterisk" id="hdm1-asterisk" style="display:none">*</span></span>
+          <span class="bm-value" id="hdm1-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="hdm1-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Recovery-adj</span>
+          <span class="bm-value" id="hdm2-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="hdm2-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Sleep capacity</span>
+          <span class="bm-value" id="hdm3-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="hdm3-fill"></div></div>
+      </div>
+      <div class="bm-row">
+        <div class="bm-header">
+          <span class="bm-label">Prior recovery</span>
+          <span class="bm-value" id="hdm4-value">—</span>
+        </div>
+        <div class="bm-track"><div class="bm-fill" id="hdm4-fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── INSIGHTS ── -->
+  <div class="section-label">Insights</div>
+  <div class="tap-card insights-card" onclick="goToScreen('screen-insights-detail')">
+    <div id="insights-list"><div class="insight-empty">Loading…</div></div>
+    <div class="chevron">›</div>
+  </div>
+
+  <!-- ── ADVICE ── -->
+  <div class="section-label">Advice from Cadence</div>
+  <div class="tap-card advice-card" onclick="goToScreen('screen-advice-detail')">
+    <div id="advice-list"><div class="insight-empty">Analyzing your patterns…</div></div>
+    <div class="chevron">›</div>
+  </div>
+
+  <!-- ── LAG-3 WATCH (Option B) ── -->
+  <div class="section-label">Lag-3 watch</div>
+  <div class="lag3-card" id="lag3-card" style="display:none">
+    <div class="lag3-header">
+      <span class="lag3-label">⚠️ 3 days ago</span>
+      <span class="lag3-date" id="lag3-date"></span>
+    </div>
+    <div class="lag3-value-row">
+      <span class="lag3-value" id="lag3-value">—</span>
+      <span class="lag3-unit">PacePoints</span>
+      <span class="lag3-status" id="lag3-status" style="margin-left:auto">—</span>
+    </div>
+    <div class="lag3-explain" id="lag3-explain">
+      In Hannah's data, activity 3 days ago is the <strong>strongest predictor</strong> of how she'll feel today (−0.74 correlation). High lag-3 = PEM crash window.
+    </div>
+  </div>
+
+  <!-- ── CEILING RULES REFERENCE (Option A) ── -->
+  <div class="section-label">How today's ceiling works</div>
+  <div class="rules-card">
+    <div class="rules-title">🎯 Ceiling rules (in priority order)</div>
+    <div class="rule-row"><span class="rule-cap">4 pts</span><span class="rule-cond"><strong>Mandatory rest</strong> — last 3 days summed > 30 pts (PEM debt).</span></div>
+    <div class="rule-row"><span class="rule-cap">5 pts</span><span class="rule-cond"><strong>Active recovery</strong> — last 2 days summed > 22 pts.</span></div>
+    <div class="rule-row"><span class="rule-cap">6 pts</span><span class="rule-cond"><strong>Recovery day</strong> — yesterday spent > 14 pts (over budget).</span></div>
+    <div class="rule-row"><span class="rule-cap">7 pts</span><span class="rule-cond"><strong>PEM lag risk</strong> — 2 days ago spent > 14 pts.</span></div>
+    <div class="rule-row"><span class="rule-cap">8 pts</span><span class="rule-cond"><strong>Lag-3 PEM window</strong> — 3 days ago spent > 14 pts (highest-risk lag day).</span></div>
+    <div class="rule-row"><span class="rule-cap">14 pts</span><span class="rule-cond"><strong>Full budget</strong> — light recent load.</span></div>
+  </div>
+
+  <!-- ── HISTORY LINK ── -->
+  <div class="history-row" onclick="goToScreen('screen-history')">
+    <span class="history-link-text">📅 View history</span>
+    <span style="font-size:12px;color:#3a5a78">›</span>
+  </div>
+
+  <!-- Hidden file input for Visible upload (label wrapper required for iOS Safari) -->
+  <label for="visible-file-input" id="visible-file-label" style="display:none"></label>
+  <input type="file" id="visible-file-input" accept=".csv" onchange="uploadVisible(event)" style="display:none">
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN: History (past days)
+══════════════════════════════════════════ -->
+<div class="screen" id="screen-history">
+  <div class="screen-back-btn" onclick="goHome()">← Back</div>
+  <div class="detail-section-title">History</div>
+  <div class="past-days" id="past-days-list"></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN: Yesterday Detail
+══════════════════════════════════════════ -->
+<div class="screen" id="screen-yesterday-detail">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+    <div class="screen-back-btn" style="margin-bottom:0" onclick="goHome()">← Back</div>
+    <button class="card-pencil" style="font-size:20px;opacity:0.7" onclick="startCheckin(1)" title="Edit yesterday">✏️</button>
+  </div>
+  <div class="detail-section-title" id="yest-detail-title">Yesterday</div>
+  <div class="detail-card">
+    <div class="detail-metric-grid" id="yest-detail-metrics">
+      <div class="detail-metric">
+        <div class="detail-metric-label">Recovery</div>
+        <div class="detail-metric-val rec-none" id="yest-d-recovery">—</div>
+      </div>
+      <div class="detail-metric">
+        <div class="detail-metric-label">HRV</div>
+        <div class="detail-metric-val" id="yest-d-hrv">—</div>
+      </div>
+      <div class="detail-metric">
+        <div class="detail-metric-label">Sleep</div>
+        <div class="detail-metric-val" id="yest-d-sleep">—</div>
+      </div>
+    </div>
+  </div>
+  <div class="detail-card" id="yest-d-checkin-card">
+    <div id="yest-d-checkin-rows"></div>
+  </div>
+  <div class="detail-card" id="yest-d-notes-card" style="display:none">
+    <div style="font-size:12px;color:#5a7a98;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px">Notes</div>
+    <div id="yest-d-notes" style="font-size:14px;color:#b0c8e0;line-height:1.6"></div>
+  </div>
+  <div class="detail-card">
+    <div style="font-size:12px;color:#5a7a98;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px">📊 Visible</div>
+    <div id="yest-d-visible"></div>
   </div>
 </div>
 
 <!-- ══════════════════════════════════════════
-     QUESTION SCREENS (Q1–Q8, Notes, Summary, Done)
+     SCREEN: Insights Detail
+══════════════════════════════════════════ -->
+<div class="screen" id="screen-insights-detail">
+  <div class="screen-back-btn" onclick="goHome()">← Back</div>
+  <div class="detail-section-title">Insights · Last 7 days</div>
+  <div id="insights-detail-list">
+    <div class="insight-empty">Loading patterns…</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCREEN: Advice Detail
+══════════════════════════════════════════ -->
+<div class="screen" id="screen-advice-detail">
+  <div class="screen-back-btn" onclick="goHome()">← Back</div>
+  <div class="detail-section-title">Advice from Cadence</div>
+  <div id="advice-detail-list">
+    <div class="insight-empty">Loading advice…</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SINGLE-PAGE CHECK-IN
 ══════════════════════════════════════════ -->
 
-<!-- Q1 -->
-<div class="screen" id="screen-1">
-  <div class="q-date-tag" id="q-date-tag-1"></div>
-  <div class="question-num">Question 1 of 8</div>
+<div class="screen" id="screen-checkin">
+  <div class="q-date-tag" id="q-date-tag-checkin"></div>
+
+  <!-- Q1: Overall feeling -->
+  <div class="checkin-section">
+    <div class="checkin-label">Overall feeling</div>
+    <div class="checkin-question">How did you feel today?</div>
+    <div class="options" id="options-q-1">
+      <button class="option-btn green" onclick="select(1,'good','🟢 Good')"><div class="option-icon">🟢</div><div><div class="option-label">Good</div><div class="option-sub">Energy up, manageable day</div></div></button>
+      <button class="option-btn yellow" onclick="select(1,'mixed','🟡 Mixed')"><div class="option-icon">🟡</div><div><div class="option-label">Mixed</div><div class="option-sub">Some good, some hard moments</div></div></button>
+      <button class="option-btn red" onclick="select(1,'bad','🔴 Bad')"><div class="option-icon">🔴</div><div><div class="option-label">Bad</div><div class="option-sub">Low energy, rough day</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q2: Fatigue -->
+  <div class="checkin-section">
+    <div class="checkin-label">Fatigue</div>
+    <div class="checkin-question">How fatigued are you?</div>
+    <div class="options" id="options-q-2">
+      <button class="option-btn green" onclick="select(2,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Energy feels normal</div></div></button>
+      <button class="option-btn yellow" onclick="select(2,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Tired but functional</div></div></button>
+      <button class="option-btn red" onclick="select(2,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Wiped out, hard to do anything</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q3: Brain fog -->
+  <div class="checkin-section">
+    <div class="checkin-label">Cognitive function</div>
+    <div class="checkin-question">Brain fog today?</div>
+    <div class="options" id="options-q-3">
+      <button class="option-btn green" onclick="select(3,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Thinking clearly</div></div></button>
+      <button class="option-btn yellow" onclick="select(3,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">A bit foggy, harder to concentrate</div></div></button>
+      <button class="option-btn red" onclick="select(3,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Can't think straight, words hard</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q4: Pain -->
+  <div class="checkin-section">
+    <div class="checkin-label">Pain</div>
+    <div class="checkin-question">Any pain today?</div>
+    <div class="options" id="options-q-4">
+      <button class="option-btn green" onclick="select(4,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">No notable pain</div></div></button>
+      <button class="option-btn yellow" onclick="select(4,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Noticeable but manageable</div></div></button>
+      <button class="option-btn red" onclick="select(4,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Significant pain affecting my day</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q5: Activity -->
+  <div class="checkin-section">
+    <div class="checkin-label">Activity level</div>
+    <div class="checkin-question">What kind of day was it?</div>
+    <div class="options" id="options-q-5">
+      <button class="option-btn green" onclick="select(5,'rested','🟢 Rested')"><div class="option-icon">🟢</div><div><div class="option-label">Rested</div><div class="option-sub">Mostly at home, low demands</div></div></button>
+      <button class="option-btn yellow" onclick="select(5,'light','🟡 Light activity')"><div class="option-icon">🟡</div><div><div class="option-label">Light activity</div><div class="option-sub">Short walk, light tasks</div></div></button>
+      <button class="option-btn red" onclick="select(5,'demanding','🔴 Demanding')"><div class="option-icon">🔴</div><div><div class="option-label">Demanding</div><div class="option-sub">Meeting, appointment, physical effort, stress</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q6: Left home -->
+  <div class="checkin-section">
+    <div class="checkin-label">Outing</div>
+    <div class="checkin-question">Did you leave home today?</div>
+    <div class="options" id="options-q-6">
+      <button class="option-btn home" onclick="select(6,'no','🏠 No')"><div class="option-icon">🏠</div><div><div class="option-label">No</div><div class="option-sub">Stayed home all day</div></div></button>
+      <button class="option-btn car" onclick="select(6,'yes','🚗 Yes')"><div class="option-icon">🚗</div><div><div class="option-label">Yes</div><div class="option-sub">Left the house at least once</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q7: Food -->
+  <div class="checkin-section">
+    <div class="checkin-label">Nutrition</div>
+    <div class="checkin-question">How did you eat today?</div>
+    <div class="options" id="options-q-7">
+      <button class="option-btn green" onclick="select(7,'clean','🟢 Clean')"><div class="option-icon">🟢</div><div><div class="option-label">Clean</div><div class="option-sub">Whole foods, vegetables, home cooked</div></div></button>
+      <button class="option-btn yellow" onclick="select(7,'mixed','🟡 Mixed')"><div class="option-icon">🟡</div><div><div class="option-label">Mixed</div><div class="option-sub">Combination of good and not-so-good</div></div></button>
+      <button class="option-btn red" onclick="select(7,'inflammatory','🔴 Inflammatory')"><div class="option-icon">🔴</div><div><div class="option-label">Inflammatory</div><div class="option-sub">Sugar, processed, alcohol, junk food</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q8: Probiotics -->
+  <div class="checkin-section">
+    <div class="checkin-label">Supplements</div>
+    <div class="checkin-question">Did you take your probiotics today?</div>
+    <div class="options" id="options-q-8">
+      <button class="option-btn green" onclick="select(8,'yes','✅ Yes')"><div class="option-icon">✅</div><div><div class="option-label">Yes</div><div class="option-sub">Took probiotic supplement today</div></div></button>
+      <button class="option-btn red" onclick="select(8,'no','❌ No')"><div class="option-icon">❌</div><div><div class="option-label">No</div><div class="option-sub">Skipped today</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q9 (Stimulants) removed — superseded by med tracker -->
+
+  <!-- Q10: Compression -->
+  <div class="checkin-section">
+    <div class="checkin-label">Compression</div>
+    <div class="checkin-question">Did you wear compression today?</div>
+    <div class="options" id="options-q-10">
+      <button class="option-btn" onclick="select(10,'none','❌ None')"><div class="option-icon">❌</div><div><div class="option-label">None</div><div class="option-sub">No compression wear today</div></div></button>
+      <button class="option-btn green" onclick="select(10,'upper','💪 Upper')"><div class="option-icon">💪</div><div><div class="option-label">Upper</div><div class="option-sub">Arms, torso, or abdominal binder</div></div></button>
+      <button class="option-btn green" onclick="select(10,'lower','🧦 Lower')"><div class="option-icon">🧦</div><div><div class="option-label">Lower</div><div class="option-sub">Compression socks or leggings</div></div></button>
+      <button class="option-btn green" onclick="select(10,'both','✨ Upper &amp; Lower')"><div class="option-icon">✨</div><div><div class="option-label">Upper &amp; Lower</div><div class="option-sub">Full compression today</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q11: Sodium goal -->
+  <div class="checkin-section">
+    <div class="checkin-label">Sodium goal</div>
+    <div class="checkin-question">Did you hit your sodium goal today?</div>
+    <div class="options" id="options-q-11">
+      <button class="option-btn green" onclick="select(11,'yes','✅ Yes')"><div class="option-icon">✅</div><div><div class="option-label">Yes</div><div class="option-sub">~3,000mg sodium reached</div></div></button>
+      <button class="option-btn red" onclick="select(11,'no','❌ No')"><div class="option-icon">❌</div><div><div class="option-label">No</div><div class="option-sub">Fell short today</div></div></button>
+    </div>
+  </div>
+
+  <!-- Q12: Hours upright -->
+  <div class="checkin-section">
+    <div class="checkin-label">Hours upright</div>
+    <div class="checkin-question">How many hours were you upright today?</div>
+    <div class="options" id="options-q-12">
+      <button class="option-btn green" onclick="select(12,'lt2','🛋️ < 2 hrs')"><div class="option-icon">🛋️</div><div><div class="option-label">Less than 2 hrs</div><div class="option-sub">Mostly horizontal</div></div></button>
+      <button class="option-btn yellow" onclick="select(12,'2to4','🪑 2-4 hrs')"><div class="option-icon">🪑</div><div><div class="option-label">2-4 hrs</div><div class="option-sub">Mostly seated/reclined</div></div></button>
+      <button class="option-btn yellow" onclick="select(12,'4to6','🧍 4-6 hrs')"><div class="option-icon">🧍</div><div><div class="option-label">4-6 hrs</div><div class="option-sub">Active morning or afternoon</div></div></button>
+      <button class="option-btn red" onclick="select(12,'gt6','🚶 6+ hrs')"><div class="option-icon">🚶</div><div><div class="option-label">6 or more hrs</div><div class="option-sub">Lots of vertical time</div></div></button>
+    </div>
+  </div>
+
+  <!-- Meds tracker (in-flow) -->
+  <div class="checkin-section">
+    <div class="checkin-label">Meds today</div>
+    <div class="checkin-question" style="font-size:16px;">How many of each did you take?</div>
+    <div id="meds-list-checkin" style="margin-top:12px;">
+      <div style="font-size:11px;color:#3a5a78;padding:6px 0;">Loading…</div>
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="checkin-section" style="border-bottom: none;">
+    <div class="checkin-label">Notes (optional)</div>
+    <div class="checkin-question" id="notes-prompt-full" style="font-size:16px;">Anything else to note?</div>
+    <textarea class="notes-area" id="notes-field" placeholder="How are you feeling? Anything unusual today?&#10;&#10;(Skip if you don't feel up to it)" onchange="saveNotes()" onblur="saveNotes()"></textarea>
+  </div>
+
+  <button class="btn-submit" onclick="submitCheckin()" style="margin-top: 24px;">Submit Check-in ✓</button>
+  <div class="nav-row" style="margin-top: 12px;">
+    <button class="btn-back" onclick="goHome()" style="flex:1;height:44px;font-size:14px;">⌂ Home</button>
+  </div>
+</div>
+
+<!-- Mode picker -->
+<div class="screen" id="screen-checkin-mode">
+  <div class="q-date-tag" id="q-date-tag-mode"></div>
+  <div style="font-size:20px;font-weight:700;color:#e0eaf4;margin-bottom:8px;">How do you want to check in?</div>
+  <div style="color:#7a9ab8;font-size:14px;margin-bottom:24px;">Pick what works for your brain today.</div>
+  <button class="mode-btn" onclick="startStepFlow()">📋 <strong>Step by step</strong><br><span style="font-size:13px;color:#7a9ab8;">One question at a time — easier on bad days</span></button>
+  <button class="mode-btn" onclick="goTo('checkin')">📄 <strong>Full page</strong><br><span style="font-size:13px;color:#7a9ab8;">All questions at once, scroll and submit</span></button>
+  <button class="mode-btn" onclick="goTo('checkin'); setTimeout(() => { const n = document.getElementById('notes-field'); if(n){n.scrollIntoView({behavior:'smooth',block:'center'});n.focus();} }, 150);">📝 <strong>Add a note</strong><br><span style="font-size:13px;color:#7a9ab8;">Just add or update today's notes</span></button>
+  <button class="btn-back" style="width:100%;margin-top:8px;text-align:center;" onclick="goHome()">← Home</button>
+</div>
+
+<!-- Step-by-step flow -->
+<div id="step-flow-container">
+
+<div class="screen" id="screen-q1">
+  <div class="q-date-tag" id="q-date-tag-q1"></div>
+  <div class="question-num">Question 1 of 11</div>
   <div class="question-text">How did you feel today?</div>
-  <div class="options">
-    <button class="option-btn green" onclick="select(1,'good','🟢 Good')">
-      <div class="option-icon">🟢</div><div><div class="option-label">Good</div><div class="option-sub">Energy up, manageable day</div></div>
-    </button>
-    <button class="option-btn yellow" onclick="select(1,'mixed','🟡 Mixed')">
-      <div class="option-icon">🟡</div><div><div class="option-label">Mixed</div><div class="option-sub">Some good, some hard moments</div></div>
-    </button>
-    <button class="option-btn red" onclick="select(1,'bad','🔴 Bad')">
-      <div class="option-icon">🔴</div><div><div class="option-label">Bad</div><div class="option-sub">Low energy, rough day</div></div>
-    </button>
+  <div class="options" id="step-options-q-1">
+    <button class="option-btn green" onclick="select(1,'good','🟢 Good')"><div class="option-icon">🟢</div><div><div class="option-label">Good</div><div class="option-sub">Energy up, manageable day</div></div></button>
+    <button class="option-btn yellow" onclick="select(1,'mixed','🟡 Mixed')"><div class="option-icon">🟡</div><div><div class="option-label">Mixed</div><div class="option-sub">Some good, some hard moments</div></div></button>
+    <button class="option-btn red" onclick="select(1,'bad','🔴 Bad')"><div class="option-icon">🔴</div><div><div class="option-label">Bad</div><div class="option-sub">Low energy, rough day</div></div></button>
   </div>
   <div class="nav-row">
-    <button class="btn-back" onclick="goHome()">⌂</button>
-    <button class="btn-next" id="next-1" disabled onclick="goTo(2)">Next →</button>
+    <button class="btn-back" onclick="stepGoTo('mode')">←</button>
+    <button class="btn-next" id="step-next-1" disabled onclick="stepGoTo('q2')">Next →</button>
   </div>
 </div>
 
-<!-- Q2 -->
-<div class="screen" id="screen-2">
-  <div class="q-date-tag" id="q-date-tag-2"></div>
-  <div class="question-num">Question 2 of 8</div>
-  <div class="question-text">Post-exertional malaise (PEM)?</div>
-  <div class="options">
-    <button class="option-btn green" onclick="select(2,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Feeling okay after activity</div></div></button>
-    <button class="option-btn yellow" onclick="select(2,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Some fatigue or heaviness</div></div></button>
-    <button class="option-btn red" onclick="select(2,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Significant crash or collapse</div></div></button>
+<div class="screen" id="screen-q2">
+  <div class="q-date-tag" id="q-date-tag-q2"></div>
+  <div class="question-num">Question 2 of 11</div>
+  <div class="question-text">How fatigued are you?</div>
+  <div class="options" id="step-options-q-2">
+    <button class="option-btn green" onclick="select(2,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Energy feels normal</div></div></button>
+    <button class="option-btn yellow" onclick="select(2,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Tired but functional</div></div></button>
+    <button class="option-btn red" onclick="select(2,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Wiped out, hard to do anything</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(1)">←</button><button class="btn-next" id="next-2" disabled onclick="goTo(3)">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q1')">←</button>
+    <button class="btn-next" id="step-next-2" disabled onclick="stepGoTo('q3')">Next →</button>
+  </div>
 </div>
 
-<!-- Q3 -->
-<div class="screen" id="screen-3">
-  <div class="q-date-tag" id="q-date-tag-3"></div>
-  <div class="question-num">Question 3 of 8</div>
+<div class="screen" id="screen-q3">
+  <div class="q-date-tag" id="q-date-tag-q3"></div>
+  <div class="question-num">Question 3 of 11</div>
   <div class="question-text">Brain fog today?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-3">
     <button class="option-btn green" onclick="select(3,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">Thinking clearly</div></div></button>
     <button class="option-btn yellow" onclick="select(3,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">A bit foggy, harder to concentrate</div></div></button>
     <button class="option-btn red" onclick="select(3,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Can't think straight, words hard</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(2)">←</button><button class="btn-next" id="next-3" disabled onclick="goTo(4)">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q2')">←</button>
+    <button class="btn-next" id="step-next-3" disabled onclick="stepGoTo('q4')">Next →</button>
+  </div>
 </div>
 
-<!-- Q4 -->
-<div class="screen" id="screen-4">
-  <div class="q-date-tag" id="q-date-tag-4"></div>
-  <div class="question-num">Question 4 of 8</div>
+<div class="screen" id="screen-q4">
+  <div class="q-date-tag" id="q-date-tag-q4"></div>
+  <div class="question-num">Question 4 of 11</div>
   <div class="question-text">Any pain today?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-4">
     <button class="option-btn green" onclick="select(4,'none','🟢 None')"><div class="option-icon">🟢</div><div><div class="option-label">None</div><div class="option-sub">No notable pain</div></div></button>
     <button class="option-btn yellow" onclick="select(4,'mild','🟡 Mild')"><div class="option-icon">🟡</div><div><div class="option-label">Mild</div><div class="option-sub">Noticeable but manageable</div></div></button>
     <button class="option-btn red" onclick="select(4,'severe','🔴 Severe')"><div class="option-icon">🔴</div><div><div class="option-label">Severe</div><div class="option-sub">Significant pain affecting my day</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(3)">←</button><button class="btn-next" id="next-4" disabled onclick="goTo(5)">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q3')">←</button>
+    <button class="btn-next" id="step-next-4" disabled onclick="stepGoTo('q5')">Next →</button>
+  </div>
 </div>
 
-<!-- Q5 -->
-<div class="screen" id="screen-5">
-  <div class="q-date-tag" id="q-date-tag-5"></div>
-  <div class="question-num">Question 5 of 8</div>
+<div class="screen" id="screen-q5">
+  <div class="q-date-tag" id="q-date-tag-q5"></div>
+  <div class="question-num">Question 5 of 11</div>
   <div class="question-text">What kind of day was it?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-5">
     <button class="option-btn green" onclick="select(5,'rested','🟢 Rested')"><div class="option-icon">🟢</div><div><div class="option-label">Rested</div><div class="option-sub">Mostly at home, low demands</div></div></button>
     <button class="option-btn yellow" onclick="select(5,'light','🟡 Light activity')"><div class="option-icon">🟡</div><div><div class="option-label">Light activity</div><div class="option-sub">Short walk, light tasks</div></div></button>
     <button class="option-btn red" onclick="select(5,'demanding','🔴 Demanding')"><div class="option-icon">🔴</div><div><div class="option-label">Demanding</div><div class="option-sub">Meeting, appointment, physical effort, stress</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(4)">←</button><button class="btn-next" id="next-5" disabled onclick="goTo(6)">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q4')">←</button>
+    <button class="btn-next" id="step-next-5" disabled onclick="stepGoTo('q6')">Next →</button>
+  </div>
 </div>
 
-<!-- Q6 -->
-<div class="screen" id="screen-6">
-  <div class="q-date-tag" id="q-date-tag-6"></div>
-  <div class="question-num">Question 6 of 8</div>
+<div class="screen" id="screen-q6">
+  <div class="q-date-tag" id="q-date-tag-q6"></div>
+  <div class="question-num">Question 6 of 11</div>
   <div class="question-text">Did you leave home today?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-6">
     <button class="option-btn home" onclick="select(6,'no','🏠 No')"><div class="option-icon">🏠</div><div><div class="option-label">No</div><div class="option-sub">Stayed home all day</div></div></button>
     <button class="option-btn car" onclick="select(6,'yes','🚗 Yes')"><div class="option-icon">🚗</div><div><div class="option-label">Yes</div><div class="option-sub">Left the house at least once</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(5)">←</button><button class="btn-next" id="next-6" disabled onclick="goTo(7)">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q5')">←</button>
+    <button class="btn-next" id="step-next-6" disabled onclick="stepGoTo('q7')">Next →</button>
+  </div>
 </div>
 
-<!-- Q7 -->
-<div class="screen" id="screen-7">
-  <div class="q-date-tag" id="q-date-tag-7"></div>
-  <div class="question-num">Question 7 of 8</div>
+<div class="screen" id="screen-q7">
+  <div class="q-date-tag" id="q-date-tag-q7"></div>
+  <div class="question-num">Question 7 of 11</div>
   <div class="question-text">How did you eat today?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-7">
     <button class="option-btn green" onclick="select(7,'clean','🟢 Clean')"><div class="option-icon">🟢</div><div><div class="option-label">Clean</div><div class="option-sub">Whole foods, vegetables, home cooked</div></div></button>
     <button class="option-btn yellow" onclick="select(7,'mixed','🟡 Mixed')"><div class="option-icon">🟡</div><div><div class="option-label">Mixed</div><div class="option-sub">Combination of good and not-so-good</div></div></button>
     <button class="option-btn red" onclick="select(7,'inflammatory','🔴 Inflammatory')"><div class="option-icon">🔴</div><div><div class="option-label">Inflammatory</div><div class="option-sub">Sugar, processed, alcohol, junk food</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(6)">←</button><button class="btn-next" id="next-7" disabled onclick="goTo(8)">Next →</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q6')">←</button>
+    <button class="btn-next" id="step-next-7" disabled onclick="stepGoTo('q8')">Next →</button>
+  </div>
 </div>
 
-<!-- Q8 -->
-<div class="screen" id="screen-8">
-  <div class="q-date-tag" id="q-date-tag-8"></div>
-  <div class="question-num">Question 8 of 8</div>
+<div class="screen" id="screen-q8">
+  <div class="q-date-tag" id="q-date-tag-q8"></div>
+  <div class="question-num">Question 8 of 11</div>
   <div class="question-text">Did you take your probiotics today?</div>
-  <div class="options">
+  <div class="options" id="step-options-q-8">
     <button class="option-btn green" onclick="select(8,'yes','✅ Yes')"><div class="option-icon">✅</div><div><div class="option-label">Yes</div><div class="option-sub">Took probiotic supplement today</div></div></button>
     <button class="option-btn red" onclick="select(8,'no','❌ No')"><div class="option-icon">❌</div><div><div class="option-label">No</div><div class="option-sub">Skipped today</div></div></button>
   </div>
-  <div class="nav-row"><button class="btn-back" onclick="goTo(7)">←</button><button class="btn-next" id="next-8" disabled onclick="goTo(9)">Next →</button></div>
-</div>
-
-<!-- Notes -->
-<div class="screen" id="screen-9">
-  <div class="q-date-tag" id="q-date-tag-9"></div>
-  <div class="question-num">Optional</div>
-  <div class="question-text">Anything else to note?</div>
-  <textarea class="notes-area" id="notes-field" placeholder="How are you feeling? Anything unusual today?&#10;&#10;(Skip if you don't feel up to it)"></textarea>
   <div class="nav-row">
-    <button class="btn-back" onclick="goTo(8)">←</button>
-    <button class="btn-skip" onclick="goTo(10)">Skip</button>
-    <button class="btn-next" style="flex:1" onclick="saveNotes(); goTo(10)">Done →</button>
+    <button class="btn-back" onclick="stepGoTo('q7')">←</button>
+    <button class="btn-next" id="step-next-8" disabled onclick="stepGoTo('q10')">Next →</button>
   </div>
 </div>
 
-<!-- Summary -->
-<div class="screen" id="screen-10">
-  <div class="question-num">Review</div>
-  <div class="question-text">Your check-in</div>
-  <div class="summary-card">
-    <div class="summary-for" id="summary-for-date"></div>
-    <div class="summary-title">Summary</div>
-    <table class="summary-table">
-      <tr><td class="summary-label">Overall feeling</td><td class="summary-icon" id="sum-icon-1">—</td><td class="summary-value" id="sum-1"></td></tr>
-      <tr><td class="summary-label">PEM</td><td class="summary-icon" id="sum-icon-2">—</td><td class="summary-value" id="sum-2"></td></tr>
-      <tr><td class="summary-label">Brain fog</td><td class="summary-icon" id="sum-icon-3">—</td><td class="summary-value" id="sum-3"></td></tr>
-      <tr><td class="summary-label">Pain</td><td class="summary-icon" id="sum-icon-4">—</td><td class="summary-value" id="sum-4"></td></tr>
-      <tr><td class="summary-label">Activity</td><td class="summary-icon" id="sum-icon-5">—</td><td class="summary-value" id="sum-5"></td></tr>
-      <tr><td class="summary-label">Left home</td><td class="summary-icon" id="sum-icon-6">—</td><td class="summary-value" id="sum-6"></td></tr>
-      <tr><td class="summary-label">Food</td><td class="summary-icon" id="sum-icon-7">—</td><td class="summary-value" id="sum-7"></td></tr>
-      <tr><td class="summary-label">Probiotics</td><td class="summary-icon" id="sum-icon-8">—</td><td class="summary-value" id="sum-8"></td></tr>
-    </table>
+<div class="screen" id="screen-q10">
+  <div class="q-date-tag" id="q-date-tag-q10"></div>
+  <div class="question-num">Question 9 of 11</div>
+  <div class="question-text">Did you wear compression today?</div>
+  <div class="options" id="step-options-q-10">
+    <button class="option-btn" onclick="select(10,'none','❌ None')"><div class="option-icon">❌</div><div><div class="option-label">None</div><div class="option-sub">No compression wear today</div></div></button>
+    <button class="option-btn green" onclick="select(10,'upper','💪 Upper')"><div class="option-icon">💪</div><div><div class="option-label">Upper</div><div class="option-sub">Arms, torso, or abdominal binder</div></div></button>
+    <button class="option-btn green" onclick="select(10,'lower','🧦 Lower')"><div class="option-icon">🧦</div><div><div class="option-label">Lower</div><div class="option-sub">Compression socks or leggings</div></div></button>
+    <button class="option-btn green" onclick="select(10,'both','✨ Upper &amp; Lower')"><div class="option-icon">✨</div><div><div class="option-label">Upper &amp; Lower</div><div class="option-sub">Full compression today</div></div></button>
   </div>
-  <button class="btn-submit" onclick="submitCheckin()">Submit Check-in ✓</button>
-  <div class="nav-row"><button class="btn-back" style="flex:1;height:44px;font-size:14px" onclick="goTo(9)">← Edit</button></div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q8')">←</button>
+    <button class="btn-next" id="step-next-10" disabled onclick="stepGoTo('q11')">Next →</button>
+  </div>
 </div>
+
+<div class="screen" id="screen-q11">
+  <div class="q-date-tag" id="q-date-tag-q11"></div>
+  <div class="question-num">Question 10 of 11</div>
+  <div class="question-text">Did you hit your sodium goal today?</div>
+  <div class="options" id="step-options-q-11">
+    <button class="option-btn green" onclick="select(11,'yes','✅ Yes')"><div class="option-icon">✅</div><div><div class="option-label">Yes</div><div class="option-sub">~3,000mg sodium reached</div></div></button>
+    <button class="option-btn red" onclick="select(11,'no','❌ No')"><div class="option-icon">❌</div><div><div class="option-label">No</div><div class="option-sub">Fell short today</div></div></button>
+  </div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q10')">←</button>
+    <button class="btn-next" id="step-next-11" disabled onclick="stepGoTo('q12')">Next →</button>
+  </div>
+</div>
+
+<div class="screen" id="screen-q12">
+  <div class="q-date-tag" id="q-date-tag-q12"></div>
+  <div class="question-num">Question 11 of 11</div>
+  <div class="question-text">How many hours were you upright today?</div>
+  <div class="options" id="step-options-q-12">
+    <button class="option-btn green" onclick="select(12,'lt2','🛋️ < 2 hrs')"><div class="option-icon">🛋️</div><div><div class="option-label">Less than 2 hrs</div><div class="option-sub">Mostly horizontal</div></div></button>
+    <button class="option-btn yellow" onclick="select(12,'2to4','🪑 2-4 hrs')"><div class="option-icon">🪑</div><div><div class="option-label">2-4 hrs</div><div class="option-sub">Mostly seated/reclined</div></div></button>
+    <button class="option-btn yellow" onclick="select(12,'4to6','🧍 4-6 hrs')"><div class="option-icon">🧍</div><div><div class="option-label">4-6 hrs</div><div class="option-sub">Active morning or afternoon</div></div></button>
+    <button class="option-btn red" onclick="select(12,'gt6','🚶 6+ hrs')"><div class="option-icon">🚶</div><div><div class="option-label">6 or more hrs</div><div class="option-sub">Lots of vertical time</div></div></button>
+  </div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q11')">←</button>
+    <button class="btn-next" id="step-next-12" disabled onclick="stepGoTo('meds-step')">Next →</button>
+  </div>
+</div>
+
+<div class="screen" id="screen-meds-step">
+  <div class="q-date-tag" id="q-date-tag-meds"></div>
+  <div class="question-num">Meds today</div>
+  <div class="question-text" style="font-size:18px;">How many of each did you take?</div>
+  <div id="meds-list-step" style="margin-top:18px;margin-bottom:18px;">
+    <div style="font-size:11px;color:#3a5a78;padding:6px 0;">Loading…</div>
+  </div>
+  <div class="nav-row">
+    <button class="btn-back" onclick="stepGoTo('q12')">←</button>
+    <button class="btn-next" style="background:#1a5f8a;" onclick="stepGoTo('notes-step')">Next →</button>
+  </div>
+  <button class="btn-next" style="width:100%;margin-top:8px;background:#1a3558;color:#7a9ab8;" onclick="stepGoTo('notes-step')">Skip meds →</button>
+</div>
+
+<div class="screen" id="screen-notes-step">
+  <div class="question-num" style="margin-bottom:12px;">Notes (optional)</div>
+  <div id="notes-prompt-step" style="color:#7a9ab8;font-size:14px;margin-bottom:16px;">Anything else worth capturing today?</div>
+  <textarea id="notes-field-step" placeholder="How are you feeling... what happened today..." onchange="saveNotesStep()" onblur="saveNotesStep()" style="width:100%;min-height:120px;background:#0d1f35;color:#b0c8e0;border:1px solid #2a4568;border-radius:10px;padding:12px;font-size:15px;resize:vertical;"></textarea>
+  <div class="nav-row" style="margin-top:16px;">
+    <button class="btn-back" onclick="stepGoTo('meds-step')">←</button>
+    <button class="btn-next" style="background:#1a5f8a;" onclick="saveNotes(); stepGoTo('summary-step')">Done →</button>
+  </div>
+  <button class="btn-next" style="width:100%;margin-top:8px;background:#1a3558;color:#7a9ab8;" onclick="stepGoTo('summary-step')">Skip notes →</button>
+</div>
+
+<div class="screen" id="screen-summary-step">
+  <div style="font-size:18px;font-weight:700;color:#e0eaf4;margin-bottom:16px;">Review your check-in</div>
+  <div id="step-summary-rows"></div>
+  <div class="nav-row" style="margin-top:20px;">
+    <button class="btn-back" onclick="stepGoTo('notes-step')">←</button>
+    <button class="btn-next" onclick="submitCheckin()">Submit ✓</button>
+  </div>
+</div>
+
+</div><!-- end step-flow-container -->
 
 <!-- Done -->
 <div class="screen" id="screen-done">
@@ -638,22 +1415,24 @@
 </div>
 
 <script>
-  // ── State ──────────────────────────────────────────
+  // ── State ──────────────────────────────────────
   const answers = {};
   let activeDate = null;
   let activeDayOffset = 0;
   const completedDays = new Set();
-  let dashData = null; // cached from /api/dashboard
+  let dashData = null;
   let serverToday = null;
+  let allAdvice = [];
+  let allInsights = [];
 
-  // ── User param ─────────────────────────────────────
+  // ── User param ─────────────────────────────────
   const _urlUser = new URLSearchParams(window.location.search).get('user');
   function userParam(base) {
     if (!_urlUser) return base;
     return base + (base.includes('?') ? '&' : '?') + 'user=' + encodeURIComponent(_urlUser);
   }
 
-  // ── Date helpers ───────────────────────────────────
+  // ── Date helpers ───────────────────────────────
   function easternNow() {
     return new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
   }
@@ -665,17 +1444,12 @@
   function formatDateShort(iso) {
     return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   }
-  function formatDateFull(iso) {
-    return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
-  }
   function dayName(offset) {
     if (offset === 0) return 'Today';
     if (offset === 1) return 'Yesterday';
     const d = easternNow(); d.setDate(d.getDate() - offset);
     return d.toLocaleDateString('en-US', { weekday: 'long' });
   }
-
-  // ── Severity color ─────────────────────────────────
   function severityClass(val) {
     if (!val) return '';
     const map = { good:'green', none:'green', clean:'green', rested:'green', yes:'green',
@@ -684,7 +1458,6 @@
     return map[val] || '';
   }
   function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : '—'; }
-
   function recClass(score) {
     if (score == null) return 'rec-none';
     if (score >= 67) return 'rec-green';
@@ -692,150 +1465,833 @@
     return 'rec-red';
   }
 
-  // ── Render check-in chips ──────────────────────────
-  function renderChips(checkin) {
+  // ── Check-in chips ─────────────────────────────
+  function renderChips(checkin, full=false) {
     if (!checkin) return '';
-    const fields = [
+    const shortFields = [
       ['Feel', checkin.feeling], ['PEM', checkin.pem], ['Fog', checkin.brain_fog],
       ['Pain', checkin.pain], ['Activity', checkin.activity],
     ];
-    return fields.filter(([,v]) => v).map(([label, val]) => `
-      <div class="ci-chip">
+    const allFields = [
+      ...shortFields,
+      ['Left home', checkin.left_home], ['Food', checkin.food], ['Probiotics', checkin.probiotics],
+    ];
+    const fields = full ? allFields : shortFields;
+    return fields.filter(([,v]) => v).map(([label, val]) => {
+      const cls = severityClass(val) || 'neutral';
+      return `<div class="ci-chip">
         <span class="ci-chip-label">${label}</span>
-        <span class="ci-chip-val ${severityClass(val)}">${capitalize(val)}</span>
-      </div>`).join('');
+        <span class="ci-chip-val ${cls}">${capitalize(val)}</span>
+      </div>`;
+    }).join('');
   }
 
-  // ── Build hub home ─────────────────────────────────
+  // ── Visible helpers ─────────────────────────────
+  function visibleMetric(obs, name) {
+    return obs?.find(o => o.tracker_name === name)?.value ?? null;
+  }
+  function visibleSymptomLabel(score) {
+    if (score == null || score === 0) return null;
+    if (score === 1) return 'mild';
+    if (score === 2) return 'moderate';
+    return 'severe';
+  }
+  function visibleSeverityClass(score) {
+    if (score <= 1) return 'yellow';
+    if (score === 2) return 'red';
+    return 'red';
+  }
+  function renderVisibleCompact(visData) {
+    if (!visData?.observations) return '';
+    const obs = visData.observations;
+    const stability = visibleMetric(obs, 'Stability Score');
+    const pacePoints = visibleMetric(obs, 'PacePoints');
+    const crash = visibleMetric(obs, 'Crash');
+    const fatigue = visibleMetric(obs, 'Fatigue');
+    const fog = visibleMetric(obs, 'Brain Fog');
+    const parts = [];
+    if (crash === 1) parts.push(`<span class="ci-chip"><span class="ci-chip-label">Crash</span><span class="ci-chip-val red">🚨 Yes</span></span>`);
+    if (stability != null) parts.push(`<span class="ci-chip"><span class="ci-chip-label">Stability</span><span class="ci-chip-val ${stability>=4?'green':stability>=3?'yellow':'red'}">${stability}/5</span></span>`);
+    if (pacePoints != null) parts.push(`<span class="ci-chip"><span class="ci-chip-label">PacePoints</span><span class="ci-chip-val ${pacePoints<=4?'green':pacePoints<=7?'yellow':'red'}">${pacePoints}</span></span>`);
+    if (fatigue) parts.push(`<span class="ci-chip"><span class="ci-chip-label">Fatigue</span><span class="ci-chip-val ${visibleSeverityClass(fatigue)}">${visibleSymptomLabel(fatigue)}</span></span>`);
+    if (fog) parts.push(`<span class="ci-chip"><span class="ci-chip-label">Fog</span><span class="ci-chip-val ${visibleSeverityClass(fog)}">${visibleSymptomLabel(fog)}</span></span>`);
+    if (!parts.length) return '';
+    return `<div style="margin-top:8px;padding-top:8px;border-top:1px solid #1e2d3d">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <div style="font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#5a7a98">Visible</div>
+        <label for="visible-file-input" title="Re-upload Visible data" onclick="event.stopPropagation()" style="cursor:pointer;font-size:13px;color:#3a5a78;line-height:1">✏️</label>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">${parts.join('')}</div>
+    </div>`;
+  }
+  function renderVisibleDetail(visData) {
+    if (!visData?.observations) return '<div style="font-size:13px;color:#3a5a78;font-style:italic">No Visible data for this date.</div>';
+    const obs = visData.observations;
+    const measurements = ['Stability Score','PacePoints','Pacing Budget','HRV','Resting HR'];
+    const keySymptoms = ['Fatigue','Brain Fog','Nerve pain','Muscle aches','Shortness of breath','Headache','Crash'];
+    let html = '<div style="font-size:12px;color:#5a7a98;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:10px">Measurements</div>';
+    measurements.forEach(name => {
+      const val = visibleMetric(obs, name);
+      if (val == null) return;
+      html += `<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #1e2d3d;font-size:13px">
+        <span style="color:#7a9ab8">${name}</span><span style="color:#f0f4f8;font-weight:600">${val}</span></div>`;
+    });
+    html += '<div style="font-size:12px;color:#5a7a98;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;margin:14px 0 10px">Active Symptoms</div>';
+    const activeSymptoms = obs.filter(o => o.value > 0 && !measurements.includes(o.tracker_name))
+      .sort((a,b) => b.value - a.value).slice(0, 8);
+    if (!activeSymptoms.length) { html += '<div style="font-size:13px;color:#4caf7d">No active symptoms logged.</div>'; }
+    else activeSymptoms.forEach(s => {
+      const labels = ['','Mild','Moderate','Severe'];
+      const cls = s.value===1?'#f0c040':s.value===2?'#e05a5a':'#e05a5a';
+      html += `<div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #1e2d3d;font-size:13px">
+        <span style="color:#7a9ab8">${s.tracker_name}</span><span style="font-weight:600;color:${cls}">${labels[s.value]||s.value}</span></div>`;
+    });
+    return html;
+  }
+
+  // ── Trend arrow ────────────────────────────────
+  function trendArrow(curr, prev, higherGood) {
+    if (curr == null || prev == null) return '';
+    const diff = curr - prev;
+    if (Math.abs(diff) < 1) return '<span class="trend-flat"> →</span>';
+    const up = diff > 0;
+    const good = higherGood ? up : !up;
+    return `<span class="${good ? 'trend-up-good' : 'trend-down-bad'}"> ${up ? '↑' : '↓'}</span>`;
+  }
+
+  // ── Build insights (calls /api/patterns when available) ──
+  async function loadInsights() {
+    // TODO: replace mock with: GET /api/patterns?user=hannah&days=7&limit=3
+    // For now, compute client-side from dashData
+    allInsights = buildInsightsFromData();
+    renderInsightsHome();
+    renderInsightsDetail();
+  }
+
+  function buildInsightsFromData() {
+    const insights = [];
+    if (!dashData) return insights;
+    const dates = [0,1,2,3,4,5,6].map(i => dateKey(i));
+    const checkins = dates.map(d => dashData.checkins?.[d]).filter(Boolean);
+    if (checkins.length < 2) return insights;
+
+    const pemSevere = checkins.filter(c => c.pem === 'severe').length;
+    if (pemSevere >= 3) insights.push({ level:'critical', icon:'🔴', title:`PEM severe ${pemSevere} of ${checkins.length} days`, text:'Crash risk elevated. Prioritize rest and stay under your anaerobic threshold.' });
+
+    const demanding = checkins.filter(c => c.activity === 'demanding').length;
+    if (demanding >= 2) insights.push({ level:'warning', icon:'⚠️', title:`${demanding} demanding day${demanding>1?'s':''} this week`, text:'PEM can appear 24–48h after exertion. Monitor closely the day after any high-demand activity.' });
+
+    let streak = 0;
+    for (const c of checkins) { if (c.feeling === 'good') streak++; else break; }
+    if (streak >= 2) insights.push({ level:'good', icon:'✅', title:`${streak} good day${streak>1?'s':''} in a row`, text:'Consistency is working. Keep pacing — this is when overexertion most commonly happens.' });
+
+    const probDays = checkins.filter(c => c.probiotics === 'yes').length;
+    if (checkins.length >= 3 && probDays < checkins.length * 0.6) {
+      insights.push({ level:'warning', icon:'💊', title:`Probiotics ${probDays}/${checkins.length} days`, text:'Daily consistency is part of the gut restoration protocol. Try attaching it to a nightly routine.' });
+    }
+
+    const inflam = checkins.filter(c => c.food === 'inflammatory').length;
+    if (inflam >= 2) insights.push({ level:'warning', icon:'🥴', title:`Inflammatory food ${inflam} day${inflam>1?'s':''} this week`, text:'May correlate with symptom flares. Track whether bad food days predict bad symptom days 24h later.' });
+
+    if (insights.length === 0) insights.push({ level:'good', icon:'📊', title:'Keep logging', text:'Patterns emerge after 5–7 days of data. You\'re building a picture — keep going.' });
+    return insights;
+  }
+
+  function renderInsightsHome() {
+    const el = document.getElementById('insights-list');
+    const top = allInsights.slice(0, 4);
+    if (!top.length) { el.innerHTML = '<div class="insight-empty">No patterns yet — keep logging.</div>'; return; }
+    el.innerHTML = top.map(i => insightRowHTML(i)).join('');
+    if (allInsights.length > 4) {
+      el.innerHTML += `<a class="more-link" onclick="goToScreen('screen-insights-detail')">See all ${allInsights.length} insights →</a>`;
+    }
+  }
+
+  function renderInsightsDetail() {
+    const el = document.getElementById('insights-detail-list');
+    if (!allInsights.length) { el.innerHTML = '<div class="insight-empty">No patterns yet.</div>'; return; }
+    el.innerHTML = allInsights.map(i => `<div class="detail-card">${insightRowHTML(i)}</div>`).join('');
+  }
+
+  const KEY_TERMS = ['active rest', 'pacing', 'anaerobic threshold', 'PEM', 'heart rate', 'HRV', 'parasympathetic'];
+  function highlightTerms(text) {
+    let out = text;
+    KEY_TERMS.forEach(term => {
+      const re = new RegExp('(' + term + ')', 'gi');
+      out = out.replace(re, '<span class="term">$1</span>');
+    });
+    return out;
+  }
+
+  function insightRowHTML(i) {
+    return `<div class="insight-row">
+      <div class="insight-icon">${i.icon}</div>
+      <div class="insight-body">
+        <div class="insight-title ${i.level}">${i.title}</div>
+        <div class="insight-text">${highlightTerms(i.text)}</div>
+      </div>
+    </div>`;
+  }
+
+  // ── Build advice ───────────────────────────────
+  function loadAdvice() {
+    const todayDate = dateKey(0);
+    const yestDate  = dateKey(1);
+    const todayW  = dashData?.whoop?.[todayDate];
+    const yestW   = dashData?.whoop?.[yestDate];
+    const todayCI = dashData?.checkins?.[todayDate];
+    const yestCI  = dashData?.checkins?.[yestDate];
+    // Pass recent WHOOP history for repair window detection
+    const recentW = [0,1,2,3,4].map(i => dashData?.whoop?.[dateKey(i)]);
+    const recentCI = [0,1,2,3,4].map(i => dashData?.checkins?.[dateKey(i)]);
+    allAdvice = buildAdviceItems(todayW, todayCI, yestW, yestCI, recentW, recentCI);
+    renderAdviceHome();
+    renderAdviceDetail();
+  }
+
+  // Detect if HRV is rising out of a crash (repair window)
+  function detectRepairWindow(recentW, recentCI) {
+    if (!recentW || recentW.length < 3) return null;
+    const hrvs = recentW.map(w => w?.recovery?.score?.hrv_rmssd_milli);
+    const todayHRV = hrvs[0];
+    if (todayHRV == null) return null;
+
+    // Was there a crash in last 4 days? (any recovery <50 or severe PEM)
+    const recentCrash = recentW.slice(1,5).some((w,i) => {
+      const rec = w?.recovery?.score?.recovery_score;
+      const pem = recentCI[i+1]?.pem;
+      return (rec != null && rec < 50) || pem === 'severe';
+    });
+    if (!recentCrash) return null;
+
+    // Is HRV trending up over last 2 days and above threshold?
+    const HRV_THRESHOLD = 34;
+    const yestHRV = hrvs[1];
+    const twodHRV = hrvs[2];
+    const risingHRV = yestHRV != null && todayHRV > yestHRV;
+    const aboveThreshold = todayHRV >= HRV_THRESHOLD;
+
+    if (aboveThreshold && risingHRV) {
+      return { hrv: todayHRV, rising: true };
+    } else if (aboveThreshold) {
+      return { hrv: todayHRV, rising: false };
+    }
+    return null;
+  }
+
+  function buildAdviceItems(todayW, todayCI, yestW, yestCI, recentW, recentCI) {
+    const advice = [];
+    const hrv = todayW?.recovery?.score?.hrv_rmssd_milli;
+    const rec = todayW?.recovery?.score?.recovery_score;
+
+    // ── Repair Window ──────────────────────────────
+    const repairWindow = detectRepairWindow(recentW || [], recentCI || []);
+    if (repairWindow) {
+      const trend = repairWindow.rising ? '↑ rising' : 'elevated';
+      advice.push({
+        level: 'repair',
+        icon: '🔧',
+        title: `Repair window — HRV ${Math.round(repairWindow.hrv)}ms ${trend}`,
+        text: 'Your nervous system has capacity to heal right now. Rest into it — don\'t spend it. This window closes if you push today. Stay under 8 PacePoints.'
+      });
+    }
+
+    // HRV advice using personal percentiles (p10=26.9, p25=29.5, p50=31.9)
+    const _hrvSev = hrv == null ? 0 : hrv < 27 ? 3 : hrv < 29.5 ? 2 : hrv < 31.9 ? 1 : 0;
+    if (_hrvSev >= 3) {
+      advice.push({ level:'critical', icon:'🛑', title:`HRV ${Math.round(hrv)}ms — below your floor`, text:'Your autonomic system is in crisis. Full rest only — no exertion, no pushing through. This is your body\'s lowest gear.' });
+    } else if (_hrvSev >= 2) {
+      advice.push({ level:'critical', icon:'🛑', title:`HRV ${Math.round(hrv)}ms — bottom quartile`, text:'Your nervous system needs rest. Keep today minimal — nervous system stress is a direct PEM trigger.' });
+    } else if (_hrvSev >= 1) {
+      advice.push({ level:'warning', icon:'⚠️', title:`HRV ${Math.round(hrv)}ms — below median`, text:'HRV is below your normal baseline. Reduced tolerance today — stay conservative.' });
+    } else if (rec != null && rec < 34) {
+      advice.push({ level:'warning', icon:'⚠️', title:`Low recovery — ${rec}%`, text:'WHOOP is showing low recovery. Consider a rest day or very gentle activity only.' });
+    } else if (rec != null && rec >= 67) {
+      advice.push({ level:'good', icon:'💚', title:`Good recovery — ${rec}%`, text:'Your body is well-recovered. Still pace carefully — good days are when overexertion most commonly happens.' });
+    }
+
+    if (yestCI?.activity === 'demanding') {
+      advice.push({ level:'warning', icon:'⏳', title:'PEM window — yesterday was demanding', text:'PEM can appear 24–48h after exertion. Monitor how you feel and keep today lighter if possible.' });
+    }
+
+    if (todayCI?.pem === 'severe') {
+      advice.push({ level:'critical', icon:'🚨', title:'Severe PEM today', text:'Rest is the only medicine for PEM. Cancel non-essential commitments. No stretching, no walks — full rest.' });
+    } else if (todayCI?.pem === 'mild') {
+      advice.push({ level:'warning', icon:'😮‍💨', title:'Mild PEM — take it easy', text:'Gentle active rest is okay — avoid anything that raises your heart rate.' });
+    }
+
+    if ((!todayCI?.pem || todayCI.pem === 'none') && _hrvSev < 2) {
+      advice.push({ level:'good', icon:'🧘', title:'Stretching is safe today', text:'Gentle stretching (Borg ≤3 — no elevated HR) is a good option. Parasympathetic, low-cost, won\'t trigger PEM.' });
+    }
+
+    if (todayCI?.probiotics === 'no') {
+      advice.push({ level:'warning', icon:'💊', title:'Probiotics not taken yet today', text:'Take G-NiiB tonight before bed. Daily consistency is part of the gut restoration protocol.' });
+    }
+
+    if (advice.length === 0) {
+      advice.push({ level:'good', icon:'✨', title:'Looking good', text:'No alerts right now. Keep pacing, keep logging.' });
+    }
+    return advice;
+  }
+
+  function renderAdviceHome() {
+    const el = document.getElementById('advice-list');
+    const top = allAdvice.slice(0, 4);
+    el.innerHTML = top.map(a => insightRowHTML(a)).join('');
+    if (allAdvice.length > 4) {
+      el.innerHTML += `<a class="more-link" onclick="goToScreen('screen-advice-detail')">See all ${allAdvice.length} items →</a>`;
+    }
+  }
+
+  function renderAdviceDetail() {
+    const el = document.getElementById('advice-detail-list');
+    el.innerHTML = allAdvice.map(a => `<div class="detail-card">${insightRowHTML(a)}</div>`).join('');
+  }
+
+  // ── Build home screen ──────────────────────────
   async function buildHome() {
-    document.getElementById('progress').style.width = '0%';
-    document.getElementById('header-right').textContent = '';
+    const progressEl = document.getElementById('progress'); if (progressEl) progressEl.style.width = '0%';
 
     const todayDate = dateKey(0);
-    const yesterdayDate = dateKey(1);
-    const twoDaysDate = dateKey(2);
+    const yestDate  = dateKey(1);
+    const twoDDate  = dateKey(2);
 
-    const todayWhoop  = dashData?.whoop?.[todayDate];
-    const yestWhoop   = dashData?.whoop?.[yesterdayDate];
-    const twoDayWhoop = dashData?.whoop?.[twoDaysDate];
-    const todayCI     = dashData?.checkins?.[todayDate];
-    const yestCI      = dashData?.checkins?.[yesterdayDate];
+    const todayW  = dashData?.whoop?.[todayDate];
+    const yestW   = dashData?.whoop?.[yestDate];
+    const twoDW   = dashData?.whoop?.[twoDDate];
+    const todayCI = dashData?.checkins?.[todayDate];
+    const yestCI  = dashData?.checkins?.[yestDate];
 
-    // ── WHERE ARE YOU NOW ──────────────────────────
+    // ── SHARED HRV SEVERITY (Hannah's personal percentiles: p10=26.9, p25=29.5, p50=31.9) ──
+    // 0=normal, 1=below-median, 2=bottom-quartile, 3=crisis (below p10)
+    const _hrv = todayW?.recovery?.score?.hrv_rmssd_milli;
+    const hrvSeverity = _hrv == null ? 0
+      : _hrv < 27   ? 3
+      : _hrv < 29.5 ? 2
+      : _hrv < 31.9 ? 1
+      : 0;
+
+    // ── HERO ──
     const nowCard = document.getElementById('now-card');
-    const pill = document.getElementById('now-status-pill');
-    const nowMetrics = document.getElementById('now-metrics');
+    const pill    = document.getElementById('now-status-pill');
+    const nowMetrics    = document.getElementById('now-metrics');
     const nowCheckinRow = document.getElementById('now-checkin-row');
-    const nowCta = document.getElementById('now-cta');
-
-    const todayDone = completedDays.has(todayDate);
-    const todayPartial = todayCI && !todayDone; // has some data but not marked complete
+    const nowCta        = document.getElementById('now-cta');
 
     document.getElementById('now-label').textContent =
       new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    document.getElementById('now-pencil').onclick = (e) => { e.stopPropagation(); startCheckin(0); };
 
-    // WHOOP metrics for today
-    const rec   = todayWhoop?.recovery?.score?.recovery_score;
-    const hrv   = todayWhoop?.recovery?.score?.hrv_rmssd_milli;
-    const sleep = todayWhoop?.sleep?.score?.sleep_performance_percentage;
-
+    // WHOOP metrics (today vs yesterday for trend arrows)
+    const rec   = todayW?.recovery?.score?.recovery_score;
+    const hrv   = todayW?.recovery?.score?.hrv_rmssd_milli;
+    const sleep = todayW?.sleep?.score?.sleep_performance_percentage;
+    const yRec2  = yestW?.recovery?.score?.recovery_score;
+    const yHrv2  = yestW?.recovery?.score?.hrv_rmssd_milli;
+    const ySleep2= yestW?.sleep?.score?.sleep_performance_percentage;
     if (rec != null || hrv != null || sleep != null) {
       nowMetrics.style.display = 'grid';
       document.getElementById('now-recovery').innerHTML =
-        rec != null ? `<span class="${recClass(rec)}">${rec}</span><span class="now-metric-unit">%</span>` : '<span class="rec-none">—</span>';
+        rec != null ? `<span class="${recClass(rec)}">${rec}</span><span class="now-metric-unit">%</span>${trendArrow(rec,yRec2,true)}` : '<span class="rec-none">—</span>';
       document.getElementById('now-hrv').innerHTML =
-        hrv != null ? `${hrv.toFixed(0)}<span class="now-metric-unit"> ms</span>` : '—';
+        hrv != null ? `${hrv.toFixed(0)}<span class="now-metric-unit"> ms</span>${trendArrow(hrv,yHrv2,true)}` : '—';
       document.getElementById('now-sleep').innerHTML =
-        sleep != null ? `${sleep}<span class="now-metric-unit">%</span>` : '—';
+        sleep != null ? `${sleep}<span class="now-metric-unit">%</span>${trendArrow(sleep,ySleep2,true)}` : '—';
+
+      const rhr   = todayW?.recovery?.score?.resting_heart_rate;
+      const spo2  = todayW?.recovery?.score?.spo2_percentage;
+      const strain= todayW?.strain?.score?.strain;
+      const yRhr2  = yestW?.recovery?.score?.resting_heart_rate;
+      const ySpo22 = yestW?.recovery?.score?.spo2_percentage;
+      const yStrain2 = yestW?.strain?.score?.strain;
+
+      document.getElementById('now-rhr').innerHTML =
+        rhr != null ? `${rhr}<span class="now-metric-unit"> bpm</span>${trendArrow(rhr,yRhr2,false)}` : '—';
+      document.getElementById('now-spo2').innerHTML =
+        spo2 != null ? `${spo2.toFixed(1)}<span class="now-metric-unit">%</span>${trendArrow(spo2,ySpo22,true)}` : '—';
+      document.getElementById('now-strain').innerHTML =
+        strain != null ? `${strain.toFixed(1)}${trendArrow(strain,yStrain2,false)}` : '<span class="rec-none">—</span>';
     } else {
       nowMetrics.style.display = 'none';
     }
 
+    // Check-in chips
+    const todayDone = completedDays.has(todayDate);
+    const todayPartial = todayCI && !todayDone;
     if (todayDone || todayCI) {
       nowCheckinRow.style.display = 'flex';
-      nowCheckinRow.innerHTML = renderChips(todayCI);
+      nowCheckinRow.innerHTML = renderChips(todayCI, false);
     } else {
       nowCheckinRow.style.display = 'none';
     }
 
-    if (todayDone) {
-      nowCard.className = 'now-card done';
-      pill.className = 'now-status-pill done'; pill.textContent = '✓ Done';
-      nowCta.innerHTML = `<button class="now-edit-btn" onclick="startCheckin(0)">✏️ Update today's check-in</button>`;
-    } else if (todayPartial) {
-      nowCard.className = 'now-card partial';
-      pill.className = 'now-status-pill partial'; pill.textContent = 'In progress';
-      nowCta.innerHTML = `<button class="now-continue-btn" onclick="startCheckin(0)">Finish check-in →</button>`;
+    // Check-in progress count
+    const ciProgressEl = document.getElementById('now-checkin-progress');
+    if (ciProgressEl && todayCI) {
+      // Note: stimulants intentionally excluded — question removed, replaced by med_log
+      const ciFields = ['feeling','pem','brain_fog','pain','activity','left_home','food','probiotics','compression','sodium_goal','hours_upright'];
+      const ciAnswered = ciFields.filter(f => todayCI[f] != null && todayCI[f] !== '').length;
+      ciProgressEl.textContent = `${ciAnswered} of ${ciFields.length} questions answered`;
+      ciProgressEl.style.display = 'block';
+    } else if (ciProgressEl) {
+      ciProgressEl.style.display = 'none';
+    }
+
+    // (Visible nudge is rendered inside the CTA block below)
+
+    // Status pill + Visible nudge
+    const hasVisibleToday = dashData?.visible?.[todayDate] != null;
+
+    // Visible compact data for today
+    const nowVisibleEl = document.getElementById('now-visible-section');
+    const nowSep1 = document.getElementById('now-sep-1');
+    const nowSep2 = document.getElementById('now-sep-2');
+    if (hasVisibleToday) {
+      nowVisibleEl.innerHTML = renderVisibleCompact(dashData.visible[todayDate]);
+      nowVisibleEl.style.display = 'block';
+      if (nowSep1) nowSep1.style.display = 'block';
+      if (nowSep2) nowSep2.style.display = 'block';
     } else {
-      nowCard.className = 'now-card';
-      pill.className = 'now-status-pill empty'; pill.textContent = 'Not started';
-      nowCta.innerHTML = `<button class="now-start-btn" onclick="startCheckin(0)">Start today's check-in →</button>`;
+      nowVisibleEl.style.display = 'none';
+      if (nowSep1) nowSep1.style.display = 'none';
+      if (nowSep2) nowSep2.style.display = 'none';
     }
 
-    // ── WHERE WERE YOU YESTERDAY ──────────────────
-    document.getElementById('yest-date').textContent = formatDateShort(yesterdayDate);
-
-    const yRec   = yestWhoop?.recovery?.score?.recovery_score;
-    const yHrv   = yestWhoop?.recovery?.score?.hrv_rmssd_milli;
-    const ySleep = yestWhoop?.sleep?.score?.sleep_performance_percentage;
-    const tdRec  = twoDayWhoop?.recovery?.score?.recovery_score;
-    const tdHrv  = twoDayWhoop?.recovery?.score?.hrv_rmssd_milli;
-    const tdSleep= twoDayWhoop?.sleep?.score?.sleep_performance_percentage;
-
-    function trendArrow(curr, prev, higherGood) {
-      if (curr == null || prev == null) return '';
-      const diff = curr - prev;
-      if (Math.abs(diff) < 1) return '<span class="trend-flat"> →</span>';
-      const up = diff > 0;
-      const good = higherGood ? up : !up;
-      return `<span class="${good ? 'trend-up-good' : 'trend-down-bad'}"> ${up ? '↑' : '↓'}</span>`;
+    const nowPencil = document.getElementById('now-pencil');
+    if (todayDone) {
+      nowCard.className = 'tap-card now-card done';
+      pill.style.display = 'none';
+      nowPencil.style.display = 'inline-flex'; // show pencil to edit
+    } else if (todayPartial) {
+      nowCard.className = 'tap-card now-card partial';
+      pill.style.display = ''; pill.className = 'now-status-pill partial'; pill.textContent = 'In progress';
+      nowPencil.style.display = 'inline-flex'; // show pencil to continue
+    } else {
+      nowCard.className = 'tap-card now-card';
+      pill.style.display = ''; pill.className = 'now-status-pill empty'; pill.textContent = 'Not started';
+      nowPencil.style.display = 'none'; // not started — no pencil, tap card to start
     }
+
+    // Visible nudge — big button when no data; pencil is now in the Visible section header
+    nowCta.innerHTML = !hasVisibleToday ? `
+      <label for="visible-file-input" class="visible-nudge" style="width:100%;margin-top:8px;cursor:pointer;display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:#2a2208">
+        <span class="visible-nudge-icon">📊</span>
+        <span class="visible-nudge-text">Add Visible data</span>
+        <span class="visible-nudge-arrow">+</span>
+      </label>` : '';
+
+    // When not started, whole card tap = start check-in; pencil stays for edit
+    if (!todayDone && !todayCI) {
+      nowCard.onclick = () => startCheckin(0);
+    } else {
+      nowCard.onclick = null; // pencil handles edit; card tap does nothing extra
+    }
+
+    // ── YESTERDAY ──
+    document.getElementById('yest-date').textContent = formatDateShort(yestDate);
+    const yRec   = yestW?.recovery?.score?.recovery_score;
+    const yHrv   = yestW?.recovery?.score?.hrv_rmssd_milli;
+    const ySleep = yestW?.sleep?.score?.sleep_performance_percentage;
+    const tdRec  = twoDW?.recovery?.score?.recovery_score;
+    const tdHrv  = twoDW?.recovery?.score?.hrv_rmssd_milli;
+    const tdSleep= twoDW?.sleep?.score?.sleep_performance_percentage;
 
     document.getElementById('yest-recovery').innerHTML =
-      yRec != null ? `<span class="${recClass(yRec)}">${yRec}</span><span class="yest-metric-unit">%</span>${trendArrow(yRec, tdRec, true)}` : '—';
+      yRec != null ? `<span class="${recClass(yRec)}">${yRec}</span><span class="yest-metric-unit">%</span>${trendArrow(yRec,tdRec,true)}` : '—';
     document.getElementById('yest-hrv').innerHTML =
-      yHrv != null ? `${yHrv.toFixed(0)}<span class="yest-metric-unit"> ms</span>${trendArrow(yHrv, tdHrv, true)}` : '—';
+      yHrv != null ? `${yHrv.toFixed(0)}<span class="yest-metric-unit"> ms</span>${trendArrow(yHrv,tdHrv,true)}` : '—';
     document.getElementById('yest-sleep').innerHTML =
-      ySleep != null ? `${ySleep}<span class="yest-metric-unit">%</span>${trendArrow(ySleep, tdSleep, true)}` : '—';
+      ySleep != null ? `${ySleep}<span class="yest-metric-unit">%</span>${trendArrow(ySleep,tdSleep,true)}` : '—';
 
-    document.getElementById('yest-checkin-row').innerHTML = renderChips(yestCI);
+    const yRhr   = yestW?.recovery?.score?.resting_heart_rate;
+    const ySpo2  = yestW?.recovery?.score?.spo2_percentage;
+    const yStrain= yestW?.strain?.score?.strain;
+    const tdRhr  = twoDW?.recovery?.score?.resting_heart_rate;
+    const tdSpo2 = twoDW?.recovery?.score?.spo2_percentage;
+    const tdStrain=twoDW?.strain?.score?.strain;
+    document.getElementById('yest-rhr').innerHTML =
+      yRhr != null ? `${yRhr}<span class="yest-metric-unit"> bpm</span>${trendArrow(yRhr,tdRhr,false)}` : '—';
+    document.getElementById('yest-spo2').innerHTML =
+      ySpo2 != null ? `${ySpo2.toFixed(1)}<span class="yest-metric-unit">%</span>${trendArrow(ySpo2,tdSpo2,true)}` : '—';
+    document.getElementById('yest-strain').innerHTML =
+      yStrain != null ? `${yStrain.toFixed(1)}${trendArrow(yStrain,tdStrain,false)}` : '<span class="rec-none">—</span>';
+    document.getElementById('yest-checkin-row').innerHTML = renderChips(yestCI, false);
 
-    // ── TRENDS (inline with yesterday) ────────────
-    const trendSection = document.getElementById('trend-section');
-    const trends = buildTrends();
-    if (trends.length) {
-      trendSection.innerHTML = trends.map(t =>
-        `<div class="trend-row"><div class="trend-icon">${t.icon}</div><div class="trend-text">${t.text}</div></div>`
-      ).join('');
+    // Yesterday Budget Models (stacked)
+    (function() {
+      const yestRec  = yestW?.recovery?.score?.recovery_score;
+      const yestSlp  = yestW?.sleep?.score?.sleep_performance_percentage;
+      const yestVis  = dashData?.visible?.[yestDate];
+      const yobs     = yestVis?.observations || [];
+      const getYObs  = n => yestVis?.measurements?.[n] ?? yobs.find(o=>o.tracker_name===n)?.value;
+      const yPace    = getYObs('PacePoints');
+      const baseBudget = 14;
+      const yestSep2El = document.getElementById('yest-sep-2');
+
+      const yestCI     = dashData?.checkins?.[yestDate];
+      // Adderall flag: prefer structured med_log; fall back to legacy stimulants/notes for old records
+      const yAdderall  = (dashData?.meds?.[yestDate]?.adderall > 0) ||
+                         (yestCI?.stimulants === true) || (yestCI?.stimulants === 'yes') ||
+                         (yestCI?.notes || '').toLowerCase().includes('adderall');
+
+      const yStackEl = document.getElementById('yest-budget-stack');
+      if (yPace == null && yestRec == null && yestSlp == null) {
+        yStackEl.style.display = 'none';
+        if (yestSep2El) yestSep2El.style.display = 'none';
+        return;
+      }
+      yStackEl.style.display = 'block';
+      if (yestSep2El) yestSep2El.style.display = 'block';
+
+      function setBar(fillId, valueId, pct, label, color) {
+        document.getElementById(fillId).style.width = Math.min(100, pct) + '%';
+        document.getElementById(fillId).style.background = color || (pct >= 85 ? '#e05a5a' : pct >= 60 ? '#f0c040' : '#4caf7d');
+        document.getElementById(valueId).textContent = label;
+      }
+
+      // Model 1: Visible PacePoints
+      if (yPace != null) {
+        const pct1 = Math.round((yPace / baseBudget) * 100);
+        setBar('ybm1-fill', 'ybm1-value', pct1, `${yPace} / ${baseBudget} pts`);
+        document.getElementById('ybm1-asterisk').style.display = yAdderall ? 'inline' : 'none';
+      } else {
+        document.getElementById('ybm1-value').textContent = '—';
+        document.getElementById('ybm1-fill').style.width = '0%';
+      }
+
+      // Model 2: Recovery-adjusted
+      if (yestRec != null) {
+        const adjBudget = Math.max(1, Math.round(baseBudget * (yestRec / 100)));
+        const spent2    = yPace ?? 0;
+        const pct2      = yPace != null ? Math.round((spent2 / adjBudget) * 100) : yestRec;
+        const label2    = yPace != null ? `${spent2} / ${adjBudget} pts` : `${yestRec}% → ${adjBudget} pts`;
+        setBar('ybm2-fill', 'ybm2-value', pct2, label2);
+      } else {
+        document.getElementById('ybm2-value').textContent = '—';
+        document.getElementById('ybm2-fill').style.width = '0%';
+      }
+
+      // Model 3: Sleep capacity
+      if (yestSlp != null) {
+        const slColor = yestSlp >= 85 ? '#4caf7d' : yestSlp >= 60 ? '#f0c040' : '#e05a5a';
+        setBar('ybm3-fill', 'ybm3-value', yestSlp, `${yestSlp}%`, slColor);
+      } else {
+        document.getElementById('ybm3-value').textContent = '—';
+        document.getElementById('ybm3-fill').style.width = '0%';
+      }
+
+      // Model 4: Day-before-yesterday recovery (lag predictor for yesterday)
+      const twoDaysAgoW  = dashData?.whoop?.[dateKey(2)];
+      const twoDaysAgoRec = twoDaysAgoW?.recovery?.score?.recovery_score;
+      if (twoDaysAgoRec != null) {
+        const slColor4 = twoDaysAgoRec >= 67 ? '#4caf7d' : twoDaysAgoRec >= 34 ? '#f0c040' : '#e05a5a';
+        setBar('ybm4-fill', 'ybm4-value', twoDaysAgoRec, `${twoDaysAgoRec}%`, slColor4);
+      } else {
+        document.getElementById('ybm4-value').textContent = '—';
+        document.getElementById('ybm4-fill').style.width = '0%';
+      }
+    })();
+
+    // Visible data for yesterday
+    const yestVisible = dashData?.visible?.[yestDate];
+    const visibleEl = document.getElementById('yest-visible-section');
+    if (yestVisible) {
+      visibleEl.innerHTML = renderVisibleCompact(yestVisible);
+      visibleEl.style.display = 'block';
     } else {
-      trendSection.innerHTML = '';
+      visibleEl.style.display = 'none';
     }
 
-    // ── INSIGHTS & ADVICE ──────────────────────────
-    const insightCard = document.getElementById('insight-card');
-    const insightEmpty = document.getElementById('insight-empty');
-    const adviceItems = buildAdvice(todayWhoop, todayCI, yestWhoop, yestCI);
-    if (adviceItems.length) {
-      insightEmpty.style.display = 'none';
-      insightCard.innerHTML = adviceItems.map(a => `
-        <div class="advice-row advice-level-${a.level}">
-          <div class="advice-icon">${a.icon}</div>
-          <div class="advice-body">
-            <div class="advice-title">${a.title}</div>
-            <div class="advice-text">${a.text}</div>
-          </div>
+    // Visible data for yesterday detail screen
+    document.getElementById('yest-d-visible').innerHTML = renderVisibleDetail(yestVisible);
+
+    // ── TWO DAYS AGO ──
+    (function renderTwoDaysAgo() {
+      const twoDDate_local = dateKey(2);
+      const threeDDate     = dateKey(3);
+      const tdW            = dashData?.whoop?.[twoDDate_local];
+      const trDW           = dashData?.whoop?.[threeDDate]; // for trend arrows
+      const tdCI           = dashData?.checkins?.[twoDDate_local];
+      const tdVis          = dashData?.visible?.[twoDDate_local];
+
+      const twodCard = document.getElementById('twod-card');
+      const twodLabel = document.getElementById('twod-label');
+
+      // Hide the whole card if no data at all
+      if (!tdW && !tdCI && !tdVis) {
+        twodCard.style.display = 'none';
+        twodLabel.style.display = 'none';
+        return;
+      }
+      twodCard.style.display = '';
+      twodLabel.style.display = '';
+
+      document.getElementById('twod-date').textContent = formatDateShort(twoDDate_local);
+
+      const tRec    = tdW?.recovery?.score?.recovery_score;
+      const tHrv    = tdW?.recovery?.score?.hrv_rmssd_milli;
+      const tSleep  = tdW?.sleep?.score?.sleep_performance_percentage;
+      const tRhr    = tdW?.recovery?.score?.resting_heart_rate;
+      const tSpo2   = tdW?.recovery?.score?.spo2_percentage;
+      const tStrain = tdW?.strain?.score?.strain;
+
+      const trRec   = trDW?.recovery?.score?.recovery_score;
+      const trHrv   = trDW?.recovery?.score?.hrv_rmssd_milli;
+      const trSleep = trDW?.sleep?.score?.sleep_performance_percentage;
+      const trRhr   = trDW?.recovery?.score?.resting_heart_rate;
+      const trSpo2  = trDW?.recovery?.score?.spo2_percentage;
+      const trStrain= trDW?.strain?.score?.strain;
+
+      document.getElementById('twod-recovery').innerHTML =
+        tRec != null ? `<span class="${recClass(tRec)}">${tRec}</span><span class="yest-metric-unit">%</span>${trendArrow(tRec,trRec,true)}` : '—';
+      document.getElementById('twod-hrv').innerHTML =
+        tHrv != null ? `${tHrv.toFixed(0)}<span class="yest-metric-unit"> ms</span>${trendArrow(tHrv,trHrv,true)}` : '—';
+      document.getElementById('twod-sleep').innerHTML =
+        tSleep != null ? `${tSleep}<span class="yest-metric-unit">%</span>${trendArrow(tSleep,trSleep,true)}` : '—';
+      document.getElementById('twod-rhr').innerHTML =
+        tRhr != null ? `${tRhr}<span class="yest-metric-unit"> bpm</span>${trendArrow(tRhr,trRhr,false)}` : '—';
+      document.getElementById('twod-spo2').innerHTML =
+        tSpo2 != null ? `${tSpo2.toFixed(1)}<span class="yest-metric-unit">%</span>${trendArrow(tSpo2,trSpo2,true)}` : '—';
+      document.getElementById('twod-strain').innerHTML =
+        tStrain != null ? `${tStrain.toFixed(1)}${trendArrow(tStrain,trStrain,false)}` : '<span class="rec-none">—</span>';
+
+      document.getElementById('twod-checkin-row').innerHTML = renderChips(tdCI, false);
+
+      const twodVisibleEl = document.getElementById('twod-visible-section');
+      if (tdVis) {
+        twodVisibleEl.innerHTML = renderVisibleCompact(tdVis);
+        twodVisibleEl.style.display = 'block';
+      } else {
+        twodVisibleEl.style.display = 'none';
+      }
+
+      // Budget models for two days ago
+      const tobs    = tdVis?.observations || [];
+      const getTObs = n => tdVis?.measurements?.[n] ?? tobs.find(o=>o.tracker_name===n)?.value;
+      const tPace   = getTObs('PacePoints');
+      const baseBudget = 14;
+      const tStackEl  = document.getElementById('twod-budget-stack');
+      const twodSep2El= document.getElementById('twod-sep-2');
+      // Adderall flag: prefer structured med_log; fall back to legacy stimulants/notes for old records
+      const tAdderall = (dashData?.meds?.[twoDDate_local]?.adderall > 0) ||
+                        (tdCI?.stimulants === true) || (tdCI?.stimulants === 'yes') ||
+                        (tdCI?.notes || '').toLowerCase().includes('adderall');
+
+      if (tPace == null && tRec == null && tSleep == null) {
+        tStackEl.style.display = 'none';
+        if (twodSep2El) twodSep2El.style.display = 'none';
+        return;
+      }
+      tStackEl.style.display = 'block';
+      if (twodSep2El) twodSep2El.style.display = 'block';
+
+      function setBar(fillId, valueId, pct, label, color) {
+        document.getElementById(fillId).style.width = Math.min(100, pct) + '%';
+        document.getElementById(fillId).style.background = color || (pct >= 85 ? '#e05a5a' : pct >= 60 ? '#f0c040' : '#4caf7d');
+        document.getElementById(valueId).textContent = label;
+      }
+
+      // Model 1: Visible PacePoints
+      if (tPace != null) {
+        const pct1 = Math.round((tPace / baseBudget) * 100);
+        setBar('tbm1-fill', 'tbm1-value', pct1, `${tPace} / ${baseBudget} pts`);
+        document.getElementById('tbm1-asterisk').style.display = tAdderall ? 'inline' : 'none';
+      } else {
+        document.getElementById('tbm1-value').textContent = '—';
+        document.getElementById('tbm1-fill').style.width = '0%';
+      }
+
+      // Model 2: Recovery-adjusted
+      if (tRec != null) {
+        const adjBudget = Math.max(1, Math.round(baseBudget * (tRec / 100)));
+        const spent2    = tPace ?? 0;
+        const pct2      = tPace != null ? Math.round((spent2 / adjBudget) * 100) : tRec;
+        const label2    = tPace != null ? `${spent2} / ${adjBudget} pts` : `${tRec}% → ${adjBudget} pts`;
+        setBar('tbm2-fill', 'tbm2-value', pct2, label2);
+      } else {
+        document.getElementById('tbm2-value').textContent = '—';
+        document.getElementById('tbm2-fill').style.width = '0%';
+      }
+
+      // Model 3: Sleep capacity
+      if (tSleep != null) {
+        const slColor = tSleep >= 85 ? '#4caf7d' : tSleep >= 60 ? '#f0c040' : '#e05a5a';
+        setBar('tbm3-fill', 'tbm3-value', tSleep, `${tSleep}%`, slColor);
+      } else {
+        document.getElementById('tbm3-value').textContent = '—';
+        document.getElementById('tbm3-fill').style.width = '0%';
+      }
+
+      // Model 4: Three-days-ago recovery (lag predictor for two days ago)
+      const threeDRec = trDW?.recovery?.score?.recovery_score;
+      if (threeDRec != null) {
+        const slColor4 = threeDRec >= 67 ? '#4caf7d' : threeDRec >= 34 ? '#f0c040' : '#e05a5a';
+        setBar('tbm4-fill', 'tbm4-value', threeDRec, `${threeDRec}%`, slColor4);
+      } else {
+        document.getElementById('tbm4-value').textContent = '—';
+        document.getElementById('tbm4-fill').style.width = '0%';
+      }
+    })();
+
+    // ── THREE DAYS AGO ──
+    (function renderThreeDaysAgo() {
+      const threeDDate_local = dateKey(3);
+      const fourDDate        = dateKey(4);
+      const hdW              = dashData?.whoop?.[threeDDate_local];
+      const fourDW           = dashData?.whoop?.[fourDDate]; // for trend arrows
+      const hdCI             = dashData?.checkins?.[threeDDate_local];
+      const hdVis            = dashData?.visible?.[threeDDate_local];
+
+      const threedCard  = document.getElementById('threed-card');
+      const threedLabel = document.getElementById('threed-label');
+
+      if (!hdW && !hdCI && !hdVis) {
+        threedCard.style.display  = 'none';
+        threedLabel.style.display = 'none';
+        return;
+      }
+      threedCard.style.display  = '';
+      threedLabel.style.display = '';
+
+      document.getElementById('threed-date').textContent = formatDateShort(threeDDate_local);
+
+      const hRec    = hdW?.recovery?.score?.recovery_score;
+      const hHrv    = hdW?.recovery?.score?.hrv_rmssd_milli;
+      const hSleep  = hdW?.sleep?.score?.sleep_performance_percentage;
+      const hRhr    = hdW?.recovery?.score?.resting_heart_rate;
+      const hSpo2   = hdW?.recovery?.score?.spo2_percentage;
+      const hStrain = hdW?.strain?.score?.strain;
+
+      const frRec   = fourDW?.recovery?.score?.recovery_score;
+      const frHrv   = fourDW?.recovery?.score?.hrv_rmssd_milli;
+      const frSleep = fourDW?.sleep?.score?.sleep_performance_percentage;
+      const frRhr   = fourDW?.recovery?.score?.resting_heart_rate;
+      const frSpo2  = fourDW?.recovery?.score?.spo2_percentage;
+      const frStrain= fourDW?.strain?.score?.strain;
+
+      document.getElementById('threed-recovery').innerHTML =
+        hRec != null ? `<span class="${recClass(hRec)}">${hRec}</span><span class="yest-metric-unit">%</span>${trendArrow(hRec,frRec,true)}` : '—';
+      document.getElementById('threed-hrv').innerHTML =
+        hHrv != null ? `${hHrv.toFixed(0)}<span class="yest-metric-unit"> ms</span>${trendArrow(hHrv,frHrv,true)}` : '—';
+      document.getElementById('threed-sleep').innerHTML =
+        hSleep != null ? `${hSleep}<span class="yest-metric-unit">%</span>${trendArrow(hSleep,frSleep,true)}` : '—';
+      document.getElementById('threed-rhr').innerHTML =
+        hRhr != null ? `${hRhr}<span class="yest-metric-unit"> bpm</span>${trendArrow(hRhr,frRhr,false)}` : '—';
+      document.getElementById('threed-spo2').innerHTML =
+        hSpo2 != null ? `${hSpo2.toFixed(1)}<span class="yest-metric-unit">%</span>${trendArrow(hSpo2,frSpo2,true)}` : '—';
+      document.getElementById('threed-strain').innerHTML =
+        hStrain != null ? `${hStrain.toFixed(1)}${trendArrow(hStrain,frStrain,false)}` : '<span class="rec-none">—</span>';
+
+      document.getElementById('threed-checkin-row').innerHTML = renderChips(hdCI, false);
+
+      const threedVisibleEl = document.getElementById('threed-visible-section');
+      if (hdVis) {
+        threedVisibleEl.innerHTML = renderVisibleCompact(hdVis);
+        threedVisibleEl.style.display = 'block';
+      } else {
+        threedVisibleEl.style.display = 'none';
+      }
+
+      // Budget models for three days ago
+      const hobs    = hdVis?.observations || [];
+      const getHObs = n => hdVis?.measurements?.[n] ?? hobs.find(o=>o.tracker_name===n)?.value;
+      const hPace   = getHObs('PacePoints');
+      const baseBudget = 14;
+      const hStackEl   = document.getElementById('threed-budget-stack');
+      const threedSep2El = document.getElementById('threed-sep-2');
+      const hAdderall = (dashData?.meds?.[threeDDate_local]?.adderall > 0) ||
+                        (hdCI?.stimulants === true) || (hdCI?.stimulants === 'yes') ||
+                        (hdCI?.notes || '').toLowerCase().includes('adderall');
+
+      if (hPace == null && hRec == null && hSleep == null) {
+        hStackEl.style.display = 'none';
+        if (threedSep2El) threedSep2El.style.display = 'none';
+        return;
+      }
+      hStackEl.style.display = 'block';
+      if (threedSep2El) threedSep2El.style.display = 'block';
+
+      function setBar(fillId, valueId, pct, label, color) {
+        document.getElementById(fillId).style.width = Math.min(100, pct) + '%';
+        document.getElementById(fillId).style.background = color || (pct >= 85 ? '#e05a5a' : pct >= 60 ? '#f0c040' : '#4caf7d');
+        document.getElementById(valueId).textContent = label;
+      }
+
+      if (hPace != null) {
+        const pct1 = Math.round((hPace / baseBudget) * 100);
+        setBar('hdm1-fill', 'hdm1-value', pct1, `${hPace} / ${baseBudget} pts`);
+        document.getElementById('hdm1-asterisk').style.display = hAdderall ? 'inline' : 'none';
+      } else {
+        document.getElementById('hdm1-value').textContent = '—';
+        document.getElementById('hdm1-fill').style.width = '0%';
+      }
+
+      if (hRec != null) {
+        const adjBudget = Math.max(1, Math.round(baseBudget * (hRec / 100)));
+        const spent2    = hPace ?? 0;
+        const pct2      = hPace != null ? Math.round((spent2 / adjBudget) * 100) : hRec;
+        const label2    = hPace != null ? `${spent2} / ${adjBudget} pts` : `${hRec}% → ${adjBudget} pts`;
+        setBar('hdm2-fill', 'hdm2-value', pct2, label2);
+      } else {
+        document.getElementById('hdm2-value').textContent = '—';
+        document.getElementById('hdm2-fill').style.width = '0%';
+      }
+
+      if (hSleep != null) {
+        const slColor = hSleep >= 85 ? '#4caf7d' : hSleep >= 60 ? '#f0c040' : '#e05a5a';
+        setBar('hdm3-fill', 'hdm3-value', hSleep, `${hSleep}%`, slColor);
+      } else {
+        document.getElementById('hdm3-value').textContent = '—';
+        document.getElementById('hdm3-fill').style.width = '0%';
+      }
+
+      // Model 4: Four days ago recovery (lag predictor)
+      const fourDRec = fourDW?.recovery?.score?.recovery_score;
+      if (fourDRec != null) {
+        const slColor4 = fourDRec >= 67 ? '#4caf7d' : fourDRec >= 34 ? '#f0c040' : '#e05a5a';
+        setBar('hdm4-fill', 'hdm4-value', fourDRec, `${fourDRec}%`, slColor4);
+      } else {
+        document.getElementById('hdm4-value').textContent = '—';
+        document.getElementById('hdm4-fill').style.width = '0%';
+      }
+    })();
+
+    // ── YESTERDAY DETAIL SCREEN ──
+    document.getElementById('yest-detail-title').textContent =
+      `Yesterday · ${formatDateShort(yestDate)}`;
+    document.getElementById('yest-d-recovery').innerHTML =
+      yRec != null ? `<span class="${recClass(yRec)}">${yRec}</span><span class="detail-metric-unit">%</span>` : '—';
+    document.getElementById('yest-d-hrv').innerHTML =
+      yHrv != null ? `${yHrv.toFixed(0)}<span class="detail-metric-unit"> ms</span>` : '—';
+    document.getElementById('yest-d-sleep').innerHTML =
+      ySleep != null ? `${ySleep}<span class="detail-metric-unit">%</span>` : '—';
+
+    if (yestCI) {
+      const fields = [
+        ['Overall feeling', yestCI.feeling], ['PEM', yestCI.pem], ['Brain fog', yestCI.brain_fog],
+        ['Pain', yestCI.pain], ['Activity', yestCI.activity], ['Left home', yestCI.left_home],
+        ['Food', yestCI.food], ['Probiotics', yestCI.probiotics],
+      ].filter(([,v]) => v);
+      document.getElementById('yest-d-checkin-rows').innerHTML = fields.map(([label,val]) => `
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid #1e2d3d">
+          <span style="font-size:13px;color:#7a9ab8">${label}</span>
+          <span style="font-size:13px;font-weight:600" class="${severityClass(val)}">${capitalize(val)}</span>
         </div>`).join('');
+      if (yestCI.notes) {
+        document.getElementById('yest-d-notes').textContent = yestCI.notes;
+        document.getElementById('yest-d-notes-card').style.display = 'block';
+      }
     } else {
-      insightEmpty.textContent = 'No insights yet — check back after a few days of data.';
-      insightEmpty.style.display = 'block';
+      document.getElementById('yest-d-checkin-rows').innerHTML =
+        '<div style="font-size:13px;color:#3a5a78;font-style:italic;text-align:center;padding:12px 0">No check-in for yesterday.</div>';
     }
 
-    // ── PAST DAYS ──────────────────────────────────
+    // ── HISTORY ──
     const list = document.getElementById('past-days-list');
     list.innerHTML = '';
-    for (let i = 2; i <= 6; i++) {
+    for (let i = 1; i <= 14; i++) {
       const key = dateKey(i);
-      const done = completedDays.has(key);
+      const done = completedDays.has(key) || dashData?.checkins?.[key];
       const row = document.createElement('div');
       row.className = 'day-row' + (done ? ' done' : '');
       row.onclick = () => startCheckin(i);
@@ -847,96 +2303,484 @@
         <div class="dr-status ${done ? 'done' : 'open'}">${done ? '✓ Done' : '+ Fill in'}</div>`;
       list.appendChild(row);
     }
+
+    // ── RECOMMENDED CEILING (actionable) ──
+    (function() {
+      const baseBudget = 14;
+      // Get last 3 days of PacePoints
+      const lag = [1,2,3].map(i => {
+        const d = dateKey(i);
+        const v = dashData?.visible?.[d];
+        const obs = v?.observations || [];
+        return v?.measurements?.PacePoints ?? obs.find(o=>o.tracker_name==='PacePoints')?.value ?? null;
+      });
+      const lag1 = lag[0], lag2 = lag[1], lag3 = lag[2];
+
+      // Need at least 1 day of history to compute ceiling
+      if (lag1 == null && lag2 == null && lag3 == null) {
+        document.getElementById('ceiling-card').style.display = 'none';
+      } else {
+        // Weighted recent load (lag-3 weighted heaviest per the -0.74 correlation)
+        // Total weight = 1.0 ; lag1=0.30, lag2=0.30, lag3=0.40
+        const w1 = lag1 != null ? lag1 * 0.30 : 0;
+        const w2 = lag2 != null ? lag2 * 0.30 : 0;
+        const w3 = lag3 != null ? lag3 * 0.40 : 0;
+        const weightedLoad = w1 + w2 + w3;
+
+        // 3-day raw sum for the rules
+        const rawSum = (lag1||0) + (lag2||0) + (lag3||0);
+        const days = lag.filter(v => v != null).length;
+
+        // Find the highest single day in the lookback window
+        const maxLag = Math.max(lag1||0, lag2||0, lag3||0);
+
+        // Hard rules (override weighted ceiling)
+        let ceiling, reason;
+        if (rawSum > 30 && days >= 3) {
+          ceiling = 4;
+          reason = `<span class="ceiling-sub-strong">Mandatory rest.</span> 3-day load is ${rawSum.toFixed(0)} pts (over 30) — PEM debt.`;
+        } else if ((lag1 != null && lag2 != null) && (lag1 + lag2) > 22) {
+          ceiling = 5;
+          reason = `<span class="ceiling-sub-strong">Active recovery.</span> 2-day load is ${(lag1+lag2).toFixed(0)} pts (over 22).`;
+        } else if (lag1 != null && lag1 > baseBudget) {
+          ceiling = 6;
+          reason = `<span class="ceiling-sub-strong">Recovery day.</span> Yesterday spent ${lag1.toFixed(0)} pts (over ${baseBudget}).`;
+        } else if (lag2 != null && lag2 > baseBudget) {
+          // 2 days ago overshoot — PEM lag risk
+          ceiling = 7;
+          reason = `<span class="ceiling-sub-strong">PEM lag risk.</span> 2 days ago spent ${lag2.toFixed(0)} pts — crash often shows up today.`;
+        } else if (lag3 != null && lag3 > baseBudget) {
+          // Lag-3 is the strongest negative correlation (−0.74) — strongest warning
+          ceiling = 8;
+          reason = `<span class="ceiling-sub-strong">Lag-3 PEM window.</span> 3 days ago spent ${lag3.toFixed(0)} pts — the highest-risk lag day.`;
+        } else {
+          // Weighted formula: gradual reduction based on recent load
+          const baseline = baseBudget * (days / 3);
+          const reduction = Math.max(0, weightedLoad - baseline * 0.7) * 0.5;
+          ceiling = Math.max(6, Math.round(baseBudget - reduction));
+          if (ceiling >= baseBudget) {
+            reason = `Light recent load — full budget today.`;
+          } else {
+            reason = `Recent load: ${weightedLoad.toFixed(1)} pts (lag-3 weighted). Pace yourself.`;
+          }
+        }
+
+        // ── HRV override — Hannah's personal percentiles (90-day baseline) ──
+        // p10=26.9ms, p25=29.5ms, p50=31.9ms
+        const todayHRV = todayW?.recovery?.score?.hrv_rmssd_milli;
+        if (todayHRV != null) {
+          let hrvCeiling, hrvReason;
+          if (todayHRV < 27) {
+            // Below p10 — autonomic crisis
+            hrvCeiling = 4;
+            hrvReason = `<span class="ceiling-sub-strong">Autonomic stress.</span> HRV ${todayHRV.toFixed(0)}ms is below your historical floor — full rest only.`;
+          } else if (todayHRV < 29.5) {
+            // p10–p25
+            hrvCeiling = 6;
+            hrvReason = `<span class="ceiling-sub-strong">Low HRV.</span> HRV ${todayHRV.toFixed(0)}ms is in your bottom quartile — nervous system needs rest.`;
+          } else if (todayHRV < 31.9) {
+            // p25–p50
+            hrvCeiling = 9;
+            hrvReason = `<span class="ceiling-sub-strong">Below-median HRV.</span> HRV ${todayHRV.toFixed(0)}ms — reduced tolerance today.`;
+          }
+          // Take the lower of PacePoints ceiling and HRV ceiling
+          if (hrvCeiling != null && hrvCeiling < ceiling) {
+            ceiling = hrvCeiling;
+            reason = hrvReason;
+          }
+        }
+
+        // Today's spend so far
+        const visTodayObs = (dashData?.visible?.[todayDate]?.observations) || [];
+        const todaySpent = dashData?.visible?.[todayDate]?.measurements?.PacePoints ??
+                           visTodayObs.find(o=>o.tracker_name==='PacePoints')?.value ?? 0;
+
+        const pct = Math.min(100, Math.round((todaySpent / ceiling) * 100));
+        const fillColor = pct >= 100 ? '#e05a5a' : pct >= 80 ? '#f0c040' : '#c9a84c';
+
+        document.getElementById('ceiling-card').style.display = 'block';
+        document.getElementById('ceiling-value').textContent =
+          todaySpent > 0 ? `${todaySpent.toFixed(1)} / ${ceiling} pts` : `${ceiling} pts`;
+        document.getElementById('ceiling-fill').style.width = pct + '%';
+        document.getElementById('ceiling-fill').style.background = fillColor;
+        document.getElementById('ceiling-sub').innerHTML = reason;
+      }
+    })();
+
+    // ── LAG-3 WATCH (standalone PEM lag indicator) ──
+    (function() {
+      const lag3Date = dateKey(3);
+      const lag3Vis = dashData?.visible?.[lag3Date];
+      const lag3Obs = lag3Vis?.observations || [];
+      const lag3Pace = lag3Vis?.measurements?.PacePoints ?? lag3Obs.find(o=>o.tracker_name==='PacePoints')?.value;
+      const card = document.getElementById('lag3-card');
+      if (lag3Pace == null) {
+        card.style.display = 'none';
+        return;
+      }
+      card.style.display = 'block';
+      document.getElementById('lag3-date').textContent = formatDateShort(lag3Date);
+      document.getElementById('lag3-value').textContent = lag3Pace.toFixed(1);
+
+      const statusEl = document.getElementById('lag3-status');
+      const explainEl = document.getElementById('lag3-explain');
+      if (lag3Pace > 14) {
+        statusEl.className = 'lag3-status high';
+        statusEl.textContent = '🔴 High risk';
+        explainEl.innerHTML = `<strong>PEM crash window today.</strong> Lag-3 spike of ${lag3Pace.toFixed(1)} pts is over budget. In your data, this is the strongest predictor of feeling worse — plan a quiet day.`;
+      } else if (lag3Pace > 8) {
+        statusEl.className = 'lag3-status med';
+        statusEl.textContent = '🟡 Watch';
+        explainEl.innerHTML = `Moderate lag-3 spend (${lag3Pace.toFixed(1)} pts). Some PEM lag risk — pace yourself, listen for early symptoms.`;
+      } else if (hrvSeverity >= 3) {
+        // PacePoints are clear but HRV is in crisis — upgrade to Watch
+        statusEl.className = 'lag3-status med';
+        statusEl.textContent = '🟡 Watch';
+        explainEl.innerHTML = `Lag-3 spend is low (${lag3Pace.toFixed(1)} pts), but <strong>HRV is at your floor</strong> — autonomic state overrides a clear lag-3. Treat today as a watch day.`;
+      } else if (hrvSeverity >= 2) {
+        statusEl.className = 'lag3-status med';
+        statusEl.textContent = '🟡 Watch';
+        explainEl.innerHTML = `Lag-3 spend is low (${lag3Pace.toFixed(1)} pts), but <strong>HRV is in your bottom quartile</strong> — reduced tolerance today regardless.`;
+      } else {
+        statusEl.className = 'lag3-status low';
+        statusEl.textContent = '🟢 Clear';
+        explainEl.innerHTML = `Low lag-3 spend (${lag3Pace.toFixed(1)} pts). The 3-day-ago PEM window is clear today.`;
+      }
+    })();
+
+    // ── BUDGET MODELS (stacked) ──
+    (function() {
+      const recovery   = todayW?.recovery?.score?.recovery_score;
+      const sleepPerf  = todayW?.sleep?.score?.sleep_performance_percentage;
+      const visToday   = dashData?.visible?.[todayDate];
+      const obs        = visToday?.observations || [];
+      const getObs     = n => visToday?.measurements?.[n] ?? obs.find(o=>o.tracker_name===n)?.value;
+      const pacePoints = getObs('PacePoints');
+      // HRV-adjusted base budget (same personal percentiles as ceiling)
+      const baseBudget = hrvSeverity >= 3 ? 4
+                       : hrvSeverity >= 2 ? 6
+                       : hrvSeverity >= 1 ? 9
+                       : 14;
+
+      // Check for Adderall in today's check-in notes
+      const todayCI    = dashData?.checkins?.[todayDate];
+      // Adderall flag: prefer structured med_log; fall back to legacy stimulants/notes for old records
+      const hasAdderall = (dashData?.meds?.[todayDate]?.adderall > 0) ||
+                          (todayCI?.stimulants === true) || (todayCI?.stimulants === 'yes') ||
+                          (todayCI?.notes || '').toLowerCase().includes('adderall');
+
+      const stackEl = document.getElementById('budget-stack');
+      if (pacePoints == null && recovery == null && sleepPerf == null) {
+        stackEl.style.display = 'none'; return;
+      }
+      stackEl.style.display = 'block';
+
+      function setBar(fillId, valueId, pct, label, color) {
+        document.getElementById(fillId).style.width = Math.min(100, pct) + '%';
+        document.getElementById(fillId).style.background = color || (pct >= 85 ? '#e05a5a' : pct >= 60 ? '#f0c040' : '#4caf7d');
+        document.getElementById(valueId).textContent = label;
+      }
+
+      // Model 1: Visible PacePoints vs base budget
+      if (pacePoints != null) {
+        const pct1 = Math.round((pacePoints / baseBudget) * 100);
+        setBar('bm1-fill', 'bm1-value', pct1, `${pacePoints} / ${baseBudget} pts`);
+        document.getElementById('bm1-asterisk').style.display = hasAdderall ? 'inline' : 'none';
+      } else {
+        document.getElementById('bm1-value').textContent = '—';
+        document.getElementById('bm1-fill').style.width = '0%';
+      }
+
+      // Model 2: WHOOP Recovery-adjusted budget (how much she could handle)
+      if (recovery != null) {
+        const adjBudget = Math.max(1, Math.round(baseBudget * (recovery / 100)));
+        const spent2    = pacePoints ?? 0;
+        const pct2      = pacePoints != null ? Math.round((spent2 / adjBudget) * 100) : recovery;
+        const label2    = pacePoints != null ? `${spent2} / ${adjBudget} pts` : `${recovery}% → ${adjBudget} pts`;
+        setBar('bm2-fill', 'bm2-value', pct2, label2);
+      } else {
+        document.getElementById('bm2-value').textContent = '—';
+        document.getElementById('bm2-fill').style.width = '0%';
+      }
+
+      // Model 3: Sleep capacity (0–100% bar, sleep performance score)
+      if (sleepPerf != null) {
+        const slColor = sleepPerf >= 85 ? '#4caf7d' : sleepPerf >= 60 ? '#f0c040' : '#e05a5a';
+        setBar('bm3-fill', 'bm3-value', sleepPerf, `${sleepPerf}%`, slColor);
+      } else {
+        document.getElementById('bm3-value').textContent = '—';
+        document.getElementById('bm3-fill').style.width = '0%';
+      }
+
+      // Model 4: Yesterday's recovery (lag predictor — what she banked going into today)
+      const yestW_today = dashData?.whoop?.[dateKey(1)];
+      const yestRec_today = yestW_today?.recovery?.score?.recovery_score;
+      if (yestRec_today != null) {
+        const slColor4 = yestRec_today >= 67 ? '#4caf7d' : yestRec_today >= 34 ? '#f0c040' : '#e05a5a';
+        setBar('bm4-fill', 'bm4-value', yestRec_today, `${yestRec_today}%`, slColor4);
+      } else {
+        document.getElementById('bm4-value').textContent = '—';
+        document.getElementById('bm4-fill').style.width = '0%';
+      }
+    })();
+
+    // ── CRASH LINE STATUS ──
+    renderCrashLine(todayW, todayCI, dashData?.visible?.[todayDate]);
+
+    // ── INSIGHTS + ADVICE ──
+    loadInsights();
+    loadAdvice();
   }
 
-  // ── Trend detection (last 7 days of checkin data) ─
-  function buildTrends() {
-    const trends = [];
-    if (!dashData) return trends;
-    const dates = [0,1,2,3,4,5,6].map(i => dateKey(i));
-    const checkins = dates.map(d => dashData.checkins?.[d]).filter(Boolean);
-    if (checkins.length < 3) return trends;
+  function renderCrashLine(todayW, todayCI, todayVis) {
+    const el = document.getElementById('crash-line-bar');
+    if (!el) return;
 
-    // PEM trend
-    const pemSevere = checkins.filter(c => c.pem === 'severe').length;
-    if (pemSevere >= 3) trends.push({ icon: '🔴', text: `<strong>PEM severe ${pemSevere} of last ${checkins.length} days.</strong> Crash risk is elevated — prioritize rest.` });
+    const hrv      = todayW?.recovery?.score?.hrv_rmssd_milli;
+    const strain   = todayW?.strain?.score?.strain;
+    const obs      = todayVis?.observations || [];
+    const pp       = (obs.find(o => o.tracker_name === 'PacePoints') || {}).value;
 
-    // Demanding days → PEM lag check
-    const demanding = checkins.filter(c => c.activity === 'demanding').length;
-    if (demanding >= 2) trends.push({ icon: '⚠️', text: `<strong>${demanding} demanding day${demanding>1?'s':''} this week.</strong> Watch for PEM 24–48h after exertion.` });
+    // Thresholds
+    const HRV_THRESHOLD = 34;
+    const PP_LIMIT      = 6;
+    const STRAIN_LIMIT  = 2;
 
-    // Consecutive good days
-    let streak = 0;
-    for (const c of checkins) { if (c.feeling === 'good') streak++; else break; }
-    if (streak >= 2) trends.push({ icon: '✅', text: `<strong>${streak} good day${streak>1?'s':''} in a row.</strong> Keep pacing — don't overdo it on good days.` });
+    const hrvOk    = hrv != null ? hrv >= HRV_THRESHOLD : null;
+    const ppOk     = pp  != null ? pp  <= PP_LIMIT      : null;
+    const strainOk = strain != null ? strain <= STRAIN_LIMIT : null;
 
-    // Probiotics compliance
-    const probDays = checkins.filter(c => c.probiotics === 'yes').length;
-    if (checkins.length >= 3 && probDays < checkins.length * 0.5) {
-      trends.push({ icon: '💊', text: `<strong>Probiotics taken ${probDays}/${checkins.length} days.</strong> Daily consistency matters for gut restoration.` });
+    // Overall status
+    // Above = HRV ok AND (pp ok or no data) AND (strain ok or no data)
+    const failing  = (hrvOk === false) || (ppOk === false) || (strainOk === false);
+    const allGood  = (hrvOk === true)  && (ppOk !== false) && (strainOk !== false);
+    const borderline = !failing && !allGood;
+
+    let state, icon, statusText, detail;
+    if (allGood) {
+      state = 'above';
+      icon  = '🟢';
+      statusText = 'Above the crash line';
+      detail = 'HRV and activity levels are in the repair zone. Keep it here.';
+    } else if (failing) {
+      state = 'below';
+      icon  = '🔴';
+      statusText = 'Below the crash line';
+      detail = 'One or more signals are in crash risk territory. Full rest today.';
+    } else {
+      state = 'borderline';
+      icon  = '🟡';
+      statusText = 'On the line';
+      detail = 'Close to the edge. Stay conservative — don\'t spend today.';
     }
 
-    // Inflammatory food
-    const inflam = checkins.filter(c => c.food === 'inflammatory').length;
-    if (inflam >= 2) trends.push({ icon: '🥴', text: `<strong>Inflammatory food ${inflam} day${inflam>1?'s':''} this week.</strong> May correlate with symptom flares — check the pattern.` });
+    // Build metric pills
+    const hrvClass   = hrv == null ? 'neutral' : hrv >= HRV_THRESHOLD ? 'good' : 'bad';
+    const ppClass    = pp  == null ? 'neutral' : pp  <= PP_LIMIT      ? 'good' : 'bad';
+    const strainClass= strain == null ? 'neutral' : strain <= STRAIN_LIMIT ? 'good' : 'bad';
 
-    return trends;
+    el.className = `crash-line-bar ${state}`;
+    el.style.display = 'flex';
+    el.innerHTML = `
+      <div class="crash-line-icon">${icon}</div>
+      <div class="crash-line-body">
+        <div class="crash-line-status">${statusText}</div>
+        <div class="crash-line-detail">${detail}</div>
+        <div class="crash-line-metrics">
+          <div class="clm">
+            <div class="clm-label">HRV</div>
+            <div class="clm-val ${hrvClass}">${hrv != null ? Math.round(hrv) + 'ms' : '—'}</div>
+          </div>
+          <div class="clm">
+            <div class="clm-label">PacePoints</div>
+            <div class="clm-val ${ppClass}">${pp != null ? pp : '—'}</div>
+          </div>
+          <div class="clm">
+            <div class="clm-label">Strain</div>
+            <div class="clm-val ${strainClass}">${strain != null ? strain.toFixed(1) : '—'}</div>
+          </div>
+        </div>
+      </div>
+    `;
   }
 
-  // ── Advice engine ──────────────────────────────────
-  function buildAdvice(todayW, todayCI, yestW, yestCI) {
-    const advice = [];
-
-    // Low HRV today
-    const hrv = todayW?.recovery?.score?.hrv_rmssd_milli;
-    const rec = todayW?.recovery?.score?.recovery_score;
-    if (hrv != null && hrv < 45) {
-      advice.push({ level: 'critical', icon: '🛑', title: `Low HRV — ${Math.round(hrv)}ms`, text: 'HRV below 45ms. Your nervous system is under stress. Keep today minimal — no exertion, no pushing through.' });
-    } else if (rec != null && rec < 34) {
-      advice.push({ level: 'warning', icon: '⚠️', title: `Low recovery — ${rec}%`, text: 'WHOOP is showing low recovery. Consider a rest day or very gentle activity only.' });
-    } else if (rec != null && rec >= 67) {
-      advice.push({ level: 'good', icon: '💚', title: `Good recovery — ${rec}%`, text: 'Your body is well-recovered. Still pace carefully — good days are when overexertion happens most.' });
+  // ── Meds tracker ───────────────────────────────────────
+  // medCounts is keyed per-date so we can show different counts in different
+  // contexts (today on home, plus the check-in's active date inside a flow).
+  let medCatalog = [];                     // [{key,label,note}, ...]
+  const medCountsByDate = {};              // { '2026-05-01': { aleve: 2, ... }, ... }
+  function getMedCounts(date) { return medCountsByDate[date] || {}; }
+  function activeMedsDate() {
+    // In check-in flows, point at the active check-in date; otherwise today
+    const inCheckin = document.getElementById('screen-checkin')?.classList.contains('active') ||
+                      document.getElementById('screen-meds-step')?.classList.contains('active');
+    if (inCheckin && typeof activeDate === 'string' && activeDate) return activeDate;
+    return dateKey(0);
+  }
+  async function loadMeds(date, forceRefresh) {
+    const d = date || dateKey(0);
+    try {
+      const promises = [];
+      if (!medCatalog.length) promises.push(fetch('/api/meds/list').then(r => r.json()));
+      // Always fetch fresh from API (bypass cache) — past-date edits need current server state
+      promises.push(fetch(userParam('/api/meds?date=' + d) + '&_=' + Date.now()).then(r => r.json()));
+      const results = await Promise.all(promises);
+      if (results.length === 2) {
+        medCatalog = results[0].meds || [];
+        medCountsByDate[d] = results[1].counts || {};
+      } else {
+        medCountsByDate[d] = results[0].counts || {};
+      }
+      renderMeds();
+    } catch(e) { console.warn('loadMeds error', e); }
+  }
+  function renderMeds() {
+    const containers = ['meds-list-checkin', 'meds-list-step'];
+    if (!medCatalog.length) {
+      containers.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = '<div style="font-size:11px;color:#3a5a78;padding:6px 0;">No meds configured.</div>';
+      });
+      return;
     }
-
-    // Yesterday was demanding → watch for PEM today
-    if (yestCI?.activity === 'demanding') {
-      advice.push({ level: 'warning', icon: '⏳', title: 'PEM window — yesterday was demanding', text: 'PEM can show up 24–48h after exertion. Monitor how you feel and keep today lighter if possible.' });
+    const activeD = activeMedsDate();
+    function renderInto(elId, date) {
+      const el = document.getElementById(elId); if (!el) return;
+      const counts = getMedCounts(date);
+      el.innerHTML = medCatalog.map(m => {
+        const c = counts[m.key] || 0;
+        const countCls = c === 0 ? 'med-count zero' : 'med-count';
+        return `<div class="med-row">
+          <div class="med-name">
+            <div class="med-label">${m.label}</div>
+            <div class="med-note">${m.note || ''}</div>
+          </div>
+          <span class="${countCls}">${c}</span>
+          <div class="med-stepper">
+            <button class="med-btn" onclick="medStep('${m.key}',-1,'${date}')" ${c===0?'disabled':''}>−</button>
+            <div class="med-btn-divider"></div>
+            <button class="med-btn" onclick="medStep('${m.key}',1,'${date}')">+</button>
+          </div>
+        </div>`;
+      }).join('');
     }
-
-    // PEM severe today
-    if (todayCI?.pem === 'severe') {
-      advice.push({ level: 'critical', icon: '🚨', title: 'Severe PEM today', text: 'Rest is the only medicine for PEM. Cancel non-essential commitments. No stretching, no walks — full rest.' });
-    } else if (todayCI?.pem === 'mild') {
-      advice.push({ level: 'warning', icon: '😮‍💨', title: 'Mild PEM — take it easy', text: 'PEM is present. Gentle active rest (breathing, relaxation) is okay — avoid anything that raises your heart rate.' });
+    renderInto('meds-list-checkin', activeD);
+    renderInto('meds-list-step',   activeD);
+  }
+  async function medStep(med, delta, date) {
+    const d = date || activeMedsDate();
+    if (!medCountsByDate[d]) medCountsByDate[d] = {};
+    const prev = medCountsByDate[d][med] || 0;
+    const next = Math.max(0, Math.min(50, prev + delta));
+    medCountsByDate[d][med] = next;
+    renderMeds();
+    try {
+      await fetch(userParam('/api/meds/inc'), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ med, date: d, delta }),
+      });
+    } catch(e) {
+      // Revert on failure
+      medCountsByDate[d][med] = prev;
+      renderMeds();
     }
-
-    // Stretching tip (if no severe PEM)
-    if (!todayCI?.pem || todayCI.pem === 'none') {
-      advice.push({ level: 'good', icon: '🧘', title: 'Stretching is safe today', text: 'Gentle stretching (Borg ≤3 — feels very easy, no elevated HR) is a good option. Parasympathetic, low-cost, won\'t trigger PEM.' });
-    }
-
-    // Probiotics reminder
-    if (todayCI && todayCI.probiotics === 'no') {
-      advice.push({ level: 'warning', icon: '💊', title: 'Probiotics not taken yet today', text: 'Take G-NiiB tonight before bed. Consistency matters — daily dosing is part of the gut restoration protocol.' });
-    }
-
-    return advice;
   }
 
-  // ── Start check-in ─────────────────────────────────
+  // ── Navigation ─────────────────────────────────
+  function goHome() {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('screen-home').classList.add('active');
+    window.scrollTo(0, 0);
+    buildHome();
+  }
+
+  function goToScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function goTo(n) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const id = (n === 'done') ? 'screen-done' : (n === 'checkin') ? 'screen-checkin' : (n === 'checkin-mode') ? 'screen-checkin-mode' : 'screen-' + n;
+    document.getElementById(id).classList.add('active');
+    if (n === 'checkin') loadMeds(activeDate);
+    window.scrollTo(0, 0);
+  }
+
+  function stepGoTo(n) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    let id;
+    if (n === 'mode') id = 'screen-checkin-mode';
+    else if (n === 'notes-step') id = 'screen-notes-step';
+    else if (n === 'meds-step') { id = 'screen-meds-step'; loadMeds(activeDate).then(() => renderMeds()); }
+    else if (n === 'summary-step') { id = 'screen-summary-step'; updateStepSummary(); }
+    else id = 'screen-' + n;
+    const el = document.getElementById(id);
+    if (el) el.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  function startStepFlow() {
+    for (let i = 1; i <= 12; i++) {
+      const nb = document.getElementById('step-next-' + i);
+      if (nb) nb.disabled = !answers[i];
+      // Re-mark pre-populated answers in step containers
+      if (answers[i]) {
+        const el = document.getElementById('step-options-q-' + i);
+        if (el) {
+          el.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+          el.querySelectorAll('.option-btn').forEach(b => {
+            if (b.textContent.trim().toLowerCase().includes(answers[i].label.toLowerCase()) ||
+                b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + answers[i].val + "'")) {
+              b.classList.add('selected');
+            }
+          });
+        }
+      }
+    }
+    stepGoTo('q1');
+  }
+
+  function updateStepSummary() {
+    // Index 9 (Stimulants) intentionally empty — question removed but data preserved
+    const qLabels = ['','Feeling','Fatigue','Brain fog','Pain','Activity','Left home','Food','Probiotics','','Compression','Sodium goal','Hours upright'];
+    const icons = { good:'😊', mixed:'😐', bad:'😔', none:'✅', mild:'⚠️', severe:'🚨',
+      rested:'🛋️', light:'🚶', demanding:'💪', yes:'✅', no:'❌', clean:'🥗',
+      inflammatory:'🍔', upper:'👕', lower:'🧦', both:'✅',
+      lt2:'🛋️', '2to4':'🪑', '4to6':'🧍', gt6:'🚶' };
+    const container = document.getElementById('step-summary-rows');
+    if (!container) return;
+    let html = '';
+    for (let i = 1; i <= 12; i++) {
+      const a = answers[i];
+      const icon = a ? (icons[a.val] || '•') : '—';
+      const lbl = a ? a.label : 'Skipped';
+      if (!qLabels[i]) continue;  // skip removed/empty questions
+      html += `<div class="step-summary-row"><span class="step-sum-icon">${icon}</span><span style="color:#7a9ab8;min-width:110px">${qLabels[i]}</span><span>${lbl}</span></div>`;
+    }
+    if (answers.notes) {
+      html += `<div class="step-summary-row"><span class="step-sum-icon">📝</span><span style="color:#7a9ab8;min-width:110px">Notes</span><span style="font-size:13px">${answers.notes}</span></div>`;
+    }
+    container.innerHTML = html;
+  }
+
+  // ── Check-in flow ──────────────────────────────
   async function startCheckin(offset) {
     activeDayOffset = offset;
     activeDate = dateKey(offset);
-
     Object.keys(answers).forEach(k => delete answers[k]);
     document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
-    for (let i = 1; i <= 8; i++) { const b = document.getElementById('next-' + i); if (b) b.disabled = true; }
     document.getElementById('notes-field').value = '';
+    const stepNotes = document.getElementById('notes-field-step'); if (stepNotes) stepNotes.value = '';
 
     const label = offset === 0 ? 'Today · ' + formatDateShort(activeDate)
                 : offset === 1 ? 'Yesterday · ' + formatDateShort(activeDate)
                 : dayName(offset) + ' · ' + formatDateShort(activeDate);
     document.querySelectorAll('[id^="q-date-tag-"]').forEach(el => el.textContent = label);
+    const notesTag = document.getElementById('q-date-tag-notes');
+    if (notesTag) notesTag.textContent = label;
 
     try {
       const resp = await fetch(userParam('/api/checkin/' + activeDate));
@@ -952,57 +2796,97 @@
           6:{field:'left_home',options:{yes:'🚗 Yes',no:'🏠 No'}},
           7:{field:'food',options:{clean:'🟢 Clean',mixed:'🟡 Mixed',inflammatory:'🔴 Inflammatory'}},
           8:{field:'probiotics',options:{yes:'✅ Yes',no:'❌ No'}},
+          9:{field:'stimulants',options:{yes:'⚡ Yes',no:'✅ No'}},
+          10:{field:'compression',options:{none:'❌ None',upper:'💪 Upper',lower:'🧦 Lower',both:'✨ Both'}},
+          11:{field:'sodium_goal',options:{yes:'✅ Yes',no:'❌ No'}},
+          12:{field:'hours_upright',options:{lt2:'🛋️ < 2 hrs','2to4':'🪑 2-4 hrs','4to6':'🧍 4-6 hrs',gt6:'🚶 6+ hrs'}},
         };
         for (const [qNum, {field, options}] of Object.entries(Q_FIELDS)) {
           const val = d[field]; if (!val) continue;
           const lbl = options[val]; if (!lbl) continue;
           answers[qNum] = { val, label: lbl };
-          document.getElementById('screen-' + qNum)?.querySelectorAll('.option-btn').forEach(b => {
+          document.getElementById('options-q-' + qNum)?.querySelectorAll('.option-btn').forEach(b => {
             if (b.getAttribute('onclick')?.includes("'" + val + "'")) b.classList.add('selected');
           });
-          const nb = document.getElementById('next-' + qNum); if (nb) nb.disabled = false;
         }
-        if (d.notes) document.getElementById('notes-field').value = d.notes;
+        if (d.notes) {
+          document.getElementById('notes-field').value = d.notes;
+          const stepEl = document.getElementById('notes-field-step'); if (stepEl) stepEl.value = d.notes;
+        }
       }
     } catch(e) {}
-
-    goTo(1);
+    refreshNotesPrompt();
+    // Preload meds for the active check-in date so the in-flow lists are ready
+    await loadMeds(activeDate);
+    goTo('checkin-mode');
   }
 
   function onNowCardTap() { startCheckin(0); }
 
-  // ── Navigation ─────────────────────────────────────
-  function goHome() {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById('screen-home').classList.add('active');
-    document.getElementById('progress').style.width = '0%';
-    window.scrollTo(0, 0);
-    buildHome();
+  async function startNotes(offset) {
+    await startCheckin(offset);
+    // Scroll to notes field and focus it
+    setTimeout(() => {
+      const notesField = document.getElementById('notes-field');
+      if (notesField) {
+        notesField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        notesField.focus();
+      }
+    }, 100);
   }
 
-  function goTo(n) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    const id = (n === 'done') ? 'screen-done' : 'screen-' + n;
-    document.getElementById(id).classList.add('active');
-    if (typeof n === 'number') {
-      document.getElementById('progress').style.width = Math.min(((n-1)/9)*100, 100) + '%';
-      if (n === 10) updateSummary();
-    }
-    window.scrollTo(0, 0);
-  }
-
-  // ── Answer selection ───────────────────────────────
   function select(q, val, label) {
     answers[q] = { val, label };
-    document.getElementById('screen-' + q).querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    // Deselect in both containers (only one is visible)
+    ['options-q-' + q, 'step-options-q-' + q].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    });
     event.currentTarget.classList.add('selected');
-    document.getElementById('next-' + q).disabled = false;
+    // Enable step-next button if in step flow
+    const stepBtn = document.getElementById('step-next-' + q);
+    if (stepBtn) stepBtn.disabled = false;
+    if (q === 1) refreshNotesPrompt();
   }
-  function saveNotes() { answers['notes'] = document.getElementById('notes-field').value.trim(); }
+  function saveNotes() {
+    const full = document.getElementById('notes-field')?.value.trim() || '';
+    const step = document.getElementById('notes-field-step')?.value.trim() || '';
+    answers['notes'] = full || step;
+  }
+  function saveNotesStep() {
+    const v = document.getElementById('notes-field-step')?.value.trim() || '';
+    answers['notes'] = v;
+    const f = document.getElementById('notes-field'); if (f) f.value = v;
+  }
+  // State-aware notes prompt: changes based on Q1 (feeling)
+  function refreshNotesPrompt() {
+    const feeling = answers[1]?.val;
+    let prompt, placeholder;
+    if (feeling === 'good') {
+      prompt = 'What did you do today that mattered?';
+      placeholder = 'A walk, a friend, a small win… what made today good?';
+    } else if (feeling === 'mixed') {
+      prompt = 'Anything notable today?';
+      placeholder = 'What stood out? Good or hard?';
+    } else if (feeling === 'bad') {
+      prompt = 'Anything to remember? (skip if not)';
+      placeholder = 'What hurt, what triggered it, or anything to flag for later.';
+    } else {
+      prompt = 'Anything else to note?';
+      placeholder = 'How are you feeling? Anything unusual today?';
+    }
+    const fullPrompt = document.getElementById('notes-prompt-full');
+    const stepPrompt = document.getElementById('notes-prompt-step');
+    if (fullPrompt) fullPrompt.textContent = prompt;
+    if (stepPrompt) stepPrompt.textContent = prompt;
+    const fullField = document.getElementById('notes-field');
+    const stepField = document.getElementById('notes-field-step');
+    if (fullField) fullField.placeholder = placeholder;
+    if (stepField) stepField.placeholder = placeholder;
+  }
 
-  // ── Summary ────────────────────────────────────────
   function updateSummary() {
-    for (let i = 1; i <= 8; i++) {
+    for (let i = 1; i <= 12; i++) {
       const iconEl = document.getElementById('sum-icon-' + i);
       const valEl  = document.getElementById('sum-' + i);
       if (answers[i]) {
@@ -1016,17 +2900,16 @@
                   : offset === 1 ? 'Yesterday, ' + formatDateShort(activeDate)
                   : dayName(offset) + ', ' + formatDateShort(activeDate);
     document.getElementById('summary-for-date').textContent = '📅 ' + dateStr;
-    document.getElementById('progress').style.width = '100%';
+    const progressEl2 = document.getElementById('progress'); if (progressEl2) progressEl2.style.width = '100%';
   }
 
-  // ── Submit ─────────────────────────────────────────
   async function submitCheckin() {
     const payload = {
       date: activeDate, submitted_at: new Date().toISOString(),
       answers: {
         feeling: answers[1]?.val, pem: answers[2]?.val, brain_fog: answers[3]?.val,
         pain: answers[4]?.val, activity: answers[5]?.val, left_home: answers[6]?.val,
-        food: answers[7]?.val, probiotics: answers[8]?.val, notes: answers['notes'] || null,
+        food: answers[7]?.val, probiotics: answers[8]?.val, stimulants: answers[9]?.val || null, compression: answers[10]?.val || null, sodium_goal: answers[11]?.val || null, hours_upright: answers[12]?.val || null, notes: answers['notes'] || null,
       }
     };
     try {
@@ -1040,49 +2923,88 @@
     goTo('done');
   }
 
-  // ── Visible upload ─────────────────────────────────
+  // ── Visible upload ─────────────────────────────
   async function uploadVisible(event) {
     const file = event.target.files[0]; if (!file) return;
-    const resultEl = document.getElementById('upload-result');
-    resultEl.style.display = 'block'; resultEl.style.background = '#1e1e2e'; resultEl.style.color = '#aaa'; resultEl.textContent = '⏳ Uploading…';
     try {
       const formData = new FormData(); formData.append('file', file);
       const resp = await fetch(userParam('/api/visible/upload'), { method:'POST', body: formData });
       const data = await resp.json();
-      if (data.ok) { resultEl.style.background = '#1a2e1a'; resultEl.style.color = '#6fcf97'; resultEl.textContent = `✅ Imported ${data.days_imported} days (${data.rows} rows) · ${data.date_range}`; }
-      else { resultEl.style.background = '#2e1a1a'; resultEl.style.color = '#eb5757'; resultEl.textContent = `❌ Error: ${data.error}`; }
-    } catch(err) { resultEl.style.background = '#2e1a1a'; resultEl.style.color = '#eb5757'; resultEl.textContent = `❌ Upload failed: ${err.message}`; }
+      if (data.ok) {
+        // Hide nudge, reload home
+        document.querySelectorAll('.visible-nudge').forEach(el => el.style.display = 'none');
+        alert(`✅ Imported ${data.days_imported} days (${data.date_range})`);
+      } else {
+        alert(`❌ Error: ${data.error}`);
+      }
+    } catch(err) { alert(`❌ Upload failed: ${err.message}`); }
     event.target.value = '';
   }
 
-  // ── Init ───────────────────────────────────────────
+  // ── Init ───────────────────────────────────────
   async function init() {
     try {
-      // Load dashboard data (WHOOP + checkins + visible)
       const [statusRes, dashRes] = await Promise.all([
-        fetch(userParam('/api/checkin/status?days=7')),
+        fetch(userParam('/api/checkin/status?days=14')),
         fetch(userParam('/api/dashboard')),
       ]);
       const statusData = await statusRes.json();
       dashData = await dashRes.json();
-
       Object.keys(statusData.completed || {}).forEach(d => completedDays.add(d));
-      if (statusData.today) { serverToday = statusData.today; window._serverToday = serverToday; }
+      if (statusData.today) { serverToday = statusData.today; }
       if (dashData.dates?.[0]) serverToday = dashData.dates[0];
 
-      // Auto-redirect: if today has zero data, go straight to check-in
+      // Auto-redirect: no data at all → go straight to check-in
+      // Only redirect if there's no check-in AND no WHOOP data for today
       const todayDate = dateKey(0);
-      const todayHasData = completedDays.has(todayDate) || dashData?.checkins?.[todayDate];
-      if (!todayHasData) {
+      const todayHasCheckin = completedDays.has(todayDate) || dashData?.checkins?.[todayDate];
+      const todayHasWHOOP   = dashData?.whoop?.[todayDate] != null;
+      if (!todayHasCheckin && !todayHasWHOOP) {
         await startCheckin(0);
         return;
       }
     } catch(e) {}
-
     buildHome();
   }
 
   init();
+
+  // ── SSE — live updates ───────────────────────────────
+  function connectSSE() {
+    const es = new EventSource(userParam('/api/events'));
+    es.onmessage = async (e) => {
+      try {
+        const { type } = JSON.parse(e.data);
+        // Only refresh if currently on home screen
+        if (!document.getElementById('screen-home').classList.contains('active')) return;
+        if (type === 'whoop' || type === 'visible') {
+          // Re-fetch dashboard and rebuild home
+          const [statusRes, dashRes] = await Promise.all([
+            fetch(userParam('/api/checkin/status?days=14')),
+            fetch(userParam('/api/dashboard')),
+          ]);
+          const statusData = await statusRes.json();
+          dashData = await dashRes.json();
+          Object.keys(statusData.completed || {}).forEach(d => completedDays.add(d));
+          buildHome();
+        } else if (type === 'checkin') {
+          // Re-fetch checkin status only
+          const statusRes = await fetch(userParam('/api/checkin/status?days=14'));
+          const statusData = await statusRes.json();
+          Object.keys(statusData.completed || {}).forEach(d => completedDays.add(d));
+          buildHome();
+        } else if (type === 'meds') {
+          // Refresh meds (only matters if a check-in is currently open)
+          if (typeof activeDate === 'string' && activeDate) loadMeds(activeDate);
+        }
+      } catch(err) { console.warn('SSE parse error', err); }
+    };
+    es.onerror = () => {
+      es.close();
+      setTimeout(connectSSE, 5000); // reconnect after 5s
+    };
+  }
+  connectSSE();
 </script>
 </body>
 </html>

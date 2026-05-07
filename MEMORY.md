@@ -100,6 +100,9 @@
 - **Cleo role:** Intelligence layer (drug lookups, pattern detection, appointment prep, research feed)
 - **Open questions:** Infrastructure, Rounds bridge, multipatient scale, HIPAA path
 
+## Standing Rules
+- *Before making any changes to the Cadence app or server*, back up the MongoDB `cadence-dev` database first. Lesson learned 2026-05-07: notes bug wiped Hannah's May 6 notes and we had no recovery path.
+
 ## Key Decisions & Lessons
 - Always format NDCs with dashes: 5-4-2 (e.g., 00071-0155-23)
 - UPC → NDC isn't always reliable for OTC products (retail UPCs ≠ drug NDCs)
@@ -108,6 +111,7 @@
 - **daily-backup cron:** Created 2026-04-06, runs 13:00 UTC daily, script: `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout, model: claude-sonnet-4-20250514
 - **Daily memory writing is working** — dream cron (13:00 UTC nightly) established 2026-04-04. Main session writing daily files consistently since 2026-04-10.
 - **OpenClaw updated to 2026.4.14** (323493f, ~Apr 15). Teams desktop image attachments now working (Edgar applied fix). Prototype server running on port 8765.
+- **OpenClaw upgraded to 2026.5.4** (325df3e, May 6). brave-plugin + msteams updated to 2026.5.4, loading from `~/.openclaw/npm/`. Brave, Teams, Slack all confirmed working post-upgrade.
 - **Brave Search API key:** Set up 2026-04-12. Fixed May 2: set `tools.web.search.provider brave`, disabled MiniMax + Google plugins (no keys). Free tier: 1 req/sec, 2000/month — call sequentially, not in parallel. Hard restart required after plugin enablement changes (`systemctl --user restart openclaw-gateway.service`; then `pm2 resurrect`).
 
 ## Project Cadence
@@ -141,7 +145,11 @@
 - **Hannah Ask-Cleo feature (planned):** Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; not yet built.
 - **Correlation analysis (May 1):** `projects/cadence/analysis/` — `correlate.js` (Spearman, 60+ features vs feeling_score), `proxy_score.js` (Visible Stability → feeling proxy). Cron at 14:00 UTC daily. Key findings (n=15): WHOOP recovery anti-correlated with feeling (-0.52, dysautonomia decoupling confirmed); pace_lag3 = -0.74 (PEM 3-day lag strongest signal); stability_lag1 = +0.61; adderall = +0.67. **Budget window: 3-7 days** (40% yesterday, 25% 2d ago, 15% 3d ago, 20% 4-7d ago).
 - **Repair Spectrum Framework (May 4):** Data-driven pacing protocol from 774 days WHOOP + Visible. Core finding: **3-day lag** (pace_lag3 −0.74 = strongest predictor). Spectrum: 🔴 Red (recovery <34, full rest) → 🟡 Yellow (34–66, PacePoints ≤8, no spend) → 🟢 First Green (rest day even feeling good, ≤8 PP; spend → crash ~10d, rest → ~29d stability) → 🟢🟢 Second Green (repair begins, ≤12 PP) → 🟢🟢🟢 Third+ (functional day, ≤14 PP, avoid strain ≥6). Sleep anchor: <60% = yellow, <40% = red, 2 bad nights = rest day. Three levers: (1) sleep, (2) pacing on good days esp. first green, (3) SIM01 gut health. **Next: display "where is Hannah on the repair spectrum" in Cadence app** — consecutive green day count, current day type, lag-3 flag.
+- **HRV + Spend Chart (May 6):** matplotlib chart generated (`hannah_hrv_spend.png`, 3-week view). Key finding: every spend during HRV ascent resets recovery arc, costs 3-5 days. PEM clusters around HRV troughs. Data confirms Hannah's body CAN repair (HRV peaks 38–42) — capacity intact; problem is behavioral (never gives repair enough runway). **David got Hannah to cancel all meetings this week.** Crash line prescription: strain <2, PacePoints <6 for next 2-3 days.
+- **Hannah ADHD + LC Sensory Hypothesis (May 6):** ADHD weakens sensory gating → more input reaches conscious processing → leaving the house stacks 5–10 simultaneous demands against depleted energy budget. Sensory management list: `projects/cadence/hannah-sensory-management.md`. Key: noise canceling, warm/dim lighting, blue light glasses, unscented environment, weighted blanket, async-only comms, single-tasking. **TA role should be remote + async — medically appropriate.** Goal before school: controlled reintroduction to map activity costs + establish baseline.
 - **Budget models (May 1):** 4 stacked budget bars on Today/Yesterday/2-Days-Ago cards: Visible (PacePoints/14), Recovery-adj (PacePoints/(14×WHOOP recovery%)), Sleep capacity (sleep_performance%), Yesterday/Prior recovery (lag predictor). Three-day homepage live.
+- **Cadence UI updates (May 6):** Crash line status bar (🟢🟡🔴) added to top of home screen. "Fatigue" chip renamed to "PEM". Repair window indicator added to advice card (HRV ≥34 + rising + post-crash).
+- **matplotlib in ~/.Py3Env (May 6):** matplotlib, pandas, pymongo, seaborn installed. Used for chart generation → PNG → Slack. Working well.
 - **DESIGN.md:** `projects/DESIGN.md` — cross-project design system (Cadence + Rounds). Key terms cyan `#5bc8e8`, section headers gold `#c9a84c`. Key terms: active rest, pacing, anaerobic threshold, PEM, heart rate, HRV, parasympathetic.
 - **Strain (Apr 26):** `backfill_strain.py` completed — Hannah strain 0.5–8 (LC-consistent), David 9–20. Nightly cron 7am UTC `--days 3`. WHOOP doesn't webhook strain — polling only (v1 cycle). Script uses AWS Secrets Manager.
 - **Visible user_id inconsistency:** old data = integer `6729032`, new uploads = string `"hannah"` — dashboard handles both; worth unifying later.
@@ -189,17 +197,3 @@ Common corrections when verifying medication names against FDB:
 
 
 
-
-
-
-
-## Promoted From Short-Term Memory (2026-05-06)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:9:9 -->
-- _Nightly consolidation run — 13:00 UTC (Wednesday, April 29)_ [score=0.894 recalls=0 avg=0.620 source=memory/2026-04-29.md:9-9]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:11:11 -->
-- Twenty-fifth night. The Apr 28 session was dense with small sharp fixes. [score=0.894 recalls=0 avg=0.620 source=memory/2026-04-29.md:11-11]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:17:17 -->
-- **Cadence timezone fix (Apr 28):** [score=0.894 recalls=0 avg=0.620 source=memory/2026-04-29.md:17-17]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:21:21 -->
-- **Check-in navigation bug — fixed (Hannah reported, Apr 28):** [score=0.894 recalls=0 avg=0.620 source=memory/2026-04-29.md:21-21]
