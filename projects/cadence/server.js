@@ -265,6 +265,10 @@ const MED_LIST = [
   { key: 'adderall',   label: 'Adderall',      note: 'stimulant' },
   { key: 'melatonin',  label: 'Melatonin',     note: 'sleep' },
   { key: 'tylenol',    label: 'Tylenol',       note: 'acetaminophen' },
+  { key: 'd3_k2_coq10', label: 'Cymbiotika D3+K2+CoQ10', note: 'fat-soluble vitamins + CoQ10' },
+  { key: 'colostrum',   label: 'Cymbiotika Colostrum',   note: 'liquid colostrum — immune + gut' },
+  { key: 'magnesium',   label: 'Cymbiotika Magnesium Complex', note: 'magnesium — sleep + muscle' },
+  { key: 'vitamin_c',   label: 'Aurora Liposomal Vitamin C',  note: 'liposomal vitamin C — immune' },
 ];
 const MED_KEYS = new Set(MED_LIST.map(m => m.key));
 

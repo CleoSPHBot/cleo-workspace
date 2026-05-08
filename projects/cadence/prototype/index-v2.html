@@ -1108,8 +1108,11 @@
     <div class="checkin-label">Outing</div>
     <div class="checkin-question">Did you leave home today?</div>
     <div class="options" id="options-q-6">
-      <button class="option-btn home" onclick="select(6,'no','🏠 No')"><div class="option-icon">🏠</div><div><div class="option-label">No</div><div class="option-sub">Stayed home all day</div></div></button>
-      <button class="option-btn car" onclick="select(6,'yes','🚗 Yes')"><div class="option-icon">🚗</div><div><div class="option-label">Yes</div><div class="option-sub">Left the house at least once</div></div></button>
+      <button class="option-btn home" onclick="select(6,'apartment','🏠 In apartment')"><div class="option-icon">🏠</div><div><div class="option-label">In apartment</div><div class="option-sub">Full rest, didn’t leave unit</div></div></button>
+      <button class="option-btn home" onclick="select(6,'building','🚪 In building')"><div class="option-icon">🚪</div><div><div class="option-label">In building</div><div class="option-sub">Lobby, mail, hallway only</div></div></button>
+      <button class="option-btn home" onclick="select(6,'outside_seated','☀️ Outside (seated)')"><div class="option-icon">☀️</div><div><div class="option-label">Outside (seated)</div><div class="option-sub">Fresh air, minimal exertion</div></div></button>
+      <button class="option-btn car" onclick="select(6,'walk','🚶 Walk')"><div class="option-icon">🚶</div><div><div class="option-label">Walk</div><div class="option-sub">Active, on foot, outdoors</div></div></button>
+      <button class="option-btn car" onclick="select(6,'car','🚗 Out by car')"><div class="option-icon">🚗</div><div><div class="option-label">Out by car</div><div class="option-sub">Errand or appointment</div></div></button>
     </div>
   </div>
 
@@ -1141,10 +1144,10 @@
     <div class="checkin-label">Compression</div>
     <div class="checkin-question">Did you wear compression today?</div>
     <div class="options" id="options-q-10">
-      <button class="option-btn" onclick="select(10,'none','❌ None')"><div class="option-icon">❌</div><div><div class="option-label">None</div><div class="option-sub">No compression wear today</div></div></button>
-      <button class="option-btn green" onclick="select(10,'upper','💪 Upper')"><div class="option-icon">💪</div><div><div class="option-label">Upper</div><div class="option-sub">Arms, torso, or abdominal binder</div></div></button>
-      <button class="option-btn green" onclick="select(10,'lower','🧦 Lower')"><div class="option-icon">🧦</div><div><div class="option-label">Lower</div><div class="option-sub">Compression socks or leggings</div></div></button>
-      <button class="option-btn green" onclick="select(10,'both','✨ Upper &amp; Lower')"><div class="option-icon">✨</div><div><div class="option-label">Upper &amp; Lower</div><div class="option-sub">Full compression today</div></div></button>
+      <button class="option-btn green" id="compress-ci-upper" onclick="toggleCompression('upper','Abdomen','compress-ci-upper')"><div class="option-icon">🩱</div><div><div class="option-label">Abdomen</div><div class="option-sub">Abdominal binder</div></div></button>
+      <button class="option-btn green" id="compress-ci-hips" onclick="toggleCompression('hips','Hips','compress-ci-hips')"><div class="option-icon">🩲</div><div><div class="option-label">Hips</div><div class="option-sub">Hip compression</div></div></button>
+      <button class="option-btn green" id="compress-ci-lower" onclick="toggleCompression('lower','Thighs','compress-ci-lower')"><div class="option-icon">🦵</div><div><div class="option-label">Thighs</div><div class="option-sub">Thigh compression</div></div></button>
+      <button class="option-btn green" id="compress-ci-calf" onclick="toggleCompression('calf','Calves','compress-ci-calf')"><div class="option-icon">🧦</div><div><div class="option-label">Calves</div><div class="option-sub">Compression socks</div></div></button>
     </div>
   </div>
 
@@ -1286,8 +1289,11 @@
   <div class="question-num">Question 6 of 11</div>
   <div class="question-text">Did you leave home today?</div>
   <div class="options" id="step-options-q-6">
-    <button class="option-btn home" onclick="select(6,'no','🏠 No')"><div class="option-icon">🏠</div><div><div class="option-label">No</div><div class="option-sub">Stayed home all day</div></div></button>
-    <button class="option-btn car" onclick="select(6,'yes','🚗 Yes')"><div class="option-icon">🚗</div><div><div class="option-label">Yes</div><div class="option-sub">Left the house at least once</div></div></button>
+    <button class="option-btn home" onclick="select(6,'apartment','🏠 In apartment')"><div class="option-icon">🏠</div><div><div class="option-label">In apartment</div><div class="option-sub">Full rest, didn’t leave unit</div></div></button>
+    <button class="option-btn home" onclick="select(6,'building','🚪 In building')"><div class="option-icon">🚪</div><div><div class="option-label">In building</div><div class="option-sub">Lobby, mail, hallway only</div></div></button>
+    <button class="option-btn home" onclick="select(6,'outside_seated','☀️ Outside (seated)')"><div class="option-icon">☀️</div><div><div class="option-label">Outside (seated)</div><div class="option-sub">Fresh air, minimal exertion</div></div></button>
+    <button class="option-btn car" onclick="select(6,'walk','🚶 Walk')"><div class="option-icon">🚶</div><div><div class="option-label">Walk</div><div class="option-sub">Active, on foot, outdoors</div></div></button>
+    <button class="option-btn car" onclick="select(6,'car','🚗 Out by car')"><div class="option-icon">🚗</div><div><div class="option-label">Out by car</div><div class="option-sub">Errand or appointment</div></div></button>
   </div>
   <div class="nav-row">
     <button class="btn-back" onclick="stepGoTo('q5')">←</button>
@@ -1329,10 +1335,10 @@
   <div class="question-num">Question 9 of 11</div>
   <div class="question-text">Did you wear compression today?</div>
   <div class="options" id="step-options-q-10">
-    <button class="option-btn" onclick="select(10,'none','❌ None')"><div class="option-icon">❌</div><div><div class="option-label">None</div><div class="option-sub">No compression wear today</div></div></button>
-    <button class="option-btn green" onclick="select(10,'upper','💪 Upper')"><div class="option-icon">💪</div><div><div class="option-label">Upper</div><div class="option-sub">Arms, torso, or abdominal binder</div></div></button>
-    <button class="option-btn green" onclick="select(10,'lower','🧦 Lower')"><div class="option-icon">🧦</div><div><div class="option-label">Lower</div><div class="option-sub">Compression socks or leggings</div></div></button>
-    <button class="option-btn green" onclick="select(10,'both','✨ Upper &amp; Lower')"><div class="option-icon">✨</div><div><div class="option-label">Upper &amp; Lower</div><div class="option-sub">Full compression today</div></div></button>
+    <button class="option-btn green" id="compress-step-upper" onclick="toggleCompression('upper','Abdomen','compress-step-upper')"><div class="option-icon">🩱</div><div><div class="option-label">Abdomen</div><div class="option-sub">Abdominal binder</div></div></button>
+    <button class="option-btn green" id="compress-step-hips" onclick="toggleCompression('hips','Hips','compress-step-hips')"><div class="option-icon">🩲</div><div><div class="option-label">Hips</div><div class="option-sub">Hip compression</div></div></button>
+    <button class="option-btn green" id="compress-step-lower" onclick="toggleCompression('lower','Thighs','compress-step-lower')"><div class="option-icon">🦵</div><div><div class="option-label">Thighs</div><div class="option-sub">Thigh compression</div></div></button>
+    <button class="option-btn green" id="compress-step-calf" onclick="toggleCompression('calf','Calves','compress-step-calf')"><div class="option-icon">🧦</div><div><div class="option-label">Calves</div><div class="option-sub">Compression socks</div></div></button>
   </div>
   <div class="nav-row">
     <button class="btn-back" onclick="stepGoTo('q8')">←</button>
@@ -2743,15 +2749,16 @@
     const qLabels = ['','Feeling','Fatigue','Brain fog','Pain','Activity','Left home','Food','Probiotics','','Compression','Sodium goal','Hours upright'];
     const icons = { good:'😊', mixed:'😐', bad:'😔', none:'✅', mild:'⚠️', severe:'🚨',
       rested:'🛋️', light:'🚶', demanding:'💪', yes:'✅', no:'❌', clean:'🥗',
-      inflammatory:'🍔', upper:'👕', lower:'🧦', both:'✅',
+      apartment:'🏠', building:'🚪', outside_seated:'☀️', walk:'🚶', car:'🚗',
+      inflammatory:'🍔', upper:'🩱', hips:'🩲', lower:'🦵', calf:'🧦', both:'✅',
       lt2:'🛋️', '2to4':'🪑', '4to6':'🧍', gt6:'🚶' };
     const container = document.getElementById('step-summary-rows');
     if (!container) return;
     let html = '';
     for (let i = 1; i <= 12; i++) {
       const a = answers[i];
-      const icon = a ? (icons[a.val] || '•') : '—';
-      const lbl = a ? a.label : 'Skipped';
+      const icon = a ? (Array.isArray(a.val) ? (a.val.length ? '🩱' : '➖') : (icons[a.val] || '•')) : '—';
+      const lbl = a ? (a.label || 'None') : 'Skipped';
       if (!qLabels[i]) continue;  // skip removed/empty questions
       html += `<div class="step-summary-row"><span class="step-sum-icon">${icon}</span><span style="color:#7a9ab8;min-width:110px">${qLabels[i]}</span><span>${lbl}</span></div>`;
     }
@@ -2788,16 +2795,29 @@
           3:{field:'brain_fog',options:{none:'🟢 None',mild:'🟡 Mild',severe:'🔴 Severe'}},
           4:{field:'pain',options:{none:'🟢 None',mild:'🟡 Mild',severe:'🔴 Severe'}},
           5:{field:'activity',options:{rested:'🟢 Rested',light:'🟡 Light activity',demanding:'🔴 Demanding'}},
-          6:{field:'left_home',options:{yes:'🚗 Yes',no:'🏠 No'}},
+          6:{field:'left_home',options:{apartment:'🏠 In apartment',building:'🚪 In building',outside_seated:'☀️ Outside (seated)',walk:'🚶 Walk',car:'🚗 Out by car'}},
           7:{field:'food',options:{clean:'🟢 Clean',mixed:'🟡 Mixed',inflammatory:'🔴 Inflammatory'}},
           8:{field:'probiotics',options:{yes:'✅ Yes',no:'❌ No'}},
           9:{field:'stimulants',options:{yes:'⚡ Yes',no:'✅ No'}},
-          10:{field:'compression',options:{none:'❌ None',upper:'💪 Upper',lower:'🧦 Lower',both:'✨ Both'}},
+          10:{field:'compression',options:{upper:'🩱 Abdomen',hips:'🩲 Hips',lower:'🦵 Thighs',calf:'🧦 Calves'}},  // multi-select array
           11:{field:'sodium_goal',options:{yes:'✅ Yes',no:'❌ No'}},
           12:{field:'hours_upright',options:{lt2:'🛋️ < 2 hrs','2to4':'🪑 2-4 hrs','4to6':'🧍 4-6 hrs',gt6:'🚶 6+ hrs'}},
         };
         for (const [qNum, {field, options}] of Object.entries(Q_FIELDS)) {
           const val = d[field]; if (!val) continue;
+          // Compression is multi-select (array); others are single strings
+          if (field === 'compression') {
+            const zones = Array.isArray(val) ? val : [val]; // back-compat: old string
+            const zoneMap = { upper: 'Abdomen', hips: 'Hips', lower: 'Thighs', calf: 'Calves' };
+            answers[qNum] = { val: zones, label: zones.map(z => zoneMap[z] || z).join(', ') };
+            ['ci', 'step'].forEach(prefix => {
+              zones.forEach(z => {
+                const btn = document.getElementById('compress-' + prefix + '-' + z);
+                if (btn) btn.classList.add('selected');
+              });
+            });
+            continue;
+          }
           const lbl = options[val]; if (!lbl) continue;
           answers[qNum] = { val, label: lbl };
           document.getElementById('options-q-' + qNum)?.querySelectorAll('.option-btn').forEach(b => {
@@ -2843,6 +2863,37 @@
     if (stepBtn) stepBtn.disabled = false;
     if (q === 1) refreshNotesPrompt();
   }
+
+  // Multi-select toggle for compression (Q10)
+  // DB keys: upper=Abdomen, hips=Hips, lower=Thighs, calf=Calves
+  function toggleCompression(zone, label, btnId) {
+    if (!answers[10]) answers[10] = { val: [], label: '' };
+    const zones = answers[10].val;
+    const idx = zones.indexOf(zone);
+    if (idx >= 0) {
+      zones.splice(idx, 1);
+    } else {
+      zones.push(zone);
+    }
+    // Update button selected states across both UI instances
+    const zoneMap = { upper: 'Abdomen', hips: 'Hips', lower: 'Thighs', calf: 'Calves' };
+    ['ci', 'step'].forEach(prefix => {
+      Object.keys(zoneMap).forEach(z => {
+        const btn = document.getElementById('compress-' + prefix + '-' + z);
+        if (btn) btn.classList.toggle('selected', zones.includes(z));
+      });
+    });
+    answers[10].label = zones.map(z => zoneMap[z]).join(', ') || '';
+    // Enable step-next — allow proceeding even with 0 selected (no compression = valid)
+    const stepBtn = document.getElementById('step-next-10');
+    if (stepBtn) stepBtn.disabled = false;
+  }
+
+  // Initialize compression step-next: enable immediately (none = valid answer)
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('step-next-10');
+    if (btn) btn.disabled = false;
+  });
   function saveNotes() {
     const full = document.getElementById('notes-field')?.value.trim() || '';
     const step = document.getElementById('notes-field-step')?.value.trim() || '';
@@ -2904,7 +2955,7 @@
       answers: {
         feeling: answers[1]?.val, pem: answers[2]?.val, brain_fog: answers[3]?.val,
         pain: answers[4]?.val, activity: answers[5]?.val, left_home: answers[6]?.val,
-        food: answers[7]?.val, probiotics: answers[8]?.val, stimulants: answers[9]?.val || null, compression: answers[10]?.val || null, sodium_goal: answers[11]?.val || null, hours_upright: answers[12]?.val || null, notes: answers['notes'] || null,
+        food: answers[7]?.val, probiotics: answers[8]?.val, stimulants: answers[9]?.val || null, compression: (answers[10]?.val?.length > 0) ? answers[10].val : null, sodium_goal: answers[11]?.val || null, hours_upright: answers[12]?.val || null, notes: answers['notes'] || null,
       }
     };
     try {
