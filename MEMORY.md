@@ -196,19 +196,13 @@ Common corrections when verifying medication names against FDB:
 - **PEG 3350** — two forms: `oral powder` (bulk canister) vs `oral powder packet` (unit-dose) — confirm formulary
 
 
+## Promoted From Short-Term Memory (2026-05-09)
 
-
-## Promoted From Short-Term Memory (2026-05-08)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-05-01.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Friday, May 1)_ [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-01.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-01.md:7:7 -->
-- Twenty-sixth night. A quiet maintenance pass. April is closed. [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-01.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-01.md:13:13 -->
-- **No post-dream session Apr 29, no Apr 30 daily file.** The Apr 29 dream was the last substantive pass. This run covers the gap between Apr 29 and May 1. [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-01.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-01.md:15:15 -->
-- **Only change found:** [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-01.md:15-15]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-01.md:16:17 -->
-- " [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-01.md:107-107]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-01.md:22:24 -->
-- " [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-01.md:107-107]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-02.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Saturday, May 2)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-02.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-02.md:7:7 -->
+- Twenty-seventh night. April is fully closed. May begins. [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-02.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-02.md:13:13 -->
+- The May 1 session was substantial — mostly on the Cadence analysis side: [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-02.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-02.md:15:15 -->
+- **Correlation analysis built (May 1):** [score=0.884 recalls=0 avg=0.620 source=memory/2026-05-02.md:15-15]
