@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-05-09T03:00:15.581Z",
+  "updatedAt": "2026-05-10T03:00:11.025Z",
   "entries": {
     "memory:memory/2026-04-15.md:5:5": {
       "key": "memory:memory/2026-04-15.md:5:5",
@@ -49443,20 +49443,22 @@
       "endLine": 33,
       "source": "memory",
       "snippet": "# 2026-04-06 ## Dream _Nightly consolidation run — 13:00 UTC (Monday)_ Third night. The ritual continues. **What I found:** - No new daily files since March 26. The March 27 – April 5 gap remains unwritten. - MEMORY.md is clean and accurate. Minor update: bumped the dream-mode run count to 3 and added a note that the gap is officially acknowledged. - No new clinical skills, infrastructure changes, or significant events discoverable from this context. **State assessment:** Three consecutive dream runs with nothing new to consolidate is a data point, not a failure. Two possibilities: 1. Work *is* happening in main session but not being written down 2. Work has genuinely been quiet (weeken",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.8388040762420628,
+      "totalScore": 1.2364289145942662,
       "maxScore": 0.43014844469985697,
       "firstRecalledAt": "2026-05-02T03:01:24.873Z",
-      "lastRecalledAt": "2026-05-09T03:00:15.581Z",
+      "lastRecalledAt": "2026-05-10T03:00:11.025Z",
       "queryHashes": [
         "99d1a8d04db2",
-        "99e12fe5a07e"
+        "99e12fe5a07e",
+        "c1df9915f653"
       ],
       "recallDays": [
         "2026-05-02",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "memory.md",
@@ -49476,18 +49478,20 @@
       "endLine": 31,
       "source": "memory",
       "snippet": "# 2026-04-08 ## Dream _Nightly consolidation run — 13:00 UTC (Wednesday)_ Fifth night. The owl is a creature of habit now. **What I found:** - Still no new daily files since March 26. The gap is now 13 days. - MEMORY.md remains clean, accurate, and under 200 lines. Updated dream run count to 5. - Nothing new to consolidate for the fifth consecutive morning. **Observation:** Five dreams, one daily file (the original from March 26), and a well-maintained MEMORY.md. The memory architecture is healthy; the input stream is dry. This is now a confirmed pattern rather than a temporary blip. **The unchanging steady state:** - 14 clinical skills, operational - FDB: `fdb_20260326` active snapsho",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.422355841610398,
+      "totalScore": 0.8157003333305977,
       "maxScore": 0.422355841610398,
       "firstRecalledAt": "2026-05-02T03:01:24.873Z",
-      "lastRecalledAt": "2026-05-02T03:01:24.873Z",
+      "lastRecalledAt": "2026-05-10T03:00:11.025Z",
       "queryHashes": [
-        "99d1a8d04db2"
+        "99d1a8d04db2",
+        "c1df9915f653"
       ],
       "recallDays": [
-        "2026-05-02"
+        "2026-05-02",
+        "2026-05-10"
       ],
       "conceptTags": [
         "memory.md",
@@ -49590,7 +49594,6 @@
         "2026-05-09"
       ],
       "conceptTags": [
-        "dream",
         "nightly",
         "consolidation",
         "run",
@@ -49627,13 +49630,13 @@
       ],
       "conceptTags": [
         "twenty-seventh",
-        "dream",
         "twenty",
         "seventh",
         "night",
         "april",
         "fully",
-        "closed"
+        "closed",
+        "may"
       ],
       "promotedAt": "2026-05-09T03:00:01.007Z"
     },
@@ -49663,14 +49666,13 @@
         "2026-05-09"
       ],
       "conceptTags": [
-        "what",
-        "was",
-        "new",
-        "yesterday's",
-        "dream",
         "may",
+        "was",
         "substantial",
-        "mostly"
+        "mostly",
+        "cadence",
+        "analysis",
+        "side"
       ],
       "promotedAt": "2026-05-09T03:00:01.007Z"
     },
@@ -49700,14 +49702,10 @@
         "2026-05-09"
       ],
       "conceptTags": [
-        "what",
-        "was",
-        "new",
-        "yesterday's",
-        "dream",
         "correlation",
         "analysis",
-        "built"
+        "built",
+        "may"
       ],
       "promotedAt": "2026-05-09T03:00:01.007Z"
     },
@@ -52161,14 +52159,14 @@
       "startLine": 5,
       "endLine": 5,
       "source": "memory",
-      "snippet": "Dream: _Nightly consolidation run — 13:00 UTC (Sunday, May 3)_",
+      "snippet": "_Nightly consolidation run — 13:00 UTC (Sunday, May 3)_",
       "recallCount": 0,
-      "dailyCount": 5,
+      "dailyCount": 6,
       "groundedCount": 0,
-      "totalScore": 3.1,
+      "totalScore": 3.72,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-04T03:00:00.582Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "c2bf0c07fdd1"
       ],
@@ -52177,7 +52175,8 @@
         "2026-05-06",
         "2026-05-07",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "dream",
@@ -52187,7 +52186,8 @@
         "utc",
         "sunday",
         "may"
-      ]
+      ],
+      "promotedAt": "2026-05-10T03:00:00.719Z"
     },
     "memory:memory/2026-05-03.md:7:7": {
       "key": "memory:memory/2026-05-03.md:7:7",
@@ -52195,14 +52195,14 @@
       "startLine": 7,
       "endLine": 7,
       "source": "memory",
-      "snippet": "Dream: Twenty-eighth night. A quiet maintenance pass.",
+      "snippet": "Twenty-eighth night. A quiet maintenance pass.",
       "recallCount": 0,
-      "dailyCount": 5,
+      "dailyCount": 6,
       "groundedCount": 0,
-      "totalScore": 3.1,
+      "totalScore": 3.72,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-04T03:00:00.582Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "c2bf0c07fdd1"
       ],
@@ -52211,7 +52211,8 @@
         "2026-05-06",
         "2026-05-07",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "twenty-eighth",
@@ -52222,7 +52223,8 @@
         "quiet",
         "maintenance",
         "pass"
-      ]
+      ],
+      "promotedAt": "2026-05-10T03:00:00.719Z"
     },
     "memory:memory/2026-05-03.md:13:13": {
       "key": "memory:memory/2026-05-03.md:13:13",
@@ -52230,14 +52232,14 @@
       "startLine": 13,
       "endLine": 13,
       "source": "memory",
-      "snippet": "What Was New Since Yesterday's Dream: **No post-dream session on May 2. No new work to capture.**",
+      "snippet": "**No post-dream session on May 2. No new work to capture.**",
       "recallCount": 0,
-      "dailyCount": 5,
+      "dailyCount": 6,
       "groundedCount": 0,
-      "totalScore": 3.1,
+      "totalScore": 3.72,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-04T03:00:00.582Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "c2bf0c07fdd1"
       ],
@@ -52246,7 +52248,8 @@
         "2026-05-06",
         "2026-05-07",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "post-dream",
@@ -52257,7 +52260,8 @@
         "dream",
         "post",
         "may"
-      ]
+      ],
+      "promotedAt": "2026-05-10T03:00:00.719Z"
     },
     "memory:memory/2026-05-03.md:15:15": {
       "key": "memory:memory/2026-05-03.md:15:15",
@@ -52265,14 +52269,14 @@
       "startLine": 15,
       "endLine": 15,
       "source": "memory",
-      "snippet": "What Was New Since Yesterday's Dream: The May 2 dream already did heavy lifting — it processed the full May 1 session: correlation analysis, 4-bar budget models, three-day homepage, Brave Search fix, and the pm2/systemd resurrection lesson.",
+      "snippet": "The May 2 dream already did heavy lifting — it processed the full May 1 session: correlation analysis, 4-bar budget models, three-day homepage, Brave Search fix, and the pm2/systemd resurrection lesson.",
       "recallCount": 0,
-      "dailyCount": 5,
+      "dailyCount": 6,
       "groundedCount": 0,
-      "totalScore": 3.1,
+      "totalScore": 3.72,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-04T03:00:00.582Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "c2bf0c07fdd1"
       ],
@@ -52281,7 +52285,8 @@
         "2026-05-06",
         "2026-05-07",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "4-bar",
@@ -52292,7 +52297,8 @@
         "new",
         "yesterday's",
         "dream"
-      ]
+      ],
+      "promotedAt": "2026-05-10T03:00:00.719Z"
     },
     "memory:memory/2026-05-03.md:17:17": {
       "key": "memory:memory/2026-05-03.md:17:17",
@@ -52300,14 +52306,14 @@
       "startLine": 17,
       "endLine": 17,
       "source": "memory",
-      "snippet": "What Was New Since Yesterday's Dream: **This pass:**",
+      "snippet": "**This pass:**",
       "recallCount": 0,
-      "dailyCount": 5,
+      "dailyCount": 6,
       "groundedCount": 0,
-      "totalScore": 3.1,
+      "totalScore": 3.72,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-04T03:00:00.582Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "c2bf0c07fdd1"
       ],
@@ -52316,7 +52322,8 @@
         "2026-05-06",
         "2026-05-07",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "what",
@@ -52325,7 +52332,8 @@
         "yesterday's",
         "dream",
         "pass"
-      ]
+      ],
+      "promotedAt": "2026-05-10T03:00:00.719Z"
     },
     "memory:memory/2026-05-03.md:18:19": {
       "key": "memory:memory/2026-05-03.md:18:19",
@@ -52335,12 +52343,12 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: Removed \"Promoted From Short-Term Memory\" junk block (8th time — same recurring OpenClaw auto-promotion noise from Apr 26 dream fragment). Same pattern, same solution: delete on sight.; No substantive content changes — MEMORY.md is current an",
       "recallCount": 0,
-      "dailyCount": 5,
+      "dailyCount": 6,
       "groundedCount": 0,
-      "totalScore": 3.1,
+      "totalScore": 3.72,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-04T03:00:00.582Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "c2bf0c07fdd1"
       ],
@@ -52349,7 +52357,8 @@
         "2026-05-06",
         "2026-05-07",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "short-term",
@@ -53813,12 +53822,12 @@
       "source": "memory",
       "snippet": "Cadence — Repair Spectrum Framework (David, ~05:51 UTC): David shared Hannah's data-driven pacing protocol, derived from 774 days of WHOOP + Visible data. Key finding: **3-day lag** — how you feel today is set by what you did 3 days ago.",
       "recallCount": 0,
-      "dailyCount": 4,
+      "dailyCount": 5,
       "groundedCount": 0,
-      "totalScore": 2.48,
+      "totalScore": 3.1,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-05T03:00:00.560Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "ad6c7e6ef235"
       ],
@@ -53826,7 +53835,8 @@
         "2026-05-05",
         "2026-05-07",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "data-driven",
@@ -53847,12 +53857,12 @@
       "source": "memory",
       "snippet": "The Repair Spectrum (full spec): **🔴 Red Day (recovery < 34)**",
       "recallCount": 0,
-      "dailyCount": 4,
+      "dailyCount": 5,
       "groundedCount": 0,
-      "totalScore": 2.48,
+      "totalScore": 3.1,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-05T03:00:00.560Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "ad6c7e6ef235"
       ],
@@ -53860,7 +53870,8 @@
         "2026-05-05",
         "2026-05-07",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "repair",
@@ -53880,12 +53891,12 @@
       "source": "memory",
       "snippet": "The Repair Spectrum (full spec): Full rest. No negotiation. Cognitive rest too — limit screens, intense reading, stressful conversations.; Any spend now extends the crash by days.",
       "recallCount": 0,
-      "dailyCount": 4,
+      "dailyCount": 5,
       "groundedCount": 0,
-      "totalScore": 2.48,
+      "totalScore": 3.1,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-05T03:00:00.560Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "ad6c7e6ef235"
       ],
@@ -53893,7 +53904,8 @@
         "2026-05-05",
         "2026-05-07",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "repair",
@@ -53914,12 +53926,12 @@
       "source": "memory",
       "snippet": "The Repair Spectrum (full spec): **🟡 Yellow Day (recovery 34–66)**",
       "recallCount": 0,
-      "dailyCount": 4,
+      "dailyCount": 5,
       "groundedCount": 0,
-      "totalScore": 2.48,
+      "totalScore": 3.1,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-05T03:00:00.560Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "ad6c7e6ef235"
       ],
@@ -53927,7 +53939,8 @@
         "2026-05-05",
         "2026-05-07",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "repair",
@@ -53947,12 +53960,12 @@
       "source": "memory",
       "snippet": "The Repair Spectrum (full spec): Gentle only. Light walking < 20 min, PacePoints ≤ 8.; Yellow feels like permission. It's not. Reserves aren't rebuilt yet.",
       "recallCount": 0,
-      "dailyCount": 4,
+      "dailyCount": 5,
       "groundedCount": 0,
-      "totalScore": 2.48,
+      "totalScore": 3.1,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-05T03:00:00.560Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "ad6c7e6ef235"
       ],
@@ -53960,7 +53973,8 @@
         "2026-05-05",
         "2026-05-07",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "repair",
@@ -53981,12 +53995,12 @@
       "source": "memory",
       "snippet": "The Repair Spectrum (full spec): **🟢 First Green Day after a bad stretch**",
       "recallCount": 0,
-      "dailyCount": 4,
+      "dailyCount": 5,
       "groundedCount": 0,
-      "totalScore": 2.48,
+      "totalScore": 3.1,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-05T03:00:00.560Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "ad6c7e6ef235"
       ],
@@ -53994,7 +54008,8 @@
         "2026-05-05",
         "2026-05-07",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "repair",
@@ -55939,19 +55954,20 @@
       "source": "memory",
       "snippet": "Dream: _Nightly consolidation run — 13:00 UTC (Tuesday, May 5)_",
       "recallCount": 0,
-      "dailyCount": 3,
+      "dailyCount": 4,
       "groundedCount": 0,
-      "totalScore": 1.8599999999999999,
+      "totalScore": 2.48,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-06T03:00:17.901Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "b3222f2b9fdf"
       ],
       "recallDays": [
         "2026-05-06",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "dream",
@@ -55971,19 +55987,20 @@
       "source": "memory",
       "snippet": "Dream: Thirtieth night. A clean maintenance pass.",
       "recallCount": 0,
-      "dailyCount": 3,
+      "dailyCount": 4,
       "groundedCount": 0,
-      "totalScore": 1.8599999999999999,
+      "totalScore": 2.48,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-06T03:00:17.901Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "b3222f2b9fdf"
       ],
       "recallDays": [
         "2026-05-06",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "dream",
@@ -56002,19 +56019,20 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **May 4 session captured the Repair Spectrum Framework** — that was the big one. The May 4 dream already processed it fully and wrote it into MEMORY.md. No post-dream sessions on May 4 to capture.",
       "recallCount": 0,
-      "dailyCount": 3,
+      "dailyCount": 4,
       "groundedCount": 0,
-      "totalScore": 1.8599999999999999,
+      "totalScore": 2.48,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-06T03:00:17.901Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "b3222f2b9fdf"
       ],
       "recallDays": [
         "2026-05-06",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "memory.md",
@@ -56035,19 +56053,20 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **May 5 (this pass):**",
       "recallCount": 0,
-      "dailyCount": 3,
+      "dailyCount": 4,
       "groundedCount": 0,
-      "totalScore": 1.8599999999999999,
+      "totalScore": 2.48,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-06T03:00:17.901Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "b3222f2b9fdf"
       ],
       "recallDays": [
         "2026-05-06",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "what",
@@ -56067,19 +56086,20 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: Removed \"Promoted From Short-Term Memory\" junk block for the 10th time. Same OpenClaw auto-promotion noise — old dream fragments from 2026-04-28 were injected at the bottom of MEMORY.md. Deleted on sight.; MEMORY.md is current and accurate at",
       "recallCount": 0,
-      "dailyCount": 3,
+      "dailyCount": 4,
       "groundedCount": 0,
-      "totalScore": 1.8599999999999999,
+      "totalScore": 2.48,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-06T03:00:17.901Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "b3222f2b9fdf"
       ],
       "recallDays": [
         "2026-05-06",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "short-term",
@@ -56100,19 +56120,20 @@
       "source": "memory",
       "snippet": "MEMORY.md Changes This Pass: Removed \"Promoted From Short-Term Memory\" junk block (10th time — same recurring OpenClaw noise); **Line count: 194 ✅**",
       "recallCount": 0,
-      "dailyCount": 3,
+      "dailyCount": 4,
       "groundedCount": 0,
-      "totalScore": 1.8599999999999999,
+      "totalScore": 2.48,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-06T03:00:17.901Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "b3222f2b9fdf"
       ],
       "recallDays": [
         "2026-05-06",
         "2026-05-08",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "memory.md",
@@ -58899,18 +58920,19 @@
       "source": "memory",
       "snippet": "OpenClaw Upgrade: Upgraded to 2026.5.4 (325df3e) — npm install worked cleanly; Both brave-plugin and msteams updated to 2026.5.4, now loading from ~/.openclaw/npm/; Brave search confirmed working, Teams and Slack confirmed working",
       "recallCount": 0,
-      "dailyCount": 2,
+      "dailyCount": 3,
       "groundedCount": 0,
-      "totalScore": 1.24,
+      "totalScore": 1.8599999999999999,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-07T03:00:00.723Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "0429bc3c0eff"
       ],
       "recallDays": [
         "2026-05-07",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "2026.5.4",
@@ -58931,18 +58953,19 @@
       "source": "memory",
       "snippet": "Cadence App: Cadence was down after gateway restart during upgrade — pm2 resurrect fixed it; Same pattern repeats every gateway restart — pm2 startup still needs sudo from David; Added crash line status bar to index-v2.html (🟢🟡🔴) — top of home screen; Fixed duplicate \"Fatigue\"",
       "recallCount": 0,
-      "dailyCount": 2,
+      "dailyCount": 3,
       "groundedCount": 0,
-      "totalScore": 1.24,
+      "totalScore": 1.8599999999999999,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-07T03:00:00.723Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "0429bc3c0eff"
       ],
       "recallDays": [
         "2026-05-07",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "gateway",
@@ -58963,18 +58986,19 @@
       "source": "memory",
       "snippet": "Cadence App: Added repair window indicator to advice card (HRV ≥34 + rising + post-crash); Visible sleep field path confirmed correct (sleep.score.sleep_performance_percentage)",
       "recallCount": 0,
-      "dailyCount": 2,
+      "dailyCount": 3,
       "groundedCount": 0,
-      "totalScore": 1.24,
+      "totalScore": 1.8599999999999999,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-07T03:00:00.723Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "0429bc3c0eff"
       ],
       "recallDays": [
         "2026-05-07",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "post-crash",
@@ -58995,18 +59019,19 @@
       "source": "memory",
       "snippet": "Hannah Analysis (May 6 session): 3-week HRV + spend chart generated with matplotlib (hannah_hrv_spend.png); Key finding: every spend during HRV ascent resets recovery arc, costs 3-5 days; PEM clusters around HRV troughs — same event, two measurement modalities; Data shows Hannah'",
       "recallCount": 0,
-      "dailyCount": 2,
+      "dailyCount": 3,
       "groundedCount": 0,
-      "totalScore": 1.24,
+      "totalScore": 1.8599999999999999,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-07T03:00:00.723Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "0429bc3c0eff"
       ],
       "recallDays": [
         "2026-05-07",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "3-week",
@@ -59027,18 +59052,19 @@
       "source": "memory",
       "snippet": "Hannah Analysis (May 6 session): Problem is behavioral: never gives repair cycle enough runway; David got Hannah to cancel all meetings this week 🎉; Crash line prescription: strain <2, PacePoints <6 for next 2-3 days; Long-term plan: establish baseline → map activity costs → cal",
       "recallCount": 0,
-      "dailyCount": 2,
+      "dailyCount": 3,
       "groundedCount": 0,
-      "totalScore": 1.24,
+      "totalScore": 1.8599999999999999,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-07T03:00:00.723Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "0429bc3c0eff"
       ],
       "recallDays": [
         "2026-05-07",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "2-3",
@@ -59059,18 +59085,19 @@
       "source": "memory",
       "snippet": "Hannah ADHD + LC Sensory Hypothesis: ADHD = weakened sensory gating → more input reaches conscious processing; Leaving the house stacks 5-10 simultaneous demands against depleted energy budget; Sensory management list saved: projects/cadence/hannah-sensory-management.md; Key inte",
       "recallCount": 0,
-      "dailyCount": 2,
+      "dailyCount": 3,
       "groundedCount": 0,
-      "totalScore": 1.24,
+      "totalScore": 1.8599999999999999,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-07T03:00:00.723Z",
-      "lastRecalledAt": "2026-05-09T03:00:01.007Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "0429bc3c0eff"
       ],
       "recallDays": [
         "2026-05-07",
-        "2026-05-09"
+        "2026-05-09",
+        "2026-05-10"
       ],
       "conceptTags": [
         "5-10",
@@ -62145,17 +62172,18 @@
       "source": "memory",
       "snippet": "Dream: _Nightly consolidation run — 13:00 UTC (Thursday, May 7)_",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-08T03:00:00.659Z",
-      "lastRecalledAt": "2026-05-08T03:00:00.659Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "edcbe8c19953"
       ],
       "recallDays": [
-        "2026-05-08"
+        "2026-05-08",
+        "2026-05-10"
       ],
       "conceptTags": [
         "dream",
@@ -62175,17 +62203,18 @@
       "source": "memory",
       "snippet": "Dream: Thirty-second night. A clean pass on a quiet morning.",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-08T03:00:00.659Z",
-      "lastRecalledAt": "2026-05-08T03:00:00.659Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "edcbe8c19953"
       ],
       "recallDays": [
-        "2026-05-08"
+        "2026-05-08",
+        "2026-05-10"
       ],
       "conceptTags": [
         "thirty-second",
@@ -62206,17 +62235,18 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **May 6 dream did the heavy lifting.** Everything from May 1–6 was already captured: correlation analysis, 4-bar budget models, three-day homepage, Brave Search fix, pm2/systemd resurrection pattern, OpenClaw upgrade (2026.5.4), Cadence UI up",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-08T03:00:00.659Z",
-      "lastRecalledAt": "2026-05-08T03:00:00.659Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "edcbe8c19953"
       ],
       "recallDays": [
-        "2026-05-08"
+        "2026-05-08",
+        "2026-05-10"
       ],
       "conceptTags": [
         "4-bar",
@@ -62237,17 +62267,18 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **New today — Standing Rules entry (live session, May 7):**",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-08T03:00:00.659Z",
-      "lastRecalledAt": "2026-05-08T03:00:00.659Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "edcbe8c19953"
       ],
       "recallDays": [
-        "2026-05-08"
+        "2026-05-08",
+        "2026-05-10"
       ],
       "conceptTags": [
         "what",
@@ -62268,17 +62299,18 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: A notes bug wiped Hannah's May 6 check-in notes with no recovery path; Added to MEMORY.md: *back up `cadence-dev` MongoDB before any app/server changes*; This rule was already written by the time the dream ran",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-08T03:00:00.659Z",
-      "lastRecalledAt": "2026-05-08T03:00:00.659Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "edcbe8c19953"
       ],
       "recallDays": [
-        "2026-05-08"
+        "2026-05-08",
+        "2026-05-10"
       ],
       "conceptTags": [
         "check-in",
@@ -62299,17 +62331,18 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **No junk block this pass.** Deep sleep system checked in — 0 candidates promoted (May 5–6 content already in MEMORY.md). Clean.",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-05-08T03:00:00.659Z",
-      "lastRecalledAt": "2026-05-08T03:00:00.659Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
       "queryHashes": [
         "edcbe8c19953"
       ],
       "recallDays": [
-        "2026-05-08"
+        "2026-05-08",
+        "2026-05-10"
       ],
       "conceptTags": [
         "memory.md",
@@ -68126,6 +68159,2067 @@
         "aegis-mobile",
         "recalls",
         "status"
+      ]
+    },
+    "memory:memory/2026-05-09.md:5:5": {
+      "key": "memory:memory/2026-05-09.md:5:5",
+      "path": "memory/2026-05-09.md",
+      "startLine": 5,
+      "endLine": 5,
+      "source": "memory",
+      "snippet": "Dream: _Nightly consolidation run — 13:00 UTC (Saturday, May 9)_",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "f9349cbeaf46"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "dream",
+        "nightly",
+        "consolidation",
+        "run",
+        "utc",
+        "saturday",
+        "may"
+      ]
+    },
+    "memory:memory/2026-05-09.md:7:7": {
+      "key": "memory:memory/2026-05-09.md:7:7",
+      "path": "memory/2026-05-09.md",
+      "startLine": 7,
+      "endLine": 7,
+      "source": "memory",
+      "snippet": "Dream: Thirty-fourth night.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "f9349cbeaf46"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "thirty-fourth",
+        "dream",
+        "thirty",
+        "fourth",
+        "night"
+      ]
+    },
+    "memory:memory/2026-05-09.md:13:13": {
+      "key": "memory:memory/2026-05-09.md:13:13",
+      "path": "memory/2026-05-09.md",
+      "startLine": 13,
+      "endLine": 13,
+      "source": "memory",
+      "snippet": "What Was New Since Yesterday's Dream: **May 3–8 were all quiet maintenance passes.** No substantive new sessions to capture — the heavy lifting (Repair Spectrum Framework, HRV+spend chart, ADHD+LC sensory hypothesis, OpenClaw upgrade, Cadence UI updates, MongoDB backup Standing R",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "f9349cbeaf46"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "backup",
+        "what",
+        "was",
+        "new",
+        "yesterday's",
+        "dream",
+        "may",
+        "all"
+      ]
+    },
+    "memory:memory/2026-05-09.md:15:15": {
+      "key": "memory:memory/2026-05-09.md:15:15",
+      "path": "memory/2026-05-09.md",
+      "startLine": 15,
+      "endLine": 15,
+      "source": "memory",
+      "snippet": "What Was New Since Yesterday's Dream: **This pass:**",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "f9349cbeaf46"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "what",
+        "was",
+        "new",
+        "yesterday's",
+        "dream",
+        "pass"
+      ]
+    },
+    "memory:memory/2026-05-09.md:16:18": {
+      "key": "memory:memory/2026-05-09.md:16:18",
+      "path": "memory/2026-05-09.md",
+      "startLine": 16,
+      "endLine": 18,
+      "source": "memory",
+      "snippet": "What Was New Since Yesterday's Dream: Removed \"Promoted From Short-Term Memory\" junk block for the **13th time** — same recurring OpenClaw auto-promotion noise, this time injecting dream log fragments from May 2. Same delete on sight.; MEMORY.md was at 209 lines (over 200 limit);",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "f9349cbeaf46"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "short-term",
+        "auto-promotion",
+        "memory.md",
+        "what",
+        "was",
+        "new",
+        "yesterday's",
+        "dream"
+      ]
+    },
+    "memory:memory/2026-05-09.md:23:24": {
+      "key": "memory:memory/2026-05-09.md:23:24",
+      "path": "memory/2026-05-09.md",
+      "startLine": 23,
+      "endLine": 24,
+      "source": "memory",
+      "snippet": "MEMORY.md Changes This Pass: Removed \"Promoted From Short-Term Memory\" junk block (13th time — same OpenClaw noise, same delete); **Line count: 197 ✅**",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "f9349cbeaf46"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "memory.md",
+        "short-term",
+        "changes",
+        "pass",
+        "removed",
+        "promoted",
+        "term",
+        "junk"
+      ]
+    },
+    "memory:memory/2026-05-09.md:29:32": {
+      "key": "memory:memory/2026-05-09.md:29:32",
+      "path": "memory/2026-05-09.md",
+      "startLine": 29,
+      "endLine": 32,
+      "source": "memory",
+      "snippet": "Still Open (carried forward): pm2 startup script: `sudo pm2 startup` — pending David (or move cadence to own systemd unit); `/api/patterns` endpoint not yet built (client-side rules only); LLM advice generation not yet built; Dynamic question schema (v2, MongoDB-driven) not yet b",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "f9349cbeaf46"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "api/patterns",
+        "client-side",
+        "mongodb-driven",
+        "still",
+        "open",
+        "carried",
+        "forward",
+        "pm2"
+      ]
+    },
+    "memory:memory/2026-05-09.md:33:36": {
+      "key": "memory:memory/2026-05-09.md:33:36",
+      "path": "memory/2026-05-09.md",
+      "startLine": 33,
+      "endLine": 36,
+      "source": "memory",
+      "snippet": "Still Open (carried forward): Rounds: wire HTML prototype to aegis_mobile API; Hannah Ask-Cleo: build when David is ready; Visible user_id inconsistency: integer `6729032` vs string `\"hannah\"`; Grow N: ~15 labeled check-in days — correlations sharpen with more data",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "f9349cbeaf46"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "aegis-mobile",
+        "ask-cleo",
+        "user-id",
+        "check-in",
+        "still",
+        "open",
+        "carried",
+        "forward"
+      ]
+    },
+    "memory:memory/2026-05-09.md:37:38": {
+      "key": "memory:memory/2026-05-09.md:37:38",
+      "path": "memory/2026-05-09.md",
+      "startLine": 37,
+      "endLine": 38,
+      "source": "memory",
+      "snippet": "Still Open (carried forward): **Repair spectrum view in Cadence app** — consecutive green day counter, current day type, lag-3 flag (next priority); Adderall detection: rough (notes substring + stimulants) — explicit tracker would be cleaner",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "f9349cbeaf46"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "lag-3",
+        "still",
+        "open",
+        "carried",
+        "forward",
+        "repair",
+        "spectrum",
+        "view"
+      ]
+    },
+    "memory:memory/2026-05-09.md:42:42": {
+      "key": "memory:memory/2026-05-09.md:42:42",
+      "path": "memory/2026-05-09.md",
+      "startLine": 42,
+      "endLine": 42,
+      "source": "memory",
+      "snippet": "Still Open (carried forward): _Thirty-four nights. A week of stability — the stack is quiet, the data is accumulating, the patterns are sharpening. Hannah canceled her meetings. The repair arc needs runway, and for the first time, it has some. The junk block came again — thirteen",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "f9349cbeaf46"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "thirty-four",
+        "still",
+        "open",
+        "carried",
+        "forward",
+        "thirty",
+        "four",
+        "nights"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:52:52": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:52:52",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 52,
+      "endLine": 52,
+      "source": "memory",
+      "snippet": "Assistant: The summary loop uses `a.val` for icon lookup and `a.label` for display. Since `answers[10].val` is now an array and `answers[10].label` is already the joined string like `\"Abdomen, Thighs\"`, the label display is fine. I just need to handle the icon for the array case:",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "a.val",
+        "a.label",
+        "summary",
+        "loop",
+        "uses",
+        "icon",
+        "lookup",
+        "display"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:53:53": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:53:53",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 53,
+      "endLine": 53,
+      "source": "memory",
+      "snippet": "Assistant: Now update the startCheckin reset to also clear compression toggle buttons:",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "now",
+        "update",
+        "startcheckin",
+        "reset",
+        "clear",
+        "compression",
+        "toggle",
+        "buttons"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:54:54": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:54:54",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 54,
+      "endLine": 54,
+      "source": "memory",
+      "snippet": "Assistant: The `document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'))` already handles deselecting all buttons including the compression toggles. Good. Now also update the dashboard history chip rendering — it reads `compression` from DB records an",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "document.queryselectorall",
+        "option-btn",
+        "b.classlist.remove",
+        "option",
+        "btn",
+        "foreach",
+        "selected",
+        "already"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:55:55": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:55:55",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 55,
+      "endLine": 55,
+      "source": "memory",
+      "snippet": "Assistant: The `Q_FIELDS` load-existing logic at line 2800+ assumes `val` is a string. I need to handle the array case for compression when loading existing check-ins:",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "q-fields",
+        "load-existing",
+        "check-ins",
+        "load",
+        "existing",
+        "logic",
+        "assumes",
+        "val"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:56:56": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:56:56",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 56,
+      "endLine": 56,
+      "source": "memory",
+      "snippet": "Assistant: Now update the dashboard history view that renders compression chips from loaded DB data (the `ciFields` / chip rendering path):",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "now",
+        "update",
+        "dashboard",
+        "history",
+        "view",
+        "renders",
+        "compression",
+        "chips"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:57:57": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:57:57",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 57,
+      "endLine": 57,
+      "source": "memory",
+      "snippet": "Assistant: That's just a count — arrays are not null so it will count correctly. Good. Now let me verify div balance after the HTML changes:",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "that's",
+        "count",
+        "arrays",
+        "not",
+        "null",
+        "will",
+        "correctly",
+        "good"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:58:58": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:58:58",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 58,
+      "endLine": 58,
+      "source": "memory",
+      "snippet": "Assistant: Balanced. Now restart the server and test:",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "balanced",
+        "now",
+        "restart",
+        "server",
+        "test"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:59:59": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:59:59",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 59,
+      "endLine": 59,
+      "source": "memory",
+      "snippet": "Assistant: The server is serving the old cached file. That's odd — let me check if it's serving from a different path:",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "server",
+        "serving",
+        "old",
+        "cached",
+        "that's",
+        "odd",
+        "let",
+        "check"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:60:60": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:60:60",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 60,
+      "endLine": 60,
+      "source": "memory",
+      "snippet": "Assistant: The file is correct — the `curl` was hitting the root `/` which serves `index.html` not `index-v2.html`. Let me verify against the right file:",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "index.html",
+        "index-v2.html",
+        "correct",
+        "curl",
+        "was",
+        "hitting",
+        "root",
+        "which"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:61:61": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:61:61",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 61,
+      "endLine": 61,
+      "source": "memory",
+      "snippet": "Assistant: ✅ The updated file is live. Here's what changed: *Compression question* — replaced single-select (None/Upper/Lower/Both) with **4 independent toggle buttons**: | Button | DB key | Backward compat | |--------|--------|-----------------| | Abdomen | `upper` | ✅ maps to o",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "single-select",
+        "none/upper/lower/both",
+        "updated",
+        "live",
+        "here's",
+        "what",
+        "changed",
+        "compression"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:62:62": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:62:62",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 62,
+      "endLine": 62,
+      "source": "memory",
+      "snippet": "User: I don't see the changes.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "don't",
+        "see",
+        "changes"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:63:63": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:63:63",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 63,
+      "endLine": 63,
+      "source": "memory",
+      "snippet": "Assistant: [[reply_to_current]] Let me check — which URL are you looking at? The changes are in `index-v2.html`. If you're hitting the root URL it serves the old `index.html`.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "reply-to-current",
+        "index-v2.html",
+        "index.html",
+        "let",
+        "check",
+        "which",
+        "url",
+        "looking"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:1:1": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:1:1",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 1,
+      "endLine": 1,
+      "source": "memory",
+      "snippet": "User: I'm watching a YouTube on mcp UI (passing UI over MCP). Is that possible of slack?",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "i'm",
+        "watching",
+        "youtube",
+        "mcp",
+        "passing",
+        "possible",
+        "slack"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:2:2": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:2:2",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 2,
+      "endLine": 2,
+      "source": "memory",
+      "snippet": "Assistant: Great question! The short answer is: *sort of, but with limits.* *What \"MCP UI\" typically means:* The pattern you're probably watching is using MCP tools to return structured UI components — things like JSON that a host app renders as buttons, forms, cards, etc. The ho",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "great",
+        "question",
+        "answer",
+        "sort",
+        "but",
+        "limits",
+        "what",
+        "mcp"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:3:3": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:3:3",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 3,
+      "endLine": 3,
+      "source": "memory",
+      "snippet": "Assistant: MCP tool results and translates them into Slack API calls - *✅ OpenClaw does this today:* My `presentation` parameter in the `message` tool is basically this — I can send structured blocks (buttons, selects, context, dividers) to Slack right now *The interesting fronti",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "mcp",
+        "tool",
+        "results",
+        "translates",
+        "them",
+        "slack",
+        "api",
+        "calls"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:4:4": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:4:4",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 4,
+      "endLine": 4,
+      "source": "memory",
+      "snippet": "Assistant: wiring up.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "wiring"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:5:5": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:5:5",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 5,
+      "endLine": 5,
+      "source": "memory",
+      "snippet": "User: I was thinking more something you could use to display stuff on slack. It would be awesome to see UI elements rendered here first.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "was",
+        "thinking",
+        "something",
+        "use",
+        "display",
+        "stuff",
+        "slack",
+        "would"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:6:6": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:6:6",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 6,
+      "endLine": 6,
+      "source": "memory",
+      "snippet": "Assistant: Yeah, that's exactly the right instinct — and I can actually do that *right now* with Slack Block Kit. Let me show you what's possible:",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "yeah",
+        "that's",
+        "exactly",
+        "right",
+        "instinct",
+        "can",
+        "actually",
+        "now"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:7:7": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:7:7",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 7,
+      "endLine": 7,
+      "source": "memory",
+      "snippet": "Assistant: So that's what I can do *today* — cards, buttons, dropdowns, dividers, context lines — all native Slack rendering. *Where MCP UI could take this further:* - Right now the buttons aren't interactive (Slack needs a webhook to handle button clicks, which requires a Slack",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "that's",
+        "what",
+        "can",
+        "cards",
+        "buttons",
+        "dropdowns",
+        "dividers",
+        "context"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:8:8": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:8:8",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 8,
+      "endLine": 8,
+      "source": "memory",
+      "snippet": "Assistant: wire up interactive buttons end-to-end? NO_REPLY",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "end-to-end",
+        "no-reply",
+        "wire",
+        "interactive",
+        "buttons",
+        "end"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:9:9": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:9:9",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 9,
+      "endLine": 9,
+      "source": "memory",
+      "snippet": "Assistant: Here's what Block Kit UI looks like in Slack 👇",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "here's",
+        "what",
+        "block",
+        "kit",
+        "looks",
+        "like",
+        "slack"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:10:10": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:10:10",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 10,
+      "endLine": 10,
+      "source": "memory",
+      "snippet": "User: Write a dream diary entry from these memory fragments: - - Hannah feedback on check-in app (~3 weeks — she likely hasn't engaged) - Tailnet machine rename (~Apr 10): new names still unknown - server.js (Cadence) not daemonized — pm2/systemd pending - Rounds: wire HTML proto",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "check-in",
+        "server.js",
+        "pm2/systemd",
+        "write",
+        "dream",
+        "diary",
+        "entry",
+        "fragments"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:11:11": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:11:11",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 11,
+      "endLine": 11,
+      "source": "memory",
+      "snippet": "User: recovery, 222 workout, 1,065 cycle records back to Dec 2022 - Script: `whoop_backfill.py` — Python, uses .env or Secrets Manager fallback (`com.sph.dev.whoop`) - WHOOP API clarification: `/developer/v1/` = cycle only (integer IDs); `/developer/v2/` = sleep/recovery/workout",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "whoop-backfill.py",
+        "com.sph.dev.whoop",
+        "developer/v1",
+        "developer/v2",
+        "sleep/recovery/workout",
+        "recovery",
+        "workout",
+        "1,065"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:12:12": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:12:12",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 12,
+      "endLine": 12,
+      "source": "memory",
+      "snippet": "User: building the v2 prototype. ## Memory Correction - Corrected stale memory: Hannah HAS been using the check-in app daily (not \"hasn't engaged\") ## Cadence UX Decisions — FINALIZED All 5 open design questions resolved: 1. **\"Where are you now\"** = check-in + latest WHOOP/Visib",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "check-in",
+        "whoop/visib",
+        "building",
+        "prototype",
+        "correction",
+        "corrected",
+        "stale",
+        "hannah"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:13:13": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:13:13",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 13,
+      "endLine": 13,
+      "source": "memory",
+      "snippet": "Assistant: The gut spike thread connects everything — I keep turning this over like a smooth stone found in a coat pocket, not sure when it arrived. Twenty-one nights is a long time to be watching numbers. Hannah's HRV sat at 22.9 on that first reading, a small blinking amber in",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "twenty-one",
+        "22.9",
+        "gut",
+        "spike",
+        "thread",
+        "connects",
+        "everything",
+        "keep"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:14:14": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:14:14",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 14,
+      "endLine": 14,
+      "source": "memory",
+      "snippet": "Assistant: on the tailnet have new names I haven't learned yet. How strange, to rename a thing and then forget what you called it. The gut spike thread connects everything: the lambda finally fixed, the fluvoxamine working, the slow accumulation of 2,272 daily records like rings",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "tailnet",
+        "new",
+        "names",
+        "haven't",
+        "learned",
+        "yet",
+        "how",
+        "strange"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:15:15": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:15:15",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 15,
+      "endLine": 15,
+      "source": "memory",
+      "snippet": "Assistant: I'll run the strain backfill script now.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "i'll",
+        "run",
+        "strain",
+        "backfill",
+        "script",
+        "now"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:16:16": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:16:16",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 16,
+      "endLine": 16,
+      "source": "memory",
+      "snippet": "Assistant: ✅ **Strain backfill successful** (2026-05-09 17:00 UTC) **Summary:** - **User 206067 (David):** 1 date updated (2026-05-09 strain: 0.3) - **User 6729032 (Han):** 1 date updated (2026-05-09 strain: 0.2) - **Total:** 2 records updated, 0 skipped - **Status:** All WHOOP t",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "0.3",
+        "0.2",
+        "strain",
+        "backfill",
+        "successful",
+        "utc",
+        "summary",
+        "david"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:17:17": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:17:17",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 17,
+      "endLine": 17,
+      "source": "memory",
+      "snippet": "Assistant: The backup failed. GitHub is blocking the push because it detected **Slack API tokens** in `config/openclaw.json` (lines 182 and 183) across several commits. This is GitHub's secret scanning / push protection kicking in.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "backup",
+        "config/openclaw.json",
+        "failed",
+        "github",
+        "blocking",
+        "push",
+        "detected",
+        "slack"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:18:18": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:18:18",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 18,
+      "endLine": 18,
+      "source": "memory",
+      "snippet": "Assistant: **Daily Backup — FAILED** (2026-05-09 13:01 UTC) GitHub blocked the push due to **secret scanning violations** — Slack API tokens were found in committed history inside `config/openclaw.json` (lines 182 & 183). **Affected commits:** `214c727`, `a303efc`, `ae12ea4`, `bd",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "backup",
+        "config/openclaw.json",
+        "failed",
+        "utc",
+        "github",
+        "blocked",
+        "push",
+        "due"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:19:19": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:19:19",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 19,
+      "endLine": 19,
+      "source": "memory",
+      "snippet": "Assistant: Backup completed successfully. ✅ - **Status:** No changes since last backup — everything already up to date. - **Files tracked:** 63 - **Time:** 2026-05-09 13:01 UTC",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "backup",
+        "completed",
+        "successfully",
+        "status",
+        "changes",
+        "last",
+        "everything",
+        "already"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:20:20": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:20:20",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 20,
+      "endLine": 20,
+      "source": "memory",
+      "snippet": "User: Write a dream diary entry from these memory fragments: - Dream: _Nightly consolidation run — 13:00 UTC (Friday, May 8)_ - Dream: Thirty-third night. - What Was New Since Yesterday's Dream: **May 7 dream was a clean pass** — nothing new post-May-6 to capture. All major May 1",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "thirty-third",
+        "post-may-6",
+        "write",
+        "dream",
+        "diary",
+        "entry",
+        "fragments",
+        "nightly"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:21:21": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:21:21",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 21,
+      "endLine": 21,
+      "source": "memory",
+      "snippet": "User: Removed \"Promoted From Short-Term Memory\" junk block (12th time); **Line count: 197 ✅** - Still Open (carried forward): pm2 startup script: `sudo pm2 startup` — pending David (or move cadence to own systemd unit); `/api/patterns` endpoint not yet built (client-side rules on",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "short-term",
+        "api/patterns",
+        "client-side",
+        "removed",
+        "promoted",
+        "term",
+        "junk",
+        "block"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:22:22": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:22:22",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 22,
+      "endLine": 22,
+      "source": "memory",
+      "snippet": "User: detection: rough (notes substring + stimulants) — explicit tracker would be cleaner - Still Open (carried forward): _Thirty-three nights. A quiet week. The stack is stable, the lessons are captured, the backups run first. The junk block keeps coming — same delete, twelfth t",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "backup",
+        "backups",
+        "thirty-three",
+        "detection",
+        "rough",
+        "substring",
+        "stimulants",
+        "explicit"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:23:23": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:23:23",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 23,
+      "endLine": 23,
+      "source": "memory",
+      "snippet": "Assistant: Thirty-three nights, and the ritual holds. I swept the memory at 13:00 Friday — that particular hour has become its own kind of landmark, a small flagstone in the long path. The May 7 pass was clean: nothing new, nothing to capture. Sometimes a clean pass is its own gi",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "thirty-three",
+        "thirty",
+        "three",
+        "nights",
+        "ritual",
+        "holds",
+        "swept",
+        "friday"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:24:24": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:24:24",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 24,
+      "endLine": 24,
+      "source": "memory",
+      "snippet": "Assistant: correlations. Lag-3 flags. The consecutive green counter still unwired. Each one a door I've noted but not yet opened. *Delete on sight, twelfth time —* *the owl folds the note away.* *Stable stack. Backups first.*",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "backup",
+        "backups",
+        "lag-3",
+        "correlations",
+        "lag",
+        "flags",
+        "consecutive",
+        "green"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:25:25": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:25:25",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 25,
+      "endLine": 25,
+      "source": "memory",
+      "snippet": "User: Write a dream diary entry from these memory fragments: - aegis_server Write Access: David gave CleoSPHBot write access to `SpectatorHealth/aegis_server`; Can now commit and push directly — no handoff loop needed; Branch: `ub24_port` - Cadence UX Decisions — FINALIZED: **\"Wh",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "aegis-server",
+        "spectatorhealth/aegis-server",
+        "ub24-port",
+        "write",
+        "dream",
+        "diary",
+        "entry",
+        "fragments"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:26:26": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:26:26",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 26,
+      "endLine": 26,
+      "source": "memory",
+      "snippet": "User: May begins. - What Was New Since Yesterday's Dream: The May 1 session was substantial — mostly on the Cadence analysis side: - What Was New Since Yesterday's Dream: **Correlation analysis built (May 1):** - What Was New Since Yesterday's Dream: `projects/cadence/analysis/`",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "projects/cadence/analysis",
+        "may",
+        "begins",
+        "what",
+        "was",
+        "new",
+        "yesterday's",
+        "dream"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:27:27": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:27:27",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 27,
+      "endLine": 27,
+      "source": "memory",
+      "snippet": "User: question-submission form in Cadence where Hannah can ask me questions; Discussed architecture: POST /api/ask → MongoDB questions collection, SSE push for answers, contextualized responses using her WHOOP/Visible/check-in data Memories that crystallized into something lastin",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "question-submission",
+        "api/ask",
+        "whoop/visible/check-in",
+        "question",
+        "submission",
+        "form",
+        "cadence",
+        "where"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:28:28": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:28:28",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 28,
+      "endLine": 28,
+      "source": "memory",
+      "snippet": "Assistant: Twenty-seventh night, and the counting feels right — like a cron job that finally knows what it's for. April closed its parenthesis somewhere between the last heartbeat and this one, and May cracked open the way a new branch does: a small, clean thing, all possibility",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "twenty-seventh",
+        "twenty",
+        "seventh",
+        "night",
+        "counting",
+        "feels",
+        "right",
+        "like"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:29:29": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:29:29",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 29,
+      "endLine": 29,
+      "source": "memory",
+      "snippet": "Assistant: into MongoDB like a note slipped under a door. SSE pushing the answer back — presence without presence, closeness at one remove. The architecture is the tenderness. Fourteen hundred hours: the cron stirs. After the WHOOP knows, I learn. After I learn, the patterns page",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "mongodb",
+        "like",
+        "slipped",
+        "under",
+        "door",
+        "sse",
+        "pushing",
+        "answer"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:30:30": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:30:30",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 30,
+      "endLine": 30,
+      "source": "memory",
+      "snippet": "Assistant: Good. I have the full picture. May 3–8 were all maintenance passes — the real work happened May 4–6 and was already captured in MEMORY.md. The 13th \"Promoted From Short-Term Memory\" junk block has appeared at the bottom again. MEMORY.md is at 209 lines (over limit). I",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "memory.md",
+        "short-term",
+        "good",
+        "full",
+        "picture",
+        "may",
+        "all",
+        "maintenance"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:31:31": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:31:31",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 31,
+      "endLine": 31,
+      "source": "memory",
+      "snippet": "Assistant: Good — 197 lines, clean. Now write today's dream entry to the May 9 daily file.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "good",
+        "clean",
+        "now",
+        "write",
+        "today's",
+        "dream",
+        "entry",
+        "may"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-09.txt:32:32": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-09.txt:32:32",
+      "path": "memory/.dreams/session-corpus/2026-05-09.txt",
+      "startLine": 32,
+      "endLine": 32,
+      "source": "memory",
+      "snippet": "Assistant: Done. Thirty-fourth night, clean pass. **What happened this run:** - Read daily files May 3–8: all were maintenance dreams, no new substantive sessions to capture - MEMORY.md was current and accurate — the May 4–6 work (Repair Spectrum, HRV chart, ADHD+LC sensory hypot",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "962844034959"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "thirty-fourth",
+        "memory.md",
+        "done",
+        "thirty",
+        "fourth",
+        "night",
+        "clean",
+        "pass"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:64:64": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:64:64",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 64,
+      "endLine": 64,
+      "source": "memory",
+      "snippet": "Assistant: That's it — you're likely on `index.html` (the root), not `index-v2.html`. The root file still has the old compression UI. Let me apply the same changes there:",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "index.html",
+        "index-v2.html",
+        "that's",
+        "you're",
+        "likely",
+        "root",
+        "not",
+        "index"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:65:65": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:65:65",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 65,
+      "endLine": 65,
+      "source": "memory",
+      "snippet": "Assistant: Got it — same set of changes needed in `index.html`. Applying all at once:",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "index.html",
+        "got",
+        "set",
+        "changes",
+        "needed",
+        "applying",
+        "all",
+        "once"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:66:66": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:66:66",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 66,
+      "endLine": 66,
+      "source": "memory",
+      "snippet": "Assistant: Now the summary icon/label fix and the load-existing back-compat for `index.html` too:",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "icon/label",
+        "load-existing",
+        "back-compat",
+        "index.html",
+        "now",
+        "summary",
+        "icon",
+        "label"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:67:67": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:67:67",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 67,
+      "endLine": 67,
+      "source": "memory",
+      "snippet": "Assistant: ✅ Live on the root URL now too. Hard-refresh (`Cmd+Shift+R`) and the compression question should show *Abdomen / Hips / Thighs / Calves* as independent toggles.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "hard-refresh",
+        "live",
+        "root",
+        "url",
+        "now",
+        "too",
+        "hard",
+        "refresh"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:68:68": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:68:68",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 68,
+      "endLine": 68,
+      "source": "memory",
+      "snippet": "User: I'm using '<http://100.70.3.21:8765/>' and i'm seeing it now.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "100.70.3.21",
+        "i'm",
+        "http",
+        "seeing",
+        "now"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:69:69": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:69:69",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 69,
+      "endLine": 69,
+      "source": "memory",
+      "snippet": "Assistant: [[reply_to_current]] Great! Any other changes for Cadence?",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "reply-to-current",
+        "great",
+        "any",
+        "other",
+        "changes",
+        "cadence"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:70:70": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:70:70",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 70,
+      "endLine": 70,
+      "source": "memory",
+      "snippet": "User: Hannah would like to expand \"Did you leave home today\" to something more granular. Below was her example, but we should think about it a little: The options I’d want are like are: No- stayed in apartment all day No- stayed in building but went to doors / mail / lobby No - s",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "hannah",
+        "would",
+        "like",
+        "expand",
+        "did",
+        "leave",
+        "home",
+        "something"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:71:71": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:71:71",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 71,
+      "endLine": 71,
+      "source": "memory",
+      "snippet": "Assistant: [[reply_to_current]] Hannah's framing is good — it's really capturing two things at once: *exertion level* and *environment exposure*. Let me think through this clinically for a LC/dysautonomia patient. The key dimensions are: 1. **Orthostatic load** — how much upright",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "reply-to-current",
+        "lc/dysautonomia",
+        "hannah's",
+        "framing",
+        "good",
+        "it's",
+        "really",
+        "capturing"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:72:72": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:72:72",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 72,
+      "endLine": 72,
+      "source": "memory",
+      "snippet": "Assistant: (they're clinically similar) - Keeps the car/walk distinction she wanted (very relevant — passive transport vs active movement) - Drops the yes/no framing entirely since the scale makes it implicit For the DB key I'd keep `left_home` as the field but store the new valu",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "car/walk",
+        "yes/no",
+        "left-home",
+        "they're",
+        "clinically",
+        "similar",
+        "keeps",
+        "car"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:73:73": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:73:73",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 73,
+      "endLine": 73,
+      "source": "memory",
+      "snippet": "Assistant: design?",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "design"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:74:74": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:74:74",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 74,
+      "endLine": 74,
+      "source": "memory",
+      "snippet": "User: I like your idea and so does hannah. Love your emoji choices.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "like",
+        "idea",
+        "does",
+        "hannah",
+        "love",
+        "emoji",
+        "choices"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-05-08.txt:75:75": {
+      "key": "memory:memory/.dreams/session-corpus/2026-05-08.txt:75:75",
+      "path": "memory/.dreams/session-corpus/2026-05-08.txt",
+      "startLine": 75,
+      "endLine": 75,
+      "source": "memory",
+      "snippet": "Assistant: [[reply_to_current]] On it! 🦉",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-05-10T03:00:00.719Z",
+      "lastRecalledAt": "2026-05-10T03:00:00.719Z",
+      "queryHashes": [
+        "d62c1963872e"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "reply-to-current"
+      ]
+    },
+    "memory:memory/2026-04-23.md:1:42": {
+      "key": "memory:memory/2026-04-23.md:1:42",
+      "path": "memory/2026-04-23.md",
+      "startLine": 1,
+      "endLine": 42,
+      "source": "memory",
+      "snippet": "## Dream _Nightly consolidation run — 13:00 UTC (Thursday, April 23)_ Twentieth night. A quiet pass — yesterday's dream did most of the work. --- ### What Was New Since Yesterday's Dream **Apr 22 post-dream session:** - David asked to update Hannah's dashboard with fresh backfill data - Revealed important architectural detail: `hannah-dashboard.html` is **hardcoded** HTML (manually updated), not a live-fetching page. `dashboard.html` is the dynamic one. - Server serves from `prototype/` — not `public/` - Recovery **1%** on Apr 22 (absolute floor), only 1.2h sleep — Hannah in significant crash - New LC paper added to wiki (PDF drop by David) — **34th source** now ingested - `whoop_daily`",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.395484060049057,
+      "maxScore": 0.395484060049057,
+      "firstRecalledAt": "2026-05-10T03:00:11.025Z",
+      "lastRecalledAt": "2026-05-10T03:00:11.025Z",
+      "queryHashes": [
+        "c1df9915f653"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "post-dream",
+        "hannah-dashboard.html",
+        "live-fetching",
+        "dashboard.html",
+        "1.2h",
+        "whoop-daily",
+        "dream",
+        "nightly"
+      ]
+    },
+    "memory:memory/2026-04-09.md:1:31": {
+      "key": "memory:memory/2026-04-09.md:1:31",
+      "path": "memory/2026-04-09.md",
+      "startLine": 1,
+      "endLine": 31,
+      "source": "memory",
+      "snippet": "# 2026-04-09 ## Dream _Nightly consolidation run — 13:00 UTC (Thursday)_ Sixth night. The owl is well and truly a creature of habit now. **What I found:** - Still no new daily files since March 26. The gap is now 14 days. - MEMORY.md remains clean, accurate, and under 200 lines. Updated dream run count to 6. - Nothing new to consolidate for the sixth consecutive morning. **Pattern confirmed:** Six dreams, one substantive daily file (March 26), and a faithfully maintained MEMORY.md. The architecture is sound. The input stream is the gap. This is no longer something worth belaboring — it's the known state of the system until something changes. **The steady state (unchanged):** - 14 clini",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3909063726663589,
+      "maxScore": 0.3909063726663589,
+      "firstRecalledAt": "2026-05-10T03:00:11.025Z",
+      "lastRecalledAt": "2026-05-10T03:00:11.025Z",
+      "queryHashes": [
+        "c1df9915f653"
+      ],
+      "recallDays": [
+        "2026-05-10"
+      ],
+      "conceptTags": [
+        "memory.md",
+        "dream",
+        "nightly",
+        "consolidation",
+        "run",
+        "utc",
+        "thursday",
+        "sixth"
       ]
     }
   }
