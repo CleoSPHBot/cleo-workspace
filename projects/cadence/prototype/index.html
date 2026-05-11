@@ -1148,6 +1148,7 @@
       <button class="option-btn green" id="compress-ci-hips" onclick="toggleCompression('hips','Hips','compress-ci-hips')"><div class="option-icon">🩲</div><div><div class="option-label">Hips</div><div class="option-sub">Hip compression</div></div></button>
       <button class="option-btn green" id="compress-ci-lower" onclick="toggleCompression('lower','Thighs','compress-ci-lower')"><div class="option-icon">🦵</div><div><div class="option-label">Thighs</div><div class="option-sub">Thigh compression</div></div></button>
       <button class="option-btn green" id="compress-ci-calf" onclick="toggleCompression('calf','Calves','compress-ci-calf')"><div class="option-icon">🧦</div><div><div class="option-label">Calves</div><div class="option-sub">Compression socks</div></div></button>
+      <button class="option-btn red" id="compress-ci-none" onclick="toggleCompressionNone()"><div class="option-icon">🚫</div><div><div class="option-label">No Compression</div><div class="option-sub">Didn't wear any today</div></div></button>
     </div>
   </div>
 
@@ -1339,6 +1340,7 @@
     <button class="option-btn green" id="compress-step-hips" onclick="toggleCompression('hips','Hips','compress-step-hips')"><div class="option-icon">🩲</div><div><div class="option-label">Hips</div><div class="option-sub">Hip compression</div></div></button>
     <button class="option-btn green" id="compress-step-lower" onclick="toggleCompression('lower','Thighs','compress-step-lower')"><div class="option-icon">🦵</div><div><div class="option-label">Thighs</div><div class="option-sub">Thigh compression</div></div></button>
     <button class="option-btn green" id="compress-step-calf" onclick="toggleCompression('calf','Calves','compress-step-calf')"><div class="option-icon">🧦</div><div><div class="option-label">Calves</div><div class="option-sub">Compression socks</div></div></button>
+    <button class="option-btn red" id="compress-step-none" onclick="toggleCompressionNone()"><div class="option-icon">🚫</div><div><div class="option-label">No Compression</div><div class="option-sub">Didn't wear any today</div></div></button>
   </div>
   <div class="nav-row">
     <button class="btn-back" onclick="stepGoTo('q8')">←</button>
@@ -2804,7 +2806,7 @@
           7:{field:'food',options:{clean:'🟢 Clean',mixed:'🟡 Mixed',inflammatory:'🔴 Inflammatory'}},
           8:{field:'probiotics',options:{yes:'✅ Yes',no:'❌ No'}},
           9:{field:'stimulants',options:{yes:'⚡ Yes',no:'✅ No'}},
-          10:{field:'compression',options:{upper:'🩱 Abdomen',hips:'🩲 Hips',lower:'🦵 Thighs',calf:'🧦 Calves'}},  // multi-select array
+          10:{field:'compression',options:{upper:'🩱 Abdomen',hips:'🩲 Hips',lower:'🦵 Thighs',calf:'🧦 Calves',none:'🚫 No Compression'}},  // multi-select array
           11:{field:'sodium_goal',options:{yes:'✅ Yes',no:'❌ No'}},
           12:{field:'hours_upright',options:{lt2:'🛋️ < 2 hrs','2to4':'🪑 2-4 hrs','4to6':'🧍 4-6 hrs',gt6:'🚶 6+ hrs'}},
         };
@@ -2812,7 +2814,7 @@
           const val = d[field]; if (!val) continue;
           if (field === 'compression') {
             const zones = Array.isArray(val) ? val : [val];
-            const zoneMap = { upper: 'Abdomen', hips: 'Hips', lower: 'Thighs', calf: 'Calves' };
+            const zoneMap = { upper: 'Abdomen', hips: 'Hips', lower: 'Thighs', calf: 'Calves', none: 'No Compression' };
             answers[qNum] = { val: zones, label: zones.map(z => zoneMap[z] || z).join(', ') };
             ['ci', 'step'].forEach(prefix => {
               zones.forEach(z => {
@@ -2869,9 +2871,12 @@
   }
 
   // Multi-select toggle for compression (Q10)
-  // DB keys: upper=Abdomen, hips=Hips, lower=Thighs, calf=Calves
+  // DB keys: upper=Abdomen, hips=Hips, lower=Thighs, calf=Calves, none=No Compression
   function toggleCompression(zone, label, btnId) {
     if (!answers[10]) answers[10] = { val: [], label: '' };
+    // If "none" was selected, clear it first
+    const noneIdx = answers[10].val.indexOf('none');
+    if (noneIdx >= 0) answers[10].val.splice(noneIdx, 1);
     const zones = answers[10].val;
     const idx = zones.indexOf(zone);
     if (idx >= 0) {
@@ -2885,8 +2890,37 @@
         const btn = document.getElementById('compress-' + prefix + '-' + z);
         if (btn) btn.classList.toggle('selected', zones.includes(z));
       });
+      const noneBtn = document.getElementById('compress-' + prefix + '-none');
+      if (noneBtn) noneBtn.classList.remove('selected');
     });
     answers[10].label = zones.map(z => zoneMap[z]).join(', ') || '';
+    const stepBtn = document.getElementById('step-next-10');
+    if (stepBtn) stepBtn.disabled = false;
+  }
+
+  function toggleCompressionNone() {
+    if (!answers[10]) answers[10] = { val: [], label: '' };
+    // Toggle none: if already selected, deselect; otherwise select and clear zones
+    const zones = answers[10].val;
+    const noneIdx = zones.indexOf('none');
+    if (noneIdx >= 0) {
+      zones.splice(noneIdx, 1);
+      answers[10].label = '';
+    } else {
+      // Clear all zone selections
+      answers[10].val = ['none'];
+      answers[10].label = 'No Compression';
+    }
+    const zoneMap = { upper: 'Abdomen', hips: 'Hips', lower: 'Thighs', calf: 'Calves' };
+    const isNone = answers[10].val.includes('none');
+    ['ci', 'step'].forEach(prefix => {
+      Object.keys(zoneMap).forEach(z => {
+        const btn = document.getElementById('compress-' + prefix + '-' + z);
+        if (btn) btn.classList.remove('selected');
+      });
+      const noneBtn = document.getElementById('compress-' + prefix + '-none');
+      if (noneBtn) noneBtn.classList.toggle('selected', isNone);
+    });
     const stepBtn = document.getElementById('step-next-10');
     if (stepBtn) stepBtn.disabled = false;
   }

@@ -195,16 +195,13 @@ Common corrections when verifying medication names against FDB:
 - **bisacodyl** — two forms: plain tablet vs `,delayed release` — confirm formulary
 - **PEG 3350** — two forms: `oral powder` (bulk canister) vs `oral powder packet` (unit-dose) — confirm formulary
 
+## Promoted From Short-Term Memory (2026-05-11)
 
-## Promoted From Short-Term Memory (2026-05-10)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-05-03.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Sunday, May 3)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-03.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-03.md:7:7 -->
-- Twenty-eighth night. A quiet maintenance pass. [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-03.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-03.md:13:13 -->
-- **No post-dream session on May 2. No new work to capture.** [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-03.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-03.md:15:15 -->
-- The May 2 dream already did heavy lifting — it processed the full May 1 session: correlation analysis, 4-bar budget models, three-day homepage, Brave Search fix, and the pm2/systemd resurrection lesson. [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-03.md:15-15]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-03.md:17:17 -->
-- **This pass:** [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-03.md:17-17]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-04.md:7:7 -->
+- David shared Hannah's data-driven pacing protocol, derived from 774 days of WHOOP + Visible data. Key finding: **3-day lag** — how you feel today is set by what you did 3 days ago. [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-04.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-04.md:11:11 -->
+- **🔴 Red Day (recovery < 34)** [score=0.884 recalls=0 avg=0.620 source=memory/2026-05-04.md:11-11]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-04.md:15:15 -->
+- **🟡 Yellow Day (recovery 34–66)** [score=0.884 recalls=0 avg=0.620 source=memory/2026-05-04.md:15-15]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-04.md:19:19 -->
+- **🟢 First Green Day after a bad stretch** [score=0.884 recalls=0 avg=0.620 source=memory/2026-05-04.md:19-19]
