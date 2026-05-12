@@ -67,6 +67,7 @@
 - When people say "QB", "QSph", "check the docs" → use cleo-qbusiness skill
 - **Catalog:** `s3://sph-amazon-q/catalog.yaml` — **54 documents** as of 2026-04-14
 - **Recent additions (Apr 9–14):** Lindberg 2026 (MIRACLE-S CV risk), Trubetskoy 2026 (skin SARS-CoV-2 entry), Freire 2026 (persistent Spike gut biopsies), + 5 pacing papers (Meach 2024, Ghali 2023, Vink 2025/2022, Godfrey 2025 PACELOC)
+- **May 11 addition:** Faghy et al. 2025 (Nature CommsMed) — comprehensive LC pathophysiology review; 6 mechanistic pillars; no validated biomarkers; no curative treatments; ME/CFS overlap. Wiki: `sources/faghy-2025.md`. QB synced.
 - **LongCOVID-Research data source ID:** `89032f82-4ad1-4394-8258-47d8287ccf61` (S3 prefix: `lc-app/`)
 
 ## Security Notes
@@ -101,7 +102,7 @@
 - **Open questions:** Infrastructure, Rounds bridge, multipatient scale, HIPAA path
 
 ## Standing Rules
-- *Before making any changes to the Cadence app or server*, back up the MongoDB `cadence-dev` database first. Lesson learned 2026-05-07: notes bug wiped Hannah's May 6 notes and we had no recovery path.
+- **Back up `cadence-dev` MongoDB before any Cadence app/server changes.** (2026-05-07: notes bug wiped Hannah's May 6 notes, no recovery path.)
 
 ## Key Decisions & Lessons
 - Always format NDCs with dashes: 5-4-2 (e.g., 00071-0155-23)
@@ -110,8 +111,7 @@
 - Git remote: github.com/CleoSPHBot/cleo-workspace.git, daily backup at 7 AM UTC
 - **daily-backup cron:** Created 2026-04-06, runs 13:00 UTC daily, script: `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout, model: claude-sonnet-4-20250514
 - **Daily memory writing is working** — dream cron (13:00 UTC nightly) established 2026-04-04. Main session writing daily files consistently since 2026-04-10.
-- **OpenClaw updated to 2026.4.14** (323493f, ~Apr 15). Teams desktop image attachments now working (Edgar applied fix). Prototype server running on port 8765.
-- **OpenClaw upgraded to 2026.5.4** (325df3e, May 6). brave-plugin + msteams updated to 2026.5.4, loading from `~/.openclaw/npm/`. Brave, Teams, Slack all confirmed working post-upgrade.
+- **OpenClaw:** 2026.4.14 (Apr 15, Teams desktop image fix) → 2026.5.4 (May 6, brave-plugin + msteams from `~/.openclaw/npm/`). Brave, Teams, Slack all confirmed working.
 - **Brave Search API key:** Set up 2026-04-12. Fixed May 2: set `tools.web.search.provider brave`, disabled MiniMax + Google plugins (no keys). Free tier: 1 req/sec, 2000/month — call sequentially, not in parallel. Hard restart required after plugin enablement changes (`systemctl --user restart openclaw-gateway.service`; then `pm2 resurrect`).
 
 ## Project Cadence
@@ -195,13 +195,18 @@ Common corrections when verifying medication names against FDB:
 - **bisacodyl** — two forms: plain tablet vs `,delayed release` — confirm formulary
 - **PEG 3350** — two forms: `oral powder` (bulk canister) vs `oral powder packet` (unit-dose) — confirm formulary
 
-## Promoted From Short-Term Memory (2026-05-11)
+## Backup Issue (Open)
+- **Daily backup failing since ~May 2:** GitHub push protection blocks push — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016).
+- **Fix needed:** Git history rewrite (BFG/filter-branch) + token rotation. Awaiting David's go-ahead.
+- **Prevention:** Add `config/openclaw.json` to `.gitignore` before fixing.
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-04.md:7:7 -->
-- David shared Hannah's data-driven pacing protocol, derived from 774 days of WHOOP + Visible data. Key finding: **3-day lag** — how you feel today is set by what you did 3 days ago. [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-04.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-04.md:11:11 -->
-- **🔴 Red Day (recovery < 34)** [score=0.884 recalls=0 avg=0.620 source=memory/2026-05-04.md:11-11]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-04.md:15:15 -->
-- **🟡 Yellow Day (recovery 34–66)** [score=0.884 recalls=0 avg=0.620 source=memory/2026-05-04.md:15-15]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-04.md:19:19 -->
-- **🟢 First Green Day after a bad stretch** [score=0.884 recalls=0 avg=0.620 source=memory/2026-05-04.md:19-19]
+## Promoted From Short-Term Memory (2026-05-12)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-05-05.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Tuesday, May 5)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-05.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-05.md:7:7 -->
+- Thirtieth night. A clean maintenance pass. [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-05.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-05.md:13:13 -->
+- **May 4 session captured the Repair Spectrum Framework** — that was the big one. The May 4 dream already processed it fully and wrote it into MEMORY.md. No post-dream sessions on May 4 to capture. [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-05.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-05.md:15:15 -->
+- **May 5 (this pass):** [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-05.md:15-15]
