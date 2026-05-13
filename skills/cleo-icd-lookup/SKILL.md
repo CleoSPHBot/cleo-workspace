@@ -23,6 +23,7 @@ Format results for Teams (no markdown tables — use bold labels and bullet list
 🏥 **ICD-10-CM {code}**
 
 **{description}**
+⏱ **Disease Duration:** {Acute | Chronic | Both | Not Applicable}
 
 **Hierarchy:**
 - {parent_code}: {parent_desc}
@@ -50,6 +51,7 @@ _Source: FDB {database}_
 3. For indicated drugs, show top 20 alphabetically and note total count if more
 4. If `found: false`, respond: "ICD-10 code {code} not found in FDB. Check the format or try a different code."
 5. Status: note if code is inactive
+6. Disease duration: show `disease_duration.summary` from the result. If null (no DXID mapping), omit the line. For "Both", clarify as "Acute or Chronic"
 
 ## Options
 

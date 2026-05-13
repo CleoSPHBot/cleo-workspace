@@ -32,6 +32,12 @@
 - Location: `~/.Py3Env` (if set up — check before using)
 - For Python package installs, use venv — don't `--break-system-packages`
 
+## LC Wiki
+- Location: `projects/cadence/wiki/`
+- ~102 pages: sources, entities, concepts, synthesis
+- Hannah has full access — she can ask questions about her condition, research, treatments
+- Repo: `github.com/CleoSPHBot/lc-wiki` (private)
+
 ## Agent Family
 
 | Agent | Animal | Emoji | Role |

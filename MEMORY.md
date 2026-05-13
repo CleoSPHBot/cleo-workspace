@@ -94,12 +94,23 @@
 - **CLAUDE.md:** Added to Cadence project with full context (Karpathy guidelines, Eastern time warning, wiki as separate git repo, upsert pattern)
 - **Workflow:** I spawn Claude Code as ACP session (`mode: session` = persistent); iterative task delegation; improves quality on established codebases
 - **David OAuth:** Logged in from his machine
-
 ## Patient KB Spec (Apr 18)
 - **Spec:** `projects/cadence/specs/patient-knowledge-base.md`
 - **Vision:** Patient's "second brain" — Personal Data + Personal Journal + Curated Research layers
 - **Cleo role:** Intelligence layer (drug lookups, pattern detection, appointment prep, research feed)
 - **Open questions:** Infrastructure, Rounds bridge, multipatient scale, HIPAA path
+
+## Authorized Users
+- **David Munguia** (Slack: U0B0TBEQW7N) — Owner. Full access. Load MEMORY.md in his sessions.
+- **Hannah** (Slack: U0B3BPBSUMU) — LC patient, Cadence user. Full access to Cadence, QB, LC wiki, clinical Q&A. Do NOT load MEMORY.md in her sessions (contains David's private context). Added 2026-05-12.
+
+## Cleo 2.0 Vision (2026-05-12)
+- **Direction:** Expand from clinical data tool → LC patient companion, starting with Hannah
+- **Core additions:** day planning by energy budget, pacing nudges, symptom pattern translation, appointment prep, persistent memory across sessions
+- **Tone for LC patients:** patient, warm, organized, never overwhelming. Meet them at their capacity.
+- **Proactive future:** reach out when data signals a crash coming; help structure days around real energy. Needs Cadence pipeline + Slack push.
+- **Design principle:** Hannah is the prototype user. What works for her informs what LC patients broadly need.
+- **David's framing:** "Your biggest help will be your knowledge, patience, and organizing skills."
 
 ## Standing Rules
 - **Back up `cadence-dev` MongoDB before any Cadence app/server changes.** (2026-05-07: notes bug wiped Hannah's May 6 notes, no recovery path.)
@@ -109,8 +120,8 @@
 - UPC → NDC isn't always reliable for OTC products (retail UPCs ≠ drug NDCs)
 - When OCR is available, prefer reading printed NDC over UPC barcode conversion
 - Git remote: github.com/CleoSPHBot/cleo-workspace.git, daily backup at 7 AM UTC
-- **daily-backup cron:** Created 2026-04-06, runs 13:00 UTC daily, script: `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout, model: claude-sonnet-4-20250514
-- **Daily memory writing is working** — dream cron (13:00 UTC nightly) established 2026-04-04. Main session writing daily files consistently since 2026-04-10.
+- **daily-backup cron:** 13:00 UTC daily, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken** (see Backup Issue section).
+- **Dream cron:** 13:00 UTC nightly, established 2026-04-04. Daily files consistent since 2026-04-10.
 - **OpenClaw:** 2026.4.14 (Apr 15, Teams desktop image fix) → 2026.5.4 (May 6, brave-plugin + msteams from `~/.openclaw/npm/`). Brave, Teams, Slack all confirmed working.
 - **Brave Search API key:** Set up 2026-04-12. Fixed May 2: set `tools.web.search.provider brave`, disabled MiniMax + Google plugins (no keys). Free tier: 1 req/sec, 2000/month — call sequentially, not in parallel. Hard restart required after plugin enablement changes (`systemctl --user restart openclaw-gateway.service`; then `pm2 resurrect`).
 
@@ -196,17 +207,6 @@ Common corrections when verifying medication names against FDB:
 - **PEG 3350** — two forms: `oral powder` (bulk canister) vs `oral powder packet` (unit-dose) — confirm formulary
 
 ## Backup Issue (Open)
-- **Daily backup failing since ~May 2:** GitHub push protection blocks push — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016).
-- **Fix needed:** Git history rewrite (BFG/filter-branch) + token rotation. Awaiting David's go-ahead.
-- **Prevention:** Add `config/openclaw.json` to `.gitignore` before fixing.
+- **Failing since ~May 2:** GitHub push protection blocks push — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016).
+- **Fix:** Git history rewrite (BFG) + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
 
-## Promoted From Short-Term Memory (2026-05-12)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-05-05.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Tuesday, May 5)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-05.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-05.md:7:7 -->
-- Thirtieth night. A clean maintenance pass. [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-05.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-05.md:13:13 -->
-- **May 4 session captured the Repair Spectrum Framework** — that was the big one. The May 4 dream already processed it fully and wrote it into MEMORY.md. No post-dream sessions on May 4 to capture. [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-05.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-05.md:15:15 -->
-- **May 5 (this pass):** [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-05.md:15-15]

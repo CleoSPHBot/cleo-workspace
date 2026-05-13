@@ -84,7 +84,46 @@ async function lookupICD(db, code) {
     }
   }
 
-  // 3. Related DXIDs via ICD Search
+  // 3. Disease duration (chronic/acute) via DXID walk-up
+  // FDB maps at category level (e.g. E11, not E11.9), so walk up the code until we find a match
+  const durMap = { '0': 'Not Applicable', '1': 'Acute', '2': 'Chronic', '3': 'Both' };
+  const codeNoDot = code.replace('.', '');
+  let durationResult = null;
+  for (let len = codeNoDot.length; len >= 3; len--) {
+    const candidate = codeNoDot.slice(0, len);
+    const durLinks = await db.collection('RFMLISR1_ICD_SEARCH')
+      .find({ SEARCH_ICD_CD: candidate, ICD_CD_TYPE: '05' })
+      .toArray();
+    if (durLinks.length > 0) {
+      const durDxIds = [...new Set(durLinks.map(l => l.RELATED_DXID))];
+      const durDxDocs = await db.collection('RFMLDX0_DXID')
+        .find({ DXID: { $in: durDxIds } })
+        .toArray();
+      // Collect all unique duration values
+      const durCodes = [...new Set(durDxDocs.map(d => d.DXID_DISEASE_DURATION_CD))];
+      // Summarize: if any say Chronic or Both, lean that way; if all Acute, say Acute
+      let summary;
+      const hasChronic = durCodes.some(c => c === '2' || c === '3');
+      const hasAcute = durCodes.some(c => c === '1' || c === '3');
+      if (hasChronic && hasAcute) summary = 'Both';
+      else if (hasChronic) summary = 'Chronic';
+      else if (hasAcute) summary = 'Acute';
+      else summary = durMap[durCodes[0]] || 'Not Applicable';
+      durationResult = {
+        summary,
+        matched_code: candidate,
+        details: durDxDocs.map(d => ({
+          dxid: d.DXID,
+          description: d.DXID_DESC100,
+          duration: durMap[d.DXID_DISEASE_DURATION_CD] || d.DXID_DISEASE_DURATION_CD
+        }))
+      };
+      break;
+    }
+  }
+  result.disease_duration = durationResult;
+
+  // 4. Related DXIDs via ICD Search
   const icdSearchResults = await db.collection('RFMLISR1_ICD_SEARCH')
     .find({ SEARCH_ICD_CD: code })
     .toArray();
@@ -114,7 +153,7 @@ async function lookupICD(db, code) {
       };
     }).sort((a, b) => a.description.localeCompare(b.description));
 
-    // 4. Indicated drugs — from DXIDs linked to indications module
+    // 5. Indicated drugs — from DXIDs linked to indications module
     const indicationDxIds = icdSearchResults
       .filter(r => r.FML_CLIN_CODE === '01')
       .map(r => r.RELATED_DXID);
