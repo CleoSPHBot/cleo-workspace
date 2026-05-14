@@ -78,31 +78,19 @@
 - **Platform:** Expo React Native (iOS + Android); strategy: HTML prototypes (Cleo) → backend API (David) → RN build
 - **Prescribing workflow:** Verbal order → Nurse stages (DRAFT) → Doctor signs → Surescripts transmits
 - **Order states:** DRAFT → STAGED → SIGNED → TRANSMITTED → CONFIRMED → ADMINISTERED
-- **Project file:** `projects/rounds/README.md`; **Figma:** EHR `FF0O3AiVbjlIr6tuk2RavO` | Mobile App `cr2l2yq0YFn6PGR3luD1tk`; **token:** `/home2/cleo/figma-key`
-- **Prototype (Apr 18):** login.html, index.html (census), patient.html (accordion), order-new.html — port 8766 at http://100.70.3.21:8766/login.html
-- **Design system:** SPH blue #1a5f8a gradient, white body, urgency bars (red/yellow), accordion detail, pill image slots for FDB
-- **Backend (Apr 21):** Service `aegis_mobile` running on port 15170 (cleo server); MongoDB connected; JWT auth off for dev; `/ping` + `/health` endpoints live
-- **Figma MCP:** Server running on port 3845, wired into Claude Code via `.mcp.json` in Rounds + Cadence project dirs
-- **Figma naming convention (Apr 21):** `screen/screen-element` pattern (e.g., `dashboard/resident`, `dashboard/conditions`)
-- **Backend source:** `git@github.com:SpectatorHealth/aegis_server.git`, branch `ub24_port` (C++ + MongoDB). Routes confirmed: `/residents` (census, sorted by name/residentId, excludes inactive) + `/details` (residents + AlertLog entries with thumbnail/age/dob). **CleoSPHBot has write access (Apr 26).**
-- **Status:** Prototype delivered + backend routes being built. Next: wire prototype to aegis_mobile API.
-- **DESIGN.md (created Apr 25):** Shared cross-project design doc — `projects/DESIGN.md` — color palette, component patterns, interaction conventions for Cadence + Rounds.
+- **Figma:** EHR `FF0O3AiVbjlIr6tuk2RavO` | Mobile `cr2l2yq0YFn6PGR3luD1tk`; token `/home2/cleo/figma-key`; MCP port 3845; naming `screen/screen-element`
+- **Prototype:** login/index/patient/order-new html — port 8766. Design: SPH blue #1a5f8a, urgency bars, FDB pill slots.
+- **Backend:** `aegis_mobile` port 15170; `aegis_server.git` branch `ub24_port` (C++/MongoDB); `/residents` + `/details` live; CleoSPHBot write access.
+- **Status:** Prototype delivered. Next: wire to aegis_mobile API. **DESIGN.md:** `projects/DESIGN.md` — shared Cadence+Rounds design system.
 
-## Claude Code (Apr 18)
-- **Installed:** CLI v2.1.114 on cleo server; API keys in `~/keys` (line 1 → Anthropic, line 2 → Claude Code key)
-- **ACP config:** Enabled in `openclaw.json` (`defaultAgent: claude`, `permissionMode: approve-all`); gateway restarted
-- **CLAUDE.md:** Added to Cadence project with full context (Karpathy guidelines, Eastern time warning, wiki as separate git repo, upsert pattern)
-- **Workflow:** I spawn Claude Code as ACP session (`mode: session` = persistent); iterative task delegation; improves quality on established codebases
-- **David OAuth:** Logged in from his machine
-## Patient KB Spec (Apr 18)
-- **Spec:** `projects/cadence/specs/patient-knowledge-base.md`
-- **Vision:** Patient's "second brain" — Personal Data + Personal Journal + Curated Research layers
-- **Cleo role:** Intelligence layer (drug lookups, pattern detection, appointment prep, research feed)
-- **Open questions:** Infrastructure, Rounds bridge, multipatient scale, HIPAA path
+## Claude Code + Patient KB (Apr 18)
+- CLI v2.1.114; API keys `~/keys`; ACP config: `defaultAgent: claude`, `permissionMode: approve-all`; David OAuth active
+- CLAUDE.md in Cadence project; spawn as ACP session (persistent); iterative task delegation
+- **Patient KB Spec:** `projects/cadence/specs/patient-knowledge-base.md` — "second brain" vision (Personal Data + Journal + Research). Cleo = intelligence layer.
 
 ## Authorized Users
 - **David Munguia** (Slack: U0B0TBEQW7N) — Owner. Full access. Load MEMORY.md in his sessions.
-- **Hannah** (Slack: U0B3BPBSUMU) — LC patient, Cadence user. Full access to Cadence, QB, LC wiki, clinical Q&A. Do NOT load MEMORY.md in her sessions (contains David's private context). Added 2026-05-12.
+- **Hannah** (Slack: U0B3BPBSUMU) — LC patient, Cadence user. Full access to Cadence, QB, LC wiki, clinical Q&A. Do NOT load MEMORY.md in her sessions.
 
 ## Cleo 2.0 Vision (2026-05-12)
 - **Direction:** Expand from clinical data tool → LC patient companion, starting with Hannah
@@ -210,3 +198,16 @@ Common corrections when verifying medication names against FDB:
 - **Failing since ~May 2:** GitHub push protection blocks push — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016).
 - **Fix:** Git history rewrite (BFG) + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
 
+
+## Promoted From Short-Term Memory (2026-05-14)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-15.md:118:143 -->
+- - Hannah (6729032): 1,438 sleep, 1,006 recovery, 222 workout, 1,065 cycle records back to Dec 2022 - Script: `whoop_backfill.py` — Python, uses .env or Secrets Manager fallback (`com.sph.dev.whoop`) - WHOOP API clarification: `/developer/v1/` = cycle only (integer IDs); `/developer/v2/` = sleep/recovery/workout (UUID IDs) - 2,272 total daily records in `cadence-dev` → `whoop_daily` **Hannah's first biometrics (Apr 14):** - HRV: 22.9 ms (very low) - Recovery: 32% (poor/red zone) - Resting HR: 81 bpm (elevated) - SpO2: 91.7% (below normal — ⚠️ flag) - Skin temp: 35.0°C **Hannah background:** MIT grad student, on medical leave. East Coast timezone. Today had admin meeting with MIT — counts as cognitive/emotional exertion, not just physical activity. **iOS App Design:** - Brain fog is the #1 design constraint — under 60 seconds on worst days - 3 required questions: Overall feeling (3-tap emoji) / PEM (None/Mild/Severe) / Brain fog - Diet tracking: anti-inflammatory 🟢 vs pro-inflammatory 🔴 framework (gut/Spike protein rationale) - Activity = cognitive + emotional load, not just physical (MIT meeting = 🔴 demanding) - Design Charter written: `projects/cadence/DESIGN_CHARTER.md` **v2 vision: Phenotype-adaptive app** - Onboarding classifies patient into LC phenotype (PEM/ME-CFS, Dysautonomia/POTS, Gut/Viral, Cognitive, Cardiovascular) - Daily questions adapt to phenotype - Hannah = Gut/Viral persistence + PEM/Dysautonomia hybrid [score=0.915 recalls=4 avg=0.663 source=memory/2026-04-15.md:118-143]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-07.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Thursday, May 7)_ [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-07.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-07.md:7:7 -->
+- Thirty-second night. A clean pass on a quiet morning. [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-07.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-07.md:15:15 -->
+- **New today — Standing Rules entry (live session, May 7):** [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-07.md:15-15]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-07.md:20:20 -->
+- **No junk block this pass.** Deep sleep system checked in — 0 candidates promoted (May 5–6 content already in MEMORY.md). Clean. [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-07.md:20-20]
