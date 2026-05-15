@@ -269,6 +269,23 @@ const MED_LIST = [
   { key: 'colostrum',   label: 'Cymbiotika Colostrum',   note: 'liquid colostrum — immune + gut' },
   { key: 'magnesium',   label: 'Cymbiotika Magnesium Complex', note: 'magnesium — sleep + muscle' },
   { key: 'vitamin_c',   label: 'Aurora Liposomal Vitamin C',  note: 'liposomal vitamin C — immune' },
+  { key: 'nad_plus',         label: 'Cymbiotika NAD+',            note: 'NAD+ — cellular energy' },
+  { key: 'glutathione',      label: 'Cymbiotika Glutathione',     note: 'master antioxidant' },
+  { key: 'mag_glycinate',    label: 'Magnesium Glycinate',        note: '120 mg — sleep + calm' },
+  { key: 'propranolol',      label: 'Propranolol',                note: '10 mg — heart rate / dysautonomia' },
+  { key: 'precision_hydro',  label: 'Precision Hydration 1000s', note: 'electrolytes — POTS/dysautonomia' },
+  { key: 'bpc157',           label: 'BPC-157',                   note: 'peptide — gut + healing' },
+  { key: 'thymosin',         label: 'Thymosin Injection',         note: 'immune modulation' },
+  { key: 'motc',             label: 'MOT-C Injection',            note: 'mitochondrial peptide' },
+  { key: 'zyrtec',           label: 'Zyrtec',                    note: 'cetirizine — antihistamine' },
+  { key: 'vagus_nerve',      label: 'Vagus Nerve Stimulation',   note: '10 min — nervous system' },
+  { key: 'oxygen_conc',      label: 'Oxygen Concentrator',       note: '30 min — oxygenation' },
+  { key: 'red_light',        label: 'Red Light Therapy',         note: '15 min — mitochondrial support' },
+  { key: 'tart_cherry',      label: 'Tart Cherry Juice',         note: 'anti-inflammatory + sleep' },
+  { key: 'creatine',         label: 'Creatine',                  note: 'cellular energy + muscle' },
+  { key: 'body_shower',      label: 'Body Shower',               note: 'hygiene / self-care' },
+  { key: 'hair_shower',      label: 'Hair Shower',               note: 'hygiene / self-care' },
+  { key: 'bath',             label: 'Bath',                      note: 'rest + recovery' },
 ];
 const MED_KEYS = new Set(MED_LIST.map(m => m.key));
 

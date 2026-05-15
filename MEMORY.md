@@ -16,6 +16,7 @@
 | Hugo | Fox | 🦊 | Apple development (iOS/macOS) |
 | Cleo | Owl | 🦉 | Clinical data + AI integrations |
 | Hedy | Octopus | 🐙 | TBD (coming soon) |
+| Milo | Badger | 🦡 | Business intelligence & marketing |
 
 - Edgar set me up (2026-03-24/25) — he's the senior agent, handles infra and general tasks
 - Hugo handles iOS/Swift work
@@ -110,8 +111,10 @@
 - Git remote: github.com/CleoSPHBot/cleo-workspace.git, daily backup at 7 AM UTC
 - **daily-backup cron:** 13:00 UTC daily, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken** (see Backup Issue section).
 - **Dream cron:** 13:00 UTC nightly, established 2026-04-04. Daily files consistent since 2026-04-10.
-- **OpenClaw:** 2026.4.14 (Apr 15, Teams desktop image fix) → 2026.5.4 (May 6, brave-plugin + msteams from `~/.openclaw/npm/`). Brave, Teams, Slack all confirmed working.
-- **Brave Search API key:** Set up 2026-04-12. Fixed May 2: set `tools.web.search.provider brave`, disabled MiniMax + Google plugins (no keys). Free tier: 1 req/sec, 2000/month — call sequentially, not in parallel. Hard restart required after plugin enablement changes (`systemctl --user restart openclaw-gateway.service`; then `pm2 resurrect`).
+- **OpenClaw:** 2026.4.14 (Apr 15, Teams desktop image fix) → 2026.5.4 (May 6, brave-plugin + msteams from `~/.openclaw/npm/`) → 2026.5.12 (May 15, msteams plugin auto-updated to matching version — no manual npm pin needed on this upgrade path). Brave, Teams, Slack all confirmed working.
+- **Brave Search API key:** Set up 2026-04-12. Key is in `~/brave_search.txt`. Paid tier (confirmed May 15 — full results including news/video). Provider: `tools.web.search.provider: brave`. Call sequentially, not in parallel. Hard restart required after plugin enablement changes (`systemctl --user restart openclaw-gateway.service`; then `pm2 resurrect`).
+- **Perplexity Search (May 15):** Switched from Brave to Perplexity as primary `web_search` provider. Key in `~/perplexity.txt`, stored in `~/.openclaw/gateway.systemd.env` as `PERPLEXITY_API_KEY`. Plugin: `perplexity` (bundled, enabled). Config: `tools.web.search.provider: perplexity`. Returns rich synthesized content with citations — much better for clinical/research queries. Brave plugin still enabled as backup.
+- **Search provider TODO:** OpenClaw only supports one `web_search` provider at a time. Goal: have both Brave + Perplexity available simultaneously. Options: (1) OpenClaw feature request for multi-provider routing, (2) call Brave/Perplexity APIs directly via web_fetch as workaround. Milo (BI/marketing) also needs Perplexity on his agent when set up.
 
 ## Project Cadence
 - **Mission:** Identify biometric, dietary, and behavioral factors driving Hannah's symptomatic days. Find what makes the 5 bad days happen.
@@ -198,16 +201,11 @@ Common corrections when verifying medication names against FDB:
 - **Failing since ~May 2:** GitHub push protection blocks push — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016).
 - **Fix:** Git history rewrite (BFG) + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
 
+## Promoted From Short-Term Memory (2026-05-15)
 
-## Promoted From Short-Term Memory (2026-05-14)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-04-15.md:118:143 -->
-- - Hannah (6729032): 1,438 sleep, 1,006 recovery, 222 workout, 1,065 cycle records back to Dec 2022 - Script: `whoop_backfill.py` — Python, uses .env or Secrets Manager fallback (`com.sph.dev.whoop`) - WHOOP API clarification: `/developer/v1/` = cycle only (integer IDs); `/developer/v2/` = sleep/recovery/workout (UUID IDs) - 2,272 total daily records in `cadence-dev` → `whoop_daily` **Hannah's first biometrics (Apr 14):** - HRV: 22.9 ms (very low) - Recovery: 32% (poor/red zone) - Resting HR: 81 bpm (elevated) - SpO2: 91.7% (below normal — ⚠️ flag) - Skin temp: 35.0°C **Hannah background:** MIT grad student, on medical leave. East Coast timezone. Today had admin meeting with MIT — counts as cognitive/emotional exertion, not just physical activity. **iOS App Design:** - Brain fog is the #1 design constraint — under 60 seconds on worst days - 3 required questions: Overall feeling (3-tap emoji) / PEM (None/Mild/Severe) / Brain fog - Diet tracking: anti-inflammatory 🟢 vs pro-inflammatory 🔴 framework (gut/Spike protein rationale) - Activity = cognitive + emotional load, not just physical (MIT meeting = 🔴 demanding) - Design Charter written: `projects/cadence/DESIGN_CHARTER.md` **v2 vision: Phenotype-adaptive app** - Onboarding classifies patient into LC phenotype (PEM/ME-CFS, Dysautonomia/POTS, Gut/Viral, Cognitive, Cardiovascular) - Daily questions adapt to phenotype - Hannah = Gut/Viral persistence + PEM/Dysautonomia hybrid [score=0.915 recalls=4 avg=0.663 source=memory/2026-04-15.md:118-143]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-07.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Thursday, May 7)_ [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-07.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-07.md:7:7 -->
-- Thirty-second night. A clean pass on a quiet morning. [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-07.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-07.md:15:15 -->
-- **New today — Standing Rules entry (live session, May 7):** [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-07.md:15-15]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-07.md:20:20 -->
-- **No junk block this pass.** Deep sleep system checked in — 0 candidates promoted (May 5–6 content already in MEMORY.md). Clean. [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-07.md:20-20]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-08.md:4:4 -->
+- _Nightly consolidation run — 13:00 UTC (Friday, May 8)_ [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-08.md:4-4]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-08.md:14:14 -->
+- **This pass:** [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-08.md:14-14]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-08.md:6:6 -->
+- Thirty-third night. [score=0.884 recalls=0 avg=0.620 source=memory/2026-05-08.md:6-6]
