@@ -148,18 +148,16 @@
 - **Correlation analysis (May 1):** `projects/cadence/analysis/` — `correlate.js` (Spearman, 60+ features vs feeling_score), `proxy_score.js` (Visible Stability → feeling proxy). Cron at 14:00 UTC daily. Key findings (n=15): WHOOP recovery anti-correlated with feeling (-0.52, dysautonomia decoupling confirmed); pace_lag3 = -0.74 (PEM 3-day lag strongest signal); stability_lag1 = +0.61; adderall = +0.67. **Budget window: 3-7 days** (40% yesterday, 25% 2d ago, 15% 3d ago, 20% 4-7d ago).
 - **Repair Spectrum Framework (May 4):** Data-driven pacing protocol from 774 days WHOOP + Visible. Core finding: **3-day lag** (pace_lag3 −0.74 = strongest predictor). Spectrum: 🔴 Red (recovery <34, full rest) → 🟡 Yellow (34–66, PacePoints ≤8, no spend) → 🟢 First Green (rest day even feeling good, ≤8 PP; spend → crash ~10d, rest → ~29d stability) → 🟢🟢 Second Green (repair begins, ≤12 PP) → 🟢🟢🟢 Third+ (functional day, ≤14 PP, avoid strain ≥6). Sleep anchor: <60% = yellow, <40% = red, 2 bad nights = rest day. Three levers: (1) sleep, (2) pacing on good days esp. first green, (3) SIM01 gut health. **Next: display "where is Hannah on the repair spectrum" in Cadence app** — consecutive green day count, current day type, lag-3 flag.
 - **HRV + Spend Chart (May 6):** matplotlib chart generated (`hannah_hrv_spend.png`, 3-week view). Key finding: every spend during HRV ascent resets recovery arc, costs 3-5 days. PEM clusters around HRV troughs. Data confirms Hannah's body CAN repair (HRV peaks 38–42) — capacity intact; problem is behavioral (never gives repair enough runway). **David got Hannah to cancel all meetings this week.** Crash line prescription: strain <2, PacePoints <6 for next 2-3 days.
-- **Hannah ADHD + LC Sensory Hypothesis (May 6):** ADHD weakens sensory gating → more input reaches conscious processing → leaving the house stacks 5–10 simultaneous demands against depleted energy budget. Sensory management list: `projects/cadence/hannah-sensory-management.md`. Key: noise canceling, warm/dim lighting, blue light glasses, unscented environment, weighted blanket, async-only comms, single-tasking. **TA role should be remote + async — medically appropriate.** Goal before school: controlled reintroduction to map activity costs + establish baseline.
-- **Budget models (May 1):** 4 stacked budget bars on Today/Yesterday/2-Days-Ago cards: Visible (PacePoints/14), Recovery-adj (PacePoints/(14×WHOOP recovery%)), Sleep capacity (sleep_performance%), Yesterday/Prior recovery (lag predictor). Three-day homepage live.
-- **Cadence UI updates (May 6):** Crash line status bar (🟢🟡🔴) added to top of home screen. "Fatigue" chip renamed to "PEM". Repair window indicator added to advice card (HRV ≥34 + rising + post-crash).
-- **matplotlib in ~/.Py3Env (May 6):** matplotlib, pandas, pymongo, seaborn installed. Used for chart generation → PNG → Slack. Working well.
+- **Hannah ADHD + LC Sensory Hypothesis (May 6):** ADHD weakens sensory gating → leaving the house stacks 5–10 demands against depleted energy. Sensory management: `projects/cadence/hannah-sensory-management.md` (noise canceling, dim lighting, async-only comms, single-tasking). TA role = remote + async (medically appropriate). Goal: controlled reintroduction before school.
+- **Budget models (May 1):** 4 stacked budget bars per day card: PacePoints/14, Recovery-adj (PP/(14×WHOOP recovery%)), sleep_performance%, lag predictor. Three-day homepage live.
+- **Cadence UI updates (May 6):** Crash line status bar (🟢🟡🔴) at top; "Fatigue" → "PEM" chip; repair window indicator in advice card. matplotlib + pandas + pymongo + seaborn in ~/.Py3Env (chart gen → PNG → Slack).
 - **DESIGN.md:** `projects/DESIGN.md` — cross-project design system (Cadence + Rounds). Key terms cyan `#5bc8e8`, section headers gold `#c9a84c`. Key terms: active rest, pacing, anaerobic threshold, PEM, heart rate, HRV, parasympathetic.
 - **Strain (Apr 26):** `backfill_strain.py` completed — Hannah strain 0.5–8 (LC-consistent), David 9–20. Nightly cron 7am UTC `--days 3`. WHOOP doesn't webhook strain — polling only (v1 cycle). Script uses AWS Secrets Manager.
 - **Visible user_id inconsistency:** old data = integer `6729032`, new uploads = string `"hannah"` — dashboard handles both; worth unifying later.
 - **Hannah energy budget (Apr 26):** PacePoints alone is NOT a reliable predictor of bad days. Apr 19: 26.8 PacePoints → mild fatigue only. Apr 25: 3.1 PacePoints → severe crash. WHOOP HRV morning reading is likely a better energy signal. 177 days of Visible data available for correlation analysis — David interested.
-- **Cadence app features (as of Apr 17):** Visible CSV upload (`POST /api/visible/upload`, multer + csv-parse → `visible_daily`); pre-population (`GET /api/checkin/:date`); server drives Pacific time `today` (changed from Eastern Apr 28); "Update →" button when today has data
-- **Dashboard:** `/dashboard` → `dashboard.html`, `/api/dashboard` endpoint. 3-day view: WHOOP metrics + check-in pills + Visible highlights. Auto-refreshes every 5 min, Pacific time aware (changed Apr 28), no-cache headers.
-- **Dashboards:** `dashboard.html` = dynamic (live MongoDB pull, 3-day view, auto-refresh) | `hannah-dashboard.html` = static hardcoded view (updated manually as needed) — both served from `prototype/`
-- **Oura Ring:** v2 API at cloud.ouraring.com/v2/docs. Adds skin temp deviation, resilience score. Hannah doesn't have one yet — TBD.
+- **Cadence app features (Apr 17+):** Visible CSV upload (`POST /api/visible/upload` → `visible_daily`); pre-population (`GET /api/checkin/:date`); Pacific time `today` (fixed Apr 28); "Update →" button when data exists.
+- **Dashboards:** `dashboard.html` = dynamic (`/dashboard`, 3-day WHOOP + check-in + Visible, auto-refresh 5 min, Pacific time, no-cache) | `hannah-dashboard.html` = static hardcoded — both in `prototype/`
+- **Oura Ring:** v2 API (skin temp deviation, resilience score). Hannah doesn't have one yet — TBD.
 
 ## LC Wiki
 - Built Apr 17 using Karpathy's LLM wiki pattern — incremental, compounding knowledge base
@@ -171,7 +169,6 @@
 - Key contradictions flagged in synthesis: metformin (prevention vs treatment), GET/CBT harm, spike persistence evidence
 - **REVIVE-TOGETHER (Reis et al. 2026, AIM):** Fluvoxamine significantly reduces LC fatigue (22 Brazil sites, n=399, adaptive Bayesian). Metformin ineffective as *treatment* (only as prevention). GLP-1 agonists: plausible via gut spike reservoir mechanism — no RCT evidence yet. Gut spike persistence = likely common thread across fluvoxamine, JAK inhibitors, GLP-1.
 - No PHI — papers only, no patient-specific data
-- **Gemini / OpenAI:** Neither API configured currently. David may add for Cadence analysis.
 - **File transfer:** David drops files in `/home2/cleo/for-cleo/` — workaround for Teams desktop attachment issue
 
 ## FDB NDC Validation
@@ -201,11 +198,10 @@ Common corrections when verifying medication names against FDB:
 - **Failing since ~May 2:** GitHub push protection blocks push — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016).
 - **Fix:** Git history rewrite (BFG) + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
 
-## Promoted From Short-Term Memory (2026-05-15)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-08.md:4:4 -->
-- _Nightly consolidation run — 13:00 UTC (Friday, May 8)_ [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-08.md:4-4]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-08.md:14:14 -->
-- **This pass:** [score=0.894 recalls=0 avg=0.620 source=memory/2026-05-08.md:14-14]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-08.md:6:6 -->
-- Thirty-third night. [score=0.884 recalls=0 avg=0.620 source=memory/2026-05-08.md:6-6]
+## Promoted From Short-Term Memory (2026-05-16)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-05-09.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Saturday, May 9)_ [score=0.887 recalls=0 avg=0.620 source=memory/2026-05-09.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-09.md:15:15 -->
+- **This pass:** [score=0.887 recalls=0 avg=0.620 source=memory/2026-05-09.md:15-15]
