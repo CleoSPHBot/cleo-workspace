@@ -386,6 +386,62 @@
     }
 
     /* ══════════════════════════════
+       CLEO CARD
+    ══════════════════════════════ */
+    .cleo-card {
+      background: linear-gradient(135deg, #0d1f30 0%, #112233 100%);
+      border: 1px solid #1e3a52;
+      border-radius: 18px;
+      padding: 20px 20px 18px;
+      margin-bottom: 16px;
+    }
+    .cleo-card-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 12px;
+    }
+    .cleo-owl { font-size: 22px; }
+    .cleo-name {
+      font-size: 13px; font-weight: 700; color: #5bc8e8;
+      letter-spacing: 0.5px; text-transform: uppercase;
+    }
+    .cleo-date {
+      font-size: 12px; color: #3a5a72; margin-left: auto;
+    }
+    .cleo-summary {
+      font-size: 15px; line-height: 1.55; color: #c8dce8;
+      margin-bottom: 14px;
+    }
+    .cleo-summary em {
+      color: #5bc8e8; font-style: normal; font-weight: 600;
+    }
+    .cleo-metrics {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .cleo-metric {
+      background: #0a1928; border-radius: 10px;
+      padding: 8px 12px; flex: 1; min-width: 70px;
+      text-align: center;
+    }
+    .cleo-metric-val {
+      font-size: 18px; font-weight: 700; color: #e8f0f6;
+      display: block;
+    }
+    .cleo-metric-val.green { color: #4caf7d; }
+    .cleo-metric-val.yellow { color: #f0c040; }
+    .cleo-metric-val.red { color: #e05a5a; }
+    .cleo-metric-label {
+      font-size: 10px; color: #3a6070; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.4px;
+      display: block; margin-top: 2px;
+    }
+    .cleo-nudge {
+      font-size: 13px; color: #7aacbc; line-height: 1.5;
+      border-top: 1px solid #1e3a52; padding-top: 12px;
+    }
+    .cleo-nudge strong { color: #c9a84c; }
+
+    /* ══════════════════════════════
        ADVICE CARD
     ══════════════════════════════ */
     .advice-card {
@@ -923,6 +979,19 @@
   <div class="tap-card insights-card" onclick="goToScreen('screen-insights-detail')">
     <div id="insights-list"><div class="insight-empty">Loading…</div></div>
     <div class="chevron">›</div>
+  </div>
+
+  <!-- ── CLEO CARD ── -->
+  <div class="section-label">From Cleo 🦉</div>
+  <div class="cleo-card" id="cleo-card">
+    <div class="cleo-card-header">
+      <span class="cleo-owl">🦉</span>
+      <span class="cleo-name">Cleo</span>
+      <span class="cleo-date" id="cleo-card-date"></span>
+    </div>
+    <div class="cleo-summary" id="cleo-summary">Loading your overview…</div>
+    <div class="cleo-metrics" id="cleo-metrics"></div>
+    <div class="cleo-nudge" id="cleo-nudge"></div>
   </div>
 
   <!-- ── ADVICE ── -->
@@ -1637,6 +1706,92 @@
         <div class="insight-text">${highlightTerms(i.text)}</div>
       </div>
     </div>`;
+  }
+
+  // ── Build Cleo card ─────────────────────────────
+  function loadCleoCard() {
+    const todayDate = dateKey(0);
+    const yestDate  = dateKey(1);
+    const d2Date    = dateKey(2);
+    const todayW    = dashData?.whoop?.[todayDate];
+    const yestW     = dashData?.whoop?.[yestDate];
+    const d2W       = dashData?.whoop?.[d2Date];
+    const todayCI   = dashData?.checkins?.[todayDate];
+
+    const rec  = todayW?.recovery?.recovery_score ?? null;
+    const hrv  = todayW?.recovery?.hrv_rmssd_milli ?? null;
+    const rhr  = todayW?.recovery?.resting_heart_rate ?? null;
+    const spo2 = todayW?.recovery?.spo2_percentage ?? null;
+    const yRec = yestW?.recovery?.recovery_score ?? null;
+    const d2Rec = d2W?.recovery?.recovery_score ?? null;
+
+    // Trend
+    const trend = (rec != null && yRec != null)
+      ? (rec > yRec + 8 ? 'rising' : rec < yRec - 8 ? 'falling' : 'stable')
+      : 'unknown';
+
+    // Build summary narrative
+    let summary = '';
+    let nudge = '';
+
+    if (rec == null) {
+      summary = 'No WHOOP data yet for today — check back once your device syncs.';
+      nudge = '🌤️ In the meantime, take it easy and listen to your body.';
+    } else if (rec >= 67) {
+      // Green
+      if (trend === 'rising') {
+        summary = `Your body is having a <em>great morning</em> — recovery is ${rec}% and trending up from ${yRec}% yesterday. Your HRV of ${Math.round(hrv)}ms shows your nervous system is settling in well.`;
+        nudge = `<strong>Today's opportunity:</strong> This is a repair window. Good days are precious — protect it by staying under your PacePoints ceiling. A gentle, enjoyable activity is okay; just don't let the good feeling tempt you into overdoing it.`;
+      } else {
+        summary = `Good recovery today — ${rec}%, with HRV at ${Math.round(hrv)}ms. Your resting heart rate is ${rhr} bpm, which is ${rhr <= 72 ? 'nice and calm' : 'a little elevated — worth watching'}.`;
+        nudge = `<strong>Today's call:</strong> You have capacity today. Enjoy it gently. Pacing on good days is where the real progress happens.`;
+      }
+    } else if (rec >= 34) {
+      // Yellow
+      if (trend === 'rising') {
+        summary = `Recovery is ${rec}% today — in the yellow zone, but it's moving in the <em>right direction</em> from ${yRec}% yesterday. HRV at ${Math.round(hrv)}ms suggests your system is working its way back.`;
+        nudge = `<strong>Stay the course:</strong> The upward trend is encouraging. Keep today light — don't spend the progress you're building. Rest is the fuel for this recovery arc.`;
+      } else if (trend === 'falling') {
+        summary = `Recovery dipped to ${rec}% today — down from ${yRec}% yesterday, with HRV at ${Math.round(hrv)}ms. Your body is telling you it needs more runway.`;
+        nudge = `<strong>Rest day recommended:</strong> This isn't a setback — it's information. Giving your nervous system a full rest day now is the fastest path back to green.`;
+      } else {
+        summary = `Recovery is holding at ${rec}% — middle ground today. HRV at ${Math.round(hrv)}ms and resting heart rate of ${rhr} bpm. Your body is managing, not thriving yet.`;
+        nudge = `<strong>Gentle day:</strong> Stay within your PacePoints ceiling today. Low-cost activities only — sewing, reading, quiet time. Let your system consolidate.`;
+      }
+    } else {
+      // Red
+      summary = `Recovery is low today at ${rec}% — your body is in deep repair mode. HRV at ${Math.round(hrv)}ms${hrv < 27 ? ', which is below your usual floor' : ''}, and resting heart rate of ${rhr} bpm.`;
+      nudge = `<strong>Full rest today:</strong> This is your body asking clearly for space. No exertion, no pushing through. Rest <em>is</em> the work today — and it pays off in 2–3 days.`;
+    }
+
+    // Render summary
+    document.getElementById('cleo-summary').innerHTML = summary;
+    document.getElementById('cleo-nudge').innerHTML = nudge;
+
+    // Date
+    const now = new Date();
+    document.getElementById('cleo-card-date').textContent =
+      now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+
+    // Metrics row
+    function colorClass(val, greenMin, yellowMin) {
+      if (val == null) return '';
+      if (val >= greenMin) return 'green';
+      if (val >= yellowMin) return 'yellow';
+      return 'red';
+    }
+    const metrics = [
+      { val: rec != null ? rec + '%' : '—',   label: 'Recovery',  cls: colorClass(rec, 67, 34) },
+      { val: hrv != null ? Math.round(hrv) + 'ms' : '—', label: 'HRV', cls: colorClass(hrv, 32, 27) },
+      { val: rhr != null ? rhr + ' bpm' : '—', label: 'Resting HR', cls: rhr != null ? (rhr <= 72 ? 'green' : rhr <= 80 ? 'yellow' : 'red') : '' },
+      { val: spo2 != null ? spo2.toFixed(1) + '%' : '—', label: 'SpO₂', cls: spo2 != null ? (spo2 >= 95 ? 'green' : spo2 >= 92 ? 'yellow' : 'red') : '' },
+    ];
+    document.getElementById('cleo-metrics').innerHTML = metrics.map(m =>
+      `<div class="cleo-metric">
+        <span class="cleo-metric-val ${m.cls}">${m.val}</span>
+        <span class="cleo-metric-label">${m.label}</span>
+      </div>`
+    ).join('');
   }
 
   // ── Build advice ───────────────────────────────
@@ -2529,6 +2684,7 @@
     renderCrashLine(todayW, todayCI, dashData?.visible?.[todayDate]);
 
     // ── INSIGHTS + ADVICE ──
+    loadCleoCard();
     loadInsights();
     loadAdvice();
   }

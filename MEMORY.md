@@ -199,9 +199,7 @@ Common corrections when verifying medication names against FDB:
 - **Fix:** Git history rewrite (BFG) + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
 
 
-## Promoted From Short-Term Memory (2026-05-17)
+## Promoted From Short-Term Memory (2026-05-18)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-10.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Sunday, May 10)_ [score=0.879 recalls=0 avg=0.620 source=memory/2026-05-10.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-10.md:15:15 -->
-- **This pass:** [score=0.879 recalls=0 avg=0.620 source=memory/2026-05-10.md:15-15]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-11.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Monday, May 11)_ [score=0.871 recalls=0 avg=0.620 source=memory/2026-05-11.md:5-5]
