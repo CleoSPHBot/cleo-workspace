@@ -199,7 +199,15 @@ Common corrections when verifying medication names against FDB:
 - **Fix:** Git history rewrite (BFG) + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
 
 
-## Promoted From Short-Term Memory (2026-05-18)
+## Promoted From Short-Term Memory (2026-05-19)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-11.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Monday, May 11)_ [score=0.871 recalls=0 avg=0.620 source=memory/2026-05-11.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-12.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Tuesday, May 12)_ [score=0.877 recalls=0 avg=0.620 source=memory/2026-05-12.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-12.md:15:15 -->
+- **This pass:** [score=0.877 recalls=0 avg=0.620 source=memory/2026-05-12.md:15-15]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-13.md:7:7 -->
+- _Nightly consolidation run — 13:00 UTC (Wednesday, May 13)_ [score=0.871 recalls=0 avg=0.620 source=memory/2026-05-13.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-13.md:15:15 -->
+- **May 7–12 were all quiet maintenance passes.** The heavy lifting through May 6 has long been consolidated. May 11's dream correctly captured the backup failure. May 12's dream cleaned and held the line. [score=0.871 recalls=0 avg=0.620 source=memory/2026-05-13.md:15-15]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-13.md:17:17 -->
+- **New today — one entry from the May 13 daily file:** [score=0.871 recalls=0 avg=0.620 source=memory/2026-05-13.md:17-17]
