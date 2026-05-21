@@ -111,3 +111,23 @@ Cadence's purpose is to help the patient **moderate their behavior guided by the
 - **David** — project lead
 - **Cleo** — clinical data, research, analysis
 - **Hugo** — iOS app development
+
+## Feature Ideas (backlog)
+
+### Dynamic med list from notes (2026-05-20)
+- Parse Hannah's free-text check-in notes using LLM to extract medication/treatment mentions
+- Cross-reference against existing `med_log` keys — surface new items not yet in the tracker
+- Prompt her to add them to the med list (or auto-add with confirmation)
+- Goal: keep the tracker list close to reality without manual maintenance
+- Trigger: on each note submission, or periodic batch scan
+
+### Med list curation workflow (2026-05-20)
+- When a new med/treatment is detected in notes, don't auto-add blindly
+- Pipeline:
+  1. Detect mention (LLM extraction from notes)
+  2. Research: mechanism, LC/dysautonomia/MCAS relevance, typical dosing
+  3. Curate decision: does this belong on the tracker? (skip food/noise, add clinical items)
+  4. Add with full metadata: display name, subtitle (dose + purpose), category, clinical keywords
+- Goal: med list = curated clinical vocabulary, enabling meaningful correlation
+  - e.g., "VNS sessions vs. next-day HRV", "Xolair weeks vs. allergy severity"
+- Keywords/tags per item enable downstream pattern analysis without manual mapping

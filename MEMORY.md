@@ -199,12 +199,17 @@ Common corrections when verifying medication names against FDB:
 - **Failing since ~May 2:** GitHub push protection blocks push — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016).
 - **Fix:** Git history rewrite (BFG) + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
 
+## Promoted From Short-Term Memory (2026-05-21)
 
-## Promoted From Short-Term Memory (2026-05-20)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-05-13.md:9:9 -->
-- Thirty-eighth night. [score=0.887 recalls=0 avg=0.620 source=memory/2026-05-13.md:9-9]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-14.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Thursday, May 14)_ [score=0.878 recalls=0 avg=0.620 source=memory/2026-05-14.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-14.md:13:13 -->
-- **May 8–13 reviewed.** The week was quiet on new development — no new live sessions to capture. The key signal threads that carried through: [score=0.869 recalls=0 avg=0.620 source=memory/2026-05-14.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-15.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Friday, May 15)_ [score=0.910 recalls=0 avg=0.620 source=memory/2026-05-15.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-14.md:17:17 -->
+- **Hannah hygiene log started (May 13 daily):** Shower + hair wash on May 12. Small thing — ADL tracking as energy context. Left in daily files (too granular for MEMORY.md). [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-14.md:17-17]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-14.md:19:19 -->
+- **This pass:** [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-14.md:19-19]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-14.md:7:7 -->
+- Thirty-ninth night. [score=0.893 recalls=0 avg=0.620 source=memory/2026-05-14.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-15.md:13:13 -->
+- **May 9–14 reviewed.** The week was quiet — no new live development sessions, no new Cadence builds, no new clinical work. The threads from last week all held: [score=0.878 recalls=0 avg=0.620 source=memory/2026-05-15.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-15.md:19:19 -->
+- **Tonight's junk removal:** [score=0.878 recalls=0 avg=0.620 source=memory/2026-05-15.md:19-19]
