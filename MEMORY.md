@@ -69,7 +69,7 @@
 - **Catalog:** `s3://sph-amazon-q/catalog.yaml` — **54 documents** as of 2026-04-14
 - **Recent additions (Apr 9–14):** Lindberg 2026 (MIRACLE-S CV risk), Trubetskoy 2026 (skin SARS-CoV-2 entry), Freire 2026 (persistent Spike gut biopsies), + 5 pacing papers (Meach 2024, Ghali 2023, Vink 2025/2022, Godfrey 2025 PACELOC)
 - **May 11 addition:** Faghy et al. 2025 (Nature CommsMed) — comprehensive LC pathophysiology review; 6 mechanistic pillars; no validated biomarkers; no curative treatments; ME/CFS overlap. Wiki: `sources/faghy-2025.md`. QB synced.
-- **May 19 addition:** Azhir et al. 2025 (Med, Cell Press) — PASC precision phenotyping; tSPM+ algorithm operationalizes WHO diagnosis-of-exclusion; 79.9% PPV, 24,360 patients, 22.8% prevalence, reduces Black/Hispanic undercoding. Wiki: `sources/azhir-2025.md`. QB catalog now 85 entries.
+- **May 19 addition:** Azhir et al. 2025 (Med, Cell Press) — PASC precision phenotyping; tSPM+ operationalizes WHO dx-of-exclusion; 79.9% PPV, 24,360 patients, 22.8% prevalence, reduces Black/Hispanic undercoding. Wiki: `sources/azhir-2025.md`. QB catalog now 85 entries.
 - **LongCOVID-Research data source ID:** `89032f82-4ad1-4394-8258-47d8287ccf61` (S3 prefix: `lc-app/`)
 
 ## Security Notes
@@ -197,19 +197,15 @@ Common corrections when verifying medication names against FDB:
 
 ## Backup Issue (Open)
 - **Failing since ~May 2:** GitHub push protection blocks push — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016).
-- **Fix:** Git history rewrite (BFG) + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
+- **Fix:** Git history rewrite (BFG) + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David. (~3 weeks and counting without a backup)
 
-## Promoted From Short-Term Memory (2026-05-21)
+## Promoted From Short-Term Memory (2026-05-22)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-15.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Friday, May 15)_ [score=0.910 recalls=0 avg=0.620 source=memory/2026-05-15.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-14.md:17:17 -->
-- **Hannah hygiene log started (May 13 daily):** Shower + hair wash on May 12. Small thing — ADL tracking as energy context. Left in daily files (too granular for MEMORY.md). [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-14.md:17-17]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-14.md:19:19 -->
-- **This pass:** [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-14.md:19-19]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-14.md:7:7 -->
-- Thirty-ninth night. [score=0.893 recalls=0 avg=0.620 source=memory/2026-05-14.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-15.md:13:13 -->
-- **May 9–14 reviewed.** The week was quiet — no new live development sessions, no new Cadence builds, no new clinical work. The threads from last week all held: [score=0.878 recalls=0 avg=0.620 source=memory/2026-05-15.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-15.md:19:19 -->
-- **Tonight's junk removal:** [score=0.878 recalls=0 avg=0.620 source=memory/2026-05-15.md:19-19]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-13.md:1:36 -->
+- ## Hannah - Hygiene Tracking - 2026-05-12: Shower + hair wash ✅ ## Dream _Nightly consolidation run — 13:00 UTC (Wednesday, May 13)_ Thirty-eighth night. --- ### What Was New Since Yesterday's Dream **May 7–12 were all quiet maintenance passes.** The heavy lifting through May 6 has long been consolidated. May 11's dream correctly captured the backup failure. May 12's dream cleaned and held the line. **New today — one entry from the May 13 daily file:** - Hannah hygiene log started: shower + hair wash on May 12 ✅. Useful as a low-effort ADL tracker for energy context. Not added to MEMORY.md (too granular; stays in daily files). **This pass:** - No junk block this time (first clean pass in a while — the OpenClaw auto-promotion noise may have stopped, or it's a temporary gap). - MEMORY.md was at 212 lines (over limit). Trimmed to **200 lines ✅** by compressing Claude Code + Patient KB sections (merged into one), tightening Rounds section (4 lines saved), and shortening the Hannah authorized user entry. - No substantive content changes — all signal preserved, just tighter phrasing. --- ### MEMORY.md Changes This Pass - Merged "Claude Code" + "Patient KB Spec" sections into one (saved 4 lines) - Compressed Rounds sub-bullets: Figma, prototype, backend, status (saved 4 lines) - Trimmed Hannah authorized user entry (1 line) - **Line count: 200 ✅** --- ### Still Open (carried forward) - **Daily backup broken** — GitHub push protection, Slack tokens in history. BFG rewrite + token rotation + `.gitignore`. Awaiting David. [score=0.901 recalls=4 avg=0.617 source=memory/2026-05-13.md:1-36]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-16.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Saturday, May 16)_ [score=0.883 recalls=0 avg=0.620 source=memory/2026-05-16.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-16.md:13:13 -->
+- **May 10–15 were all quiet maintenance passes.** No new development sessions, no new clinical work, no new Cadence builds. The threads continue: [score=0.878 recalls=0 avg=0.620 source=memory/2026-05-16.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-16.md:19:19 -->
+- **Tonight's junk removal:** [score=0.878 recalls=0 avg=0.620 source=memory/2026-05-16.md:19-19]
