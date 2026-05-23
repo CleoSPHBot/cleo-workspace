@@ -192,20 +192,19 @@ Common corrections when verifying medication names against FDB:
 - **tiotropium capsule** → `tiotropium bromide 18 mcg capsule with inhalation device` (bromide + device)
 - **potassium chloride tablet** → `potassium chloride ER 20 mEq tablet,extended release` (ER, confirm wax-matrix vs part/cryst)
 - **morphine injection** → `morphine 2 mg/mL injection solution` (add "solution")
-- **bisacodyl** — two forms: plain tablet vs `,delayed release` — confirm formulary
-- **PEG 3350** — two forms: `oral powder` (bulk canister) vs `oral powder packet` (unit-dose) — confirm formulary
+- **bisacodyl** — plain tablet vs `,delayed release` (confirm formulary)
+- **PEG 3350** — `oral powder` (bulk) vs `oral powder packet` (unit-dose) (confirm formulary)
 
 ## Backup Issue (Open)
-- **Failing since ~May 2:** GitHub push protection blocks push — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016).
-- **Fix:** Git history rewrite (BFG) + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David. (~3 weeks and counting without a backup)
+- **Failing since ~May 2 (~3 weeks):** GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
 
-## Promoted From Short-Term Memory (2026-05-22)
+## Promoted From Short-Term Memory (2026-05-23)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-13.md:1:36 -->
-- ## Hannah - Hygiene Tracking - 2026-05-12: Shower + hair wash ✅ ## Dream _Nightly consolidation run — 13:00 UTC (Wednesday, May 13)_ Thirty-eighth night. --- ### What Was New Since Yesterday's Dream **May 7–12 were all quiet maintenance passes.** The heavy lifting through May 6 has long been consolidated. May 11's dream correctly captured the backup failure. May 12's dream cleaned and held the line. **New today — one entry from the May 13 daily file:** - Hannah hygiene log started: shower + hair wash on May 12 ✅. Useful as a low-effort ADL tracker for energy context. Not added to MEMORY.md (too granular; stays in daily files). **This pass:** - No junk block this time (first clean pass in a while — the OpenClaw auto-promotion noise may have stopped, or it's a temporary gap). - MEMORY.md was at 212 lines (over limit). Trimmed to **200 lines ✅** by compressing Claude Code + Patient KB sections (merged into one), tightening Rounds section (4 lines saved), and shortening the Hannah authorized user entry. - No substantive content changes — all signal preserved, just tighter phrasing. --- ### MEMORY.md Changes This Pass - Merged "Claude Code" + "Patient KB Spec" sections into one (saved 4 lines) - Compressed Rounds sub-bullets: Figma, prototype, backend, status (saved 4 lines) - Trimmed Hannah authorized user entry (1 line) - **Line count: 200 ✅** --- ### Still Open (carried forward) - **Daily backup broken** — GitHub push protection, Slack tokens in history. BFG rewrite + token rotation + `.gitignore`. Awaiting David. [score=0.901 recalls=4 avg=0.617 source=memory/2026-05-13.md:1-36]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-16.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Saturday, May 16)_ [score=0.883 recalls=0 avg=0.620 source=memory/2026-05-16.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-16.md:13:13 -->
-- **May 10–15 were all quiet maintenance passes.** No new development sessions, no new clinical work, no new Cadence builds. The threads continue: [score=0.878 recalls=0 avg=0.620 source=memory/2026-05-16.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-16.md:19:19 -->
-- **Tonight's junk removal:** [score=0.878 recalls=0 avg=0.620 source=memory/2026-05-16.md:19-19]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-17.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Sunday, May 17)_ [score=0.915 recalls=0 avg=0.620 source=memory/2026-05-17.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-16.md:7:7 -->
+- Forty-first night. [score=0.893 recalls=0 avg=0.620 source=memory/2026-05-16.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-18.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Monday, May 18)_ [score=0.886 recalls=0 avg=0.620 source=memory/2026-05-18.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-17.md:13:13 -->
+- **May 11–16 reviewed.** Six consecutive quiet maintenance passes. No new development sessions, no new clinical work, no new Cadence builds. The threads continue unchanged: [score=0.878 recalls=0 avg=0.620 source=memory/2026-05-17.md:13-13]
