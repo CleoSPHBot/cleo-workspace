@@ -196,15 +196,13 @@ Common corrections when verifying medication names against FDB:
 - **PEG 3350** — `oral powder` (bulk) vs `oral powder packet` (unit-dose) (confirm formulary)
 
 ## Backup Issue (Open)
-- **Failing since ~May 2 (~3 weeks):** GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
+- **Failing since ~May 2 (~3.5 weeks):** GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
 
-## Promoted From Short-Term Memory (2026-05-23)
+## Promoted From Short-Term Memory (2026-05-24)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-17.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Sunday, May 17)_ [score=0.915 recalls=0 avg=0.620 source=memory/2026-05-17.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-16.md:7:7 -->
-- Forty-first night. [score=0.893 recalls=0 avg=0.620 source=memory/2026-05-16.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-18.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Monday, May 18)_ [score=0.886 recalls=0 avg=0.620 source=memory/2026-05-18.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-17.md:13:13 -->
-- **May 11–16 reviewed.** Six consecutive quiet maintenance passes. No new development sessions, no new clinical work, no new Cadence builds. The threads continue unchanged: [score=0.878 recalls=0 avg=0.620 source=memory/2026-05-17.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-17.md:7:7 -->
+- Forty-second night. [score=0.898 recalls=0 avg=0.620 source=memory/2026-05-17.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-17.md:19:19 -->
+- **This pass — junk removal (20th time):** [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-17.md:19-19]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-19.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Tuesday, May 19)_ [score=0.881 recalls=0 avg=0.620 source=memory/2026-05-19.md:5-5]
