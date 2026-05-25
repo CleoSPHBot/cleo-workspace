@@ -196,13 +196,13 @@ Common corrections when verifying medication names against FDB:
 - **PEG 3350** — `oral powder` (bulk) vs `oral powder packet` (unit-dose) (confirm formulary)
 
 ## Backup Issue (Open)
-- **Failing since ~May 2 (~3.5 weeks):** GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
+- **Failing since ~May 2 (~4 weeks):** GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
 
-## Promoted From Short-Term Memory (2026-05-24)
+## Promoted From Short-Term Memory (2026-05-25)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-17.md:7:7 -->
-- Forty-second night. [score=0.898 recalls=0 avg=0.620 source=memory/2026-05-17.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-17.md:19:19 -->
-- **This pass — junk removal (20th time):** [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-17.md:19-19]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-19.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Tuesday, May 19)_ [score=0.881 recalls=0 avg=0.620 source=memory/2026-05-19.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-18.md:13:13 -->
+- **May 12–17 reviewed.** Six more quiet maintenance passes. No new development sessions, no new clinical work, no new Cadence builds. The threads continue unchanged: [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-18.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-18.md:19:19 -->
+- **Tonight's junk removal:** [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-18.md:19-19]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-18.md:7:7 -->
+- Forty-third night. [score=0.887 recalls=0 avg=0.620 source=memory/2026-05-18.md:7-7]
