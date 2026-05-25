@@ -168,7 +168,7 @@
 - Built via 4 parallel Sonnet subagents + Opus synthesis pass
 - **Repo:** `github.com/CleoSPHBot/lc-wiki` (private, PAT at `/home2/cleo/.github_token`)
 - Key contradictions flagged in synthesis: metformin (prevention vs treatment), GET/CBT harm, spike persistence evidence
-- **REVIVE-TOGETHER (Reis et al. 2026, AIM):** Fluvoxamine significantly reduces LC fatigue (22 Brazil sites, n=399, adaptive Bayesian). Metformin ineffective as *treatment* (only as prevention). GLP-1 agonists: plausible via gut spike reservoir mechanism — no RCT evidence yet. Gut spike persistence = likely common thread across fluvoxamine, JAK inhibitors, GLP-1.
+- **REVIVE-TOGETHER (Reis et al. 2026, AIM):** Fluvoxamine significantly reduces LC fatigue (22 Brazil sites, n=399, adaptive Bayesian). Published *Annals of Internal Medicine* March 31, 2026. DOI: 10.7326/ANNALS-25-03959. NCT06128967. Stopped early for superiority (99% posterior probability). FSS −0.43 at day 60, −0.58 at day 90. **Durability caveat:** benefit declines after stopping (36% → 19% recovery rate 30 days post-treatment) — likely requires maintenance dosing. Metformin ineffective as *treatment* (only as prevention). GLP-1 agonists: plausible via gut spike reservoir mechanism — no RCT evidence yet. Gut spike persistence = likely common thread across fluvoxamine, JAK inhibitors, GLP-1. PDF already in S3: `lc-app/the-effect-of-fluvoxamine-and-metformin-for-fatigue-in-patients-with-long-covid.pdf`.
 - No PHI — papers only, no patient-specific data
 - **File transfer:** David drops files in `/home2/cleo/for-cleo/` — workaround for Teams desktop attachment issue
 
@@ -197,12 +197,3 @@ Common corrections when verifying medication names against FDB:
 
 ## Backup Issue (Open)
 - **Failing since ~May 2 (~4 weeks):** GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
-
-## Promoted From Short-Term Memory (2026-05-25)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-05-18.md:13:13 -->
-- **May 12–17 reviewed.** Six more quiet maintenance passes. No new development sessions, no new clinical work, no new Cadence builds. The threads continue unchanged: [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-18.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-18.md:19:19 -->
-- **Tonight's junk removal:** [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-18.md:19-19]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-18.md:7:7 -->
-- Forty-third night. [score=0.887 recalls=0 avg=0.620 source=memory/2026-05-18.md:7-7]
