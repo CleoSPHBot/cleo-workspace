@@ -197,3 +197,16 @@ Common corrections when verifying medication names against FDB:
 
 ## Backup Issue (Open)
 - **Failing since ~May 2 (~4 weeks):** GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
+
+## Promoted From Short-Term Memory (2026-05-26)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-05-21.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Thursday, May 21)_ [score=0.910 recalls=0 avg=0.620 source=memory/2026-05-21.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-19.md:13:13 -->
+- **May 13–18 reviewed.** Six more quiet maintenance passes. No new development sessions, no new clinical work, no new Cadence builds. All open threads unchanged: [score=0.903 recalls=0 avg=0.620 source=memory/2026-05-19.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-19.md:19:19 -->
+- **Tonight's junk removal:** [score=0.903 recalls=0 avg=0.620 source=memory/2026-05-19.md:19-19]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-19.md:7:7 -->
+- Forty-fourth night. [score=0.893 recalls=0 avg=0.620 source=memory/2026-05-19.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-26.md:19:44 -->
+- - Full historical strain backfill completed: ~1,206 David docs + ~990 Hannah docs updated - Hannah strain range: 0.5–8 (very low, LC consistent). David: 9–20. - Hannah has had 0 workouts in the past 7 days (no workout.updated webhooks) - WHOOP does NOT send cycle/strain webhooks — strain is polling only (v1 cycle endpoint) - **Nightly cron set up**: 7am UTC daily, `python3 /home2/aegis_server/src/test/whoop/backfill_strain.py --days 3` - David updated script to use AWS Secrets Manager (pushed to aegis_server) ### aegis_server Write Access - David gave CleoSPHBot write access to `SpectatorHealth/aegis_server` - Can now commit and push directly — no handoff loop needed - Branch: `ub24_port` [score=0.889 recalls=4 avg=0.602 source=memory/2026-04-26.md:19-30]
