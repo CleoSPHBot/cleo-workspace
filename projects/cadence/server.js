@@ -278,7 +278,7 @@ const MED_LIST = [
   { key: 'thymosin',         label: 'Thymosin Injection',         note: 'immune modulation' },
   { key: 'motc',             label: 'MOT-C Injection',            note: 'mitochondrial peptide' },
   { key: 'zyrtec',           label: 'Zyrtec',                    note: 'cetirizine — antihistamine' },
-  { key: 'vagus_nerve',      label: 'Vagus Nerve Stimulation',   note: '10 min — nervous system' },
+  { key: 'vagus_nerve',      label: 'Pulsetto',                  note: '10 min — vagus nerve stimulation' },
   { key: 'oxygen_conc',      label: 'Oxygen Concentrator',       note: '30 min — oxygenation' },
   { key: 'red_light',        label: 'Red Light Therapy',         note: '15 min — mitochondrial support' },
   { key: 'tart_cherry',      label: 'Tart Cherry Juice',         note: 'anti-inflammatory + sleep' },
@@ -286,6 +286,14 @@ const MED_LIST = [
   { key: 'body_shower',      label: 'Body Shower',               note: 'hygiene / self-care' },
   { key: 'hair_shower',      label: 'Hair Shower',               note: 'hygiene / self-care' },
   { key: 'bath',             label: 'Bath',                      note: 'rest + recovery' },
+  { key: 'prozac',           label: 'Prozac',                    note: 'fluoxetine 10 mg — antidepressant / LC' },
+  { key: 'ldn',              label: 'LDN',                       note: 'low dose naltrexone 1.5 mg — neuroinflammation' },
+  { key: 'eutebrol',         label: 'Eutebrol',                  note: 'etifoxine 5 mg — anxiolytic / GABAergic' },
+  { key: 'rapamycin',        label: 'Rapamycin',                 note: '6 mg — mTOR inhibitor / immune modulation' },
+  { key: 'famotidine',       label: 'Pepcid',                    note: 'famotidine — H2 blocker / MCAS' },
+  { key: 'zinc',             label: 'Zinc',                      note: 'zinc — immune + antiviral' },
+  { key: 'gniib',            label: 'G-NiiB Elite Probiotic',    note: 'sachet — gut microbiome restoration' },
+  { key: 'vitassium',        label: 'Vitassium Electrolytes',    note: '375 mg sodium — POTS/dysautonomia' },
 ];
 const MED_KEYS = new Set(MED_LIST.map(m => m.key));
 

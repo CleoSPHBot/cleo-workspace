@@ -2703,7 +2703,7 @@
     const PP_LIMIT      = 6;
     const STRAIN_LIMIT  = 2;
 
-    const hrvOk    = hrv != null ? hrv >= HRV_THRESHOLD : null;
+    const hrvOk    = hrv != null ? Math.round(hrv) >= HRV_THRESHOLD : null;
     const ppOk     = pp  != null ? pp  <= PP_LIMIT      : null;
     const strainOk = strain != null ? strain <= STRAIN_LIMIT : null;
 

@@ -72,8 +72,6 @@
 - **May 19 addition:** Azhir et al. 2025 (Med, Cell Press) — PASC precision phenotyping; tSPM+ operationalizes WHO dx-of-exclusion; 79.9% PPV, 24,360 patients, 22.8% prevalence, reduces Black/Hispanic undercoding. Wiki: `sources/azhir-2025.md`. QB catalog now 85 entries.
 - **LongCOVID-Research data source ID:** `89032f82-4ad1-4394-8258-47d8287ccf61` (S3 prefix: `lc-app/`)
 
-## Security Notes
-- `dmPolicy: open` is a known TODO — tighten when pairing flow is resolved
 
 ## Project Rounds (Apr 16–ongoing)
 - **Mission:** Clinical companion app for EHR — patient status + e-prescribing for doctors/nurses/med-techs
@@ -136,29 +134,20 @@
 - **MongoDB collections:** `user`, `webhook_event`, `whoop_daily` (2,292 docs, confirmed Apr 25), `visible_daily`, `self_report` (check-in data)
 - **v2 Design Decision (Apr 16):** Dynamic question schema — questions stored in MongoDB `questions` collection (not hardcoded). Enables add/remove without deploys, versioning, A/B testing. Schema: `question_id`, `version`, `active`, `order`, `text`, `type`, `options`. Types: `traffic_light`, `yes_no`, `scale`, `text`. Priority: v2.
 - **Server.js:** runs at port 8765, reads MongoDB URI from `/home2/cleo/mongo_uri`, saves to `self_report` collection keyed on `{user_id, date}`. **pm2 installed (Apr 26)** — `pm2 start cadence`, `pm2 save` done. ⚠️ Startup script still needs sudo from David. **systemd gateway restart kills pm2** — always run `pm2 status` after `systemctl --user restart openclaw-gateway.service`; if cadence missing, run `pm2 resurrect` (reads `~/.pm2/dump.pm2`).
-- **SSE (Apr 26):** MongoDB change streams → Server-Sent Events push live updates to app (events: `whoop`, `checkin`, `visible`, `notes`). No polling needed.
-- **User scoping (Apr 19):** URL param `?user=david` scopes check-ins to David; defaults to `hannah` when no param present
-- **UX redesign direction (Apr 25 — FINALIZED):** Single-page scroll hub. Hero element (today's status) at top + contextual drill-down per element (tap to detail view). No global tab bar. Decisions:
-  1. "Where are you now" = check-in + latest WHOOP/Visible from MongoDB (no live API poll)
-  2. Insights = server-side `/api/patterns`, 7-day default window
-  3. Advice = hybrid rules + LLM (Haiku); Hannah free-text comments as key input
-  4. Past days = History (bottom sheet), not on home screen
-  5. Single-page scroll; Visible upload nudge in hero if missing; each card tappable → detail
+- **UX redesign direction (Apr 25 — FINALIZED):** Single-page scroll hub. Hero = check-in + WHOOP/Visible from MongoDB. Insights = `/api/patterns` (7-day). Advice = rules + LLM (Haiku). History = bottom sheet. Visible upload nudge if missing. Each card tappable → detail.
 - **v2 Prototype (Apr 25):** `projects/cadence/prototype/index-v2.html`, live at http://100.70.3.21:8765/index-v2.html. Hero: 6-metric WHOOP grid + trend arrows + check-in chips; Yesterday card; Insights (limit 4, "See all →"); Advice (key terms highlighted cyan `#5bc8e8`). History starts from yesterday (offset 1). v1 still at root.
 - **Hannah Ask-Cleo feature (planned):** Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; not yet built.
 - **Correlation analysis (May 1):** `projects/cadence/analysis/` — `correlate.js` (Spearman, 60+ features vs feeling_score), `proxy_score.js` (Visible Stability → feeling proxy). Cron at 14:00 UTC daily. Key findings (n=15): WHOOP recovery anti-correlated with feeling (-0.52, dysautonomia decoupling confirmed); pace_lag3 = -0.74 (PEM 3-day lag strongest signal); stability_lag1 = +0.61; adderall = +0.67. **Budget window: 3-7 days** (40% yesterday, 25% 2d ago, 15% 3d ago, 20% 4-7d ago).
 - **Repair Spectrum Framework (May 4):** Data-driven pacing protocol from 774 days WHOOP + Visible. Core finding: **3-day lag** (pace_lag3 −0.74 = strongest predictor). Spectrum: 🔴 Red (recovery <34, full rest) → 🟡 Yellow (34–66, PacePoints ≤8, no spend) → 🟢 First Green (rest day even feeling good, ≤8 PP; spend → crash ~10d, rest → ~29d stability) → 🟢🟢 Second Green (repair begins, ≤12 PP) → 🟢🟢🟢 Third+ (functional day, ≤14 PP, avoid strain ≥6). Sleep anchor: <60% = yellow, <40% = red, 2 bad nights = rest day. Three levers: (1) sleep, (2) pacing on good days esp. first green, (3) SIM01 gut health. **Next: display "where is Hannah on the repair spectrum" in Cadence app** — consecutive green day count, current day type, lag-3 flag.
 - **HRV + Spend Chart (May 6):** matplotlib chart generated (`hannah_hrv_spend.png`, 3-week view). Key finding: every spend during HRV ascent resets recovery arc, costs 3-5 days. PEM clusters around HRV troughs. Data confirms Hannah's body CAN repair (HRV peaks 38–42) — capacity intact; problem is behavioral (never gives repair enough runway). **David got Hannah to cancel all meetings this week.** Crash line prescription: strain <2, PacePoints <6 for next 2-3 days.
 - **Hannah ADHD + LC Sensory Hypothesis (May 6):** ADHD weakens sensory gating → leaving the house stacks 5–10 demands against depleted energy. Sensory management: `projects/cadence/hannah-sensory-management.md` (noise canceling, dim lighting, async-only comms, single-tasking). TA role = remote + async (medically appropriate). Goal: controlled reintroduction before school.
-- **Budget models (May 1):** 4 stacked budget bars per day card: PacePoints/14, Recovery-adj (PP/(14×WHOOP recovery%)), sleep_performance%, lag predictor. Three-day homepage live.
 - **Cadence UI updates (May 6):** Crash line status bar (🟢🟡🔴) at top; "Fatigue" → "PEM" chip; repair window indicator in advice card. matplotlib + pandas + pymongo + seaborn in ~/.Py3Env (chart gen → PNG → Slack).
 - **DESIGN.md:** `projects/DESIGN.md` — cross-project design system (Cadence + Rounds). Key terms cyan `#5bc8e8`, section headers gold `#c9a84c`. Key terms: active rest, pacing, anaerobic threshold, PEM, heart rate, HRV, parasympathetic.
 - **Strain (Apr 26):** `backfill_strain.py` completed — Hannah strain 0.5–8 (LC-consistent), David 9–20. Nightly cron 7am UTC `--days 3`. WHOOP doesn't webhook strain — polling only (v1 cycle). Script uses AWS Secrets Manager.
 - **Visible user_id inconsistency:** old data = integer `6729032`, new uploads = string `"hannah"` — dashboard handles both; worth unifying later.
-- **Hannah energy budget (Apr 26):** PacePoints alone is NOT a reliable predictor of bad days. Apr 19: 26.8 PacePoints → mild fatigue only. Apr 25: 3.1 PacePoints → severe crash. WHOOP HRV morning reading is likely a better energy signal. 177 days of Visible data available for correlation analysis — David interested.
+- **Hannah energy budget (Apr 26):** PacePoints alone is NOT a reliable predictor of bad days. WHOOP HRV morning reading is a better energy signal. 177 days of Visible data available for correlation.
 - **Cadence app features (Apr 17+):** Visible CSV upload (`POST /api/visible/upload` → `visible_daily`); pre-population (`GET /api/checkin/:date`); Pacific time `today` (fixed Apr 28); "Update →" button when data exists.
 - **Dashboards:** `dashboard.html` = dynamic (`/dashboard`, 3-day WHOOP + check-in + Visible, auto-refresh 5 min, Pacific time, no-cache) | `hannah-dashboard.html` = static hardcoded — both in `prototype/`
-- **Oura Ring:** v2 API (skin temp deviation, resilience score). Hannah doesn't have one yet — TBD.
 
 ## LC Wiki
 - Built Apr 17 using Karpathy's LLM wiki pattern — incremental, compounding knowledge base
@@ -198,15 +187,26 @@ Common corrections when verifying medication names against FDB:
 ## Backup Issue (Open)
 - **Failing since ~May 2 (~4 weeks):** GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. Awaiting David.
 
-## Promoted From Short-Term Memory (2026-05-26)
+## Hannah Lab Findings (May 26, 2026)
+- **4 lab draws analyzed:** Jun 15, Jun 19, Jul 31, Sep 8 2025. Full analysis: `projects/cadence/hannah-labs-analysis.md`
+- **Updated phenotype:** Gut/Viral persistence + EBV reactivation + Hypothalamic-Pituitary dysregulation + PEM/Dysautonomia
+- **Key findings:**
+  - EBV reactivation pattern (viral persistence likely)
+  - Suppressed LH/FSH/estradiol → hypothalamic dysregulation (not primary gonadal failure)
+  - Elevated cortisol (HPA axis dysregulation)
+  - Oscillating ESR/CRP (chronic intermittent inflammation)
+  - Stool occult blood positive (gut involvement)
+  - Anti-cardiolipin IgM positive (autoimmune/hypercoagulability signal)
+  - Low sodium and CO2 (dysautonomia-consistent)
+- More labs expected from David
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-21.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Thursday, May 21)_ [score=0.910 recalls=0 avg=0.620 source=memory/2026-05-21.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-19.md:13:13 -->
-- **May 13–18 reviewed.** Six more quiet maintenance passes. No new development sessions, no new clinical work, no new Cadence builds. All open threads unchanged: [score=0.903 recalls=0 avg=0.620 source=memory/2026-05-19.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-19.md:19:19 -->
-- **Tonight's junk removal:** [score=0.903 recalls=0 avg=0.620 source=memory/2026-05-19.md:19-19]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-19.md:7:7 -->
-- Forty-fourth night. [score=0.893 recalls=0 avg=0.620 source=memory/2026-05-19.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-26.md:19:44 -->
-- - Full historical strain backfill completed: ~1,206 David docs + ~990 Hannah docs updated - Hannah strain range: 0.5–8 (very low, LC consistent). David: 9–20. - Hannah has had 0 workouts in the past 7 days (no workout.updated webhooks) - WHOOP does NOT send cycle/strain webhooks — strain is polling only (v1 cycle endpoint) - **Nightly cron set up**: 7am UTC daily, `python3 /home2/aegis_server/src/test/whoop/backfill_strain.py --days 3` - David updated script to use AWS Secrets Manager (pushed to aegis_server) ### aegis_server Write Access - David gave CleoSPHBot write access to `SpectatorHealth/aegis_server` - Can now commit and push directly — no handoff loop needed - Branch: `ub24_port` [score=0.889 recalls=4 avg=0.602 source=memory/2026-04-26.md:19-30]
+## Promoted From Short-Term Memory (2026-05-27)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-05-20.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Wednesday, May 20)_ [score=0.908 recalls=0 avg=0.620 source=memory/2026-05-20.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-20.md:13:13 -->
+- **May 14–19 reviewed.** Six more quiet maintenance passes. No new development sessions, no new clinical work, no new Cadence builds. All threads unchanged: [score=0.908 recalls=0 avg=0.620 source=memory/2026-05-20.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-20.md:19:19 -->
+- **Tonight's junk removal:** [score=0.900 recalls=0 avg=0.620 source=memory/2026-05-20.md:19-19]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-20.md:7:7 -->
+- Forty-fifth night. [score=0.898 recalls=0 avg=0.620 source=memory/2026-05-20.md:7-7]
