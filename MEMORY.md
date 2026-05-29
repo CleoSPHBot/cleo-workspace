@@ -172,19 +172,19 @@ Data-driven pacing protocol from 774 days WHOOP + Visible.
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~4 weeks)
+### Backup Failing (since ~May 2 — ~26 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
 Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; pending build.
 
-## Promoted From Short-Term Memory (2026-05-28)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-22.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Friday, May 22)_ [score=0.900 recalls=0 avg=0.620 source=memory/2026-05-22.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-21.md:13:13 -->
-- **May 15–20 reviewed.** Six consecutive quiet maintenance passes. No new development sessions, no new clinical work, no new Cadence builds. All threads unchanged: [score=0.898 recalls=0 avg=0.620 source=memory/2026-05-21.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-21.md:7:7 -->
-- Forty-sixth night. [score=0.898 recalls=0 avg=0.620 source=memory/2026-05-21.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-21.md:19:19 -->
-- **Tonight's junk removal:** [score=0.893 recalls=0 avg=0.620 source=memory/2026-05-21.md:19-19]
+
+## Promoted From Short-Term Memory (2026-05-29)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-05-22.md:13:13 -->
+- **May 16–21 reviewed.** Six consecutive quiet maintenance passes. No new development sessions, no new clinical work, no new Cadence builds. All threads unchanged: [score=0.903 recalls=0 avg=0.620 source=memory/2026-05-22.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-22.md:7:7 -->
+- Forty-seventh night. [score=0.893 recalls=0 avg=0.620 source=memory/2026-05-22.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-22.md:19:19 -->
+- **Tonight's junk removal (25th time):** [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-22.md:19-19]
