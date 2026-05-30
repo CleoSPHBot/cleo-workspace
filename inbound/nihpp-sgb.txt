@@ -1,0 +1,1591 @@
+ 
+1
+A causal link between autoantibodies and neurological symptoms in long COVID 
+ 
+Keyla Santos Guedes de Sa1,2*, Julio Silva1,2*, Rafael Bayarri-Olmos1,2*, Ryan 
+Brinda1,2, Robert Alec Rath Constable1,2, Patricia A. Colom Diaz1,2, Dong-il Kwon1,2,3, Gisele 
+Rodrigues1,2, Li Wenxue2,4, Christopher Baker1,2, Bornali Bhattacharjee1,2, Jamie Wood5, Laura 
+Tabacof5, Yansheng Liu2,4, David Putrino5†, Tamas L. Horvath6†, Akiko Iwasaki1,2,3† 
+ 
+1 Department of Immunobiology, Yale School of Medicine, Center for Infection and Immunity, 
+New Haven, CT, USA 
+2 Center for Infection and Immunity, Yale School of Medicine, New Haven, CT, USA. 
+3 Howard Hughes Medical Institute, Chevy Chase, MD, USA 
+4Yale Cancer Biology Institute, Yale University, West Haven, CT, USA. 
+5 Cohen Center for Recovery from Complex Chronic Illness, Icahn School of Medicine at Mount 
+Sinai, New York, NY, USA 
+6 Department of Neuroscience, Yale University School of Medicine, New Haven, CT 06520 
+ 
+ 
+* These authors contributed equally to this work as co-first authors. 
+† Correspondence: david.putrino@mountsinai.org, tamas.horvath@yale.edu, and 
+akiko.iwasaki@yale.edu 
+ 
+ 
+Summary 
+Acute SARS-CoV-2 infection triggers the generation of diverse and functional autoantibodies 
+(AABs), even after mild cases. Persistently elevated autoantibodies have been found in some 
+individuals with long COVID (LC). Using a >21,000 human protein array, we identified diverse 
+AAB targets in LC patients that correlated with their symptoms. Elevated AABs to proteins in 
+the nervous system were found in LC patients with neurocognitive and neurological symptoms. 
+Purified Immunoglobulin G (IgG) samples from these individuals reacted with human pons 
+tissue and were cross-reactive with mouse sciatic nerves, spinal cord, and meninges. Antibody 
+reactivity to sciatic nerves and meninges correlated with patient-reported headache and 
+disorientation. Passive transfer of IgG from patients to mice led to increased sensitivity and pain, 
+mirroring patient-reported symptoms. Similarly, mice injected with IgG showed loss of balance 
+and coordination, reflecting donor-reported dizziness. Our findings suggest that targeting AABs 
+could benefit some LC patients. 
+ 
+Keywords: 
+Autoantibodies, Long COVID, Chronic Pain, SARS-CoV-2 
+ 
+ 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+NOTE: This preprint reports new research that has not been certified by peer review and should not be used to guide clinical practice.
+ 
+2
+Introduction 
+ 
+Long COVID (LC) develops in over 10% of individuals after a SARS-CoV-2 
+infection1-5. A wide range of neurological symptoms have debilitating effects on people with LC. 
+LC impacts multiple regions of the brain6,7. Women are more likely than men to develop LC and 
+other post-acute infection syndromes (PAIS) including myalgic encephalomyelitis/chronic 
+fatigue syndrome (ME/CFS)8,9 affecting >1% of Americans10,11, suggesting sex differences in the 
+mechanisms that cause these disorders12,13. Since many autoimmune diseases (e.g., multiple 
+sclerosis, rheumatoid arthritis, systemic lupus, Sjögren’s syndrome) are more frequent in women, 
+we hypothesize autoimmunity may play a central role in the development of LC and other PAIS. 
+Although the root cause(s) of PAIS remain unclear, a wealth of data supports an autoimmune 
+etiology of PAIS3,14-23. For example, AABs have been found in ME/CFS24-26, chronic Lyme 
+disease27,28, and LC3,14-23, some of which target GPCRs and GABA receptors involved in 
+neuronal pathways relevant to neurological symptoms.  
+Infections naturally trigger the production of antibodies, which then clear pathogens. 
+However, AABs often arise during infection due to bystander activation or molecular mimicry 29-
+34. Diverse and functional AABs are found during the acute phase of SARS-CoV-2 infection14,35. 
+Normally, AAB levels subside as the immune system returns to homeostasis 22. However, four 
+large independent retrospective studies of medical records from millions of patients with 
+COVID-19 reported a 20-40% increased risk of multiple new-onset autoimmune diseases after 
+SARS-CoV-2 infection36-39. Therefore, we postulate that persisting AABs may cause symptoms 
+for some patients with LC even though these patients may not meet classical criteria to be 
+diagnosed with known autoimmune diseases.  
+The heterogeneity and the current lack of understanding of the underlying mechanisms 
+of LC pose a significant challenge in developing diagnostics and treatments. Discovering 
+biomarkers that identify patients with AAB-driven LC would have an immediate impact, 
+matching these patients to existing immunotherapies. Here we examined the contributions of 
+ABB in the development of neurological symptoms afflicting LC patients. Leveraging our MY-
+LC cohort40, we examined the autoreactivity of purified IgG against various human tissues and 
+identified autoantigens using a >21,000 protein array. Importantly, we demonstrated that passive 
+transfer of these purified IgG samples to healthy C57BL/6 mice recapitulated phenotypes of 
+neurological symptoms in the donors.  
+ 
+ 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+3
+Methods 
+ 
+Ethics statement involving human studies 
+This study was approved by the Mount Sinai Program for the Protection of Human 
+Subjects (IRB 20-01758) and Yale Institutional Review Board (IRB 2000029451 for MY-LC; 
+IRB 2000028924 for enrolment of pre-vaccinated Healthy Controls). Informed consent was 
+obtained from all enrolled participants. 
+MY-LC enrollment 
+MY-LC study design, inclusion, and exclusion criteria for recruitment of individuals 
+have been described in detail, previously40,41. Briefly, individuals experiencing persistent 
+symptoms for > 6 weeks after initial SARS-CoV-2 infection were invited to participate in the 
+study from various LC clinics within the Mount Sinai Health System and the Cohen Center for 
+Recovery from Complex Chronic Illness at The Mount Sinai Hospital. The participants who 
+enrolled in the LC group underwent complete medical evaluations by physicians to rule out 
+alternative medical etiologies for their persistent symptoms before study enrolment. Those 
+joining either the healthy or convalescent study groups were recruited through IRB-approved 
+advertisements disseminated via email lists, study flyers in hospital public areas, and various 
+social media platforms. Before enrollment, all participants provided informed consent. On the 
+day of sample collection, each participant supplied peripheral blood samples and completed 
+symptom surveys. Additionally, self-reported medical histories of all participants in the MY-LC 
+cohort were collected during study visits and cross-checked by collaborating clinicians through 
+the examination of electronic medical records.  
+ 
+Purification of immunoglobulins 
+Total IgG was purified from serum samples using Protein-G beads (Sigma-Aldrich, St. 
+Louis, MO, US). One and a half mL of serum samples were diluted 1:2 with phosphate-buffered 
+saline (PBS) and incubated with 2 mL of Protein-G Sepharose beads (Millipore Sigma, GE17-
+0618-05) overnight (ON) at 4 °C. Samples were transferred to elution columns and depleted sera 
+(flow-through) was collected and stored at –80°C for later use. Beads were washed 3 times with 
+PBS, and eluted using 100 mM glycine pH 2.3 into six fractions. The eluates were neutralized to 
+pH 7.4 using 1 M Tris pH 8, centrifuged, and the protein concentration was determined using a 
+NanoDrop 8000 (Thermo Fisher Scientific, Waltham, MA, US). Fractions containing antibodies 
+were pooled and dialyzed ON in PBS at 4°C. Dialyzed samples were quantified, aliquoted, and 
+stored at 4°C.  
+ 
+Characterization of human IgG purity and homogeneity  
+Fast Protein Liquid Chromatography (FPLC) was performed using a Quest 10 Plus 
+NGC Chromatography System (Bio-Rad Laboratories Inc., Hercules, CA, US; 7880003) fitted 
+with an ENrich SEC 650 10x300 column (Bio-Rad, 780-1650) equilibrated with filtered and 
+degassed PBS. Fifty µL of total human IgG at 1 mg/mL (total 0.05 mg) were injected into the 
+column at a flow rate of 0.5 mL/min. Bovine thyroglobulin (670 kDa), bovine γ-globulin (158 
+kDa), and chicken ovalbumin (44 kDa) (all from the gel filtration standard, Bio-Rad, 1511901) 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+4
+were used to estimate the MW of the IgG elution peaks. The SEC traces were analyzed using 
+ChromLab Software (Bio-Rad). 
+ 
+Autoantigen pull down  
+At 6-8 weeks of age, four female C57BL/6J mice were euthanized with isoflurane and 
+perfused with PBS. The whole brain was dissected, and placed into 1 mL of non-denaturing lysis 
+buffer (20 mM Tris HCl pH 8, 137 mM NaCl, 1% Nonidet P-40, 2 mM EDTA) with complete 
+protease inhibitor cocktail (Roche, Sigma, 11697498001) on ice. Tissues were then homogenized 
+with MP FastPrep -24 at speed 2 for 20s, then centrifuged at 14,000g for 10min, at 4°C. 
+The supernatant was aliquoted and frozen at −20°C until use. For pre-clearing of supernatants, 
+Protein G Sepharose beads (Millipore Sigma, GE17-0618-05) were washed with non-denaturing 
+lysis buffer with complete protease inhibitor cocktail, then equilibrated in PBS. Subsequently, 
+100µL beads were incubated with 100µL pooled brain supernatant, constantly mixing for 1 
+h,at 4°C. Beads were pelleted at 100g for 3min at 4°C, discarded and the supernatant 
+extracted.  
+Four µg of total IgG purified from the participants were mixed with Protein G Sepharose beads 
+(Millipore Sigma, GE17-0618-05) and incubated ON at 4 °C in a rocking platform. IgG/protein 
+G bead complexes were incubated with pre-cleared supernatants ON at 4 °C in a rocking 
+platform. Beads were recovered by centrifugation at 100g for 3min at 4°C, then washed 4 
+times with  non-denaturing lysis buffer with complete protease inhibitor cocktail. Beads were 
+again recovered by centrifugation, then eluted using 100 μL of elution buffer (100 mM glycine 
+pH 2.3). The eluates were neutralized to pH 7.4 using 1 M Tris pH 8, centrifuged, and dialyzed 
+ON in PBS at 4 °C. Dialyzed samples were quantified by NanoDrop 8000 (Thermo Fisher 
+Scientific, Waltham, MA, US), aliquoted, and stored at 4 °C.  
+ 
+Mass spectrometry sample preparation and data procession  
+A total 20 μL of above immunoprecipitated samples were digested for the mass spectrometry-
+based proteomic analysis. For each sample, 30 μL of 10 M urea was added. Reduction and 
+alkylation were carried out using 10 mM Dithiothreitol (DTT) for 1 hour at 56°C, followed by 20 
+mM iodoacetamide (IAA) in darkness for 45 minutes at room temperature. The samples were 
+then diluted with 100 mM NH4HCO3 and digested with trypsin (Promega) at a ratio of 1:20 
+(w/w) overnight at 37°C. The purification of the digested peptides was performed using a C18 
+column (MacroSpin Columns, NEST Group INC). About 1 μg of the peptide was injected for 
+mass spectrometry measurement. 
+ 
+The samples were measured by a data-independent acquisition (DIA) MS method as described 
+previously 42,43, on an Orbitrap Fusion Tribrid mass spectrometer (Thermo Scientific) coupled to 
+a nanoelectrospray ion source (NanoFlex, Thermo Scientific) and an EASY-nLC 1200 system 
+(Thermo Scientific, San Jose, CA). A 120-min gradient was used for the data acquisition at the 
+flow rate at 300 nL/min with the column temperature controlled at 60 °C using a column oven 
+(PRSO-V1, Sonation GmbH, Biberach, Germany). The DIA-MS method consisted of one MS1 
+scan and 33 MS2 scans of variable isolated windows with 1 m/z overlapping between windows. 
+The MS1 scan range was 350 – 1650 m/z and the MS1 resolution was 120,000 at m/z 200. The 
+MS1 full scan AGC target value was set to be 2E6 and the maximum injection time was 100 ms. 
+The MS2 resolution was set to 30,000 at m/z 200 with the MS2 scan range 200 – 1800 m/z and 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+5
+the normalized HCD collision energy was 28%. The MS2 AGC was set to be 1.5E6 and the 
+maximum injection time was 50 ms. The default peptide charge state was set to 2. Both MS1 and 
+MS2 spectra were recorded in profile mode. DIA-MS data analysis was performed using 
+Spectronaut v1844 with directDIA algorithm by searching against the SwissProt mouse fasta 
+sequences (September 2022). The oxidation at methionine was set as variable modification, 
+whereas carbamidomethylation at cysteine was set as fixed modification. Both peptide and 
+protein FDR cutoffs (Qvalue) were controlled below 1% and the resulting quantitative data 
+matrix were exported from Spectronaut. The sample normalization was off. All the other settings 
+in Spectronaut were kept as Default. 
+ 
+Immunofluorescence staining 
+Mice were anesthetized and perfused with PBS and 4% paraformaldehyde (PFA). For 
+meninges analyses, NG2DsRedBAC (Jackson, 008241) was used. Target tissues were harvested 
+and postfixed ON with 4% PFA, embedded in optimal cutting temperature (OCT) compound 
+(Sakura Finetek, Torrance, CA, US) and then frozen on a cooling bath with acetone/dry ice. 
+Tissues were stored at –80 °C. Tissues were sectioned with a cryostat at a thickness of 10 µm 
+and thaw mounted onto SuperFrost Plus Slides (Thermo Fisher Scientific). Slides were stored at 
+– 80 °C until use. 
+Slides were thawed at room temperature (RT) and washed in PBS to remove excess 
+OCT. Samples were outlined using a hydrophobic PAP pen. Slides were blocked with a solution 
+of 1% bovine serum albumin (BSA) and glycine (22 mg/mL) in a humidified chamber for 1 h. A 
+0.3% Sudan Black B/70% ethyl alcohol (EtOH) solution was added to each sample and 
+incubated before being washed thoroughly with PBS. Samples were incubated with 0.039 mg/ml 
+of purified total IgG. For stain endothelial cells in the meninges, the samples were also incubated 
+with Alexa Fluor® 647 anti-mouse CD31 Antibody (Biolegend, 102516). Each sample was 
+assigned a patient antibody ID number and incubated with said patient IgG in a humidified 
+chamber ON. Slides were washed in PBS and incubated with Alexa Fluor® 488 AffiniPure™ 
+Donkey Anti-Human IgG (Jackson ImmunoResearch, 709-545-149) in a humidified chamber for 
+60 min, for Human-on-Human immunofluorescence the total IgG purified from the patients were 
+labeled with Alexa Fluor 488 using Alexa Fluor 488 Protein Labeling Kit (Themo Fisher 
+Scientific, A10235), without the use of secondary antibody. Slides were once again washed in 
+PBS and immersed in distilled water. Washed slides were mounted with a solution of DAPI 
+Prolong® Gold antifade reagent (Invitrogen, Thermo Fisher Scientific, P36930) with 17.5 µg/ml 
+of DAPI and covered with a coverslip. Slides were stored in the dark at 4 °C. Images were 
+acquired by the Stellaris Confocal microscope at ×20 magnification and LAS X software (both 
+from Leica Microsystems, Wetzlar, Germany). The percentage of stained area and mean of 
+fluorescence were calculated using ImageJ software. 
+ 
+Autoantibody analysis by HuProt 
+Plasma samples were analyzed using the ImmuneProfiler on HuProt™ human proteome 
+arrays (CDI Laboratories, Baltimore, MD, US). Arrays and plasma samples, diluted 1:1000 into 
+CDISampleBuffer, were blocked for 1 h. Each blocked and diluted sample was then probed onto 
+a HuProt™ microarray for 1 h. Following the probing step, the arrays underwent three 10-min 
+washes with TBS-T (TBS, 0.1% Tween 20). Subsequently, they were probed with Alexa 647-
+anti-human IgG Fc specific for 1 h within a light-proof box. This was followed by three washes 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+6
+with TBS-T, each lasting 10 min, and three rinses with ddH2O. Blocking and all incubation steps 
+were performed at RT with gentle shaking. The arrays were then dried with an air duster and 
+scanned using a GenePix® 4000B scanner (Molecular Devices, San Jose, CA, US). 
+ 
+Validation of autoantigens by ELISA 
+Top hits identified by  HuProt™, MED20 (MyBiosource, San Diego, CA, US; 
+MBS5308819) and USP5 (MyBiosource, MBS8121224), were coated on Maxisorb microtiter 
+96-well plates (Thermo Fisher Scientific, 439454) in a 2-fold dilution (starting concentration  10 
+µg/ml) ON at 4 °C. Plates were washed three times using PBS-T (PBS, 0.05% Tween 20), and 
+the buffer was left in the wells for 1 h before applying the samples Purified human IgG at a 
+concentration of 25 µg/mL and 10 µg/mL in PBS-T with 2% fetal calf serum was added to the 
+plates and incubated for 2 h at RT shaking at 80 rpm.  Plates were washed three times using 
+PBS-T and incubated with polyclonal rabbit anti-human IgG/HRP (1:2,000; Agilent P021402-2) 
+for 1 h at RT shaking at 80 rpm. Plates were washed five times using PBS-T and incubated in the 
+dark with 100 µl/well of 1-Step Ultra TMB (Thermo Fisher Scientific, 34029) for 10 min. The 
+reaction was stopped with 50 µl of 0.5 M H2SO4. The plates were read at 450 nm with 630 nm 
+subtraction on a Cytation 5 reader (BioTek). 
+ 
+Animals 
+Behavioral experiments were performed on C57BL/6J (Jackson Laboratory, stock 
+number 000664) female mice aged between six and eight weeks. Mice were maintained under 
+specific pathogen-free conditions at Yale University. Mice were maintained in ventilated cages 
+at an ambient temperature and humidity-controlled room with a 12h light/12h dark cycle 
+with continuous access to food and water. The experiments using animals were performed 
+according to the federal guidelines and the institutional policies of the Yale School of Medicine 
+Animal Care and Use Committee (Approved Protocol 2021-10365). 
+ 
+Passive transfer and behavior analysis 
+Mice were injected intraperitoneally with 38 mg/kg of total IgG from participants 
+(Healthy Controls, Convalescent Controls and LC) or with PBS. Mice were co-housed with each 
+cage having one mouse per condition. All the experiments were performed between 1-6 pm and 
+mice were allowed to acclimate in the room for at least 1 h. 
+ 
+Open Field Test 
+The Open Field test was performed to characterize locomotor activity and anxiety-like 
+behaviors. The apparatus consisted of a 50cm × 50cm arena surrounded by 45cm opaque 
+plexiglass walls. For testing, the mice were placed in the center of the arena, and left to explore 
+for 10min, after which they were returned to their home cage. EthoVision XT 15 software 
+(Noldus, Wageningen, the Netherlands) was used to track distance traveled in central and 
+peripheral zones, the ratio of time spent in central and peripheral zones, movement, distance 
+traveled, activity and velocity.  
+ 
+Elevated Zero Maze Test 
+Elevated Zero Maze was administered to measure anxiety-like behaviors and 
+behavioral disinhibition. The apparatus consisted of an O-ring arena elevated 60cm above the 
+ground, with two opposing arms enclosed in plexiglass walls (50cm × 10cm × 40cm) and 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+7
+two opposing open arms (50cm × 10cm). Mice were placed in the open arm, and left to 
+explore the arena for 5min, after which they were returned to their home cage. EthoVision XT 
+15 software was used to track movement, velocity, and time spent in the closed and open arms.  
+ 
+Rotarod 
+To assess the motor coordination of the mice, an accelerated rotarod test was 
+performed. On test day, mice were placed on the resting rotarod apparatus (Ugo Basile, 
+Gemonio, Italy) for at least 1 min. The speed of the rotarod was accelerated from 4 to 80 rpm 
+over a 300 s period. The mice were subjected to four trials with at least 15 min intervals between 
+trials. The retention time of the rod in each trial was recorded and the average of all the trials was 
+plotted. 
+ 
+Grip Strength Test 
+Limb strength (fore and hind limb) was assessed using a commercially available grip 
+strength meter (Ugo Basile), incorporating a stainless-steel orientable grid and force transducer. 
+The mice were held gently by the base of the tail and pulled across the horizontal orientable grid 
+so that they were able to grip the bar with their four paws. A digital readout of the maximum 
+force applied is given once the grip is released. The test was performed at least three times on 
+each mouse to measure force values. 
+ 
+Hot Plate test 
+To evaluate thermal sensitivity, mice were placed on a hot plate (Ugo Basile) with the 
+plate set at 55°C. The time to the first sign of nociception (i.e. paw licking, flinching, or jump 
+response) was measured and the animal was immediately removed from the hot plate. A cut-off 
+period of 20s was maintained to avoid damage to the paws. 
+ 
+Blood Pressure and Heart Rate 
+Measurement of mouse blood pressure was carried out using the CODA mouse tail-cuff blood 
+pressure system (Kent Scientific Corp., Torrington, CT, US). Measurements were made during 
+the afternoon (1-6 pm) with the mice awake, restrained on CODA apparatus and lying down on a 
+warm plate, covered with a dark blanket. Each blood pressure measurement was carried out for 
+20 cycles for acclimatation and 20 cycles with recording with a deflation time of 20 s. The mean 
+blood pressure, systolic blood pressure, diastolic blood pressure and heart rate were determined 
+by the average of all 20 measurements during the recording cycles.  
+ 
+Statistical analysis 
+For immunofluorescence analyses, the threshold for positivity was defined as the mean 
+fluorescence of healthy control staining plus two times the standard deviation and represented as 
+a dashed line. The threshold of positivity of plasma auto-reactivities in the HuProt™ array was 
+determined as three times the mean of controls. 
+To classify the mice that were positive or negative to a specific symptom, the threshold 
+was defined as the mean of the healthy control group plus one time the standard deviation and 
+represented as a dashed line. 
+Multiple group comparisons were performed with one-way analysis of variance 
+(ANOVA) followed by Tukey’s multiple comparisons correction. The differences in the values 
+obtained for two different groups were evaluated using an unpaired, two-tailed Student’s t test 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+8
+with 95% confidence interval. The differences in the frequency of participants or mice that were 
+positive for a specific symptom were evaluated by Chi-square test. Analyses were performed 
+using the GraphPad PRISM (Version 10.2.3; GraphPad, San Diego, CA, US).  
+ 
+ 
+ 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+9
+Results 
+ 
+IgG targeting the CNS and PNS correlate with neurological symptoms in LC 
+  
+From our Mount Sinai-Yale LC (MY-LC) cohort 40, we identified and focused on a 
+subset of LC participants with high neurological symptom burden (n=55). This group was 
+predominantly comprised of women (Figure 1A) with an average age of 46.3 years (Figure 1B), 
+with no statistical differences between genders when compared to the convalescent controls (n = 
+42, CC) or healthy controls (n = 39, HC). These patients exhibited neurological symptoms, with 
+63.6% of them experiencing five or more, and 52.7% experiencing mild LC disease (defined by 
+LC propensity score [LCPS] using a parsimonious logistic regression model as described40) 
+(Figure 1C). The most common neurological symptoms were brain fog (80.0%), headache 
+(65.4%), loss of memory (64.4%), dizziness (58.2%), sleeping disturbance (58.2%), and 
+confusion (54.5%). At the time of enrollment, these individuals reported not having an 
+autoimmune diagnosis.  
+To evaluate if study participants had functional AAB profiles that could provoke their 
+LC-associated neurological symptoms, we purified total IgG from plasma and performed 
+immunofluorescence analyses using healthy human tissues (Figure 1D). To determine if 
+patients’ IgG cross-react to mouse tissues, we also included a large collection of mouse tissues 
+for staining (Figure 1D). We observed that purified total IgG from LC participants showed 
+increased reactivity against human pons (Figure 1E), mouse sciatic nerve (Figure 1F), mouse 
+meninges (Figure 1G), and mouse cerebellum (Figure 1H). Few participants also displayed 
+positivity against mouse spinal cord (Supp. 1A), thalamus and hypothalamus, hindbrain, cerebral 
+nuclei, cerebral cortex, and hippocampus (Supp. 1B), but not against non-neural tissues (Supp. 
+1C).  Thus, IgG from patients with LC are selectively cross-reactive to neural tissues.  
+Next, we analyzed whether cross-reactive antibodies to CNS correlate with the donors’ 
+LC symptoms. The mean of fluorescence and positive staining by patients’ IgG for mouse 
+meninges was associated with headache, and with an enrichment of the positive staining in loss 
+of memory, weakness, and disorientation (Figure 2A). None of the other symptoms evaluated 
+were significantly associated with meninges stain (Supp 2A). To evaluate the specificity of the 
+AAB recognition of the meninges, tissue was co-stained using antibodies to NG2-dsRED (a 
+marker for pericyte) and CD31 (endothelial cell marker).  We observed that the staining with IgG 
+from LC participants mostly co-localized with pericytes and somewhat with endothelial cells and 
+radiated out to the surrounding tissues beyond the pericytes (Figure 2B).  
+We observed that LC patients with tinnitus have increased mean fluorescence staining 
+for the sciatic nerve, albeit not significant (Figure 2C). None of the other symptoms evaluated 
+were significantly associated with sciatic nerve stains (Supp 2B). 
+We also observed significant diversity in the stains, with different participants showing 
+positive stains for different tissues and exhibiting distinct stains patterns (Figure 2D). Notably, 
+IgG from a subset of patients exhibited a wide range of cross-reactivities against the majority of 
+the neurological tissues examined. 
+ 
+Identification of autoantibody targets 
+ 
+To identify AAB targets, we screened patient plasma using the HuProt™ microarray 
+containing >21,000 human proteins (Figure 3A). Using a negative binomial (NB) regression 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+10
+with longlink function of positive auto-reactivities (i.e. >3 times the mean on controls), we 
+observed that LC participants had an increased number of autoreactive antibodies compared to 
+controls (Figure 3B). Similar to the increase in staining patterns observed with the 
+immunofluorescence analysis, LC participants had a significant increase in the diversity of 
+positive hits (Figure 3C), with many targeting CNS antigens (Figure 3D, E). We performed an 
+unsupervised clustering based on all the 21,000 full-length proteins evaluated with the HuProt™ 
+array and found a cluster enriched in LC patients, showing increased autoreactivities to 
+neurological proteins (Figure 3F). IgG from patients with LC also showed increased reactivity to 
+common autoantigens (Figure 3G). 
+To confirm the array results, we performed an unbiased autoantigen screening by pulling 
+down antigens from precleared brain extracts using Protein G beads loaded with total IgG 
+purified from four healthy controls and four LC, followed by mass spectrometry analysis. IgG 
+purity and homogeneity were confirmed by size-exclusion chromatography (Supp. Fig. Fig. 
+3A). We identified peptides belonging to the same protein family as the top HuProt™ hits, USP5 
+and MED20. Moreover, the top hits targets identified by HuProt and MS were further validated 
+by ELISA. The participants identified by HuProt as positive for MED20 and USP5 showed IgG 
+reactivity by ELISA using serial dilutions of the autoantigens and two different concentrations of 
+AAB (25 µg/mL Figure 3H-I, and 10 µg/mL Supp. Fig. 3C).  
+ 
+Transfer of IgG from patients with LC into mice recapitulates pain, loss of 
+balance and coordination, and muscle weakness 
+ 
+To evaluate if AABs identified in the LC participants are pathogenic, we developed a 
+mouse passive transfer model. Mice received 38 mg/kg of total IgG intraperitoneally (IP), with 
+each mouse receiving IgG from a different donor. The mice were co-housed, with each cage 
+housing one mouse that received an injection of PBS, IgG from Healthy Control, Convalescent 
+Control, or LC donors. All the behavioral experiments were performed between 1-6pm (Figure 
+4A).  
+After the injection we evaluated the presence of hIgG in the brain and serum. At 24 h 
+post-injection, we observed hIgG crossing the BBB and the concentration of antibodies remained 
+relatively constant for five days (Supp. Fig. 3D). Five days after injection, we observed that 5% 
+of the human IgG crossed the blood-brain barrier, as measured by ELISA of brain homogenates, 
+(Figure 4B), and that at day three post-injection these mice displayed increased thermal pain 
+sensitivity based on the hot plate test (Figure 4C). When we compared the hot plate test with the 
+symptoms that the donors displayed, we observed that mice receiving IgG from those diagnosed 
+with chronic pain (inflammatory pain or neuropathic pain) displayed enhanced pain sensitivity at 
+the hot plate test (Figure 4D), with 85% of the mice with the pain phenotype (i.e. defined by the 
+threshold for pain positivity) having received IgG from participants with LC who self-reported 
+new-onset pain since their LC diagnosis (Figure 4E). The hot plate test was also associated with 
+pain sensations described by the LC participants as pins and needles and burning pain, and a 
+non-statistically significant trend with electric shock (Figure 4F-H). The hot plate test 
+phenotype was also associated with weakness and dysautonomia, with 55% of the mice scoring 
+positive for pain receiving IgG from patients who reported weakness and 90% from patients with 
+dysautonomia (Figure 4I-J). All the other symptoms evaluated were not significantly associated 
+with the hot plate test (Supp. Fig. 4A).  
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+11
+The grip strength test (carried out on day three post-injection) showed a trend of muscle 
+weakness in mice injected with IgG from those with LC (Figure 4K). When we segregated by 
+symptoms, we observed an association with tinnitus (54.5% of the mice that showed muscle 
+weakness received IgG from participants who had tinnitus) (Figure 4L). We also observed a 
+trend when we compared the grip strength test with the participants who reported headaches 
+(90.9% of the mice with muscle weakness were injected with IgG from participants reporting 
+headaches) (Figure 4M). All the other symptoms evaluated were not significant (Supp. Fig. 
+4B). 
+The rotarod test was evaluated two days post-injection. While we did not observe 
+significant differences when comparing across the groups (Figure 4N), when we evaluated 
+symptoms reported by LC participants, we observed that 88.88% of the mice that showed loss of 
+balance and coordination had received IgG from patients who reported dizziness (Figure 4O). 
+All the other symptoms evaluated were not significant (Supp. Fig. 5A). These observations are 
+consistent with the positive IgG staining for the spinal cord, meninges, cerebellum, and sciatic 
+nerve (Figure 1; Supp. Fig. 1).  
+To evaluate how those antibodies may be inducing pain, we performed the passive 
+transfer using a Scn10a-Cre::tdTomato mice, with fluorescent labeling of sodium channel 
+Na(v)1.8 specifically expressed in dorsal root ganglion (DRG) and peripheral nerve axons that 
+mediates pain 45. We observed that mice injected with IgG from patients with LC had a reduction 
+in the number and volume of Intraepidermal Nerves Fibers (IENF) when compared with mice 
+that received IgG from healthy controls (Figure 4P). The reduction in the IENF is a marker for 
+Small Fiber Neuropathy (SFN) 46 that usually presents with chronic pain described as burning 
+pain and/or pins and needles sensations (both symptoms were associated with the hot plate test 
+results) (Figure 4F-G). We also evaluated anxiety-like behavior and locomotion by open field 
+and elevated zero maze (Supp. Fig. 6A-C), and blood pressure and heart rate (Supp. Fig. 6D) to 
+evaluate pathological changes to orthostatic responses. We did not observe significant 
+differences in these tests between the groups receiving IgG from HC, CC, or LC participants.  
+Together these data show that passive total IgG transfer from people with LC induces 
+heightened pain sensitivity, loss of balance and coordination, and muscle weakness in mice, and 
+is associated with the symptoms reported by those participants, namely chronic pain, headache, 
+tinnitus, dizziness and dysautonomia.  
+ 
+ 
+ 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+12
+Discussion 
+ 
+In this study, we evaluated the presence of AABs and their pathological potential in LC. 
+Our data show that a subset of LC participants had AAB against human pons, and cross-reactive 
+antibodies against mouse tissues, mostly focused on neurological tissues. By employing a 
+comprehensive human autoantigen microarray, we demonstrated that LC patients’ IgG react 
+against a wide array of antigens that are enriched in the nervous system tissues. We validated 
+some of the microarray hits using two other orthogonal methods, MS and ELISA. To evaluate 
+their pathogenic potential, we passively transferred purified IgG from patients into mice and 
+showed that these antibodies are sufficient to recapitulate key neurological symptoms described 
+by the patients with LC. Collectively, our data illustrate the pivotal role of autoantibodies as a 
+key driver of neurological disorders in LC and suggest their utility in the diagnosis of this LC 
+endotype. 
+Using a broad range of tissues and performing immunofluorescence using total IgG 
+purified from LC participants, we were able to identify a subset of participants with AAB against 
+neurological tissues and symptoms that are more closely associated with those AAB. A recent 
+case report18 also showed cross-reactive antibodies in the cerebrospinal fluid against several 
+mouse neurological tissues, including meninges and sciatic nerve in a patient with severe 
+neurological symptoms following SARS-CoV-2 infection.  
+Among participants with cross-reactive antibodies against mouse meninges, we 
+observed co-localization of those antibodies with pericytes. AAB against pericytes may explain 
+its association with reported headache by LC participants, since changes in pericyte functions 
+have been described to play a role in the vascular mechanisms associated with migraine with 
+aura47. LC participants with reported tinnitus had increased cross-reactive antibodies against 
+mouse sciatic nerve. Despite being considered rare, peripheral neuropathy has been associated 
+with tinnitus48,49, also described as Auditory Neuropathy Spectrum (ANS), and may be explained 
+by cochlear neural degeneration even in participants with normal hearing 50. 
+One important aspect of our findings is the high diversity of AAB found in those 
+participants, illustrated by the staining patterns and the HuProt™ data. This diversity is expected 
+since LC likely consists of multiple endotypes, with a broad range of symptoms that vary from 
+person to person, with distinct disease drivers including persistent virus, herpesvirus reactivation, 
+tissue damage, and autoimmunity 51. In our cohort, we observed that chronic pain is the symptom 
+most strongly associated with AABs, followed by other symptoms, such as headache, tinnitus, 
+and dizziness.  
+Using a human protein array, mass spectrometry and ELISA, we identified and 
+validated MED20 and USP5 as top targets for AAB. AABs against these proteins may play a 
+role in the development of LC neurological symptoms since Mediator Complex (MED) proteins, 
+such as MED12 and MED23 have been associated with neurological diseases 52,53. In addition, 
+USP5 has been associated with chronic pain54 due to its functions as a deubiquitinase that 
+specifically removes the ubiquitination modification from Cav3.2 channels, a T-type calcium 
+channel that regulates the excitability of nociceptive neurons, increasing their stability and 
+stimulating 54. Knockdown of USP5 has been shown to induce analgesia 54 It should be noted 
+that reactivity against MED20 or USP5 was present in only a subset of LC patients, emphasizing 
+the diversity of AABs and LC phenotypes.  
+For the LC endotype driven by AABs, there may be existing therapies that would 
+counter the pathologic impacts of the AABs. For example, intravenous immunoglobulin (IVIg) 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+13
+treatment might work by neutralization and clearance of AABs 55. An analysis of 130 cases 
+including IVIg treatment for neuro-COVID reveals that this technique is beneficial for patients 
+with LC and ME/CFS56. A review of IVIg usage in post-COVID neurological disorders revealed 
+that while virtually all studies showed benefit from IVIg treatment in patients with post-COVID 
+neurological disorders, only 12 of 76 case reports (16%) demonstrated unequivocal diagnoses of 
+autoimmune encephalitis, and one in every four of these cases (26%) lacked evidence to support 
+such a diagnosis56. Benefits from IVIg treatment was also reported in LC patients with small 
+fiber neuropathy57.  However, IVIg does not help all patients, and currently there are no 
+guidelines or clinical tests to distinguish between those who would benefit and those who do not, 
+underscoring the urgent need to develop new biomarkers. Demonstration of functional AAB may 
+be used as a diagnostic tool to inform IVIg therapy. In addition to IVIg, AAB-driven disease may 
+be treatable with mechanisms to degrade circulating antibodies (e.g., FcRn inhibitors), neutralize 
+their action (e.g., BC 007), or remove them temporarily (e.g., plasmapheresis), or targeting of 
+antibody-secreting cells (e.g., anti-CD20 monoclonal antibodies or CAR-T) may be considered.  
+Limitations of our study include the lack of identification of autoantigens sufficient to 
+mediate the pathological phenotype, and the effector functions utilized by the AAB to mediate 
+tissue damage. Although our experimental approach does not address directly the mechanisms by 
+which AAB induce the symptoms reported by LC participants, the findings described here will 
+enable future studies to identify the autoantigens that trigger pathology in mice and characterize 
+the effector function of those AAB. Furthermore, determining which AAB targets cause LC will 
+open the door to the development of novel treatments, such as next-generation target-specific 
+immunotherapies. 
+Currently, AABs are not widely recognized as a driver of post-COVID neurological 
+symptoms. Based on our data, an array of common autoantigens or a broad array of 
+comprehensive human proteome would not be suitable as a tool to diagnose AAB-LC endotype.  
+Effective diagnosis of this LC endotype will likely require an optimized panel of autoantigens 
+that can sensitively and accurately detect functional AABs. In the absence of such tools, passive 
+transfer of IgG from patients into mice followed by measurement of key validated behavioral 
+phenotypes could provide an interim method, although not scalable. Finally, the use of blood 
+products including immunoglobulins from people with LC in treatment settings requires careful 
+consideration, as they may pose pathologic risks to the recipients. Our data provide key 
+pathological roles of AAB in driving neurological phenotypes in vivo and warrant future studies 
+to inform diagnosis and therapy for this subset of LC. 
+ 
+ 
+ 
+ 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+14
+Acknowledgements 
+ 
+We thank the members of community of MY-LC study participants who volunteered both their 
+time and effort in aiding the completion of this study, and who also helped to inform and educate 
+on the effective and equitable communication of the results from this study.  
+We are also grateful to Huiping Dong, Melissa Linehan, Suzanne Fischer and Pavlina Baevova 
+for technical support. 
+Various graphical schematics were created using BioRender.  
+We thank Nils Kort for providing the meninges from NG2-dsRed mice.  
+This work was supported by the Else Kröner Fresenius Prize for Medical Research 2023, grants 
+from the National Institute of Allergy and Infectious Diseases (R01AI157488 to A.I.), RTW 
+Foundation (D.P.), the Howard Hughes Medical Institute Collaborative COVID-19 Initiative 
+(A.I.), Howard Hughes Medical Institute Emerging Pathogens Initiative (A.I.), and the Howard 
+Hughes Medical Institute (A.I.). Steve and Alexandra Cohen Foundation (D.P. and J.W.), Nash 
+Family Foundation (D.P. and J.W.) and Polybio Research Foundation (D.P. and J.W.). K.S.G.S. 
+ receive research support from Pew Latin American Fellowship.  
+ 
+Author contributions 
+ 
+K.S.G.S., J.S. and R.B.O designed and performed the experiments, analyzed the data, generated 
+the figures, and wrote the manuscript. R.B., R.C., P.C.D., D.K., G.R., L.W. and C.B. performed 
+experiments and helped with data interpretation. B.B, J.W., L.T., Y.L., D.P., T.L.H. and A.I. 
+provided reagents, helped with data interpretation, discussed the hypotheses, and assisted in 
+manuscript revisions. A.I. supervised the project, designed the experiments, helped with data 
+interpretation, participated in the data analysis, and wrote the manuscript. 
+ 
+Declaration of interests 
+ 
+A. I. co-founded RIGImmune, Xanadu Bio and PanV and is a member of the Board of Directors 
+of Roche Holding Ltd and Genentech. All other authors declare no competing interests. 
+ 
+ 
+ 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+15
+Figure Legends 
+ 
+Figure 1. Purified IgG from participants with Long COVID reacts with CNS and PNS 
+tissues. A-C. Demographics (gender, age and symptoms) of biospecimens analyzed from MY-
+LC cohort. D-H. Confocal microscopy showing human and mouse tissues immunostained with 
+human total IgG (green) purified from Long COVID, healthy or convalescent controls, as 
+indicated, and nuclear DNA stain (DAPI, blue). D. Experiment schematic. C. Representative 
+images of human pons immunostaining and Mean of fluorescence intensity. F. Representative 
+images of mouse sciatic nerve immunostaining and mean of fluorescence. G. Representative 
+images of mouse meninges immunostaining and mean of fluorescence. H. Representative images 
+of mouse meninges immunostaining and mean of fluorescence. Scale bar described in the image. 
+Insets indicate a higher magnification of a region indicated (red rectangle). Each dot in the figure 
+represents the value obtained from an individual participant. Data are presented as the mean. 
+Significant p-values are described in the image, as determined by One-way ANOVA with Tukey 
+multiple comparisons test. 
+ 
+Figure 2. IgG from participants with long COVID that reacts to meninges and sciatic nerve 
+are associated with symptoms. A. Mouse meninges stain divided by symptoms displayed by 
+the participants, as headache, memory, weakness and disorientation. B. Confocal microscopy 
+showing meninge from NG2-dsRED mouse stained with total IgG from Long COVID participant 
+(green) and CD31 (yellow), NG2-dsRED stains in red, nuclear DNA stain in blue (Dapi). Line 
+scan analysis showing fluorescent intensity for hIgG, CD31 and NG2-dsRED. White line 
+indicates the scan analysis in the graph. Scale bar described in the image. C. Mouse sciatic nerve 
+stain divided by symptoms displayed by the participants, as tinnitus. D. Heatmap showing 
+positive stain pattern across different tissues between participants, each collum is a different 
+participant, each row is a different tissue. Each dot in the figure represents the value obtained 
+from an individual participant. Data are presented as the mean. Significant p-values are described 
+in the image, as determined by One-way ANOVA with Tukey multiple comparisons test. 
+ 
+Figure 3. Individuals with Long COVID demonstrate elevated autoantibody reactivity 
+including to CNS tissues. A. Plasma from participants were incubated with HuProt microarray 
+and probed with a secondary antibody against human IgG, positive targets were identified using 
+an microarray scanner. B. Number of HuProt-derived auto-reactivities for each person within 
+each group starting at a HuProt intensity threshold of >3x the mean of controls. Model was run 
+using negative binomial (NB) regression with longlink function. Dispersion-adjusted incidence 
+rate ratio for each group was compared to the overall mean using analysis of Means (ANOM), 
+with significance adjustment using the Nelson method. Each point denotes the count of HuProt 
+positive hits for an individual. C. Heatmap depicting the incidence rate ratios derived from 
+negative binomial regression for each group at HuProt thresholds between 2-3x the signal 
+intensity of the control mean, as in A. Asterisks denote significance from the adjusted overall 
+mean using NB-derived ANOM with significance adjustment using the Nelson method. D. 
+Heatmap depicting HuProt autoantibody reactivity to CNS starting at HuProt scores of >=3x. 
+Each column represents a single participant and each row represents a single protein. E. Heatmap 
+depicting the incidence rate ratio difference between each respective group and the mean of all 
+groups using Poisson Regression with ANOM analysis followed by Nelson correction. Asterisks 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+16
+denote significance. F. Heatmap showing unsupervised cluster analysis for HuProt autoantibody 
+reactivity. G. Heatmap depicting HuProt autoantibody reactivity to common antigens by group 
+starting at HuProt scores of >=2.8x. H-I. ELISA and Area Uder Curve (AUC) analysis for top hit 
+targets identified by Huprot.  
+ 
+Figure 4. IgG from individuals with LC induces symptoms in mice. A A dose of 38 mg/kg of 
+total IgG purified from healthy, convalescent controls and Long COVID participants were 
+administered to 6-8 weeks-old C57BL/6 female mice by intraperitoneal (IP) injection, which 
+were followed up for 5 days. B Quantification of human IgG by ELISA in brain homogenate and 
+serum at day 5 post-injection. C Hot plate test performed on day 3 post injection. D Hot plate test 
+divided by status of chronic pain displayed by the participants. E Frequency of mice with pain at 
+the hot plate test and the patients with diagnosed chronic pain. F-H Hot plate test divided by how 
+the participants described their pain sensation. I Hot plate test divided by participants that 
+displayed weakness. J Hot plate test divided by participants that displayed dysautonomia. K Grip 
+strength test performed on day 3 post injection. L Grip strength test divided by participants that 
+displayed tinnitus. M Grip strength test divided by participants that displayed headache. N 
+Rotarod test performed on day 2 post injection. O Rotarod test divided by participants that 
+displayed dizziness. P Longitudinal Two-photon imaging of Scn10a-Cre::td Tomato reporter 
+mice reveals collagen fibers by second harmonic generation (SHG) as well as nociceptor axons 
+and the perpendicular intraepidermal nerve fibers (IENF; white/pink). Quantification of total 
+IENF volume and number of fibers crossing the dermis boundary after passive transfer. Scale 
+bars 50μm. Each dot in the figure represents the value obtained from an individual mouse. Each 
+mouse received antibodies isolated from a single human participant. Data are presented as the 
+mean. Significant p values are described in the image, as determined by T-test for two groups 
+comparison or one-way ANOVA corrected for multiple comparisons with Tukey test for 
+multiple groups comparison.  
+ 
+ 
+ 
+ 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+17
+Supplemental Information 
+ 
+Supplementary Figure 1. AAB from a small subset of Long COVID participants are 
+restricted to with CNS and PNS tissues. Confocal microscopy showing human and mouse 
+tissues immunostained with human total IgG (green) purified from Long COVID, healthy or 
+convalescent controls, as indicated, and nuclear DNA stain (DAPI, blue). A Representative 
+images of mouse spinal cord immunostaining and mean of fluorescence intensity.  B Mean of 
+fluorescence for mouse thalamus plus hypothalamus, hindbrain, cerebral nuclei, cerebral cortex, 
+hippocampus, anterior olfactory nucleous and midbrain. C Mean of fluorescence for human 
+adrenal gland, breast, cervix, endometrium, gall bladder, fallopian tube, heart muscle, kidney, 
+liver, pancreas, parathyroid, prostate, rectum, retina, small intestine, stomach, testis, urinary 
+bladder, thyroid, placenta, ovary. Each dot in the figure represents the value obtained from an 
+individual participant. Data are presented as the mean. Significant p-values are described in the 
+image, as determined by One-way ANOVA with Tukey multiple comparisons test. 
+ 
+Supplementary Figure 2. Comparisons of meninge and sciatic nerve stain with symptoms 
+displayed by the Long COVID participants. A Mouse meninges stain divided by symptoms 
+displayed by the participants, as brain fog, fatigue, dizziness, tinnitus, confusion, dysautonomia, 
+and pain. B Mouse sciatic nerve stain divided by symptoms displayed by the participants, as 
+brain fog, fatigue, dizziness, disorientation, confusion, dysautonomia, pain, memory, weakness, 
+and headache. Each dot in the figure represents the value obtained from an individual participant. 
+Data are presented as the mean. Significant p-values are described in the image, as determined 
+by One-way ANOVA with Tukey multiple comparisons test. 
+ 
+Supplementary Figure 3. Long COVID participants have increased and diverse AAB 
+against MED and USP family proteins. A. Size-exclusion chromatography (SEC) profiles of 
+the purified proteins run in a Fast Protein Liquid Chromatography (FPLC). Purity was 
+determined by peak integration with the ChromLab Software. B. ELISA and Area Uder Curve 
+(AUC) analysis for top hit targets identified by Huprot. C. Volcano plot showing differential 
+abandance (Log2 Fold Change) of AAB targets identified by pulldown using hIgG from healthy 
+controls and Long COVID participants with mouse brain homogenate followed by mass spec. D. 
+Time course analysis of human IgG concentration by ELISA in brain homogenate and serum for 
+four days post-injection. Each dot in the figure represents the value obtained from an individual 
+mouse. Data are presented as the mean ±SD. Significant p values are described in the image, as 
+determined by T-test for two groups comparison or one-way ANOVA corrected for multiple 
+comparisons with Tukey test for multiple groups comparison.  
+ 
+Supplementary Figure 4. Symptoms evaluated in the passive transfer that were not 
+associated with hot plate test and grip strength. Dose of 38 mg/kg of total IgG purified from 
+healthy, convalescent controls and Long COVID participants were administered to 6-8 weeks-
+old C57BLl/6 female mice by intraperitoneal (IP) injection, which were followed up for 5 days. 
+A. Hot plate test divided by symptoms displayed by the participants as fatigue, disorientation, 
+tinnitus, memory, confusion, dizziness, brain fog, headache. B Grip strength test divided by 
+participants that displayed fatigue, disorientation, memory, confusion, weakness, dizziness, brain 
+fog, chronic pain and dysautonomia. Each dot in the figure represents the value obtained from an 
+individual mouse. Each mouse received antibodies isolated from a single human participant. 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+18
+Data are presented as the mean. Significant p values are described in the image, as determined by 
+one-way ANOVA corrected for multiple comparisons with Tukey test.  
+ 
+Supplementary Figure 5. Symptoms evaluated in the passive transfer that were not 
+associated with rotarod. Dose of 38 mg/kg of total IgG purified from healthy, convalescent 
+controls and Long COVID participants were administered to 6-8 weeks-old C57BL/6 female 
+mice by intraperitoneal (IP) injection, which were followed up for 5 days. A. Rotarod test 
+divided by symptoms displayed by the participants as fatigue, disorientation, tinnitus, brain fog, 
+confusion, weakness, memory, chronic pain, headache, and dysautonomia. 
+ 
+Supplementary Figure 6. Passive transfer does not induce anxiety like behavior, locomotion 
+and cardiovascular function symptoms in mice. Dose of 38 mg/kg of total IgG purified from 
+healthy, convalescent controls and Long COVID participants were administered to 6-8 weeks-
+old C57BL/6 female mice by intraperitoneal (IP) injection, which were followed up for 5 days. 
+A. Cumulative time spent in the cente, cumulative time spent in the border and representative 
+heat map showing mice movement in the open field test. B.Mean velocity, distance moved and 
+time moving during the open field test. C. Cumulative time in open arms, cumulative time in 
+closed arms and representative heatmap showing mice movement in the elevated zero maze test. 
+D. Heart rate, mean blood pressure, systolic blood pressure and diastolic blood pressure 
+measurements. Each dot in the figure represents the value obtained from an individual mouse. 
+Each mouse received antibodies isolated from a single human participant. Data are presented as 
+mean. Significant p values are described in the image, as determined by one-way ANOVA 
+corrected for multiple comparisons with Tukey test.  
+ 
+ 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+19
+References 
+ 
+1. 
+Ford Nd Fau - Slaughter, D., Slaughter D Fau - Edwards, D., Edwards D Fau - Dalton, 
+A., Dalton A Fau - Perrine, C., Perrine C Fau - Vahratian, A., Vahratian A Fau - Saydah, 
+S., and Saydah, S. (2023). Long COVID and Significant Activity Limitation Among 
+Adults, by Age - United States, June 1-13, 2022, to June 7-19, 2023. MMWR Morb 
+Mortal Wkly Rep 72, 866–870. 10.15585/mmwr.mm7232a3. 
+2. 
+Hua, M.J., Gonakoti, S., Shariff, R., Corpuz, C., Acosta, R.A.H., Chang, H., Asemota, I., 
+Gobbi, E., and Rezai, K. (2023). Prevalence and Characteristics of Long COVID 7-12 
+Months After Hospitalization Among Patients From an Urban Safety-Net Hospital: A 
+Pilot Study. AJPM Focus 2, 100091. 
+3. 
+Ceban, F., Ling, S., Lui, L.M.W., Lee, Y., Gill, H., Teopiz, K.M., Rodrigues, N.B., 
+Subramaniapillai, M., Di Vincenzo, J.D., Cao, B., et al. (2022). Fatigue and cognitive 
+impairment in Post-COVID-19 Syndrome: A systematic review and meta-analysis. Brain 
+Behav Immun 101, 93-135. 
+4. 
+Bowe, B., Xie, Y.A.-O., and Al-Aly, Z.A.-O. (2022). Acute and postacute sequelae 
+associated with SARS-CoV-2 reinfection. Nat Med 28, 2398-2405. 
+5. 
+Ayoubkhani, D.A.-O., Bosworth, M.L., King, S., Pouwels, K.B., Glickman, M., Nafilyan, 
+V.A.-O.X., Zaccardi, F., Khunti, K.A.-O., Alwan, N.A.-O., and Walker, A.S. (2022). 
+Risk of Long COVID in People Infected With Severe Acute Respiratory Syndrome 
+Coronavirus 2 After 2 Doses of a Coronavirus Disease 2019 Vaccine: Community-Based, 
+Matched Cohort Study. Open Forum Infect Dis 9, ofac464. 10.1093/ofid/ofac464. 
+6. 
+Douaud, G.A.-O.X., Lee, S., Alfaro-Almagro, F., Arthofer, C.A.-O., Wang, C.A.-O., 
+McCarthy, P., Lange, F.A.-O., Andersson, J.L.R., Griffanti, L., Duff, E., et al. (2022). 
+SARS-CoV-2 is associated with changes in brain structure in UK Biobank. Nature 604, 
+697-707. 10.1038/s41586-022-04569-5. 
+7. 
+Graham, E.A.-O., Clark, J.A.-O., Orban, Z.S., Lim, P.H., Szymanski, A.L., Taylor, C., 
+DiBiase, R.M., Jia, D.T., Balabanov, R., Ho, S.U., et al. (2021). Persistent neurologic 
+symptoms and cognitive dysfunction in non-hospitalized Covid-19 "long haulers". Ann 
+Clin Transl Neurol 8, 1073-1085. 10.1002/acn3.51350. 
+8. 
+Salari, N., Khodayari, Y., Hosseinian-Far, A., Zarei, H., Rasoulpoor, S., Akbari, H., and 
+Mohammadi, M.A.-O. (2022). Global prevalence of chronic fatigue syndrome among 
+long COVID-19 patients: A systematic review and meta-analysis. Biopsychosoc Med 16, 
+21. 
+9. 
+Jason, L.A.-O., and Dorri, J.A. (2023). ME/CFS and Post-Exertional Malaise among 
+Patients with Long COVID. Neurol Int 15, 1-11. 
+10. 
+Lim, E.J., Ahn, Y.C., Jang, E.S., Lee, S.W., Lee, S.H., and Son, C.A.-O. (2020). 
+Systematic review and meta-analysis of the prevalence of chronic fatigue 
+syndrome/myalgic encephalomyelitis (CFS/ME). J Transl Med 18, 100. 10.1186/s12967-
+020-02269-0. 
+11. 
+Beyond Myalgic Encephalomyelitis/Chronic Fatigue Syndrome: Redefining an Illness.  
+(2015). Mil Med 180, 721-723. 10.7205/MILMED-D-15-00085. 
+12. 
+Abu Hamdh, B., and Nazzal, Z.A.-O. (2023). A prospective cohort study assessing the 
+relationship between long-COVID symptom incidence in COVID-19 patients and 
+COVID-19 vaccination. Sci Rep 13, 4896. 10.1038/s41598-023-30583-2. 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+20
+13. 
+Bai, F., Tomasoni, D., Falcinella, C., Barbanotti, D., Castoldi, R., Mulè, G., Augello, M., 
+Mondatore, D., Allegrini, M., Cona, A., et al. (2022). Female gender is associated with 
+long COVID syndrome: a prospective cohort study. Clin Microbiol Infect 28, 611.e619-
+611.e616. 10.1016/j.cmi.2021.11.002. 
+14. 
+Wang, E.Y., Mao, T., Klein, J., Dai, Y., Huck, J.D., Jaycox, J.R., Liu, F., Zhou, T., 
+Israelow, B., Wong, P., et al. (2021). Diverse functional autoantibodies in patients with 
+COVID-19. Nature 595, 283-288. 10.1038/s41586-021-03631-y. 
+15. 
+Mulder, J., Lindqvist, I., Rasmusson, A.J., Husén, E., Rönnelid, J., Kumlien, E., Rostami, 
+E., Virhammar, J., and Cunningham, J.L. (2021). Indirect immunofluorescence for 
+detecting anti-neuronal autoimmunity in CSF after COVID-19 - Possibilities and pitfalls. 
+. Brain Behav Immun 94, 473-474. 
+16. 
+Franke, C., Boesl, F., Goereci, Y., Gerhard, A., Schweitzer, F., Schroeder, M., 
+Foverskov-Rasmussen, H., Heine, J., Quitschau, A., Kandil, F.I., et al. (2023). 
+Association of cerebrospinal fluid brain-binding autoantibodies with cognitive 
+impairment in post-COVID-19 syndrome. Brain Behav Immun 109, 139-143. 
+17. 
+Franke, C., Ferse, C., Kreye, J., Reincke, S.M., Sanchez-Sendin, E., Rocco, A., 
+Steinbrenner, M., Angermair, S., Treskatsch, S., Zickler, D., et al. (2021). High frequency 
+of cerebrospinal fluid autoantibodies in COVID-19 patients with neurological symptoms. 
+Brain, Behavior, and Immunity 93, 415-419. https://doi.org/10.1016/j.bbi.2020.12.022. 
+18. 
+McAlpine, L.S., Lifland, B., Check, J.R., Angarita, G.A., Ngo, T.T., Chen, P., Dandekar, 
+R., Alvarenga, B.D., Browne, W.D., Pleasure, S.J., et al. (2023). Anti-SARS-CoV-2 and 
+Autoantibody Profiling of a COVID-19 Patient With Subacute Psychosis Who Remitted 
+After Treatment With Intravenous Immunoglobulin. Biol Psychiatry 93, e25-e29. 
+19. 
+Muri, J., Cecchinato, V., Cavalli, A., Shanbhag, A.A., Matkovic, M., Biggiogero, M., 
+Maida, P.A., Moritz, J., Toscano, C., Ghovehoud, E., et al. (2023). Autoantibodies 
+against chemokines post-SARS-CoV-2 infection correlate with disease course. Nature 
+Immunology 24, 604-611. 10.1038/s41590-023-01445-w. 
+20. 
+Szewczykowski, C., Mardin, C., Lucio, M., Wallukat, G., Hoffmanns, J., Schröder, T., 
+Raith, F., Rogge, L., Heltmann, F., Moritz, M., et al. (2022). Long COVID: Association 
+of Functional Autoantibodies against G-Protein-Coupled Receptors with an Impaired 
+Retinal Microcirculation. Int J Mol Sci 23, 7209. 
+21. 
+Wallukat, G., Hohberger, B., Wenzel, K., Fürst, J., Schulze-Rothe, S., Wallukat, A., 
+Hönicke, A.S., and Müller, J. (2021). Functional autoantibodies against G-protein 
+coupled receptors in patients with persistent Long-COVID-19 symptoms. J Transl 
+Autoimmun 4, 100100. 
+22. 
+Woodruff, M.A.-O., Ramonell, R.P., Haddad, N.A.-O., Anam, F.A., Rudolph, M.A.-O., 
+Walker, T.A., Truong, A.D., Dixit, A.N., Han, J.A.-O., Cabrera-Mora, M., et al. 
+Dysregulated naive B cells and de novo autoreactivity in severe COVID-19. 
+23. 
+Etter, M.M., Martins, T.A., Kulsvehagen, L., Pössnecker, E., Duchemin, W., Hogan, S., 
+Sanabria-Diaz, G., Müller, J., Chiappini, A., Rychen, J., et al. (2022). Severe Neuro-
+COVID is associated with peripheral immune signatures, autoimmunity and 
+neurodegeneration: a prospective cross-sectional study. Nature Communications 13, 
+6777. 10.1038/s41467-022-34068-0. 
+24. 
+Freitag, H.A.-O., Szklarski, M.A.-O., Lorenz, S., Sotzny, F., Bauer, S., Philippe, A., 
+Kedor, C., Grabowski, P., Lange, T.A.-O., Riemekasten, G., et al. (2021). Autoantibodies 
+to Vasoregulative G-Protein-Coupled Receptors Correlate with Symptom Severity, 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+21
+Autonomic Dysfunction and Disability in Myalgic Encephalomyelitis/Chronic Fatigue 
+Syndrome. J Clin Med 10, 3675. 10.3390/jcm10163675. 
+25. 
+Ryabkova, V.A.-O., Gavrilova, N.Y., Poletaeva, A.A., Pukhalenko, A.I., Koshkina, I.A., 
+Churilov, L.A.-O., and Shoenfeld, Y. (2023). Autoantibody Correlation Signatures in 
+Fibromyalgia and Myalgic Encephalomyelitis/Chronic Fatigue Syndrome: Association 
+with Symptom Severity. Biomedicines 11, 257. 10.3390/biomedicines11020257. 
+26. 
+Loebel, M., Grabowski, P., Heidecke, H., Bauer, S., Hanitsch, L.G., Wittke, K., Meisel, 
+C., Reinke, P., Volk, H.D., Fluge, Ø., et al. (2016). Antibodies to β adrenergic and 
+muscarinic cholinergic receptors in patients with Chronic Fatigue Syndrome. Brain 
+Behav Immun 52, 32-39. 10.1016/j.bbi.2015.09.013. 
+27. 
+Chandra, A., Wormser Gp Fau - Klempner, M.S., Klempner Ms Fau - Trevino, R.P., 
+Trevino Rp Fau - Crow, M.K., Crow Mk Fau - Latov, N., Latov N Fau - Alaedini, A., and 
+Alaedini, A. (2010). Anti-neural antibody reactivity in patients with a history of Lyme 
+borreliosis and persistent symptoms. Brain Behav Immun 24, 1018-1024. 
+10.1016/j.bbi.2010.03.002. 
+28. 
+Sloupenska, K.A.-O., Koubkova, B., Horak, P.A.-O.X., Hutyrova, B., Racansky, M., 
+Mares, J., Miklusova, M., Schovanek, J., Zapletalova, J., Raska, M.A.-O., and Krupka, 
+M.A.-O. (2023). Myositis Autoantibodies in Patients with Suspected Post-Treatment 
+Lyme Disease Syndrome. Life (Basel) 13, 527. 
+29. 
+Gauntt, C.J., Arizpe Hm Fau - Higdon, A.L., Higdon Al Fau - Wood, H.J., Wood Hj Fau 
+- Bowers, D.F., Bowers Df Fau - Rozek, M.M., Rozek Mm Fau - Crawley, R., and 
+Crawley, R. (1995). Molecular mimicry, anti-coxsackievirus B3 neutralizing monoclonal 
+antibodies, and myocarditis. J Immunol 154, 2983-2995. 
+30. 
+Lanz, T.A.-O., Brewer, R.A.-O., Ho, P.A.-O.X., Moon, J.A.-O.X., Jude, K.A.-O., 
+Fernandez, D.A.-O.X., Fernandes, R.A., Gomez, A.M., Nadj, G.S., Bartley, C.A.-O., et 
+al. (2022). Clonally expanded B cells in multiple sclerosis bind EBV EBNA1 and 
+GlialCAM. Nature 603, 321-327. 
+31. 
+Leis, A.A., Szatmary G Fau - Ross, M.A., Ross Ma Fau - Stokic, D.S., and Stokic, D.S. 
+(2014). West nile virus infection and myasthenia gravis. Muscle Nerve 49, 26-29. 
+32. 
+Vasilevska, V., Guest, P.C., Bernstein, H.G., Schroeter, M.L., Geis, C., and Steiner, J.A.-
+O. (2021). Molecular mimicry of NMDA receptors may contribute to neuropsychiatric 
+symptoms in severe COVID-19 cases. J Neuroinflammation 18, 245. 
+33. 
+Zhao, Z.S., Granucci F Fau - Yeh, L., Yeh L Fau - Schaffer, P.A., Schaffer Pa Fau - 
+Cantor, H., and Cantor, H. (1998). Molecular mimicry by herpes simplex virus-type 1: 
+autoimmune disease after viral infection. Science 279, 1344-1347. 
+34. 
+Neumann, D.A., Rose Nr Fau - Ansari, A.A., Ansari Aa Fau - Herskowitz, A., and 
+Herskowitz, A. (1994). Induction of multiple heart autoantibodies in mice with 
+coxsackievirus B3- and cardiac myosin-induced autoimmune myocarditis. J Immunol 
+152, 343-350. 
+35. 
+Song, E., Bartley, C.M., Chow, R.D., Ngo, T.T., Jiang, R., Zamecnik, C.R., Dandekar, 
+R., Loudermilk, R.P., Dai, Y., Liu, F., et al. (2021). Divergent and self-reactive immune 
+responses in the CNS of COVID-19 patients with neurological symptoms. Cell Rep Med 
+2, 100288. 
+36. 
+Peng, K., Li, X., Yang, D., Chan, S.C.W., Zhou, J., Wan, E.Y.F., Chui, C.S.L., Lai, 
+F.T.T., Wong, C.K.H., Chan, E.W.Y., et al. (2023). Risk of autoimmune diseases 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+22
+following COVID-19 and the potential protective effect from vaccination: a population-
+based cohort study. EClinicalMedicine 63, 102154. 
+37. 
+Chang, R., Yen-Ting Chen, T., Wang, S.I., Hung, Y.M., Chen, H.Y., and Wei, C.J. 
+(2023). Risk of autoimmune diseases in patients with COVID-19: A retrospective cohort 
+study. EClinicalMedicine 56, 101783. 10.1016/j.eclinm.2022.101783. 
+38. 
+Tesch, F., Ehm, F., Vivirito, A., Wende, D., Batram, M., Loser, F., Menzer, S., Jacob, J., 
+Roessler, M., Seifert, M., et al. (2023). Incident autoimmune diseases in association with 
+SARS-CoV-2 infection: a matched cohort study. Clin Rheumatol 42, 2905-2914. 
+10.1007/s10067-023-06670-0. 
+39. 
+Syed, U., Subramanian, A., Wraith, D.C., Lord, J.M., McGee, K., Ghokale, K., 
+Nirantharakumar, K., and Haroon, S. (2023). Incidence of immune-mediated 
+inflammatory diseases following COVID-19: a matched cohort study in UK primary care. 
+BMC Med 21, 363. 10.1186/s12916-023-03049-5. 
+40. 
+Klein, J.A.-O., Wood, J., Jaycox, J.R., Dhodapkar, R.A.-O., Lu, P.A.-O.X., Gehlhausen, 
+J.R., Tabachnikova, A., Greene, K., Tabacof, L., Malik, A.A., et al. (2023). 
+Distinguishing features of long COVID identified through immune profiling. Nature 623, 
+139-148. 10.1038/s41586-023-06651-y. 
+41. 
+Lucas, C.A.-O., Vogels, C.B.F., Yildirim, I., Rothman, J.A.-O., Lu, P.A.-O.X., Monteiro, 
+V., Gehlhausen, J.R., Campbell, M., Silva, J.A.-O., Tabachnikova, A., et al. (2021). 
+Impact of circulating SARS-CoV-2 variants on mRNA vaccine-induced immunity. 
+Nature 600, 523-529. 10.1038/s41586-021-04085-y. 
+42. 
+Mehnert, M., Li, W., Wu, C., Salovska, B., and Liu, Y.A.-O. (2019). Combining Rapid 
+Data Independent Acquisition and CRISPR Gene Deletion for Studying Potential Protein 
+Functions: A Case of HMGN1. Proteomics 19, e1800438. 
+43. 
+Wu, C., Ba, Q., Lu, D., Li, W., Salovska, B., Hou, P., Mueller, T., Rosenberger, G., Gao, 
+E., Di, Y., et al. (2021). Global and Site-Specific Effect of Phosphorylation on Protein 
+Turnover. Dev Cell 56, 111-124.e116. 
+44. 
+Bruderer, R., Bernhardt, O.M., Gandhi, T., Xuan, Y., Sondermann, J., Schmidt, M., 
+Gomez-Varela, D., and Reiter, L. (2017). Optimization of Experimental Parameters in 
+Data-Independent Mass Spectrometry Significantly Increases Depth and Reproducibility 
+of Results. Mol Cell Proteomics 16, 2296-2309. 
+45. 
+Facer, P., Punjabi Pp Fau - Abrari, A., Abrari A Fau - Kaba, R.A., Kaba Ra Fau - Severs, 
+N.J., Severs Nj Fau - Chambers, J., Chambers J Fau - Kooner, J.S., Kooner Js Fau - 
+Anand, P., and Anand, P. (2011). Localisation of SCN10A gene product Na(v)1.8 and 
+novel pain-related ion channels in human heart. Int Heart J 52, 146-152. 
+46. 
+Hovaguimian, A., and Gibbons, C.H. (2011). Diagnosis and treatment of pain in small-
+fiber neuropathy. Curr Pain Headache Rep 15, 193-200. 
+47. 
+Khennouf, L., Gesslein, B., Brazhe, A., Octeau, J.C., Kutuzov, N., Khakh, B.S., and 
+Lauritzen, M. (2018). Active role of capillary pericytes during stimulation-induced 
+activity and spreading depolarization. Brain 141, 2032-2046. 
+48. 
+Savastano, M., Bottin R Fau - Andreoli, C., Andreoli C Fau - Marcon, M., and Marcon, 
+M. (1995). Tinnitus as a Presenting Symptom in Secondary Neuropathy: a Case Report. 
+Int Tinnitus J 1, 153-154. 
+49. 
+Chandan, H.S., Prabhu, P., and Deepthi, M. (2013). Prevalence and characteristics of 
+tinnitus in individuals with auditory neuropathy spectrum disorder. Hearing, Balance and 
+Communication 11, 214-217. 10.3109/21695717.2013.821755. 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+ 
+23
+50. 
+Vasilkov, V., Caswell-Midwinter, B., Zhao, Y., de Gruttola, V., Jung, D.H., Liberman, 
+M.C., and Maison, S.F. (2023). Evidence of cochlear neural degeneration in normal-
+hearing subjects with tinnitus. Sci Rep 13, 19870. 10.1038/s41598-023-46741-5. 
+51. 
+Merad, M.A.-O., Blish, C.A.-O., Sallusto, F.A.-O., and Iwasaki, A.A.-O. (2022). The 
+immunology and immunopathology of COVID-19. 375, 1122-1127. 
+52. 
+Vodopiutz, J., Schmook Mt Fau - Konstantopoulou, V., Konstantopoulou V Fau - Plecko, 
+B., Plecko B Fau - Greber-Platzer, S., Greber-Platzer S Fau - Creus, M., Creus M Fau - 
+Seidl, R., Seidl R Fau - Janecke, A.R., and Janecke, A.R. (2015). MED20 mutation 
+associated with infantile basal ganglia degeneration and brain atrophy. Eur J Pediatr 174, 
+113-118. 
+53. 
+Schiano, C., Luongo, L., Maione, S., and Napoli, C. (2023). Mediator complex in 
+neurological disease. Life Sci 329, 121986. 
+54. 
+García-Caballero, A., Gadotti, V.M., Stemkowski, P., Weiss, N., Souza, I.A., 
+Hodgkinson, V., Bladen, C., Chen, L., Hamid, J., Pizzoccaro, A., et al. (2014). The 
+deubiquitinating enzyme USP5 modulates neuropathic and inflammatory pain by 
+enhancing Cav3.2 channel activity. Neuron 83, 1144-1158. 
+55. 
+Nimmerjahn, F., and Ravetch, J.V. (2008). Anti-inflammatory actions of intravenous 
+immunoglobulin. Annu Rev Immunol 26, 513-533. 
+56. 
+Manganotti, P., Garascia, G., Furlanis, G., and Buoite Stella, A. (2023). Efficacy of 
+intravenous immunoglobulin (IVIg) on COVID-19-related neurological disorders over 
+the last 2 years: an up-to-date narrative review. Front Neurosci. 17, 1159929. 
+57. 
+McAlpine, L.A.-O., Zubair, A.A.-O., Joseph, P.A.-O., and Spudich, S. (2024). Case-
+Control Study of Individuals With Small Fiber Neuropathy After COVID-19. Neurol 
+Neuroimmunol Neuroinflamm 11, e200244. 
+ 
+ 
+ 
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+100µm
+100µm
+100µm
+Health Control
+Dapi
+Human IgG
+Convalescent Control
+Dapi
+Human IgG
+Long COVID
+Dapi
+Human IgG
+Human Pons
+B
+G
+A
+200µm
+Mouse Sciatic Nerve
+Healthy Control
+Dapi
+Human IgG
+Long COVID
+Dapi
+Human IgG
+Convalescent Control
+Dapi
+Human IgG
+200µm
+200µm
+200µm
+Zoom
+F
+Fig.1. Sá et al.
+Mouse Meninges
+Mouse Cerebellum
+Healthy Control
+Dapi
+Human IgG
+Long COVID
+Dapi
+Human IgG
+Convalescent Control
+Dapi
+Human IgG
+50µm
+Zoom
+50µm
+50µm
+Healthy Control
+Dapi
+Human IgG
+Long COVID
+Dapi
+Human IgG
+Convalescent Control
+Dapi
+Human IgG
+100µm
+100µm
+Zoom
+100µm
+H
+p = 0.051
+p = 0.9034
+Sex 
+Age (years)
+Healthy Control
+Convalescent 
+Control
+Long COVID
+Healthy Control
+Convalescent 
+Control
+Long COVID
+C
+D
+E
+0.094
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+Fig.2. Sá et al.
+0.057
+Mouse Meninge stain
+Mouse Sciatic Nerve stain
+A
+C
+20μm
+20μm
+20μm
+20μm
+Dapi
+hIgG
+CD31
+NG2-dsRED
+Merge
+20μm
+B
+Participants
+Tissues
+D
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+Fig.3. Sá et al.
+1
+2
+3
+4
+A
+B
+>3x
+D
+E
+H
+I
+C
+F
+G
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+Fig.4. Sá et al.
+910nm
+Epidermis
+Dermis
+IENF
+Collagen 
+matrix
+Nerve
+Healthy Control
+Long COVID
+Baseline
+Day 1
+Day 8
+ﬁbers (%of baseline)
+Time (days)
+#
+0
+5
+10
+IENF volume 
+(% of baseline)
+Healthy Control
+Long COVID
+xz stack → IENF volume
+Collagens SHG
+Scn10a-Cre::td Tomato
+IEFN
+A
+B
+C
+D
+E
+F
+G
+H
+I
+J
+K
+L
+M
+N
+O
+0.076
+P
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+B
+Thalamus + 
+Hypothalamus
+Supp. Fig. 1. Sá et al.
+C
+200µm
+200µm
+200µm
+200µm
+100µm
+100µm
+Mouse Spinal Cord
+Healthy Control
+Dapi
+Human IgG
+Long COVID
+Dapi
+Human IgG
+Convalescent Control
+Dapi
+Human IgG
+200µm
+200µm
+500µm
+500µm
+500µm
+A
+Zoom
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+Supp. Fig. 2. Sá et al.
+Mouse Sciatic Nerve stain
+Mouse Meninge stain
+A
+B
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+Supp. Fig. 3. Sá et al.
+A
+B
+C
+D
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+A
+Supp. Fig. 4. Sá et al.
+Pain Behavior - Hot Plate
+Muscle Weakness - Grip strength
+B
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+Supp. Fig. 5. Sá et al.
+Balance and Coordination - Rotarod
+A
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
+PBS
+Healthy 
+Control
+Convalescent 
+Control
+Long COVID
+PBS
+Healthy 
+Control
+Convalescent 
+Control
+Long COVID
+A
+B
+Axiety Like behavior - Open Field
+Axiety Like behavior - Elevated Zero Maze
+Locomotion - Open Field
+Cardiovascular Function - Blood Pressure and Heart Rate
+C
+D
+Supp. Fig. 6. Sá et al.
+ . 
+CC-BY-NC-ND 4.0 International license
+It is made available under a 
+ is the author/funder, who has granted medRxiv a license to display the preprint in perpetuity. 
+(which was not certified by peer review)
+The copyright holder for this preprint 
+this version posted June 19, 2024. 
+; 
+https://doi.org/10.1101/2024.06.18.24309100
+doi: 
+medRxiv preprint 
