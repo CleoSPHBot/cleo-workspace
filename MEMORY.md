@@ -172,7 +172,7 @@ Data-driven pacing protocol from 774 days WHOOP + Visible.
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~29 days)
+### Backup Failing (since ~May 2 — ~30 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
@@ -185,11 +185,13 @@ Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` 
 
 
 
-## Promoted From Short-Term Memory (2026-06-01)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-25.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Monday, May 25)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-25.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-25.md:13:13 -->
-- **May 19–24 reviewed.** Six consecutive quiet maintenance passes. No new development sessions, no new clinical work, no new Cadence builds. All open threads unchanged: [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-25.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-25.md:19:19 -->
-- **Tonight's junk removal (28th time):** [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-25.md:19-19]
+
+## Promoted From Short-Term Memory (2026-06-02)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-05-26.md:20:20 -->
+- _Nightly consolidation run — 13:00 UTC (Tuesday, May 26)_ [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-26.md:20-20]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-26.md:28:28 -->
+- **May 20–25 reviewed.** Six more quiet maintenance passes through May 25. All threads unchanged during that period — backup still broken, Hannah's repair arc stable, data accumulating. [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-26.md:28-28]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-26.md:22:22 -->
+- Fifty-first night. [score=0.887 recalls=0 avg=0.620 source=memory/2026-05-26.md:22-22]
