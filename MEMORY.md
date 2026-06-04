@@ -172,7 +172,7 @@ Data-driven pacing protocol from 774 days WHOOP + Visible.
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~31 days)
+### Backup Failing (since ~May 2 — ~32 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
@@ -189,13 +189,15 @@ Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` 
 
 
 
-## Promoted From Short-Term Memory (2026-06-03)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-27.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Wednesday, May 27)_ [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-27.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-27.md:13:13 -->
-- **May 21–26 reviewed.** Six daily files examined. [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-27.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-27.md:18:18 -->
-- **Tonight — clean pass:** [score=0.897 recalls=0 avg=0.620 source=memory/2026-05-27.md:18-18]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-27.md:7:7 -->
-- Fifty-second night. [score=0.887 recalls=0 avg=0.620 source=memory/2026-05-27.md:7-7]
+
+## Promoted From Short-Term Memory (2026-06-04)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-05-28.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Thursday, May 28)_ [score=0.903 recalls=0 avg=0.620 source=memory/2026-05-28.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-28.md:13:13 -->
+- **May 22–27 reviewed.** Six daily files examined. [score=0.903 recalls=0 avg=0.620 source=memory/2026-05-28.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-28.md:19:19 -->
+- **Tonight — junk block returned (30th deletion):** [score=0.895 recalls=0 avg=0.620 source=memory/2026-05-28.md:19-19]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-28.md:7:7 -->
+- Fifty-third night. [score=0.893 recalls=0 avg=0.620 source=memory/2026-05-28.md:7-7]
