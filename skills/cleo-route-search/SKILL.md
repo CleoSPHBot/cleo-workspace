@@ -8,9 +8,9 @@ description: Search for drug routes and dose forms by name. Triggered by "what a
 ## Quick Start
 
 ```bash
-node scripts/route_search.js "lipitor"
-node scripts/route_search.js "amphotericin"
-node scripts/route_search.js "insulin aspart"
+node /home2/cleo/.openclaw/workspace/skills/cleo-route-search/scripts/route_search.js "lipitor"
+node /home2/cleo/.openclaw/workspace/skills/cleo-route-search/scripts/route_search.js "amphotericin"
+node /home2/cleo/.openclaw/workspace/skills/cleo-route-search/scripts/route_search.js "insulin aspart"
 ```
 
 ## Formatting the Response
@@ -46,5 +46,5 @@ _Source: FDB {database}_
 ## Options
 
 ```bash
-node scripts/route_search.js <name> [--db fdb_YYYYMMDD] [--uri ...]
+node /home2/cleo/.openclaw/workspace/skills/cleo-route-search/scripts/route_search.js <name> [--db fdb_YYYYMMDD] [--uri ...]
 ```

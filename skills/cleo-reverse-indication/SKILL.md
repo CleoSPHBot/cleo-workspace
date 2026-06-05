@@ -8,8 +8,8 @@ description: Find drugs that treat a condition. Triggered by "what treats hypert
 ## Quick Start
 
 ```bash
-node scripts/reverse_indication.js "hypertension"
-node scripts/reverse_indication.js --dxid 1432
+node /home2/cleo/.openclaw/workspace/skills/cleo-reverse-indication/scripts/reverse_indication.js "hypertension"
+node /home2/cleo/.openclaw/workspace/skills/cleo-reverse-indication/scripts/reverse_indication.js --dxid 1432
 ```
 
 ## Formatting the Response
@@ -59,5 +59,5 @@ Which one?
 ## Options
 
 ```bash
-node scripts/reverse_indication.js <search> [--dxid <id>] [--db fdb_YYYYMMDD] [--uri ...]
+node /home2/cleo/.openclaw/workspace/skills/cleo-reverse-indication/scripts/reverse_indication.js <search> [--dxid <id>] [--db fdb_YYYYMMDD] [--uri ...]
 ```

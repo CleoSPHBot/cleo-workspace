@@ -8,8 +8,8 @@ description: Look up side effects and contraindications for a drug. Triggered by
 ## Quick Start
 
 ```bash
-node scripts/side_effects.js <MEDID>
-node scripts/side_effects.js <GCN_SEQNO> --by-gcn
+node /home2/cleo/.openclaw/workspace/skills/cleo-side-effects/scripts/side_effects.js <MEDID>
+node /home2/cleo/.openclaw/workspace/skills/cleo-side-effects/scripts/side_effects.js <GCN_SEQNO> --by-gcn
 ```
 
 Accepts MEDID (resolves to GCN internally) or GCN_SEQNO directly.
@@ -83,5 +83,5 @@ _Source: FDB {database}_
 ## Options
 
 ```bash
-node scripts/side_effects.js <MEDID> [--by-gcn] [--db fdb_YYYYMMDD] [--uri ...]
+node /home2/cleo/.openclaw/workspace/skills/cleo-side-effects/scripts/side_effects.js <MEDID> [--by-gcn] [--db fdb_YYYYMMDD] [--uri ...]
 ```

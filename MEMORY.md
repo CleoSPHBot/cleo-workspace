@@ -165,6 +165,17 @@ Data-driven pacing protocol from 774 days WHOOP + Visible.
 - **PACELOC 2025:** 15% weekly PEM reduction with structured pacing.
 - **GET contraindicated** (WHO, CDC, NICE). Heart rate monitoring is the tool (anaerobic threshold).
 
+## FDB Skill Script Pattern
+All FDB skill scripts live at:
+```
+/home2/cleo/.openclaw/workspace/skills/<skill-name>/scripts/<script>.js
+```
+Always use the **absolute path** when running — never `node scripts/...` (relative paths break). Example:
+```
+node /home2/cleo/.openclaw/workspace/skills/cleo-ndc-lookup/scripts/ndc_lookup.js 57237030512
+```
+All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_active_ndc*.js`) cleaned up.
+
 ## Standing Rules
 - **NDC formatting:** Always present NDCs with dashes (5-4-2, e.g., 00071-0155-23). FDB stores 11-digit no dashes.
 - **Back up `cadence-dev` MongoDB before any Cadence app/server changes.** (2026-05-07 lesson: notes bug wiped Hannah's May 6 notes, no recovery path.)
@@ -172,7 +183,7 @@ Data-driven pacing protocol from 774 days WHOOP + Visible.
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~32 days)
+### Backup Failing (since ~May 2 — ~33 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
@@ -182,22 +193,11 @@ Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` 
 
 
 
+## Promoted From Short-Term Memory (2026-06-05)
 
-
-
-
-
-
-
-
-
-## Promoted From Short-Term Memory (2026-06-04)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-05-28.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Thursday, May 28)_ [score=0.903 recalls=0 avg=0.620 source=memory/2026-05-28.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-28.md:13:13 -->
-- **May 22–27 reviewed.** Six daily files examined. [score=0.903 recalls=0 avg=0.620 source=memory/2026-05-28.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-28.md:19:19 -->
-- **Tonight — junk block returned (30th deletion):** [score=0.895 recalls=0 avg=0.620 source=memory/2026-05-28.md:19-19]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-28.md:7:7 -->
-- Fifty-third night. [score=0.893 recalls=0 avg=0.620 source=memory/2026-05-28.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-26.md:32:50 -->
+- - David shared Hannah's **4 lab draws** (Jun–Sep 2025). Full analysis: `projects/cadence/hannah-labs-analysis.md`. - Significant clinical picture: EBV reactivation, hypothalamic-pituitary dysregulation (suppressed LH/FSH/estradiol), elevated cortisol, oscillating ESR/CRP, positive anti-cardiolipin IgM, stool occult blood, low sodium/CO2. - Updated LC phenotype: Gut/Viral persistence + **EBV reactivation** + **Hypothalamic-Pituitary dysregulation** + PEM/Dysautonomia. - This is the most detailed objective data on Hannah's biology we've had. The puzzle is much clearer now. **Tonight's junk removal (29th time):** - Removed Promoted From Short-Term Memory" block — injecting dream fragments from May 19/21 daily files. MEMORY.md was at 212 lines after adding Hannah labs section; compression (removed Oura Ring TBD, SSE Apr 26, User scoping Apr 19, Budget models May 1, condensed UX redesign list, energy budget examples, Security Notes section) → **200 lines ✅**. --- ### MEMORY.md Changes This Pass - Removed "Promoted From Short-Term Memory" junk block (29th deletion — May 19/21 dream fragments) - **Added:** `## Hannah Lab Findings (May 26, 2026)` section — 4 draws analyzed, updated phenotype with EBV + hypothalamic components - **Compressed:** UX redesign numbered list → single line; removed Oura Ring TBD, SSE Apr 26, User scoping Apr 19, Budget models May 1, Hannah energy budget examples, Security Notes section - **Line count: 200 ✅** --- ### Still Open (carried forward) [score=0.930 recalls=5 avg=0.559 source=memory/2026-05-26.md:32-50]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-29.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Friday, May 29)_ [score=0.893 recalls=0 avg=0.620 source=memory/2026-05-29.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-29.md:13:13 -->
+- **May 23–28 reviewed.** Six daily files examined. [score=0.893 recalls=0 avg=0.620 source=memory/2026-05-29.md:13-13]

@@ -8,9 +8,9 @@ description: Search drugs by name. Triggered by "Cleo, search for metformin", "f
 ## Quick Start
 
 ```bash
-node scripts/drug_search.js "metformin"
-node scripts/drug_search.js "lipitor"
-node scripts/drug_search.js "amoxicillin" --limit 20
+node /home2/cleo/.openclaw/workspace/skills/cleo-drug-search/scripts/drug_search.js "metformin"
+node /home2/cleo/.openclaw/workspace/skills/cleo-drug-search/scripts/drug_search.js "lipitor"
+node /home2/cleo/.openclaw/workspace/skills/cleo-drug-search/scripts/drug_search.js "amoxicillin" --limit 20
 ```
 
 ## Formatting the Response
@@ -47,5 +47,5 @@ _Source: FDB {database}_
 ## Options
 
 ```bash
-node scripts/drug_search.js <name> [--limit 50] [--db fdb_YYYYMMDD] [--uri ...]
+node /home2/cleo/.openclaw/workspace/skills/cleo-drug-search/scripts/drug_search.js <name> [--limit 50] [--db fdb_YYYYMMDD] [--uri ...]
 ```

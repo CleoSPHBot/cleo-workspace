@@ -8,11 +8,11 @@ description: Browse and search FDB Enhanced Therapeutic Classification (ETC). Tr
 ## Quick Start
 
 ```bash
-node scripts/etc_lookup.js --search "statin"           # name search
-node scripts/etc_lookup.js --id 2747                    # drill into a class
-node scripts/etc_lookup.js --id 2747 --drugs            # list all drugs in a leaf class
-node scripts/etc_lookup.js --browse                     # top-level categories (47)
-node scripts/etc_lookup.js --browse --parent 2553       # children of Cardiovascular
+node /home2/cleo/.openclaw/workspace/skills/cleo-etc-lookup/scripts/etc_lookup.js --search "statin"           # name search
+node /home2/cleo/.openclaw/workspace/skills/cleo-etc-lookup/scripts/etc_lookup.js --id 2747                    # drill into a class
+node /home2/cleo/.openclaw/workspace/skills/cleo-etc-lookup/scripts/etc_lookup.js --id 2747 --drugs            # list all drugs in a leaf class
+node /home2/cleo/.openclaw/workspace/skills/cleo-etc-lookup/scripts/etc_lookup.js --browse                     # top-level categories (47)
+node /home2/cleo/.openclaw/workspace/skills/cleo-etc-lookup/scripts/etc_lookup.js --browse --parent 2553       # children of Cardiovascular
 ```
 
 ## Modes
@@ -132,9 +132,9 @@ _Source: FDB {database}_
 ## Options
 
 ```bash
-node scripts/etc_lookup.js --search <text> [--db fdb_YYYYMMDD] [--uri ...]
-node scripts/etc_lookup.js --id <ETC_ID> [--drugs] [--db ...] [--uri ...]
-node scripts/etc_lookup.js --browse [--parent <ETC_ID>] [--db ...] [--uri ...]
+node /home2/cleo/.openclaw/workspace/skills/cleo-etc-lookup/scripts/etc_lookup.js --search <text> [--db fdb_YYYYMMDD] [--uri ...]
+node /home2/cleo/.openclaw/workspace/skills/cleo-etc-lookup/scripts/etc_lookup.js --id <ETC_ID> [--drugs] [--db ...] [--uri ...]
+node /home2/cleo/.openclaw/workspace/skills/cleo-etc-lookup/scripts/etc_lookup.js --browse [--parent <ETC_ID>] [--db ...] [--uri ...]
 ```
 
 ## ETC Hierarchy

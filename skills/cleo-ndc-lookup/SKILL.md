@@ -10,7 +10,7 @@ description: Look up National Drug Codes (NDC) against FDB data. Triggered by qu
 Run the lookup script with `--img-dir` to save any pill image:
 
 ```bash
-node scripts/ndc_lookup.js <NDC> --img-dir ~/.openclaw/workspace
+node /home2/cleo/.openclaw/workspace/skills/cleo-ndc-lookup/scripts/ndc_lookup.js <NDC> --img-dir /home2/cleo/.openclaw/workspace
 ```
 
 Accepts any NDC format: `00069-3150-83`, `00069315083`, `0069-3150-83`. The script auto-detects the latest `fdb_YYYYMMDD` database.
@@ -52,7 +52,7 @@ _Source: FDB {database}_
 4. Omit sections with no data (don't show empty off-label section)
 5. DEA schedule: show "None" for 0, "Schedule II-V" for 2-5
 6. If `found: false`, respond: "NDC {ndc} not found in FDB. Check the format (11 digits, no dashes) or try a different NDC."
-7. **Pill image:** Always run with `--img-dir ~/.openclaw/workspace`. If `image.saved_to` exists in the result, include `MEDIA:./FILENAME.jpg` on its own line at the end of your **direct text reply** (NOT inside a message tool card call). The MEDIA tag must be in your normal reply text to work. Do NOT use the message tool to send the image. Example:
+7. **Pill image:** Always run with `--img-dir /home2/cleo/.openclaw/workspace`. If `image.saved_to` exists in the result, include `MEDIA:./FILENAME.jpg` on its own line at the end of your **direct text reply** (NOT inside a message tool card call). The MEDIA tag must be in your normal reply text to work. Do NOT use the message tool to send the image. Example:
 
 ```
 💊 **NDC 00071-0155-23**
@@ -68,8 +68,8 @@ For FDB schema details and entity relationships, see [references/fdb-schema.md](
 ## Options
 
 ```bash
-node scripts/ndc_lookup.js <NDC> --db fdb_20260305   # specific snapshot
-node scripts/ndc_lookup.js <NDC> --uri mongodb+srv://...  # custom URI
+node /home2/cleo/.openclaw/workspace/skills/cleo-ndc-lookup/scripts/ndc_lookup.js <NDC> --db fdb_20260305   # specific snapshot
+node /home2/cleo/.openclaw/workspace/skills/cleo-ndc-lookup/scripts/ndc_lookup.js <NDC> --uri mongodb+srv://...  # custom URI
 ```
 
 Environment variable `FDB_MONGO_URI` can also set the connection string.

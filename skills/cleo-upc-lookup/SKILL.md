@@ -8,7 +8,7 @@ description: Convert UPC barcodes to NDC and look up drug info. Triggered by "lo
 ## Quick Start
 
 ```bash
-node scripts/upc_to_ndc.js <UPC> [--img-dir /tmp]
+node /home2/cleo/.openclaw/workspace/skills/cleo-upc-lookup/scripts/upc_to_ndc.js <UPC> [--img-dir /tmp]
 ```
 
 Accepts:
@@ -70,7 +70,7 @@ If the user sends a **photo of a barcode** instead of the number:
 1. Show the UPC → NDC mapping prominently
 2. Format NDC with dashes: `41100-0806-02`
 3. If `found: false`, respond: "Could not find a drug match for UPC {upc}. The derived NDC candidates were: {list}. This UPC may not be a drug product, or it may not be in the FDB database."
-4. **Pill image:** If `image.saved_to` exists in the result, save it to `~/.openclaw/workspace/` and include `MEDIA:./FILENAME.jpg` on its own line at the end of your **direct text reply** (NOT inside a message tool card call). The MEDIA tag must be in your normal reply text to work. Do NOT use the message tool to send the image.
+4. **Pill image:** If `image.saved_to` exists in the result, save it to `/home2/cleo/.openclaw/workspace/` and include `MEDIA:./FILENAME.jpg` on its own line at the end of your **direct text reply** (NOT inside a message tool card call). The MEDIA tag must be in your normal reply text to work. Do NOT use the message tool to send the image.
 5. Show which candidate matched in the response for transparency
 
 ## Fallback Chain

@@ -8,8 +8,8 @@ description: Look up FDB MEDIDs. Triggered by questions like "what is MEDID 1812
 ## Quick Start
 
 ```bash
-node scripts/medid_lookup.js <MEDID>
-node scripts/medid_lookup.js <MEDID> --img-dir ~/.openclaw/workspace
+node /home2/cleo/.openclaw/workspace/skills/cleo-medid-lookup/scripts/medid_lookup.js <MEDID>
+node /home2/cleo/.openclaw/workspace/skills/cleo-medid-lookup/scripts/medid_lookup.js <MEDID> --img-dir /home2/cleo/.openclaw/workspace
 ```
 
 Auto-detects latest complete FDB database.
@@ -68,7 +68,7 @@ _Source: FDB {database}_
 4. Show generic equivalent only for brand products (and vice versa)
 5. Show equivalent products (same GCN_SEQNO = same strength, different brand/generic)
 6. Show representative NDCs (one per labeler, matching the MEDID's brand/generic name)
-7. **Pill image:** Always run with `--img-dir ~/.openclaw/workspace`. If `image.saved_to` exists in the result, include `MEDIA:./FILENAME.jpg` on its own line at the end of your **direct text reply** (NOT inside a message tool card call). The MEDIA tag must be in your normal reply text to work. Do NOT use the message tool to send the image. Example:
+7. **Pill image:** Always run with `--img-dir /home2/cleo/.openclaw/workspace`. If `image.saved_to` exists in the result, include `MEDIA:./FILENAME.jpg` on its own line at the end of your **direct text reply** (NOT inside a message tool card call). The MEDIA tag must be in your normal reply text to work. Do NOT use the message tool to send the image. Example:
    ```
    💊 **MEDID 170427**
    ...drug info here...
@@ -81,7 +81,7 @@ _Source: FDB {database}_
 ## Options
 
 ```bash
-node scripts/medid_lookup.js <MEDID> --db fdb_20260305
-node scripts/medid_lookup.js <MEDID> --uri mongodb+srv://...
-node scripts/medid_lookup.js <MEDID> --img-dir ~/.openclaw/workspace
+node /home2/cleo/.openclaw/workspace/skills/cleo-medid-lookup/scripts/medid_lookup.js <MEDID> --db fdb_20260305
+node /home2/cleo/.openclaw/workspace/skills/cleo-medid-lookup/scripts/medid_lookup.js <MEDID> --uri mongodb+srv://...
+node /home2/cleo/.openclaw/workspace/skills/cleo-medid-lookup/scripts/medid_lookup.js <MEDID> --img-dir /home2/cleo/.openclaw/workspace
 ```

@@ -8,7 +8,7 @@ description: Look up ICD-10-CM diagnosis codes against FDB data. Triggered by qu
 ## Quick Start
 
 ```bash
-node scripts/icd_lookup.js <ICD-CODE>
+node /home2/cleo/.openclaw/workspace/skills/cleo-icd-lookup/scripts/icd_lookup.js <ICD-CODE>
 ```
 
 Accepts codes with or without dots: `C50.911`, `C50911`, `E11.9`. Auto-normalizes and auto-detects latest FDB database.
@@ -56,6 +56,6 @@ _Source: FDB {database}_
 ## Options
 
 ```bash
-node scripts/icd_lookup.js <CODE> --db fdb_20260305
-node scripts/icd_lookup.js <CODE> --uri mongodb+srv://...
+node /home2/cleo/.openclaw/workspace/skills/cleo-icd-lookup/scripts/icd_lookup.js <CODE> --db fdb_20260305
+node /home2/cleo/.openclaw/workspace/skills/cleo-icd-lookup/scripts/icd_lookup.js <CODE> --uri mongodb+srv://...
 ```

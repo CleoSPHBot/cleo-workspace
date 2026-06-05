@@ -40,7 +40,7 @@ Search Spectator Health's indexed documentation via AWS Q Business.
 Run the search script:
 
 ```bash
-bash ~/.openclaw/workspace/skills/cleo-qbusiness/scripts/qb-search.sh "your question here"
+bash /home2/cleo/.openclaw/workspace/skills/cleo-qbusiness/scripts/qb-search.sh "your question here"
 ```
 
 The script calls `aws qbusiness chat-sync` and returns:

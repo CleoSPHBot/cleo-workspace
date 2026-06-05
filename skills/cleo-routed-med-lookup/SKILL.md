@@ -8,7 +8,7 @@ description: Look up FDB Routed Med IDs. Triggered by questions like "what is ro
 ## Quick Start
 
 ```bash
-node scripts/routed_med_lookup.js <ROUTED_MED_ID>
+node /home2/cleo/.openclaw/workspace/skills/cleo-routed-med-lookup/scripts/routed_med_lookup.js <ROUTED_MED_ID>
 ```
 
 Auto-detects latest complete FDB database.
@@ -56,6 +56,6 @@ _Source: FDB {database}_
 ## Options
 
 ```bash
-node scripts/routed_med_lookup.js <ID> --db fdb_20260305
-node scripts/routed_med_lookup.js <ID> --uri mongodb+srv://...
+node /home2/cleo/.openclaw/workspace/skills/cleo-routed-med-lookup/scripts/routed_med_lookup.js <ID> --db fdb_20260305
+node /home2/cleo/.openclaw/workspace/skills/cleo-routed-med-lookup/scripts/routed_med_lookup.js <ID> --uri mongodb+srv://...
 ```

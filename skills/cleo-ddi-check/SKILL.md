@@ -45,20 +45,20 @@ Check for interactions between 2+ drugs using FDB's full DDI monograph database.
 
 ```bash
 # By drug name (recommended)
-node ~/.openclaw/workspace/skills/cleo-ddi-check/scripts/ddi_check.js "drug1" "drug2"
-node ~/.openclaw/workspace/skills/cleo-ddi-check/scripts/ddi_check.js "atorvastatin" "gemfibrozil"
-node ~/.openclaw/workspace/skills/cleo-ddi-check/scripts/ddi_check.js "warfarin" "aspirin" "ibuprofen"
+node /home2/cleo/.openclaw/workspace/skills/cleo-ddi-check/scripts/ddi_check.js "drug1" "drug2"
+node /home2/cleo/.openclaw/workspace/skills/cleo-ddi-check/scripts/ddi_check.js "atorvastatin" "gemfibrozil"
+node /home2/cleo/.openclaw/workspace/skills/cleo-ddi-check/scripts/ddi_check.js "warfarin" "aspirin" "ibuprofen"
 
 # By MEDID
-node ~/.openclaw/workspace/skills/cleo-ddi-check/scripts/ddi_check.js --medids 283712 304570
+node /home2/cleo/.openclaw/workspace/skills/cleo-ddi-check/scripts/ddi_check.js --medids 283712 304570
 
 # By GCN_SEQNO
-node ~/.openclaw/workspace/skills/cleo-ddi-check/scripts/ddi_check.js --gcns 29967 45890
+node /home2/cleo/.openclaw/workspace/skills/cleo-ddi-check/scripts/ddi_check.js --gcns 29967 45890
 ```
 
 Run from the scripts directory (has symlinked node_modules):
 ```bash
-cd ~/.openclaw/workspace/skills/cleo-ddi-check && node scripts/ddi_check.js "drug1" "drug2"
+node /home2/cleo/.openclaw/workspace/skills/cleo-ddi-check/scripts/ddi_check.js "drug1" "drug2"
 ```
 
 ## Output Format

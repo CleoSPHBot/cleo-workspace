@@ -8,7 +8,7 @@ description: Look up CPT-4 and HCPCS Level II procedure codes. Triggered by ques
 ## Quick Start
 
 ```bash
-node scripts/cpt_lookup.js <CODE>
+node /home2/cleo/.openclaw/workspace/skills/cleo-cpt-lookup/scripts/cpt_lookup.js <CODE>
 ```
 
 Accepts CPT-4 (e.g., `99396`) and HCPCS Level II (e.g., `G0438`, `J1234`) codes.
@@ -60,5 +60,5 @@ _Source: sph_focus + hedis_2025_valuesets_
 ## Options
 
 ```bash
-node scripts/cpt_lookup.js <CODE> --uri mongodb+srv://...
+node /home2/cleo/.openclaw/workspace/skills/cleo-cpt-lookup/scripts/cpt_lookup.js <CODE> --uri mongodb+srv://...
 ```
