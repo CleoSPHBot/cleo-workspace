@@ -183,7 +183,7 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~33 days)
+### Backup Failing (since ~May 2 — ~34 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
@@ -193,11 +193,13 @@ Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` 
 
 
 
-## Promoted From Short-Term Memory (2026-06-05)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-26.md:32:50 -->
-- - David shared Hannah's **4 lab draws** (Jun–Sep 2025). Full analysis: `projects/cadence/hannah-labs-analysis.md`. - Significant clinical picture: EBV reactivation, hypothalamic-pituitary dysregulation (suppressed LH/FSH/estradiol), elevated cortisol, oscillating ESR/CRP, positive anti-cardiolipin IgM, stool occult blood, low sodium/CO2. - Updated LC phenotype: Gut/Viral persistence + **EBV reactivation** + **Hypothalamic-Pituitary dysregulation** + PEM/Dysautonomia. - This is the most detailed objective data on Hannah's biology we've had. The puzzle is much clearer now. **Tonight's junk removal (29th time):** - Removed Promoted From Short-Term Memory" block — injecting dream fragments from May 19/21 daily files. MEMORY.md was at 212 lines after adding Hannah labs section; compression (removed Oura Ring TBD, SSE Apr 26, User scoping Apr 19, Budget models May 1, condensed UX redesign list, energy budget examples, Security Notes section) → **200 lines ✅**. --- ### MEMORY.md Changes This Pass - Removed "Promoted From Short-Term Memory" junk block (29th deletion — May 19/21 dream fragments) - **Added:** `## Hannah Lab Findings (May 26, 2026)` section — 4 draws analyzed, updated phenotype with EBV + hypothalamic components - **Compressed:** UX redesign numbered list → single line; removed Oura Ring TBD, SSE Apr 26, User scoping Apr 19, Budget models May 1, Hannah energy budget examples, Security Notes section - **Line count: 200 ✅** --- ### Still Open (carried forward) [score=0.930 recalls=5 avg=0.559 source=memory/2026-05-26.md:32-50]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-29.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Friday, May 29)_ [score=0.893 recalls=0 avg=0.620 source=memory/2026-05-29.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-29.md:13:13 -->
-- **May 23–28 reviewed.** Six daily files examined. [score=0.893 recalls=0 avg=0.620 source=memory/2026-05-29.md:13-13]
+
+## Promoted From Short-Term Memory (2026-06-06)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-05-30.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Saturday, May 30)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-30.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-29.md:7:7 -->
+- Fifty-fourth night. [score=0.886 recalls=0 avg=0.620 source=memory/2026-05-29.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-29.md:20:20 -->
+- **Tonight — junk block present (31st deletion):** [score=0.883 recalls=0 avg=0.620 source=memory/2026-05-29.md:20-20]
