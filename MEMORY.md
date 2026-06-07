@@ -183,7 +183,7 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~34 days)
+### Backup Failing (since ~May 2 — ~35 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
@@ -195,11 +195,15 @@ Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` 
 
 
 
-## Promoted From Short-Term Memory (2026-06-06)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-30.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Saturday, May 30)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-30.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-29.md:7:7 -->
-- Fifty-fourth night. [score=0.886 recalls=0 avg=0.620 source=memory/2026-05-29.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-29.md:20:20 -->
-- **Tonight — junk block present (31st deletion):** [score=0.883 recalls=0 avg=0.620 source=memory/2026-05-29.md:20-20]
+
+## Promoted From Short-Term Memory (2026-06-07)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-05-31.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Sunday, May 31)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-31.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-30.md:13:13 -->
+- **May 24–29 reviewed.** Six daily files examined. [score=0.883 recalls=0 avg=0.620 source=memory/2026-05-30.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-30.md:21:21 -->
+- **Tonight — junk block present (32nd deletion):** [score=0.883 recalls=0 avg=0.620 source=memory/2026-05-30.md:21-21]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-31.md:13:13 -->
+- **May 25–30 reviewed.** Six daily files examined. [score=0.874 recalls=0 avg=0.620 source=memory/2026-05-31.md:13-13]
