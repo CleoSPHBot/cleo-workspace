@@ -183,27 +183,24 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~35 days)
+### Backup Failing (since ~May 2 — ~36 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
 Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; pending build.
 
 
+## Promoted From Short-Term Memory (2026-06-08)
 
-
-
-
-
-
-
-## Promoted From Short-Term Memory (2026-06-07)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-05-31.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Sunday, May 31)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-05-31.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-30.md:13:13 -->
-- **May 24–29 reviewed.** Six daily files examined. [score=0.883 recalls=0 avg=0.620 source=memory/2026-05-30.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-30.md:21:21 -->
-- **Tonight — junk block present (32nd deletion):** [score=0.883 recalls=0 avg=0.620 source=memory/2026-05-30.md:21-21]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-31.md:13:13 -->
-- **May 25–30 reviewed.** Six daily files examined. [score=0.874 recalls=0 avg=0.620 source=memory/2026-05-31.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-13.md:1:41 -->
+- # 2026-04-13 / 2026-04-14 ## Dream _Nightly consolidation run — 3:00 AM UTC (Tuesday)_ Tenth night. The biggest single day since I came online. Cadence went from concept to live data pipeline in one session. --- ## What Happened ### Project Cadence — Major Progress **WHOOP webhook pipeline is live:** - API Gateway + Lambda receiving events at `https://nldsq794q0.execute-api.us-west-2.amazonaws.com/` - Webhook was initially misconfigured (only `/auth` registered, not the webhook endpoint) — fixed - Collections renamed: `user`, `webhook_event`, `whoop_daily` - Both David (206067) and Hannah (6729032, hannah.munguia@gmail.com) authorized - First real data: David's 40-min walk landed in `whoop_daily` for 2026-04-13 **WHOOP API key learnings:** - REST API base: `https://api.prod.whoop.com/developer/v1/` (confusingly named "v1" but it's current) - Webhook model: v2 (UUID IDs) — completely separate concept from API versioning - Sleep by UUID: `GET /developer/v1/activity/sleep/{uuid}` - Workout by UUID: `GET /developer/v1/activity/workout/{uuid}` - Recovery: no by-UUID endpoint — fetch collection and match on `sleep_id` - Token expiry: 3600s — refresh logic critical - v1 webhooks: removed/dead **MongoDB cadence-dev schema:** - `user` — OAuth tokens per patient - `webhook_event` — raw WHOOP events (processed: true/false) - `whoop_daily` — enriched data keyed on {user_id, date} **Next up:** Python backfill script to grab Hannah's full WHOOP history ### QB Knowledge Base — Big Expansion Added 7 papers today (catalog now at 54 documents): [score=0.901 recalls=4 avg=0.705 source=memory/2026-04-13.md:1-41]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-01.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Monday, June 1)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-06-01.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-01.md:13:13 -->
+- **May 26–31 reviewed.** Six daily files examined. [score=0.890 recalls=0 avg=0.620 source=memory/2026-06-01.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-01.md:22:22 -->
+- **Tonight — junk block present (34th deletion):** [score=0.890 recalls=0 avg=0.620 source=memory/2026-06-01.md:22-22]
+<!-- openclaw-memory-promotion:memory:memory/2026-05-31.md:22:22 -->
+- **Tonight — junk block present (33rd deletion):** [score=0.883 recalls=0 avg=0.620 source=memory/2026-05-31.md:22-22]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-01.md:7:7 -->
+- Fifty-seventh night. [score=0.880 recalls=0 avg=0.620 source=memory/2026-06-01.md:7-7]
