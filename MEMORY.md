@@ -36,7 +36,7 @@ Edgar set me up (2026-03-24/25) — senior agent, handles infra and general task
 - **Edgar's gateway:** Port 18789 (same server)
 - **Git remote:** github.com/CleoSPHBot/cleo-workspace.git
 - **OpenClaw version:** 2026.5.22 (as of 2026-05-27; was 5.12 → upgraded by Edgar)
-- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — see Open Issues.**
+- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~38 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
 - **Dream cron:** 13:00 UTC nightly, established 2026-04-04.
 
 ## Authorized Users
@@ -183,7 +183,7 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~37 days)
+### Backup Failing (since ~May 2 — ~38 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
@@ -191,11 +191,11 @@ Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` 
 
 
 
-## Promoted From Short-Term Memory (2026-06-09)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-06-02.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Tuesday, June 2)_ [score=0.897 recalls=0 avg=0.620 source=memory/2026-06-02.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-02.md:13:13 -->
-- **May 27 – June 1 reviewed.** Six daily files examined. [score=0.888 recalls=0 avg=0.620 source=memory/2026-06-02.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-02.md:19:19 -->
-- **Tonight — junk block present (35th deletion):** [score=0.888 recalls=0 avg=0.620 source=memory/2026-06-02.md:19-19]
+
+## Promoted From Short-Term Memory (2026-06-10)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-06-03.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Wednesday, June 3)_ [score=0.886 recalls=0 avg=0.620 source=memory/2026-06-03.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-03.md:13:13 -->
+- **May 28 – June 2 reviewed.** Six daily files examined. [score=0.886 recalls=0 avg=0.620 source=memory/2026-06-03.md:13-13]
