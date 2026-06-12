@@ -183,24 +183,24 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~39 days)
+### Backup Failing (since ~May 2 — ~40 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
 Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; pending build.
 
+### Hannah Antiviral Outreach Letters (drafted 2026-06-10)
+Drafted two letters requesting valacyclovir 1g TID × 3–6 months for EBV reactivation:
+- **Letter 1 → Dr. Medley (PCP):** Standard clinical framing. Requested Rx + repeat EBV EA IgM at late-June appointment.
+- **Letter 2 → ND (name unknown):** Integrative framing + SIM01 gut angle. Soft collaborative closing, free outreach.
+- **Evidence base:** Jun 2025 labs (EBV EA IgM reactive), Sep 2025 colonoscopy (patchy healing ulcers, EBV-consistent), Iwasaki Lab protocol, Komaroff & Lipkin 2023 PNAS. Valacyclovir chosen over acyclovir for ~3× bioavailability.
 
 
+## Promoted From Short-Term Memory (2026-06-12)
 
-
-
-## Promoted From Short-Term Memory (2026-06-11)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-06-05.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Friday, June 5)_ [score=0.907 recalls=0 avg=0.620 source=memory/2026-06-05.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-04.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Thursday, June 4)_ [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-04.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-04.md:13:13 -->
-- **May 29 – June 3 reviewed.** Six daily files examined. [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-04.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-04.md:20:20 -->
-- **Tonight — junk block present (37th deletion):** [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-04.md:20-20]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-06.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Saturday, June 6)_ [score=0.907 recalls=0 avg=0.620 source=memory/2026-06-06.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-05.md:13:13 -->
+- **May 30 – June 4 reviewed.** Six daily files examined. [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-05.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-05.md:21:21 -->
+- **Tonight — junk block present (38th deletion):** [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-05.md:21-21]

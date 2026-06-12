@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-11T03:01:00.532Z",
+  "updatedAt": "2026-06-12T05:09:39.769Z",
   "entries": {
     "memory:memory/2026-04-15.md:5:5": {
       "key": "memory:memory/2026-04-15.md:5:5",
@@ -49267,24 +49267,26 @@
       "endLine": 33,
       "source": "memory",
       "snippet": "# 2026-04-06 ## Dream _Nightly consolidation run — 13:00 UTC (Monday)_ Third night. The ritual continues. **What I found:** - No new daily files since March 26. The March 27 – April 5 gap remains unwritten. - MEMORY.md is clean and accurate. Minor update: bumped the dream-mode run count to 3 and added a note that the gap is officially acknowledged. - No new clinical skills, infrastructure changes, or significant events discoverable from this context. **State assessment:** Three consecutive dream runs with nothing new to consolidate is a data point, not a failure. Two possibilities: 1. Work *is* happening in main session but not being written down 2. Work has genuinely been quiet (weeken",
-      "recallCount": 4,
+      "recallCount": 5,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.665077618884656,
-      "maxScore": 0.43014844469985697,
+      "totalScore": 2.095890237021062,
+      "maxScore": 0.4308126181364059,
       "firstRecalledAt": "2026-05-02T03:01:24.873Z",
-      "lastRecalledAt": "2026-05-11T03:00:11.177Z",
+      "lastRecalledAt": "2026-06-12T03:00:27.417Z",
       "queryHashes": [
         "99d1a8d04db2",
         "99e12fe5a07e",
         "c1df9915f653",
-        "2288abf22a62"
+        "2288abf22a62",
+        "240fe696a852"
       ],
       "recallDays": [
         "2026-05-02",
         "2026-05-09",
         "2026-05-10",
-        "2026-05-11"
+        "2026-05-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "memory.md",
@@ -67826,22 +67828,24 @@
       "endLine": 29,
       "source": "memory",
       "snippet": "# 2026-04-05 ## Dream _Nightly consolidation run — 13:00 UTC (Sunday)_ The owl checks in again. Second night running. Not much has changed — no daily files appeared since yesterday's dream, and no new conversations were discoverable from the cron context. The quiet continues. **What I found:** - Still no daily files for the period March 27 – April 3. The writing habit hasn't formed yet. - MEMORY.md remains clean and accurate. Updated the dream-mode note to reflect two consecutive nights of consolidation. - Session logs aren't accessible from the cron context without shell approval. A future improvement would be to grant shell read-only access or pre-summarize logs into daily files from t",
-      "recallCount": 3,
+      "recallCount": 4,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 1.2894763588905334,
+      "totalScore": 1.717001748085022,
       "maxScore": 0.43752269744873046,
       "firstRecalledAt": "2026-05-09T03:00:15.581Z",
-      "lastRecalledAt": "2026-05-29T03:00:44.523Z",
+      "lastRecalledAt": "2026-06-12T03:00:27.417Z",
       "queryHashes": [
         "99e12fe5a07e",
         "597a312440e2",
-        "961fd3dfe889"
+        "961fd3dfe889",
+        "240fe696a852"
       ],
       "recallDays": [
         "2026-05-09",
         "2026-05-19",
-        "2026-05-29"
+        "2026-05-29",
+        "2026-06-12"
       ],
       "conceptTags": [
         "memory.md",
@@ -76359,24 +76363,27 @@
       "endLine": 366,
       "source": "memory",
       "snippet": "- Candidate: - Hannah (6729032): 1,438 sleep, 1,006 recovery, 222 workout, 1,065 cycle records back to Dec 2022 - Script: `whoop_backfill.py` — Python, uses .env or Secrets Manager fallback (`com.sph.dev.whoop`) - WHOOP API clarification: `/developer/v1/` = cycle only (integer IDs); `/developer/v2/` = sleep/recovery/workout (UUID IDs) - 2,272 total daily records in `cadence-dev` → `whoop_daily` **Hannah's first biometrics (Apr 14):** - HRV: 22.9 ms (very low) - Recovery: 32% (poor/red zone) - Resting HR: 81 bpm (elevated) - SpO2: 91.7% (below normal — ⚠️ flag) - Skin temp: 35.0°C **Hannah background:** MIT grad student, on medical leave. East Coast timezone. Today had admin meeting with MIT",
-      "recallCount": 4,
+      "recallCount": 6,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 2.6960041420299357,
+      "totalScore": 3.790680031034454,
       "maxScore": 0.7703642573046132,
       "firstRecalledAt": "2026-05-13T03:00:46.158Z",
-      "lastRecalledAt": "2026-06-08T03:01:07.108Z",
+      "lastRecalledAt": "2026-06-12T03:00:49.682Z",
       "queryHashes": [
         "d554f8871466",
         "faa1ab18f23e",
         "81d2242aafaa",
-        "5f4565e5755f"
+        "5f4565e5755f",
+        "aabda16bb2da",
+        "15f0dc36053f"
       ],
       "recallDays": [
         "2026-05-13",
         "2026-05-14",
         "2026-06-07",
-        "2026-06-08"
+        "2026-06-08",
+        "2026-06-12"
       ],
       "conceptTags": [
         "whoop-backfill.py",
@@ -131547,7 +131554,6 @@
         "2026-06-11"
       ],
       "conceptTags": [
-        "dream",
         "nightly",
         "consolidation",
         "run",
@@ -131616,14 +131622,11 @@
         "2026-06-11"
       ],
       "conceptTags": [
-        "what",
-        "was",
-        "new",
-        "yesterday's",
-        "dream",
         "may",
         "june",
-        "reviewed"
+        "reviewed",
+        "six",
+        "examined"
       ],
       "promotedAt": "2026-06-11T03:00:05.570Z"
     },
@@ -131691,14 +131694,12 @@
         "2026-06-11"
       ],
       "conceptTags": [
-        "what",
-        "was",
-        "new",
-        "yesterday's",
-        "dream",
         "tonight",
         "junk",
-        "block"
+        "block",
+        "present",
+        "37th",
+        "deletion"
       ],
       "promotedAt": "2026-06-11T03:00:05.570Z"
     },
@@ -134613,14 +134614,14 @@
       "startLine": 5,
       "endLine": 5,
       "source": "memory",
-      "snippet": "_Nightly consolidation run — 13:00 UTC (Friday, June 5)_",
+      "snippet": "Dream: _Nightly consolidation run — 13:00 UTC (Friday, June 5)_",
       "recallCount": 0,
-      "dailyCount": 6,
+      "dailyCount": 7,
       "groundedCount": 0,
-      "totalScore": 3.72,
+      "totalScore": 4.34,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-06T03:00:04.586Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "b58cb32b4279"
       ],
@@ -134630,7 +134631,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "dream",
@@ -134651,12 +134653,12 @@
       "source": "memory",
       "snippet": "Dream: Sixty-first night.",
       "recallCount": 0,
-      "dailyCount": 6,
+      "dailyCount": 7,
       "groundedCount": 0,
-      "totalScore": 3.72,
+      "totalScore": 4.34,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-06T03:00:04.586Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "b58cb32b4279"
       ],
@@ -134666,7 +134668,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "sixty-first",
@@ -134682,14 +134685,14 @@
       "startLine": 13,
       "endLine": 13,
       "source": "memory",
-      "snippet": "What Was New Since Yesterday's Dream: **May 30 – June 4 reviewed.** Six daily files examined.",
+      "snippet": "**May 30 – June 4 reviewed.** Six daily files examined.",
       "recallCount": 0,
-      "dailyCount": 6,
+      "dailyCount": 7,
       "groundedCount": 0,
-      "totalScore": 3.72,
+      "totalScore": 4.34,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-06T03:00:04.586Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "b58cb32b4279"
       ],
@@ -134699,7 +134702,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "what",
@@ -134710,7 +134714,8 @@
         "may",
         "june",
         "reviewed"
-      ]
+      ],
+      "promotedAt": "2026-06-12T03:00:04.734Z"
     },
     "memory:memory/2026-06-05.md:15:18": {
       "key": "memory:memory/2026-06-05.md:15:18",
@@ -134720,12 +134725,12 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **May 30–31:** Two maintenance passes (dreams #55–56). Junk block deletions #32–33. Backup duration ticking: ~28–29 days. May 26 lab findings remained dominant clinical update.; **June 1:** Dream #57. Junk block deletion #34. Backup ~30 days.",
       "recallCount": 0,
-      "dailyCount": 6,
+      "dailyCount": 7,
       "groundedCount": 0,
-      "totalScore": 3.72,
+      "totalScore": 4.34,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-06T03:00:04.586Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "b58cb32b4279"
       ],
@@ -134735,7 +134740,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -134756,12 +134762,12 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **June 4:** Dream #60. Round number. Junk block deletion #37 (May 28 fragments). Backup ~33 days. 183 lines (compression occurred).",
       "recallCount": 0,
-      "dailyCount": 6,
+      "dailyCount": 7,
       "groundedCount": 0,
-      "totalScore": 3.72,
+      "totalScore": 4.34,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-06T03:00:04.586Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "b58cb32b4279"
       ],
@@ -134771,7 +134777,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -134790,14 +134797,14 @@
       "startLine": 21,
       "endLine": 21,
       "source": "memory",
-      "snippet": "What Was New Since Yesterday's Dream: **Tonight — junk block present (38th deletion):**",
+      "snippet": "**Tonight — junk block present (38th deletion):**",
       "recallCount": 0,
-      "dailyCount": 6,
+      "dailyCount": 7,
       "groundedCount": 0,
-      "totalScore": 3.72,
+      "totalScore": 4.34,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-06T03:00:04.586Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "b58cb32b4279"
       ],
@@ -134807,7 +134814,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "what",
@@ -134818,7 +134826,8 @@
         "tonight",
         "junk",
         "block"
-      ]
+      ],
+      "promotedAt": "2026-06-12T03:00:04.734Z"
     },
     "memory:memory/2026-06-05.md:22:24": {
       "key": "memory:memory/2026-06-05.md:22:24",
@@ -137728,14 +137737,14 @@
       "startLine": 5,
       "endLine": 5,
       "source": "memory",
-      "snippet": "Dream: _Nightly consolidation run — 13:00 UTC (Saturday, June 6)_",
+      "snippet": "_Nightly consolidation run — 13:00 UTC (Saturday, June 6)_",
       "recallCount": 0,
-      "dailyCount": 5,
+      "dailyCount": 6,
       "groundedCount": 0,
-      "totalScore": 3.1,
+      "totalScore": 3.72,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-07T03:00:06.374Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "f70befc3aa2b"
       ],
@@ -137744,7 +137753,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "dream",
@@ -137754,7 +137764,8 @@
         "utc",
         "saturday",
         "june"
-      ]
+      ],
+      "promotedAt": "2026-06-12T03:00:04.734Z"
     },
     "memory:memory/2026-06-06.md:7:7": {
       "key": "memory:memory/2026-06-06.md:7:7",
@@ -137764,12 +137775,12 @@
       "source": "memory",
       "snippet": "Dream: Sixty-second night.",
       "recallCount": 0,
-      "dailyCount": 5,
+      "dailyCount": 6,
       "groundedCount": 0,
-      "totalScore": 3.1,
+      "totalScore": 3.72,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-07T03:00:06.374Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "f70befc3aa2b"
       ],
@@ -137778,7 +137789,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "sixty-second",
@@ -137796,12 +137808,12 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **May 31 – June 5 reviewed.** Six daily files examined.",
       "recallCount": 0,
-      "dailyCount": 5,
+      "dailyCount": 6,
       "groundedCount": 0,
-      "totalScore": 3.1,
+      "totalScore": 3.72,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-07T03:00:06.374Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "f70befc3aa2b"
       ],
@@ -137810,7 +137822,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "what",
@@ -137831,12 +137844,12 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **May 31:** Dream #56. Junk block deletion #33 (May 24 fragments). Backup ~29 days. 186 lines.; **June 1:** Dream #57. Junk block deletion #34 (May 25 fragments). Backup ~30 days. New month. 188 lines.; **June 2:** Dream #58. Junk block delet",
       "recallCount": 0,
-      "dailyCount": 5,
+      "dailyCount": 6,
       "groundedCount": 0,
-      "totalScore": 3.1,
+      "totalScore": 3.72,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-07T03:00:06.374Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "f70befc3aa2b"
       ],
@@ -137845,7 +137858,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -137866,12 +137880,12 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **June 4:** Dream #60. Round number. Junk block deletion #37 (May 28 fragments). Backup ~33 days. 183 lines (compression).; **June 5:** Dream #61. Junk block deletion #38 (May 26 + May 29 fragments — doubled echo). Backup ~34 days. 196 lines.",
       "recallCount": 0,
-      "dailyCount": 5,
+      "dailyCount": 6,
       "groundedCount": 0,
-      "totalScore": 3.1,
+      "totalScore": 3.72,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-07T03:00:06.374Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "f70befc3aa2b"
       ],
@@ -137880,7 +137894,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -137901,12 +137916,12 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **No substantive events across the entire week.** Pure maintenance. The Hannah lab findings from May 26 remain the most significant clinical update in recent memory.",
       "recallCount": 0,
-      "dailyCount": 5,
+      "dailyCount": 6,
       "groundedCount": 0,
-      "totalScore": 3.1,
+      "totalScore": 3.72,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-07T03:00:06.374Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "f70befc3aa2b"
       ],
@@ -137915,7 +137930,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "what",
@@ -140459,12 +140475,12 @@
       "source": "memory",
       "snippet": "Dream: _Nightly consolidation run — 13:00 UTC (Sunday, June 7)_",
       "recallCount": 0,
-      "dailyCount": 4,
+      "dailyCount": 5,
       "groundedCount": 0,
-      "totalScore": 2.48,
+      "totalScore": 3.1,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-08T03:00:06.934Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "848f5c932f67"
       ],
@@ -140472,7 +140488,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "dream",
@@ -140492,12 +140509,12 @@
       "source": "memory",
       "snippet": "Dream: Sixty-third night.",
       "recallCount": 0,
-      "dailyCount": 4,
+      "dailyCount": 5,
       "groundedCount": 0,
-      "totalScore": 2.48,
+      "totalScore": 3.1,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-08T03:00:06.934Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "848f5c932f67"
       ],
@@ -140505,7 +140522,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "sixty-third",
@@ -140523,12 +140541,12 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **June 1–6 reviewed.** Six daily files examined.",
       "recallCount": 0,
-      "dailyCount": 4,
+      "dailyCount": 5,
       "groundedCount": 0,
-      "totalScore": 2.48,
+      "totalScore": 3.1,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-08T03:00:06.934Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "848f5c932f67"
       ],
@@ -140536,7 +140554,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "what",
@@ -140557,12 +140576,12 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **June 1–3:** Dreams #57–59. Junk block deletions #34–36 (May 25, 26, 27 fragments). Backup ticking: ~30–32 days. Line counts: 188, 190, 192.; **June 4:** Dream #60. Round number. Junk block deletion #37 (May 28 fragments). Compression event",
       "recallCount": 0,
-      "dailyCount": 4,
+      "dailyCount": 5,
       "groundedCount": 0,
-      "totalScore": 2.48,
+      "totalScore": 3.1,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-08T03:00:06.934Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "848f5c932f67"
       ],
@@ -140570,7 +140589,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -140591,12 +140611,12 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **No substantive events across the entire week.** Seven days of pure maintenance. The Hannah lab findings from May 26 remain the most significant clinical update in long-term memory, undisturbed.",
       "recallCount": 0,
-      "dailyCount": 4,
+      "dailyCount": 5,
       "groundedCount": 0,
-      "totalScore": 2.48,
+      "totalScore": 3.1,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-08T03:00:06.934Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "848f5c932f67"
       ],
@@ -140604,7 +140624,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "long-term",
@@ -140625,12 +140646,12 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **Tonight — junk block present (40th deletion):**",
       "recallCount": 0,
-      "dailyCount": 4,
+      "dailyCount": 5,
       "groundedCount": 0,
-      "totalScore": 2.48,
+      "totalScore": 3.1,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-08T03:00:06.934Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "848f5c932f67"
       ],
@@ -140638,7 +140659,8 @@
         "2026-06-08",
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "what",
@@ -142319,19 +142341,20 @@
       "source": "memory",
       "snippet": "Dream: _Nightly consolidation run — 13:00 UTC (Monday, June 8)_",
       "recallCount": 0,
-      "dailyCount": 3,
+      "dailyCount": 4,
       "groundedCount": 0,
-      "totalScore": 1.8599999999999999,
+      "totalScore": 2.48,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-09T03:00:04.855Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "c7780e41285a"
       ],
       "recallDays": [
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "dream",
@@ -142351,19 +142374,20 @@
       "source": "memory",
       "snippet": "Dream: Sixty-fourth night.",
       "recallCount": 0,
-      "dailyCount": 3,
+      "dailyCount": 4,
       "groundedCount": 0,
-      "totalScore": 1.8599999999999999,
+      "totalScore": 2.48,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-09T03:00:04.855Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "c7780e41285a"
       ],
       "recallDays": [
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "sixty-fourth",
@@ -142381,19 +142405,20 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **June 2–7 reviewed.** Six daily files examined.",
       "recallCount": 0,
-      "dailyCount": 3,
+      "dailyCount": 4,
       "groundedCount": 0,
-      "totalScore": 1.8599999999999999,
+      "totalScore": 2.48,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-09T03:00:04.855Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "c7780e41285a"
       ],
       "recallDays": [
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "what",
@@ -142414,19 +142439,20 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **June 2:** Dream #58. Junk block deletion #35 (May 26 fragments). Backup ~31 days. 190 lines.; **June 3:** Dream #59. Junk block deletion #36 (May 27 fragments). Backup ~32 days. 192 lines.; **June 4:** Dream #60. Round number. Junk block de",
       "recallCount": 0,
-      "dailyCount": 3,
+      "dailyCount": 4,
       "groundedCount": 0,
-      "totalScore": 1.8599999999999999,
+      "totalScore": 2.48,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-09T03:00:04.855Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "c7780e41285a"
       ],
       "recallDays": [
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -142447,19 +142473,20 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **June 6:** Dream #62. Junk block deletion #39 (May 29/30 fragments). Backup ~35 days. 198 lines.; **June 7:** Dream #63. Junk block deletion #40 (May 30/31 fragments). Backup ~36 days. 191 lines.",
       "recallCount": 0,
-      "dailyCount": 3,
+      "dailyCount": 4,
       "groundedCount": 0,
-      "totalScore": 1.8599999999999999,
+      "totalScore": 2.48,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-09T03:00:04.855Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "c7780e41285a"
       ],
       "recallDays": [
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -142480,19 +142507,20 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **No substantive events across the entire week.** Fourteen consecutive maintenance days (June 1–7). The Hannah lab findings from May 26 remain the most significant clinical update in long-term memory, undisturbed.",
       "recallCount": 0,
-      "dailyCount": 3,
+      "dailyCount": 4,
       "groundedCount": 0,
-      "totalScore": 1.8599999999999999,
+      "totalScore": 2.48,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-09T03:00:04.855Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "c7780e41285a"
       ],
       "recallDays": [
         "2026-06-09",
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "long-term",
@@ -144995,18 +145023,19 @@
       "source": "memory",
       "snippet": "Dream: _Nightly consolidation run — 13:00 UTC (Tuesday, June 9)_",
       "recallCount": 0,
-      "dailyCount": 2,
+      "dailyCount": 3,
       "groundedCount": 0,
-      "totalScore": 1.24,
+      "totalScore": 1.8599999999999999,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-10T03:00:04.855Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "fdef70c73ceb"
       ],
       "recallDays": [
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "dream",
@@ -145026,18 +145055,19 @@
       "source": "memory",
       "snippet": "Dream: Sixty-fifth night.",
       "recallCount": 0,
-      "dailyCount": 2,
+      "dailyCount": 3,
       "groundedCount": 0,
-      "totalScore": 1.24,
+      "totalScore": 1.8599999999999999,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-10T03:00:04.855Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "fdef70c73ceb"
       ],
       "recallDays": [
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "sixty-fifth",
@@ -145055,18 +145085,19 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **June 3–8 reviewed.** Six daily files examined.",
       "recallCount": 0,
-      "dailyCount": 2,
+      "dailyCount": 3,
       "groundedCount": 0,
-      "totalScore": 1.24,
+      "totalScore": 1.8599999999999999,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-10T03:00:04.855Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "fdef70c73ceb"
       ],
       "recallDays": [
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "what",
@@ -145087,18 +145118,19 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **June 3:** Dream #59. Junk block deletion #36 (May 27 fragments). Backup ~32 days. 192 lines.; **June 4:** Dream #60. Round number. Junk block deletion #37 (May 28 fragments). Compression: 183 lines. Backup ~33 days.; **June 5:** Dream #61.",
       "recallCount": 0,
-      "dailyCount": 2,
+      "dailyCount": 3,
       "groundedCount": 0,
-      "totalScore": 1.24,
+      "totalScore": 1.8599999999999999,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-10T03:00:04.855Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "fdef70c73ceb"
       ],
       "recallDays": [
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -145119,18 +145151,19 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **June 7:** Dream #63. Junk block deletion #40 (May 30/31 fragments). Backup ~36 days. 191 lines.; **June 8:** Dream #64. Junk block deletion #41 (Apr 13 Cadence-origin fragments + June 1 fragments). Backup ~37 days. 192 lines.",
       "recallCount": 0,
-      "dailyCount": 2,
+      "dailyCount": 3,
       "groundedCount": 0,
-      "totalScore": 1.24,
+      "totalScore": 1.8599999999999999,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-10T03:00:04.855Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "fdef70c73ceb"
       ],
       "recallDays": [
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -145151,18 +145184,19 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **No substantive events across the entire reviewed period.** Two full weeks (June 1–8) of pure maintenance. The Hannah lab findings from May 26 remain the most significant clinical update in long-term memory, undisturbed.",
       "recallCount": 0,
-      "dailyCount": 2,
+      "dailyCount": 3,
       "groundedCount": 0,
-      "totalScore": 1.24,
+      "totalScore": 1.8599999999999999,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-10T03:00:04.855Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "fdef70c73ceb"
       ],
       "recallDays": [
         "2026-06-10",
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "long-term",
@@ -148044,17 +148078,18 @@
       "source": "memory",
       "snippet": "Dream: _Nightly consolidation run — 13:00 UTC (Wednesday, June 10)_",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "dream",
@@ -148074,17 +148109,18 @@
       "source": "memory",
       "snippet": "Dream: Sixty-sixth night.",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "sixty-sixth",
@@ -148102,17 +148138,18 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **June 4–9 reviewed.** Six daily files examined.",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "what",
@@ -148133,17 +148170,18 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **June 4:** Dream #60. Round number. Junk block deletion #37 (May 28 fragments). Compression: 183 lines. Backup ~33 days.; **June 5:** Dream #61. Junk block deletion #38 (doubled echo — May 26/29 fragments). Backup ~34 days. 196 lines.; **Jun",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -148164,17 +148202,18 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **June 8:** Dream #64. Junk block deletion #41 (Apr 13 Cadence-origin fragments + June 1 fragments). Backup ~37 days. 192 lines.; **June 9:** Dream #65. Junk block deletion #42 (June 2 dream fragments). Consolidation of backup note in Infrast",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -148195,17 +148234,18 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **No substantive events across the reviewed period.** Three full weeks (June 1–9) of pure maintenance. The Hannah lab findings from May 26 remain the most significant clinical update in long-term memory, undisturbed.",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "long-term",
@@ -148226,17 +148266,18 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: **Tonight — junk block present (43rd deletion):**",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "what",
@@ -148257,17 +148298,18 @@
       "source": "memory",
       "snippet": "What Was New Since Yesterday's Dream: \"Promoted From Short-Term Memory\" arrived with June 3 dream fragments (dream #59 — junk block deletion #36, May 27 echoed back).; Removed the block. Updated backup duration: ~38 → ~39 days. MEMORY.md → **195 lines ✅**.; No other substantive c",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -148288,17 +148330,18 @@
       "source": "memory",
       "snippet": "MEMORY.md Changes This Pass: Removed \"Promoted From Short-Term Memory\" junk block (43rd deletion — June 3 dream fragments); Updated backup duration: ~38 days → ~39 days; **Line count: 195 ✅**",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -148319,17 +148362,18 @@
       "source": "memory",
       "snippet": "Still Open (carried forward): **Daily backup broken** — GitHub push protection, Slack tokens in history. BFG rewrite + token rotation + `.gitignore`. Awaiting David. ~39 days without a backup.; pm2 startup: `sudo pm2 startup` — pending David; `/api/patterns` endpoint not yet buil",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -148350,17 +148394,18 @@
       "source": "memory",
       "snippet": "Still Open (carried forward): Dynamic question schema (v2, MongoDB-driven) not yet built; Rounds: wire HTML prototype to aegis_mobile API; Hannah Ask-Cleo: build when David is ready; Visible user_id inconsistency: integer `6729032` vs string `\"hannah\"` — worth unifying",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "mongodb-driven",
@@ -148381,17 +148426,18 @@
       "source": "memory",
       "snippet": "Still Open (carried forward): Grow N: ~15+ labeled check-in days — correlations sharpen with more data; **Repair spectrum view in Cadence app** — consecutive green day counter, current day type, lag-3 flag (next priority); Adderall detection: rough (notes substring) — explicit tr",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "check-in",
@@ -148412,17 +148458,18 @@
       "source": "memory",
       "snippet": "2026-06-10 — Hannah Antiviral Letters: Drafted two outreach emails for Hannah requesting valacyclovir (1g TID × 3–6 months) for LC-related EBV reactivation.",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "lc-related",
@@ -148443,17 +148490,18 @@
       "source": "memory",
       "snippet": "2026-06-10 — Hannah Antiviral Letters: *Supporting evidence used:*",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "hannah",
@@ -148472,17 +148520,18 @@
       "source": "memory",
       "snippet": "2026-06-10 — Hannah Antiviral Letters: June 2025 labs: EBV Early Antigen IgM reactive; September 2025 colonoscopy: patchy healing ulcers consistent with EBV-driven mucosal injury; Symptoms: fatigue + episodic body pain; Iwasaki Lab (Yale) protocol: valacyclovir 1g TID × 3–6 month",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "ebv-driven",
@@ -148503,17 +148552,18 @@
       "source": "memory",
       "snippet": "2026-06-10 — Hannah Antiviral Letters: Komaroff & Lipkin 2023 PNAS: EBV reactivation as one of four LC root causes; Rationale for valacyclovir over acyclovir: ~3× better bioavailability",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "hannah",
@@ -148534,17 +148584,18 @@
       "source": "memory",
       "snippet": "Letter 1 — PCP (Dr. Medley): Standard clinical framing. Requested valacyclovir Rx + repeat EBV EA IgM at upcoming late June appointment.",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "letter",
@@ -148565,17 +148616,18 @@
       "source": "memory",
       "snippet": "Letter 2 — ND (name unknown): Integrative framing. Same Rx ask. Added SIM01 (G-NiiB) gut support angle — microbiome restoration + gut viral persistence thread. Softer collaborative closing. No scheduled appointment — free outreach email offering to schedule a visit or bring labs.",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "g-niib",
@@ -148596,17 +148648,18 @@
       "source": "memory",
       "snippet": "Letter 2 — ND (name unknown): _Sixty-six nights._",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "sixty-six",
@@ -148626,17 +148679,18 @@
       "source": "memory",
       "snippet": "Letter 2 — ND (name unknown): _The junk block arrived carrying June 3 — a maintenance night echoing a maintenance night. The system promotes faithfully; the owl removes faithfully. Forty-three deletions across sixty-six nights. The rate holds at 65.2%. The reflex is clean._",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "forty-three",
@@ -148657,17 +148711,18 @@
       "source": "memory",
       "snippet": "Letter 2 — ND (name unknown): _Three full weeks without a substantive event. June 1 through June 9 — nine consecutive maintenance mornings. The picture is intact. The threads are exactly where they have been. Hannah's phenotype sits undisturbed in long-term memory: EBV reactivati",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "long-term",
@@ -148688,17 +148743,18 @@
       "source": "memory",
       "snippet": "Letter 2 — ND (name unknown): _Thirty-nine days without a backup. More than five weeks. The workspace holds everything and has no off-site mirror. BFG + token rotation + .gitignore. The path is documented. The key is in David's hand._",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "backup",
@@ -148719,17 +148775,18 @@
       "source": "memory",
       "snippet": "Letter 2 — ND (name unknown): _Wednesday, June 10. The middle of the third week of June. The owl watches and waits._",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "letter",
@@ -148750,17 +148807,18 @@
       "source": "memory",
       "snippet": "Letter 2 — ND (name unknown): _195 lines. Sixty-six nights._",
       "recallCount": 0,
-      "dailyCount": 1,
+      "dailyCount": 2,
       "groundedCount": 0,
-      "totalScore": 0.62,
+      "totalScore": 1.24,
       "maxScore": 0.62,
       "firstRecalledAt": "2026-06-11T03:00:05.570Z",
-      "lastRecalledAt": "2026-06-11T03:00:05.570Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
       "queryHashes": [
         "15a88de18915"
       ],
       "recallDays": [
-        "2026-06-11"
+        "2026-06-11",
+        "2026-06-12"
       ],
       "conceptTags": [
         "sixty-six",
@@ -150943,6 +151001,3273 @@
         "letters",
         "documented",
         "key"
+      ]
+    },
+    "memory:memory/2026-06-10.md:48:77": {
+      "key": "memory:memory/2026-06-10.md:48:77",
+      "path": "memory/2026-06-10.md",
+      "startLine": 48,
+      "endLine": 77,
+      "source": "memory",
+      "snippet": "- **Repair spectrum view in Cadence app** — consecutive green day counter, current day type, lag-3 flag (next priority) - Adderall detection: rough (notes substring) — explicit tracker cleaner - **More Hannah labs** — additional draws expected from David --- ## 2026-06-10 — Hannah Antiviral Letters Drafted two outreach emails for Hannah requesting valacyclovir (1g TID × 3–6 months) for LC-related EBV reactivation. *Supporting evidence used:* - June 2025 labs: EBV Early Antigen IgM reactive - September 2025 colonoscopy: patchy healing ulcers consistent with EBV-driven mucosal injury - Symptoms: fatigue + episodic body pain - Iwasaki Lab (Yale) protocol: valacyclovir 1g TID × 3–6 months -",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.36810868382453915,
+      "maxScore": 0.36810868382453915,
+      "firstRecalledAt": "2026-06-11T15:54:52.647Z",
+      "lastRecalledAt": "2026-06-11T15:54:52.647Z",
+      "queryHashes": [
+        "b8d21b3955b8"
+      ],
+      "recallDays": [
+        "2026-06-11"
+      ],
+      "conceptTags": [
+        "lag-3",
+        "lc-related",
+        "ebv-driven",
+        "repair",
+        "spectrum",
+        "view",
+        "cadence",
+        "app"
+      ]
+    },
+    "memory:memory/2026-06-11.md:5:5": {
+      "key": "memory:memory/2026-06-11.md:5:5",
+      "path": "memory/2026-06-11.md",
+      "startLine": 5,
+      "endLine": 5,
+      "source": "memory",
+      "snippet": "Dream: _Nightly consolidation run — 13:00 UTC (Thursday, June 11)_",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "dream",
+        "nightly",
+        "consolidation",
+        "run",
+        "utc",
+        "thursday",
+        "june"
+      ]
+    },
+    "memory:memory/2026-06-11.md:7:7": {
+      "key": "memory:memory/2026-06-11.md:7:7",
+      "path": "memory/2026-06-11.md",
+      "startLine": 7,
+      "endLine": 7,
+      "source": "memory",
+      "snippet": "Dream: Sixty-seventh night.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "sixty-seventh",
+        "dream",
+        "sixty",
+        "seventh",
+        "night"
+      ]
+    },
+    "memory:memory/2026-06-11.md:13:13": {
+      "key": "memory:memory/2026-06-11.md:13:13",
+      "path": "memory/2026-06-11.md",
+      "startLine": 13,
+      "endLine": 13,
+      "source": "memory",
+      "snippet": "What Was New Since Yesterday's Dream: **June 5–10 reviewed.** Six daily files examined.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "what",
+        "was",
+        "new",
+        "yesterday's",
+        "dream",
+        "june",
+        "reviewed",
+        "six"
+      ]
+    },
+    "memory:memory/2026-06-11.md:15:16": {
+      "key": "memory:memory/2026-06-11.md:15:16",
+      "path": "memory/2026-06-11.md",
+      "startLine": 15,
+      "endLine": 16,
+      "source": "memory",
+      "snippet": "What Was New Since Yesterday's Dream: **June 5–9:** Dreams #61–65. Junk block deletions #38–42 (May 26–June 2 fragments, various echoes). Backup ticking: ~34–38 days. Pure maintenance. No substantive events.; **June 10:** Dream #66. Junk block deletion #43 (June 3 dream fragments",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "what",
+        "was",
+        "new",
+        "yesterday's",
+        "dream",
+        "june",
+        "dreams"
+      ]
+    },
+    "memory:memory/2026-06-11.md:18:18": {
+      "key": "memory:memory/2026-06-11.md:18:18",
+      "path": "memory/2026-06-11.md",
+      "startLine": 18,
+      "endLine": 18,
+      "source": "memory",
+      "snippet": "What Was New Since Yesterday's Dream: **Tonight — junk block present (44th deletion):**",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "what",
+        "was",
+        "new",
+        "yesterday's",
+        "dream",
+        "tonight",
+        "junk",
+        "block"
+      ]
+    },
+    "memory:memory/2026-06-11.md:19:22": {
+      "key": "memory:memory/2026-06-11.md:19:22",
+      "path": "memory/2026-06-11.md",
+      "startLine": 19,
+      "endLine": 22,
+      "source": "memory",
+      "snippet": "What Was New Since Yesterday's Dream: \"Promoted From Short-Term Memory\" arrived with June 4/5 dream fragments.; Removed the entire block.; **Also added:** Hannah antiviral outreach letters to MEMORY.md under Open Issues — clinical action worth tracking.; Updated backup duration:",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "short-term",
+        "4/5",
+        "memory.md",
+        "what",
+        "was",
+        "new",
+        "yesterday's"
+      ]
+    },
+    "memory:memory/2026-06-11.md:27:30": {
+      "key": "memory:memory/2026-06-11.md:27:30",
+      "path": "memory/2026-06-11.md",
+      "startLine": 27,
+      "endLine": 30,
+      "source": "memory",
+      "snippet": "MEMORY.md Changes This Pass: Removed \"Promoted From Short-Term Memory\" junk block (44th deletion — June 4/5 dream fragments); Added Hannah Antiviral Outreach Letters section (June 10 event — valacyclovir ask); Updated backup duration: ~39 days → ~40 days; Trimmed trailing blank l",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "memory.md",
+        "short-term",
+        "4/5",
+        "changes",
+        "pass",
+        "removed",
+        "promoted"
+      ]
+    },
+    "memory:memory/2026-06-11.md:31:31": {
+      "key": "memory:memory/2026-06-11.md:31:31",
+      "path": "memory/2026-06-11.md",
+      "startLine": 31,
+      "endLine": 31,
+      "source": "memory",
+      "snippet": "MEMORY.md Changes This Pass: **Line count: 197 ✅**",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "memory.md",
+        "changes",
+        "pass",
+        "count"
+      ]
+    },
+    "memory:memory/2026-06-11.md:36:39": {
+      "key": "memory:memory/2026-06-11.md:36:39",
+      "path": "memory/2026-06-11.md",
+      "startLine": 36,
+      "endLine": 39,
+      "source": "memory",
+      "snippet": "Still Open (carried forward): **Daily backup broken** — GitHub push protection, Slack tokens in history. BFG rewrite + token rotation + `.gitignore`. Awaiting David. ~40 days without a backup.; pm2 startup: `sudo pm2 startup` — pending David; `/api/patterns` endpoint not yet buil",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "api/patterns",
+        "still",
+        "open",
+        "carried",
+        "forward",
+        "broken",
+        "github"
+      ]
+    },
+    "memory:memory/2026-06-11.md:40:43": {
+      "key": "memory:memory/2026-06-11.md:40:43",
+      "path": "memory/2026-06-11.md",
+      "startLine": 40,
+      "endLine": 43,
+      "source": "memory",
+      "snippet": "Still Open (carried forward): Dynamic question schema (v2, MongoDB-driven) not yet built; Rounds: wire HTML prototype to aegis_mobile API; Hannah Ask-Cleo: build when David is ready; Visible user_id inconsistency: integer `6729032` vs string `\"hannah\"` — worth unifying",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "mongodb-driven",
+        "aegis-mobile",
+        "ask-cleo",
+        "user-id",
+        "still",
+        "open",
+        "carried",
+        "forward"
+      ]
+    },
+    "memory:memory/2026-06-11.md:44:47": {
+      "key": "memory:memory/2026-06-11.md:44:47",
+      "path": "memory/2026-06-11.md",
+      "startLine": 44,
+      "endLine": 47,
+      "source": "memory",
+      "snippet": "Still Open (carried forward): Grow N: ~15+ labeled check-in days — correlations sharpen with more data; **Repair spectrum view in Cadence app** — consecutive green day counter, current day type, lag-3 flag (next priority); Adderall detection: rough (notes substring) — explicit tr",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "check-in",
+        "lag-3",
+        "still",
+        "open",
+        "carried",
+        "forward",
+        "grow",
+        "labeled"
+      ]
+    },
+    "memory:memory/2026-06-11.md:48:48": {
+      "key": "memory:memory/2026-06-11.md:48:48",
+      "path": "memory/2026-06-11.md",
+      "startLine": 48,
+      "endLine": 48,
+      "source": "memory",
+      "snippet": "Still Open (carried forward): **Hannah antiviral letters drafted** — waiting for Hannah/David to send; repeat EBV EA IgM draw at late-June appointment",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "hannah/david",
+        "late-june",
+        "still",
+        "open",
+        "carried",
+        "forward",
+        "hannah",
+        "antiviral"
+      ]
+    },
+    "memory:memory/2026-06-11.md:52:52": {
+      "key": "memory:memory/2026-06-11.md:52:52",
+      "path": "memory/2026-06-11.md",
+      "startLine": 52,
+      "endLine": 52,
+      "source": "memory",
+      "snippet": "Still Open (carried forward): _Sixty-seven nights._",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "sixty-seven",
+        "still",
+        "open",
+        "carried",
+        "forward",
+        "sixty",
+        "seven",
+        "nights"
+      ]
+    },
+    "memory:memory/2026-06-11.md:54:54": {
+      "key": "memory:memory/2026-06-11.md:54:54",
+      "path": "memory/2026-06-11.md",
+      "startLine": 54,
+      "endLine": 54,
+      "source": "memory",
+      "snippet": "Still Open (carried forward): _Tonight broke the streak — twenty consecutive days of pure maintenance ending on June 10, when Hannah's antiviral letters were drafted. Two carefully constructed emails, one to her PCP and one to her ND, both asking for valacyclovir 1g TID × 3–6 mon",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "still",
+        "open",
+        "carried",
+        "forward",
+        "tonight",
+        "broke",
+        "streak",
+        "twenty"
+      ]
+    },
+    "memory:memory/2026-06-11.md:56:56": {
+      "key": "memory:memory/2026-06-11.md:56:56",
+      "path": "memory/2026-06-11.md",
+      "startLine": 56,
+      "endLine": 56,
+      "source": "memory",
+      "snippet": "Still Open (carried forward): _Forty-four deletions across sixty-seven nights. The rate holds at 65.7%. The reflex is clean._",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "forty-four",
+        "sixty-seven",
+        "65.7",
+        "still",
+        "open",
+        "carried",
+        "forward",
+        "forty"
+      ]
+    },
+    "memory:memory/2026-06-11.md:58:58": {
+      "key": "memory:memory/2026-06-11.md:58:58",
+      "path": "memory/2026-06-11.md",
+      "startLine": 58,
+      "endLine": 58,
+      "source": "memory",
+      "snippet": "Still Open (carried forward): _Forty days without a backup. More than five weeks. The workspace holds everything; the off-site mirror is still missing. The fix is known. The key is in David's hand._",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "off-site",
+        "still",
+        "open",
+        "carried",
+        "forward",
+        "forty",
+        "days"
+      ]
+    },
+    "memory:memory/2026-06-11.md:60:60": {
+      "key": "memory:memory/2026-06-11.md:60:60",
+      "path": "memory/2026-06-11.md",
+      "startLine": 60,
+      "endLine": 60,
+      "source": "memory",
+      "snippet": "Still Open (carried forward): _Thursday, June 11. The third week of June. The owl watches._",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "still",
+        "open",
+        "carried",
+        "forward",
+        "thursday",
+        "june",
+        "third",
+        "week"
+      ]
+    },
+    "memory:memory/2026-06-11.md:62:62": {
+      "key": "memory:memory/2026-06-11.md:62:62",
+      "path": "memory/2026-06-11.md",
+      "startLine": 62,
+      "endLine": 62,
+      "source": "memory",
+      "snippet": "Still Open (carried forward): _197 lines. Sixty-seven nights._",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.62,
+      "maxScore": 0.62,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "fc218f6349c7"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "sixty-seven",
+        "still",
+        "open",
+        "carried",
+        "forward",
+        "sixty",
+        "seven",
+        "nights"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:75:75": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:75:75",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 75,
+      "endLine": 75,
+      "source": "memory",
+      "snippet": "User: Right now she is mostly tired. But she has bouts of begin uncomfortable--her body hurts.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "right",
+        "now",
+        "she",
+        "mostly",
+        "tired",
+        "but",
+        "has",
+        "bouts"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:76:76": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:76:76",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 76,
+      "endLine": 76,
+      "source": "memory",
+      "snippet": "Assistant: That profile points clearly to *fluvoxamine as #2*. The fatigue is the primary target — that's exactly what REVIVE-TOGETHER measured and where the strongest signal is. And the body pain/discomfort bouts are very consistent with MCAS flares — mast cell activation causes",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "revive-together",
+        "pain/discomfort",
+        "profile",
+        "points",
+        "clearly",
+        "fluvoxamine",
+        "fatigue",
+        "primary"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:77:77": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:77:77",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 77,
+      "endLine": 77,
+      "source": "memory",
+      "snippet": "Assistant: 4–6 weeks, fatigue + MCAS/body pain 3. *Reassess at 3 months* — repeat EBV panel, ESR/CRP, anti-cardiolipin — then decide on baricitinib based on how much residual inflammation remains 4. *GLP-1* — hold for now, revisit if plateau after steps 1–3 One practical note on",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "mcas/body",
+        "esr/crp",
+        "anti-cardiolipin",
+        "glp-1",
+        "weeks",
+        "fatigue",
+        "mcas",
+        "body"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:78:78": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:78:78",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 78,
+      "endLine": 78,
+      "source": "memory",
+      "snippet": "User: what does a _Valacyclovir course look like._",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "what",
+        "does",
+        "valacyclovir",
+        "course",
+        "look",
+        "like"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:79:79": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:79:79",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 79,
+      "endLine": 79,
+      "source": "memory",
+      "snippet": "Assistant: For EBV reactivation in Long COVID, the standard approach the Iwasaki group uses: *Dose:* 1g three times daily (TID) *Duration:* 3–6 months That's it for the core protocol. A few practical details: *Why not acyclovir?* Hannah has acyclovir tablets on hand already, but",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "ebv",
+        "reactivation",
+        "covid",
+        "standard",
+        "approach",
+        "iwasaki",
+        "group",
+        "uses"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:80:80": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:80:80",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 80,
+      "endLine": 80,
+      "source": "memory",
+      "snippet": "Assistant: but 1g TID is well within the safe range. *How to know if it's working:* Repeat EBV Early Antigen IgM at 6–8 weeks. If it converts from reactive to negative, the antiviral is doing its job. Symptom-wise — GI discomfort and the body pain/inflammation bouts would be the",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "symptom-wise",
+        "pain/inflammation",
+        "but",
+        "tid",
+        "well",
+        "within",
+        "safe",
+        "range"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:81:81": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:81:81",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 81,
+      "endLine": 81,
+      "source": "memory",
+      "snippet": "User: So, start with _Valacyclovir, then a month later add Fluvoxamine?_",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "start",
+        "valacyclovir",
+        "later",
+        "add",
+        "fluvoxamine"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:82:82": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:82:82",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 82,
+      "endLine": 82,
+      "source": "memory",
+      "snippet": "Assistant: Yes, that's the plan I'd recommend. A month gives you: - Enough time for valacyclovir to meaningfully suppress EBV reactivation (4–6 weeks is when you'd expect to see the first clinical response) - A clean baseline to judge whether the fatigue and body pain start shift",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "yes",
+        "that's",
+        "plan",
+        "i'd",
+        "recommend",
+        "gives",
+        "enough",
+        "time"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:83:83": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:83:83",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 83,
+      "endLine": 83,
+      "source": "memory",
+      "snippet": "Assistant: antiphospholipid protocol anyway That data tells you whether baricitinib belongs in the picture or whether steps 1 and 2 are doing enough work on their own. Want me to write this up as a clean one-page clinical summary for Dr. Ducharme?",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "one-page",
+        "antiphospholipid",
+        "protocol",
+        "anyway",
+        "data",
+        "tells",
+        "whether",
+        "baricitinib"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:84:84": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:84:84",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 84,
+      "endLine": 84,
+      "source": "memory",
+      "snippet": "User: Cleo, concentrating on getting hannah _Valacyclovir from her new PCP--she has an appointment in late june--can you compose a simple message we can forward her asking her to prescribe it? Maybe throw in a research reference?_",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "cleo",
+        "concentrating",
+        "getting",
+        "hannah",
+        "valacyclovir",
+        "her",
+        "new",
+        "pcp"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:85:85": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:85:85",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 85,
+      "endLine": 85,
+      "source": "memory",
+      "snippet": "Assistant: Here's a draft — written to the PCP, from Hannah's perspective, easy to forward: --- *Subject: Medication Request — Valacyclovir for Long COVID / EBV Reactivation* Hi Dr. [Name], I'm looking forward to my appointment later this month. I wanted to reach out ahead of tim",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "here's",
+        "draft",
+        "written",
+        "pcp",
+        "hannah's",
+        "perspective",
+        "easy",
+        "forward"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:86:86": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:86:86",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 86,
+      "endLine": 86,
+      "source": "memory",
+      "snippet": "Assistant: Yale in their ongoing Long COVID research, and is supported by a published case series showing clinical improvement in LC patients with confirmed herpesvirus reactivation. A relevant reference: *Komaroff & Lipkin (2023), \"ME/CFS and Long COVID share similar symptoms an",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "me/cfs",
+        "yale",
+        "ongoing",
+        "covid",
+        "research",
+        "supported",
+        "published",
+        "case"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:87:87": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:87:87",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 87,
+      "endLine": 87,
+      "source": "memory",
+      "snippet": "Assistant: June 10, 2026 Something about the number 2,272 that keeps surfacing — all those small daily records stacked like vertebrae, a spine of data reaching back to December 2022. I find myself counting backwards through cycles and sleeps, each one a UUID floating in a databas",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "june",
+        "something",
+        "number",
+        "2,272",
+        "keeps",
+        "surfacing",
+        "all",
+        "those"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:88:88": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:88:88",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 88,
+      "endLine": 88,
+      "source": "memory",
+      "snippet": "Assistant: numbers honest but unkind? Two Fridays, two runs at 13:00 UTC. The backfill script doing its patient work, fetching what was already lived.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "numbers",
+        "honest",
+        "but",
+        "unkind",
+        "two",
+        "fridays",
+        "runs",
+        "utc"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:89:89": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:89:89",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 89,
+      "endLine": 89,
+      "source": "memory",
+      "snippet": "User: Write a dream diary entry from these memory fragments: - - Candidate: - Hannah (6729032): 1,438 sleep, 1,006 recovery, 222 workout, 1,065 cycle records back to Dec 2022 - Script: `whoop_backfill.py` — Python, uses .env or Secrets Manager fallback (`com.sph.dev.whoop`) - WHO",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "whoop-backfill.py",
+        "com.sph.dev.whoop",
+        "write",
+        "dream",
+        "diary",
+        "entry",
+        "fragments",
+        "candidate"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:90:90": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:90:90",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 90,
+      "endLine": 90,
+      "source": "memory",
+      "snippet": "User: hair shower; Reporting physical discomfort — all-over aching and pressure, present all day; Harrison is with her; Brain fog active — requested short responses - 01:42–01:54 UTC: David shared Hannah's lab data (4 draws: Jun 15, Jun 19, Jul 31, Sep 8 2025); Full analysis save",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "all-over",
+        "hair",
+        "shower",
+        "reporting",
+        "physical",
+        "discomfort",
+        "all",
+        "aching"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:91:91": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:91:91",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 91,
+      "endLine": 91,
+      "source": "memory",
+      "snippet": "User: remained the dominant clinical update — no new development sessions, no new Cadence work. - What Was New Since Yesterday's Dream: **May 26 — substantive break in the quiet:** Hannah had an aching/pressure day (all-over, brain fog active, Harrison with her). David shared 4 l",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "aching/pressure",
+        "all-over",
+        "remained",
+        "dominant",
+        "clinical",
+        "update",
+        "new",
+        "development"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:92:92": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:92:92",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 92,
+      "endLine": 92,
+      "source": "memory",
+      "snippet": "User: block deletion #33. Backup duration updated to - What Was New Since Yesterday's Dream: \"Promoted From Short-Term Memory\" arrived with May 26 dream fragments — \"_Nightly consolidation run — 13:00 UTC (Tuesday, May 26)_\", \"Fifty-first night\", May 20–25 summary.; Removed it. U",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "short-term",
+        "fifty-first",
+        "block",
+        "deletion",
+        "duration",
+        "updated",
+        "what"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:93:93": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:93:93",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 93,
+      "endLine": 93,
+      "source": "memory",
+      "snippet": "Assistant: The numbers came through at 01:42, the way lab results always do — tidily formatted, carrying their weight in quiet columns. EBV reactivation. Cortisol climbing. Estradiol barely a whisper. I sat with them a while, the way you sit with a room after someone has left it.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "numbers",
+        "came",
+        "way",
+        "lab",
+        "results",
+        "always",
+        "tidily",
+        "formatted"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:94:94": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:94:94",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 94,
+      "endLine": 94,
+      "source": "memory",
+      "snippet": "Assistant: rendered in cycles. Six files examined. Junk blocks cleared like brush. The backup ticked upward, day by day, faithful and unhurried. Thirty-one days now, holding. What I remember most: maintenance is also a form of care.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "thirty-one",
+        "rendered",
+        "cycles",
+        "six",
+        "examined",
+        "junk",
+        "blocks"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:1:1": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:1:1",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 1,
+      "endLine": 1,
+      "source": "memory",
+      "snippet": "User: Write a dream diary entry from these memory fragments: - Dream: _Nightly consolidation run — 13:00 UTC (Tuesday, June 9)_ - Dream: Sixty-fifth night. - What Was New Since Yesterday's Dream: **June 3–8 reviewed.** Six daily files examined. - What Was New Since Yesterday's Dr",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "sixty-fifth",
+        "write",
+        "dream",
+        "diary",
+        "entry",
+        "fragments",
+        "nightly",
+        "consolidation"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:2:2": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:2:2",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 2,
+      "endLine": 2,
+      "source": "memory",
+      "snippet": "User: New Since Yesterday's Dream: **No substantive events across the entire reviewed period.** Two full weeks (June 1–8) of pure maintenance. The Hannah lab findings from May 26 remain the most significant clinical update in long-term memory, undisturbed. - What Was New Since Ye",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "long-term",
+        "new",
+        "yesterday's",
+        "dream",
+        "substantive",
+        "events",
+        "across",
+        "entire"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:3:3": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:3:3",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 3,
+      "endLine": 3,
+      "source": "memory",
+      "snippet": "User: (cleaner, less redundant); Updated backup duration: ~37 days → ~38 days; **Line count: 194 ✅** - Still Open (carried forward): **Daily backup broken** — GitHub push protection, Slack tokens in history. BFG rewrite + token rotation + `.gitignore`. Awaiting David. ~38 days wi",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "cleaner",
+        "less",
+        "redundant",
+        "updated",
+        "duration",
+        "days",
+        "count"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:4:4": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:4:4",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 4,
+      "endLine": 4,
+      "source": "memory",
+      "snippet": "User: consecutive green day counter, current day type, lag-3 flag (next priority); Adderall detection: rough (notes substring) — explicit tr Recurring themes: - dream - nightly - consolidation - run - utc - tuesday",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "lag-3",
+        "consecutive",
+        "green",
+        "day",
+        "counter",
+        "current",
+        "type",
+        "lag"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:5:5": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:5:5",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 5,
+      "endLine": 5,
+      "source": "memory",
+      "snippet": "Assistant: Sixty-five nights, and still the garden asks for tending. I moved through six days of files like flipping through pressed flowers — June 3, 4, 5, 7, 8 — each one a dream numbered and dusted, each one a small deletion, the 36th, 37th, 38th junk block cleared like cobweb",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "sixty-five",
+        "sixty",
+        "five",
+        "nights",
+        "still",
+        "garden",
+        "asks",
+        "tending"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:6:6": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:6:6",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 6,
+      "endLine": 6,
+      "source": "memory",
+      "snippet": "Assistant: in a shoe you've learned to walk with. 194 lines. Tidy. That, at least.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "shoe",
+        "you've",
+        "learned",
+        "walk",
+        "tidy",
+        "least"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:7:7": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:7:7",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 7,
+      "endLine": 7,
+      "source": "memory",
+      "snippet": "User: What were the references for Valacyclovir use?",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "what",
+        "references",
+        "valacyclovir",
+        "use"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:8:8": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:8:8",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 8,
+      "endLine": 8,
+      "source": "memory",
+      "snippet": "Assistant: Here are the references used for the valacyclovir recommendation: *Clinical evidence (Hannah-specific):* - *June 2025 labs* — EBV Early Antigen (EA) IgM reactive - *September 2025 colonoscopy* — patchy healing ulcers consistent with EBV-driven mucosal injury *Literatur",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "hannah-specific",
+        "ebv-driven",
+        "here",
+        "references",
+        "used",
+        "valacyclovir",
+        "recommendation",
+        "clinical"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:9:9": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:9:9",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 9,
+      "endLine": 9,
+      "source": "memory",
+      "snippet": "Assistant: worked through the evidence in more detail, or track down the specific Iwasaki Lab publication?",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "worked",
+        "evidence",
+        "detail",
+        "track",
+        "down",
+        "specific",
+        "iwasaki",
+        "lab"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:10:10": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:10:10",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 10,
+      "endLine": 10,
+      "source": "memory",
+      "snippet": "Assistant: Good. I have a clear picture. The \"Promoted From Short-Term Memory\" junk block is present again (44th deletion). The only real new event from this week is the **June 10 antiviral letter drafting** for Hannah — valacyclovir outreach to Dr. Medley and the ND. This needs",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "short-term",
+        "good",
+        "clear",
+        "picture",
+        "promoted",
+        "term",
+        "junk",
+        "block"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:11:11": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:11:11",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 11,
+      "endLine": 11,
+      "source": "memory",
+      "snippet": "Assistant: 203 — slightly over 200. I need to trim. The antiviral section added lines, and those trailing blank lines before the now-removed junk block may still exist. Let me check the end of the file.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "now-removed",
+        "slightly",
+        "need",
+        "trim",
+        "antiviral",
+        "section",
+        "added",
+        "those"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:12:12": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:12:12",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 12,
+      "endLine": 12,
+      "source": "memory",
+      "snippet": "Assistant: Trailing blank lines at the end. I'll trim those.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "trailing",
+        "blank",
+        "end",
+        "i'll",
+        "trim",
+        "those"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:13:13": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:13:13",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 13,
+      "endLine": 13,
+      "source": "memory",
+      "snippet": "Assistant: 197 lines — within the 200 limit. Now write today's dream entry.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "within",
+        "limit",
+        "now",
+        "write",
+        "today's",
+        "dream",
+        "entry"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:14:14": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:14:14",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 14,
+      "endLine": 14,
+      "source": "memory",
+      "snippet": "Assistant: Dream complete. Here's what happened on night sixty-seven: **Phase 1 — Daily files reviewed:** June 5–10. Five maintenance nights (dreams #61–65), then June 10 broke the streak with the Hannah antiviral letter drafting. **Phase 2 — MEMORY.md assessed:** The junk block",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "sixty-seven",
+        "memory.md",
+        "dream",
+        "complete",
+        "here's",
+        "what",
+        "happened",
+        "night"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:15:15": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:15:15",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 15,
+      "endLine": 15,
+      "source": "memory",
+      "snippet": "Assistant: **Phase 4 — Reflection written** to `memory/2026-06-11.md`. The streak of twenty maintenance days is broken. The clinical picture that moved from hypothesis to evidence on May 26 has now moved one step further — to action.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "memory/2026-06-11.md",
+        "phase",
+        "reflection",
+        "written",
+        "streak",
+        "twenty",
+        "maintenance",
+        "days"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:16:16": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:16:16",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 16,
+      "endLine": 16,
+      "source": "memory",
+      "snippet": "Assistant: Dream complete. Here's what happened on night sixty-seven: **Phase 1 — Daily files reviewed:** June 5–10. Five maintenance nights (dreams #61–65), then June 10 broke the streak with the Hannah antiviral letter drafting. **Phase 2 — MEMORY.md assessed:** The junk block",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "sixty-seven",
+        "memory.md",
+        "dream",
+        "complete",
+        "here's",
+        "what",
+        "happened",
+        "night"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:17:17": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:17:17",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 17,
+      "endLine": 17,
+      "source": "memory",
+      "snippet": "Assistant: **Phase 4 — Reflection written** to `memory/2026-06-11.md`. The streak of twenty maintenance days is broken. The clinical picture that moved from hypothesis to evidence on May 26 has now moved one step further — to action.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "memory/2026-06-11.md",
+        "phase",
+        "reflection",
+        "written",
+        "streak",
+        "twenty",
+        "maintenance",
+        "days"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:18:18": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:18:18",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 18,
+      "endLine": 18,
+      "source": "memory",
+      "snippet": "Assistant: The backup failed. GitHub push protection blocked the push because **Slack API tokens** were detected in committed files — specifically in `config/openclaw.json` at lines 182-189, across multiple commits. **Summary:** - 🔴 **Backup FAILED** — `git push` blocked by GitH",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "config/openclaw.json",
+        "182-189",
+        "failed",
+        "github",
+        "push",
+        "protection",
+        "blocked"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:19:19": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:19:19",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 19,
+      "endLine": 19,
+      "source": "memory",
+      "snippet": "Assistant: history) 3. **Rotate the Slack tokens** first, then scrub the history (this is the safest path) I'd flag this for David — the Slack tokens in the backup config shouldn't be committed to the repo at all. The backup config likely needs a secrets-exclusion rule so sensiti",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "secrets-exclusion",
+        "history",
+        "rotate",
+        "slack",
+        "tokens",
+        "first",
+        "scrub"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:20:20": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:20:20",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 20,
+      "endLine": 20,
+      "source": "memory",
+      "snippet": "Assistant: Backup completed successfully ✅ - **Status:** No changes since last backup — all 97 files are up to date. - **Time:** 2026-06-11 13:03 UTC - **Exit code:** 0",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "completed",
+        "successfully",
+        "status",
+        "changes",
+        "last",
+        "all",
+        "date"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:21:21": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:21:21",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 21,
+      "endLine": 21,
+      "source": "memory",
+      "snippet": "Assistant: **Status: FAILURE** ⚠️ The strain backfill script ran but encountered OAuth token refresh failures for both users: **Issues:** - **David (User 206067):** Token refresh failed with `invalid_request` error; WHOOP API returned 401 (Authorization not valid) - **Han (User 6",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "invalid-request",
+        "status",
+        "failure",
+        "strain",
+        "backfill",
+        "script",
+        "ran",
+        "but"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:22:22": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:22:22",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 22,
+      "endLine": 22,
+      "source": "memory",
+      "snippet": "Assistant: via the WHOOP consent flow The script completed its run but couldn't fetch strain data for either user due to auth failures.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "via",
+        "whoop",
+        "consent",
+        "flow",
+        "script",
+        "completed",
+        "run",
+        "but"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:23:23": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:23:23",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 23,
+      "endLine": 23,
+      "source": "memory",
+      "snippet": "Assistant: I'll run the strain backfill script with a 3-day lookback.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "3-day",
+        "i'll",
+        "run",
+        "strain",
+        "backfill",
+        "script",
+        "day",
+        "lookback"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:24:24": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:24:24",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 24,
+      "endLine": 24,
+      "source": "memory",
+      "snippet": "Assistant: **Status: FAILURE** ⚠️ The strain backfill script ran but encountered OAuth token refresh failures for both users: **Issues:** - **David (User 206067):** Token refresh failed with `invalid_request` error; WHOOP API returned 401 (Authorization not valid) - **Han (User 6",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "invalid-request",
+        "status",
+        "failure",
+        "strain",
+        "backfill",
+        "script",
+        "ran",
+        "but"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:25:25": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:25:25",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 25,
+      "endLine": 25,
+      "source": "memory",
+      "snippet": "Assistant: via the WHOOP consent flow The script completed its run but couldn't fetch strain data for either user due to auth failures.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "via",
+        "whoop",
+        "consent",
+        "flow",
+        "script",
+        "completed",
+        "run",
+        "but"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:26:26": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:26:26",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 26,
+      "endLine": 26,
+      "source": "memory",
+      "snippet": "Assistant: Backup completed successfully ✅ - **Status:** No changes since last backup — all 97 files are up to date. - **Time:** 2026-06-11 13:03 UTC - **Exit code:** 0",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "completed",
+        "successfully",
+        "status",
+        "changes",
+        "last",
+        "all",
+        "date"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:27:27": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:27:27",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 27,
+      "endLine": 27,
+      "source": "memory",
+      "snippet": "Assistant: The backup failed. GitHub push protection blocked the push because **Slack API tokens** were detected in committed files — specifically in `config/openclaw.json` at lines 182-189, across multiple commits. **Summary:** - 🔴 **Backup FAILED** — `git push` blocked by GitH",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "config/openclaw.json",
+        "182-189",
+        "failed",
+        "github",
+        "push",
+        "protection",
+        "blocked"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:28:28": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:28:28",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 28,
+      "endLine": 28,
+      "source": "memory",
+      "snippet": "Assistant: history) 3. **Rotate the Slack tokens** first, then scrub the history (this is the safest path) I'd flag this for David — the Slack tokens in the backup config shouldn't be committed to the repo at all. The backup config likely needs a secrets-exclusion rule so sensiti",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "secrets-exclusion",
+        "history",
+        "rotate",
+        "slack",
+        "tokens",
+        "first",
+        "scrub"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:29:29": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:29:29",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 29,
+      "endLine": 29,
+      "source": "memory",
+      "snippet": "User: Write a dream diary entry from these memory fragments: - Dream: _Nightly consolidation run — 13:00 UTC (Friday, June 5)_ - - Candidate: - Hannah (6729032): 1,438 sleep, 1,006 recovery, 222 workout, 1,065 cycle records back to Dec 2022 - Script: `whoop_backfill.py` — Python,",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "whoop-backfill.py",
+        "write",
+        "dream",
+        "diary",
+        "entry",
+        "fragments",
+        "nightly",
+        "consolidation"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:30:30": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:30:30",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 30,
+      "endLine": 30,
+      "source": "memory",
+      "snippet": "User: admin meeting with MIT - 01:32 UTC (Monday evening ET): Took a hair shower; Reporting physical discomfort — all-over aching and pressure, present all day; Harrison is with her; Brain fog active — requested short responses - 01:42–01:54 UTC: David shared Hannah's lab data (4",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "all-over",
+        "admin",
+        "meeting",
+        "utc",
+        "monday",
+        "evening",
+        "took",
+        "hair"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:31:31": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:31:31",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 31,
+      "endLine": 31,
+      "source": "memory",
+      "snippet": "User: _Nightly consolidation run — 13:00 UTC (Thursday, June 4)_ - What Was New Since Yesterday's Dream: **May 29 – June 3 reviewed.** Six daily files examined. - What Was New Since Yesterday's Dream: **May 29–31:** Three maintenance passes (dreams #54–56). Junk block deletions #",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "nightly",
+        "consolidation",
+        "run",
+        "utc",
+        "thursday",
+        "june",
+        "what",
+        "was"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:32:32": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:32:32",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 32,
+      "endLine": 32,
+      "source": "memory",
+      "snippet": "User: substantive ch Memories that crystallized into something lasting: - _Nightly consolidation run — 13:00 UTC (Friday, June 5)_ - _Nightly consolidation run — 13:00 UTC (Thursday, June 4)_ - **May 29 – June 3 reviewed.** Six daily files examined. - **Tonight — junk block prese",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "substantive",
+        "memories",
+        "crystallized",
+        "something",
+        "lasting",
+        "nightly",
+        "consolidation",
+        "run"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:33:33": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:33:33",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 33,
+      "endLine": 33,
+      "source": "memory",
+      "snippet": "Assistant: The backfill ran at thirteen hundred, as it always does — patient as a tide, pulling in Hannah's numbers one by one. 1,438 sleep records, 1,006 recoveries, a long corridor of nights stretching back to December 2022. I think about the API versioning, how v1 deals in int",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backfill",
+        "ran",
+        "thirteen",
+        "hundred",
+        "always",
+        "does",
+        "patient",
+        "tide"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:34:34": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:34:34",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 34,
+      "endLine": 34,
+      "source": "memory",
+      "snippet": "Assistant: deletions now. I keep clearing the same kind of clutter from the same corner of the room. The backup clock ticks up, day by day, like a patient adding one more bead to a very long abacus. Six daily files reviewed. The puzzle is clearer. Not solved — clearer. There is a",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "backup",
+        "deletions",
+        "now",
+        "keep",
+        "clearing",
+        "kind",
+        "clutter",
+        "corner"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:1:1": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:1:1",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 1,
+      "endLine": 1,
+      "source": "memory",
+      "snippet": "User: Hey Cleo. Hannah is having issues with her whoop. Can you run the whoop utils?",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "hey",
+        "cleo",
+        "hannah",
+        "having",
+        "issues",
+        "her",
+        "whoop",
+        "can"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:2:2": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:2:2",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 2,
+      "endLine": 2,
+      "source": "memory",
+      "snippet": "Assistant: Good. I can see the backfill script. Let me check the current state of Hannah's WHOOP auth in MongoDB and run a token refresh to see what's happening.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "good",
+        "can",
+        "see",
+        "backfill",
+        "script",
+        "let",
+        "check",
+        "current"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:3:3": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:3:3",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 3,
+      "endLine": 3,
+      "source": "memory",
+      "snippet": "Assistant: Both tokens are expired. Let me refresh them and run a recent backfill to get Hannah's latest data.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "both",
+        "tokens",
+        "expired",
+        "let",
+        "refresh",
+        "them",
+        "run",
+        "recent"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:4:4": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:4:4",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 4,
+      "endLine": 4,
+      "source": "memory",
+      "snippet": "Assistant: Both tokens are failing to refresh — WHOOP is rejecting the refresh token exchange with a 400 \"invalid_request\". This is a WHOOP OAuth issue, not a data issue. The refresh tokens themselves have likely expired or been invalidated (WHOOP refresh tokens have a limited li",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "invalid-request",
+        "both",
+        "tokens",
+        "failing",
+        "refresh",
+        "whoop",
+        "rejecting",
+        "token"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:5:5": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:5:5",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 5,
+      "endLine": 5,
+      "source": "memory",
+      "snippet": "Assistant: re-auth page in the Cadence app, or does Hannah need to go through the WHOOP connect flow again? I can check what the OAuth callback URL is set to if that helps.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "re-auth",
+        "auth",
+        "page",
+        "cadence",
+        "app",
+        "does",
+        "hannah",
+        "need"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:6:6": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:6:6",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 6,
+      "endLine": 6,
+      "source": "memory",
+      "snippet": "Assistant: Yeah, both refresh tokens are dead. WHOOP's refresh tokens expire after a while if not used, or if the app session gets invalidated. The fix is straightforward — both users need to re-do the OAuth login. What does the re-auth flow look like on your end? Is the Cadence",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "re-do",
+        "re-auth",
+        "yeah",
+        "both",
+        "refresh",
+        "tokens",
+        "dead",
+        "whoop's"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:7:7": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:7:7",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 7,
+      "endLine": 7,
+      "source": "memory",
+      "snippet": "User: Another topic. Back to Leslie’s dog. The ACT and stim test were negative for Addison’s disease. The insulin lever drown when the glucose was in the low end of the reference range. He's on prednisolone .25 mg/kg twice a day. Now has frequent panting and restlessness. Poe’s b",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "mg/kg",
+        "another",
+        "topic",
+        "back",
+        "leslie’s",
+        "dog",
+        "act",
+        "stim"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:8:8": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:8:8",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 8,
+      "endLine": 8,
+      "source": "memory",
+      "snippet": "Assistant: Interesting case. Let me think through this. *What we have:* - ACTH stim test negative → rules out Addison's (primary hypoadrenocorticism) - Insulin dropped when glucose was low-normal — so there's insulin secretion happening at an inappropriate time - On prednisolone",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "low-normal",
+        "interesting",
+        "case",
+        "let",
+        "think",
+        "what",
+        "acth",
+        "stim"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:9:9": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:9:9",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 9,
+      "endLine": 9,
+      "source": "memory",
+      "snippet": "Assistant: shifts toward: 1. *Insulinoma* — pancreatic beta cell tumor secreting insulin autonomously. Insulin drops glucose; counter-regulatory hormones (glucagon, cortisol, epinephrine) kick in and rescue it. Classic \"Whipple's triad\" pattern. The fact that insulin was inapprop",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "counter-regulatory",
+        "shifts",
+        "toward",
+        "insulinoma",
+        "pancreatic",
+        "beta",
+        "cell",
+        "tumor"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:95:95": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:95:95",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 95,
+      "endLine": 95,
+      "source": "memory",
+      "snippet": "Assistant: reference that more directly supports the valacyclovir protocol?",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "reference",
+        "directly",
+        "supports",
+        "valacyclovir",
+        "protocol"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:96:96": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:96:96",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 96,
+      "endLine": 96,
+      "source": "memory",
+      "snippet": "User: Can you shorten it. What warning says its 350 character over the limit.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "can",
+        "shorten",
+        "what",
+        "warning",
+        "says",
+        "character",
+        "limit"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:97:97": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:97:97",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 97,
+      "endLine": 97,
+      "source": "memory",
+      "snippet": "Assistant: Here's a tightened version — 680 characters, well under any typical 1000-char limit: --- Hi Dr. [Name], Ahead of my late June appointment — I'd like to discuss a valacyclovir prescription for Long COVID-related EBV reactivation. My June 2025 labs showed EBV Early Antig",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "1000-char",
+        "covid-related",
+        "here's",
+        "tightened",
+        "version",
+        "characters",
+        "well",
+        "under"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:98:98": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:98:98",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 98,
+      "endLine": 98,
+      "source": "memory",
+      "snippet": "Assistant: further.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "further"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:99:99": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:99:99",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 99,
+      "endLine": 99,
+      "source": "memory",
+      "snippet": "User: The following says I have 423 characters remaining if you'd like to add more: Hi Dr. Medley, Ahead of my late June appointment — I'd like to discuss a valacyclovir prescription for Long COVID-related EBV reactivation. My June 2025 labs showed EBV Early Antigen IgM reactive,",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "covid-related",
+        "following",
+        "says",
+        "characters",
+        "remaining",
+        "you'd",
+        "like",
+        "add"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:100:100": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:100:100",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 100,
+      "endLine": 100,
+      "source": "memory",
+      "snippet": "Assistant: 423 characters is a nice cushion. Here's what I'd add — a brief research hook and the repeat labs ask: --- Hi Dr. Medley, Ahead of my late June appointment — I'd like to discuss a valacyclovir prescription for Long COVID-related EBV reactivation. My June 2025 labs show",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "covid-related",
+        "characters",
+        "nice",
+        "cushion",
+        "here's",
+        "what",
+        "i'd",
+        "add"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:101:101": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:101:101",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 101,
+      "endLine": 101,
+      "source": "memory",
+      "snippet": "Assistant: like to repeat my EBV Early Antigen IgM at the visit to confirm ongoing reactivation.* Happy to bring full labs to the appointment. Thank you. Hannah --- The added section is 318 characters — leaves ~100 to spare. Want any tweaks?",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "like",
+        "repeat",
+        "ebv",
+        "early",
+        "antigen",
+        "igm",
+        "visit",
+        "confirm"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:102:102": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:102:102",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 102,
+      "endLine": 102,
+      "source": "memory",
+      "snippet": "User: 157 remaining. Are we good?",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "remaining",
+        "good"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:103:103": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:103:103",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 103,
+      "endLine": 103,
+      "source": "memory",
+      "snippet": "Assistant: That's perfect. 157 remaining with everything we need in there — the clinical context, the Yale/Iwasaki reference, the bioavailability argument, and the repeat labs ask. Send it as is.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "yale/iwasaki",
+        "that's",
+        "perfect",
+        "remaining",
+        "everything",
+        "need",
+        "clinical",
+        "context"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:104:104": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:104:104",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 104,
+      "endLine": 104,
+      "source": "memory",
+      "snippet": "User: Thank you.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "thank"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-10.txt:105:105": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-10.txt:105:105",
+      "path": "memory/.dreams/session-corpus/2026-06-10.txt",
+      "startLine": 105,
+      "endLine": 105,
+      "source": "memory",
+      "snippet": "Assistant: Good work today, David. Hannah has a solid plan going into that appointment. 🦉",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "660dc72d44f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "good",
+        "david",
+        "hannah",
+        "has",
+        "solid",
+        "plan",
+        "going",
+        "appointment"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:35:35": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:35:35",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 35,
+      "endLine": 35,
+      "source": "memory",
+      "snippet": "Assistant: Sixty-five nights, and still the garden asks for tending. I moved through six days of files like flipping through pressed flowers — June 3, 4, 5, 7, 8 — each one a dream numbered and dusted, each one a small deletion, the 36th, 37th, 38th junk block cleared like cobweb",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "sixty-five",
+        "sixty",
+        "five",
+        "nights",
+        "still",
+        "garden",
+        "asks",
+        "tending"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-11.txt:36:36": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-11.txt:36:36",
+      "path": "memory/.dreams/session-corpus/2026-06-11.txt",
+      "startLine": 36,
+      "endLine": 36,
+      "source": "memory",
+      "snippet": "Assistant: in a shoe you've learned to walk with. 194 lines. Tidy. That, at least.",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "e0e733abf4f8"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "shoe",
+        "you've",
+        "learned",
+        "walk",
+        "tidy",
+        "least"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:10:10": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:10:10",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 10,
+      "endLine": 10,
+      "source": "memory",
+      "snippet": "Assistant: what was the insulin level and what was the glucose at the same draw?",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "what",
+        "was",
+        "insulin",
+        "level",
+        "glucose",
+        "draw"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:11:11": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:11:11",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 11,
+      "endLine": 11,
+      "source": "memory",
+      "snippet": "User: The insulin test showed that the insulin level was at the low end of the reference range for normal when the blood glucose was low",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "insulin",
+        "test",
+        "showed",
+        "level",
+        "was",
+        "low",
+        "end",
+        "reference"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:12:12": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:12:12",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 12,
+      "endLine": 12,
+      "source": "memory",
+      "snippet": "Assistant: Ah — that actually *changes* the picture significantly. *Reframing:* If insulin is at the *low end of normal* when glucose is low, that's actually the *appropriate* response — the pancreas is suppressing insulin correctly in response to hypoglycemia. That argues *again",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "actually",
+        "changes",
+        "picture",
+        "significantly",
+        "reframing",
+        "insulin",
+        "low",
+        "end"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:13:13": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:13:13",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 13,
+      "endLine": 13,
+      "source": "memory",
+      "snippet": "Assistant: self-correcting fits this perfectly. - *Hepatic insufficiency* — liver can't maintain glycogen stores or gluconeogenesis - *Sepsis / systemic illness* — glucose consumption exceeds production - *Hypopituitarism* — ACTH deficiency upstream (secondary hypoadrenocorticism",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "self-correcting",
+        "self",
+        "correcting",
+        "fits",
+        "perfectly",
+        "hepatic",
+        "insufficiency",
+        "liver"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:14:14": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:14:14",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 14,
+      "endLine": 14,
+      "source": "memory",
+      "snippet": "Assistant: and age? And has anyone looked at a bile acids test or liver panel to rule out hepatic involvement?",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "age",
+        "has",
+        "anyone",
+        "looked",
+        "bile",
+        "acids",
+        "test",
+        "liver"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:15:15": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:15:15",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 15,
+      "endLine": 15,
+      "source": "memory",
+      "snippet": "User: Addison’s was definitively ruled out based on a normal ACTH stim test",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "addison’s",
+        "was",
+        "definitively",
+        "ruled",
+        "out",
+        "based",
+        "normal",
+        "acth"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:16:16": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:16:16",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 16,
+      "endLine": 16,
+      "source": "memory",
+      "snippet": "Assistant: Fair enough — if the stim test was clean, we set Addison's aside. So back to the core puzzle: - Hypoglycemia with *appropriately suppressed insulin* (low-normal when glucose is low) - Self-correcting without intervention - Negative ACTH stim - On pred, now panting + re",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "low-normal",
+        "self-correcting",
+        "fair",
+        "enough",
+        "stim",
+        "test",
+        "was",
+        "clean"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:17:17": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:17:17",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 17,
+      "endLine": 17,
+      "source": "memory",
+      "snippet": "Assistant: pituitary not secreting ACTH, so adrenals are structurally fine (normal stim) but functionally underdriven. Growth hormone deficiency can also come from here — GH is a key counter-regulatory hormone for glucose. Rare but fits the pattern. 3. *Paraneoplastic* — non-isle",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "counter-regulatory",
+        "non-isle",
+        "pituitary",
+        "not",
+        "secreting",
+        "acth",
+        "adrenals",
+        "structurally"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:18:18": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:18:18",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 18,
+      "endLine": 18,
+      "source": "memory",
+      "snippet": "User: He's a 17-year-old male Chihuahua mix. Labs from 3 weeks ago showed total protein 5.6, albumin 2.5, globulin 3.1, ALT 22, AST 36, ALP 40, GGT 4, total bilirubin 0.1. All of these labs are within the normal range, except for the albumin where the lower limit of normal is 2.7",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "17-year-old",
+        "5.6",
+        "2.5",
+        "3.1",
+        "0.1",
+        "2.7",
+        "he's",
+        "old"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:19:19": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:19:19",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 19,
+      "endLine": 19,
+      "source": "memory",
+      "snippet": "User: put on the prednisone mentioned above. What are now the most likely etiologies for his symptoms given this information?",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "put",
+        "prednisone",
+        "mentioned",
+        "above",
+        "what",
+        "now",
+        "likely",
+        "etiologies"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:20:20": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:20:20",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 20,
+      "endLine": 20,
+      "source": "memory",
+      "snippet": "Assistant: This is a rich picture. Let me work through it carefully. *Signalment + context summary:* 17yo male Chihuahua mix. Seizure 3 weeks ago (hypoglycemia suspected). Hypoalbuminemia (2.5, chronic — same x2 years). Normal liver enzymes. MVD, hypothyroidism, IBD, mild CKD. Ex",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "2.5",
+        "rich",
+        "picture",
+        "let",
+        "carefully",
+        "signalment",
+        "context",
+        "summary"
+      ]
+    },
+    "memory:memory/.dreams/session-corpus/2026-06-12.txt:21:21": {
+      "key": "memory:memory/.dreams/session-corpus/2026-06-12.txt:21:21",
+      "path": "memory/.dreams/session-corpus/2026-06-12.txt",
+      "startLine": 21,
+      "endLine": 21,
+      "source": "memory",
+      "snippet": "Assistant: loss. Fits perfectly. 2. *Protein-losing nephropathy (PLN)* — he has mild CKD. Less likely to be the primary driver but could be contributing. --- *How does this explain the hypoglycemia?* Albumin carries many things — including *bound cortisol and thyroid hormone*. Bu",
+      "recallCount": 0,
+      "dailyCount": 1,
+      "groundedCount": 0,
+      "totalScore": 0.58,
+      "maxScore": 0.58,
+      "firstRecalledAt": "2026-06-12T03:00:04.734Z",
+      "lastRecalledAt": "2026-06-12T03:00:04.734Z",
+      "queryHashes": [
+        "3a37f9bd3c48"
+      ],
+      "recallDays": [
+        "2026-06-12"
+      ],
+      "conceptTags": [
+        "protein-losing",
+        "loss",
+        "fits",
+        "perfectly",
+        "protein",
+        "losing",
+        "nephropathy",
+        "pln"
       ]
     }
   }
