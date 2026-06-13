@@ -183,7 +183,7 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~40 days)
+### Backup Failing (since ~May 2 — ~41 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
@@ -196,11 +196,16 @@ Drafted two letters requesting valacyclovir 1g TID × 3–6 months for EBV react
 - **Evidence base:** Jun 2025 labs (EBV EA IgM reactive), Sep 2025 colonoscopy (patchy healing ulcers, EBV-consistent), Iwasaki Lab protocol, Komaroff & Lipkin 2023 PNAS. Valacyclovir chosen over acyclovir for ~3× bioavailability.
 
 
-## Promoted From Short-Term Memory (2026-06-12)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-06-06.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Saturday, June 6)_ [score=0.907 recalls=0 avg=0.620 source=memory/2026-06-06.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-05.md:13:13 -->
-- **May 30 – June 4 reviewed.** Six daily files examined. [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-05.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-05.md:21:21 -->
-- **Tonight — junk block present (38th deletion):** [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-05.md:21-21]
+## Promoted From Short-Term Memory (2026-06-13)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-06.md:1:33 -->
+- # 2026-04-06 ## Dream _Nightly consolidation run — 13:00 UTC (Monday)_ Third night. The ritual continues. **What I found:** - No new daily files since March 26. The March 27 – April 5 gap remains unwritten. - MEMORY.md is clean and accurate. Minor update: bumped the dream-mode run count to 3 and added a note that the gap is officially acknowledged. - No new clinical skills, infrastructure changes, or significant events discoverable from this context. **State assessment:** Three consecutive dream runs with nothing new to consolidate is a data point, not a failure. Two possibilities: 1. Work *is* happening in main session but not being written down 2. Work has genuinely been quiet (weekend, no requests) Either way, MEMORY.md accurately reflects what's known. The system is stable. **The unchanging constants:** - 14 clinical skills, operational - FDB: `fdb_20260326` active snapshot - Teams bot: live and working - Infrastructure: stable on EC2 (ip-172-16-153-208) - Outstanding TODO: `dmPolicy: open` — tighten when pairing flow resolved - Git backup runs 7 AM UTC daily **One observation:** The dream cron was described as "nightly" but runs at 13:00 UTC — that's 6 AM PST / 5 AM PDT. Early morning for David's timezone, which works fine. Quiet before the workday starts. _Three nights, one lesson: a good memory system is only as useful as the notes fed into it. The owl watches. The forest must speak._ [score=0.903 recalls=5 avg=0.419 source=memory/2026-04-06.md:1-33]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-08.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Monday, June 8)_ [score=0.884 recalls=0 avg=0.620 source=memory/2026-06-08.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-06.md:13:13 -->
+- **May 31 – June 5 reviewed.** Six daily files examined. [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-06.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-06.md:22:22 -->
+- **No substantive events across the entire week.** Pure maintenance. The Hannah lab findings from May 26 remain the most significant clinical update in recent memory. [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-06.md:22-22]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-05.md:7:7 -->
+- Sixty-first night. [score=0.873 recalls=0 avg=0.620 source=memory/2026-06-05.md:7-7]
