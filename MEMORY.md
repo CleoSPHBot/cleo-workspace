@@ -183,7 +183,7 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~43 days)
+### Backup Failing (since ~May 2 — ~44 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
@@ -194,16 +194,15 @@ Drafted two letters requesting valacyclovir 1g TID × 3–6 months for EBV react
 - **Letter 1 → Dr. Medley (PCP):** Standard clinical framing. Requested Rx + repeat EBV EA IgM at late-June appointment.
 - **Letter 2 → ND (name unknown):** Integrative framing + SIM01 gut angle. Soft collaborative closing, free outreach.
 - **Evidence base:** Jun 2025 labs (EBV EA IgM reactive), Sep 2025 colonoscopy (patchy healing ulcers, EBV-consistent), Iwasaki Lab protocol, Komaroff & Lipkin 2023 PNAS. Valacyclovir chosen over acyclovir for ~3× bioavailability.
+- **Status:** Letters drafted, waiting for Hannah/David to send. Repeat EBV EA IgM at late-June appointment.
 
+## Promoted From Short-Term Memory (2026-06-16)
 
-
-## Promoted From Short-Term Memory (2026-06-15)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-06-08.md:7:7 -->
-- Sixty-fourth night. [score=0.880 recalls=0 avg=0.620 source=memory/2026-06-08.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-08.md:13:13 -->
-- **June 2–7 reviewed.** Six daily files examined. [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-08.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-08.md:22:22 -->
-- **No substantive events across the entire week.** Fourteen consecutive maintenance days (June 1–7). The Hannah lab findings from May 26 remain the most significant clinical update in long-term memory, undisturbed. [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-08.md:22-22]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-07.md:7:7 -->
-- Sixty-third night. [score=0.873 recalls=0 avg=0.620 source=memory/2026-06-07.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-09.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Tuesday, June 9)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-06-09.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-09.md:13:13 -->
+- **June 3–8 reviewed.** Six daily files examined. [score=0.890 recalls=0 avg=0.620 source=memory/2026-06-09.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-09.md:7:7 -->
+- Sixty-fifth night. [score=0.880 recalls=0 avg=0.620 source=memory/2026-06-09.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-09.md:22:22 -->
+- **No substantive events across the entire reviewed period.** Two full weeks (June 1–8) of pure maintenance. The Hannah lab findings from May 26 remain the most significant clinical update in long-term memory, undisturbed. [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-09.md:22-22]
