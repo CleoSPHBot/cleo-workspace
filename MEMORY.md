@@ -36,7 +36,7 @@ Edgar set me up (2026-03-24/25) — senior agent, handles infra and general task
 - **Edgar's gateway:** Port 18789 (same server)
 - **Git remote:** github.com/CleoSPHBot/cleo-workspace.git
 - **OpenClaw version:** 2026.5.22 (as of 2026-05-27; was 5.12 → upgraded by Edgar)
-- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~39 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
+- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~45 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
 - **Dream cron:** 13:00 UTC nightly, established 2026-04-04.
 
 ## Authorized Users
@@ -183,7 +183,7 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~44 days)
+### Backup Failing (since ~May 2 — ~45 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
@@ -194,15 +194,19 @@ Drafted two letters requesting valacyclovir 1g TID × 3–6 months for EBV react
 - **Letter 1 → Dr. Medley (PCP):** Standard clinical framing. Requested Rx + repeat EBV EA IgM at late-June appointment.
 - **Letter 2 → ND (name unknown):** Integrative framing + SIM01 gut angle. Soft collaborative closing, free outreach.
 - **Evidence base:** Jun 2025 labs (EBV EA IgM reactive), Sep 2025 colonoscopy (patchy healing ulcers, EBV-consistent), Iwasaki Lab protocol, Komaroff & Lipkin 2023 PNAS. Valacyclovir chosen over acyclovir for ~3× bioavailability.
-- **Status:** Letters drafted, waiting for Hannah/David to send. Repeat EBV EA IgM at late-June appointment.
+- **Status:** Letters drafted, waiting for Hannah/David to send. Repeat EBV EA IgM at late-June appointment (imminent — late June 2026).
 
-## Promoted From Short-Term Memory (2026-06-16)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-06-09.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Tuesday, June 9)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-06-09.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-09.md:13:13 -->
-- **June 3–8 reviewed.** Six daily files examined. [score=0.890 recalls=0 avg=0.620 source=memory/2026-06-09.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-09.md:7:7 -->
-- Sixty-fifth night. [score=0.880 recalls=0 avg=0.620 source=memory/2026-06-09.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-09.md:22:22 -->
-- **No substantive events across the entire reviewed period.** Two full weeks (June 1–8) of pure maintenance. The Hannah lab findings from May 26 remain the most significant clinical update in long-term memory, undisturbed. [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-09.md:22-22]
+
+## Promoted From Short-Term Memory (2026-06-17)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-08.md:1:31 -->
+- # 2026-04-08 ## Dream _Nightly consolidation run — 13:00 UTC (Wednesday)_ Fifth night. The owl is a creature of habit now. **What I found:** - Still no new daily files since March 26. The gap is now 13 days. - MEMORY.md remains clean, accurate, and under 200 lines. Updated dream run count to 5. - Nothing new to consolidate for the fifth consecutive morning. **Observation:** Five dreams, one daily file (the original from March 26), and a well-maintained MEMORY.md. The memory architecture is healthy; the input stream is dry. This is now a confirmed pattern rather than a temporary blip. **The unchanging steady state:** - 14 clinical skills, operational - FDB: `fdb_20260326` active snapshot - Teams bot: live on EC2 (ip-172-16-153-208) - Q Business: auto-syncing daily 6 AM UTC - Git backup: 7 AM UTC daily - Outstanding: `dmPolicy: open` — tighten when pairing flow resolved **A small note on trust:** Five mornings of watching an empty forest and not panicking — that's the job. Systems that degrade gracefully, memory that doesn't hallucinate new events, a clean MEMORY.md that says "nothing changed" because nothing changed. That's integrity. When the forest speaks, I'll be here. _The owl keeps vigil. Quiet nights are not wasted nights._ [score=0.907 recalls=5 avg=0.432 source=memory/2026-04-08.md:1-31]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-10.md:5:5 -->
+- _Nightly consolidation run — 13:00 UTC (Wednesday, June 10)_ [score=0.890 recalls=0 avg=0.620 source=memory/2026-06-10.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-10.md:13:13 -->
+- **June 4–9 reviewed.** Six daily files examined. [score=0.890 recalls=0 avg=0.620 source=memory/2026-06-10.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-10.md:22:22 -->
+- **No substantive events across the reviewed period.** Three full weeks (June 1–9) of pure maintenance. The Hannah lab findings from May 26 remain the most significant clinical update in long-term memory, undisturbed. [score=0.890 recalls=0 avg=0.620 source=memory/2026-06-10.md:22-22]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-10.md:7:7 -->
+- Sixty-sixth night. [score=0.880 recalls=0 avg=0.620 source=memory/2026-06-10.md:7-7]
