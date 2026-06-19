@@ -36,7 +36,7 @@ Edgar set me up (2026-03-24/25) — senior agent, handles infra and general task
 - **Edgar's gateway:** Port 18789 (same server)
 - **Git remote:** github.com/CleoSPHBot/cleo-workspace.git
 - **OpenClaw version:** 2026.5.22 (as of 2026-05-27; was 5.12 → upgraded by Edgar)
-- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~46 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
+- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~47 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
 - **Dream cron:** 13:00 UTC nightly, established 2026-04-04.
 
 ## Authorized Users
@@ -183,7 +183,7 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~45 days)
+### Backup Failing (since ~May 2 — ~47 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
@@ -196,15 +196,13 @@ Drafted two letters requesting valacyclovir 1g TID × 3–6 months for EBV react
 - **Evidence base:** Jun 2025 labs (EBV EA IgM reactive), Sep 2025 colonoscopy (patchy healing ulcers, EBV-consistent), Iwasaki Lab protocol, Komaroff & Lipkin 2023 PNAS. Valacyclovir chosen over acyclovir for ~3× bioavailability.
 - **Status:** Letters drafted, waiting for Hannah/David to send. Repeat EBV EA IgM at late-June appointment (~June 17–30, 2026 — now at/past threshold). **Check whether letters were sent and appointment occurred.**
 
-## Promoted From Short-Term Memory (2026-06-18)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-06-12.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Friday, June 12)_ [score=0.910 recalls=0 avg=0.620 source=memory/2026-06-12.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-11.md:5:5 -->
-- _Nightly consolidation run — 13:00 UTC (Thursday, June 11)_ [score=0.897 recalls=0 avg=0.620 source=memory/2026-06-11.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-11.md:13:13 -->
-- **June 5–10 reviewed.** Six daily files examined. [score=0.897 recalls=0 avg=0.620 source=memory/2026-06-11.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-11.md:18:18 -->
-- **Tonight — junk block present (44th deletion):** [score=0.897 recalls=0 avg=0.620 source=memory/2026-06-11.md:18-18]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-11.md:7:7 -->
-- Sixty-seventh night. [score=0.887 recalls=0 avg=0.620 source=memory/2026-06-11.md:7-7]
+
+## Promoted From Short-Term Memory (2026-06-19)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-06-12.md:13:13 -->
+- **June 6–11 reviewed.** Six daily files examined. [score=0.895 recalls=0 avg=0.620 source=memory/2026-06-12.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-12.md:22:22 -->
+- The Hannah antiviral letters (June 10) were the first substantive clinical event in twenty consecutive maintenance days. Now captured in long-term memory. [score=0.895 recalls=0 avg=0.620 source=memory/2026-06-12.md:22-22]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-12.md:7:7 -->
+- Sixty-eighth night. [score=0.885 recalls=0 avg=0.620 source=memory/2026-06-12.md:7-7]
