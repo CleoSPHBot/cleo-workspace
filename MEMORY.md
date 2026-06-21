@@ -36,7 +36,7 @@ Edgar set me up (2026-03-24/25) — senior agent, handles infra and general task
 - **Edgar's gateway:** Port 18789 (same server)
 - **Git remote:** github.com/CleoSPHBot/cleo-workspace.git
 - **OpenClaw version:** 2026.5.22 (as of 2026-05-27; was 5.12 → upgraded by Edgar)
-- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~48 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
+- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~49 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
 - **Dream cron:** 13:00 UTC nightly, established 2026-04-04.
 
 ## Authorized Users
@@ -183,7 +183,7 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~48 days)
+### Backup Failing (since ~May 2 — ~49 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
@@ -194,27 +194,29 @@ Drafted two letters requesting valacyclovir 1g TID × 3–6 months for EBV react
 - **Letter 1 → Dr. Medley (PCP):** Standard clinical framing. Requested Rx + repeat EBV EA IgM at late-June appointment.
 - **Letter 2 → ND (name unknown):** Integrative framing + SIM01 gut angle. Soft collaborative closing, free outreach.
 - **Evidence base:** Jun 2025 labs (EBV EA IgM reactive), Sep 2025 colonoscopy (patchy healing ulcers, EBV-consistent), Iwasaki Lab protocol, Komaroff & Lipkin 2023 PNAS. Valacyclovir chosen over acyclovir for ~3× bioavailability.
-- **Status:** Letters drafted, waiting for Hannah/David to send. Appointment window: ~June 17–30, 2026 (now live — June 19). **Check whether letters were sent and appointment occurred.**
+- **Status:** Letters drafted, waiting for Hannah/David to send. Appointment window: ~June 17–30, 2026 (now live — June 20). **Check whether letters were sent and appointment occurred.**
 
-## Promoted From Short-Term Memory (2026-06-20)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-06-13.md:5:5 -->
-- Dream: _Nightly consolidation run — 13:00 UTC (Saturday, June 13)_ [score=0.925 recalls=0 avg=0.620 source=memory/2026-06-13.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-14.md:5:5 -->
-- Dream: _Nightly consolidation run — 13:00 UTC (Sunday, June 14)_ [score=0.899 recalls=0 avg=0.620 source=memory/2026-06-14.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-13.md:13:13 -->
-- What Was New Since Yesterday's Dream: **June 7–12 reviewed.** Six daily files examined. [score=0.893 recalls=0 avg=0.620 source=memory/2026-06-13.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-13.md:15:18 -->
-- What Was New Since Yesterday's Dream: **June 7:** Dream #63. Junk block deletion #40 (May 30/31 fragments). Backup ~36 days. 191 lines.; **June 8:** Dream #64. Junk block deletion #41 (Apr 13 Cadence-origin + June 1 fragments). Backup ~37 days. 192 lines.; **June 9:** Dream #65. Junk block deletion #42 (June 2 dream fragments). Consolidated backup note. Backup ~38 days. 194 lines.; **June 10:** Dream #66. Junk block deletion #43 (June 3 dream fragments). Backup ~39 days. 195 lines. **New event: Hannah antiviral outreach letters drafted.** Valacyclovir 1g TID × 3–6 months for EBV reactivation — two letters (Dr.... [score=0.886 recalls=0 avg=0.620 source=memory/2026-06-13.md:15-18]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-13.md:19:20 -->
-- What Was New Since Yesterday's Dream: **June 11:** Dream #67. Junk block deletion #44 (June 4/5 dream fragments). Hannah letters added to MEMORY.md. Backup ~40 days. 197 lines.; **June 12:** Dream #68. Junk block deletion #45 (June 5/6 dream fragments). Backup ~41 days. 198 lines. [score=0.886 recalls=0 avg=0.620 source=memory/2026-06-13.md:19-20]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-13.md:22:22 -->
-- What Was New Since Yesterday's Dream: The antiviral letters (June 10) remain the only substantive clinical event in the reviewed period. Everything else: maintenance. [score=0.886 recalls=0 avg=0.620 source=memory/2026-06-13.md:22-22]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-12.md:15:18 -->
-- What Was New Since Yesterday's Dream: **June 6:** Dream #62. Junk block deletion #39 (May 29/30 fragments). Backup ~35 days. 198 lines.; **June 7:** Dream #63. Junk block deletion #40 (May 30/31 fragments). Backup ~36 days. 191 lines.; **June 8:** Dream #64. Junk block deletion #41 (Apr 13 Cadence-origin + June 1 fragments). Backup ~37 days. 192 lines.; **June 9:** Dream #65. Junk block deletion #42 (June 2 dream fragments). Consolidated backup note. Backup ~38 days. 194 lines. [score=0.885 recalls=0 avg=0.620 source=memory/2026-06-12.md:15-18]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-12.md:19:20 -->
-- What Was New Since Yesterday's Dream: **June 10:** Dream #66. Junk block deletion #43 (June 3 dream fragments). Backup ~39 days. 195 lines. **New event: Hannah antiviral outreach letters drafted.** Valacyclovir 1g TID × 3–6 months for EBV reactivation — two letters (Dr. Medley PCP + unnamed ND).; **June 11:** Dream #67. Junk block deletion #44 (June 4/5 dream fragments). Hannah letters added to MEMORY.md. Backup ~40 days. 197 lines. [score=0.885 recalls=0 avg=0.620 source=memory/2026-06-12.md:19-20]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-13.md:7:7 -->
-- Dream: Sixty-ninth night. [score=0.883 recalls=0 avg=0.620 source=memory/2026-06-13.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-11.md:15:16 -->
-- What Was New Since Yesterday's Dream: **June 5–9:** Dreams #61–65. Junk block deletions #38–42 (May 26–June 2 fragments, various echoes). Backup ticking: ~34–38 days. Pure maintenance. No substantive events.; **June 10:** Dream #66. Junk block deletion #43 (June 3 dream fragments). Backup ~39 days. 195 lines. **New event: Hannah antiviral outreach letters drafted.** Two letters requesting valacyclovir 1g TID × 3–6 months for EBV reactivation — one to Dr. Medley (PCP), one to unnamed ND. [score=0.879 recalls=0 avg=0.620 source=memory/2026-06-11.md:15-16]
+
+## Promoted From Short-Term Memory (2026-06-21)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-06-15.md:5:5 -->
+- Dream: _Nightly consolidation run — 13:00 UTC (Monday, June 15)_ [score=0.886 recalls=0 avg=0.620 source=memory/2026-06-15.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-14.md:13:13 -->
+- What Was New Since Yesterday's Dream: **June 8–13 reviewed.** Six daily files examined. [score=0.885 recalls=0 avg=0.620 source=memory/2026-06-14.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-14.md:15:18 -->
+- What Was New Since Yesterday's Dream: **June 8:** Dream #64. Junk block deletion #41 (Apr 13 Cadence-origin + June 1 fragments). Backup ~37 days. 192 lines.; **June 9:** Dream #65. Junk block deletion #42 (June 2 dream fragments). Consolidated backup note. Backup ~38 days. 194 lines.; **June 10:** Dream #66. Junk block deletion #43 (June 3 dream fragments). Backup ~39 days. 195 lines. **New event: Hannah antiviral outreach letters drafted.** Valacyclovir 1g TID × 3–6 months for EBV reactivation — two letters (Dr. Medley PCP + unnamed ND).; **June 11:** Dream #67. Junk block deletion #44 (June 4/5 dream fragments).... [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-14.md:15-18]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-14.md:19:20 -->
+- What Was New Since Yesterday's Dream: **June 12:** Dream #68. Junk block deletion #45 (June 5/6 dream fragments). Backup ~41 days. 198 lines.; **June 13:** Dream #69. Junk block deletion #46 (Apr 6 fragments + June 5/6/8 stray lines). Backup ~42 days. 196 lines. [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-14.md:19-20]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-14.md:22:22 -->
+- What Was New Since Yesterday's Dream: The antiviral letters (June 10) remain the only substantive clinical event this week. Everything else: maintenance. Hannah's late-June appointment is now close — repeat EBV EA IgM draw and valacyclovir ask pending. [score=0.874 recalls=0 avg=0.620 source=memory/2026-06-14.md:22-22]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-11.md:19:22 -->
+- What Was New Since Yesterday's Dream: "Promoted From Short-Term Memory" arrived with June 4/5 dream fragments.; Removed the entire block.; **Also added:** Hannah antiviral outreach letters to MEMORY.md under Open Issues — clinical action worth tracking.; Updated backup duration: ~39 → ~40 days. MEMORY.md → **197 lines ✅**. [score=0.870 recalls=0 avg=0.620 source=memory/2026-06-11.md:19-22]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-10.md:15:18 -->
+- What Was New Since Yesterday's Dream: **June 4:** Dream #60. Round number. Junk block deletion #37 (May 28 fragments). Compression: 183 lines. Backup ~33 days.; **June 5:** Dream #61. Junk block deletion #38 (doubled echo — May 26/29 fragments). Backup ~34 days. 196 lines.; **June 6:** Dream #62. Junk block deletion #39 (May 29/30 fragments). Backup ~35 days. 198 lines.; **June 7:** Dream #63. Junk block deletion #40 (May 30/31 fragments). Backup ~36 days. 191 lines. [score=0.864 recalls=0 avg=0.620 source=memory/2026-06-10.md:15-18]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-10.md:19:20 -->
+- What Was New Since Yesterday's Dream: **June 8:** Dream #64. Junk block deletion #41 (Apr 13 Cadence-origin fragments + June 1 fragments). Backup ~37 days. 192 lines.; **June 9:** Dream #65. Junk block deletion #42 (June 2 dream fragments). Consolidation of backup note in Infrastructure section. Backup ~38 days. 194 lines. [score=0.864 recalls=0 avg=0.620 source=memory/2026-06-10.md:19-20]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-15.md:13:13 -->
+- What Was New Since Yesterday's Dream: **June 9–14 reviewed.** Six daily files examined. [score=0.856 recalls=0 avg=0.620 source=memory/2026-06-15.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-15.md:15:18 -->
+- What Was New Since Yesterday's Dream: **June 9:** Dream #65. Junk block deletion #42 (June 2 dream fragments). Consolidated backup note. Backup ~38 days. 194 lines.; **June 10:** Dream #66. Junk block deletion #43 (June 3 dream fragments). Backup ~39 days. 195 lines. **New event: Hannah antiviral outreach letters drafted.** Valacyclovir 1g TID × 3–6 months for EBV reactivation — two letters (Dr. Medley PCP + unnamed ND).; **June 11:** Dream #67. Junk block deletion #44 (June 4/5 dream fragments). Hannah letters added to MEMORY.md. Backup ~40 days. 197 lines.; **June 12:** Dream #68.... [score=0.856 recalls=0 avg=0.620 source=memory/2026-06-15.md:15-18]
