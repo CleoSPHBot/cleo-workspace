@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supplement Correlations — Cadence</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #f0f4ff;
+      letter-spacing: -0.3px;
+    }
+    .header p {
+      font-size: 13px;
+      color: #718096;
+      margin-top: 6px;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .controls label {
+      font-size: 13px;
+      color: #a0aec0;
+    }
+    .lag-btn {
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid #2d3748;
+      background: #1a202c;
+      color: #a0aec0;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .lag-btn.active {
+      background: #3b5bdb;
+      border-color: #3b5bdb;
+      color: #fff;
+      font-weight: 600;
+    }
+    .lag-btn:hover:not(.active) {
+      background: #2d3748;
+      color: #e2e8f0;
+    }
+
+    .summary-strip {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .summary-card {
+      background: #1a202c;
+      border: 1px solid #2d3748;
+      border-radius: 10px;
+      padding: 12px 18px;
+      text-align: center;
+      min-width: 110px;
+    }
+    .summary-card .val {
+      font-size: 22px;
+      font-weight: 700;
+    }
+    .summary-card .lbl {
+      font-size: 11px;
+      color: #718096;
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .val.green { color: #48bb78; }
+    .val.red   { color: #fc8181; }
+    .val.blue  { color: #76e4f7; }
+
+    .chart-card {
+      background: #1a202c;
+      border: 1px solid #2d3748;
+      border-radius: 14px;
+      padding: 20px 16px;
+      margin-bottom: 24px;
+    }
+    .chart-card h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-bottom: 16px;
+    }
+    .chart-wrap {
+      position: relative;
+      height: 360px;
+    }
+
+    .table-card {
+      background: #1a202c;
+      border: 1px solid #2d3748;
+      border-radius: 14px;
+      padding: 20px 16px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+    }
+    .table-card h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #e2e8f0;
+      margin-bottom: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th {
+      text-align: left;
+      color: #718096;
+      font-weight: 500;
+      padding: 8px 10px;
+      border-bottom: 1px solid #2d3748;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    td {
+      padding: 9px 10px;
+      border-bottom: 1px solid #1e2530;
+      color: #e2e8f0;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #202735; }
+
+    .diff-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .diff-pos  { background: rgba(72,187,120,0.15); color: #68d391; }
+    .diff-neg  { background: rgba(252,129,129,0.15); color: #fc8181; }
+    .diff-flat { background: rgba(160,174,192,0.1);  color: #718096; }
+
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .badge-strong { background: rgba(72,187,120,0.2); color: #68d391; }
+    .badge-weak   { background: rgba(113,128,150,0.2); color: #a0aec0; }
+    .badge-caution{ background: rgba(252,192,100,0.2); color: #f6ad55; }
+
+    .note {
+      font-size: 12px;
+      color: #4a5568;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 60px;
+      color: #4a5568;
+    }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #718096;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+    .nav-back:hover { color: #a0aec0; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a class="nav-back" href="/dashboard.html">← Dashboard</a>
+    <h1>🦉 Supplement Correlations</h1>
+    <p>How your supplements correlate with how you feel (3-day lag adjusted)</p>
+  </div>
+
+  <div class="controls">
+    <label>Lag days:</label>
+    <button class="lag-btn" data-lag="0">Same day</button>
+    <button class="lag-btn" data-lag="1">+1 day</button>
+    <button class="lag-btn active" data-lag="2">+2 days</button>
+    <button class="lag-btn" data-lag="3">+3 days</button>
+  </div>
+
+  <div id="summary-strip" class="summary-strip"></div>
+
+  <div class="chart-card">
+    <h2>Impact on symptom score (higher = better day)</h2>
+    <div class="chart-wrap">
+      <canvas id="corrChart"></canvas>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <h2>Full breakdown</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Supplement</th>
+          <th>Days on</th>
+          <th>Avg score (on)</th>
+          <th>Avg score (off)</th>
+          <th>Difference</th>
+          <th>Signal</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <p class="note">Score: 1 = bad day, 2 = mixed, 3 = good day — composite of feeling + PEM + brain fog.<br>
+    Correlation ≠ causation. Consistent tracking improves accuracy.</p>
+
+  <script>
+    let chart = null;
+    let currentLag = 2;
+
+    const PRETTY = {
+      aleve: 'Aleve', aleve_pm: 'Aleve PM', allegra: 'Allegra',
+      bath: 'Bath', body_shower: 'Body Shower', bpc157: 'BPC-157 Blend',
+      colostrum: 'Colostrum', creatine: 'Creatine', d3_k2_coq10: 'D3/K2/CoQ10',
+      d_ribose: 'D-Ribose', eutebrol: 'Eutebrol', famotidine: 'Famotidine',
+      glutathione: 'Glutathione', gniib: 'G-NiiB Probiotic', hair_shower: 'Hair Shower',
+      ldn: 'LDN', libertrim: 'Libertrim', magnesium: 'Magnesium',
+      manuka_honey: 'Manuka Honey', melatonin: 'Melatonin', nad_plus: 'NAD+',
+      oxygen_conc: 'Oxygen Concentrator', plidan: 'Plidan', precision_hydro: 'Precision Hydro',
+      propranolol: 'Propranolol', prozac: 'Prozac', rapamycin: 'Rapamycin',
+      tart_cherry: 'Tart Cherry', tylenol: 'Tylenol', urolithin_a: 'Urolithin A',
+      vagus_nerve: 'Vagus Nerve Stim', vitamin_c: 'Vitamin C', vitassium: 'Vitassium',
+      zinc: 'Zinc', zyrtec: 'Zyrtec'
+    };
+
+    function label(key) { return PRETTY[key] || key; }
+
+    function diffClass(d) {
+      if (d >= 0.12) return 'diff-pos';
+      if (d <= -0.12) return 'diff-neg';
+      return 'diff-flat';
+    }
+
+    function signalBadge(d, n) {
+      if (Math.abs(d) < 0.05) return '<span class="badge badge-weak">neutral</span>';
+      if (d >= 0.15 && n >= 7)  return '<span class="badge badge-strong">strong ✅</span>';
+      if (d >= 0.10)             return '<span class="badge badge-strong">positive ✅</span>';
+      if (d <= -0.15 && n >= 7) return '<span class="badge badge-caution">watch ⚠️</span>';
+      if (d <= -0.10)           return '<span class="badge badge-caution">watch ⚠️</span>';
+      return '<span class="badge badge-weak">weak</span>';
+    }
+
+    async function load(lag) {
+      const res = await fetch(`/api/supplement-correlations?lag=${lag}`);
+      const data = await res.json();
+      render(data, lag);
+    }
+
+    function render(data, lag) {
+      const { results, totalDays } = data;
+
+      // Summary strip
+      const pos = results.filter(r => r.diff >= 0.10).length;
+      const neg = results.filter(r => r.diff <= -0.10).length;
+      const topItem = results[0];
+      document.getElementById('summary-strip').innerHTML = `
+        <div class="summary-card"><div class="val blue">${totalDays}</div><div class="lbl">Days tracked</div></div>
+        <div class="summary-card"><div class="val green">${pos}</div><div class="lbl">Positive signals</div></div>
+        <div class="summary-card"><div class="val red">${neg}</div><div class="lbl">Watch signals</div></div>
+        <div class="summary-card"><div class="val green" style="font-size:14px">${topItem ? label(topItem.med) : '—'}</div><div class="lbl">Top correlate</div></div>
+      `;
+
+      // Chart — show top 15 by absolute diff
+      const top = [...results].sort((a,b) => Math.abs(b.diff) - Math.abs(a.diff)).slice(0, 15);
+      top.sort((a, b) => b.diff - a.diff);
+
+      const labels = top.map(r => label(r.med));
+      const diffs  = top.map(r => r.diff);
+      const colors = diffs.map(d =>
+        d >= 0.10 ? 'rgba(72,187,120,0.8)' :
+        d <= -0.10 ? 'rgba(252,129,129,0.8)' :
+        'rgba(113,128,150,0.5)'
+      );
+      const borderColors = diffs.map(d =>
+        d >= 0.10 ? '#48bb78' :
+        d <= -0.10 ? '#fc8181' :
+        '#718096'
+      );
+
+      if (chart) chart.destroy();
+      const ctx = document.getElementById('corrChart').getContext('2d');
+      chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: `Score difference at +${lag} day lag`,
+            data: diffs,
+            backgroundColor: colors,
+            borderColor: borderColors,
+            borderWidth: 1.5,
+            borderRadius: 5,
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => {
+                  const r = top[ctx.dataIndex];
+                  return [
+                    ` Diff: ${r.diff > 0 ? '+' : ''}${r.diff}`,
+                    ` On days: ${r.avgWith} | Off days: ${r.avgWithout}`,
+                    ` n = ${r.n} days logged`,
+                  ];
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: '#2d3748' },
+              ticks: { color: '#718096', font: { size: 11 } },
+              title: {
+                display: true,
+                text: '← worse   better →',
+                color: '#4a5568',
+                font: { size: 11 }
+              }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: '#e2e8f0', font: { size: 12 } }
+            }
+          }
+        }
+      });
+
+      // Table
+      const tbody = document.getElementById('tableBody');
+      tbody.innerHTML = results.map(r => `
+        <tr>
+          <td>${label(r.med)}</td>
+          <td>${r.n}</td>
+          <td>${r.avgWith}</td>
+          <td>${r.avgWithout}</td>
+          <td><span class="diff-pill ${diffClass(r.diff)}">${r.diff > 0 ? '+' : ''}${r.diff}</span></td>
+          <td>${signalBadge(r.diff, r.n)}</td>
+        </tr>
+      `).join('');
+    }
+
+    // Lag button handlers
+    document.querySelectorAll('.lag-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.lag-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentLag = parseInt(btn.dataset.lag);
+        load(currentLag);
+      });
+    });
+
+    // Initial load
+    load(currentLag);
+  </script>
+</body>
+</html>

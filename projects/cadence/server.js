@@ -263,7 +263,7 @@ const MED_LIST = [
   { key: 'libertrim',  label: 'Libertrim',     note: 'antidiarrheal' },
   { key: 'plidan',     label: 'Plidan',        note: 'cramps + bloating' },
   { key: 'adderall',   label: 'Adderall',      note: 'stimulant' },
-  { key: 'melatonin',  label: 'Melatonin',     note: 'sleep' },
+  { key: 'melatonin',  label: 'Melatonin',     note: '5 mg — sleep' },
   { key: 'tylenol',    label: 'Tylenol',       note: 'acetaminophen' },
   { key: 'd3_k2_coq10', label: 'Cymbiotika D3+K2+CoQ10', note: 'fat-soluble vitamins + CoQ10' },
   { key: 'colostrum',   label: 'Cymbiotika Colostrum',   note: 'liquid colostrum — immune + gut' },
@@ -274,26 +274,44 @@ const MED_LIST = [
   { key: 'mag_glycinate',    label: 'Magnesium Glycinate',        note: '120 mg — sleep + calm' },
   { key: 'propranolol',      label: 'Propranolol',                note: '10 mg — heart rate / dysautonomia' },
   { key: 'precision_hydro',  label: 'Precision Hydration 1000s', note: 'electrolytes — POTS/dysautonomia' },
-  { key: 'bpc157',           label: 'BPC-157',                   note: 'peptide — gut + healing' },
-  { key: 'thymosin',         label: 'Thymosin Injection',         note: 'immune modulation' },
-  { key: 'motc',             label: 'MOT-C Injection',            note: 'mitochondrial peptide' },
+  { key: 'gut_peptide_blend', label: 'BPC-157 / TB-500 / KPV / Larazotide', note: 'gut healing + tissue repair blend (1 pill) — daily 30 min before breakfast, 12 weeks' },
+  { key: 'thymosin',         label: 'Thymosin Alpha 1',          note: 'immune modulation + antiviral — 0.25 mL injection, Mon & Thu, 12 weeks' },
+  { key: 'motc',             label: 'MOTS-C',                    note: 'mitochondrial energy + metabolic repair — 50 cc injection, weekly, 12 weeks' },
+  { key: 'ss31',             label: 'SS-31',                     note: 'mitochondrial protection + energy — 10 cc, daily, 20 days' },
   { key: 'zyrtec',           label: 'Zyrtec',                    note: 'cetirizine — antihistamine' },
   { key: 'vagus_nerve',      label: 'Pulsetto',                  note: '10 min — vagus nerve stimulation' },
   { key: 'oxygen_conc',      label: 'Oxygen Concentrator',       note: '30 min — oxygenation' },
-  { key: 'red_light',        label: 'Red Light Therapy',         note: '15 min — mitochondrial support' },
   { key: 'tart_cherry',      label: 'Tart Cherry Juice',         note: 'anti-inflammatory + sleep' },
   { key: 'creatine',         label: 'Creatine',                  note: 'cellular energy + muscle' },
   { key: 'body_shower',      label: 'Body Shower',               note: 'hygiene / self-care' },
   { key: 'hair_shower',      label: 'Hair Shower',               note: 'hygiene / self-care' },
   { key: 'bath',             label: 'Bath',                      note: 'rest + recovery' },
-  { key: 'prozac',           label: 'Prozac',                    note: 'fluoxetine 10 mg — antidepressant / LC' },
   { key: 'ldn',              label: 'LDN',                       note: 'low dose naltrexone 1.5 mg — neuroinflammation' },
-  { key: 'eutebrol',         label: 'Eutebrol',                  note: 'etifoxine 5 mg — anxiolytic / GABAergic' },
-  { key: 'rapamycin',        label: 'Rapamycin',                 note: '6 mg — mTOR inhibitor / immune modulation' },
   { key: 'famotidine',       label: 'Pepcid',                    note: 'famotidine — H2 blocker / MCAS' },
-  { key: 'zinc',             label: 'Zinc',                      note: 'zinc — immune + antiviral' },
+  { key: 'zinc',             label: 'Zinc',                      note: '15 mg — immune + antiviral' },
   { key: 'gniib',            label: 'G-NiiB Elite Probiotic',    note: 'sachet — gut microbiome restoration' },
   { key: 'vitassium',        label: 'Vitassium Electrolytes',    note: '375 mg sodium — POTS/dysautonomia' },
+  { key: 'nad_nasal',        label: 'NAD Nasal Spray 500mg',     note: 'cellular energy + brain fog — 2 sprays morning + midday, 12 weeks' },
+  { key: 'semax_selan',      label: 'SEMÁX + SELAN Nasal Spray', note: 'cognitive function + neuroprotection — 2 sprays each nostril, morning + midday, avoid after 4pm, 14 days' },
+  { key: 'disp',             label: 'DISP 8mg Nasal Spray',      note: 'sleep support — 2 sprays alternating nostrils, 5–30 min before sleep, 3 months' },
+  { key: 'urolithin_a',      label: 'Timeline Urolithin A',      note: 'mitophagy + cellular cleanup — 2 gummies/day' },
+  { key: 'd_ribose',         label: 'D-Ribose',                  note: 'cellular energy + fatigue recovery — 1 scoop' },
+  { key: 'armour_thyroid',   label: 'Armour Thyroid 15mg',       note: 'thyroid support + energy — empty stomach, 1 hr before breakfast, 8 weeks' },
+  { key: 'dhea',             label: 'DHEA 10mg',                 note: 'hormone balance + adrenal support — with food, morning, 12 weeks' },
+  { key: 'lactoferrin',      label: 'Life Extension Lactoferrin', note: 'immune defense + gut health — 2 capsules/day, 12 weeks' },
+  { key: 'omega_epadha',     label: 'Metagenics OmegaGenics EPA-DHA 2400mg', note: 'inflammation + brain health — 5 mL morning + night, 12 weeks' },
+  { key: 'lemon_balm',       label: 'Vimergy Lemon Balm Extract', note: 'nervous system calm + sleep — evenings with drink, 3 months' },
+  { key: 'vit_d3k2',         label: 'ProHealth Vitamin D3 K2 5000IU', note: 'immune + bone health — 1 capsule with breakfast, 12 weeks' },
+  { key: 'icell_water',      label: 'NuBioAge iCell Water',      note: 'cellular hydration + recovery — 2 scoops' },
+  { key: 'gi_detox',         label: 'G.I. Detox+',               note: 'toxin binding + gut detox — 1 capsule on empty stomach' },
+  { key: 'sauerkraut',       label: 'Sauerkraut',                note: 'gut microbiome + probiotics' },
+  { key: 'pendulum_poly',    label: 'Pendulum Polyphenol Booster', note: 'polyphenols — gut microbiome + anti-inflammatory' },
+  { key: 'pendulum_meta',    label: 'Pendulum Metabolic Daily',  note: 'metabolic health + gut microbiome' },
+  { key: 'pendulum_fuel',    label: 'Pendulum Gut Fuel',         note: 'gut lining + microbiome nourishment' },
+  { key: 'fiberblend',       label: 'Thorne FiberBlend Prebiotic', note: 'prebiotic fiber — gut microbiome + motility' },
+  { key: 'matcha',           label: 'Matcha',                    note: 'polyphenols + antioxidants — anti-inflammatory' },
+  { key: 'bone_broth',       label: 'Bone Broth',                note: 'collagen + glycine — gut lining repair' },
+  { key: 'manuka_honey',     label: 'Manuka Honey',              note: 'antimicrobial + gut soothing' },
 ];
 const MED_KEYS = new Set(MED_LIST.map(m => m.key));
 
@@ -563,6 +581,81 @@ app.get('/api/patterns', async (req, res) => {
     });
   } catch (err) {
     console.error('Error in /api/patterns:', err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ── Supplement Correlation API ──────────────────────────────────────────────
+app.get('/api/supplement-correlations', async (req, res) => {
+  try {
+    res.set('Cache-Control', 'no-store');
+    const lag = parseInt(req.query.lag || '2');
+
+    const feelingScore = { 'good': 3, 'mixed': 2, 'bad': 1 };
+    const pemScore    = { 'none': 3, 'mild': 2, 'moderate': 1.5, 'severe': 1 };
+    const fogScore    = { 'none': 3, 'mild': 2, 'moderate': 1.5, 'severe': 1 };
+
+    const reports = await db.collection('self_report')
+      .find({ user_id: 'hannah', feeling: { $ne: null } })
+      .sort({ date: 1 })
+      .toArray();
+
+    const meds = await db.collection('med_log')
+      .find({ user_id: 'hannah' })
+      .sort({ date: 1 })
+      .toArray();
+
+    // Build maps
+    const medsByDate = {};
+    meds.forEach(m => {
+      if (!medsByDate[m.date]) medsByDate[m.date] = [];
+      medsByDate[m.date].push(m.med);
+    });
+
+    const scoreByDate = {};
+    reports.forEach(r => {
+      const scores = [];
+      if (r.feeling && feelingScore[r.feeling]) scores.push(feelingScore[r.feeling]);
+      if (r.pem    && pemScore[r.pem])          scores.push(pemScore[r.pem]);
+      if (r.brain_fog && fogScore[r.brain_fog]) scores.push(fogScore[r.brain_fog]);
+      if (scores.length > 0)
+        scoreByDate[r.date] = scores.reduce((a, b) => a + b, 0) / scores.length;
+    });
+
+    const dates    = Object.keys(scoreByDate).sort();
+    const medNames = [...new Set(meds.map(m => m.med))];
+
+    const results = [];
+    medNames.forEach(med => {
+      const withMed = [], withoutMed = [];
+      dates.forEach(date => {
+        const d = new Date(date);
+        d.setDate(d.getDate() - lag);
+        const lagDate = d.toISOString().split('T')[0];
+        const score = scoreByDate[date];
+        if (score === undefined) return;
+        const took = medsByDate[lagDate] && medsByDate[lagDate].includes(med);
+        if (took) withMed.push(score);
+        else       withoutMed.push(score);
+      });
+      if (withMed.length >= 5 && withoutMed.length >= 3) {
+        const avgWith    = withMed.reduce((a, b) => a + b, 0) / withMed.length;
+        const avgWithout = withoutMed.reduce((a, b) => a + b, 0) / withoutMed.length;
+        results.push({
+          med,
+          avgWith:    parseFloat(avgWith.toFixed(2)),
+          avgWithout: parseFloat(avgWithout.toFixed(2)),
+          diff:       parseFloat((avgWith - avgWithout).toFixed(2)),
+          n:          withMed.length,
+          totalDays:  dates.length,
+        });
+      }
+    });
+
+    results.sort((a, b) => b.diff - a.diff);
+    res.json({ lag, totalDays: dates.length, results });
+  } catch (err) {
+    console.error('Error in /api/supplement-correlations:', err);
     res.status(500).json({ error: err.message });
   }
 });
