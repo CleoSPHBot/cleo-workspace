@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Hannah's Daily Medication & Supplement Schedule</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 9.5px;
+    color: #1a1a1a;
+    background: white;
+    padding: 12px 16px;
+  }
+
+  h1 {
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2px;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 9px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  /* Two-column layout for main content */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .one-col {
+    margin-bottom: 8px;
+  }
+
+  .section { page-break-inside: avoid; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px 4px 0 0;
+    font-size: 9.5px;
+    font-weight: 700;
+  }
+  .pre60    { background: #7b241c; }
+  .pre30    { background: #c0392b; }
+  .morning  { background: #d35400; }
+  .lunch    { background: #1e8449; }
+  .dinner   { background: #1a5276; }
+  .bedtime  { background: #4a235a; }
+  .asneeded { background: #626567; }
+  .tracking { background: #0e6655; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  thead tr { background: #f0f0f0; }
+  th {
+    padding: 3px 4px;
+    font-size: 8.5px;
+    font-weight: 700;
+    text-align: center;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ddd;
+  }
+  th.item-col { text-align: left; }
+  td {
+    padding: 3px 4px;
+    border-bottom: 1px solid #eee;
+    border-right: 1px solid #eee;
+    vertical-align: middle;
+    line-height: 1.3;
+  }
+  td.item { font-size: 9px; }
+  td.item .note { font-size: 7.5px; color: #888; font-style: italic; display: block; }
+  td.item .warn { font-size: 7.5px; color: #c0392b; font-weight: 700; display: block; }
+  td.check {
+    text-align: center;
+    width: 6.5%;
+    font-size: 11px;
+    color: #bbb;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:nth-child(even) { background: #fafafa; }
+
+  /* As-needed as a table */
+  .asneeded-table table { border-top: none; }
+
+  .reminders {
+    margin-top: 8px;
+    border: 1.5px solid #e67e22;
+    border-radius: 5px;
+    padding: 6px 10px;
+    background: #fef9f0;
+    page-break-inside: avoid;
+  }
+  .reminders h3 {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #e67e22;
+    margin-bottom: 4px;
+  }
+  .reminders ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px 16px;
+  }
+  .reminders li {
+    font-size: 8.5px;
+    color: #444;
+    padding: 1px 0;
+  }
+  .reminders li::before { content: '⚠ '; color: #e67e22; }
+</style>
+</head>
+<body>
+
+<h1>🦉 Hannah's Daily Medication & Supplement Schedule</h1>
+<div class="subtitle">Week of: _________________________ &nbsp;&nbsp;|&nbsp;&nbsp; Check off each day as you go</div>
+
+<!-- ROW 1: Pre-60 + Pre-30 + Morning (split) -->
+<div class="two-col">
+
+  <!-- LEFT: Pre-60 + Pre-30 stacked -->
+  <div>
+    <div class="section" style="margin-bottom:8px">
+      <div class="section-header pre60">⏰ 1 HR BEFORE BREAKFAST — Empty stomach</div>
+      <table>
+        <thead><tr><th class="item-col">Item</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th><th>S</th></tr></thead>
+        <tbody>
+          <tr><td class="item">Armour Thyroid 15mg<span class="note">Nothing else at this time</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">G.I. Detox+<span class="note">Empty stomach only</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section" style="margin-bottom:8px">
+      <div class="section-header pre30">⏰ 30 MIN BEFORE BREAKFAST — Empty stomach</div>
+      <table>
+        <thead><tr><th class="item-col">Item</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th><th>S</th></tr></thead>
+        <tbody>
+          <tr><td class="item">BPC-157 / TB-500 / KPV / Larazotide<span class="note">Gut healing blend — 1 pill</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Colostrum<span class="note">Ideally 30 min before eating</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- LUNCH -->
+    <div class="section" style="margin-bottom:8px">
+      <div class="section-header lunch">🍽️ LUNCH — With food</div>
+      <table>
+        <thead><tr><th class="item-col">Item</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th><th>S</th></tr></thead>
+        <tbody>
+          <tr><td class="item">Pendulum Metabolic Daily<span class="note">Metabolic health + gut microbiome</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">D-Ribose (1 scoop)<span class="note">Midday energy dose</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">NAD Nasal Spray 500mg<span class="note">2 sprays — midday dose</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">SEMÁX + SELAN Nasal Spray<span class="note">2 sprays each nostril — if before 4pm only</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Salt + water<span class="note">Midday sodium dose</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Vitassium (if needed)<span class="note">On worse symptom days</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item"><span class="warn">⚠ Finish eating first →</span> Zinc dose 1<span class="note">15mg — right after food</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- BEDTIME -->
+    <div class="section">
+      <div class="section-header bedtime">🌙 BEDTIME</div>
+      <table>
+        <thead><tr><th class="item-col">Item</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th><th>S</th></tr></thead>
+        <tbody>
+          <tr><td class="item">G-NiiB Elite Probiotic<span class="note">Sachet — gut microbiome restoration</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Magnesium Glycinate 120mg<span class="note">Sleep + calm — no food needed</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Lemon Balm Extract (Vimergy)<span class="note">Nervous system calm + sleep</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Melatonin 5mg<span class="note">Sleep — consistent timing nightly</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">LDN 4.5mg<span class="note">Low dose naltrexone — neuroinflammation</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">DISP 8mg Nasal Spray<span class="note">2 sprays alternating nostrils — 15–30 min before sleep</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- RIGHT: Morning + Dinner -->
+  <div>
+    <div class="section" style="margin-bottom:8px">
+      <div class="section-header morning">🌅 MORNING — With breakfast</div>
+      <table>
+        <thead><tr><th class="item-col">Item</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th><th>S</th></tr></thead>
+        <tbody>
+          <tr><td class="item">Lactoferrin (2 caps)<span class="note">Immune defense + gut health</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Glutathione<span class="note">Master antioxidant</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">NAD+<span class="note">Cellular energy — morning only</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">NAD Nasal Spray 500mg<span class="note">2 sprays — morning dose</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">SEMÁX + SELAN Nasal Spray<span class="note">2 sprays each nostril — never after 4pm</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">D-Ribose (1 scoop)<span class="note">Cellular energy + fatigue recovery</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">D3 / K2 / CoQ10 (Cymbiotika)<span class="note">Fat-soluble — take with food</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">ProHealth Vitamin D3 K2 5000IU<span class="note">Immune + bone health</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">DHEA 10mg<span class="note">Hormone balance + adrenal support</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Creatine<span class="note">Cellular energy + muscle</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Urolithin A — 2 gummies<span class="note">Mitophagy + cellular cleanup</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Pendulum Polyphenol Booster<span class="note">Gut microbiome + anti-inflammatory</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">OmegaGenics EPA-DHA 2400mg (5mL)<span class="note">Inflammation + brain health — morning dose</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">iCell Water (2 scoops)<span class="note">Cellular hydration + recovery</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Nicotine Patch<span class="note">Apply after breakfast — rotate site, remove after 16h, no sleeping in patch</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Propranolol 20mg<span class="note">Heart rate / dysautonomia — morning dose</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Zyrtec<span class="note">Antihistamine — daily</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Birth Control<span class="note">Until end of current pack</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">💉 SS-31 (10cc IM — daily, 20 days)<span class="note">Mitochondrial protection — after breakfast</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">💉 Thymosin Alpha 1 (0.25mL IM — Mon & Thu)<span class="note">Immune modulation</span></td><td class="check">☐</td><td class="check"> </td><td class="check"> </td><td class="check">☐</td><td class="check"> </td><td class="check"> </td><td class="check"> </td></tr>
+          <tr><td class="item">💉 MOTS-C (50cc IM — Monday only)<span class="note">Mitochondrial energy — weekly</span></td><td class="check">☐</td><td class="check"> </td><td class="check"> </td><td class="check"> </td><td class="check"> </td><td class="check"> </td><td class="check"> </td></tr>
+          <tr><td class="item">☆ Salt + water — MOST IMPORTANT DOSE<span class="note">Front-load sodium — take first thing</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Vitassium + water (if needed)<span class="note">375mg sodium — POTS support</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- DINNER -->
+    <div class="section">
+      <div class="section-header dinner">🌆 DINNER — With food</div>
+      <table>
+        <thead><tr><th class="item-col">Item</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th><th>S</th></tr></thead>
+        <tbody>
+          <tr><td class="item">Thorne FiberBlend Prebiotic<span class="note">Feeds G-NiiB at bedtime — take at dinner</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Pendulum Gut Fuel<span class="note">Gut lining + microbiome nourishment</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">OmegaGenics EPA-DHA 2400mg (5mL)<span class="note">Evening dose</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Sauerkraut<span class="note">Live cultures — with dinner</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Tart Cherry Juice<span class="note">Anti-inflammatory + natural melatonin</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">D-Ribose (1 scoop)<span class="note">Evening energy dose</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Bone Broth<span class="note">Collagen + glycine — gut lining repair</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Propranolol 20mg<span class="note">Evening dose — with food</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item">Salt + water<span class="note">Last dose of day — taper off after this</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+          <tr><td class="item"><span class="warn">⚠ Finish eating first →</span> Zinc dose 2<span class="note">15mg — right after food, last item of dinner</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- AS NEEDED + TRACKING side by side -->
+<div class="two-col">
+
+  <!-- AS NEEDED -->
+  <div class="section asneeded-table">
+    <div class="section-header asneeded">🩺 AS NEEDED</div>
+    <table>
+      <thead><tr><th class="item-col">Item</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th><th>S</th></tr></thead>
+      <tbody>
+        <tr><td class="item">Precision Hydro 1000s<span class="note">Electrolytes — throughout the day</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Vitassium<span class="note">Worse days, heat, more upright time</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Oxygen Concentrator<span class="note">30 min sessions</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Pulsetto (VNS)<span class="note">10 min sessions</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Red Light Therapy<span class="note">Mitochondrial support + neuroinflammation</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Vibration Plate<span class="note">10 min — lymphatic + circulation support</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Tylenol<span class="note">Pain relief</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Libertrim<span class="note">Diarrhea</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Plidan<span class="note">Cramps + bloating</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Pepcid (Famotidine)<span class="note">Reflux / MCAS</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Manuka Honey<span class="note">Gut soothing + antimicrobial</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Matcha<span class="note">Polyphenols + energy</span></td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DAILY TRACKING -->
+  <div class="section">
+    <div class="section-header tracking">📏 DAILY TRACKING</div>
+    <table>
+      <thead><tr><th class="item-col">Task</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th><th>S</th></tr></thead>
+      <tbody>
+        <tr><td class="item">BP — lying down (before meds, morning)</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">BP — sitting (1 min after lying)</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">BP — standing 1 min</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">BP — standing 3 min</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Cadence check-in completed</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Ate every 3–4 hours (critical for POTS)</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Morning light (5–10 min outside)</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Coherence breathing (10 min)</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+        <tr><td class="item">Remove nicotine patch (before bed)</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td><td class="check">☐</td></tr>
+      </tbody>
+    </table>
+
+    <!-- REMINDERS -->
+    <div class="reminders" style="margin-top:8px">
+      <h3>⚠ Key Reminders</h3>
+      <ul>
+        <li>Armour Thyroid — nothing else 1 hr before breakfast</li>
+        <li>Colostrum + GI Detox — empty stomach, 30 min before breakfast</li>
+        <li>Zinc — RIGHT AFTER finishing food, not during</li>
+        <li>FiberBlend at dinner → G-NiiB at bedtime</li>
+        <li>SEMÁX + SELAN — NEVER after 4pm</li>
+        <li>Salt front-loaded — morning is the most important dose</li>
+        <li>No heavy salt after dinner — disrupts sleep</li>
+        <li>Eat every 3–4 hours — critical for POTS</li>
+        <li>Thymosin Alpha 1 — Mon & Thu only</li>
+        <li>MOTS-C — Monday only (weekly)</li>
+        <li>Nicotine patch — remove after 16h, never sleep in it</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
