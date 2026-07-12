@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Daily Schedule — Cadence</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f1923;
+      color: #f0f4f8;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    /* ── Header ── */
+    header {
+      background: #0f1923;
+      padding: 20px 20px 0;
+      position: sticky; top: 0; z-index: 20;
+      border-bottom: 1px solid #1e2d3d;
+    }
+    .header-top {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
+    }
+    .back-btn {
+      font-size: 18px; color: #c9a84c; cursor: pointer;
+      text-decoration: none; padding: 4px 2px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .header-title { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
+    .header-date { font-size: 12px; color: #7a9ab8; margin-left: auto; }
+
+    /* ── Progress bar ── */
+    .progress-wrap {
+      padding: 0 0 12px;
+    }
+    .progress-meta {
+      display: flex; justify-content: space-between;
+      font-size: 11px; color: #7a9ab8; margin-bottom: 6px;
+    }
+    .progress-track {
+      height: 4px; background: #1e2d3d; border-radius: 4px; overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #c9a84c, #e8c96a);
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    /* ── Content ── */
+    main {
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 20px 16px;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 24px;
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 10px;
+    }
+    .section-icon { font-size: 16px; }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; color: #c9a84c;
+    }
+    .section-count {
+      margin-left: auto;
+      font-size: 11px; color: #4a6a88;
+      font-weight: 600;
+    }
+
+    /* ── Item row ── */
+    .item {
+      background: #162030;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 8px;
+      display: flex; align-items: flex-start; gap: 14px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      border: 1px solid #1e2d3d;
+    }
+    .item:active { transform: scale(0.985); }
+    .item.checked {
+      background: #0d1f15;
+      border-color: #1a3828;
+    }
+
+    /* ── Checkbox ── */
+    .checkbox {
+      width: 24px; height: 24px; min-width: 24px;
+      border-radius: 7px;
+      border: 2px solid #2a4a68;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.18s;
+      margin-top: 1px;
+    }
+    .item.checked .checkbox {
+      background: #2a7a4a;
+      border-color: #2a7a4a;
+    }
+    .checkmark {
+      font-size: 14px; color: white;
+      opacity: 0; transition: opacity 0.15s;
+    }
+    .item.checked .checkmark { opacity: 1; }
+
+    /* ── Item text ── */
+    .item-body { flex: 1; }
+    .item-name {
+      font-size: 14px; font-weight: 600; color: #d8e8f8;
+      line-height: 1.3;
+      transition: color 0.15s;
+    }
+    .item.checked .item-name {
+      color: #4a7a5a;
+      text-decoration: line-through;
+      text-decoration-color: #2a5a3a;
+    }
+    .item-note {
+      font-size: 11px; color: #5a7a98; margin-top: 3px;
+      line-height: 1.4;
+    }
+    .item.checked .item-note { color: #2a4a38; }
+
+    /* ── Badge for special items ── */
+    .badge {
+      font-size: 9px; font-weight: 700; letter-spacing: 0.5px;
+      padding: 2px 6px; border-radius: 6px; text-transform: uppercase;
+      margin-left: 6px; vertical-align: middle;
+    }
+    .badge-star { background: #3a2a08; color: #c9a84c; }
+    .badge-inj  { background: #2a1a3a; color: #b070d0; }
+    .badge-warn { background: #3a1a10; color: #e07050; }
+    .badge-mon  { background: #0a2a4a; color: #5090d0; }
+
+    /* ── Divider ── */
+    .divider {
+      height: 1px; background: #1e2d3d; margin: 6px 0 14px;
+    }
+
+    /* ── Reset button ── */
+    .reset-wrap {
+      text-align: center; margin-top: 32px;
+    }
+    .reset-btn {
+      font-size: 12px; color: #3a5a78; cursor: pointer;
+      padding: 8px 20px; border-radius: 20px;
+      border: 1px solid #1e2d3d;
+      background: transparent;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .reset-btn:active { opacity: 0.7; }
+
+    /* ── Done banner ── */
+    .done-banner {
+      display: none;
+      background: linear-gradient(135deg, #0d2a1a, #0a1f28);
+      border: 1px solid #2a5a3a;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .done-banner.visible { display: block; }
+    .done-banner .done-emoji { font-size: 32px; margin-bottom: 8px; }
+    .done-banner .done-title { font-size: 16px; font-weight: 700; color: #c9a84c; }
+    .done-banner .done-sub { font-size: 12px; color: #5a7a98; margin-top: 4px; }
+
+    /* ── Scroll top FAB ── */
+    .fab-top {
+      position: fixed; bottom: 24px; right: 20px;
+      width: 44px; height: 44px;
+      background: #1a3558; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      -webkit-tap-highlight-color: transparent;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <a class="back-btn" href="/index-v2.html">←</a>
+    <span class="header-title">📋 Daily Schedule</span>
+    <span class="header-date" id="header-date"></span>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-meta">
+      <span id="prog-label">0 of 0 done</span>
+      <span id="prog-pct">0%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="prog-bar" style="width:0%"></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="done-banner" id="done-banner">
+    <div class="done-emoji">🎉</div>
+    <div class="done-title">All done for today!</div>
+    <div class="done-sub">You took great care of yourself today. Rest well. 🦉</div>
+  </div>
+
+  <!-- ─────────────────────────────── 1 HR BEFORE BREAKFAST ─────────────────────────────── -->
+  <div class="section" id="sec-1hr">
+    <div class="section-header">
+      <span class="section-icon">⏰</span>
+      <span class="section-label">1 hr before breakfast</span>
+      <span class="section-count" id="count-1hr"></span>
+    </div>
+
+    <div class="item" id="i-armour_thyroid" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Armour Thyroid 15mg</div>
+        <div class="item-note">Nothing else at this time — empty stomach</div>
+      </div>
+    </div>
+    <div class="item" id="i-gi_detox" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">G.I. Detox+</div>
+        <div class="item-note">Empty stomach only</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────── 30 MIN BEFORE BREAKFAST ─────────────────────────────── -->
+  <div class="section" id="sec-30min">
+    <div class="section-header">
+      <span class="section-icon">⏰</span>
+      <span class="section-label">30 min before breakfast</span>
+      <span class="section-count" id="count-30min"></span>
+    </div>
+
+    <div class="item" id="i-gut_peptide_blend" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">BPC-157 / TB-500 / KPV / Larazotide</div>
+        <div class="item-note">Gut healing blend — 1 pill, empty stomach</div>
+      </div>
+    </div>
+    <div class="item" id="i-colostrum" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Colostrum</div>
+        <div class="item-note">Ideally 30 min before eating</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────── MORNING ─────────────────────────────── -->
+  <div class="section" id="sec-morning">
+    <div class="section-header">
+      <span class="section-icon">☀️</span>
+      <span class="section-label">Morning — with breakfast</span>
+      <span class="section-count" id="count-morning"></span>
+    </div>
+
+    <div class="item" id="i-salt_morning" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">
+          Salt + water
+          <span class="badge badge-star">★ Most Important</span>
+        </div>
+        <div class="item-note">Front-load sodium — take first thing at breakfast</div>
+      </div>
+    </div>
+    <div class="item" id="i-vitassium_morning" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Vitassium + water <span style="font-weight:400;color:#5a7a98">(if needed)</span></div>
+        <div class="item-note">375mg sodium — POTS support</div>
+      </div>
+    </div>
+    <div class="item" id="i-lactoferrin" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Lactoferrin (2 caps)</div>
+        <div class="item-note">Immune defense + gut health</div>
+      </div>
+    </div>
+    <div class="item" id="i-glutathione" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Glutathione</div>
+        <div class="item-note">Master antioxidant</div>
+      </div>
+    </div>
+    <div class="item" id="i-nad_plus" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">NAD+</div>
+        <div class="item-note">Cellular energy — morning only</div>
+      </div>
+    </div>
+    <div class="item" id="i-nad_nasal_am" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">NAD Nasal Spray 500mg — morning</div>
+        <div class="item-note">2 sprays — morning dose</div>
+      </div>
+    </div>
+    <div class="item" id="i-semax_am" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">SEMÁX + SELAN Nasal Spray — morning</div>
+        <div class="item-note">2 sprays each nostril — never after 4pm</div>
+      </div>
+    </div>
+    <div class="item" id="i-d_ribose_am" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">D-Ribose (1 scoop) — morning</div>
+        <div class="item-note">Cellular energy + fatigue recovery</div>
+      </div>
+    </div>
+    <div class="item" id="i-d3_k2_coq10" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">D3 / K2 / CoQ10 (Cymbiotika)</div>
+        <div class="item-note">Fat-soluble — take with food</div>
+      </div>
+    </div>
+    <div class="item" id="i-vit_d3k2" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">ProHealth Vitamin D3 K2 5000IU</div>
+        <div class="item-note">Immune + bone health</div>
+      </div>
+    </div>
+    <div class="item" id="i-dhea" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">DHEA 10mg</div>
+        <div class="item-note">Hormone balance + adrenal support</div>
+      </div>
+    </div>
+    <div class="item" id="i-creatine" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Creatine</div>
+        <div class="item-note">Cellular energy + muscle</div>
+      </div>
+    </div>
+    <div class="item" id="i-urolithin_a" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Urolithin A — 2 gummies</div>
+        <div class="item-note">Mitophagy + cellular cleanup</div>
+      </div>
+    </div>
+    <div class="item" id="i-pendulum_poly" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Pendulum Polyphenol Booster</div>
+        <div class="item-note">Gut microbiome + anti-inflammatory</div>
+      </div>
+    </div>
+    <div class="item" id="i-omega_am" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">OmegaGenics EPA-DHA 2400mg (5mL) — morning</div>
+        <div class="item-note">Inflammation + brain health</div>
+      </div>
+    </div>
+    <div class="item" id="i-icell_water" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">iCell Water (2 scoops)</div>
+        <div class="item-note">Cellular hydration + recovery</div>
+      </div>
+    </div>
+    <div class="item" id="i-nicotine_patch" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Nicotine Patch
+          <span class="badge badge-warn">16h max</span>
+        </div>
+        <div class="item-note">Apply after breakfast — rotate site, remove after 16h, do not sleep in patch</div>
+      </div>
+    </div>
+    <div class="item" id="i-propranolol_am" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Propranolol 20mg — morning</div>
+        <div class="item-note">Heart rate / dysautonomia</div>
+      </div>
+    </div>
+    <div class="item" id="i-zyrtec" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Zyrtec</div>
+        <div class="item-note">Antihistamine — daily</div>
+      </div>
+    </div>
+    <div class="item" id="i-bc" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Birth Control</div>
+        <div class="item-note">Until end of current pack</div>
+      </div>
+    </div>
+
+    <!-- Injections -->
+    <div class="item" id="i-ss31" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">
+          💉 SS-31 (10cc IM — daily)
+          <span class="badge badge-inj">Injection</span>
+        </div>
+        <div class="item-note">Mitochondrial protection — after breakfast, 20-day course</div>
+      </div>
+    </div>
+    <div class="item" id="i-thymosin" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">
+          💉 Thymosin Alpha 1 (0.25mL IM)
+          <span class="badge badge-mon">Mon &amp; Thu</span>
+        </div>
+        <div class="item-note">Immune modulation — Mon &amp; Thu only</div>
+      </div>
+    </div>
+    <div class="item" id="i-motc" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">
+          💉 MOTS-C (50cc IM)
+          <span class="badge badge-mon">Monday only</span>
+        </div>
+        <div class="item-note">Mitochondrial energy — weekly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────── LUNCH ─────────────────────────────── -->
+  <div class="section" id="sec-lunch">
+    <div class="section-header">
+      <span class="section-icon">🍴</span>
+      <span class="section-label">Lunch — with food</span>
+      <span class="section-count" id="count-lunch"></span>
+    </div>
+
+    <div class="item" id="i-pendulum_meta" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Pendulum Metabolic Daily</div>
+        <div class="item-note">Metabolic health + gut microbiome</div>
+      </div>
+    </div>
+    <div class="item" id="i-d_ribose_pm" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">D-Ribose (1 scoop) — midday</div>
+        <div class="item-note">Midday energy dose</div>
+      </div>
+    </div>
+    <div class="item" id="i-nad_nasal_pm" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">NAD Nasal Spray 500mg — midday</div>
+        <div class="item-note">2 sprays — midday dose</div>
+      </div>
+    </div>
+    <div class="item" id="i-semax_pm" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">SEMÁX + SELAN Nasal Spray — midday</div>
+        <div class="item-note">2 sprays each nostril — only if before 4pm</div>
+      </div>
+    </div>
+    <div class="item" id="i-salt_lunch" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Salt + water — midday</div>
+        <div class="item-note">Midday sodium dose</div>
+      </div>
+    </div>
+    <div class="item" id="i-vitassium_lunch" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Vitassium <span style="font-weight:400;color:#5a7a98">(if needed)</span></div>
+        <div class="item-note">On worse symptom days</div>
+      </div>
+    </div>
+    <div class="item" id="i-zinc_lunch" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">
+          Zinc dose 1 (15mg)
+          <span class="badge badge-warn">After food</span>
+        </div>
+        <div class="item-note">Finish eating first — right after food</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────── DINNER ─────────────────────────────── -->
+  <div class="section" id="sec-dinner">
+    <div class="section-header">
+      <span class="section-icon">🍽️</span>
+      <span class="section-label">Dinner — with food</span>
+      <span class="section-count" id="count-dinner"></span>
+    </div>
+
+    <div class="item" id="i-fiberblend" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Thorne FiberBlend Prebiotic</div>
+        <div class="item-note">Feeds G-NiiB at bedtime — take at dinner</div>
+      </div>
+    </div>
+    <div class="item" id="i-pendulum_fuel" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Pendulum Gut Fuel</div>
+        <div class="item-note">Gut lining + microbiome nourishment</div>
+      </div>
+    </div>
+    <div class="item" id="i-omega_pm" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">OmegaGenics EPA-DHA 2400mg (5mL) — evening</div>
+        <div class="item-note">Evening dose</div>
+      </div>
+    </div>
+    <div class="item" id="i-sauerkraut" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Sauerkraut</div>
+        <div class="item-note">Live cultures — with dinner</div>
+      </div>
+    </div>
+    <div class="item" id="i-tart_cherry" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Tart Cherry Juice</div>
+        <div class="item-note">Anti-inflammatory + natural melatonin</div>
+      </div>
+    </div>
+    <div class="item" id="i-d_ribose_eve" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">D-Ribose (1 scoop) — evening</div>
+        <div class="item-note">Evening energy dose</div>
+      </div>
+    </div>
+    <div class="item" id="i-bone_broth" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Bone Broth</div>
+        <div class="item-note">Collagen + glycine — gut lining repair</div>
+      </div>
+    </div>
+    <div class="item" id="i-propranolol_pm" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Propranolol 20mg — evening</div>
+        <div class="item-note">With food</div>
+      </div>
+    </div>
+    <div class="item" id="i-salt_dinner" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Salt + water — dinner</div>
+        <div class="item-note">Last dose of day — taper off after this</div>
+      </div>
+    </div>
+    <div class="item" id="i-zinc_dinner" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">
+          Zinc dose 2 (15mg)
+          <span class="badge badge-warn">After food</span>
+        </div>
+        <div class="item-note">Finish eating first — last item of dinner</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────── BEDTIME ─────────────────────────────── -->
+  <div class="section" id="sec-bedtime">
+    <div class="section-header">
+      <span class="section-icon">🌙</span>
+      <span class="section-label">Bedtime</span>
+      <span class="section-count" id="count-bedtime"></span>
+    </div>
+
+    <div class="item" id="i-gniib" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">G-NiiB Elite Probiotic</div>
+        <div class="item-note">Sachet — gut microbiome restoration</div>
+      </div>
+    </div>
+    <div class="item" id="i-mag_glycinate" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Magnesium Glycinate 120mg</div>
+        <div class="item-note">Sleep + calm — no food needed</div>
+      </div>
+    </div>
+    <div class="item" id="i-lemon_balm" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Lemon Balm Extract (Vimergy)</div>
+        <div class="item-note">Nervous system calm + sleep</div>
+      </div>
+    </div>
+    <div class="item" id="i-melatonin" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Melatonin 5mg</div>
+        <div class="item-note">Sleep — consistent timing nightly</div>
+      </div>
+    </div>
+    <div class="item" id="i-ldn" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">LDN 4.5mg</div>
+        <div class="item-note">Low dose naltrexone — neuroinflammation</div>
+      </div>
+    </div>
+    <div class="item" id="i-disp" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">DISP 8mg Nasal Spray</div>
+        <div class="item-note">2 sprays alternating nostrils — 15–30 min before sleep</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─────────────────────────────── AS NEEDED ─────────────────────────────── -->
+  <div class="section" id="sec-asneeded">
+    <div class="section-header">
+      <span class="section-icon">⚙️</span>
+      <span class="section-label">As needed</span>
+      <span class="section-count" id="count-asneeded"></span>
+    </div>
+
+    <div class="item" id="i-oxygen_conc" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Oxygen Concentrator</div>
+        <div class="item-note">30 min sessions</div>
+      </div>
+    </div>
+    <div class="item" id="i-vagus_nerve" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Pulsetto (VNS)</div>
+        <div class="item-note">10 min sessions — vagus nerve stimulation</div>
+      </div>
+    </div>
+    <div class="item" id="i-red_light" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Red Light Therapy</div>
+        <div class="item-note">Mitochondrial support + neuroinflammation</div>
+      </div>
+    </div>
+    <div class="item" id="i-vibration_plate" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Vibration Plate</div>
+        <div class="item-note">10 min — lymphatic + circulation support</div>
+      </div>
+    </div>
+    <div class="item" id="i-precision_hydro" onclick="toggle(this)">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <div class="item-body">
+        <div class="item-name">Precision Hydro 1000s</div>
+        <div class="item-note">Electrolytes — throughout the day</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reset-wrap">
+    <button class="reset-btn" onclick="resetDay()">↺ Reset for new day</button>
+  </div>
+
+</main>
+
+<div class="fab-top" onclick="scrollToTop()" title="Back to top">↑</div>
+
+<script>
+  // ── Storage key (per calendar date) ──────────────────────────────────────
+  function todayKey() {
+    const d = new Date();
+    return 'schedule-' + d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+  }
+
+  // ── Section item maps ──────────────────────────────────────────────────
+  const SECTIONS = {
+    '1hr':      ['armour_thyroid', 'gi_detox'],
+    '30min':    ['gut_peptide_blend', 'colostrum'],
+    'morning':  ['salt_morning', 'vitassium_morning', 'lactoferrin', 'glutathione', 'nad_plus',
+                 'nad_nasal_am', 'semax_am', 'd_ribose_am', 'd3_k2_coq10', 'vit_d3k2',
+                 'dhea', 'creatine', 'urolithin_a', 'pendulum_poly', 'omega_am',
+                 'icell_water', 'nicotine_patch', 'propranolol_am', 'zyrtec', 'bc',
+                 'ss31', 'thymosin', 'motc'],
+    'lunch':    ['pendulum_meta', 'd_ribose_pm', 'nad_nasal_pm', 'semax_pm',
+                 'salt_lunch', 'vitassium_lunch', 'zinc_lunch'],
+    'dinner':   ['fiberblend', 'pendulum_fuel', 'omega_pm', 'sauerkraut', 'tart_cherry',
+                 'd_ribose_eve', 'bone_broth', 'propranolol_pm', 'salt_dinner', 'zinc_dinner'],
+    'bedtime':  ['gniib', 'mag_glycinate', 'lemon_balm', 'melatonin', 'ldn', 'disp'],
+    'asneeded': ['oxygen_conc', 'vagus_nerve', 'red_light', 'vibration_plate', 'precision_hydro'],
+  };
+
+  // All item ids (flat)
+  const ALL_ITEMS = Object.values(SECTIONS).flat();
+
+  // ── State ──────────────────────────────────────────────────────────────
+  let state = {};
+
+  function loadState() {
+    const raw = localStorage.getItem(todayKey());
+    state = raw ? JSON.parse(raw) : {};
+  }
+  function saveState() {
+    localStorage.setItem(todayKey(), JSON.stringify(state));
+  }
+
+  // ── Toggle ────────────────────────────────────────────────────────────
+  function toggle(el) {
+    const id = el.id.replace('i-', '');
+    state[id] = !state[id];
+    applyState(id);
+    saveState();
+    updateProgress();
+    updateSectionCounts();
+    checkAllDone();
+  }
+
+  function applyState(id) {
+    const el = document.getElementById('i-' + id);
+    if (!el) return;
+    if (state[id]) el.classList.add('checked');
+    else el.classList.remove('checked');
+  }
+
+  // ── Progress ──────────────────────────────────────────────────────────
+  function updateProgress() {
+    const done = ALL_ITEMS.filter(id => state[id]).length;
+    const total = ALL_ITEMS.length;
+    const pct = total ? Math.round(done / total * 100) : 0;
+    document.getElementById('prog-label').textContent = done + ' of ' + total + ' done';
+    document.getElementById('prog-pct').textContent = pct + '%';
+    document.getElementById('prog-bar').style.width = pct + '%';
+  }
+
+  // ── Section counts ────────────────────────────────────────────────────
+  function updateSectionCounts() {
+    for (const [sec, ids] of Object.entries(SECTIONS)) {
+      const done = ids.filter(id => state[id]).length;
+      const el = document.getElementById('count-' + sec);
+      if (el) {
+        el.textContent = done === ids.length ? '✓ done' : done + '/' + ids.length;
+        el.style.color = done === ids.length ? '#2a7a4a' : '#4a6a88';
+      }
+    }
+  }
+
+  // ── Done banner ───────────────────────────────────────────────────────
+  function checkAllDone() {
+    const done = ALL_ITEMS.filter(id => state[id]).length;
+    const banner = document.getElementById('done-banner');
+    if (done === ALL_ITEMS.length) banner.classList.add('visible');
+    else banner.classList.remove('visible');
+  }
+
+  // ── Reset ─────────────────────────────────────────────────────────────
+  function resetDay() {
+    if (!confirm('Reset all items for today?')) return;
+    state = {};
+    ALL_ITEMS.forEach(id => applyState(id));
+    saveState();
+    updateProgress();
+    updateSectionCounts();
+    checkAllDone();
+  }
+
+  // ── Date header ───────────────────────────────────────────────────────
+  function setDateHeader() {
+    const d = new Date();
+    const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    document.getElementById('header-date').textContent =
+      days[d.getDay()] + ' ' + months[d.getMonth()] + ' ' + d.getDate();
+  }
+
+  // ── Scroll to top ─────────────────────────────────────────────────────
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Init ──────────────────────────────────────────────────────────────
+  loadState();
+  ALL_ITEMS.forEach(id => applyState(id));
+  updateProgress();
+  updateSectionCounts();
+  checkAllDone();
+  setDateHeader();
+</script>
+</body>
+</html>

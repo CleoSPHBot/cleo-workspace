@@ -1,0 +1,8 @@
+[main/sessions/main/ced4c86c-68d9-4ba6-af41-9164489cea20.jsonl#L25] User: According to cadence, when was last time I washed my hair
+[main/sessions/main/ced4c86c-68d9-4ba6-af41-9164489cea20.jsonl#L26] Assistant: Let me check your Cadence check-in data for that!
+[main/sessions/main/ced4c86c-68d9-4ba6-af41-9164489cea20.jsonl#L36] Assistant: Hmm, the `cadence-dev` database isn't showing up on this cluster. Let me check the Cadence server directly.
+[main/sessions/main/ced4c86c-68d9-4ba6-af41-9164489cea20.jsonl#L50] Assistant: Got it! The most recent hair wash in your Cadence notes was *May 12, 2026* — you noted you took a bath and hair shower that day. That's the last time it's explicitly mentioned. Here's the full hair-washing history from your notes: - *May 12* — bath + hair shower - 
+[main/sessions/main/ced4c86c-68d9-4ba6-af41-9164489cea20.jsonl#L52] User: It’s not recorded in the notes, it should be in the meds today tab of cadence
+[main/sessions/main/ced4c86c-68d9-4ba6-af41-9164489cea20.jsonl#L53] Assistant: Got it! Let me check the med log for hair washing entries.
+[main/sessions/main/ced4c86c-68d9-4ba6-af41-9164489cea20.jsonl#L55] Assistant: There it is — `hair_shower`! Let me pull the most recent entry.
+[main/sessions/main/ced4c86c-68d9-4ba6-af41-9164489cea20.jsonl#L57] Assistant: Your last hair shower was *July 3rd* — so about 9 days ago. Here's your recent history: - July 3 - June 25 - June 14 - June 6 - May 25 - May 12 Looks like roughly every 8–11 days on average! 🚿
