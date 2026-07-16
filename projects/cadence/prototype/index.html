@@ -179,6 +179,28 @@
       font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
       color: #5a7a98; margin-bottom: 10px;
     }
+    /* M4 composite status badge */
+    .m4-badge {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 12px; border-radius: 10px; margin-bottom: 10px;
+      border: 1px solid transparent;
+    }
+    .m4-badge.ok   { background: #0d2b1a; border-color: #4caf7d40; }
+    .m4-badge.warn { background: #2a1f08; border-color: #f0c04040; }
+    .m4-badge.over { background: #2a0d0d; border-color: #e05a5a40; }
+    .m4-badge-left { display: flex; flex-direction: column; gap: 3px; }
+    .m4-badge-label { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #5a7a98; }
+    .m4-badge-status { font-size: 14px; font-weight: 700; }
+    .m4-badge.ok   .m4-badge-status { color: #4caf7d; }
+    .m4-badge.warn .m4-badge-status { color: #f0c040; }
+    .m4-badge.over .m4-badge-status { color: #e05a5a; }
+    .m4-badge-reason { font-size: 11px; color: #7a9ab8; line-height: 1.35; max-width: 68%; text-align: right; }
+    /* Detail rows (M2 + M3) under badge */
+    .bm-detail-rows { display: flex; flex-direction: column; gap: 6px; }
+    .bm-detail-row { display: flex; flex-direction: column; gap: 3px; }
+    .bm-detail-header { display: flex; justify-content: space-between; align-items: center; }
+    .bm-detail-label { font-size: 10px; color: #5a7a98; font-weight: 600; }
+    .bm-detail-value { font-size: 10px; color: #b0c8e0; font-weight: 600; }
     /* Recommended ceiling — the actionable one */
     .ceiling-card {
       margin-bottom: 10px;
@@ -656,38 +678,34 @@
     <!-- Budget Models stacked -->
     <div class="budget-stack" id="budget-stack" style="display:none">
       <div class="budget-stack-title">⚡ Energy Budget</div>
-      <!-- Model 1: Visible PacePoints -->
-      <div class="bm-row">
-        <div class="bm-header">
-          <span class="bm-label">Visible<span class="bm-asterisk" id="bm1-asterisk" style="display:none">*</span></span>
-          <span class="bm-value" id="bm1-value">—</span>
+      <!-- M4 Composite badge -->
+      <div class="m4-badge ok" id="bm4-badge">
+        <div class="m4-badge-left">
+          <span class="m4-badge-label">Composite signal</span>
+          <span class="m4-badge-status" id="bm4-status">—</span>
         </div>
-        <div class="bm-track"><div class="bm-fill" id="bm1-fill"></div></div>
+        <span class="m4-badge-reason" id="bm4-reason"></span>
       </div>
-      <!-- Model 2: WHOOP Recovery-adjusted -->
-      <div class="bm-row">
-        <div class="bm-header">
-          <span class="bm-label">Recovery-adj</span>
-          <span class="bm-value" id="bm2-value">—</span>
+      <!-- M2 + M3 detail rows -->
+      <div class="bm-detail-rows">
+        <div class="bm-detail-row">
+          <div class="bm-detail-header">
+            <span class="bm-detail-label">Recovery-adj utilization<span class="bm-asterisk" id="bm1-asterisk" style="display:none">*</span></span>
+            <span class="bm-detail-value" id="bm2-value">—</span>
+          </div>
+          <div class="bm-track"><div class="bm-fill" id="bm2-fill"></div></div>
         </div>
-        <div class="bm-track"><div class="bm-fill" id="bm2-fill"></div></div>
-      </div>
-      <!-- Model 3: Sleep capacity -->
-      <div class="bm-row">
-        <div class="bm-header">
-          <span class="bm-label">Sleep capacity</span>
-          <span class="bm-value" id="bm3-value">—</span>
+        <div class="bm-detail-row">
+          <div class="bm-detail-header">
+            <span class="bm-detail-label">Sleep capacity</span>
+            <span class="bm-detail-value" id="bm3-value">—</span>
+          </div>
+          <div class="bm-track"><div class="bm-fill" id="bm3-fill"></div></div>
         </div>
-        <div class="bm-track"><div class="bm-fill" id="bm3-fill"></div></div>
       </div>
-      <!-- Model 4: Yesterday's recovery (lag predictor) -->
-      <div class="bm-row">
-        <div class="bm-header">
-          <span class="bm-label">Yesterday recovery</span>
-          <span class="bm-value" id="bm4-value">—</span>
-        </div>
-        <div class="bm-track"><div class="bm-fill" id="bm4-fill"></div></div>
-      </div>
+      <!-- hidden stubs so old setBar calls don't throw -->
+      <span id="bm1-value" style="display:none"></span><span id="bm1-fill" style="display:none"></span>
+      <span id="bm4-value" style="display:none"></span><span id="bm4-fill" style="display:none"></span>
     </div>
 
     <!-- Check-in progress -->
@@ -738,35 +756,31 @@
     <!-- Yesterday Budget Models stacked -->
     <div class="budget-stack" id="yest-budget-stack" style="display:none">
       <div class="budget-stack-title">⚡ Energy Budget</div>
-      <div class="bm-row">
-        <div class="bm-header">
-          <span class="bm-label">Visible<span class="bm-asterisk" id="ybm1-asterisk" style="display:none">*</span></span>
-          <span class="bm-value" id="ybm1-value">—</span>
+      <div class="m4-badge ok" id="ybm4-badge">
+        <div class="m4-badge-left">
+          <span class="m4-badge-label">Composite signal</span>
+          <span class="m4-badge-status" id="ybm4-status">—</span>
         </div>
-        <div class="bm-track"><div class="bm-fill" id="ybm1-fill"></div></div>
+        <span class="m4-badge-reason" id="ybm4-reason"></span>
       </div>
-      <div class="bm-row">
-        <div class="bm-header">
-          <span class="bm-label">Recovery-adj</span>
-          <span class="bm-value" id="ybm2-value">—</span>
+      <div class="bm-detail-rows">
+        <div class="bm-detail-row">
+          <div class="bm-detail-header">
+            <span class="bm-detail-label">Recovery-adj utilization<span class="bm-asterisk" id="ybm1-asterisk" style="display:none">*</span></span>
+            <span class="bm-detail-value" id="ybm2-value">—</span>
+          </div>
+          <div class="bm-track"><div class="bm-fill" id="ybm2-fill"></div></div>
         </div>
-        <div class="bm-track"><div class="bm-fill" id="ybm2-fill"></div></div>
-      </div>
-      <div class="bm-row">
-        <div class="bm-header">
-          <span class="bm-label">Sleep capacity</span>
-          <span class="bm-value" id="ybm3-value">—</span>
+        <div class="bm-detail-row">
+          <div class="bm-detail-header">
+            <span class="bm-detail-label">Sleep capacity</span>
+            <span class="bm-detail-value" id="ybm3-value">—</span>
+          </div>
+          <div class="bm-track"><div class="bm-fill" id="ybm3-fill"></div></div>
         </div>
-        <div class="bm-track"><div class="bm-fill" id="ybm3-fill"></div></div>
       </div>
-      <!-- Model 4: Day-before-yesterday recovery (lag predictor) -->
-      <div class="bm-row">
-        <div class="bm-header">
-          <span class="bm-label">Prior recovery</span>
-          <span class="bm-value" id="ybm4-value">—</span>
-        </div>
-        <div class="bm-track"><div class="bm-fill" id="ybm4-fill"></div></div>
-      </div>
+      <span id="ybm1-value" style="display:none"></span><span id="ybm1-fill" style="display:none"></span>
+      <span id="ybm4-value" style="display:none"></span><span id="ybm4-fill" style="display:none"></span>
     </div>
     <div style="display:none" id="yest-budget-row"><div class="budget-track"><div class="budget-fill" id="yest-budget-fill"></div></div>
       <div class="budget-sub" id="yest-budget-sub"></div>
@@ -815,34 +829,31 @@
     <div id="twod-sep-2" style="display:none;height:1px;background:rgba(255,255,255,0.07);margin:10px 0"></div>
     <div class="budget-stack" id="twod-budget-stack" style="display:none">
       <div class="budget-stack-title">⚡ Energy Budget</div>
-      <div class="bm-row">
-        <div class="bm-header">
-          <span class="bm-label">Visible<span class="bm-asterisk" id="tbm1-asterisk" style="display:none">*</span></span>
-          <span class="bm-value" id="tbm1-value">—</span>
+      <div class="m4-badge ok" id="tbm4-badge">
+        <div class="m4-badge-left">
+          <span class="m4-badge-label">Composite signal</span>
+          <span class="m4-badge-status" id="tbm4-status">—</span>
         </div>
-        <div class="bm-track"><div class="bm-fill" id="tbm1-fill"></div></div>
+        <span class="m4-badge-reason" id="tbm4-reason"></span>
       </div>
-      <div class="bm-row">
-        <div class="bm-header">
-          <span class="bm-label">Recovery-adj</span>
-          <span class="bm-value" id="tbm2-value">—</span>
+      <div class="bm-detail-rows">
+        <div class="bm-detail-row">
+          <div class="bm-detail-header">
+            <span class="bm-detail-label">Recovery-adj utilization<span class="bm-asterisk" id="tbm1-asterisk" style="display:none">*</span></span>
+            <span class="bm-detail-value" id="tbm2-value">—</span>
+          </div>
+          <div class="bm-track"><div class="bm-fill" id="tbm2-fill"></div></div>
         </div>
-        <div class="bm-track"><div class="bm-fill" id="tbm2-fill"></div></div>
-      </div>
-      <div class="bm-row">
-        <div class="bm-header">
-          <span class="bm-label">Sleep capacity</span>
-          <span class="bm-value" id="tbm3-value">—</span>
+        <div class="bm-detail-row">
+          <div class="bm-detail-header">
+            <span class="bm-detail-label">Sleep capacity</span>
+            <span class="bm-detail-value" id="tbm3-value">—</span>
+          </div>
+          <div class="bm-track"><div class="bm-fill" id="tbm3-fill"></div></div>
         </div>
-        <div class="bm-track"><div class="bm-fill" id="tbm3-fill"></div></div>
       </div>
-      <div class="bm-row">
-        <div class="bm-header">
-          <span class="bm-label">Prior recovery</span>
-          <span class="bm-value" id="tbm4-value">—</span>
-        </div>
-        <div class="bm-track"><div class="bm-fill" id="tbm4-fill"></div></div>
-      </div>
+      <span id="tbm1-value" style="display:none"></span><span id="tbm1-fill" style="display:none"></span>
+      <span id="tbm4-value" style="display:none"></span><span id="tbm4-fill" style="display:none"></span>
     </div>
   </div>
 
@@ -1957,46 +1968,57 @@
         document.getElementById(valueId).textContent = label;
       }
 
-      // Model 1: Visible PacePoints
-      if (yPace != null) {
-        const pct1 = Math.round((yPace / baseBudget) * 100);
-        setBar('ybm1-fill', 'ybm1-value', pct1, `${yPace} / ${baseBudget} pts`);
-        document.getElementById('ybm1-asterisk').style.display = yAdderall ? 'inline' : 'none';
-      } else {
-        document.getElementById('ybm1-value').textContent = '—';
-        document.getElementById('ybm1-fill').style.width = '0%';
-      }
+      document.getElementById('ybm1-asterisk').style.display = yAdderall ? 'inline' : 'none';
 
-      // Model 2: Recovery-adjusted
+      // Model 2: Recovery-adjusted utilization
+      let ym2Over = false;
       if (yestRec != null) {
         const adjBudget = Math.max(1, Math.round(baseBudget * (yestRec / 100)));
         const spent2    = yPace ?? 0;
         const pct2      = yPace != null ? Math.round((spent2 / adjBudget) * 100) : yestRec;
         const label2    = yPace != null ? `${spent2} / ${adjBudget} pts` : `${yestRec}% → ${adjBudget} pts`;
         setBar('ybm2-fill', 'ybm2-value', pct2, label2);
+        ym2Over = pct2 >= 100;
       } else {
         document.getElementById('ybm2-value').textContent = '—';
         document.getElementById('ybm2-fill').style.width = '0%';
       }
 
       // Model 3: Sleep capacity
+      let ym3Over = false;
       if (yestSlp != null) {
         const slColor = yestSlp >= 85 ? '#4caf7d' : yestSlp >= 60 ? '#f0c040' : '#e05a5a';
         setBar('ybm3-fill', 'ybm3-value', yestSlp, `${yestSlp}%`, slColor);
+        ym3Over = yestSlp < 60;
       } else {
         document.getElementById('ybm3-value').textContent = '—';
         document.getElementById('ybm3-fill').style.width = '0%';
       }
 
-      // Model 4: Day-before-yesterday recovery (lag predictor for yesterday)
-      const twoDaysAgoW  = dashData?.whoop?.[dateKey(2)];
-      const twoDaysAgoRec = twoDaysAgoW?.recovery?.score?.recovery_score;
-      if (twoDaysAgoRec != null) {
-        const slColor4 = twoDaysAgoRec >= 67 ? '#4caf7d' : twoDaysAgoRec >= 34 ? '#f0c040' : '#e05a5a';
-        setBar('ybm4-fill', 'ybm4-value', twoDaysAgoRec, `${twoDaysAgoRec}%`, slColor4);
+      // M4 Composite badge
+      const yBadge = document.getElementById('ybm4-badge');
+      const yStatusEl = document.getElementById('ybm4-status');
+      const yReasonEl = document.getElementById('ybm4-reason');
+      if (yestRec == null && yestSlp == null) {
+        yBadge.style.display = 'none';
       } else {
-        document.getElementById('ybm4-value').textContent = '—';
-        document.getElementById('ybm4-fill').style.width = '0%';
+        yBadge.style.display = 'flex';
+        if (ym2Over && ym3Over) {
+          yBadge.className = 'm4-badge over'; yStatusEl.textContent = '🔴 Over budget';
+          yReasonEl.textContent = 'Both recovery-adj and sleep flagged.';
+        } else if (ym2Over) {
+          yBadge.className = 'm4-badge over'; yStatusEl.textContent = '🔴 Over budget';
+          yReasonEl.textContent = 'Spent beyond recovery-adjusted capacity.';
+        } else if (ym3Over) {
+          yBadge.className = 'm4-badge warn'; yStatusEl.textContent = '🟡 Low capacity';
+          yReasonEl.textContent = 'Poor sleep — reduced tolerance.';
+        } else if (yestSlp != null && yestSlp < 75) {
+          yBadge.className = 'm4-badge warn'; yStatusEl.textContent = '🟡 Watch';
+          yReasonEl.textContent = `Sleep at ${yestSlp}% — below par.`;
+        } else {
+          yBadge.className = 'm4-badge ok'; yStatusEl.textContent = '🟢 Within budget';
+          yReasonEl.textContent = yestRec != null ? `Recovery ${yestRec}% · sleep ${yestSlp ?? '—'}%` : `Sleep ${yestSlp}%`;
+        }
       }
     })();
 
@@ -2099,45 +2121,57 @@
         document.getElementById(valueId).textContent = label;
       }
 
-      // Model 1: Visible PacePoints
-      if (tPace != null) {
-        const pct1 = Math.round((tPace / baseBudget) * 100);
-        setBar('tbm1-fill', 'tbm1-value', pct1, `${tPace} / ${baseBudget} pts`);
-        document.getElementById('tbm1-asterisk').style.display = tAdderall ? 'inline' : 'none';
-      } else {
-        document.getElementById('tbm1-value').textContent = '—';
-        document.getElementById('tbm1-fill').style.width = '0%';
-      }
+      document.getElementById('tbm1-asterisk').style.display = tAdderall ? 'inline' : 'none';
 
-      // Model 2: Recovery-adjusted
+      // Model 2: Recovery-adjusted utilization
+      let tm2Over = false;
       if (tRec != null) {
         const adjBudget = Math.max(1, Math.round(baseBudget * (tRec / 100)));
         const spent2    = tPace ?? 0;
         const pct2      = tPace != null ? Math.round((spent2 / adjBudget) * 100) : tRec;
         const label2    = tPace != null ? `${spent2} / ${adjBudget} pts` : `${tRec}% → ${adjBudget} pts`;
         setBar('tbm2-fill', 'tbm2-value', pct2, label2);
+        tm2Over = pct2 >= 100;
       } else {
         document.getElementById('tbm2-value').textContent = '—';
         document.getElementById('tbm2-fill').style.width = '0%';
       }
 
       // Model 3: Sleep capacity
+      let tm3Over = false;
       if (tSleep != null) {
         const slColor = tSleep >= 85 ? '#4caf7d' : tSleep >= 60 ? '#f0c040' : '#e05a5a';
         setBar('tbm3-fill', 'tbm3-value', tSleep, `${tSleep}%`, slColor);
+        tm3Over = tSleep < 60;
       } else {
         document.getElementById('tbm3-value').textContent = '—';
         document.getElementById('tbm3-fill').style.width = '0%';
       }
 
-      // Model 4: Three-days-ago recovery (lag predictor for two days ago)
-      const threeDRec = trDW?.recovery?.score?.recovery_score;
-      if (threeDRec != null) {
-        const slColor4 = threeDRec >= 67 ? '#4caf7d' : threeDRec >= 34 ? '#f0c040' : '#e05a5a';
-        setBar('tbm4-fill', 'tbm4-value', threeDRec, `${threeDRec}%`, slColor4);
+      // M4 Composite badge
+      const tBadge = document.getElementById('tbm4-badge');
+      const tStatusEl = document.getElementById('tbm4-status');
+      const tReasonEl = document.getElementById('tbm4-reason');
+      if (tRec == null && tSleep == null) {
+        tBadge.style.display = 'none';
       } else {
-        document.getElementById('tbm4-value').textContent = '—';
-        document.getElementById('tbm4-fill').style.width = '0%';
+        tBadge.style.display = 'flex';
+        if (tm2Over && tm3Over) {
+          tBadge.className = 'm4-badge over'; tStatusEl.textContent = '🔴 Over budget';
+          tReasonEl.textContent = 'Both recovery-adj and sleep flagged.';
+        } else if (tm2Over) {
+          tBadge.className = 'm4-badge over'; tStatusEl.textContent = '🔴 Over budget';
+          tReasonEl.textContent = 'Spent beyond recovery-adjusted capacity.';
+        } else if (tm3Over) {
+          tBadge.className = 'm4-badge warn'; tStatusEl.textContent = '🟡 Low capacity';
+          tReasonEl.textContent = 'Poor sleep — reduced tolerance.';
+        } else if (tSleep != null && tSleep < 75) {
+          tBadge.className = 'm4-badge warn'; tStatusEl.textContent = '🟡 Watch';
+          tReasonEl.textContent = `Sleep at ${tSleep}% — below par.`;
+        } else {
+          tBadge.className = 'm4-badge ok'; tStatusEl.textContent = '🟢 Within budget';
+          tReasonEl.textContent = tRec != null ? `Recovery ${tRec}% · sleep ${tSleep ?? '—'}%` : `Sleep ${tSleep}%`;
+        }
       }
     })();
 
@@ -2489,46 +2523,62 @@
         document.getElementById(valueId).textContent = label;
       }
 
-      // Model 1: Visible PacePoints vs base budget
-      if (pacePoints != null) {
-        const pct1 = Math.round((pacePoints / baseBudget) * 100);
-        setBar('bm1-fill', 'bm1-value', pct1, `${pacePoints} / ${baseBudget} pts`);
-        document.getElementById('bm1-asterisk').style.display = hasAdderall ? 'inline' : 'none';
-      } else {
-        document.getElementById('bm1-value').textContent = '—';
-        document.getElementById('bm1-fill').style.width = '0%';
-      }
+      document.getElementById('bm1-asterisk').style.display = hasAdderall ? 'inline' : 'none';
 
-      // Model 2: WHOOP Recovery-adjusted budget (how much she could handle)
+      // Model 2: WHOOP Recovery-adjusted utilization
+      let m2Over = false;
       if (recovery != null) {
         const adjBudget = Math.max(1, Math.round(baseBudget * (recovery / 100)));
         const spent2    = pacePoints ?? 0;
         const pct2      = pacePoints != null ? Math.round((spent2 / adjBudget) * 100) : recovery;
         const label2    = pacePoints != null ? `${spent2} / ${adjBudget} pts` : `${recovery}% → ${adjBudget} pts`;
         setBar('bm2-fill', 'bm2-value', pct2, label2);
+        m2Over = pct2 >= 100;
       } else {
         document.getElementById('bm2-value').textContent = '—';
         document.getElementById('bm2-fill').style.width = '0%';
       }
 
-      // Model 3: Sleep capacity (0–100% bar, sleep performance score)
+      // Model 3: Sleep capacity
+      let m3Over = false;
       if (sleepPerf != null) {
         const slColor = sleepPerf >= 85 ? '#4caf7d' : sleepPerf >= 60 ? '#f0c040' : '#e05a5a';
         setBar('bm3-fill', 'bm3-value', sleepPerf, `${sleepPerf}%`, slColor);
+        m3Over = sleepPerf < 60;
       } else {
         document.getElementById('bm3-value').textContent = '—';
         document.getElementById('bm3-fill').style.width = '0%';
       }
 
-      // Model 4: Yesterday's recovery (lag predictor — what she banked going into today)
-      const yestW_today = dashData?.whoop?.[dateKey(1)];
-      const yestRec_today = yestW_today?.recovery?.score?.recovery_score;
-      if (yestRec_today != null) {
-        const slColor4 = yestRec_today >= 67 ? '#4caf7d' : yestRec_today >= 34 ? '#f0c040' : '#e05a5a';
-        setBar('bm4-fill', 'bm4-value', yestRec_today, `${yestRec_today}%`, slColor4);
+      // M4 Composite badge (M2 OR M3)
+      const badge = document.getElementById('bm4-badge');
+      const statusEl = document.getElementById('bm4-status');
+      const reasonEl = document.getElementById('bm4-reason');
+      if (recovery == null && sleepPerf == null) {
+        badge.style.display = 'none';
       } else {
-        document.getElementById('bm4-value').textContent = '—';
-        document.getElementById('bm4-fill').style.width = '0%';
+        badge.style.display = 'flex';
+        if (m2Over && m3Over) {
+          badge.className = 'm4-badge over';
+          statusEl.textContent = '🔴 Over budget';
+          reasonEl.textContent = 'Recovery-adj utilization and sleep both flagged.';
+        } else if (m2Over) {
+          badge.className = 'm4-badge over';
+          statusEl.textContent = '🔴 Over budget';
+          reasonEl.textContent = 'Spending exceeds recovery-adjusted capacity.';
+        } else if (m3Over) {
+          badge.className = 'm4-badge warn';
+          statusEl.textContent = '🟡 Low capacity';
+          reasonEl.textContent = 'Poor sleep — reduced tolerance today.';
+        } else if (sleepPerf != null && sleepPerf < 75) {
+          badge.className = 'm4-badge warn';
+          statusEl.textContent = '🟡 Watch';
+          reasonEl.textContent = `Sleep at ${sleepPerf}% — not critical but below par.`;
+        } else {
+          badge.className = 'm4-badge ok';
+          statusEl.textContent = '🟢 Within budget';
+          reasonEl.textContent = recovery != null ? `Recovery ${recovery}% · sleep ${sleepPerf ?? '—'}%` : `Sleep ${sleepPerf}%`;
+        }
       }
     })();
 
@@ -3026,8 +3076,8 @@
   async function init() {
     try {
       const [statusRes, dashRes] = await Promise.all([
-        fetch(userParam('/api/checkin/status?days=14')),
-        fetch(userParam('/api/dashboard')),
+        fetch(userParam('/api/checkin/status?days=14') + '&_=' + Date.now()),
+        fetch(userParam('/api/dashboard') + '?_=' + Date.now()),
       ]);
       const statusData = await statusRes.json();
       dashData = await dashRes.json();
@@ -3061,8 +3111,8 @@
         if (type === 'whoop' || type === 'visible') {
           // Re-fetch dashboard and rebuild home
           const [statusRes, dashRes] = await Promise.all([
-            fetch(userParam('/api/checkin/status?days=14')),
-            fetch(userParam('/api/dashboard')),
+            fetch(userParam('/api/checkin/status?days=14') + '&_=' + Date.now()),
+            fetch(userParam('/api/dashboard') + '?_=' + Date.now()),
           ]);
           const statusData = await statusRes.json();
           dashData = await dashRes.json();
