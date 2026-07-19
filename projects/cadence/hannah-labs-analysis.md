@@ -1,6 +1,6 @@
 # Hannah — Lab Analysis
-*Last updated: 2026-05-28*
-*Sources: 40+ files from Lab Tests.zip — labs 2022–2025, SOAP notes Jul 2024–Jan 2025, specialty panels, 23andMe*
+*Last updated: 2026-07-19*
+*Sources: 40+ files from Lab Tests.zip — labs 2022–2025, SOAP notes Jul 2024–Jan 2025, specialty panels, 23andMe; new batch 2026-07-19: MIT Health labs (Mar–Apr 2024 confirmatory), MGB letter + Jun 25 2026 labs, RTHM Sept 2025 panel, BWH sleep study May 2025*
 
 ---
 
@@ -375,4 +375,170 @@ Hannah's labs, taken together, present a compelling multi-mechanism case for gut
 
 ---
 
-*Analysis covers: 2022–2025. Sources: 40+ files (Lab Tests.zip). More labs expected — file will be updated.*
+---
+
+## 📅 2026 Labs (New Batch — 2026-07-19)
+
+### Jun 25, 2026 — MGB / Brigham and Women's Primary Care (Dr. Medley)
+*Source: Mass General Brigham Patient Gateway letter + lab results*
+
+| Date | Test | Value | Flag |
+|---|---|---|---|
+| Jun 25, 2026 | Ferritin | 191 ug/L (ref 30–150) | 🚨 HIGH |
+| Jun 25, 2026 | Iron | 92 ug/dL (ref 28–170) | Normal |
+| Jun 25, 2026 | TIBC | 347 ug/dL (ref 220–460) | Normal |
+| Jun 25, 2026 | Transferrin Saturation | 27% (ref 14–50) | Normal |
+| Jun 25, 2026 | Vitamin D 25-OH | 49 ng/mL (ref 20–50) | Normal (upper bound) |
+| Jun 25, 2026 | TSH | 3.32 uIU/mL (ref 0.40–5.00) | Normal |
+| Jun 25, 2026 | AST | 20 U/L (ref 10–50) | Normal |
+| Jun 25, 2026 | ALT | 10 U/L (ref 10–50) | Normal |
+| Jun 25, 2026 | Alkaline Phosphatase | 40 U/L (ref 40–130) | Normal |
+| Jun 25, 2026 | Bilirubin Total | 0.2 mg/dL (ref 0.0–1.2) | Normal |
+| Jun 25, 2026 | Total Protein | 7.6 g/dL (ref 6.4–8.3) | Normal |
+| Jun 25, 2026 | Albumin | 3.9 g/dL (ref 3.5–5.2) | Normal |
+| Jun 25, 2026 | Globulin | 3.7 g/dL (ref 1.9–4.1) | Normal |
+| Jun 25, 2026 | Sodium | 136 mmol/L (ref 136–145) | Normal |
+| Jun 25, 2026 | Potassium | 4.1 mmol/L (ref 3.4–5.1) | Normal |
+| Jun 25, 2026 | Chloride | 101 mmol/L (ref 98–107) | Normal |
+| Jun 25, 2026 | CO2 | 27 mmol/L (ref 20–31) | Normal |
+| Jun 25, 2026 | BUN | 10 mg/dL (ref 6–23) | Normal |
+| Jun 25, 2026 | Creatinine | 0.73 mg/dL (ref 0.50–1.00) | Normal |
+| Jun 25, 2026 | Glucose | 84 mg/dL (ref 70–99) | Normal |
+| Jun 25, 2026 | Calcium | 9.4 mg/dL (ref 8.5–10.5) | Normal |
+| Jun 25, 2026 | eGFR | 113 mL/min/1.73m² (ref >59) | Normal |
+| Jun 25, 2026 | Anion Gap | 8 mmol/L (ref 3–17) | Normal |
+| Jun 25, 2026 | WBC | 8.43 K/uL (ref 4.00–11.00) | Normal |
+| Jun 25, 2026 | RBC | 4.22 M/uL (ref 4.00–5.20) | Normal |
+| Jun 25, 2026 | Hemoglobin | 12.8 g/dL (ref 12.0–16.0) | Normal |
+| Jun 25, 2026 | Hematocrit | 38.0% (ref 36.0–46.0) | Normal |
+| Jun 25, 2026 | MCV | 90.0 fL (ref 80.0–100.0) | Normal |
+| Jun 25, 2026 | MCH | 30.3 pg (ref 27.0–31.0) | Normal |
+| Jun 25, 2026 | MCHC | 33.7 g/dL (ref 32.0–36.0) | Normal |
+| Jun 25, 2026 | RDW-CV | 12.0% (ref 11.5–14.5) | Normal |
+| Jun 25, 2026 | Platelets | 324 K/uL (ref 150–450) | Normal |
+| Jun 25, 2026 | Cholesterol | 180 mg/dL (ref <200) | Normal |
+| Jun 25, 2026 | HDL | 59 mg/dL (ref >=40) | Normal |
+| Jun 25, 2026 | LDL (calculated) | 66 mg/dL (ref <130) | Normal |
+| Jun 25, 2026 | **Triglycerides** | **355 mg/dL (ref <=150)** | **🚨 HIGH (2.4x limit)** |
+| Jun 25, 2026 | Hemoglobin A1c | 5.2% (ref 4.3–5.6) | Normal |
+| Jun 25, 2026 | Cardiac Risk Ratio | 3.1 (ref 0.0–5.0) | Normal |
+
+**Provider note (Dr. Medley letter):** "Results are normal other than mildly elevated ferritin." Letter did not address the triglycerides.
+
+---
+
+### Sep 7, 2025 — RTHM Panel (CBC with Differential, ESR, Urinalysis)
+*Source: My Labs / RTHM PDF — 53 total results, partial extraction*
+
+| Date | Test | Value | Flag |
+|---|---|---|---|
+| Sep 7, 2025 | ESR | 20 mm/hr (ref 0–19) | 🚩 HIGH |
+| Sep 7, 2025 | Urine Blood | 0.06 mg/dL (ref 0.00–0.03) | 🚩 HIGH |
+| Sep 7, 2025 | Basophils % | 0.70% (ref 0.10–1.20) | Normal |
+| Sep 7, 2025 | Basophils absolute | 0.06 x10³/µL (ref 0.01–0.08) | Normal |
+| Sep 7, 2025 | Eosinophils % | 1.00% (ref 0.70–5.80) | Normal |
+| Sep 7, 2025 | Eosinophils absolute | 0.083 x10³/µL (ref 0.040–0.360) | Normal |
+
+*Note: 53 total results on file; only partial results captured from PDF. ESR and urine blood findings are consistent with existing timeline (ESR returning HIGH in Sep 2025 after being normal Jul 2025).*
+
+---
+
+### May 20, 2025 — BWH Faulkner Sleep Study (Out of Center)
+*Source: Brigham and Women's / Neurocare Inc. — Home Sleep Apnea Test (Type 3)*
+
+| Parameter | Value |
+|---|---|
+| Study type | Home Sleep Apnea Test (Type 3), Alice NightOne |
+| Total Recording Time | 619.4 min (~10.3 hrs) |
+| Average Heart Rate | 77.0 bpm |
+| High Heart Rate | 114 bpm |
+| Low Heart Rate | 64 bpm |
+| Min SpO2 | 93% |
+| Average SpO2 | 98% |
+| Time below 89% | 0.0 min |
+| Desaturation Index (>3%) | 2.76/hr |
+| **Total AHI** | **5.1/hr** |
+| Supine AHI | 6.3/hr |
+| Non-supine AHI | 3.51/hr |
+| 4% Index | 4.23/hr |
+| CAHI (central) | 0.10 |
+| Snoring Index | 8.17/hr |
+| Obstructive Apneas | 41 |
+| Mixed Apneas | 0 |
+| Central Apneas | 1 |
+| Hypopneas | 10 |
+| Total respiratory events | 52 |
+| Periodic Breathing | No |
+
+**Interpretation:** AHI 5.1/hr = *mild* sleep-disordered breathing (OSA threshold is 5.0/hr). Events worse supine. Mild oxyhemoglobin desaturation with obstructive events. Snoring throughout. Home study — may understate true AHI (no EEG, can't detect arousals or staging).
+
+---
+
+## 🔍 New Findings Analysis (2026-07-19)
+
+### What's genuinely new (from original batch + Labs Compilation spreadsheet):
+
+**1. Sleep study (May 2025) — NEW, not previously in record**
+- AHI 5.1 = borderline mild OSA
+- Not previously documented. Clinically relevant for LC: sleep fragmentation → worsened HRV → worsened recovery arc
+- Position-dependent (worse supine). Simple intervention: positional therapy
+- Needs follow-up: was CPAP/MAD prescribed? Any treatment initiated?
+
+**2. Triglycerides 355 mg/dL (Jun 2026) — NOTABLE**
+- 2.4x the upper limit. Dr. Medley did not mention this in her letter.
+- No prior trig value in the record for comparison
+- Possible causes in her context: dysautonomia/HPA dysregulation → elevated cortisol → hypertriglyceridemia; LC metabolic dysfunction; MCAS-driven lipid dysregulation; rarely: mold toxin effects on lipid metabolism
+- A1c normal (5.2%), glucose normal — not a diabetic picture
+- LDL actually low (66), HDL decent (59). Isolated hypertriglyceridemia pattern
+- Worth flagging to her providers — not "normal other than ferritin"
+
+**3. Ferritin 191 ug/L (Jun 2026) — SIGNIFICANT REVERSAL**
+- Was critically low (5–11 ng/mL, ref 13–150) in early 2024
+- Now elevated at 191 ug/L (ref 30–150)
+- Iron, TIBC, transferrin saturation all normal → NOT iron overload
+- Pattern = inflammation/acute phase response (ferritin is an acute-phase reactant)
+- RDW normalized (was 17% in Mar 2024, now 12%) — iron deficiency anemia resolved
+- Hemoglobin improved: 12.2 (Mar 2024) → 12.8 (Jun 2026)
+- The iron deficiency that was a major flag in 2024 has resolved, but ferritin elevation now signals ongoing inflammation
+
+**4. ESR Sep 2025 (20 mm/hr) — consistent with pattern**
+- Same value as Sep 8, 2025 entry already in record — likely DUPLICATE
+- Confirms oscillating inflammation pattern (ESR 30 in Jun 2025 → 10 in Jul 2025 → 20 in Sep 2025)
+
+**5. Urine blood Sep 2025 — consistent with existing record**
+- Urine blood positive on dipstick already noted in record
+- Quantitative value here: 0.06 mg/dL (ref 0.00–0.03)
+
+**6. MIT Health labs (Feb–Apr 2024) — MOSTLY DUPLICATE**
+- All values consistent with existing 2024 timeline
+- Confirms: ferritin 11 (Feb 2024), ferritin 5 (Mar 2024), RDW elevation, neutrophil elevation, TIBC elevation, normal iron sat
+- UA blood LARGE (Apr 2024) — already noted in record as likely artifact (no RBCs on micro)
+
+### Ferritin trajectory (key change):
+| Date | Ferritin | Context |
+|---|---|---|
+| Feb 2024 | 11 ng/mL | Iron deficiency |
+| Mar 2024 | 5 ng/mL | Iron deficiency (critical low) |
+| Jun 2026 | 191 ug/L | Elevated — acute phase/inflammation |
+
+**7. Zinc critically low (Apr 2, 2024) — NEW, not previously in record**
+- Zinc 37 mcg/dL (ref 60–130) — well below range
+- Zinc deficiency compounds immune dysfunction, wound healing impairment, and gut lining integrity
+- Relevant to her GI picture and tick-borne infection recovery
+
+**8. HbA1c 5.8% (Oct 2024) — HIGH, not previously flagged**
+- Ref <5.7%, so 5.8% = prediabetic range
+- By Jun 2026 it was back to 5.2% (normal) — likely resolved
+- Oct 2024 Sodium 132 (Low) confirms dysautonomia pattern in that period
+- IgA 414 mg/dL (ref 47–310, HIGH) already in record — confirmed here
+- Lyme (Borrelia) full ImmunoBlot IgM: Negative (Apr 2024, IgeneX) — already in record
+
+### What this means for Hannah:
+- Iron deficiency resolved (good) but replaced by inflammatory signal (ongoing concern)
+- Mild OSA is a new treatable factor that could be compounding PEM + HRV dysregulation
+- Triglycerides warrant a provider conversation — not benign at 355
+- Metabolic picture otherwise stable: liver normal, kidneys normal, glucose/A1c normal, CBC normal
+
+---
+
+*Analysis covers: 2022–2026. Sources: 40+ files (Lab Tests.zip) + 2026-07-19 batch (MIT Health, MGB, RTHM, BWH sleep study). More labs expected — file will be updated.*
