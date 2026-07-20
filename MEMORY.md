@@ -183,8 +183,8 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~77 days)
-GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~77 days and counting.**
+### Backup Failing (since ~May 2 — ~78 days)
+GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~78 days and counting.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
 Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; pending build.
@@ -196,18 +196,17 @@ Drafted two letters requesting valacyclovir 1g TID × 3–6 months for EBV react
 - **Evidence base:** Jun 2025 labs (EBV EA IgM reactive), Sep 2025 colonoscopy (patchy healing ulcers, EBV-consistent), Iwasaki Lab protocol, Komaroff & Lipkin 2023 PNAS. Valacyclovir chosen over acyclovir for ~3× bioavailability.
 - **Status:** Appointment window (June 17–30, 2026) has closed as of July 1. **No confirmation received from Hannah or David.** Thread stays open — appointment may have occurred without a report, or may be rescheduled. Ask David when next opportunity arises.
 
+## Promoted From Short-Term Memory (2026-07-20)
 
-## Promoted From Short-Term Memory (2026-07-19)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-07-14.md:13:13 -->
-- What Was New Since Yesterday's Dream: **July 8–13 reviewed.** Six daily files examined. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-14.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-14.md:15:18 -->
-- What Was New Since Yesterday's Dream: **July 8:** Dream #94. Junk block deletion #71 (July 3/4 dream fragments + echoes). Second Wednesday of July. Backup ~67 days. 199 lines.; **July 9:** Dream #95. Junk block deletion #72 (July 4/5 dream fragments + echoes). Second Thursday of July. Backup ~68 days. 198 lines.; **July 10:** Dream #96. Junk block deletion #73 (July 5/6 dream fragments + echoes). Second Friday of July. Backup ~69 days. 197 lines.; **July 11:** Dream #97. Junk block deletion #74 (July 6/7 dream fragments + echoes). Thirty consecutive maintenance nights noted. Second Saturday of July. Backup ~70 days. 199 lines. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-14.md:15-18]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-14.md:19:20 -->
-- What Was New Since Yesterday's Dream: **July 12:** Dream #98. Junk block deletion #75 (July 7/8 dream fragments + echoes). Seventy-five deletions, ninety-eight nights — 76.5% junk rate. Second Sunday of July. Backup ~71 days. 197 lines.; **July 13:** Dream #99. Junk block deletion #76 (July 8/9 dream fragments + echoes). Ninety-ninth night — one from a hundred. Second Monday of July. Backup ~72 days. 199 lines. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-14.md:19-20]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-14.md:22:22 -->
-- What Was New Since Yesterday's Dream: Thirty-three consecutive maintenance nights. No new substantive events. Hannah antiviral appointment window closed June 30 with no confirmation. Thread remains open. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-14.md:22-22]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-15.md:5:5 -->
-- Dream: _Nightly consolidation run — 13:00 UTC (Wednesday, July 15)_ [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-15.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-15.md:7:7 -->
-- Dream: One hundred and first night. Third Wednesday of July. [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-15.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-15.md:13:13 -->
+- What Was New Since Yesterday's Dream: **July 9–14 reviewed.** Six daily files examined. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-15.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-15.md:15:18 -->
+- What Was New Since Yesterday's Dream: **July 9:** Dream #95. Junk block deletion #72 (July 4/5 dream fragments + echoes). Second Thursday of July. Backup ~68 days. 198 lines.; **July 10:** Dream #96. Junk block deletion #73 (July 5/6 dream fragments + echoes). Second Friday of July. Backup ~69 days. 197 lines.; **July 11:** Dream #97. Junk block deletion #74 (July 6/7 dream fragments + echoes). Thirty consecutive maintenance nights noted. Second Saturday of July. Backup ~70 days. 199 lines.; **July 12:** Dream #98. Junk block deletion #75 (July 7/8 dream fragments + echoes). Seventy-five deletions — three quarters of a hundred.... [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-15.md:15-18]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-15.md:19:20 -->
+- What Was New Since Yesterday's Dream: **July 13:** Dream #99. Junk block deletion #76 (July 8/9 dream fragments + echoes). Ninety-ninth night — one from a hundred. Second Monday of July. Backup ~72 days. 199 lines.; **July 14:** Dream #100. Junk block deletion #77 (July 9/10 dream fragments + echoes). **One hundredth night.** Second Tuesday of July. Backup ~73 days. 197 lines. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-15.md:19-20]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-15.md:22:22 -->
+- What Was New Since Yesterday's Dream: Thirty-four consecutive maintenance nights. No new substantive events. Hannah antiviral appointment window closed June 30 with no confirmation. Thread remains open. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-15.md:22-22]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-16.md:5:5 -->
+- Dream: _Nightly consolidation run — 13:00 UTC (Thursday, July 16)_ [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-16.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-16.md:7:7 -->
+- Dream: One hundred and second night. Third Thursday of July. [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-16.md:7-7]

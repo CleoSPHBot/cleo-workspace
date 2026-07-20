@@ -39,6 +39,23 @@
 ### Early 2024
 | Date | Test | Value | Flag |
 |---|---|---|---|
+| Mar 18, 2024 | Glucose | 64 mg/dL (ref 65–99) | 🚩 LOW (Quest / Dr. Malkin) |
+| Mar 18, 2024 | hs-CRP | 4.4 mg/dL (ref <1.0 optimal) | 🚩 HIGH |
+| Mar 18, 2024 | Platelet Count | 426 K/uL (ref 140–400) | 🚩 HIGH |
+| Mar 18, 2024 | RDW | 15.6% (ref 11–15) | 🚩 HIGH |
+| Mar 18, 2024 | Ferritin | 11 ng/mL (ref 16–154) | 🚩 LOW |
+| Mar 18, 2024 | Homocysteine | 5.8 umol/L (ref <10.4) | ✅ Normal |
+| Mar 18, 2024 | Apolipoprotein B | 70 mg/dL (ref <90) | ✅ Normal |
+| Mar 18, 2024 | Lipoprotein(a) | 14 nmol/L (ref <75) | ✅ Normal |
+| Mar 18, 2024 | IGF-1 | 119 ng/mL (ref 63–373, Z=-0.7) | Normal (low-normal) |
+| Mar 18, 2024 | Magnesium | 2.2 mg/dL (ref 1.5–2.5) | ✅ Normal |
+| Mar 18, 2024 | T4 Free | 1.2 ng/dL (ref 0.8–1.8) | ✅ Normal |
+| Mar 18, 2024 | T3 Free | 3.2 pg/mL (ref 2.3–4.2) | ✅ Normal |
+| Mar 18, 2024 | Thyroid peroxidase Ab | <1 IU/mL (ref <9) | ✅ No autoimmune thyroid |
+| Mar 18, 2024 | Thyroglobulin Ab | <1 IU/mL (ref ≤1) | ✅ Normal |
+| Mar 18, 2024 | DHEA-S | 176 mcg/dL (ref 14–349) | ✅ Normal |
+| Mar 18, 2024 | Triglycerides | 118 mg/dL (ref <150) | ✅ Normal |
+| Mar 18, 2024 | HDL | 82 mg/dL (ref ≥50) | ✅ Good |
 | Feb 07, 2024 | Ferritin | 11 ng/mL (ref 16–154) | 🚩 LOW |
 | Feb 07, 2024 | RDW | 14.8% | 🚩 HIGH |
 | Feb 07, 2024 | Neutrophils abs | 7.1 x10³/µL | Upper normal |
