@@ -257,6 +257,7 @@ app.get('/api/dashboard', async (req, res) => {
 // ── Meds tracker ───────────────────────────────────────────────────────────
 // Hannah's med list (canonical keys)
 const MED_LIST = [
+  { key: 'effexor',     label: 'Effexor',       note: 'venlafaxine — SNRI' },
   { key: 'aleve',      label: 'Aleve',         note: 'naproxen 220 mg' },
   { key: 'aleve_pm',   label: 'Aleve PM',      note: 'naproxen + diphenhydramine' },
   { key: 'allegra',    label: 'Allegra',       note: 'fexofenadine — antihistamine' },
@@ -311,9 +312,6 @@ const MED_LIST = [
   { key: 'pendulum_poly',    label: 'Pendulum Polyphenol Booster', note: 'polyphenols — gut microbiome + anti-inflammatory' },
   { key: 'pendulum_meta',    label: 'Pendulum Metabolic Daily',  note: 'metabolic health + gut microbiome' },
   { key: 'pendulum_fuel',    label: 'Pendulum Gut Fuel',         note: 'gut lining + microbiome nourishment' },
-  { key: 'fiberblend',       label: 'Thorne FiberBlend Prebiotic', note: 'prebiotic fiber — gut microbiome + motility' },
-  { key: 'matcha',           label: 'Matcha',                    note: 'polyphenols + antioxidants — anti-inflammatory' },
-  { key: 'bone_broth',       label: 'Bone Broth',                note: 'collagen + glycine — gut lining repair' },
   { key: 'manuka_honey',     label: 'Manuka Honey',              note: 'antimicrobial + gut soothing' },
 ];
 const MED_KEYS = new Set(MED_LIST.map(m => m.key));
