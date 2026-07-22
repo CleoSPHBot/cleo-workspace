@@ -1,6 +1,6 @@
 # Hannah — Lab Analysis
-*Last updated: 2026-07-19*
-*Sources: 40+ files from Lab Tests.zip — labs 2022–2025, SOAP notes Jul 2024–Jan 2025, specialty panels, 23andMe; new batch 2026-07-19: MIT Health labs (Mar–Apr 2024 confirmatory), MGB letter + Jun 25 2026 labs, RTHM Sept 2025 panel, BWH sleep study May 2025*
+*Last updated: 2026-07-21*
+*Sources: 40+ files from Lab Tests.zip — labs 2022–2025, SOAP notes Jul 2024–Jan 2025, specialty panels, 23andMe; new batch 2026-07-19: MIT Health labs (Mar–Apr 2024 confirmatory), MGB letter + Jun 25 2026 labs, RTHM Sept 2025 panel, BWH sleep study May 2025; 2026-07-21: MGB health summary (Jul 18, 2026) — Dr. Medley Jun 25 visit note, autonomic testing report, SGB details, EBV Jun 2026*
 
 ---
 
@@ -111,9 +111,16 @@
 | Dec 29, 2024 | MyMycoLab IgE | All 14 markers elevated | 🚨 Allergic mold response |
 | Dec 29, 2024 | MyMycoLab | Cladosporium IgE 1.048 (+++) | 🚨 Highest marker = HIGH range |
 
-### 2025
+### Early 2025
 | Date | Test | Value | Flag |
 |---|---|---|---|
+| Jan 9, 2025 | HSV-1 IgG | Negative | ✅ No prior HSV-1 exposure |
+| Jan 9, 2025 | HSV-2 IgG | Negative | ✅ No prior HSV-2 exposure |
+| Feb 3, 2025 | Autonomic Testing (QSART, Tilt, Valsalva, HRV) | Essentially Normal — see Autonomic section | ✅ POTS criteria NOT met formally |
+| Feb 18, 2025 | Chronic Urticaria Index (CU INDX) | 6.3 (ref <10) | ✅ Not autoimmune-mediated (would be ≥10) |
+| Feb 18, 2025 | Tryptase | 3.0 ug/L (ref 0.1–11.5) | ✅ Normal — rules out systemic mastocytosis |
+| Feb 18, 2025 | Thyroglobulin Ab | <1.8 IU/mL | ✅ No thyroglobulin autoimmunity |
+| May 23, 2025 | Monospot | Negative | ✅ No acute EBV mono at this draw |
 | Jun 15, 2025 | Cortisol | 25 µg/dL (ref 3.7–19.4) | 🚨 HIGH |
 | Jun 15, 2025 | hs-CRP | 5.38 mg/dL (ref <5.0) | 🚩 HIGH |
 | Jun 15, 2025 | ESR | 30 mm/hr (ref 0–19) | 🚩 HIGH |
@@ -131,6 +138,11 @@
 | Sep 8, 2025 | Stool occult blood | POSITIVE (24 µg/g, ref <20) | 🚨 GI bleeding/erosion |
 | Sep 8, 2025 | H. pylori stool | Negative | ✅ |
 | Sep 8, 2025 | ESR | 20 mm/hr | 🚩 HIGH again |
+
+### 2026
+| Date | Test | Value | Flag |
+|---|---|---|---|
+| Jun 25, 2026 | EBV VCA IgM | **Negative** | ✅ EBV reactivation NOT active at this draw (was Reactive in Jun 2025) |
 
 ---
 
@@ -228,12 +240,14 @@ Hannah's labs, taken together, present a compelling multi-mechanism case for gut
 
 ## 🔬 Other Notable Findings
 
-### EBV Reactivation (Jun 2025)
-- Early antigen IgM reactive (0.51 ratio). Nuclear IgG positive. Capsid IgG borderline positive.
-- Historical positive mono screen Oct 2022 — initial EBV infection 2.5 years prior to LC trajectory.
-- Pattern = latent EBV reactivating periodically. One of Iwasaki's 4 LC root causes.
-- PCR plasma undetected = not active bloodstream viremia.
-- Treatment implication: Valacyclovir trial (discuss with LC specialist).
+### EBV — Timeline Update
+- **Oct 2022:** Monospot positive — initial EBV/mono infection. This is 2.5 years before LC trajectory development.
+- **Jun 2025:** EBV Early antigen IgM reactive (0.51 ratio) — active reactivation signal. Nuclear IgG+, Capsid IgG borderline+. PCR plasma undetected (not viremic).
+- **May 2025:** Monospot negative (not acute mono at this draw).
+- **Jun 2026:** EBV VCA IgM **Negative** — reactivation not active at this draw. May have resolved, or is below threshold. Does not mean EBV is permanently dormant.
+- **Pattern:** Latent EBV with periodic reactivation. One of Iwasaki's 4 LC root causes.
+- **Valacyclovir:** Dr. Medley skeptical — stated "no evidence it will help." Hannah sent her the supporting paper. EBV VCA IgM being negative at Jun 2026 draw does not fully rule out ongoing EBV-mediated pathology (latency vs. active reactivation distinction).
+- **COVID history:** COVID ×3 — July 2022 (first; triggering event for LC), August 2023, September 2024. Each subsequent infection is a potential EBV reactivation trigger.
 
 ### Hypothalamic-Pituitary Suppression (Jun 2025)
 - LH 0.01, FSH 0.46, Estradiol <10 — all severely suppressed.
@@ -322,16 +336,36 @@ Hannah's labs, taken together, present a compelling multi-mechanism case for gut
 
 1. **✅ Hannah has moved** from 4 Ellsworth Ave. Follow-up ERMI at new apartment when possible.
 2. **✅ Colonoscopy done** — healing ulcers found, celiac ruled out. Upper endoscopy (EGD) still worth considering to assess duodenum.
-3. **G6PD result missing** — ordered twice, not in file set. Needed for methylene blue safety.
-4. **Toxic metals panel not read** (PDF extraction failed) — retry needed.
-5. **MTHFR not tested** — relevant for mold illness + methylation; order C677T/A1298C.
-6. **Microbiome testing never done** — no GI Map, comprehensive stool panel, fecal calprotectin, or lactoferrin in any file. This is the most obvious gap in a gut investigation.
-7. **Fecal calprotectin not tested** — direct marker of GI mucosal inflammation. Should be ordered.
-8. **tTG-IgA discrepancy unexplained** — was she on a gluten-free diet between Mar and Oct 2024?
-9. **Anticardiolipin IgM (Jun 2025)** — single positive. Needs repeat at 12 weeks for antiphospholipid syndrome criteria.
-10. **HbA1c 5.8%** — was this repeated? Prediabetes in a 28-year-old with her history needs follow-up.
-11. **Anaplasma IgM (Mar 2024)** — was treatment given? Typically doxycycline.
-12. **Did mold protocol work?** Jan 2025 SOAP notes show protocol initiated. No follow-up mycotoxin panels in the file set.
+3. **✅ Iron deficiency resolved** — iron infusion Dec 2025 explains ferritin reversal. Now elevated (191) — likely acute-phase component.
+4. **✅ HbA1c prediabetes concern resolved** — 5.8% in Oct 2024, back to 5.2% (normal) by Jun 2026.
+5. **G6PD result missing** — ordered twice, not in file set. Needed for methylene blue safety.
+6. **Toxic metals panel not read** (PDF extraction failed) — retry needed.
+7. **MTHFR not tested** — relevant for mold illness + methylation; order C677T/A1298C.
+8. **Microbiome testing never done** — no GI Map, comprehensive stool panel, fecal calprotectin, or lactoferrin in any file. This is the most obvious gap in a gut investigation.
+9. **Fecal calprotectin not tested** — direct marker of GI mucosal inflammation. Should be ordered.
+10. **tTG-IgA discrepancy unexplained** — was she on a gluten-free diet between Mar and Oct 2024?
+11. **Anticardiolipin IgM (Jun 2025)** — single positive. Needs repeat at 12 weeks for antiphospholipid syndrome criteria.
+12. **Anaplasma IgM (Mar 2024)** — was treatment given? Typically doxycycline.
+13. **Did mold protocol work?** Jan 2025 SOAP notes show protocol initiated. No follow-up mycotoxin panels in the file set.
+14. **POTS criteria not formally met on autonomic testing (Feb 2025)** — but symptoms persist. Is her orthostatic intolerance functional/episodic? How is the propranolol helping vs. hurting (BP 98/60)?
+15. **Propranolol dosing concern** — Dr. Medley flagged BP 98/60. Discussion with neuropsychiatrist re: taper vs. continue needed. Outcome unknown.
+16. **Triglycerides 355 mg/dL (Jun 2026)** — Dr. Medley didn't address in her letter. Cause not investigated. Worth follow-up.
+17. **BRCA family history** — family has a BRCA mutation (not BRCA1 or BRCA2). Hannah's own BRCA status unknown. Consider genetic counseling, especially with breast cancer history (paternal side, ages 50 and 70).
+18. **Valacyclovir trial** — Dr. Medley skeptical, Hannah plans to send the paper. Outcome pending. EBV VCA IgM was negative Jun 2026, but EBV may still be latently active (PCR plasma approach would be more sensitive).
+19. **COVID ×3 documented** — July 2022 (triggering event), August 2023, September 2024. How did each subsequent infection affect her trajectory?
+20. **SGB sustained efficacy** — First round (May–Jun 2026) produced no lasting improvement. Repeat scheduled Aug–Sep 2026 with steroid. Monitoring plan post-second-round needed.
+21. **Social determinants (food insecurity, housing instability, medication cost)** — actively impacting ability to pursue treatment protocol. How is this being addressed?
+
+---
+
+## 📆 Upcoming Appointments
+
+| Date | Provider | Type | Notes |
+|---|---|---|---|
+| Aug 21, 2026 | Dr. Alexander Kim (Pain Management) | Stellate Ganglion Block | Repeat bilateral, with steroid |
+| Sep 4, 2026 | Dr. Alexander Kim (Pain Management) | Stellate Ganglion Block | Repeat bilateral, with steroid |
+| Nov 13, 2026 | Dr. Ramirez (Allergy/Immunology) | Telemedicine | Ongoing Xolair management |
+| Jun 25, 2027 | Dr. Medley (PCP) | Annual Physical | — |
 
 ---
 
@@ -394,7 +428,121 @@ Hannah's labs, taken together, present a compelling multi-mechanism case for gut
 
 ---
 
+## 🏥 Current Care Team (as of Jul 2026)
+
+| Role | Provider | Notes |
+|---|---|---|
+| PCP | Dr. Kristen Medley | MGB; started May 26, 2026 — replaced Dr. Veronica Rozynek |
+| Allergy/Immunology | Dr. Lourdes Ramirez | MGB; managing chronic urticaria + Xolair |
+| Pain Management | Dr. Petra Majdak + Dr. Alexander Kim | SGBs, dysautonomia pain |
+| Long COVID Clinic | Lauren Major, PA-C | BWH COVID Recovery Center |
+| Neuropsychiatrist | (name not documented) | External; specializes in Long COVID + POTS; prescribed propranolol + salt tabs |
+| Psychiatry COVID Recovery | Dr. Jacob Weiss | BWH; visit Feb 24, 2025 (not previously documented) |
+
+---
+
+## 💊 Active Medications (as of Jun–Jul 2026)
+
+| Medication | Dose | Started | Notes |
+|---|---|---|---|
+| Propranolol | 20mg TID (target 60mg) | Jun 22, 2026 | Prescribed by neuropsychiatrist for POTS/HR control. Dr. Medley concerned re: BP 98/60 — may worsen dysautonomia. Discuss tapering. |
+| Loryna (drospirenone-ethinyl estradiol) | 3-0.02mg daily | Jun 25, 2026 | Same brand as prior BCP (on/off since 2015). Restarted. May suppress LH/FSH/E2 further (relevant to HPG axis discussion). |
+| Xolair (omalizumab) | Every 14 days | Jul 17, 2026 | Was every 28 days. Escalated by Dr. Ramirez for chronic urticaria not controlled on monthly dosing. |
+| Salt tablets | PRN | ~Jun 2026 | From neuropsychiatrist. Patient reports "significant relief" for orthostatic intolerance. |
+
+*Note: Prior medications from Dr. Ducharme's mold/tick protocol (Biocidin, Nystatin, GI-Detox, itraconazole, Mepron, HistaQuel, Histamine Digest, etc.) — current status unknown.*
+
+---
+
+## 🧠 Autonomic Testing Report (Feb 3, 2025)
+*Dr. Nathaniel Robbins, MGH Director of Small Fiber and Autonomic Neurology*
+
+**Overall conclusion: Essentially normal autonomic function. POTS criteria NOT met formally.**
+
+| Test | Result | Significance |
+|---|---|---|
+| QSART (4 sites) | Normal at all sites except forearm (patchy/uncertain) | Patchy forearm result could be fluoxetine/naltrexone interference OR rarely small fiber sudomotor neuropathy |
+| 70° Head-Up-Tilt | Normal — no orthostatic hypotension, no excessive orthostatic tachycardia | **POTS criteria not met** |
+| Valsalva Maneuver | Normal phase 2 and IV; PRT = 1.6s; ratio = 2.6 | Normal adrenergic function |
+| Heart Rate Variability / Deep Breathing | Normal; best HR difference 22.6 bpm | Normal cardiovagal function |
+| Composite Autonomic Scoring Scale (CASS) | **Total = 2** (mild = 1–3; significant ≥5) | Mild abnormality only |
+
+**Clinical interpretation:** Despite Hannah's subjective orthostatic intolerance symptoms (racing heart supine→upright, dizziness), formal autonomic testing did not meet POTS criteria. CASS of 2 is only mildly abnormal. The forearm QSART finding is uncertain. This does NOT rule out functional dysautonomia — POTS can be episodic and miss formal criteria on a single test day. Symptoms persist and she has found symptomatic relief from salt tabs and propranolol.
+
+---
+
+## 💉 Stellate Ganglion Blocks (SGB) — Treatment Log
+
+| Date | Side | Provider | Details | HRV Response |
+|---|---|---|---|---|
+| May 29, 2026 | Left | Dr. Sutton / Dr. Kim | 10 dex | HRV increased from 25–35 → 49. Horner's syndrome + hoarse throat (transient, resolved). |
+| Jun 12, 2026 | Right | Dr. Kim | 10 dex | No HRV change reported. |
+| Jul 9, 2026 | Follow-up visit | Dr. Kim | — | Hannah reports no sustained dysautonomia improvement from either SGB. Still has orthostatic intolerance. Salt tabs providing "significant relief". |
+| Aug 21, 2026 | TBD | Dr. Alexander Kim | Repeat bilateral — with steroid (to extend duration) | Scheduled |
+| Sep 4, 2026 | TBD | Dr. Alexander Kim | Repeat bilateral — with steroid | Scheduled |
+
+**Plan:** Repeat bilateral SGBs mid-late August with steroid added for duration extension. Follow-up with Dr. Alexander Kim.
+
+---
+
+## 🏥 Clinical Visit Notes
+
+### Dr. Medley — Jun 25, 2026 (PCP, MGB)
+*First full PCP visit note available from MGB.*
+
+**Active symptoms reported:**
+- Dizziness, headaches, diarrhea
+- Dyspareunia (pain with intercourse)
+- Orthostatic intolerance (racing heart supine→upright)
+- Chronic urticaria (ongoing)
+
+**Clinical findings:**
+- BP 98/60 — hypotensive (Dr. Medley attributed to propranolol, may be worsening dysautonomia)
+- Completed POTS physical therapy at MGH — was helpful
+- Working with external neuropsychiatrist specializing in Long COVID and POTS
+- On medical leave from MIT; must return by September 2026 or forfeit degree (1 semester remaining, aerospace engineering PhD)
+- Iron infusion performed December 2025 (previously unrecorded — explains ferritin jump from critically low 5–11 in 2024 to 191 in Jun 2026)
+- GAD-2 = 1 (mild anxiety signal)
+
+**Social context (from SDOH screening):**
+- Food insecurity: "often true" that food would run out
+- Housing instability: worried about losing housing in next 3 months
+- Trouble paying for medications
+- Lives in Jamaica Plain with boyfriend's family
+- Hobbies: sewing, hand quilting
+- Diet: mix plant-based + regular, high-salt (~3g sodium/day), daily bagel with cream cheese, occasional red meat
+
+**Family history (newly documented):**
+- Paternal aunts and grandmother with breast cancer (ages 50, 70)
+- BRCA gene mutation in family — but NOT BRCA1 or BRCA2 (other BRCA variant or gene not specified)
+
+**EBV / Valacyclovir discussion:**
+- Dr. Medley ordered EBV VCA IgM per Hannah's request (context: discussion of valacyclovir)
+- Result: Negative (EBV not actively reactivating at this draw)
+- Dr. Medley noted she "could not find any protocols or studies using Valacyclovir" and stated "Valacyclovir has limited effect in treating EBV and there is no evidence it will help her symptoms"
+- Hannah said she would send Dr. Medley the relevant paper via patient gateway
+
+---
+
+### Dr. Kim (Pain Management) — Jul 9, 2026 Follow-up
+- Hannah reports no sustained dysautonomia improvement from either SGB (May 29 left, Jun 12 right)
+- Still has orthostatic intolerance with racing heart supine→upright
+- Salt tabs from neuropsychiatrist providing "significant relief"
+- Plan: Repeat bilateral SGBs mid-late August 2026, this time adding steroid to extend duration
+- Scheduled: Aug 21 and Sep 4, 2026 (both with Dr. Alexander Kim)
+
+---
+
 ## 📅 2026 Labs (New Batch — 2026-07-19)
+
+### Jun 25, 2026 — EBV VCA IgM (MGB, Dr. Medley)
+| Date | Test | Value | Flag |
+|---|---|---|---|
+| Jun 25, 2026 | EBV VCA IgM | **Negative** | ✅ Not actively reactivating at this draw |
+
+*Ordered by Dr. Medley per Hannah's request regarding valacyclovir discussion. Negative contrasts with Jun 2025 EBV Early antigen IgM reactive result — suggests reactivation episode may have resolved by this draw. Full context in Clinical Visit Notes above.*
+
+---
 
 ### Jun 25, 2026 — MGB / Brigham and Women's Primary Care (Dr. Medley)
 *Source: Mass General Brigham Patient Gateway letter + lab results*
@@ -441,6 +589,8 @@ Hannah's labs, taken together, present a compelling multi-mechanism case for gut
 | Jun 25, 2026 | Cardiac Risk Ratio | 3.1 (ref 0.0–5.0) | Normal |
 
 **Provider note (Dr. Medley letter):** "Results are normal other than mildly elevated ferritin." Letter did not address the triglycerides.
+
+**Iron infusion note:** Iron infusion was performed in December 2025 (not previously in record). This explains the dramatic ferritin reversal from critically low (5–11 in 2024) to elevated 191 in Jun 2026. The iron stores are now repleted post-infusion; elevated ferritin is likely an acute-phase component on top of post-infusion levels.
 
 ---
 

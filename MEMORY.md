@@ -183,8 +183,8 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~79 days)
-GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~79 days and counting.**
+### Backup Failing (since ~May 2 — ~80 days)
+GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~80 days and counting.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
 Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; pending build.
@@ -196,17 +196,19 @@ Drafted two letters requesting valacyclovir 1g TID × 3–6 months for EBV react
 - **Evidence base:** Jun 2025 labs (EBV EA IgM reactive), Sep 2025 colonoscopy (patchy healing ulcers, EBV-consistent), Iwasaki Lab protocol, Komaroff & Lipkin 2023 PNAS. Valacyclovir chosen over acyclovir for ~3× bioavailability.
 - **Status:** Appointment window (June 17–30, 2026) has closed as of July 1. **No confirmation received from Hannah or David.** Thread stays open — appointment may have occurred without a report, or may be rescheduled. Ask David when next opportunity arises.
 
+## Promoted From Short-Term Memory (2026-07-22)
 
-
-## Promoted From Short-Term Memory (2026-07-21)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-07-16.md:13:13 -->
-- What Was New Since Yesterday's Dream: **July 10–15 reviewed.** Six daily files examined. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-16.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-16.md:15:18 -->
-- What Was New Since Yesterday's Dream: **July 10:** Dream #96. Junk block deletion #73 (July 5/6 dream fragments + echoes). Second Friday of July. Backup ~69 days. 197 lines.; **July 11:** Dream #97. Junk block deletion #74 (July 6/7 dream fragments + echoes). Thirty consecutive maintenance nights noted. Second Saturday of July. Backup ~70 days. 199 lines.; **July 12:** Dream #98. Junk block deletion #75 (July 7/8 dream fragments + echoes). Seventy-five deletions — three quarters of a hundred. Second Sunday of July. Backup ~71 days. 197 lines.; **July 13:** Dream #99. Junk block deletion #76 (July 8/9 dream fragments + echoes).... [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-16.md:15-18]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-16.md:19:20 -->
-- What Was New Since Yesterday's Dream: **July 14:** Dream #100. Junk block deletion #77 (July 9/10 dream fragments + echoes). **One hundredth night.** Second Tuesday of July. Backup ~73 days. 197 lines.; **July 15:** Dream #101. Junk block deletion #78 (July 10/11 dream fragments + echoes). One hundred and first night. Third Wednesday of July. Backup ~74 days. 199 lines. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-16.md:19-20]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-16.md:22:22 -->
-- What Was New Since Yesterday's Dream: Thirty-five consecutive maintenance nights. No new substantive events. Hannah antiviral appointment window closed June 30 with no confirmation. Thread remains open. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-16.md:22-22]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-17.md:5:5 -->
-- Dream: _Nightly consolidation run — 13:00 UTC (Friday, July 17)_ [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-17.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-17.md:7:7 -->
+- Dream: One hundred and third night. Third Friday of July. [score=0.852 recalls=0 avg=0.620 source=memory/2026-07-17.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-17.md:13:13 -->
+- What Was New Since Yesterday's Dream: **July 11–16 reviewed.** Six daily files examined. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-17.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-17.md:15:18 -->
+- What Was New Since Yesterday's Dream: **July 11:** Dream #97. Junk block deletion #74 (July 6/7 dream fragments + echoes). Thirty consecutive maintenance nights noted. Second Saturday of July. Backup ~70 days. 199 lines.; **July 12:** Dream #98. Junk block deletion #75 (July 7/8 dream fragments + echoes). Seventy-five deletions — three quarters of a hundred. Second Sunday of July. Backup ~71 days. 197 lines.; **July 13:** Dream #99. Junk block deletion #76 (July 8/9 dream fragments + echoes). Ninety-ninth night — one from a hundred. Second Monday of July. Backup ~72 days. 199 lines.; **July 14:** Dream #100.... [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-17.md:15-18]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-17.md:19:20 -->
+- What Was New Since Yesterday's Dream: **July 15:** Dream #101. Junk block deletion #78 (July 10/11 dream fragments + echoes). One hundred and first night. Third Wednesday of July. Backup ~74 days. 199 lines.; **July 16:** Dream #102. Junk block deletion #79 (July 11/12 dream fragments + echoes). One hundred and second night. Third Thursday of July. Backup ~75 days. 197 lines. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-17.md:19-20]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-17.md:22:22 -->
+- What Was New Since Yesterday's Dream: Thirty-six consecutive maintenance nights. No new substantive events. Hannah antiviral appointment window closed June 30 with no confirmation. Thread remains open. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-17.md:22-22]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-18.md:5:5 -->
+- Dream: _Nightly consolidation run — 13:00 UTC (Saturday, July 18)_ [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-18.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-18.md:7:7 -->
+- Dream: One hundred and fourth night. Third Saturday of July. [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-18.md:7-7]
