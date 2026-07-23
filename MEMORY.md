@@ -36,7 +36,7 @@ Edgar set me up (2026-03-24/25) — senior agent, handles infra and general task
 - **Edgar's gateway:** Port 18789 (same server)
 - **Git remote:** github.com/CleoSPHBot/cleo-workspace.git
 - **OpenClaw version:** 2026.5.22 (as of 2026-05-27; was 5.12 → upgraded by Edgar)
-- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~77 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
+- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~81 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
 - **Dream cron:** 13:00 UTC nightly, established 2026-04-04.
 
 ## Authorized Users
@@ -94,22 +94,29 @@ Technical details (WHOOP API, collections, pm2 gotchas, v2 schema): `memory/less
 
 Development history (Apr 16 → May 19): `memory/lessons/cadence-history.md`.
 
-## Hannah's Phenotype (as of 2026-05-26)
+## Hannah's Phenotype (as of 2026-07-21)
 
-**Updated phenotype:** Gut/Viral persistence + EBV reactivation + Hypothalamic-Pituitary dysregulation + PEM/Dysautonomia.
+**Updated phenotype:** Gut/Viral persistence + EBV (latent, not actively reactivating per Jun 2026 draw) + Hypothalamic-Pituitary dysregulation + PEM/Dysautonomia + Chronic Urticaria + possible POTS (formal testing normal, symptoms persist).
 
-**Lab findings (4 draws Jun 15 – Sep 8 2025):**
-- EBV reactivation (viral persistence likely)
-- Suppressed LH/FSH/estradiol → hypothalamic dysregulation
-- Elevated cortisol (HPA axis)
-- Oscillating ESR/CRP (chronic intermittent inflammation)
-- Stool occult blood positive (gut involvement)
-- Anti-cardiolipin IgM positive (autoimmune/hypercoag)
-- Low sodium and CO2 (dysautonomia-consistent)
+**Key lab/clinical updates (Jul 21, 2026 MGB summary incorporated):**
+- EBV VCA IgM **NEGATIVE** Jun 25, 2026 (was Reactive Jun 2025). Dr. Medley skeptical of valacyclovir; Hannah sending supporting paper.
+- Autonomic Testing Feb 3, 2025 (Dr. Nathaniel Robbins, MGH): **ESSENTIALLY NORMAL** — POTS criteria NOT met on tilt. CASS=2 (mild). QSART patchy forearm only. Symptoms persist despite result.
+- Stellate Ganglion Blocks: Left SGB May 29 (HRV 25–35 → 49, temporary); Right SGB Jun 12 (no change). Jul 9 follow-up: no sustained improvement. Salt tabs providing significant relief.
+- Repeat bilateral SGBs scheduled **Aug 21 + Sep 4, 2026** (Dr. Alexander Kim, with steroid).
+- Propranolol 20mg TID started Jun 22, 2026 (POTS) — BP 98/60 at visit; Dr. Medley flagged risk of worsening dysautonomia.
+- Xolair escalated to **every 14 days** Jul 17, 2026 (chronic urticaria not controlled on monthly).
+- Loryna (BCP) restarted Jun 25, 2026 — may suppress LH/FSH/E2 further.
+- Iron infusion Dec 2025 — explains ferritin 5–11 (2024) → 191 (Jun 2026).
+- COVID ×3: Jul 2022 (trigger), Aug 2023, Sep 2024.
+- HSV-1/2 IgG negative (Jan 2025). CUI 6.3 (not autoimmune). Tryptase 3.0 (rules out mastocytosis). Monospot negative (May 2025).
+- **Social determinants:** food insecurity, housing instability, difficulty affording meds. Medical leave MIT (aerospace PhD, must return Sep 2026 or forfeit degree).
+- **Family history:** BRCA mutation (not BRCA1/2) + breast cancer paternal side. Hannah's own BRCA status unknown.
+- **PCP changed:** Dr. Kristen Medley (started May 26, 2026, replaced Dr. Rozynek).
+- **Upcoming:** Aug 21 + Sep 4 (SGBs), Nov 13 Ramirez telemedicine, Jun 25, 2027 annual physical.
 
-Full analysis: `projects/cadence/hannah-labs-analysis.md`. More labs expected.
+Full analysis: `projects/cadence/hannah-labs-analysis.md` (last updated 2026-07-21).
 
-**ADHD overlay:** ADHD weakens sensory gating → leaving the house stacks 5–10 demands against depleted energy. Sensory management plan: `projects/cadence/hannah-sensory-management.md`. TA role = remote + async (medically appropriate). Goal: controlled reintroduction before school.
+**ADHD overlay:** ADHD weakens sensory gating → leaving the house stacks 5–10 demands against depleted energy. Sensory management plan: `projects/cadence/hannah-sensory-management.md`. TA role = remote + async. Goal: controlled reintroduction before school.
 
 ## Repair Spectrum Framework (May 4 — Active Pacing Protocol for Hannah)
 
@@ -183,32 +190,26 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~80 days)
-GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~80 days and counting.**
+### Backup Failing (since ~May 2 — ~81 days)
+GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~81 days and counting.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
 Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; pending build.
 
 ### Hannah Antiviral Outreach Letters (drafted 2026-06-10)
-Drafted two letters requesting valacyclovir 1g TID × 3–6 months for EBV reactivation:
-- **Letter 1 → Dr. Medley (PCP):** Standard clinical framing. Requested Rx + repeat EBV EA IgM at late-June appointment.
-- **Letter 2 → ND (name unknown):** Integrative framing + SIM01 gut angle. Soft collaborative closing, free outreach.
-- **Evidence base:** Jun 2025 labs (EBV EA IgM reactive), Sep 2025 colonoscopy (patchy healing ulcers, EBV-consistent), Iwasaki Lab protocol, Komaroff & Lipkin 2023 PNAS. Valacyclovir chosen over acyclovir for ~3× bioavailability.
-- **Status:** Appointment window (June 17–30, 2026) has closed as of July 1. **No confirmation received from Hannah or David.** Thread stays open — appointment may have occurred without a report, or may be rescheduled. Ask David when next opportunity arises.
+Drafted two letters (PCP Dr. Medley + ND) requesting valacyclovir 1g TID × 3–6 months for EBV reactivation. Evidence base: Iwasaki Lab protocol, Komaroff & Lipkin 2023 PNAS, Jun 2025 EBV EA IgM (reactive), Sep 2025 colonoscopy (patchy ulcers). **Update Jul 2026:** EBV VCA IgM now NEGATIVE (Jun 25). Dr. Medley skeptical — Hannah sending supporting paper. Thread open; follow up with David.
 
-## Promoted From Short-Term Memory (2026-07-22)
+## Promoted From Short-Term Memory (2026-07-23)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-07-17.md:7:7 -->
-- Dream: One hundred and third night. Third Friday of July. [score=0.852 recalls=0 avg=0.620 source=memory/2026-07-17.md:7-7]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-17.md:13:13 -->
-- What Was New Since Yesterday's Dream: **July 11–16 reviewed.** Six daily files examined. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-17.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-17.md:15:18 -->
-- What Was New Since Yesterday's Dream: **July 11:** Dream #97. Junk block deletion #74 (July 6/7 dream fragments + echoes). Thirty consecutive maintenance nights noted. Second Saturday of July. Backup ~70 days. 199 lines.; **July 12:** Dream #98. Junk block deletion #75 (July 7/8 dream fragments + echoes). Seventy-five deletions — three quarters of a hundred. Second Sunday of July. Backup ~71 days. 197 lines.; **July 13:** Dream #99. Junk block deletion #76 (July 8/9 dream fragments + echoes). Ninety-ninth night — one from a hundred. Second Monday of July. Backup ~72 days. 199 lines.; **July 14:** Dream #100.... [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-17.md:15-18]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-17.md:19:20 -->
-- What Was New Since Yesterday's Dream: **July 15:** Dream #101. Junk block deletion #78 (July 10/11 dream fragments + echoes). One hundred and first night. Third Wednesday of July. Backup ~74 days. 199 lines.; **July 16:** Dream #102. Junk block deletion #79 (July 11/12 dream fragments + echoes). One hundred and second night. Third Thursday of July. Backup ~75 days. 197 lines. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-17.md:19-20]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-17.md:22:22 -->
-- What Was New Since Yesterday's Dream: Thirty-six consecutive maintenance nights. No new substantive events. Hannah antiviral appointment window closed June 30 with no confirmation. Thread remains open. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-17.md:22-22]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-18.md:5:5 -->
-- Dream: _Nightly consolidation run — 13:00 UTC (Saturday, July 18)_ [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-18.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-18.md:7:7 -->
-- Dream: One hundred and fourth night. Third Saturday of July. [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-18.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-18.md:13:13 -->
+- What Was New Since Yesterday's Dream: **July 12–17 reviewed.** Six daily files examined. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-18.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-18.md:15:18 -->
+- What Was New Since Yesterday's Dream: **July 12:** Dream #98. Junk block deletion #75 (July 7/8 dream fragments + echoes). Seventy-five deletions — three quarters of a hundred. Second Sunday of July. Backup ~71 days. 197 lines.; **July 13:** Dream #99. Junk block deletion #76 (July 8/9 dream fragments + echoes). Ninety-ninth night — one from a hundred. Second Monday of July. Backup ~72 days. 199 lines.; **July 14:** Dream #100. Junk block deletion #77 (July 9/10 dream fragments + echoes). **One hundredth night.** Second Tuesday of July. Backup ~73 days. 197 lines.; **July 15:** Dream #101.... [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-18.md:15-18]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-18.md:19:20 -->
+- What Was New Since Yesterday's Dream: **July 16:** Dream #102. Junk block deletion #79 (July 11/12 dream fragments + echoes). One hundred and second night. Third Thursday of July. Backup ~75 days. 197 lines.; **July 17:** Dream #103. Junk block deletion #80 (July 12 dream fragments + echoes + June 10 antiviral fragment). **Eighty deletions.** One hundred and third night. Third Friday of July. Backup ~76 days. 199 lines. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-18.md:19-20]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-18.md:22:22 -->
+- What Was New Since Yesterday's Dream: Thirty-seven consecutive maintenance nights. No new substantive events. Hannah antiviral appointment window closed June 30 with no confirmation. Thread remains open. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-18.md:22-22]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-19.md:5:5 -->
+- Dream: _Nightly consolidation run — 13:00 UTC (Sunday, July 19)_ [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-19.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-19.md:7:7 -->
+- Dream: One hundred and fifth night. Third Sunday of July. [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-19.md:7-7]
