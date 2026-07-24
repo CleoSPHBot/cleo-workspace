@@ -36,7 +36,7 @@ Edgar set me up (2026-03-24/25) — senior agent, handles infra and general task
 - **Edgar's gateway:** Port 18789 (same server)
 - **Git remote:** github.com/CleoSPHBot/cleo-workspace.git
 - **OpenClaw version:** 2026.5.22 (as of 2026-05-27; was 5.12 → upgraded by Edgar)
-- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~81 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
+- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~82 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
 - **Dream cron:** 13:00 UTC nightly, established 2026-04-04.
 
 ## Authorized Users
@@ -190,8 +190,8 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~81 days)
-GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~81 days and counting.**
+### Backup Failing (since ~May 2 — ~82 days)
+GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~82 days and counting.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
 Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; pending build.
@@ -199,17 +199,17 @@ Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` 
 ### Hannah Antiviral Outreach Letters (drafted 2026-06-10)
 Drafted two letters (PCP Dr. Medley + ND) requesting valacyclovir 1g TID × 3–6 months for EBV reactivation. Evidence base: Iwasaki Lab protocol, Komaroff & Lipkin 2023 PNAS, Jun 2025 EBV EA IgM (reactive), Sep 2025 colonoscopy (patchy ulcers). **Update Jul 2026:** EBV VCA IgM now NEGATIVE (Jun 25). Dr. Medley skeptical — Hannah sending supporting paper. Thread open; follow up with David.
 
-## Promoted From Short-Term Memory (2026-07-23)
+## Promoted From Short-Term Memory (2026-07-24)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-07-18.md:13:13 -->
-- What Was New Since Yesterday's Dream: **July 12–17 reviewed.** Six daily files examined. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-18.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-18.md:15:18 -->
-- What Was New Since Yesterday's Dream: **July 12:** Dream #98. Junk block deletion #75 (July 7/8 dream fragments + echoes). Seventy-five deletions — three quarters of a hundred. Second Sunday of July. Backup ~71 days. 197 lines.; **July 13:** Dream #99. Junk block deletion #76 (July 8/9 dream fragments + echoes). Ninety-ninth night — one from a hundred. Second Monday of July. Backup ~72 days. 199 lines.; **July 14:** Dream #100. Junk block deletion #77 (July 9/10 dream fragments + echoes). **One hundredth night.** Second Tuesday of July. Backup ~73 days. 197 lines.; **July 15:** Dream #101.... [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-18.md:15-18]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-18.md:19:20 -->
-- What Was New Since Yesterday's Dream: **July 16:** Dream #102. Junk block deletion #79 (July 11/12 dream fragments + echoes). One hundred and second night. Third Thursday of July. Backup ~75 days. 197 lines.; **July 17:** Dream #103. Junk block deletion #80 (July 12 dream fragments + echoes + June 10 antiviral fragment). **Eighty deletions.** One hundred and third night. Third Friday of July. Backup ~76 days. 199 lines. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-18.md:19-20]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-18.md:22:22 -->
-- What Was New Since Yesterday's Dream: Thirty-seven consecutive maintenance nights. No new substantive events. Hannah antiviral appointment window closed June 30 with no confirmation. Thread remains open. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-18.md:22-22]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-19.md:5:5 -->
-- Dream: _Nightly consolidation run — 13:00 UTC (Sunday, July 19)_ [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-19.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-19.md:7:7 -->
-- Dream: One hundred and fifth night. Third Sunday of July. [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-19.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-19.md:13:13 -->
+- What Was New Since Yesterday's Dream: **July 13–18 reviewed.** Six daily files examined. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-19.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-19.md:15:18 -->
+- What Was New Since Yesterday's Dream: **July 13:** Dream #99. Junk block deletion #76 (July 8/9 dream fragments + echoes). Ninety-ninth night — one from a hundred. Second Monday of July. Backup ~72 days. 199 lines.; **July 14:** Dream #100. Junk block deletion #77 (July 9/10 dream fragments + echoes). **One hundredth night.** Second Tuesday of July. Backup ~73 days. 197 lines.; **July 15:** Dream #101. Junk block deletion #78 (July 10/11 dream fragments + echoes). One hundred and first night. Third Wednesday of July. Backup ~74 days. 199 lines.; **July 16:** Dream #102. Junk block deletion #79 (July 11/12 dream fragments + echoes).... [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-19.md:15-18]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-19.md:19:20 -->
+- What Was New Since Yesterday's Dream: **July 17:** Dream #103. Junk block deletion #80 (July 12 dream fragments + echoes + June 10 antiviral fragment). **Eighty deletions.** One hundred and third night. Third Friday of July. Backup ~76 days. 199 lines.; **July 18:** Dream #104. Junk block deletion #81 (July 13/14 dream fragments + echoes). One hundred and fourth night. Third Saturday of July. Backup ~77 days. 198 lines. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-19.md:19-20]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-19.md:22:22 -->
+- What Was New Since Yesterday's Dream: Thirty-eight consecutive maintenance nights. No new substantive events. Hannah antiviral appointment window closed June 30 with no confirmation. Thread remains open. [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-19.md:22-22]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-20.md:5:5 -->
+- Dream: _Nightly consolidation run — 13:00 UTC (Monday, July 20)_ [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-20.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-20.md:7:7 -->
+- Dream: One hundred and sixth night. Third Monday of July. [score=0.803 recalls=0 avg=0.620 source=memory/2026-07-20.md:7-7]
