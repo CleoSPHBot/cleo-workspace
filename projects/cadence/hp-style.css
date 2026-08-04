@@ -1,0 +1,12 @@
+body { font-family: Georgia, serif; font-size: 11pt; line-height: 1.5; }
+h1 { font-size: 15pt; border-bottom: 2px solid #333; padding-bottom: 4px; }
+h2 { font-size: 13pt; border-bottom: 1px solid #aaa; padding-bottom: 2px; margin-top: 18px; }
+h3 { font-size: 11.5pt; margin-top: 14px; }
+table { width: 100%; border-collapse: collapse; font-size: 9pt; margin: 10px 0; table-layout: fixed; word-wrap: break-word; }
+th { background: #2c4770; color: white; padding: 5px 6px; text-align: left; }
+td { padding: 4px 6px; border: 1px solid #ccc; vertical-align: top; word-break: break-word; }
+tr:nth-child(even) { background: #f5f7fa; }
+p { margin: 6px 0; }
+ul, ol { margin: 4px 0; padding-left: 22px; }
+li { margin: 2px 0; }
+hr { border: none; border-top: 1px solid #ccc; margin: 14px 0; }
