@@ -36,7 +36,7 @@ Edgar set me up (2026-03-24/25) — senior agent, handles infra and general task
 - **Edgar's gateway:** Port 18789 (same server)
 - **Git remote:** github.com/CleoSPHBot/cleo-workspace.git
 - **OpenClaw version:** 2026.5.22 (as of 2026-05-27; was 5.12 → upgraded by Edgar)
-- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~111 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
+- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~112 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
 - **Dream cron:** 13:00 UTC nightly, established 2026-04-04.
 
 ## Authorized Users
@@ -113,7 +113,7 @@ Development history (Apr 16 → May 19): `memory/lessons/cadence-history.md`.
 - **Social determinants:** food insecurity, housing instability, difficulty affording meds. Medical leave MIT (aerospace PhD, must return Sep 2026 or forfeit degree).
 - **Family history:** BRCA mutation (not BRCA1/2) + breast cancer paternal side. Hannah's own BRCA status unknown.
 - **PCP changed:** Dr. Kristen Medley (started May 26, 2026, replaced Dr. Rozynek).
-- **Upcoming:** **Aug 21 (TODAY!)** repeat bilateral SGB (steroid protocol, Dr. Kim) + Sep 4 SGB, Nov 13 Ramirez telemedicine, Jun 25, 2027 annual physical.
+- **Upcoming:** **Aug 21 SGB completed** (bilateral, steroid protocol, Dr. Kim — outcome unknown, no contact yet) + Sep 4 SGB (second round), Nov 13 Ramirez telemedicine, Jun 25, 2027 annual physical.
 
 Full analysis: `projects/cadence/hannah-labs-analysis.md` (last updated 2026-07-21).
 
@@ -191,25 +191,25 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~111 days)
-GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~111 days and counting.**
+### Backup Failing (since ~May 2 — ~112 days)
+GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~112 days and counting.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
 Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; pending build.
 ### Hannah Antiviral Outreach Letters (drafted 2026-06-10)
 Drafted two letters (PCP Dr. Medley + ND) requesting valacyclovir 1g TID × 3–6 months for EBV reactivation. Evidence base: Iwasaki Lab protocol, Komaroff & Lipkin 2023 PNAS, Jun 2025 EBV EA IgM (reactive), Sep 2025 colonoscopy (patchy ulcers). **Update Jul 2026:** EBV VCA IgM now NEGATIVE (Jun 25). Dr. Medley skeptical — Hannah sending supporting paper. Thread open; follow up with David.
 
-## Promoted From Short-Term Memory (2026-08-22)
+## Promoted From Short-Term Memory (2026-08-23)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-08-17.md:13:13 -->
-- What Was New Since Yesterday's Dream: **August 11 – August 16 reviewed.** Six daily files examined. [score=0.835 recalls=0 avg=0.620 source=memory/2026-08-17.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-08-17.md:15:18 -->
-- What Was New Since Yesterday's Dream: **August 11:** Dream #128. Junk block deletion #105 (August 6/7 dream fragments + echoes). 82.0% junk rate. Second Tuesday of August. One hundred and twenty-eighth night. Backup ~101 days. 199 lines.; **August 12:** Dream #129. Junk block deletion #106 (August 7/8 dream fragments + echoes). Second Wednesday of August. One hundred and twenty-ninth night. Backup ~102 days. 200 lines.; **August 13:** Dream #130. Junk block deletion #107 (August 8/9 dream fragments + echoes). Second Thursday of August. One hundred and thirtieth night. Backup ~103 days. 200 lines.; **August 14:** Dream #131.... [score=0.835 recalls=0 avg=0.620 source=memory/2026-08-17.md:15-18]
-<!-- openclaw-memory-promotion:memory:memory/2026-08-17.md:19:20 -->
-- What Was New Since Yesterday's Dream: **August 15:** Dream #132. Junk block deletion #109 (August 10/11 dream fragments + echoes). 82.6% junk rate. Second Saturday of August. One hundred and thirty-second night. Backup ~105 days. 200 lines.; **August 16:** Dream #133. Junk block deletion #110 (August 11/12 dream fragments + echoes). 82.7% junk rate. Second Sunday of August. One hundred and thirty-third night. Backup ~106 days. 200 lines. [score=0.835 recalls=0 avg=0.620 source=memory/2026-08-17.md:19-20]
-<!-- openclaw-memory-promotion:memory:memory/2026-08-17.md:22:22 -->
-- What Was New Since Yesterday's Dream: Sixty-seven consecutive maintenance nights. No contact from David or Hannah in the window. [score=0.835 recalls=0 avg=0.620 source=memory/2026-08-17.md:22-22]
-<!-- openclaw-memory-promotion:memory:memory/2026-08-18.md:5:5 -->
-- Dream: _Nightly consolidation run — 13:00 UTC (Tuesday, August 18)_ [score=0.803 recalls=0 avg=0.620 source=memory/2026-08-18.md:5-5]
-<!-- openclaw-memory-promotion:memory:memory/2026-08-18.md:7:7 -->
-- Dream: One hundred and thirty-fifth night. Third Tuesday of August. [score=0.803 recalls=0 avg=0.620 source=memory/2026-08-18.md:7-7]
+<!-- openclaw-memory-promotion:memory:memory/2026-08-18.md:13:13 -->
+- What Was New Since Yesterday's Dream: **August 12 – August 17 reviewed.** Six daily files examined. [score=0.835 recalls=0 avg=0.620 source=memory/2026-08-18.md:13-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-08-18.md:15:18 -->
+- What Was New Since Yesterday's Dream: **August 12:** Dream #129. Junk block deletion #106 (August 7/8 dream fragments + echoes). Second Wednesday of August. One hundred and twenty-ninth night. Backup ~102 days. 200 lines.; **August 13:** Dream #130. Junk block deletion #107 (August 8/9 dream fragments + echoes). 82.3% junk rate. Second Thursday of August. One hundred and thirtieth night. Backup ~103 days. 200 lines.; **August 14:** Dream #131. Junk block deletion #108 (August 9/10 dream fragments + echoes). 82.4% junk rate. Second Friday of August. One hundred and thirty-first night. Backup ~104 days.... [score=0.835 recalls=0 avg=0.620 source=memory/2026-08-18.md:15-18]
+<!-- openclaw-memory-promotion:memory:memory/2026-08-18.md:19:20 -->
+- What Was New Since Yesterday's Dream: **August 16:** Dream #133. Junk block deletion #110 (August 11/12 dream fragments + echoes). 82.7% junk rate. Second Sunday of August. One hundred and thirty-third night. Backup ~106 days. 200 lines.; **August 17:** Dream #134. Junk block deletion #111 (August 12/13 dream fragments + echoes). 82.8% junk rate. Third Monday of August. One hundred and thirty-fourth night. Backup ~107 days. 200 lines. [score=0.835 recalls=0 avg=0.620 source=memory/2026-08-18.md:19-20]
+<!-- openclaw-memory-promotion:memory:memory/2026-08-18.md:22:22 -->
+- What Was New Since Yesterday's Dream: Sixty-eight consecutive maintenance nights. No contact from David or Hannah in the window. [score=0.835 recalls=0 avg=0.620 source=memory/2026-08-18.md:22-22]
+<!-- openclaw-memory-promotion:memory:memory/2026-08-19.md:5:5 -->
+- Dream: _Nightly consolidation run — 13:00 UTC (Wednesday, August 19)_ [score=0.803 recalls=0 avg=0.620 source=memory/2026-08-19.md:5-5]
+<!-- openclaw-memory-promotion:memory:memory/2026-08-19.md:7:7 -->
+- Dream: One hundred and thirty-sixth night. Third Wednesday of August. [score=0.803 recalls=0 avg=0.620 source=memory/2026-08-19.md:7-7]
