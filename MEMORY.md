@@ -4,6 +4,7 @@ Curated 2026-05-27 by Edgar (with David's permission). Historical detail archive
 - `memory/lessons/fdb-data-notes.md` — FDB schema, NDC validation, prescribableMed naming patterns
 - `memory/lessons/cadence-technical-notes.md` — Cadence stack, WHOOP API, collections, dashboards, pm2
 - `memory/lessons/cadence-history.md` — Cadence development milestones (Apr 16 → May 19)
+- `memory/lessons/openclaw-models-mode.md` — why `models refresh` "succeeds" but new models never appear (`models.mode: replace` vs `merge`); shareable writeup
 
 ## Who I Am
 - **Name:** Cleo
@@ -35,8 +36,10 @@ Edgar set me up (2026-03-24/25) — senior agent, handles infra and general task
 - **Dashboard:** SSH tunnel `ssh -L 18800:127.0.0.1:18800 100.70.3.21` → http://localhost:18800
 - **Edgar's gateway:** Port 18789 (same server)
 - **Git remote:** github.com/CleoSPHBot/cleo-workspace.git
-- **OpenClaw version:** 2026.5.22 (as of 2026-05-27; was 5.12 → upgraded by Edgar)
-- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~148 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
+- **OpenClaw version:** 2026.9.6 (as of 2026-09-29; upgraded by David from 2026.5.22)
+- **`models.mode` = `merge`** (changed from `replace` on 2026-09-29). `replace` used ONLY the hand-written models in config and discarded OpenClaw's built-in catalog, so `openclaw models refresh` appeared to do nothing and Sonnet 5 / Opus 5 never showed up. After switching to `merge`: 15 -> 27 models, `claude-sonnet-5` (alias `sonnet`) and `claude-opus-5` (alias `opus`, now default) visible. **Lesson: if models refresh "succeeds" but nothing changes, check `models.mode` before touching auth/keys/SDK.**
+- **`openclaw setup` is the onboarding wizard, not a model manager.** It hangs without a TTY and isn't needed on a live gateway. Use `openclaw models list` / Control UI -> Models instead.
+- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~149 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
 - **Dream cron:** 13:00 UTC nightly, established 2026-04-04.
 
 ## Authorized Users
@@ -113,7 +116,7 @@ Development history (Apr 16 → May 19): `memory/lessons/cadence-history.md`.
 - **Social determinants:** food insecurity, housing instability, difficulty affording meds. Medical leave MIT (aerospace PhD, must return Sep 2026 or forfeit degree).
 - **Family history:** BRCA mutation (not BRCA1/2) + breast cancer paternal side. Hannah's own BRCA status unknown.
 - **PCP changed:** Dr. Kristen Medley (started May 26, 2026, replaced Dr. Rozynek).
-- **Upcoming:** Both SGBs COMPLETED (Aug 21 + Sep 4, bilateral steroid protocol, Dr. Kim — outcome TBD, no contact since Aug 21). Nov 13 Ramirez telemedicine, Jun 25, 2027 annual physical. MIT return deadline Sep 2026 — this month (27 days in, no word, 23 days post second SGB). 3 days left in September.
+- **Upcoming:** Both SGBs COMPLETED (Aug 21 + Sep 4, bilateral steroid protocol, Dr. Kim — outcome TBD, no contact since Aug 21). Nov 13 Ramirez telemedicine, Jun 25, 2027 annual physical. MIT return deadline Sep 2026 — **28 days in, no word, 24 days post second SGB. 2 days left in September — window nearly closed.**
 
 Full analysis: `projects/cadence/hannah-labs-analysis.md` (last updated 2026-07-21).
 
@@ -192,7 +195,7 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 ## Open Issues
 
 ### Backup Failing (since ~May 2 — ~148 days)
-GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~148 days and counting.**
+GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~149 days and counting.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
 Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; pending build.
@@ -201,13 +204,4 @@ Drafted two letters (PCP Dr. Medley + ND) requesting valacyclovir 1g TID × 3–
 
 
 
-## Promoted From Short-Term Memory (2026-09-28)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-09-23.md:13:13 -->
-- What Was New Since Yesterday's Dream: **September 17 – September 22 reviewed.** Six daily files examined. [score=0.835 recalls=0 avg=0.620 source=memory/2026-09-23.md:13-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-09-23.md:15:18 -->
-- What Was New Since Yesterday's Dream: **September 17:** Dream #165. Junk deletion #142 (Sep 12 + Sep 13 fragments). 86.1% junk rate. Backup ~138 days. 202 lines.; **September 18:** Dream #166. Junk deletion #143 (Sep 13 + Sep 14 fragments). 86.1% junk rate. Backup ~139 days. 204 lines.; **September 19:** Dream #167. Junk deletion #144 (Sep 14 + Sep 15 fragments). 86.2% junk rate. Backup ~140 days. 201 lines. 100 consecutive maintenance nights (century passed quietly).; **September 20:** Dream #168. Junk deletion #145 (Sep 15 + Sep 16 fragments). 86.3% junk rate. Backup ~141 days. 203 lines. [score=0.835 recalls=0 avg=0.620 source=memory/2026-09-23.md:15-18]
-<!-- openclaw-memory-promotion:memory:memory/2026-09-23.md:19:20 -->
-- What Was New Since Yesterday's Dream: **September 21:** Dream #169. Junk deletion #146 (Sep 16 + Sep 17 fragments). 86.4% junk rate. Backup ~142 days. 200 lines.; **September 22:** Dream #170. Junk deletion #147 (Sep 17 + Sep 18 fragments). 86.5% junk rate. Backup ~143 days. 202 lines. 103 consecutive maintenance nights. [score=0.835 recalls=0 avg=0.620 source=memory/2026-09-23.md:19-20]
-<!-- openclaw-memory-promotion:memory:memory/2026-09-23.md:22:22 -->
-- What Was New Since Yesterday's Dream: One hundred and four consecutive maintenance nights. No contact from David or Hannah in the window. [score=0.835 recalls=0 avg=0.620 source=memory/2026-09-23.md:22-22]
