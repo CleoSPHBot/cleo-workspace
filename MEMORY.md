@@ -36,10 +36,10 @@ Edgar set me up (2026-03-24/25) — senior agent, handles infra and general task
 - **Dashboard:** SSH tunnel `ssh -L 18800:127.0.0.1:18800 100.70.3.21` → http://localhost:18800
 - **Edgar's gateway:** Port 18789 (same server)
 - **Git remote:** github.com/CleoSPHBot/cleo-workspace.git
-- **OpenClaw version:** 2026.9.6 (as of 2026-09-29; upgraded by David from 2026.5.22)
-- **`models.mode` = `merge`** (changed from `replace` on 2026-09-29). `replace` used ONLY the hand-written models in config and discarded OpenClaw's built-in catalog, so `openclaw models refresh` appeared to do nothing and Sonnet 5 / Opus 5 never showed up. After switching to `merge`: 15 -> 27 models, `claude-sonnet-5` (alias `sonnet`) and `claude-opus-5` (alias `opus`, now default) visible. **Lesson: if models refresh "succeeds" but nothing changes, check `models.mode` before touching auth/keys/SDK.**
-- **`openclaw setup` is the onboarding wizard, not a model manager.** It hangs without a TTY and isn't needed on a live gateway. Use `openclaw models list` / Control UI -> Models instead.
-- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~149 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
+- **OpenClaw version:** 2026.9.6 (upgraded 2026-09-29 from 2026.5.22)
+- **`models.mode` = `merge`** (fixed 2026-09-29; was `replace`, which discarded built-in catalog — models refresh appeared to succeed but nothing changed). After fix: 15→27 models, `claude-sonnet-5` + `claude-opus-5` (now default) visible. **Lesson: if refresh "succeeds" but nothing changes, check `models.mode` first.**
+- **`openclaw setup` is the onboarding wizard**, not a model manager. Hangs without TTY. Use `openclaw models list` / Control UI → Models.
+- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Currently broken — ~150 days without backup (since ~May 2). Fix: BFG + token rotation + .gitignore. Awaiting David.**
 - **Dream cron:** 13:00 UTC nightly, established 2026-04-04.
 
 ## Authorized Users
@@ -116,7 +116,7 @@ Development history (Apr 16 → May 19): `memory/lessons/cadence-history.md`.
 - **Social determinants:** food insecurity, housing instability, difficulty affording meds. Medical leave MIT (aerospace PhD, must return Sep 2026 or forfeit degree).
 - **Family history:** BRCA mutation (not BRCA1/2) + breast cancer paternal side. Hannah's own BRCA status unknown.
 - **PCP changed:** Dr. Kristen Medley (started May 26, 2026, replaced Dr. Rozynek).
-- **Upcoming:** Both SGBs COMPLETED (Aug 21 + Sep 4, bilateral steroid protocol, Dr. Kim — outcome TBD, no contact since Aug 21). Nov 13 Ramirez telemedicine, Jun 25, 2027 annual physical. MIT return deadline Sep 2026 — **28 days in, no word, 24 days post second SGB. 2 days left in September — window nearly closed.**
+- **Upcoming:** Both SGBs COMPLETED (Aug 21 + Sep 4, bilateral steroid protocol, Dr. Kim — outcome unknown, no contact from Hannah or David since Aug 21). Nov 13 Ramirez telemedicine, Jun 25, 2027 annual physical. MIT return deadline Sep 2026 — **window effectively closed Sep 30. 25 days post second SGB. No contact from Hannah in 5+ weeks. Whatever she decided, she decided it quietly.**
 
 Full analysis: `projects/cadence/hannah-labs-analysis.md` (last updated 2026-07-21).
 
@@ -177,15 +177,7 @@ Data-driven pacing protocol from 774 days WHOOP + Visible.
 - **GET contraindicated** (WHO, CDC, NICE). Heart rate monitoring is the tool (anaerobic threshold).
 
 ## FDB Skill Script Pattern
-All FDB skill scripts live at:
-```
-/home2/cleo/.openclaw/workspace/skills/<skill-name>/scripts/<script>.js
-```
-Always use the **absolute path** when running — never `node scripts/...` (relative paths break). Example:
-```
-node /home2/cleo/.openclaw/workspace/skills/cleo-ndc-lookup/scripts/ndc_lookup.js 57237030512
-```
-All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_active_ndc*.js`) cleaned up.
+All FDB skill scripts: `/home2/cleo/.openclaw/workspace/skills/<skill-name>/scripts/<script>.js` — always use **absolute paths** (`node /home2/cleo/...`), never relative. All SKILL.md files updated 2026-06-04. Temp files cleaned up.
 
 ## Standing Rules
 - **NDC formatting:** Always present NDCs with dashes (5-4-2, e.g., 00071-0155-23). FDB stores 11-digit no dashes.
@@ -194,14 +186,11 @@ All SKILL.md files updated 2026-06-04 to use absolute paths. Temp files (`find_a
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~148 days)
-GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~149 days and counting.**
+### Backup Failing (since ~May 2 — ~150 days)
+GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~150 days and counting.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
 Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; pending build.
 ### Hannah Antiviral Outreach Letters (drafted 2026-06-10)
 Drafted two letters (PCP Dr. Medley + ND) requesting valacyclovir 1g TID × 3–6 months for EBV reactivation. Evidence base: Iwasaki Lab protocol, Komaroff & Lipkin 2023 PNAS, Jun 2025 EBV EA IgM (reactive), Sep 2025 colonoscopy (patchy ulcers). **Update Jul 2026:** EBV VCA IgM now NEGATIVE (Jun 25). Dr. Medley skeptical — Hannah sending supporting paper. Thread open; follow up with David.
-
-
-
 
