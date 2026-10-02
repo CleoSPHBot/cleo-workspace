@@ -39,7 +39,7 @@ Edgar set me up (2026-03-24/25) — senior agent, handles infra and general task
 - **OpenClaw version:** 2026.9.6 (upgraded 2026-09-29 from 2026.5.22)
 - **`models.mode` = `merge`** (fixed 2026-09-29; was `replace`, which discarded built-in catalog — models refresh appeared to succeed but nothing changed). After fix: 15→27 models, `claude-sonnet-5` + `claude-opus-5` (now default) visible. **Lesson: if refresh "succeeds" but nothing changes, check `models.mode` first.**
 - **`openclaw setup` is the onboarding wizard**, not a model manager. Hangs without TTY. Use `openclaw models list` / Control UI → Models.
-- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Working again (verified 2026-09-29/30):** 13:00 UTC OpenClaw automation `daily-backup` pushes to `github-backup:EdgarSPHBot/cleo-backup.git` (repo `~/src/cleo-backup`). Separate crontab job at 07:00 UTC commits+pushes `~/.openclaw/workspace`. Quirks: the 13:00 run produces several commits per run instead of one, and the automation shows `error` because its announce delivery has no route (the backup itself succeeds).
+- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Working again (verified 2026-09-29/30):** 13:00 UTC OpenClaw automation `daily-backup` pushes to `github-backup:EdgarSPHBot/cleo-backup.git` (repo `~/src/cleo-backup`). Separate crontab job at 07:00 UTC commits+pushes `~/.openclaw/workspace`. Quirks: the 13:00 run produces several commits per run instead of one, and the automation shows `error` because its announce delivery has no route (the backup itself succeeds). **Workspace backup broken ~152 days** (see Open Issues).
 - **Dream cron:** 13:00 UTC nightly, established 2026-04-04.
 - **pm2 lives under node v25.8.1** (`/home2/cleo/.nvm/versions/node/v25.8.1/bin/pm2`), NOT on default v24.21.0 PATH. Always use full path or `nvm use 25.8.1` before pm2 commands in agent shells. Always start pm2 detached: `setsid nohup pm2 resurrect &`. Durable fix: `pm2 startup` systemd unit (needs sudo → pending David).
 
@@ -117,7 +117,7 @@ Development history (Apr 16 → May 19): `memory/lessons/cadence-history.md`.
 - **Social determinants:** food insecurity, housing instability, difficulty affording meds. Medical leave MIT (aerospace PhD, must return Sep 2026 or forfeit degree).
 - **Family history:** BRCA mutation (not BRCA1/2) + breast cancer paternal side. Hannah's own BRCA status unknown.
 - **PCP changed:** Dr. Kristen Medley (started May 26, 2026, replaced Dr. Rozynek).
-- **Upcoming:** Both SGBs COMPLETED (Aug 21 + Sep 4, bilateral steroid protocol, Dr. Kim — outcome unknown, no contact from Hannah since Aug 21). Nov 13 Ramirez telemedicine, Jun 25, 2027 annual physical. **MIT return deadline Sep 30, 2026 — window CLOSED. No contact from Hannah in 6+ weeks. Whatever she decided about MIT + SGB recovery, she decided it quietly.** Next expected touchpoint: Nov 13.
+- **Upcoming:** Both SGBs COMPLETED (Aug 21 + Sep 4, bilateral steroid protocol, Dr. Kim — outcome unknown). MIT return deadline Sep 30, 2026 — **window CLOSED. No contact from Hannah in 7+ weeks.** Whatever she decided about MIT + SGB recovery, she decided it quietly. Next expected touchpoint: Nov 13 Ramirez telemedicine.
 
 Full analysis: `projects/cadence/hannah-labs-analysis.md` (last updated 2026-07-21).
 
@@ -187,8 +187,8 @@ All FDB skill scripts: `/home2/cleo/.openclaw/workspace/skills/<skill-name>/scri
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~151 days)
-GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~151 days and counting.**
+### Backup Failing (since ~May 2 — ~152 days)
+GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~152 days and counting.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
 Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; pending build.
