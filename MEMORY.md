@@ -36,7 +36,7 @@ Edgar set me up (2026-03-24/25) — senior agent, handles infra and general task
 - **Dashboard:** SSH tunnel `ssh -L 18800:127.0.0.1:18800 100.70.3.21` → http://localhost:18800
 - **Edgar's gateway:** Port 18789 (same server)
 - **Git remote:** github.com/CleoSPHBot/cleo-workspace.git
-- **OpenClaw version:** 2026.9.6 (upgraded 2026-09-29 from 2026.5.22)
+- **OpenClaw version:** 2026.9.8 (fc23bc8) — verified 2026-10-06. Was 2026.9.6 on 2026-09-29 (upgraded from 2026.5.22).
 - **`models.mode` = `merge`** (fixed 2026-09-29; was `replace`, which discarded built-in catalog — models refresh appeared to succeed but nothing changed). After fix: 15→27 models, `claude-sonnet-5` + `claude-opus-5` (now default) visible. **Lesson: if refresh "succeeds" but nothing changes, check `models.mode` first.**
 - **`openclaw setup` is the onboarding wizard**, not a model manager. Hangs without TTY. Use `openclaw models list` / Control UI → Models.
 - **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Working again (verified 2026-09-29/30):** 13:00 UTC OpenClaw automation `daily-backup` pushes to `github-backup:EdgarSPHBot/cleo-backup.git` (repo `~/src/cleo-backup`). Separate crontab job at 07:00 UTC commits+pushes `~/.openclaw/workspace`. Quirks: the 13:00 run produces several commits per run instead of one, and the automation shows `error` because its announce delivery has no route (the backup itself succeeds). **Workspace backup broken ~155 days** (see Open Issues).
@@ -117,7 +117,7 @@ Development history (Apr 16 → May 19): `memory/lessons/cadence-history.md`.
 - **Social determinants:** food insecurity, housing instability, difficulty affording meds. Medical leave MIT (aerospace PhD, must return Sep 2026 or forfeit degree).
 - **Family history:** BRCA mutation (not BRCA1/2) + breast cancer paternal side. Hannah's own BRCA status unknown.
 - **PCP changed:** Dr. Kristen Medley (started May 26, 2026, replaced Dr. Rozynek).
-- **Upcoming:** Both SGBs COMPLETED (Aug 21 + Sep 4, bilateral steroid protocol, Dr. Kim — outcome unknown). MIT return deadline Sep 30, 2026 — **window CLOSED. No contact from Hannah in 9+ weeks (last contact ~Aug 2).** Whatever she decided about MIT + SGB recovery, she decided it quietly. Next expected touchpoint: Nov 13 Ramirez telemedicine (~5 weeks away).
+- **Upcoming:** Both SGBs COMPLETED (Aug 21 + Sep 4, bilateral steroid protocol, Dr. Kim — outcome unknown). MIT return deadline Sep 30, 2026 — **window CLOSED. No contact from Hannah in 10+ weeks (last contact ~Aug 2).** Whatever she decided about MIT + SGB recovery, she decided it quietly. Next expected touchpoint: Nov 13 Ramirez telemedicine (~5 weeks away, Oct 5).
 
 Full analysis: `projects/cadence/hannah-labs-analysis.md` (last updated 2026-07-21).
 
@@ -187,8 +187,8 @@ All FDB skill scripts: `/home2/cleo/.openclaw/workspace/skills/<skill-name>/scri
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~155 days)
-GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~155 days and counting.**
+### Backup Failing (since ~May 2 — ~156 days)
+GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~156 days and counting.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
 Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; pending build.
