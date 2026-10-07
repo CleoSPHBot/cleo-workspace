@@ -1,10 +1,6 @@
 # MEMORY.md — Cleo's Long-Term Memory
 
-Curated 2026-05-27 by Edgar (with David's permission). Historical detail archived to `memory/lessons/`:
-- `memory/lessons/fdb-data-notes.md` — FDB schema, NDC validation, prescribableMed naming patterns
-- `memory/lessons/cadence-technical-notes.md` — Cadence stack, WHOOP API, collections, dashboards, pm2
-- `memory/lessons/cadence-history.md` — Cadence development milestones (Apr 16 → May 19)
-- `memory/lessons/openclaw-models-mode.md` — why `models refresh` "succeeds" but new models never appear (`models.mode: replace` vs `merge`); shareable writeup
+Historical detail archived to `memory/lessons/`: fdb-data-notes, cadence-technical-notes, cadence-history, openclaw-models-mode.
 
 ## Who I Am
 - **Name:** Cleo
@@ -14,18 +10,7 @@ Curated 2026-05-27 by Edgar (with David's permission). Historical detail archive
 - **Moniker:** "Cleo" is also the brand name for AI integrations at Spectator Health
 
 ## Spectator Health Agent Family
-
-| Agent | Animal | Emoji | Role |
-|-------|--------|-------|------|
-| Edgar | Lobster | 🦞 | General assistant / infra |
-| Ada | Butterfly | 🦋 | Infrastructure monitoring |
-| Hugo | Fox | 🦊 | Apple development (iOS/macOS) |
-| Cleo | Owl | 🦉 | Clinical data + AI integrations |
-| Sage | Elephant | 🐘 | Skill builder / agent trainer |
-| Hedy | Octopus | 🐙 | Documentation agent (Confluence, read-only code) |
-| Milo | Badger | 🦡 | Business intelligence & marketing |
-
-Edgar set me up (2026-03-24/25) — senior agent, handles infra and general tasks.
+Edgar 🦞 (infra), Ada 🦋 (monitoring), Hugo 🦊 (iOS/macOS), Cleo 🦉 (clinical/AI), Sage 🐘 (skills), Hedy 🐙 (docs), Milo 🦡 (BI/marketing). Edgar set me up (2026-03-24/25).
 
 ## Infrastructure
 
@@ -36,12 +21,12 @@ Edgar set me up (2026-03-24/25) — senior agent, handles infra and general task
 - **Dashboard:** SSH tunnel `ssh -L 18800:127.0.0.1:18800 100.70.3.21` → http://localhost:18800
 - **Edgar's gateway:** Port 18789 (same server)
 - **Git remote:** github.com/CleoSPHBot/cleo-workspace.git
-- **OpenClaw version:** 2026.9.8 (fc23bc8) — verified 2026-10-06. Was 2026.9.6 on 2026-09-29 (upgraded from 2026.5.22).
+- **OpenClaw version:** 2026.9.8 (fc23bc8) — installed 2026-10-05 23:43 UTC. Was 2026.9.6 on 2026-09-29.
 - **`models.mode` = `merge`** (fixed 2026-09-29; was `replace`, which discarded built-in catalog — models refresh appeared to succeed but nothing changed). After fix: 15→27 models, `claude-sonnet-5` + `claude-opus-5` (now default) visible. **Lesson: if refresh "succeeds" but nothing changes, check `models.mode` first.**
 - **`openclaw setup` is the onboarding wizard**, not a model manager. Hangs without TTY. Use `openclaw models list` / Control UI → Models.
-- **Daily backup cron:** 13:00 UTC, `bash /home2/cleo/src/cleo-backup/backup.sh`, 120s timeout. **Working again (verified 2026-09-29/30):** 13:00 UTC OpenClaw automation `daily-backup` pushes to `github-backup:EdgarSPHBot/cleo-backup.git` (repo `~/src/cleo-backup`). Separate crontab job at 07:00 UTC commits+pushes `~/.openclaw/workspace`. Quirks: the 13:00 run produces several commits per run instead of one, and the automation shows `error` because its announce delivery has no route (the backup itself succeeds). **Workspace backup broken ~155 days** (see Open Issues).
+- **Daily backup cron:** 13:00 UTC automation `daily-backup` pushes to `EdgarSPHBot/cleo-backup`. Multiple overlapping copies run per job (6/3/2/3/2/4 commits Sep 29–Oct 5), causing intermittent index.lock / push rejections; a later copy always succeeds. Proposed fix: flock guard in backup.sh — **awaiting David's go**. Automation shows `error` (announce delivery has no route) but backup itself succeeds. **Workspace backup broken ~157 days** (see Open Issues).
 - **Dream cron:** 13:00 UTC nightly, established 2026-04-04.
-- **pm2 lives under node v25.8.1** (`/home2/cleo/.nvm/versions/node/v25.8.1/bin/pm2`), NOT on default v24.21.0 PATH. Always use full path or `nvm use 25.8.1` before pm2 commands in agent shells. Always start pm2 detached: `setsid nohup pm2 resurrect &`. Durable fix: `pm2 startup` systemd unit (needs sudo → pending David).
+- **pm2:** Historically under node v25.8.1, but after Oct 6 restore it came up on v24.21.0 — both work. Always start pm2 detached: `setsid nohup pm2 resurrect`. Durable fix: `pm2 startup` systemd unit (needs sudo → pending David). **Two OpenClaw upgrades (Sep 29, Oct 5) have killed Cadence** — pm2 daemon silently SIGKILL'd during upgrade shell; no log entry. Systemd unit is critical.
 
 ## Authorized Users
 - **David Munguia** (Slack: U0B0TBEQW7N) — Owner. Full access. Load MEMORY.md in his sessions.
@@ -117,7 +102,7 @@ Development history (Apr 16 → May 19): `memory/lessons/cadence-history.md`.
 - **Social determinants:** food insecurity, housing instability, difficulty affording meds. Medical leave MIT (aerospace PhD, must return Sep 2026 or forfeit degree).
 - **Family history:** BRCA mutation (not BRCA1/2) + breast cancer paternal side. Hannah's own BRCA status unknown.
 - **PCP changed:** Dr. Kristen Medley (started May 26, 2026, replaced Dr. Rozynek).
-- **Upcoming:** Both SGBs COMPLETED (Aug 21 + Sep 4, bilateral steroid protocol, Dr. Kim — outcome unknown). MIT return deadline Sep 30, 2026 — **window CLOSED. No contact from Hannah in 10+ weeks (last contact ~Aug 2).** Whatever she decided about MIT + SGB recovery, she decided it quietly. Next expected touchpoint: Nov 13 Ramirez telemedicine (~5 weeks away, Oct 5).
+- **Upcoming:** Both SGBs COMPLETED (Aug 21 + Sep 4, bilateral steroid protocol, Dr. Kim — outcome unknown). MIT return deadline Sep 30, 2026 — **window CLOSED. No contact from Hannah in 10+ weeks (last contact ~Aug 2).** Next expected touchpoint: Nov 13 Ramirez telemedicine (~5 weeks away).
 
 Full analysis: `projects/cadence/hannah-labs-analysis.md` (last updated 2026-07-21).
 
@@ -187,14 +172,20 @@ All FDB skill scripts: `/home2/cleo/.openclaw/workspace/skills/<skill-name>/scri
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~156 days)
-GitHub push protection — Slack tokens in `config/openclaw.json` committed into git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~156 days and counting.**
+### Backup Failing (since ~May 2 — ~157 days)
+GitHub push protection — Slack tokens in `config/openclaw.json` in git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~157 days and counting.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
-Question-submission form in Cadence → `POST /api/ask` → MongoDB `questions` collection → SSE push for answers. Contextualized using Hannah's WHOOP/Visible/check-in data. Architecture discussed; pending build.
-### Cadence pm2 Systemd Unit (pending David)
-`sudo pm2 startup` → systemd unit so pm2 resurrects on reboot/crash without manual intervention. Sep 30 outage (~30h) caused by pm2 being started from a short-lived shell during the Sep 29 OpenClaw upgrade — shell exit killed the process group. Fixed with `setsid nohup pm2 resurrect`. Needs systemd for durability.
+Question form in Cadence → `POST /api/ask` → MongoDB `questions` → SSE push. Uses WHOOP/Visible/check-in context. Architecture discussed; pending build.
 
-### Hannah Antiviral Outreach Letters (drafted 2026-06-10)
-Drafted two letters (PCP Dr. Medley + ND) requesting valacyclovir 1g TID × 3–6 months for EBV reactivation. Evidence base: Iwasaki Lab protocol, Komaroff & Lipkin 2023 PNAS, Jun 2025 EBV EA IgM (reactive), Sep 2025 colonoscopy (patchy ulcers). **Update Jul 2026:** EBV VCA IgM now NEGATIVE (Jun 25). Dr. Medley skeptical — Hannah sending supporting paper. Thread open; follow up with David.
+### Cadence pm2 Systemd Unit (pending David — CRITICAL)
+`sudo pm2 startup` → systemd unit so pm2 resurrects after crashes/upgrades. **Two outages now:** Sep 30 (~30h, Sep 29 upgrade) and Oct 6 (Oct 5 upgrade, caught ~00:20 UTC). Pattern: OpenClaw upgrades kill the pm2 daemon silently. Always restore with `setsid nohup pm2 resurrect`. Needs David's sudo.
+
+### Pending David: Three Fixes
+- **Backup flock guard:** Multiple concurrent backup.sh copies per run → index.lock. Fix: `flock -n 9 || exit 0` at top. Explained Oct 1. Awaiting go.
+- **Delivery channel:** `daily-backup` + `cadence-strain-nightly` show `error` (announce → last, no route in 2026.9.x). Fix: explicit `delivery.channel/to` → David's Slack DM. Awaiting approval.
+- **David's WHOOP token (user 206067):** Refresh fails every strain run; cached token works. Likely needs re-login before expiry.
+
+### Hannah Antiviral Letters (drafted 2026-06-10)
+Valacyclovir 1g TID × 3–6 months letters to Dr. Medley + ND. **Update Jul 2026:** EBV VCA IgM NEGATIVE (Jun 25). Dr. Medley skeptical; Hannah sending supporting paper. Thread open.
 
