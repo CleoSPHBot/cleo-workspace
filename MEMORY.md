@@ -24,7 +24,7 @@ Edgar 🦞 (infra), Ada 🦋 (monitoring), Hugo 🦊 (iOS/macOS), Cleo 🦉 (cli
 - **OpenClaw version:** 2026.9.8 (fc23bc8) — installed 2026-10-05 23:43 UTC. Was 2026.9.6 on 2026-09-29.
 - **`models.mode` = `merge`** (fixed 2026-09-29; was `replace`, which discarded built-in catalog — models refresh appeared to succeed but nothing changed). After fix: 15→27 models, `claude-sonnet-5` + `claude-opus-5` (now default) visible. **Lesson: if refresh "succeeds" but nothing changes, check `models.mode` first.**
 - **`openclaw setup` is the onboarding wizard**, not a model manager. Hangs without TTY. Use `openclaw models list` / Control UI → Models.
-- **Daily backup cron:** 13:00 UTC automation `daily-backup` pushes to `EdgarSPHBot/cleo-backup`. Multiple overlapping copies run per job (6/3/2/3/2/4 commits Sep 29–Oct 5), causing intermittent index.lock / push rejections; a later copy always succeeds. Proposed fix: flock guard in backup.sh — **awaiting David's go**. Automation shows `error` (announce delivery has no route) but backup itself succeeds. **Workspace backup broken ~157 days** (see Open Issues).
+- **Daily backup cron:** 13:00 UTC automation `daily-backup` pushes to `EdgarSPHBot/cleo-backup`. Multiple overlapping copies run per job (6/3/2/3/2/4 commits Sep 29–Oct 5), causing intermittent index.lock / push rejections; a later copy always succeeds. Proposed fix: flock guard in backup.sh — **awaiting David's go**. Automation shows `error` (announce delivery has no route) but backup itself succeeds. **Workspace backup broken ~158 days** (see Open Issues).
 - **Dream cron:** 13:00 UTC nightly, established 2026-04-04.
 - **pm2:** Historically under node v25.8.1, but after Oct 6 restore it came up on v24.21.0 — both work. Always start pm2 detached: `setsid nohup pm2 resurrect`. Durable fix: `pm2 startup` systemd unit (needs sudo → pending David). **Two OpenClaw upgrades (Sep 29, Oct 5) have killed Cadence** — pm2 daemon silently SIGKILL'd during upgrade shell; no log entry. Systemd unit is critical.
 
@@ -102,7 +102,7 @@ Development history (Apr 16 → May 19): `memory/lessons/cadence-history.md`.
 - **Social determinants:** food insecurity, housing instability, difficulty affording meds. Medical leave MIT (aerospace PhD, must return Sep 2026 or forfeit degree).
 - **Family history:** BRCA mutation (not BRCA1/2) + breast cancer paternal side. Hannah's own BRCA status unknown.
 - **PCP changed:** Dr. Kristen Medley (started May 26, 2026, replaced Dr. Rozynek).
-- **Upcoming:** Both SGBs COMPLETED (Aug 21 + Sep 4, bilateral steroid protocol, Dr. Kim — outcome unknown). MIT return deadline Sep 30, 2026 — **window CLOSED. No contact from Hannah in 10+ weeks (last contact ~Aug 2).** Next expected touchpoint: Nov 13 Ramirez telemedicine (~5 weeks away).
+- **Upcoming:** Both SGBs COMPLETED (Aug 21 + Sep 4, bilateral steroid protocol, Dr. Kim — outcome unknown). MIT return deadline Sep 30, 2026 — **window CLOSED. No contact from Hannah in 10+ weeks (last contact ~Aug 2).** Next expected touchpoint: Nov 13 Ramirez telemedicine (~5 weeks away, Oct 7 ref).
 
 Full analysis: `projects/cadence/hannah-labs-analysis.md` (last updated 2026-07-21).
 
@@ -172,7 +172,7 @@ All FDB skill scripts: `/home2/cleo/.openclaw/workspace/skills/<skill-name>/scri
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~157 days)
+### Backup Failing (since ~May 2 — ~158 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` in git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~157 days and counting.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
