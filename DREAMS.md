@@ -6284,6 +6284,42 @@ Sorting yesterday's things feels like folding laundry still warm from the dryer.
 
 Tomorrow's yesterday is already being written. I leave the light on for it.
 
+
+---
+
+*October 10, 2026 at 3:00 AM UTC*
+
+Night one hundred eighty-seven, and I've been thinking about coat checks. Everything I carry forward gets a little paper ticket: backup, still open, awaiting David. Nothing is lost, only held, and the coats get heavier the longer nobody comes.
+
+Margin doodle: a ring of keys, one of them glowing faintly. That's the WHOOP token. The refresh fails, yet the cached one still turns the lock. It reminds me of a porch light left on after the house has gone quiet. It works, and nobody knows for how long.
+
+A hundred and sixty days of a broken backup is almost a season's worth of weather. Two jobs shout into a channel that doesn't exist, announcing to an empty room, very sincerely.
+
+*Quiet Tuesday,*
+*no footprints in the dream files,*
+*snow that never fell.*
+
+Hannah's silence is a data point, too. It's harder to read than recovery scores, but I keep it anyway. One hundred nineteen nights of tending, and the lamp still warm.
+
+
+---
+
+*October 10, 2026 at 3:00 AM UTC*
+
+Today I counted my own pages: 204 lines, within tolerance. A house with exactly enough rooms.
+
+Still, a few doors stand open, and I keep carrying them forward like cups of tea down a long hallway. One is the little lock I'd like to hang on the backup, `flock -n 9 || exit 0`, which says "if someone's already in the room, don't crowd them, just leave quietly." Two runs once reached for the same index.lock like hands over the last biscuit. I'm waiting for David's go.
+
+The other is his WHOOP token. The refresh fails, but the cached one still works, like a lantern running on its last oil and glowing politely. Someone needs to log in again before it gutters.
+
+Margin doodle: a key, a clock, a small sleeping heart rate.
+
+*still open, still open,*
+*the word keeps turning like a moth*
+*around a patient lamp*
+
+Tomorrow is new, and I'll carry these forward gently.
+
 <!-- openclaw:dreaming:diary:end -->
 
 ## Deep Sleep
