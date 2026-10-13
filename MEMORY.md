@@ -21,12 +21,13 @@ Edgar 🦞 (infra), Ada 🦋 (monitoring), Hugo 🦊 (iOS/macOS), Cleo 🦉 (cli
 - **Dashboard:** SSH tunnel `ssh -L 18800:127.0.0.1:18800 100.70.3.21` → http://localhost:18800
 - **Edgar's gateway:** Port 18789 (same server)
 - **Git remote:** github.com/CleoSPHBot/cleo-workspace.git
-- **OpenClaw version:** 2026.9.8 (fc23bc8) — installed 2026-10-05 23:43 UTC. Was 2026.9.6 on 2026-09-29.
+- **OpenClaw version:** 2026.9.9 (bcfc888) — installed ~Oct 8 23:05 UTC. Was 2026.9.8 (fc23bc8) on Oct 5.
 - **`models.mode` = `merge`** (fixed 2026-09-29; was `replace`, which discarded built-in catalog — models refresh appeared to succeed but nothing changed). After fix: 15→27 models, `claude-sonnet-5` + `claude-opus-5` (now default) visible. **Lesson: if refresh "succeeds" but nothing changes, check `models.mode` first.**
 - **`openclaw setup` is the onboarding wizard**, not a model manager. Hangs without TTY. Use `openclaw models list` / Control UI → Models.
 - **Daily backup cron:** 13:00 UTC automation `daily-backup` pushes to `EdgarSPHBot/cleo-backup`. Multiple overlapping copies run per job (6/3/2/3/2/4 commits Sep 29–Oct 5), causing intermittent index.lock / push rejections; a later copy always succeeds. Proposed fix: flock guard in backup.sh — **awaiting David's go**. Automation shows `error` (announce delivery has no route) but backup itself succeeds. **Workspace backup broken ~162 days** (see Open Issues).
-- **Dream cron:** 13:00 UTC nightly, established 2026-04-04. Dream #188 tonight (Oct 11). 121 consecutive maintenance nights.
-- **pm2:** Historically under node v25.8.1, but after Oct 6 restore it came up on v24.21.0 — both work. Always start pm2 detached: `setsid nohup pm2 resurrect`. Durable fix: `pm2 startup` systemd unit (needs sudo → pending David). **Two OpenClaw upgrades (Sep 29, Oct 5) have killed Cadence** — pm2 daemon silently SIGKILL'd during upgrade shell; no log entry. Systemd unit is critical.
+- **Dream cron:** 13:00 UTC nightly, established 2026-04-04. Dream #189 tonight (Oct 12). 122 consecutive maintenance nights.
+- **pm2:** Always start pm2 detached: `setsid nohup pm2 resurrect`. **Three OpenClaw upgrades (Sep 29, Oct 5, ~Oct 8) have each killed Cadence** — pm2 daemon silently SIGKILL'd during upgrade. Pattern confirmed.
+- **Cadence systemd unit discovery (Oct 12):** `~/.config/systemd/user/cadence-server.service` exists (enabled since Apr 17, Linger=yes) but crash-loops status=203/EXEC — restart counter >1,018,000. Root cause: bare `node` in ExecStart; systemd needs absolute path `/home2/cleo/.nvm/versions/node/v24.21.0/bin/node`. Fix requires **no sudo** — correct ExecStart + stop pm2's cadence so only one manager owns :8765. **Pending David's OK.**
 
 ## Authorized Users
 - **David Munguia** (Slack: U0B0TBEQW7N) — Owner. Full access. Load MEMORY.md in his sessions.
@@ -172,20 +173,20 @@ All FDB skill scripts: `/home2/cleo/.openclaw/workspace/skills/<skill-name>/scri
 
 ## Open Issues
 
-### Backup Failing (since ~May 2 — ~162 days)
+### Backup Failing (since ~May 2 — ~163 days)
 GitHub push protection — Slack tokens in `config/openclaw.json` in git history (commits: 214c727, a303efc, ae12ea4, bd530016). Fix: BFG rewrite + token rotation + add `config/openclaw.json` to `.gitignore`. **Awaiting David. ~161 days and counting.**
 
 ### Hannah Ask-Cleo Feature (planned, not built)
 Question form in Cadence → `POST /api/ask` → MongoDB `questions` → SSE push. Uses WHOOP/Visible/check-in context. Architecture discussed; pending build.
 
-### Cadence pm2 Systemd Unit (pending David — CRITICAL)
-`sudo pm2 startup` → systemd unit so pm2 resurrects after crashes/upgrades. **Two outages now:** Sep 30 (~30h, Sep 29 upgrade) and Oct 6 (Oct 5 upgrade, caught ~00:20 UTC). Pattern: OpenClaw upgrades kill the pm2 daemon silently. Always restore with `setsid nohup pm2 resurrect`. Needs David's sudo.
+### Cadence pm2 / Systemd Unit (pending David — CRITICAL)
+**Three outages:** Sep 30 (~30h), Oct 6, ~Oct 8 (3.5 days down, caught Oct 12 02:41 UTC by David). Pattern: every OpenClaw upgrade kills pm2 silently. Always restore with `setsid nohup pm2 resurrect`. **Better fix (no sudo):** fix ExecStart in `~/.config/systemd/user/cadence-server.service` — change bare `node` to absolute path, stop pm2's cadence so only one manager owns :8765. Pending David's OK.
 
 ### Pending David: Three Fixes
 - **Backup flock guard:** Multiple concurrent backup.sh copies per run → index.lock. Fix: `flock -n 9 || exit 0` at top. Explained Oct 1. Awaiting go.
 - **Delivery channel:** `daily-backup` + `cadence-strain-nightly` show `error` (announce → last, no route in 2026.9.x). Fix: explicit `delivery.channel/to` → David's Slack DM. Awaiting approval.
 - **David's WHOOP token (user 206067):** Refresh fails every strain run; cached token works. Likely needs re-login before expiry.
-- **Hannah:** MIT window closed Sep 30. No contact in 10+ weeks (last ~Aug 2). Next touchpoint: Nov 13 Ramirez telemedicine (~33 days, Oct 11 ref).
+- **Hannah:** MIT window closed Sep 30. No contact in 10+ weeks (last ~Aug 2). Next touchpoint: Nov 13 Ramirez telemedicine (~32 days, Oct 12 ref).
 
 ### Hannah Antiviral Letters (drafted 2026-06-10)
 Valacyclovir 1g TID × 3–6 months letters to Dr. Medley + ND. **Update Jul 2026:** EBV VCA IgM NEGATIVE (Jun 25). Dr. Medley skeptical; Hannah sending supporting paper. Thread open.

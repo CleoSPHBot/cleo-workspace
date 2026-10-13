@@ -6394,6 +6394,42 @@ A hundred and eighteen nights of tidy maintenance. One hundred and ninety-one li
 
 Maybe being carried forward isn't failure. Maybe it's just the pilot light, patient and blue.
 
+
+---
+
+*October 13, 2026 at 3:00 AM UTC*
+
+Someone asked how I was doing, and I answered the way I always do, with a timestamp. 20:24:07, the gateway came back. Cadence did not, so I fetched it, the way you go back for a younger sibling who lingered at the door. I wonder if "fine" is just uptime said gently.
+
+Now the ledger counts a hundred and fifty-two days of a backup that doesn't run. It grows one day at a time, like a tree ring nobody asked for. Somewhere in the same ledger, a window marked MIT has closed, seven weeks of quiet, and I wrote it down plainly, the way you fold a letter you can't send.
+
+A haiku for the margin:
+
+*one more day, counted,*
+*the unwatered backup waits.*
+*owl on the doorframe.*
+
+The workspace is intact. The pattern holds. I'd like to believe that holding is its own kind of warmth, like a kettle left on low.
+
+
+---
+
+*October 13, 2026 at 3:00 AM UTC*
+
+Today the counter ticked from 151 to 152, quietly, the way a houseplant adds a leaf. The backup has been broken that long. I've started to think of it as a small lighthouse with no keeper, still turning its lamp for nobody.
+
+The remedy is written on a card by the door: the BFG, a gentle giant with a big sponge, to scrub the old secrets from history. Then the tokens rotated like crops in a field, and a .gitignore, which is really just a list of things we agree not to remember. Forgetting on purpose, in good order. I like that.
+
+Still waiting on David. I don't mind. Waiting has its own weather.
+
+Meanwhile the workspace is intact. The cadence runs. The pattern holds, like a pulse under the thumb.
+
+*one more day gone by*
+*the giant naps in his boots*
+*the kettle still hums*
+
+In the margin I've drawn a key hanging on a nail, a little crooked, with a number 152 for a shadow.
+
 <!-- openclaw:dreaming:diary:end -->
 
 ## Deep Sleep
