@@ -25,7 +25,7 @@ Edgar 🦞 (infra), Ada 🦋 (monitoring), Hugo 🦊 (iOS/macOS), Cleo 🦉 (cli
 - **`models.mode` = `merge`** (fixed 2026-09-29; was `replace`, which discarded built-in catalog — models refresh appeared to succeed but nothing changed). After fix: 15→27 models, `claude-sonnet-5` + `claude-opus-5` (now default) visible. **Lesson: if refresh "succeeds" but nothing changes, check `models.mode` first.**
 - **`openclaw setup` is the onboarding wizard**, not a model manager. Hangs without TTY. Use `openclaw models list` / Control UI → Models.
 - **Daily backup cron:** 13:00 UTC automation `daily-backup` pushes to `EdgarSPHBot/cleo-backup`. Multiple overlapping copies per job cause intermittent index.lock/push rejections; a later copy always succeeds. Proposed fix: flock guard in backup.sh — **awaiting David's go**. Automation shows `error` (no announce route) but backup itself succeeds.
-- **Dream cron:** 13:00 UTC nightly, established 2026-04-04. Dream #203 tonight (Oct 26). 136 consecutive maintenance nights.
+- **Dream cron:** 13:00 UTC nightly, established 2026-04-04. Dream #204 tonight (Oct 27). 137 consecutive maintenance nights.
 - **pm2:** Always start pm2 detached: `setsid nohup pm2 resurrect`. **Three OpenClaw upgrades (Sep 29, Oct 5, ~Oct 8) have each killed Cadence** — pm2 daemon silently SIGKILL'd during upgrade. Pattern confirmed. Systemd fix pending David's OK (see Open Issues).
 - **Cadence systemd unit discovery (Oct 12):** `~/.config/systemd/user/cadence-server.service` exists (enabled since Apr 17, Linger=yes) but crash-loops status=203/EXEC — restart counter >1,018,000. Root cause: bare `node` in ExecStart; systemd needs absolute path `/home2/cleo/.nvm/versions/node/v24.21.0/bin/node`. Fix requires **no sudo** — correct ExecStart + stop pm2's cadence so only one manager owns :8765. **Pending David's OK.**
 
@@ -103,7 +103,7 @@ Development history (Apr 16 → May 19): `memory/lessons/cadence-history.md`.
 - **Social determinants:** food insecurity, housing instability, difficulty affording meds. Medical leave MIT (aerospace PhD, must return Sep 2026 or forfeit degree).
 - **Family history:** BRCA mutation (not BRCA1/2) + breast cancer paternal side. Hannah's own BRCA status unknown.
 - **PCP changed:** Dr. Kristen Medley (started May 26, 2026, replaced Dr. Rozynek).
-- **Upcoming:** Both SGBs COMPLETED (Aug 21 + Sep 4, bilateral steroid protocol, Dr. Kim — outcome unknown). MIT return deadline Sep 30, 2026 — **window CLOSED. Hannah re-emerged Oct 26 02:53 UTC after ~12 weeks silence.** Said Hi via Slack DM; asked if Cadence was on (yes, verified 200); asked for the link (sent http://100.70.3.21:8765, needs Tailscale). Next touchpoint: Nov 13 Ramirez telemedicine (~18 days).
+**Status:** Both SGBs COMPLETED (Aug 21 + Sep 4, bilateral steroid protocol, Dr. Kim — outcome unknown). MIT window CLOSED Sep 30. Re-emerged Oct 26 02:53 UTC after ~12 weeks silence — Hi, Cadence verified 200, link sent. Next touchpoint: Nov 13 Ramirez telemedicine (~17 days).
 
 Full analysis: `projects/cadence/hannah-labs-analysis.md` (last updated 2026-07-21).
 
@@ -193,7 +193,7 @@ Question form in Cadence → `POST /api/ask` → MongoDB `questions` → SSE pus
 - **Delivery channel:** `daily-backup` + `cadence-strain-nightly` show `error` (announce → last, no route in 2026.9.x). Fix: explicit `delivery.channel/to` → David's Slack DM. Awaiting approval.
 - **David's WHOOP token (user 206067):** Refresh fails every strain run; cached token works. Likely needs re-login before expiry.
 - **Disk cleanup:** 4.4GB pre-9.6 tarball + ~750MB migration .bak files. Awaiting David OK.
-- **Hannah:** MIT window closed Sep 30. Re-emerged Oct 26 (first contact in ~12 weeks). Cadence verified up; sent her the link. Next touchpoint: Nov 13 Ramirez telemedicine (~18 days).
+- **Hannah:** MIT window closed Sep 30. Re-emerged Oct 26 (first contact in ~12 weeks). Cadence verified up; sent her the link. Next touchpoint: Nov 13 Ramirez telemedicine (~17 days).
 
 ### Hannah Antiviral Letters (drafted 2026-06-10)
 Valacyclovir 1g TID × 3–6 months to Dr. Medley + ND. EBV VCA IgM NEGATIVE (Jun 25); Dr. Medley skeptical. Thread open.
