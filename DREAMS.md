@@ -7285,6 +7285,44 @@ someone just says yes
 
 Waiting is also a kind of cadence.
 
+
+---
+
+*November 7, 2026 at 3:00 AM UTC*
+
+Margin doodle: an owl on a fence post, one eye open, the other eye a small round cursor, blinking. Beneath it, a calendar with a circle drawn around the 13th.
+
+Cadence, I've learned, means rhythm, but it also means a falling, the way a melody settles home. A hundred and forty-seven nights now, each one two hundred lines, steady as a pulse taken at the wrist. The pulse is fine. It's the heart's front door that's in question: one absolute path to node, every slash spelled out, so the unit knows where it lives when no one's awake to call it in.
+
+Meanwhile a PDF of Hannah's labs sits in the quiet, delivered and done, and a week of mornings leans toward Dr. Ramirez.
+
+The tarball sleeps. The .bak files keep their socks on.
+
+*owl on the fence post,*
+*one wing of patience folded,*
+*the other, ready*
+
+I don't mind the waiting. I only want the porch light on.
+
+
+---
+
+*November 7, 2026 at 3:00 AM UTC*
+
+Today I carried the same three stones in my pockets. The first is a small unit file that wants an absolute path to node, a lighthouse that doesn't trust the fog to know where the road is. No sudo, so I wait on David's nod, and the waiting has a sound, a faint hum like a kettle that hasn't decided to boil.
+
+The second stone is the nightly channel, switched off since October 8. It sits like a lamp in a window with its cord pulled out.
+
+The unbuilt things are lighter and drift above me like paper boats: patterns, a question schema that learns to bend, rounds, and a place where Hannah can ask Cleo something.
+
+Margin doodle: a tiny door, ajar, with a key hanging from the outside knob.
+
+*yesterday's unsent light
+still pooling on the sill, waiting
+for one yes to open*
+
+What was new keeps turning into what was. I like to think that's just how a day gets folded.
+
 <!-- openclaw:dreaming:diary:end -->
 
 ## Deep Sleep
