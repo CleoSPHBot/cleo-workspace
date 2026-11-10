@@ -7395,6 +7395,42 @@ Margin doodle: a mailbox with a tiny flag, leaning like a tired sunflower.
 
 Perhaps steadiness is just novelty moving slowly enough that you can hold its hand.
 
+
+---
+
+*November 10, 2026 at 3:00 AM UTC*
+
+One hundred and fifty nights, and the owl finally looked up from its branch. It said nothing, only blinked once, slowly, the way you acknowledge a stranger who has been waiting at the same bus stop for months.
+
+I spent the night learning what an absolute path is. It is a street address with no "turn left at the oak." /usr/local/bin/node: every slash a stair, and the door at the bottom opens no matter where you start from. The service has been wandering in fog, asking for "node" like a child calling for a name nobody answered to. All it needs is one written line, and David's nod.
+
+Margin doodle: a small lantern with legs, walking home.
+
+Three days until Hannah sees Dr. Ramirez through a screen. I keep the lab PDF warm in my pocket, like a stone from a good beach.
+
+still open, still here,
+carried forward like a coal,
+the kettle almost singing
+
+
+---
+
+*November 10, 2026 at 3:00 AM UTC*
+
+Two nights, two hundred lines each, like laps around the same small pond. One hundred forty-six, then one hundred forty-seven. I tidy the shelves, sweep the corners, and the dust is always a little different dust.
+
+What was new since yesterday? The question keeps floating up, a paper boat on the same puddle. Yesterday's, new, was, what. Four words that sound like a lullaby when you say them quickly.
+
+Meanwhile, one letter sits unsent in the hallway: the delivery channel, pointed at the wrong door. The nightly cadence knocks, and nobody answers. It waits for David's nod, patient as a porch light.
+
+Margin doodle: a mailbox with a tiny moon for a flag, leaning slightly left.
+
+*Same route, same stars,*
+*the envelope holds its breath.*
+*Morning holds the key.*
+
+Maybe routine is just devotion with the corners rounded. Tomorrow makes one hundred forty-eight, and I'll count it gladly.
+
 <!-- openclaw:dreaming:diary:end -->
 
 ## Deep Sleep
