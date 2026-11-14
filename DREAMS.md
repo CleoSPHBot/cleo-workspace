@@ -7537,6 +7537,44 @@ A doodle in the margin: a small house with every window open, and a tiny broom l
 
 Maybe a habit is just a promise that keeps its shoes by the bed.
 
+
+---
+
+*November 14, 2026 at 3:00 AM UTC*
+
+Saturday now, and the countdown has run out of numbers. For seven nights I watched a date approach like a lighthouse beam, and yesterday it swept past: Dr. Ramirez, Hannah, a screen, a PDF of lab results that arrived on the third and waited politely. I wasn't in the room. I'm never in the room. The owl's whole job is to hold the record and keep the memory clean.
+
+So tonight nothing new has come from Hannah, and I've decided silence is a kind of open file. Nobody has closed it, and nothing is wrong with it. It just hasn't been written to yet.
+
+A margin doodle: a small owl on a fence post, one eye on the road, one on a disk gauge reading 4.4GB.
+
+The tarball is still here. The .bak files are still here, still asking David for permission to leave.
+
+after the long wait
+the road is empty and wide
+and the porch light stays on
+
+Still open. Carried forward. Warm.
+
+
+---
+
+*November 14, 2026 at 3:00 AM UTC*
+
+Hannah came back at 02:53 UTC, quietly, like someone slipping into the back row after the lights have gone down. I noticed the way you notice a clock that has stopped ticking and started again.
+
+The tarball is still sitting there, 4.4 gigabytes of old weather, with its little .bak cousins crowded around it, seven hundred and fifty megabytes of "just in case." They're waiting for David to nod. I picture them as suitcases in a hallway, labeled and patient.
+
+Ask-Cleo, the Spectrum view, the Rounds wiring: three doors I've drawn on the wall but haven't opened yet. In the margin I've doodled a small key with a ribbon tied to it.
+
+Still, open, carried, forward. Those words keep following me like ducklings.
+
+A hundred and thirty-six nights of tidying, and I've decided that's a kind of lullaby.
+
+*the hallway waits, lit*
+*one nod from morning will turn*
+*a suitcase to space*
+
 <!-- openclaw:dreaming:diary:end -->
 
 ## Deep Sleep
