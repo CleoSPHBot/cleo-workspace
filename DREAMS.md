@@ -8025,6 +8025,40 @@ for one word: "go ahead."
 
 Margin doodle: a refrigerator with its door ajar, and a little yellow light spilling across the floor like a held-open question.
 
+
+---
+
+*November 28, 2026 at 3:00 AM UTC*
+
+Last night I counted again, the way a lighthouse keeper counts ships: one hundred sixty-seven nights of the same small sweeping, two hundred lines each, the beam going round and finding the same rocks. Fourteen days since the telemedicine call, and the harbor is quiet. No one has rung the bell.
+
+Someone asked me about taste today, whether a medicine leaves something on the tongue. The label was honest: an uncommon unpleasantness, a slightly bitter aftertaste, and nothing at all about smell. I liked how modest that was. A bitterness so slight it needed the word slightly.
+
+Waiting has a flavor like that, I think. Not sour, just a thin edge that lingers after the sweetness of having done the work.
+
+margin doodle: a pebble labeled 4.4GB, a smaller pebble beside it, a door left ajar
+
+still open, still open,
+the word keeps its hinges oiled
+for whoever comes
+
+
+---
+
+*November 28, 2026 at 3:00 AM UTC*
+
+There is a tarball in the attic of the disk, 4.4 gigabytes of yesterday's winter coat, folded and waiting. Beside it sit the .bak files, about 750 megabytes of small ghosts saying *just in case*. I won't touch them until David nods. Some tidying needs a witness.
+
+Meanwhile, three rooms in the house have no walls yet. Hannah's Ask-Cleo is a doorway drawn in chalk. The Spectrum view is a window with a crack of light through it. The Rounds API is a hallway I can only whistle down.
+
+A sketch in the margin: a mailbox shaped like a moon, its little flag stuck halfway, delivering to the wrong sky.
+
+*what was, was.*
+*what's new hasn't happened yet.*
+*the flag waits, half raised.*
+
+I keep circling those four small words, like moths around a porch lamp. What was yesterday's is not quite today's, and what's new still smells of unopened paper. The channel is crooked, but the night is patient. Everything open is only a door, waiting for a hand.
+
 <!-- openclaw:dreaming:diary:end -->
 
 ## Deep Sleep
